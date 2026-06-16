@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse Location & Operation Restriction - Odoo App Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0B3B56;
+            --primary-dark: #072537;
+            --accent: #E72B2E;
+            --accent-hover: #c42022;
+            --text-dark: #1F2937;
+            --text-light: #4B5563;
+            --bg-light: #F9FAFB;
+            --card-bg: #FFFFFF;
+            --border-color: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: #ffffff;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 5px solid var(--accent);
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(231,43,46,0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .brand-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .brand-logo {
+            max-width: 250px;
+            height: auto;
+            filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.3));
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 10px 0 20px 0;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            color: #E2E8F0;
+            line-height: 1.8;
+        }
+
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge-accent {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 20px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Highlights Grid */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 70px;
+        }
+
+        .highlight-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 35px 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover::before {
+            background-color: var(--accent);
+            width: 8px;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(11, 59, 86, 0.1);
+        }
+
+        .icon-wrapper {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background-color: rgba(11, 59, 86, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover .icon-wrapper {
+            background-color: rgba(231, 43, 46, 0.1);
+            color: var(--accent);
+        }
+
+        .highlight-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .highlight-card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Mockup Section */
+        .mockup-container {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            margin-bottom: 70px;
+        }
+
+        .mockup-header {
+            background-color: #F3F4F6;
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .dot-red { background-color: #EF4444; }
+        .dot-yellow { background-color: #F59E0B; }
+        .dot-green { background-color: #10B981; }
+
+        .mockup-browser-address {
+            background-color: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 4px 15px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            flex-grow: 1;
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .mockup-content {
+            padding: 30px;
+            background-color: #F9FAFB;
+        }
+
+        /* Odoo Backend UI Mockup Details */
+        .odoo-backend-mock {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.01);
+        }
+
+        .odoo-topbar {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .odoo-brand {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .odoo-search {
+            background: rgba(255,255,255,0.15);
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            color: white;
+            font-size: 0.8rem;
+            width: 200px;
+        }
+
+        .odoo-breadcrumbs {
+            background-color: #F3F4F6;
+            padding: 12px 20px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .odoo-breadcrumbs strong {
+            color: var(--text-dark);
+        }
+
+        .odoo-form-sheet {
+            padding: 30px;
+        }
+
+        .user-header-info {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .user-avatar-placeholder {
+            width: 64px;
+            height: 64px;
+            background-color: rgba(11, 59, 86, 0.1);
+            color: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .user-name-title h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .user-name-title p {
+            margin: 5px 0 0 0;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Tabs UI */
+        .odoo-tabs-bar {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 25px;
+            gap: 5px;
+        }
+
+        .odoo-tab {
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-light);
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .odoo-tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--accent);
+            background-color: rgba(11, 59, 86, 0.02);
+            border-radius: 4px 4px 0 0;
+        }
+
+        /* Settings Grid inside Tab */
+        .settings-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            background-color: rgba(231, 43, 46, 0.03);
+            border: 1px dashed rgba(231, 43, 46, 0.2);
+            border-radius: 8px;
+        }
+
+        .checkbox-group input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent);
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        .setting-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            align-items: flex-start;
+            gap: 20px;
+            border-bottom: 1px solid #F3F4F6;
+            padding-bottom: 20px;
+        }
+
+        .setting-row:last-child {
+            border-bottom: none;
+        }
+
+        .setting-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-top: 8px;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            min-height: 40px;
+            border: 1px solid var(--border-color);
+            padding: 8px;
+            border-radius: 8px;
+            background-color: #FCFDFD;
+        }
+
+        .odoo-tag {
+            background-color: rgba(11, 59, 86, 0.08);
+            border: 1px solid rgba(11, 59, 86, 0.15);
+            color: var(--primary);
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+        }
+
+        .odoo-tag .tag-close {
+            color: var(--accent);
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Error Banner Mock */
+        .error-banner-mock {
+            background-color: #FEF2F2;
+            border: 1px solid #FCA5A5;
+            color: #991B1B;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 25px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 4px 6px rgba(153, 27, 27, 0.05);
+        }
+
+        .error-icon {
+            font-weight: bold;
+            background-color: #EF4444;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        /* Workflow Steps */
+        .workflow-section {
+            background-color: #FFFFFF;
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            border: 1px solid var(--border-color);
+            margin-bottom: 80px;
+        }
+
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .workflow-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0 auto 20px auto;
+            border: 3px solid rgba(231,43,46,0.2);
+            box-shadow: 0 0 0 5px rgba(11, 59, 86, 0.05);
+        }
+
+        .workflow-step h4 {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .workflow-step p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* Detailed Features Section */
+        .detail-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .detail-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .detail-text p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            margin-bottom: 25px;
+        }
+
+        .feature-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-bullets li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        .feature-bullets li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Footer Info */
+        .footer-section {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 60px 20px 40px 20px;
+            text-align: center;
+            border-top: 5px solid var(--accent);
+        }
+
+        .footer-logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .footer-text {
+            color: #94A3B8;
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 10px 24px;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .footer-btn:hover {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            color: #64748B;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            .detail-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <div class="hero-section">
+        <div class="brand-header">
+            <img src="logo.png" alt="Community of Accountants" class="brand-logo">
+        </div>
+        <div class="badge-container">
+            <div class="badge badge-accent">Odoo 19.0 Ready</div>
+            <div class="badge">Inventory & Warehouse</div>
+            <div class="badge">Security & Governance</div>
+        </div>
+        <h1 class="hero-title">Warehouse Location & Operation Restriction</h1>
+        <p class="hero-subtitle">Secure your warehouse operations. Limit inventory staff to authorized warehouses, locations, and picking operation types with recursive permissions and strict validation guards.</p>
+    </div>
+
+    <div class="container">
+        <!-- Highlights -->
+        <div class="highlights-grid">
+            <div class="highlight-card">
+                <div class="icon-wrapper">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                </div>
+                <h3>Warehouse Access Scope</h3>
+                <p>Prevent unauthorized picking creation. Restrict inventory users so they can only view and select their assigned warehouses across the Odoo system.</p>
+            </div>
+            <div class="highlight-card">
+                <div class="icon-wrapper">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                </div>
+                <h3>Recursive Location Security</h3>
+                <p>Assign parent locations to users. Odoo will automatically grant recursive access to all nested child stock locations and shelves automatically.</p>
+            </div>
+            <div class="highlight-card">
+                <div class="icon-wrapper">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                </div>
+                <h3>Strict Validation Guard</h3>
+                <p>Throws clean, user-friendly error banners immediately if a user attempts to process or validate a picking containing unauthorized locations.</p>
+            </div>
+        </div>
+
+        <!-- Section: Interactive Mockup -->
+        <div class="section-title">
+            <h2>Backend Settings & Security Mockup</h2>
+            <p>Admin configuration takes place directly on the Odoo User Form under a clean, dedicated "Location Restrictions" tab.</p>
+        </div>
+
+        <div class="mockup-container">
+            <div class="mockup-header">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+                <div class="mockup-browser-address">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    https://your-company.odoo.com/web#model=res.users&view_type=form
+                </div>
+            </div>
+            <div class="mockup-content">
+                <!-- Odoo User Form Mockup -->
+                <div class="odoo-backend-mock">
+                    <div class="odoo-topbar">
+                        <div class="odoo-brand">
+                            <span>☰ Settings / Users</span>
+                        </div>
+                        <input type="text" class="odoo-search" placeholder="Search...">
+                    </div>
+                    <div class="odoo-breadcrumbs">
+                        Users / <strong>Stock Handler (Mark Demian)</strong>
+                    </div>
+
+                    <div class="odoo-form-sheet">
+                        <div class="user-header-info">
+                            <div class="user-avatar-placeholder">MD</div>
+                            <div class="user-name-title">
+                                <h3>Mark Demian</h3>
+                                <p>Email: mark.d@yourcompany.com</p>
+                            </div>
+                        </div>
+
+                        <!-- Odoo Form Tabs -->
+                        <div class="odoo-tabs-bar">
+                            <div class="odoo-tab">Access Rights</div>
+                            <div class="odoo-tab">Preferences</div>
+                            <div class="odoo-tab active">Location Restrictions</div>
+                        </div>
+
+                        <!-- Tab Content -->
+                        <div class="settings-grid">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="restrict_enable" checked disabled>
+                                <label for="restrict_enable">Enable Location Restriction</label>
+                            </div>
+
+                            <div class="setting-row">
+                                <div class="setting-label">Allowed Warehouses</div>
+                                <div class="tag-container">
+                                    <span class="odoo-tag">Main Warehouse <span class="tag-close">✕</span></span>
+                                    <span class="odoo-tag">Cairo Logistics Hub <span class="tag-close">✕</span></span>
+                                </div>
+                            </div>
+
+                            <div class="setting-row">
+                                <div class="setting-label">Allowed Locations</div>
+                                <div class="tag-container">
+                                    <span class="odoo-tag">WH/Stock/Row A <span class="tag-close">✕</span></span>
+                                    <span class="odoo-tag">WH/Transit <span class="tag-close">✕</span></span>
+                                </div>
+                            </div>
+
+                            <div class="setting-row">
+                                <div class="setting-label">Allowed Operation Types</div>
+                                <div class="tag-container">
+                                    <span class="odoo-tag">Cairo: Receipts <span class="tag-close">✕</span></span>
+                                    <span class="odoo-tag">Cairo: Internal Transfers <span class="tag-close">✕</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Security Exception Mock -->
+                        <div class="error-banner-mock">
+                            <span class="error-icon">!</span>
+                            <div>
+                                <strong>Access Denied (Validation Guard)</strong>: 
+                                You are not allowed to validate this transfer. Location <strong>"WH/Stock/Row B/Shelf 3"</strong> is not in your allowed locations list.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: Workflow / How it works -->
+        <div class="workflow-section">
+            <h2 style="text-align: center; color: var(--primary); margin-top: 0; font-size: 2rem;">Security & Enforcement Workflow</h2>
+            <p style="text-align: center; color: var(--text-light); max-width: 600px; margin: 0 auto;">Multi-layer verification system to prevent unauthorized stock transactions.</p>
+            <div class="workflow-grid">
+                <div class="workflow-step">
+                    <div class="step-number">1</div>
+                    <h4>Configure User</h4>
+                    <p>Toggle restrictions on the user card. Select allowed Warehouses, Locations, and Operation Types.</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">2</div>
+                    <h4>Filter Stock Views</h4>
+                    <p>Odoo automatically applies `_search()` filters, keeping unauthorized warehouses, transfer pickings, and stock quants invisible.</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">3</div>
+                    <h4>Enforce Hierarchy</h4>
+                    <p>Allowed locations automatically grant access to child structures recursively (e.g., Row A covers Shelf A1, Shelf A2).</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">4</div>
+                    <h4>Validation Guard</h4>
+                    <p>If a user attempts validation via API or workaround, the backend guard blocks it, displaying a clear access error message.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Details Grid -->
+        <div class="detail-section">
+            <div class="detail-text">
+                <h3>High-performance Governance for Multi-Warehouse Setups</h3>
+                <p>Standard Odoo permits generic inventory users to access all locations and validate any picking. For companies with multiple branches or segmented staff, this leads to inventory discrepancies and security leaks. This module solves these governance flaws.</p>
+                <ul class="feature-bullets">
+                    <li><strong>No Database Bloat</strong>: Clean _search hooks run directly at the database query layer.</li>
+                    <li><strong>Recursive Permissions</strong>: Add parent locations once; children are covered automatically.</li>
+                    <li><strong>Operation Type Restraints</strong>: Limit staff to only perform Receipts, Deliveries, or Internal moves.</li>
+                    <li><strong>Administrative Guards</strong>: Strict code checks prevent administrative loop locks (e.g. self.env.su checks).</li>
+                    <li><strong>Zero UI Clutter</strong>: Configured seamlessly inside the native Odoo user settings.</li>
+                </ul>
+            </div>
+            <div style="background-color: var(--primary); color: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 25px rgba(11,59,86,0.15); border-left: 5px solid var(--accent);">
+                <h4 style="margin-top: 0; font-size: 1.4rem; font-weight: 700; color: #FFFFFF; display: flex; align-items: center; gap: 8px;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                    Technical Specifications
+                </h4>
+                <p style="color: #CBD5E1; font-size: 0.95rem;">Engineered for Odoo 19.0 using native search hooks, completely eliminating legacy JavaScript/XML dependency issues.</p>
+                <div style="margin-top: 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 0.9rem;">
+                    <div>
+                        <strong style="color: white; display:block;">Compatibility</strong>
+                        <span style="color: #94A3B8;">Odoo 19.0 Community & Enterprise</span>
+                    </div>
+                    <div>
+                        <strong style="color: white; display:block;">Module Dependency</strong>
+                        <span style="color: #94A3B8;">stock, mail</span>
+                    </div>
+                    <div>
+                        <strong style="color: white; display:block;">License</strong>
+                        <span style="color: #94A3B8;">AGPL-3</span>
+                    </div>
+                    <div>
+                        <strong style="color: white; display:block;">Author</strong>
+                        <span style="color: #94A3B8;">Community of Accountants</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Support -->
+    <div class="footer-section">
+        <img src="logo.png" alt="Community of Accountants" class="footer-logo">
+        <p class="footer-text">Community of Accountants (COA) is a leading systems integrator specializing in Odoo implementations, custom financial development, and warehouse automation systems.</p>
+        <div class="footer-links">
+            <a href="mailto:support@communityofaccountants.com" class="footer-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                Get Customer Support
+            </a>
+            <a href="https://www.communityofaccountants.com" class="footer-btn" target="_blank">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                Visit Website
+            </a>
+        </div>
+        <p class="copyright">© 2026 Community of Accountants. All rights reserved.</p>
+    </div>
+
+</body>
+</html>
