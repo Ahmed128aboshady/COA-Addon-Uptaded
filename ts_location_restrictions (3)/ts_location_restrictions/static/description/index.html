@@ -3,939 +3,713 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warehouse Location & Operation Restriction - Odoo App Store</title>
-    <!-- Premium Google Fonts -->
+    <title>Warehouse Location &amp; Operation Restriction — Community of Accountants</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --brand-navy: #0B3B56;
-            --brand-navy-dark: #072537;
-            --brand-red: #E72B2E;
-            --brand-red-hover: #c42022;
-            --brand-red-light: rgba(231, 43, 46, 0.04);
-            --brand-red-border: rgba(231, 43, 46, 0.15);
-            --text-dark: #1E293B;
-            --text-light: #64748B;
-            --bg-light: #F8FAFC;
-            --card-bg: #FFFFFF;
-            --border-color: #E2E8F0;
+            --navy:       #0B3B56;
+            --navy-dark:  #072537;
+            --navy-mid:   #0f4d6e;
+            --red:        #E72B2E;
+            --red-hover:  #c42022;
+            --red-light:  rgba(231,43,46,0.08);
+            --red-border: rgba(231,43,46,0.18);
+            --ink:        #1E293B;
+            --muted:      #64748B;
+            --light:      #F8FAFC;
+            --border:     #E2E8F0;
+            --white:      #FFFFFF;
+            --success:    #10B981;
+            --gold:       #F59E0B;
         }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        *, *:before, *:after {
-            box-sizing: border-box;
-        }
+        .coa { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--white); line-height: 1.6; max-width: 1100px; margin: 0 auto; padding: 0 0 60px; }
 
-        .coa-wrapper {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background-color: #FFFFFF;
-            line-height: 1.6;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 30px 15px;
-        }
-
-        /* 1. HERO BANNERS & CARDS */
-        .hero-card {
-            background: linear-gradient(135deg, var(--brand-navy-dark) 0%, var(--brand-navy) 100%);
-            border-radius: 16px;
-            padding: 50px 40px;
-            color: #FFFFFF;
-            margin-bottom: 45px;
-            border-bottom: 6px solid var(--brand-red);
-            box-shadow: 0 12px 30px rgba(11, 59, 86, 0.12);
+        /* ─── HERO ─────────────────────────────────────────────── */
+        .hero {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 55%, var(--navy-mid) 100%);
+            border-radius: 0 0 24px 24px;
+            padding: 52px 48px 48px;
+            color: var(--white);
             position: relative;
             overflow: hidden;
+            margin-bottom: 48px;
         }
-
-        /* Decorative background element */
-        .hero-card::after {
-            content: "";
+        .hero::before {
+            content: '';
             position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 500px;
-            height: 500px;
+            top: -120px; right: -80px;
+            width: 520px; height: 520px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(231, 43, 46, 0.08) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(231,43,46,0.12) 0%, transparent 68%);
             pointer-events: none;
         }
-
-        .hero-row {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 40px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-left {
-            flex: 1 1 300px;
-            text-align: center;
-        }
-
-        .hero-left img.app-icon {
-            width: 112px;
-            height: 112px;
-            border: 4px solid #FFFFFF;
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-            margin-bottom: 20px;
-        }
-
-        .hero-left h1 {
-            font-size: 2.1rem;
-            font-weight: 800;
-            margin: 0 0 8px 0;
-            letter-spacing: -0.5px;
-            line-height: 1.2;
-            color: #FFFFFF;
-        }
-
-        .hero-left p.by-author {
-            font-size: 0.95rem;
-            color: #94A3B8;
-            margin: 0;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .hero-left p.by-author span {
-            color: var(--brand-red);
-        }
-
-        .hero-right {
-            flex: 2 2 450px;
-            font-size: 1.15rem;
-            line-height: 1.7;
-        }
-
-        .hero-right p {
-            margin: 0 0 20px 0;
-            color: #E2E8F0;
-        }
-
-        .hero-right p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* 2. PROOF & HIGHLIGHT BANNER */
-        .highlight-banner {
-            background-color: var(--brand-red-light);
-            border: 1px solid var(--brand-red-border);
-            border-left: 5px solid var(--brand-red);
-            border-radius: 12px;
-            padding: 25px 30px;
-            margin-bottom: 50px;
-            display: flex;
-            gap: 24px;
-            align-items: flex-start;
-        }
-
-        .highlight-banner .icon-container {
-            background-color: rgba(231, 43, 46, 0.1);
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px; left: -60px;
+            width: 340px; height: 340px;
             border-radius: 50%;
-            padding: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+            pointer-events: none;
         }
-
-        .highlight-banner h4 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--brand-navy);
-            margin: 0 0 6px 0;
-            letter-spacing: -0.3px;
+        .hero-inner { display: flex; gap: 48px; align-items: center; position: relative; z-index: 2; flex-wrap: wrap; }
+        .hero-icon-wrap { flex-shrink: 0; }
+        .hero-icon-wrap img {
+            width: 110px; height: 110px;
+            border-radius: 22px;
+            border: 3px solid rgba(255,255,255,0.25);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.35);
         }
-
-        .highlight-banner p {
-            font-size: 1rem;
-            color: var(--text-dark);
-            margin: 0;
-            line-height: 1.6;
+        .hero-body { flex: 1 1 320px; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 7px;
+            background: rgba(231,43,46,0.18);
+            border: 1px solid rgba(231,43,46,0.35);
+            color: #FCA5A5;
+            font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 1.2px; text-transform: uppercase;
+            padding: 5px 12px; border-radius: 20px;
+            margin-bottom: 14px;
         }
-
-        /* Section Titles */
-        .section-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 40px auto;
+        .hero h1 {
+            font-size: 2.4rem; font-weight: 900;
+            line-height: 1.15; letter-spacing: -0.8px;
+            color: var(--white); margin-bottom: 14px;
         }
+        .hero h1 em { color: #FCA5A5; font-style: normal; }
+        .hero-desc { font-size: 1.05rem; color: #CBD5E1; line-height: 1.7; margin-bottom: 22px; max-width: 580px; }
+        .hero-meta { display: flex; flex-wrap: wrap; gap: 20px; }
+        .hero-meta-item { display: flex; align-items: center; gap: 7px; font-size: 0.82rem; color: #94A3B8; font-weight: 500; }
+        .hero-meta-item strong { color: var(--white); }
 
-        .section-title {
-            font-size: 1.85rem;
-            font-weight: 800;
-            color: var(--brand-navy);
-            margin: 0 0 10px 0;
-            letter-spacing: -0.5px;
-        }
-
-        .section-subtitle {
-            font-size: 1.05rem;
-            color: var(--text-light);
-            margin: 0;
-        }
-
-        /* 3. KEY SELLING POINTS GRID */
-        .selling-points-grid {
+        /* ─── STATS ROW ─────────────────────────────────────────── */
+        .stats-row {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            margin-bottom: 60px;
-        }
-
-        @media (max-width: 768px) {
-            .selling-points-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .selling-point-card {
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 28px;
-            background-color: #FFFFFF;
-            display: flex;
-            gap: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
-        }
-
-        .selling-point-card:hover {
-            border-color: var(--brand-navy);
-            box-shadow: 0 10px 20px rgba(11, 59, 86, 0.06);
-            transform: translateY(-2px);
-        }
-
-        .selling-point-card .point-icon-wrapper {
-            background-color: rgba(11, 59, 86, 0.05);
-            border-radius: 12px;
-            width: 52px;
-            height: 52px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            transition: background-color 0.3s;
-        }
-
-        .selling-point-card:hover .point-icon-wrapper {
-            background-color: var(--brand-navy);
-        }
-
-        .selling-point-card:hover .point-icon-wrapper svg {
-            stroke: #FFFFFF;
-        }
-
-        .selling-point-card h5 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--brand-navy);
-            margin: 0 0 8px 0;
-        }
-
-        .selling-point-card p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            margin: 0;
-            line-height: 1.55;
-        }
-
-        /* 4. INTERACTIVE BROWSER MOCKUP */
-        .browser-mock {
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            overflow: hidden;
-            background-color: #FFFFFF;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
-            margin-bottom: 60px;
-        }
-
-        .browser-header {
-            background-color: #F1F5F9;
-            padding: 12px 24px;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-        }
-
-        .browser-circles {
-            display: flex;
-            gap: 6px;
-        }
-
-        .browser-circle {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-        }
-        .bc-r { background-color: #EF4444; }
-        .bc-y { background-color: #F59E0B; }
-        .bc-g { background-color: #10B981; }
-
-        .browser-address {
-            background-color: #FFFFFF;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 4px 15px;
-            font-size: 0.8rem;
-            color: var(--text-light);
-            margin-left: 24px;
-            flex-grow: 1;
-            font-family: monospace;
-        }
-
-        .odoo-layout {
-            background-color: #F8FAFC;
-            padding: 25px;
-            min-height: 480px;
-        }
-
-        .odoo-form-sheet {
-            background-color: #FFFFFF;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-            overflow: hidden;
-        }
-
-        .odoo-navbar {
-            background-color: var(--brand-navy);
-            color: #FFFFFF;
-            padding: 8px 16px;
-            font-size: 0.78rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .odoo-breadcrumbs {
-            background-color: #F1F5F9;
-            padding: 10px 16px;
-            font-size: 0.8rem;
-            color: var(--text-light);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .odoo-breadcrumbs strong {
-            color: var(--text-dark);
-        }
-
-        .odoo-sheet-content {
-            padding: 24px;
-        }
-
-        .user-header-row {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-
-        .avatar-placeholder {
-            width: 46px;
-            height: 46px;
-            background-color: rgba(11, 59, 86, 0.1);
-            color: var(--brand-navy);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        .user-details h4 {
-            margin: 0;
-            font-size: 1.15rem;
-            color: var(--text-dark);
-        }
-
-        .user-details p {
-            margin: 2px 0 0 0;
-            font-size: 0.8rem;
-            color: var(--text-light);
-        }
-
-        .odoo-tabs {
-            display: flex;
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 20px;
-            gap: 5px;
-        }
-
-        .odoo-tab-item {
-            padding: 8px 16px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            color: var(--text-light);
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-        }
-
-        .odoo-tab-item.active {
-            color: var(--brand-navy);
-            border-bottom-color: var(--brand-red);
-            font-weight: 700;
-        }
-
-        .tab-pane-content {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .toggle-switch-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background-color: rgba(231, 43, 46, 0.03);
-            border: 1px dashed var(--brand-red-border);
-            padding: 8px 12px;
-            border-radius: 6px;
-            width: fit-content;
-        }
-
-        .toggle-switch-row label {
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: var(--brand-navy);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 160px 1fr;
-            align-items: center;
-            gap: 20px;
-            border-bottom: 1px solid #F1F5F9;
-            padding-bottom: 14px;
-        }
-
-        .form-row:last-child {
-            border-bottom: none;
-        }
-
-        .form-row-label {
-            font-size: 0.82rem;
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        .badge-tags-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            background-color: #FAFAFA;
-            border: 1px solid var(--border-color);
-            padding: 6px;
-            border-radius: 6px;
-            min-height: 36px;
-        }
-
-        .badge-tag {
-            background-color: rgba(11, 59, 86, 0.05);
-            border: 1px solid rgba(11, 59, 86, 0.1);
-            color: var(--brand-navy);
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 2px 8px;
-            border-radius: 4px;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .badge-tag span {
-            color: var(--brand-red);
-            font-weight: 800;
-            cursor: pointer;
-        }
-
-        /* Dialog guard warning mockup */
-        .dialog-guard {
-            background-color: #FEF2F2;
-            border: 1px solid #FCA5A5;
-            color: #991B1B;
-            border-radius: 8px;
-            padding: 16px 20px;
-            margin-top: 25px;
-            display: flex;
-            gap: 14px;
-            align-items: flex-start;
-            box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.05);
-        }
-
-        .dialog-icon-wrapper {
-            background-color: #FEE2E2;
-            padding: 6px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .dialog-text {
-            font-size: 0.82rem;
-            line-height: 1.45;
-        }
-
-        .dialog-text strong {
-            font-weight: 700;
-            display: block;
-            margin-bottom: 3px;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 0.2px;
-        }
-
-        /* 5. CAPABILITIES LIST */
-        .capabilities-panel {
-            background-color: var(--bg-light);
-            border: 1px solid var(--border-color);
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 40px;
-            margin-bottom: 60px;
-        }
-
-        .capabilities-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        @media (max-width: 768px) {
-            .capabilities-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .capability-item {
-            display: flex;
-            gap: 16px;
-            align-items: flex-start;
-        }
-
-        .capability-icon-wrapper {
-            background-color: rgba(231, 43, 46, 0.08);
-            border-radius: 50%;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .capability-text h6 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--brand-navy);
-            margin: 0 0 6px 0;
-        }
-
-        .capability-text p {
-            font-size: 0.92rem;
-            color: var(--text-light);
-            margin: 0;
-            line-height: 1.5;
-        }
-
-        /* 6. TECHNICAL SPECIFICATIONS TABLE */
-        .specs-table {
-            width: 100%;
-            border-collapse: collapse;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
             overflow: hidden;
-            margin-bottom: 60px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+            margin: 0 24px 52px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+        }
+        .stat-cell { background: var(--white); padding: 24px 20px; text-align: center; }
+        .stat-num { font-size: 2rem; font-weight: 900; color: var(--navy); letter-spacing: -1px; }
+        .stat-num span { color: var(--red); }
+        .stat-label { font-size: 0.78rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; margin-top: 4px; }
+
+        /* ─── SECTION ───────────────────────────────────────────── */
+        .section { padding: 0 24px; margin-bottom: 56px; }
+        .sec-head { text-align: center; margin-bottom: 36px; }
+        .sec-label {
+            display: inline-block;
+            font-size: 0.7rem; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase;
+            color: var(--red); background: var(--red-light);
+            border: 1px solid var(--red-border);
+            padding: 4px 12px; border-radius: 20px; margin-bottom: 12px;
+        }
+        .sec-title { font-size: 1.9rem; font-weight: 800; color: var(--navy); letter-spacing: -0.6px; margin-bottom: 10px; line-height: 1.2; }
+        .sec-sub { font-size: 1rem; color: var(--muted); max-width: 580px; margin: 0 auto; }
+
+        /* ─── ALERT BANNER ───────────────────────────────────────── */
+        .alert-banner {
+            display: flex; gap: 20px; align-items: flex-start;
+            background: linear-gradient(135deg, #FFF5F5, #FFF9F9);
+            border: 1px solid var(--red-border);
+            border-left: 5px solid var(--red);
+            border-radius: 14px;
+            padding: 24px 28px;
+            margin: 0 24px 52px;
+        }
+        .alert-icon {
+            background: var(--red-light); border-radius: 50%; padding: 11px;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .alert-content h3 { font-size: 1.15rem; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
+        .alert-content p { font-size: 0.95rem; color: var(--ink); line-height: 1.65; }
+
+        /* ─── FEATURE CARDS ─────────────────────────────────────── */
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        @media (max-width: 800px) { .features-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 520px) { .features-grid { grid-template-columns: 1fr; } }
+
+        .feat-card {
+            border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px;
+            background: var(--white); transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+        }
+        .feat-card:hover { box-shadow: 0 12px 28px rgba(11,59,86,0.09); transform: translateY(-3px); border-color: rgba(11,59,86,0.2); }
+        .feat-icon {
+            width: 48px; height: 48px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center; margin-bottom: 18px;
+        }
+        .feat-icon.navy   { background: rgba(11,59,86,0.08); }
+        .feat-icon.red    { background: rgba(231,43,46,0.08); }
+        .feat-icon.green  { background: rgba(16,185,129,0.09); }
+        .feat-icon.gold   { background: rgba(245,158,11,0.1); }
+        .feat-icon.purple { background: rgba(139,92,246,0.09); }
+        .feat-icon.orange { background: rgba(249,115,22,0.09); }
+        .feat-card h4 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+        .feat-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+        /* ─── BROWSER MOCKUP (Odoo Backend Style) ────────────────── */
+        .mockup-wrap {
+            border: 1px solid var(--border); border-radius: 18px;
+            overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.07);
+        }
+        .mockup-bar {
+            background: #F1F5F9; border-bottom: 1px solid var(--border);
+            padding: 11px 20px; display: flex; align-items: center; gap: 16px;
+        }
+        .dots { display: flex; gap: 6px; }
+        .dot { width: 11px; height: 11px; border-radius: 50%; }
+        .dot-r { background: #EF4444; }
+        .dot-y { background: #F59E0B; }
+        .dot-g { background: #10B981; }
+        .url-bar {
+            background: var(--white); border: 1px solid var(--border); border-radius: 8px;
+            padding: 5px 16px; font-size: 0.78rem; color: var(--muted); font-family: monospace;
+            flex-grow: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+        }
+        /* Odoo top navbar */
+        .odoo-nav {
+            background: var(--navy); color: var(--white);
+            padding: 9px 18px; font-size: 0.78rem; font-weight: 500;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .odoo-nav-left { display: flex; align-items: center; gap: 14px; }
+        .odoo-burger { color: rgba(255,255,255,0.6); cursor: pointer; }
+        .odoo-apps { display: flex; gap: 6px; }
+        .odoo-app {
+            padding: 4px 10px; border-radius: 5px; font-size: 0.75rem; font-weight: 600;
+            color: rgba(255,255,255,0.65); cursor: pointer;
+        }
+        .odoo-app.active { background: rgba(255,255,255,0.12); color: var(--white); }
+        .odoo-right { display: flex; align-items: center; gap: 14px; font-size: 0.75rem; color: rgba(255,255,255,0.65); }
+        /* Breadcrumb */
+        .odoo-bc {
+            background: var(--light); border-bottom: 1px solid var(--border);
+            padding: 9px 20px; font-size: 0.8rem; color: var(--muted);
+        }
+        .odoo-bc strong { color: var(--ink); }
+        /* Sheet */
+        .odoo-sheet { background: var(--light); padding: 24px; }
+        .odoo-card {
+            background: var(--white); border: 1px solid var(--border);
+            border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.02); overflow: hidden;
+        }
+        /* Toolbar */
+        .odoo-toolbar {
+            background: var(--light); border-bottom: 1px solid var(--border);
+            padding: 10px 20px; display: flex; align-items: center; gap: 10px;
+        }
+        .o-btn {
+            padding: 6px 16px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer;
+        }
+        .o-btn-save { background: var(--navy); color: var(--white); border: none; }
+        .o-btn-discard { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+        /* User header */
+        .user-hdr { display: flex; gap: 16px; align-items: center; padding: 22px 24px 0; }
+        .avatar {
+            width: 54px; height: 54px; border-radius: 10px;
+            background: rgba(11,59,86,0.1); color: var(--navy);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.15rem; font-weight: 800; flex-shrink: 0;
+        }
+        .user-info h4 { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+        .user-info p { font-size: 0.8rem; color: var(--muted); }
+        /* Tabs */
+        .odoo-tabs { display: flex; border-bottom: 1px solid var(--border); padding: 0 24px; margin-top: 16px; gap: 4px; }
+        .o-tab { padding: 9px 16px; font-size: 0.82rem; font-weight: 600; color: var(--muted); border-bottom: 2px solid transparent; cursor: pointer; }
+        .o-tab.active { color: var(--navy); border-bottom-color: var(--red); }
+        /* Tab content */
+        .tab-content { padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+        .toggle-row {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: rgba(231,43,46,0.04); border: 1px dashed var(--red-border);
+            padding: 9px 14px; border-radius: 8px;
+        }
+        .toggle-row label { font-size: 0.82rem; font-weight: 700; color: var(--navy); }
+        /* Form rows */
+        .form-row { display: grid; grid-template-columns: 180px 1fr; align-items: start; gap: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--light); }
+        .form-row:last-child { border-bottom: none; padding-bottom: 0; }
+        .row-label { font-size: 0.82rem; font-weight: 700; color: var(--ink); padding-top: 7px; }
+        .tags-box {
+            display: flex; flex-wrap: wrap; gap: 6px;
+            background: #FAFAFA; border: 1px solid var(--border);
+            border-radius: 7px; padding: 7px 8px; min-height: 38px;
+        }
+        .tag {
+            background: rgba(11,59,86,0.06); border: 1px solid rgba(11,59,86,0.12);
+            color: var(--navy); font-size: 0.75rem; font-weight: 600;
+            padding: 3px 9px; border-radius: 5px;
+            display: inline-flex; align-items: center; gap: 6px;
+        }
+        .tag-x { color: var(--red); font-weight: 900; cursor: pointer; }
+        /* Guard alert */
+        .guard-alert {
+            background: #FEF2F2; border: 1px solid #FCA5A5;
+            border-radius: 10px; padding: 16px 20px;
+            display: flex; gap: 14px; align-items: flex-start;
+        }
+        .guard-icon {
+            background: #FEE2E2; border-radius: 50%; padding: 7px;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .guard-text { font-size: 0.82rem; color: #991B1B; line-height: 1.5; }
+        .guard-text strong { display: block; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 4px; }
+
+        /* ─── CAPABILITIES ──────────────────────────────────────── */
+        .caps-panel { background: var(--light); border: 1px solid var(--border); border-radius: 20px; padding: 44px; }
+        .caps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+        @media (max-width: 680px) { .caps-grid { grid-template-columns: 1fr; } }
+        .cap-item { display: flex; gap: 16px; align-items: flex-start; }
+        .cap-icon {
+            background: var(--red-light); border: 1px solid var(--red-border);
+            border-radius: 50%; padding: 10px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .cap-text h5 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
+        .cap-text p { font-size: 0.88rem; color: var(--muted); line-height: 1.55; }
+
+        /* ─── USE CASE CARDS ────────────────────────────────────── */
+        .usecase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        @media (max-width: 740px) { .usecase-grid { grid-template-columns: 1fr; } }
+        .uc-card {
+            border: 1px solid var(--border); border-radius: 16px; padding: 26px 22px;
+            background: var(--white);
+        }
+        .uc-number { font-size: 2.2rem; font-weight: 900; color: rgba(11,59,86,0.1); letter-spacing: -2px; margin-bottom: 8px; line-height: 1; }
+        .uc-card h4 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+        .uc-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+        /* ─── SPECS ─────────────────────────────────────────────── */
+        .specs {
+            width: 100%; border-collapse: collapse;
+            border: 1px solid var(--border); border-radius: 14px;
+            overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .specs tr:last-child td { border-bottom: none; }
+        .specs td { padding: 16px 24px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+        .specs td.k { font-weight: 700; color: var(--navy); width: 28%; background: rgba(11,59,86,0.02); }
+        .specs td.v { color: var(--ink); }
+        .specs td.v code {
+            background: rgba(11,59,86,0.06); color: var(--navy);
+            padding: 2px 7px; border-radius: 5px; font-size: 0.83rem; font-weight: 600;
+        }
+        .specs-tag {
+            display: inline-block;
+            background: rgba(16,185,129,0.1); color: #059669;
+            border: 1px solid rgba(16,185,129,0.25);
+            padding: 2px 8px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; margin-left: 8px;
         }
 
-        .specs-table tr:last-child td {
-            border-bottom: none;
+        /* ─── FOOTER ────────────────────────────────────────────── */
+        .footer-block {
+            background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+            border-radius: 20px; padding: 52px 36px; text-align: center;
+            border-top: 5px solid var(--red); box-shadow: 0 16px 40px rgba(7,37,55,0.18);
+            margin: 0 24px;
         }
-
-        .specs-table td {
-            padding: 16px 24px;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 0.92rem;
+        .footer-logo { font-size: 1.45rem; font-weight: 900; color: var(--white); letter-spacing: -0.5px; margin-bottom: 14px; }
+        .footer-logo em { color: var(--red); font-style: normal; }
+        .footer-desc { font-size: 0.96rem; color: #94A3B8; max-width: 600px; margin: 0 auto 28px; line-height: 1.7; }
+        .footer-btns { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+        .footer-btn {
+            display: inline-flex; align-items: center; gap: 9px;
+            background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);
+            color: var(--white); text-decoration: none;
+            padding: 12px 26px; border-radius: 10px; font-size: 0.88rem; font-weight: 600;
+            transition: background 0.2s, border-color 0.2s;
         }
+        .footer-btn:hover { background: var(--red); border-color: var(--red); }
+        .footer-btn.primary { background: var(--red); border-color: var(--red); }
+        .footer-btn.primary:hover { background: var(--red-hover); border-color: var(--red-hover); }
+        .footer-copy { margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.07); font-size: 0.78rem; color: #475569; }
 
-        .specs-table td.label-col {
-            font-weight: 600;
-            color: var(--brand-navy);
-            width: 30%;
-            background-color: rgba(11, 59, 86, 0.01);
-        }
-
-        .specs-table td.val-col {
-            color: var(--text-dark);
-        }
-
-        /* 7. SUPPORT BLOCK */
-        .support-block {
-            background-color: var(--brand-navy-dark);
-            color: #FFFFFF;
-            border-radius: 16px;
-            padding: 45px 30px;
-            text-align: center;
-            border-top: 6px solid var(--brand-red);
-            box-shadow: 0 12px 30px rgba(7, 37, 55, 0.15);
-        }
-
-        .support-logo-text {
-            font-size: 1.5rem;
-            font-weight: 900;
-            margin-bottom: 15px;
-            letter-spacing: -0.5px;
-            color: #FFFFFF;
-        }
-
-        .support-logo-text span {
-            color: var(--brand-red);
-        }
-
-        .support-block p {
-            font-size: 0.98rem;
-            color: #94A3B8;
-            max-width: 650px;
-            margin: 0 auto 30px auto;
-            line-height: 1.65;
-        }
-
-        .support-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .support-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background-color: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            padding: 12px 28px;
-            border-radius: 8px;
-            color: #FFFFFF;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-
-        .support-btn:hover {
-            background-color: var(--brand-red);
-            border-color: var(--brand-red);
-            color: #FFFFFF;
-            text-decoration: none;
-        }
-
-        .copyright-label {
-            font-size: 0.8rem;
-            color: #64748B;
-            margin-top: 35px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding-top: 20px;
+        @media (max-width: 760px) {
+            .hero { padding: 36px 24px; }
+            .hero h1 { font-size: 1.8rem; }
+            .stats-row { grid-template-columns: repeat(2, 1fr); margin: 0 16px 40px; }
+            .section { padding: 0 16px; }
+            .alert-banner { margin: 0 16px 40px; }
+            .footer-block { margin: 0 16px; }
         }
     </style>
 </head>
 <body>
+<div class="coa">
 
-    <div class="coa-wrapper">
-
-        <!-- 1. HERO CARD -->
-        <div class="hero-card">
-            <div class="hero-row">
-                <div class="hero-left">
-                    <img src="icon.png" alt="Warehouse Location & Operation Restriction Icon" class="app-icon">
-                    <h1>Warehouse Location & Operation Restriction</h1>
-                    <p class="by-author">by <span>Community of Accountants</span></p>
-                </div>
-                <div class="hero-right">
-                    <p>
-                        Limit user access to specific warehouses, stock locations, and transfer picking operation types. Prevent stock information leakage and unauthorized stock validations outside designated work zones.
-                    </p>
-                    <p>
-                        Features recursive matching for nested location structures, direct integration into native res.users models, and strict ORM-level query filtering ensuring complete data security and rapid report loading.
-                    </p>
-                </div>
+    <!-- ═══ HERO ═══════════════════════════════════════════ -->
+    <div class="hero">
+        <div class="hero-inner">
+            <div class="hero-icon-wrap">
+                <img src="icon.png" alt="Location Restriction Icon">
             </div>
-        </div>
-
-        <!-- 2. HIGHLIGHT BANNER -->
-        <div class="highlight-banner">
-            <div class="icon-container">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-            </div>
-            <div>
-                <h4>Granular Security for Multi-Warehouse Settings</h4>
-                <p>
-                    Odoo default warehouse settings grant sweeping validation clearance across all inventory routes. This module implements a robust security layer directly inside user forms to guarantee strict separation of duty.
+            <div class="hero-body">
+                <div class="hero-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    Odoo 19.0 · Community &amp; Enterprise
+                </div>
+                <h1>Warehouse Location &amp; <em>Operation Restriction</em></h1>
+                <p class="hero-desc">
+                    Enforce strict user-level access controls on warehouse locations, stock zones, and picking operation types.
+                    Recursive authorization, ORM-level filtering, and active validation guards — all natively inside Odoo.
                 </p>
-            </div>
-        </div>
-
-        <!-- WHY CUSTOMERS CHOOSE US -->
-        <div class="section-header">
-            <h2 class="section-title">Why Choose Location & Operation Restriction</h2>
-            <p class="section-subtitle">Secure, high-performance database-layer filters built for inventory control and internal audits.</p>
-        </div>
-
-        <!-- 3. SELLING POINTS GRID -->
-        <div class="selling-points-grid">
-            
-            <div class="selling-point-card">
-                <div class="point-icon-wrapper">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B3B56" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                </div>
-                <div>
-                    <h5>Recursive Location Paths</h5>
-                    <p>Assigning a parent stock location automatically clears all child shelves, rows, and bins. Simplify mapping configuration.</p>
-                </div>
-            </div>
-
-            <div class="selling-point-card">
-                <div class="point-icon-wrapper">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B3B56" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 7.54 16.59"></path><path d="M12 2a10 10 0 0 0-7.54 16.59"></path><path d="M8 12h8"></path><path d="M12 2v2"></path><path d="M12 12l2.5-3"></path></svg>
-                </div>
-                <div>
-                    <h5>ORM-Level Fast Querying</h5>
-                    <p>Queries are filtered at the search hook database layer. Guarantees zero lag on reports or dashboard inventories.</p>
-                </div>
-            </div>
-
-            <div class="selling-point-card">
-                <div class="point-icon-wrapper">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B3B56" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                </div>
-                <div>
-                    <h5>Picking Action Constraints</h5>
-                    <p>Restrict warehouse staff to specific operation categories. Clear user access for Receipts but restrict Deliveries or Transfers.</p>
-                </div>
-            </div>
-
-            <div class="selling-point-card">
-                <div class="point-icon-wrapper">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B3B56" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                </div>
-                <div>
-                    <h5>Validation Interceptor Guard</h5>
-                    <p>Stops picking confirmations and stock modifications from external API connections if locations involve restricted zones.</p>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- 4. BROWSER PREVIEW MOCKUP -->
-        <div class="section-header">
-            <h2 class="section-title">Odoo Backend Settings Mockup</h2>
-            <p class="section-subtitle">Configuration is managed directly on Odoo User forms under a dedicated Location Restrictions tab.</p>
-        </div>
-
-        <div class="browser-mock">
-            <div class="browser-header">
-                <div class="browser-circles">
-                    <span class="browser-circle bc-r"></span>
-                    <span class="browser-circle bc-y"></span>
-                    <span class="browser-circle bc-g"></span>
-                </div>
-                <div class="browser-address">https://erp.communityofaccountants.com/web#id=5&model=res.users</div>
-            </div>
-            <div class="odoo-layout">
-                <div class="odoo-form-sheet">
-                    <div class="odoo-navbar">
-                        <span>☰ Settings / Users &amp; Companies / Users</span>
-                        <span>Odoo v19 Enterprise</span>
+                <div class="hero-meta">
+                    <div class="hero-meta-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        by <strong>Community of Accountants</strong>
                     </div>
-                    <div class="odoo-breadcrumbs">
-                        Users / <strong>Mark Demian (Warehouse Operator)</strong>
+                    <div class="hero-meta-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        <strong>AGPL-3</strong> License
                     </div>
-                    <div class="odoo-sheet-content">
-                        
-                        <div class="user-header-row">
-                            <div class="avatar-placeholder">MD</div>
-                            <div class="user-details">
-                                <h4>Mark Demian</h4>
-                                <p>mark.d@communityofaccountants.com</p>
-                            </div>
-                        </div>
-
-                        <div class="odoo-tabs">
-                            <div class="odoo-tab-item">Access Rights</div>
-                            <div class="odoo-tab-item">Preferences</div>
-                            <div class="odoo-tab-item active">Location Restrictions</div>
-                        </div>
-
-                        <div class="tab-pane-content">
-                            <div class="toggle-switch-row">
-                                <input type="checkbox" id="mock_active_chk" checked disabled>
-                                <label for="mock_active_chk">Enable Location Restriction</label>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-row-label">Allowed Warehouses</div>
-                                <div class="badge-tags-container">
-                                    <span class="badge-tag">Cairo Warehouse A <span>✕</span></span>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-row-label">Allowed Stock Locations</div>
-                                <div class="badge-tags-container">
-                                    <span class="badge-tag">WH/Stock/Row A <span>✕</span></span>
-                                    <span class="badge-tag">WH/Stock/Row B/Shelf 1 <span>✕</span></span>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-row-label">Allowed Operations</div>
-                                <div class="badge-tags-container">
-                                    <span class="badge-tag">Cairo WH: Receipts <span>✕</span></span>
-                                    <span class="badge-tag">Cairo WH: Internal Transfers <span>✕</span></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Active Guard Dialog Warning Mockup -->
-                        <div class="dialog-guard">
-                            <div class="dialog-icon-wrapper">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                            </div>
-                            <div class="dialog-text">
-                                <strong>Access Denied (Validation Guard)</strong>
-                                You are not authorized to validate this transfer picking. Source Location <strong>"WH/Stock/Row B/Shelf 3"</strong> is restricted for your user profile. Contact your system administrator to adjust access levels.
-                            </div>
-                        </div>
-
+                    <div class="hero-meta-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        Audit-Compliant Security
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- 5. DETAILED CAPABILITIES -->
-        <div class="section-header">
-            <h2 class="section-title">Complete Inventory Security Features</h2>
-            <p class="section-subtitle">Engineered specifically to satisfy strict internal corporate stock control audits.</p>
-        </div>
-
-        <div class="capabilities-panel">
-            <div class="capabilities-grid">
-                
-                <div class="capability-item">
-                    <div class="capability-icon-wrapper">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    </div>
-                    <div class="capability-text">
-                        <h6>Warehouse Access Control</h6>
-                        <p>Filters Odoo warehouse records at the search query level. Restricted users can only select allowed warehouses.</p>
-                    </div>
-                </div>
-
-                <div class="capability-item">
-                    <div class="capability-icon-wrapper">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    </div>
-                    <div class="capability-text">
-                        <h6>Recursive Child Authorization</h6>
-                        <p>Clearing a parent location automatically grants permissions to all child bins, shelves, and sub-locations recursively.</p>
-                    </div>
-                </div>
-
-                <div class="capability-item">
-                    <div class="capability-icon-wrapper">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    </div>
-                    <div class="capability-text">
-                        <h6>Operation Type Constraints</h6>
-                        <p>Scope user operations dynamically. Limit operators to Receipts only, preventing access to Deliveries or Transfers.</p>
-                    </div>
-                </div>
-
-                <div class="capability-item">
-                    <div class="capability-icon-wrapper">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    </div>
-                    <div class="capability-text">
-                        <h6>Active Validation Interceptor</h6>
-                        <p>Strict backend write guards intercept picker submissions. Prevents save or validation actions involving restricted locations.</p>
-                    </div>
-                </div>
-
-                <div class="capability-item">
-                    <div class="capability-icon-wrapper">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    </div>
-                    <div class="capability-text">
-                        <h6>Real-time Stock Levels Masking</h6>
-                        <p>Automatically filters standard stock quant models. Restricted staff only see quantities present in allowed stock zones.</p>
-                    </div>
-                </div>
-
-                <div class="capability-item">
-                    <div class="capability-icon-wrapper">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    </div>
-                    <div class="capability-text">
-                        <h6>Odoo 19 Native _search Hook</h6>
-                        <p>Rebuilt utilizing v19 ORM search hook overrides. Avoids performance lag, admin loop bypasses, and security gaps.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- 6. TECHNICAL SPECIFICATIONS -->
-        <div class="section-header">
-            <h2 class="section-title">Technical Specifications</h2>
-            <p class="section-subtitle">Integration details, ORM overrides, and dependencies.</p>
-        </div>
-
-        <table class="specs-table">
-            <tr>
-                <td class="label-col">Compatible Versions</td>
-                <td class="val-col">Odoo 19.0 (Community & Enterprise Editions)</td>
-            </tr>
-            <tr>
-                <td class="label-col">Required Dependencies</td>
-                <td class="val-col"><code>stock</code>, <code>mail</code></td>
-            </tr>
-            <tr>
-                <td class="label-col">License & Security Standard</td>
-                <td class="val-col">AGPL-3 | User-Level Database Guard | Audit Compliant</td>
-            </tr>
-            <tr>
-                <td class="label-col">Core Technologies</td>
-                <td class="val-col">Python ORM overrides (res.users, stock.picking, stock.quant), XML sheet extensions, search hooks</td>
-            </tr>
-        </table>
-
-        <!-- 7. CORPORATE SUPPORT BLOCK -->
-        <div class="support-block">
-            <div class="support-logo-text">COMMUNITY OF <span>ACCOUNTANTS</span></div>
-            <p>Community of Accountants (COA) is a premium systems integrator specializing in Odoo corporate implementations, customized financial development, and automated inventory systems.</p>
-            <div class="support-buttons">
-                <a href="mailto:support@communityofaccountants.com" class="support-btn">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    Contact Support
-                </a>
-                <a href="https://www.communityofaccountants.com" class="support-btn" target="_blank">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                    Visit Website
-                </a>
-            </div>
-            <div class="copyright-label">
-                © 2026 Community of Accountants. All rights reserved.
-            </div>
-        </div>
-
     </div>
 
+    <!-- ═══ STATS ════════════════════════════════════════════ -->
+    <div class="stats-row">
+        <div class="stat-cell">
+            <div class="stat-num">3<span>×</span></div>
+            <div class="stat-label">Restriction Layers</div>
+        </div>
+        <div class="stat-cell">
+            <div class="stat-num"><span>∞</span></div>
+            <div class="stat-label">Recursive Sub-Locations</div>
+        </div>
+        <div class="stat-cell">
+            <div class="stat-num">0<span>ms</span></div>
+            <div class="stat-label">ORM-Level Filter Lag</div>
+        </div>
+        <div class="stat-cell">
+            <div class="stat-num">100<span>%</span></div>
+            <div class="stat-label">Native Odoo Architecture</div>
+        </div>
+    </div>
+
+    <!-- ═══ ALERT BANNER ════════════════════════════════════ -->
+    <div class="alert-banner">
+        <div class="alert-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="alert-content">
+            <h3>Granular Warehouse Security — Built Into Every Odoo User Form</h3>
+            <p>
+                Odoo's default setup grants warehouse employees broad visibility across all stock locations, warehouses, and picking operations.
+                This module adds a dedicated <strong>Location Restrictions</strong> tab directly to the Odoo user form —
+                letting you lock each employee to only the zones, operations, and warehouses they are authorized to access.
+            </p>
+        </div>
+    </div>
+
+    <!-- ═══ FEATURES ════════════════════════════════════════ -->
+    <div class="section">
+        <div class="sec-head">
+            <div class="sec-label">Core Security Features</div>
+            <h2 class="sec-title">Complete Access Control for Your Warehouse Team</h2>
+            <p class="sec-sub">Three layers of restriction — warehouses, locations, and operations — all manageable from a single user form tab.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feat-card">
+                <div class="feat-icon navy">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B3B56" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                </div>
+                <h4>Recursive Location Paths</h4>
+                <p>Assign a parent stock location and automatically grant access to all its child shelves, rows, and bins — without mapping each one individually.</p>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon red">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </div>
+                <h4>Picking Operation Constraints</h4>
+                <p>Scope users to specific operation types — Receipts, Deliveries, Internal Transfers — and block all others. Clear separation of duties, no overlap.</p>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon green">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                </div>
+                <h4>ORM-Level Fast Querying</h4>
+                <p>Restrictions are injected at the Odoo ORM <code>_search</code> hook — not in a view filter layer. Zero performance degradation even on large catalogs.</p>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon gold">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </div>
+                <h4>Validation Interceptor Guard</h4>
+                <p>Attempts to validate a stock picking involving restricted locations are blocked with a clear error message — even through external API calls.</p>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon purple">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+                </div>
+                <h4>Warehouse-Level Access Filter</h4>
+                <p>Restrict which warehouses a user can view or interact with. Filtered at the search query level — restricted warehouses are completely hidden.</p>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon orange">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h4>Per-User Configuration</h4>
+                <p>Every user has their own independent restriction profile. Admin users bypass all restrictions by default — no blanket policy conflicts.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ ODOO BACKEND MOCKUP ══════════════════════════════ -->
+    <div class="section">
+        <div class="sec-head">
+            <div class="sec-label">Backend Preview</div>
+            <h2 class="sec-title">Configuration Directly on the Odoo User Form</h2>
+            <p class="sec-sub">A new "Location Restrictions" tab is added to every user record. No separate menu, no new models to navigate.</p>
+        </div>
+        <div class="mockup-wrap">
+            <div class="mockup-bar">
+                <div class="dots">
+                    <span class="dot dot-r"></span>
+                    <span class="dot dot-y"></span>
+                    <span class="dot dot-g"></span>
+                </div>
+                <div class="url-bar">https://erp.communityofaccountants.com/web#id=5&amp;model=res.users&amp;view_type=form</div>
+            </div>
+            <!-- Odoo top navbar -->
+            <div class="odoo-nav">
+                <div class="odoo-nav-left">
+                    <span class="odoo-burger">☰</span>
+                    <div class="odoo-apps">
+                        <span class="odoo-app">Inventory</span>
+                        <span class="odoo-app">Sales</span>
+                        <span class="odoo-app active">Settings</span>
+                    </div>
+                </div>
+                <div class="odoo-right">
+                    <span>Mark Admin</span>
+                    <span>▾</span>
+                </div>
+            </div>
+            <!-- Breadcrumb -->
+            <div class="odoo-bc">
+                Settings / Users &amp; Companies / Users / <strong>Mark Demian</strong>
+            </div>
+            <!-- Sheet -->
+            <div class="odoo-sheet">
+                <div class="odoo-card">
+                    <!-- Toolbar -->
+                    <div class="odoo-toolbar">
+                        <button class="o-btn o-btn-save">Save</button>
+                        <button class="o-btn o-btn-discard">Discard</button>
+                    </div>
+                    <!-- User header -->
+                    <div class="user-hdr">
+                        <div class="avatar">MD</div>
+                        <div class="user-info">
+                            <h4>Mark Demian</h4>
+                            <p>mark.d@communityofaccountants.com · Warehouse Operator</p>
+                        </div>
+                    </div>
+                    <!-- Tabs -->
+                    <div class="odoo-tabs">
+                        <div class="o-tab">Access Rights</div>
+                        <div class="o-tab">Preferences</div>
+                        <div class="o-tab active">Location Restrictions</div>
+                    </div>
+                    <!-- Tab content -->
+                    <div class="tab-content">
+                        <div class="toggle-row">
+                            <input type="checkbox" id="ck_active" checked disabled>
+                            <label for="ck_active">Enable Location Restriction for this User</label>
+                        </div>
+                        <div class="form-row">
+                            <div class="row-label">Allowed Warehouses</div>
+                            <div class="tags-box">
+                                <span class="tag">Cairo Warehouse A <span class="tag-x">✕</span></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="row-label">Allowed Stock Locations</div>
+                            <div class="tags-box">
+                                <span class="tag">WH/Stock/Row A <span class="tag-x">✕</span></span>
+                                <span class="tag">WH/Stock/Row B/Shelf 1 <span class="tag-x">✕</span></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="row-label">Allowed Operations</div>
+                            <div class="tags-box">
+                                <span class="tag">Cairo WH: Receipts <span class="tag-x">✕</span></span>
+                                <span class="tag">Cairo WH: Internal Transfers <span class="tag-x">✕</span></span>
+                            </div>
+                        </div>
+                        <!-- Validation Guard Sample -->
+                        <div class="guard-alert">
+                            <div class="guard-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            </div>
+                            <div class="guard-text">
+                                <strong>Access Denied — Validation Guard Active</strong>
+                                You are not authorized to validate this transfer. Source location <strong>"WH/Stock/Row B/Shelf 3"</strong> is outside your permitted zones. Contact your system administrator to request access.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ USE CASES ════════════════════════════════════════ -->
+    <div class="section">
+        <div class="sec-head">
+            <div class="sec-label">Industry Use Cases</div>
+            <h2 class="sec-title">Who Needs This Module</h2>
+            <p class="sec-sub">Designed for businesses with multi-warehouse operations, strict audit requirements, or multi-department stock teams.</p>
+        </div>
+        <div class="usecase-grid">
+            <div class="uc-card">
+                <div class="uc-number">01</div>
+                <h4>Multi-Branch Distributors</h4>
+                <p>Limit each branch's warehouse operator to only their assigned storage zones. Prevent accidental or unauthorized cross-location transfers.</p>
+            </div>
+            <div class="uc-card">
+                <div class="uc-number">02</div>
+                <h4>Audit-Ready Manufacturers</h4>
+                <p>Meet internal control requirements by ensuring only authorized personnel can view or validate movements within sensitive production areas.</p>
+            </div>
+            <div class="uc-card">
+                <div class="uc-number">03</div>
+                <h4>Retail Chains &amp; Franchises</h4>
+                <p>Assign store managers to their specific store locations. Prevent store staff from viewing or modifying stock data at other franchise locations.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ CAPABILITIES ════════════════════════════════════ -->
+    <div class="section">
+        <div class="sec-head">
+            <div class="sec-label">Full Capabilities</div>
+            <h2 class="sec-title">Complete Inventory Security Feature Set</h2>
+            <p class="sec-sub">Engineered to satisfy strict internal corporate stock control and financial audit requirements.</p>
+        </div>
+        <div class="caps-panel">
+            <div class="caps-grid">
+                <div class="cap-item">
+                    <div class="cap-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <div class="cap-text">
+                        <h5>Warehouse Search Filtering</h5>
+                        <p>Filters the stock.warehouse model at the ORM search hook layer. Restricted users only see warehouses they are explicitly authorized to access.</p>
+                    </div>
+                </div>
+                <div class="cap-item">
+                    <div class="cap-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <div class="cap-text">
+                        <h5>Recursive Child Location Grant</h5>
+                        <p>Assigning a parent location automatically includes all its sub-locations recursively — eliminating the need to map every individual shelf or bin.</p>
+                    </div>
+                </div>
+                <div class="cap-item">
+                    <div class="cap-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <div class="cap-text">
+                        <h5>Operation Type Scoping</h5>
+                        <p>Limit users to specific picking operations (Receipts, Deliveries, Transfers). All other operations are hidden from their view.</p>
+                    </div>
+                </div>
+                <div class="cap-item">
+                    <div class="cap-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <div class="cap-text">
+                        <h5>Picking Validation Guard</h5>
+                        <p>Backend write hooks intercept and block stock.picking validations if source or destination locations are outside the user's allowed zones.</p>
+                    </div>
+                </div>
+                <div class="cap-item">
+                    <div class="cap-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <div class="cap-text">
+                        <h5>Stock Quant Level Masking</h5>
+                        <p>Filters the stock.quant model at query level. Restricted employees only see on-hand quantities for locations they are permitted to access.</p>
+                    </div>
+                </div>
+                <div class="cap-item">
+                    <div class="cap-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <div class="cap-text">
+                        <h5>Odoo 19 _search Hook Architecture</h5>
+                        <p>Rebuilt using the v19 ORM <code>_search</code> override pattern — the correct, performance-safe approach replacing deprecated domain-based hooks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ SPECS TABLE ══════════════════════════════════════ -->
+    <div class="section">
+        <div class="sec-head">
+            <div class="sec-label">Technical Info</div>
+            <h2 class="sec-title">Technical Specifications</h2>
+            <p class="sec-sub">Pure Python ORM overrides — no custom security groups, no XML record rules required.</p>
+        </div>
+        <table class="specs">
+            <tr>
+                <td class="k">Odoo Compatibility</td>
+                <td class="v">Odoo 19.0 (Community &amp; Enterprise) <span class="specs-tag">Certified</span></td>
+            </tr>
+            <tr>
+                <td class="k">Dependencies</td>
+                <td class="v"><code>stock</code> &nbsp; <code>mail</code></td>
+            </tr>
+            <tr>
+                <td class="k">License</td>
+                <td class="v">AGPL-3 — Open source with copyleft</td>
+            </tr>
+            <tr>
+                <td class="k">Core ORM Models</td>
+                <td class="v"><code>res.users</code> &nbsp; <code>stock.picking</code> &nbsp; <code>stock.quant</code> &nbsp; <code>stock.location</code></td>
+            </tr>
+            <tr>
+                <td class="k">Security Standard</td>
+                <td class="v">User-level database guard · Audit compliant · API-call protected</td>
+            </tr>
+            <tr>
+                <td class="k">Publisher</td>
+                <td class="v">Community of Accountants · <a href="https://www.communityofaccountants.com" style="color:var(--navy);font-weight:600;">communityofaccountants.com</a></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- ═══ FOOTER ═══════════════════════════════════════════ -->
+    <div class="footer-block">
+        <div class="footer-logo">COMMUNITY OF <em>ACCOUNTANTS</em></div>
+        <p class="footer-desc">
+            COA is a premium Odoo systems integrator specializing in corporate ERP implementations, custom module development, financial automation, and inventory management systems across the MENA region.
+        </p>
+        <div class="footer-btns">
+            <a href="mailto:support@communityofaccountants.com" class="footer-btn primary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Contact Support
+            </a>
+            <a href="https://www.communityofaccountants.com" class="footer-btn" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                Visit Website
+            </a>
+        </div>
+        <div class="footer-copy">© 2026 Community of Accountants. All rights reserved.</div>
+    </div>
+
+</div>
 </body>
 </html>
