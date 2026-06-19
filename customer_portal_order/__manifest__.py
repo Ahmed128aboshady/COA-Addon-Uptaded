@@ -37,4 +37,5 @@ This module is the perfect solution for B2B portal orders, wholesale customer po
     'installable': True,
     'application': False,
     'license': 'LGPL-3',
+    'images': ['static/description/banner.png'],
 }

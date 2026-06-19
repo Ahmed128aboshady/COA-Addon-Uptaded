@@ -36,5 +36,5 @@ Protect your stock integrity and prevent unauthorized stock moves effortlessly.
     'installable': True,
     'application': False,
     'auto_install': False,
-    'images': ['static/description/logo.png', 'static/description/icon.png'],
+    'images': ['static/description/banner.png'],
 }
