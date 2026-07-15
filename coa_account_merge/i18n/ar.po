@@ -1,0 +1,140 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * coa_account_merge
+#
+# Translators:
+# COA — Community of Accountants <wa.me/201013907174>, 2024
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2024-01-01 00:00+0000\n"
+"Last-Translator: COA — Community of Accountants\n"
+"Language-Team: Arabic\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#. module: coa_account_merge
+#: model:ir.model,name:coa_account_merge.model_coa_account_merge_wizard
+msgid "Merge Accounts"
+msgstr "دمج الحسابات"
+
+#. module: coa_account_merge
+#: model:ir.actions.act_window,name:coa_account_merge.action_coa_account_merge_wizard
+msgid "Merge Accounts"
+msgstr "دمج الحسابات"
+
+#. module: coa_account_merge
+#: model:ir.ui.view,arch_db:coa_account_merge.view_coa_account_merge_wizard_form
+msgid "Merge Accounts"
+msgstr "دمج الحسابات"
+
+#. module: coa_account_merge
+#: model_terms:ir.ui.view,arch_db:coa_account_merge.view_coa_account_merge_wizard_form
+msgid ""
+"All journal items and every reference (journals, taxes,\n"
+"                    products, partners, ...) of the source accounts will be\n"
+"                    moved to the destination account. The source accounts\n"
+"                    will be archived. This cannot be undone."
+msgstr ""
+"سيتم نقل جميع قيود اليومية وكل مرجع (يوميات، ضرائب،\n"
+"                    منتجات، شركاء، ...) من الحسابات المصدر إلى\n"
+"                    الحساب الوجهة. ستُؤرشف الحسابات المصدر. لا يمكن التراجع عن هذه العملية."
+
+#. module: coa_account_merge
+#: model:ir.model.fields,field_description:coa_account_merge.field_coa_account_merge_wizard__account_ids
+msgid "Accounts to Merge"
+msgstr "الحسابات المراد دمجها"
+
+#. module: coa_account_merge
+#: model:ir.model.fields,field_description:coa_account_merge.field_coa_account_merge_wizard__destination_account_id
+msgid "Destination Account"
+msgstr "الحساب الوجهة"
+
+#. module: coa_account_merge
+#: model:ir.model.fields,field_description:coa_account_merge.field_coa_account_merge_wizard__allow_different_types
+msgid "Allow Different Types"
+msgstr "السماح بأنواع مختلفة"
+
+#. module: coa_account_merge
+#: model:ir.model.fields,field_description:coa_account_merge.field_coa_account_merge_wizard__line_count
+msgid "Journal Items to Move"
+msgstr "قيود اليومية التي ستُنقل"
+
+#. module: coa_account_merge
+#: code:addons/coa_account_merge/wizard/account_merge_wizard.py:0
+msgid "Only Accounting Administrators can merge accounts."
+msgstr "فقط مديرو المحاسبة يمكنهم دمج الحسابات."
+
+#. module: coa_account_merge
+#: code:addons/coa_account_merge/wizard/account_merge_wizard.py:0
+msgid "The destination account must be one of the selected accounts."
+msgstr "يجب أن يكون الحساب الوجهة ضمن الحسابات المحددة."
+
+#. module: coa_account_merge
+#: code:addons/coa_account_merge/wizard/account_merge_wizard.py:0
+msgid "Select at least two different accounts."
+msgstr "يرجى تحديد حسابين مختلفين على الأقل."
+
+#. module: coa_account_merge
+#: code:addons/coa_account_merge/wizard/account_merge_wizard.py:0
+msgid ""
+"All selected accounts must belong to the same "
+"company scope. \"%(src)s\" and \"%(dest)s\" differ."
+msgstr ""
+"يجب أن تنتمي جميع الحسابات المحددة إلى نفس نطاق الشركة. "
+"الحساب \"%(src)s\" والحساب \"%(dest)s\" مختلفان."
+
+#. module: coa_account_merge
+#: code:addons/coa_account_merge/wizard/account_merge_wizard.py:0
+msgid ""
+"The following accounts have a different type than the "
+"destination (%(dest_type)s):\n%(accounts)s\n\n"
+"Tick \"Allow Different Types\" if you really intend to "
+"merge them."
+msgstr ""
+"الحسابات التالية لها نوع مختلف عن الحساب الوجهة (%(dest_type)s):\n%(accounts)s\n\n"
+"ضع علامة على \"السماح بأنواع مختلفة\" إذا كنت تنوي دمجها فعلاً."
+
+#. module: coa_account_merge
+#: code:addons/coa_account_merge/wizard/account_merge_wizard.py:0
+msgid ""
+"%(count)s journal items on the source accounts belong "
+"to hashed (inalterable) entries and cannot be moved. "
+"The merge is not possible for these accounts."
+msgstr ""
+"%(count)s قيد يومية في الحسابات المصدر تنتمي إلى قيود محمية "
+"(inalterable) ولا يمكن نقلها. "
+"عملية الدمج غير ممكنة لهذه الحسابات."
+
+#. module: coa_account_merge
+#: code:addons/coa_account_merge/wizard/account_merge_wizard.py:0
+msgid "Accounts Merged"
+msgstr "تم دمج الحسابات بنجاح"
+
+#. module: coa_account_merge
+#: code:addons/coa_account_merge/wizard/account_merge_wizard.py:0
+msgid ""
+"%(count)s journal items and all references were "
+"moved to %(dest)s. Source accounts were archived."
+msgstr ""
+"تم نقل %(count)s قيد يومية وجميع المراجع إلى %(dest)s. "
+"تمت أرشفة الحسابات المصدر."
+
+#. module: coa_account_merge
+#: model_terms:ir.ui.view,arch_db:coa_account_merge.view_coa_account_merge_wizard_form
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: coa_account_merge
+#: model_terms:ir.ui.view,arch_db:coa_account_merge.view_coa_account_merge_wizard_form
+msgid ""
+"Are you sure? All movements will be transferred to the destination account "
+"and the source accounts will be archived. This action cannot be undone."
+msgstr ""
+"هل أنت متأكد؟ سيتم نقل جميع الحركات إلى الحساب الوجهة "
+"وستُؤرشف الحسابات المصدر. لا يمكن التراجع عن هذا الإجراء."

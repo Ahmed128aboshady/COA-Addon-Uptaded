@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>COA Account Merge - دمج حسابات دليل الحسابات</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+            color: #2c3e50;
+            background: #fff;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        a { color: #017e84; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .hero {
+            background: linear-gradient(135deg, #013d5a 0%, #017e84 55%, #00b09b 100%);
+            color: #fff;
+            padding: 60px 40px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -80px; right: -80px;
+            width: 300px; height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px; left: -60px;
+            width: 350px; height: 350px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+        }
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 20px;
+            padding: 4px 18px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 14px;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        }
+        .hero p.tagline {
+            font-size: 18px;
+            opacity: 0.92;
+            max-width: 680px;
+            margin: 0 auto 32px;
+        }
+        .hero .meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .section { padding: 52px 40px; }
+        .section:nth-child(even) { background: #f7fafb; }
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #013d5a;
+            margin-bottom: 10px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0; right: 0;
+            width: 54px; height: 3px;
+            background: linear-gradient(90deg, #017e84, #00b09b);
+            border-radius: 3px;
+        }
+        .section-subtitle {
+            color: #6c7a89;
+            font-size: 15px;
+            margin-bottom: 36px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 10px;
+        }
+        .feature-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 28px 24px;
+            border: 1px solid #e8f0f2;
+            box-shadow: 0 4px 18px rgba(1,126,132,0.07);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 32px rgba(1,126,132,0.15);
+        }
+        .feature-icon {
+            width: 52px; height: 52px;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        .icon-blue   { background: #e3f2fd; }
+        .icon-teal   { background: #e0f7f6; }
+        .icon-green  { background: #e8f5e9; }
+        .icon-orange { background: #fff3e0; }
+        .icon-purple { background: #f3e5f5; }
+        .icon-red    { background: #fce4ec; }
+        .feature-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #013d5a;
+            margin-bottom: 8px;
+        }
+        .feature-card p { color: #6c7a89; font-size: 13.5px; }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .step { display: flex; gap: 20px; align-items: flex-start; }
+        .step-num {
+            flex-shrink: 0;
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #017e84, #00b09b);
+            color: #fff;
+            font-weight: 800;
+            font-size: 17px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 14px rgba(1,126,132,0.3);
+        }
+        .step-content h4 { font-size: 16px; font-weight: 700; color: #013d5a; margin-bottom: 4px; }
+        .step-content p { color: #6c7a89; font-size: 13.5px; }
+
+        .safeguards-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        .safeguards-list li {
+            background: #fff;
+            border-radius: 10px;
+            padding: 18px 20px;
+            border-right: 4px solid #017e84;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            color: #3a3a3a;
+            font-size: 14px;
+        }
+        .safeguards-list li::before { content: 'shield '; }
+
+        .alert-warn {
+            background: #fff8e1;
+            border: 1px solid #ffe082;
+            border-right: 4px solid #ffb300;
+            border-radius: 10px;
+            padding: 18px 22px;
+            color: #795548;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        .alert-warn strong { color: #e65100; }
+
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+        }
+        .tech-table th {
+            background: linear-gradient(135deg, #013d5a, #017e84);
+            color: #fff;
+            padding: 14px 20px;
+            text-align: right;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .tech-table td {
+            padding: 13px 20px;
+            border-bottom: 1px solid #e8f0f2;
+            font-size: 14px;
+            color: #3a3a3a;
+        }
+        .tech-table tr:last-child td { border-bottom: none; }
+        .tech-table tr:nth-child(even) td { background: #f7fafb; }
+
+        .cta {
+            background: linear-gradient(135deg, #013d5a 0%, #017e84 100%);
+            color: #fff;
+            padding: 52px 40px;
+            text-align: center;
+        }
+        .cta h2 { font-size: 30px; font-weight: 800; margin-bottom: 12px; }
+        .cta p {
+            font-size: 16px;
+            opacity: 0.88;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25d366;
+            color: #fff;
+            padding: 14px 34px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(37,211,102,0.5);
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .footer {
+            background: #0a2a3a;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 22px 40px;
+            font-size: 13px;
+        }
+        .footer a { color: #00b09b; }
+
+        @media (max-width: 640px) {
+            .hero { padding: 40px 20px 36px; }
+            .hero h1 { font-size: 28px; }
+            .section { padding: 36px 20px; }
+            .cta { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <div class="badge">Odoo 18.0 &middot; Accounting Module</div>
+    <h1>COA Account Merge</h1>
+    <p class="tagline">
+        ادمج حسابات دليل الحسابات بأمان تام &mdash; تُحوَّل جميع قيود اليومية والمراجع تلقائياً
+        إلى الحساب المستهدف بلمسة واحدة.
+    </p>
+    <div class="meta">
+        <span>&#x1F3F7;&#xFE0F; الإصدار 18.0.1.0.0</span>
+        <span>&#x1F4C2; فئة: المحاسبة</span>
+        <span>&#x1F513; ترخيص: LGPL-3</span>
+        <span>&#x1F3E2; COA &mdash; Community of Accountants</span>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-title">ما المشكلة التي يحلّها؟</div>
+    <p class="section-subtitle">سيناريوهات شائعة يواجهها كل محاسب باستخدام أودو</p>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon icon-blue">&#x1F4CB;</div>
+            <h3>حسابات مكررة عند الاستيراد</h3>
+            <p>عند ترحيل بيانات المحاسبة تنشأ حسابات مكررة (مثل 401001 و 401002) وتحتاج لدمجها دون فقدان أي قيد.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon icon-teal">&#x1F500;</div>
+            <h3>إعادة هيكلة دليل الحسابات</h3>
+            <p>تغيير تصميم شجرة الحسابات يستلزم نقل أرصدة وقيود من حساب قديم لحساب موحد دون مساس بأرصدة الشركاء.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon icon-orange">&#x26A0;&#xFE0F;</div>
+            <h3>صعوبة الدمج اليدوي</h3>
+            <p>إعادة ترحيل مئات القيود يدوياً مستحيلة ومعرضة للخطأ؛ هذا الموديول يؤتمت العملية بالكامل.</p>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-title">الميزات الرئيسية</div>
+    <p class="section-subtitle">كل ما تحتاجه لدمج الحسابات بمنتهى الأمان والاحترافية</p>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon icon-teal">&#x1F517;</div>
+            <h3>دمج قيود اليومية بالكامل</h3>
+            <p>تُعاد إشارة جميع قيود اليومية من الحسابات المصدر إلى الحساب الوجهة بأمر SQL مباشر فائق السرعة.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon icon-blue">&#x1F310;</div>
+            <h3>تحديث جميع المراجع تلقائياً</h3>
+            <p>يُعيد الموديول توجيه كل مفاتيح FK في جميع الجداول: الضرائب، المنتجات، الشركاء، يوميات الحسابات، نماذج التسوية، المراكز المالية، والأصول الثابتة.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon icon-green">&#x1F4E6;</div>
+            <h3>معالجة حقول الشركة المعتمدة</h3>
+            <p>يعالج حقول jsonb الخاصة بالشركة مثل حسابات القبض والدفع للشركاء وهو ما تعجز عنه عمليات FK العادية.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon icon-purple">&#x1F5C2;&#xFE0F;</div>
+            <h3>أرشفة الحسابات المصدر</h3>
+            <p>بعد الدمج، تُؤرشف الحسابات المصدر ولا تُحذف للحفاظ على السجل التاريخي وإمكانية الرجوع إليها.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon icon-orange">&#x26A1;</div>
+            <h3>واجهة سهلة الاستخدام</h3>
+            <p>أداة Wizard مباشرة تُفتح من قائمة الإجراءات في عرض قائمة شجرة الحسابات بدون أي تعقيد تقني.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon icon-red">&#x1F6E1;&#xFE0F;</div>
+            <h3>ضمانات أمان متعددة</h3>
+            <p>يتحقق من الشركة والنوع والقيود المحمية (hashed entries) قبل تنفيذ أي دمج.</p>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-title">كيف يعمل الموديول؟</div>
+    <p class="section-subtitle">خطوات بسيطة وآمنة لإتمام عملية الدمج</p>
+    <div class="steps">
+        <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+                <h4>حدّد الحسابات المراد دمجها</h4>
+                <p>من عرض قائمة شجرة الحسابات، حدد حسابين أو أكثر، ثم اختر "دمج الحسابات" من قائمة الإجراءات (Actions).</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+                <h4>اختر الحساب الوجهة</h4>
+                <p>في نافذة الـ Wizard، حدد الحساب الذي ستُنقل إليه جميع القيود والمراجع. يظهر أيضاً عدد قيود اليومية التي ستُنقل.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+                <h4>تأكيد الدمج</h4>
+                <p>اضغط "دمج الحسابات" وأكّد رسالة التحقق. يقوم الموديول بتحديث قاعدة البيانات بالكامل في ثوانٍ مع سجل تفصيلي في الـ Server Log.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+                <h4>النتيجة الفورية</h4>
+                <p>تظهر رسالة نجاح تُبيّن عدد القيود المُحوَّلة. الحسابات المصدر تصبح مؤرشفة تلقائياً وتختفي من الشجرة النشطة.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-title">ضمانات الأمان المدمجة</div>
+    <p class="section-subtitle">الموديول مصمم لحماية بياناتك المحاسبية أولاً</p>
+    <ul class="safeguards-list">
+        <li>صلاحيات مقيدة على مجموعة مدير المحاسبة فقط (Accounting Administrator)</li>
+        <li>يتحقق من أن جميع الحسابات المختارة تنتمي لنفس نطاق الشركة</li>
+        <li>يمنع دمج حسابات من أنواع مختلفة إلا بالموافقة الصريحة</li>
+        <li>يحجب الدمج إذا كان أي قيد مصدر محمياً بـ Inalterable Hash</li>
+        <li>إذا كان أي حساب مصدر قابلاً للتسوية يُحوّل الوجهة تلقائياً لتكون قابلة للتسوية</li>
+        <li>الحسابات المصدر تُؤرشف ولا تُحذف للحفاظ على السجل التاريخي</li>
+    </ul>
+    <div class="alert-warn">
+        <strong>تنبيه مهم:</strong> عملية الدمج <strong>لا يمكن التراجع عنها</strong>. يُنصح دائماً بأخذ نسخة احتياطية من قاعدة البيانات قبل تنفيذ الدمج.
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-title">المواصفات التقنية</div>
+    <p class="section-subtitle">تفاصيل الإصدار والتوافق</p>
+    <table class="tech-table">
+        <tr>
+            <th>الخاصية</th>
+            <th>القيمة</th>
+        </tr>
+        <tr><td>إصدار أودو المدعوم</td><td>Odoo 18.0</td></tr>
+        <tr><td>إصدار الموديول</td><td>18.0.1.0.0</td></tr>
+        <tr><td>يعتمد على</td><td>account (المحاسبة الأساسية)</td></tr>
+        <tr><td>الترخيص</td><td>LGPL-3</td></tr>
+        <tr><td>فئة الموديول</td><td>Accounting</td></tr>
+        <tr><td>قاعدة البيانات</td><td>PostgreSQL &mdash; تحديث مباشر عبر SQL</td></tr>
+        <tr><td>اللغات المدعومة</td><td>العربية، الإنجليزية</td></tr>
+        <tr><td>صلاحيات التثبيت</td><td>مدير النظام</td></tr>
+        <tr><td>صلاحيات الاستخدام</td><td>مدير المحاسبة (Accounting Administrator)</td></tr>
+    </table>
+</div>
+
+<div class="cta">
+    <h2>هل تحتاج للمساعدة أو التخصيص؟</h2>
+    <p>فريق COA متاح لمساعدتك في التثبيت والتدريب وأي تخصيص تحتاجه لموديولاتك.</p>
+    <a href="https://wa.me/201013907174" class="btn-whatsapp" target="_blank">
+        تواصل معنا على واتساب
+    </a>
+</div>
+
+<div class="footer">
+    <p>
+        COA Account Merge &copy; 2024 &ndash;
+        <a href="https://wa.me/201013907174" target="_blank">Community of Accountants (COA)</a>
+        &middot; مرخص تحت
+        <a href="https://www.gnu.org/licenses/lgpl-3.0.html" target="_blank">LGPL-3</a>
+    </p>
+</div>
+
+</body>
+</html>
