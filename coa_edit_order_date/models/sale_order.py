@@ -35,7 +35,7 @@ class SaleOrder(models.Model):
             if 'date_order' in values and values[
                 'date_order'] != self.date_order \
                     and not self.env.user.has_group(
-                    'edit_order_date.edit_order_date_group_user'):
+                    'coa_edit_order_date.coa_edit_order_date_group_user'):
                 raise UserError(
                     _("You have no access to change 'Order Date'"))
         return result

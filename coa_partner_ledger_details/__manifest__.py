@@ -34,7 +34,7 @@ WhatsApp: +20 101 390 7174
     'website': 'https://www.communityofaccountants.com',
     'category': 'Accounting/Accounting',
     'version': '18.0.1.0.0',
-    'license': 'OEEL-1',
+    'license': 'OPL-1',
     'depends': [
         'account_reports',
     ],

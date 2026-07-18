@@ -13,7 +13,7 @@
         'sale_management',
     ],
     'data': [
-        'security/edit_order_date_groups.xml',
+        'security/coa_edit_order_date_groups.xml',
         'views/sale_order_views.xml',
     ],
     'images': [

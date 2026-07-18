@@ -5,8 +5,8 @@
         <field name="name">Stock Aging Report</field>
         <field name="model">stock.aging.report.wizard</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">sr_stock_aging_report.report_stock_aging_template</field>
-        <field name="report_file">sr_stock_aging_report.report_stock_aging_template</field>
+        <field name="report_name">coa_stock_aging_report.report_stock_aging_template</field>
+        <field name="report_file">coa_stock_aging_report.report_stock_aging_template</field>
         <field name="print_report_name">'Stock Aging Report - ' + object.date_to.strftime('%Y-%m-%d')</field>
         <field name="binding_model_id" ref="stock.model_stock_warehouse"/>
         <field name="paperformat_id" ref="base.paperformat_us"/>

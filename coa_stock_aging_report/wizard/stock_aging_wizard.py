@@ -97,7 +97,7 @@ class StockAgingReportWizard(models.TransientModel):
         if not data.get('groups'):
             raise UserError(_('No stock data found for the selected filters.'))
         return self.env.ref(
-            'sr_stock_aging_report.action_stock_aging_report'
+            'coa_stock_aging_report.action_stock_aging_report'
         ).report_action(self, data=data)
 
     # ─── Action: Export Excel ─────────────────────────────────────────────────

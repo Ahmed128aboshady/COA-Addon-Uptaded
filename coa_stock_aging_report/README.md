@@ -1,6 +1,6 @@
 # Stock Aging Report – Odoo 19.0
 
-A free, open-source alternative to the commercial `sr_stock_aging_report` module.
+A free, open-source alternative to the commercial `coa_stock_aging_report` module.
 
 ## Features
 
@@ -17,7 +17,7 @@ A free, open-source alternative to the commercial `sr_stock_aging_report` module
 
 ## Installation
 
-1. Copy the `sr_stock_aging_report` folder to your Odoo addons directory.
+1. Copy the `coa_stock_aging_report` folder to your Odoo addons directory.
 2. Update the app list: **Settings → Apps → Update Apps List**.
 3. Search for **"Stock Aging Report"** and click **Install**.
 
@@ -55,7 +55,7 @@ Click **Print PDF Report** to generate the report.
 ## Module Structure
 
 ```
-sr_stock_aging_report/
+coa_stock_aging_report/
 ├── __init__.py
 ├── __manifest__.py
 ├── models/
