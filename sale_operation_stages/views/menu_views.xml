@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- القائمة الرئيسية -->
+        <menuitem id="menu_sale_operations_root"
+                  name="عمليات المبيعات"
+                  sequence="50"
+                  web_icon="sale_operation_stages,static/description/icon.png"/>
+
+        <!-- داشبورد -->
+        <menuitem id="menu_operations_dashboard"
+                  name="داشبورد العمليات"
+                  parent="menu_sale_operations_root"
+                  action="action_operations_dashboard"
+                  sequence="10"/>
+
+        <!-- كل العمليات -->
+        <menuitem id="menu_all_operations"
+                  name="كل العمليات"
+                  parent="menu_sale_operations_root"
+                  action="action_sale_operations"
+                  sequence="20"/>
+
+        <!-- الإعدادات -->
+        <menuitem id="menu_operations_config"
+                  name="الإعدادات"
+                  parent="menu_sale_operations_root"
+                  sequence="90"
+                  groups="sale_operation_stages.group_operation_manager"/>
+
+        <menuitem id="menu_operation_stages"
+                  name="مراحل العمليات"
+                  parent="menu_operations_config"
+                  action="action_operation_stages"
+                  sequence="10"/>
+
+    </data>
+</odoo>

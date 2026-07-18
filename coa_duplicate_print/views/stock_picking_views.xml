@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_picking_form_coa_duplicate" model="ir.ui.view">
+        <field name="name">stock.picking.form.coa.duplicate.print</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/group//field[@name='scheduled_date']" position="after">
+                <field name="coa_print_count" readonly="1"
+                       invisible="coa_print_count == 0"/>
+                <field name="coa_last_print_date" readonly="1"
+                       invisible="coa_print_count == 0"/>
+                <field name="coa_last_print_uid" readonly="1"
+                       invisible="coa_print_count == 0"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

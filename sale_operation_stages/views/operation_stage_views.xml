@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_operation_stage_list" model="ir.ui.view">
+            <field name="name">sale.operation.stage.list</field>
+            <field name="model">sale.operation.stage</field>
+            <field name="arch" type="xml">
+                <list string="مراحل العمليات" editable="bottom">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="is_first" string="بداية"/>
+                    <field name="is_last"  string="نهائية"/>
+                    <field name="responsible_group_id" optional="show"/>
+                    <field name="color" widget="color"/>
+                    <field name="active"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="view_operation_stage_form" model="ir.ui.view">
+            <field name="name">sale.operation.stage.form</field>
+            <field name="model">sale.operation.stage</field>
+            <field name="arch" type="xml">
+                <form string="مرحلة العملية">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" string="اسم المرحلة"/>
+                            <h1><field name="name" placeholder="مثال: جاري التنفيذ"/></h1>
+                        </div>
+                        <group>
+                            <group string="الإعدادات الأساسية">
+                                <field name="code"     placeholder="مثال: PROC"/>
+                                <field name="sequence"/>
+                                <field name="color" widget="color"/>
+                                <field name="active"/>
+                            </group>
+                            <group string="نوع المرحلة">
+                                <field name="is_first"/>
+                                <field name="is_last"/>
+                                <field name="responsible_group_id"/>
+                            </group>
+                        </group>
+                        <group string="وصف المرحلة">
+                            <field name="description" nolabel="1"
+                                   placeholder="وصف اختياري لهذه المرحلة..."/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_operation_stages" model="ir.actions.act_window">
+            <field name="name">مراحل العمليات</field>
+            <field name="res_model">sale.operation.stage</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+    </data>
+</odoo>

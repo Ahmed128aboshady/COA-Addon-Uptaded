@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Shared watermark template.
+         Must be placed INSIDE the div.article (so _prepare_html includes it in
+         the body sent to wkhtmltopdf) and AFTER all page content (so the
+         painter's algorithm draws it on top, since wkhtmltopdf 0.12.x ignores
+         z-index for position:fixed elements).
+         The record is passed as `dup_rec`. -->
+    <template id="coa_duplicate_watermark">
+        <t t-if="dup_rec and dup_rec._coa_is_duplicate_print()">
+            <!--
+                position:fixed + rotate works in wkhtmltopdf 0.12.x.
+                Element is centred via explicit top/left + negative margins
+                (avoids translate which is broken). -webkit-transform added
+                for old-WebKit compatibility alongside the unprefixed property.
+                top:100mm ≈ vertical centre of the content area in wkhtmltopdf.
+                left: half of (page_width - element_width) = (190-170)/2 = 10mm.
+            -->
+            <!--
+                left:0 + right:0 + margin:auto centres a fixed-width element
+                horizontally inside position:fixed regardless of page margins.
+                top:100mm ≈ vertical centre of wkhtmltopdf content viewport.
+                margin-top:-13mm shifts element up by half its height so the
+                visual centre lands at exactly top:100mm.
+            -->
+            <div style="position:fixed;
+                        top:100mm;
+                        left:0;
+                        right:0;
+                        width:170mm;
+                        height:26mm;
+                        margin:-13mm auto 0;
+                        line-height:26mm;
+                        -webkit-transform:rotate(-45deg);
+                        transform:rotate(-45deg);
+                        font-size:38px;
+                        font-weight:bold;
+                        color:rgba(180,0,0,0.30);
+                        border:4px solid rgba(180,0,0,0.30);
+                        border-radius:8px;
+                        padding:0 10mm;
+                        text-align:center;
+                        white-space:nowrap;
+                        letter-spacing:2px;
+                        pointer-events:none;">
+                <t t-out="dup_rec._coa_duplicate_label()"/>
+            </div>
+        </t>
+    </template>
+
+    <!-- Sale Order: inject watermark at the END of the external layout
+         (after the page div, still inside div.article) so it is rendered
+         after all content by wkhtmltopdf's painter algorithm. -->
+    <template id="coa_dup_sale_order_document"
+              inherit_id="sale.report_saleorder_document">
+        <xpath expr="//t[@t-call='web.external_layout']" position="inside">
+            <t t-call="coa_duplicate_print.coa_duplicate_watermark">
+                <t t-set="dup_rec" t-value="doc"/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- Delivery Slip: inject after the page content, still inside the
+         external_layout block so it ends up inside div.article. -->
+    <template id="coa_dup_delivery_document"
+              inherit_id="stock.report_delivery_document">
+        <xpath expr="//t[@t-call='web.external_layout']" position="inside">
+            <t t-call="coa_duplicate_print.coa_duplicate_watermark">
+                <t t-set="dup_rec" t-value="o"/>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>

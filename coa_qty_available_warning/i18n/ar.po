@@ -1,0 +1,49 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* coa_qty_available_warning
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#. module: coa_qty_available_warning
+#: code:addons/coa_qty_available_warning/models/sale_order_line.py:0
+msgid "Not Enough Quantity Available"
+msgstr "الكمية المتاحة غير كافية"
+
+#. module: coa_qty_available_warning
+#: model:ir.model.fields,field_description:coa_qty_available_warning.field_sale_order_line__coa_free_qty
+#: model:ir.model.fields,field_description:coa_qty_available_warning.field_coa_qty_warning_wizard_line__free_qty
+msgid "Available (Free To Use)"
+msgstr "المتاح للاستخدام"
+
+#. module: coa_qty_available_warning
+#: model:ir.model.fields,field_description:coa_qty_available_warning.field_coa_qty_warning_wizard_line__demand_qty
+msgid "Demand"
+msgstr "المطلوب"
+
+#. module: coa_qty_available_warning
+#: model:ir.model.fields,field_description:coa_qty_available_warning.field_coa_qty_warning_wizard_line__shortage_qty
+msgid "Shortage"
+msgstr "العجز"
+
+#. module: coa_qty_available_warning
+#: model_terms:ir.ui.view,arch_db:coa_qty_available_warning.view_coa_qty_warning_wizard_form
+msgid "Confirm Anyway"
+msgstr "تأكيد على أي حال"
+
+#. module: coa_qty_available_warning
+#: model_terms:ir.ui.view,arch_db:coa_qty_available_warning.view_coa_qty_warning_wizard_form
+msgid "Discard"
+msgstr "إلغاء"
+
+#. module: coa_qty_available_warning
+#: model:ir.model.fields,field_description:coa_qty_available_warning.field_res_company__coa_qty_warning_enabled
+msgid "Quantity Available Warning"
+msgstr "تحذير الكمية المتاحة"

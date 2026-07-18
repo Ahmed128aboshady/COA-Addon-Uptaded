@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_order_form_coa_duplicate" model="ir.ui.view">
+        <field name="name">sale.order.form.coa.duplicate.print</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form//page[@name='other_information']//field[@name='client_order_ref']" position="after">
+                <field name="coa_print_count" readonly="1"
+                       invisible="coa_print_count == 0"/>
+                <field name="coa_last_print_date" readonly="1"
+                       invisible="coa_print_count == 0"/>
+                <field name="coa_last_print_uid" readonly="1"
+                       invisible="coa_print_count == 0"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

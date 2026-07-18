@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_coa_accrued_expense_list" model="ir.ui.view">
+        <field name="name">coa.accrued.expense.list</field>
+        <field name="model">coa.accrued.expense</field>
+        <field name="arch" type="xml">
+            <list decoration-info="state == 'draft'"
+                  decoration-success="state == 'running'"
+                  decoration-muted="state in ('done', 'cancel')">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="partner_id"/>
+                <field name="date_start"/>
+                <field name="date_end" optional="show"/>
+                <field name="months_total" optional="show"/>
+                <field name="monthly_amount" sum="Total"/>
+                <field name="total_amount" sum="Total" optional="show"/>
+                <field name="months_count"/>
+                <field name="accrued_total" sum="Total"/>
+                <field name="bill_id" optional="hide"/>
+                <field name="company_id" groups="base.group_multi_company"
+                       optional="hide"/>
+                <field name="state" widget="badge"
+                       decoration-info="state == 'draft'"
+                       decoration-success="state == 'running'"
+                       decoration-warning="state == 'billed'"/>
+                <field name="currency_id" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_coa_accrued_expense_form" model="ir.ui.view">
+        <field name="name">coa.accrued.expense.form</field>
+        <field name="model">coa.accrued.expense</field>
+        <field name="arch" type="xml">
+            <form string="Accrued Expense">
+                <header>
+                    <button name="action_confirm" type="object"
+                            string="Confirm" class="oe_highlight"
+                            invisible="state != 'draft'"/>
+                    <button name="action_generate_due" type="object"
+                            string="Generate Due Months"
+                            invisible="state != 'running'"/>
+                    <button name="action_generate_current_month" type="object"
+                            string="Generate Current Month"
+                            invisible="state != 'running'"/>
+                    <button name="action_register_bill" type="object"
+                            string="Register Bill" class="oe_highlight"
+                            invisible="state != 'running' or not accrued_total"/>
+                    <button name="action_link_bill" type="object"
+                            string="Link Existing Bill"
+                            invisible="state != 'running'"/>
+                    <button name="action_done" type="object"
+                            string="Set Done"
+                            invisible="state != 'billed'"/>
+                    <button name="action_cancel" type="object"
+                            string="Cancel"
+                            invisible="state not in ('draft', 'running')"/>
+                    <button name="action_draft" type="object"
+                            string="Reset to Draft"
+                            invisible="state != 'cancel'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,running,billed,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_moves" type="object"
+                                class="oe_stat_button" icon="fa-book"
+                                invisible="move_count == 0">
+                            <field name="move_count" widget="statinfo"
+                                   string="Entries"/>
+                        </button>
+                        <button name="action_view_bill" type="object"
+                                class="oe_stat_button" icon="fa-pencil-square-o"
+                                invisible="not bill_id">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">Vendor Bill</span>
+                                <field name="bill_state"/>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group string="General">
+                            <field name="description"
+                                   readonly="state != 'draft'"
+                                   placeholder="e.g. Office Rent Contract 2026"/>
+                            <field name="partner_id"
+                                   readonly="state != 'draft'"/>
+                            <field name="monthly_amount"
+                                   readonly="state != 'draft'"/>
+                            <field name="date_start"
+                                   readonly="state != 'draft'"/>
+                            <field name="date_end"
+                                   readonly="state != 'draft'"/>
+                            <field name="months_total" readonly="1"
+                                   invisible="not date_end"/>
+                            <field name="total_amount" readonly="1"
+                                   invisible="not date_end"/>
+                            <field name="auto_generate"
+                                   readonly="state in ('done', 'cancel')"/>
+                            <field name="company_id"
+                                   groups="base.group_multi_company"
+                                   readonly="state != 'draft'"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group string="Accounting">
+                            <field name="expense_account_id"
+                                   readonly="state != 'draft'"/>
+                            <field name="accrual_account_id"
+                                   readonly="state != 'draft'"/>
+                            <field name="journal_id"
+                                   readonly="state != 'draft'"/>
+                            <field name="accrued_total"/>
+                            <field name="months_count"/>
+                            <field name="bill_id" readonly="1"
+                                   invisible="not bill_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Accrual Lines" name="lines">
+                            <field name="line_ids" readonly="1">
+                                <list>
+                                    <field name="date_month"/>
+                                    <field name="amount" sum="Total"/>
+                                    <field name="move_id"/>
+                                    <field name="move_state" widget="badge"
+                                           decoration-success="move_state == 'posted'"
+                                           decoration-info="move_state == 'draft'"/>
+                                    <field name="currency_id"
+                                           column_invisible="1"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Vendor Bill" name="bill"
+                              invisible="state in ('draft', 'cancel')">
+                            <group>
+                                <group string="Bill Data">
+                                    <field name="bill_reference"
+                                           readonly="state != 'running'"
+                                           placeholder="Vendor invoice number"/>
+                                    <field name="bill_date"
+                                           readonly="state != 'running'"/>
+                                    <field name="bill_amount"
+                                           readonly="state != 'running'"/>
+                                    <field name="bill_attachment"
+                                           filename="bill_attachment_filename"
+                                           readonly="state != 'running'"/>
+                                    <field name="bill_attachment_filename"
+                                           invisible="1"/>
+                                </group>
+                                <group string="Settlement">
+                                    <field name="accrued_total"/>
+                                    <field name="bill_difference"/>
+                                    <field name="bill_id" readonly="1"/>
+                                    <field name="bill_state"/>
+                                </group>
+                            </group>
+                            <div class="alert alert-info" role="alert"
+                                 invisible="state != 'running'">
+                                When the vendor bill arrives, fill in its data
+                                and attach the document, then press
+                                <b>Register Bill</b>. The bill will be booked
+                                against the accrued expense account
+                                (Debit Accrued Expense / Credit Payable).
+                                Any difference vs the total accrued is booked
+                                to the expense account automatically.
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_coa_accrued_expense_search" model="ir.ui.view">
+        <field name="name">coa.accrued.expense.search</field>
+        <field name="model">coa.accrued.expense</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="partner_id"/>
+                <filter name="filter_running" string="Running"
+                        domain="[('state', '=', 'running')]"/>
+                <filter name="filter_billed" string="Billed"
+                        domain="[('state', '=', 'billed')]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="group_partner" string="Vendor"
+                            context="{'group_by': 'partner_id'}"/>
+                    <filter name="group_state" string="Status"
+                            context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_coa_accrued_expense_link_bill_form" model="ir.ui.view">
+        <field name="name">coa.accrued.expense.link.bill.form</field>
+        <field name="model">coa.accrued.expense.link.bill</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="accrual_id" invisible="1"/>
+                    <field name="partner_id" invisible="1"/>
+                    <field name="bill_id"/>
+                </group>
+                <footer>
+                    <button name="action_link" type="object" string="Link"
+                            class="oe_highlight"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_coa_accrued_expense" model="ir.actions.act_window">
+        <field name="name">Accrued Expenses</field>
+        <field name="res_model">coa.accrued.expense</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_coa_accrued_expense_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first accrued expense
+            </p>
+            <p>
+                Accrue recurring expenses month by month
+                (Debit Expense / Credit Accrued Liability)
+                until the vendor bill arrives.
+            </p>
+        </field>
+    </record>
+
+    <!-- Standalone app menu -->
+    <menuitem id="menu_coa_accrued_expense_root"
+              name="Accrued Expenses"
+              web_icon="coa_accrued_expense,static/description/icon.png"
+              groups="account.group_account_invoice"
+              sequence="45"/>
+    <menuitem id="menu_coa_accrued_expense"
+              name="Accrued Expenses"
+              parent="menu_coa_accrued_expense_root"
+              action="action_coa_accrued_expense"
+              sequence="10"/>
+
+</odoo>

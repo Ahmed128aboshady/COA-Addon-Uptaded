@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_coa_accrued_expense_user,coa.accrued.expense user,model_coa_accrued_expense,account.group_account_invoice,1,1,1,0
+access_coa_accrued_expense_manager,coa.accrued.expense manager,model_coa_accrued_expense,account.group_account_manager,1,1,1,1
+access_coa_accrued_expense_line_user,coa.accrued.expense.line user,model_coa_accrued_expense_line,account.group_account_invoice,1,1,1,0
+access_coa_accrued_expense_line_manager,coa.accrued.expense.line manager,model_coa_accrued_expense_line,account.group_account_manager,1,1,1,1
+access_coa_accrued_expense_link_bill,coa.accrued.expense.link.bill,model_coa_accrued_expense_link_bill,account.group_account_invoice,1,1,1,1

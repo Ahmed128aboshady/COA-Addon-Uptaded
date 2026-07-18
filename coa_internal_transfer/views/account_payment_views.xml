@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================
+         FORM VIEW: account.payment
+         Add Internal Transfer checkbox + Destination Journal field
+         ============================================================ -->
+    <record id="view_account_payment_form_coa_internal_transfer" model="ir.ui.view">
+        <field name="name">account.payment.form.coa.internal.transfer</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Insert the "Internal Transfer" checkbox right before payment_type -->
+            <field name="payment_type" position="before">
+                <field name="is_internal_transfer"/>
+            </field>
+
+            <!-- Hide partner-related fields when this is an internal transfer -->
+            <field name="partner_id" position="attributes">
+                <attribute name="invisible">is_internal_transfer</attribute>
+            </field>
+            <field name="partner_type" position="attributes">
+                <attribute name="invisible">is_internal_transfer</attribute>
+            </field>
+
+            <!-- Show the Destination Journal field, only relevant for transfers -->
+            <field name="journal_id" position="after">
+                <field name="destination_journal_id"
+                       invisible="not is_internal_transfer"
+                       required="is_internal_transfer"/>
+            </field>
+
+            <!-- Smart button to jump to the paired transfer payment.
+                 We target the generic button box container used on most
+                 Odoo form views instead of a specific named element, to
+                 stay resilient across point releases. -->
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <button name="button_open_paired_internal_transfer_payment"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-exchange"
+                        invisible="not paired_internal_transfer_payment_id">
+                    <div class="o_stat_info">
+                        <span class="o_stat_text">Paired Transfer</span>
+                    </div>
+                </button>
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- ============================================================
+         LIST VIEW: account.payment
+         Show the Internal Transfer flag as a column
+         ============================================================ -->
+    <record id="view_account_payment_tree_coa_internal_transfer" model="ir.ui.view">
+        <field name="name">account.payment.list.coa.internal.transfer</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_tree"/>
+        <field name="arch" type="xml">
+            <field name="journal_id" position="after">
+                <field name="is_internal_transfer" optional="show"/>
+                <field name="destination_journal_id" optional="hide"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- ============================================================
+         SEARCH VIEW: account.payment
+         Add a filter + group-by for Internal Transfers.
+         Appended at the end of <search> (rather than relative to a
+         specific core filter's name) so the inheritance does not break
+         if core filter names change between Odoo point releases.
+         ============================================================ -->
+    <record id="view_account_payment_search_coa_internal_transfer" model="ir.ui.view">
+        <field name="name">account.payment.search.coa.internal.transfer</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_search"/>
+        <field name="arch" type="xml">
+            <!-- Append our field + filters at the end of the search element -->
+            <filter name="state_sent" position="after">
+                <separator/>
+                <filter string="Internal Transfers"
+                        name="coa_internal_transfers_filter"
+                        domain="[('is_internal_transfer', '=', True)]"/>
+            </filter>
+            <filter name="company" position="after">
+                <separator/>
+                <filter string="Destination Journal"
+                        name="coa_group_by_destination_journal"
+                        domain="[]"
+                        context="{'group_by': 'destination_journal_id'}"/>
+            </filter>
+        </field>
+    </record>
+
+</odoo>

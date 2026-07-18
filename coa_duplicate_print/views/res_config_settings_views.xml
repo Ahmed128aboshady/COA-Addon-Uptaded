@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form_coa_duplicate" model="ir.ui.view">
+        <field name="name">res.config.settings.form.coa.duplicate.print</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='general_settings']" position="inside">
+                <block title="Duplicate Print" name="coa_duplicate_print_block">
+                    <setting id="coa_duplicate_print_setting"
+                             string="Duplicate Print Watermark"
+                             help="Show a DUPLICATE watermark on the printed PDF when a document is printed more than once. Choose which applications it applies to.">
+                        <field name="coa_duplicate_print_mode"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

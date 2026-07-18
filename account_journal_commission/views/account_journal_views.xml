@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="account_journal_commission_form" model="ir.ui.view">
+            <field name="name">account.journal.commission.form</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//page[@name='advanced_settings']" position="after">
+                    <page string="إعدادات العمولة" name="commission_settings">
+
+                        <!-- عمولة المبيعات -->
+                        <group string="عمولة فواتير المبيعات (سداد من العملاء)">
+                            <field name="sale_has_commission"
+                                   widget="boolean_toggle"
+                                   string="تفعيل عمولة المبيعات"/>
+                            <field name="sale_commission_rate"
+                                   invisible="not sale_has_commission"
+                                   required="sale_has_commission"
+                                   string="نسبة العمولة %"/>
+                        </group>
+
+                        <!-- عمولة المشتريات -->
+                        <group string="عمولة فواتير المشتريات (سداد للموردين)">
+                            <field name="purchase_has_commission"
+                                   widget="boolean_toggle"
+                                   string="تفعيل عمولة المشتريات"/>
+                            <field name="purchase_commission_rate"
+                                   invisible="not purchase_has_commission"
+                                   required="purchase_has_commission"
+                                   string="نسبة العمولة %"/>
+                        </group>
+
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

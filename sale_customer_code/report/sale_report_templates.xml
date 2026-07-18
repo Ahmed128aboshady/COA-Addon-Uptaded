@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Add Customer Code to Sale Order printed report -->
+        <template id="report_saleorder_customer_code" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//div[@id='informations']" position="inside">
+                <div t-if="doc.partner_id.ref" class="col" name="informations_customer_code">
+                    <strong>Customer Code</strong>
+                    <div t-field="doc.partner_id.ref"/>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- noupdate="0" عشان implied_ids تتحدث على الـ records الموجودة -->
+    <data noupdate="0">
+
+        <record id="group_sale_own_view_any_create" model="res.groups">
+            <field name="name">Sales: Own View / Any Salesperson Create</field>
+            <field name="category_id" ref="base.module_category_sales_sales"/>
+            <field name="implied_ids" eval="[(4, ref('sales_team.group_sale_salesman'))]"/>
+            <field name="comment">المندوب يشوف بتاعته بس - ويقدر يعمل سيلز أوردر لأي salesperson</field>
+        </record>
+
+        <!--
+            المشكلة: rule "Personal Orders" من sale بتطبق على group_sale_salesman
+            وبتمنع إنشاء أوردر بـ user_id = شخص تاني.
+            الحل: نضيف rule لمجموعتنا بـ perm_create=True ودومين مفتوح (1=1).
+            Odoo بيعمل OR بين rules المجموعات اللي المستخدم فيها —
+            فالناتج بالنسبة لـ CREATE: (Personal Orders domain) OR (1=1) = مسموح دايماً.
+            بالنسبة لـ READ: rule بتاعتنا perm_read=False يعني مش بتأثر — فـ Personal Orders
+            لوحدها بتحكم وبتخلي المستخدم يشوف بتاعته بس. ✓
+        -->
+
+        <!--
+            بعد الـ CREATE، أوداو بيعمل READ على الـ record الجديد عشان يعرضه في الـ form.
+            لو user_id = salesperson تاني، الـ "Personal Orders" rule بتمنع القراءة.
+            الحل: نستخدم create_uid في الـ domain —
+              المستخدم يشوف الأوردرات اللي user_id=هو أو create_uid=هو
+            كده:
+              - READ/WRITE: (Personal Orders: user_id=me) OR (هذه Rule: user_id=me OR create_uid=me)
+                → يشوف بتاعته + اللي عملها لحد تاني
+              - CREATE: (Personal Orders domain) OR (create_uid=me بعد الإنشاء) = مسموح دايماً ✓
+        -->
+
+        <!-- Sale Order -->
+        <record id="sale_order_own_create_rule" model="ir.rule">
+            <field name="name">Own View / Any Salesperson Create - Sale Orders</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="domain_force">['|', ('user_id','=',user.id), ('create_uid','=',user.id)]</field>
+            <field name="groups" eval="[(4, ref('sale_own_create.group_sale_own_view_any_create'))]"/>
+            <field name="perm_read"   eval="True"/>
+            <field name="perm_write"  eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Sale Order Line -->
+        <record id="sale_order_line_own_create_rule" model="ir.rule">
+            <field name="name">Own View / Any Salesperson Create - Sale Order Lines</field>
+            <field name="model_id" ref="sale.model_sale_order_line"/>
+            <field name="domain_force">['|', ('salesman_id','=',user.id), ('order_id.create_uid','=',user.id)]</field>
+            <field name="groups" eval="[(4, ref('sale_own_create.group_sale_own_view_any_create'))]"/>
+            <field name="perm_read"   eval="True"/>
+            <field name="perm_write"  eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

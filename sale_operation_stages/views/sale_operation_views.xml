@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- LIST VIEW -->
+        <record id="view_sale_operation_list" model="ir.ui.view">
+            <field name="name">sale.operation.list</field>
+            <field name="model">sale.operation</field>
+            <field name="arch" type="xml">
+                <list string="العمليات"
+                      decoration-success="state == 'done'"
+                      decoration-warning="state == 'in_progress'"
+                      decoration-muted="state == 'cancelled'">
+                    <field name="name"          string="رقم العملية"/>
+                    <field name="sale_order_id" string="الأوردر" options="{'no_open': True}"/>
+                    <field name="partner_id"    string="العميل"/>
+                    <field name="product_id"    string="الصنف"/>
+                    <field name="qty"           string="الكمية"/>
+                    <field name="uom_id"        string="الوحدة"  optional="show"/>
+                    <field name="stage_id"      string="المرحلة" widget="badge"/>
+                    <field name="state"         string="الحالة"  widget="badge"
+                           decoration-success="state == 'done'"
+                           decoration-warning="state == 'in_progress'"
+                           decoration-danger="state == 'cancelled'"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- KANBAN VIEW -->
+        <record id="view_sale_operation_kanban" model="ir.ui.view">
+            <field name="name">sale.operation.kanban</field>
+            <field name="model">sale.operation</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="stage_id" quick_create="false">
+                    <field name="name"/>
+                    <field name="sale_order_id"/>
+                    <field name="partner_id"/>
+                    <field name="product_id"/>
+                    <field name="qty"/>
+                    <field name="uom_id"/>
+                    <field name="stage_id"/>
+                    <field name="state"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_card oe_kanban_global_click">
+                                <div class="o_kanban_record_top">
+                                    <div class="o_kanban_record_headings">
+                                        <strong><field name="name"/></strong>
+                                    </div>
+                                    <field name="state" widget="badge"
+                                           decoration-success="state == 'done'"
+                                           decoration-warning="state == 'in_progress'"
+                                           decoration-danger="state == 'cancelled'"/>
+                                </div>
+                                <div class="o_kanban_record_body">
+                                    <div class="fw-semibold text-primary mb-1">
+                                        <i class="fa fa-file-text-o me-1"/>
+                                        <t t-esc="record.sale_order_id.value"/>
+                                    </div>
+                                    <div><i class="fa fa-cube me-1 text-muted"/><t t-esc="record.product_id.value"/></div>
+                                    <div class="text-muted small mt-1">
+                                        <i class="fa fa-user me-1"/><t t-esc="record.partner_id.value"/>
+                                    </div>
+                                </div>
+                                <div class="o_kanban_record_bottom mt-2">
+                                    <div class="oe_kanban_bottom_left">
+                                        <t t-if="record.state.raw_value == 'draft'">
+                                            <button name="action_start" type="object"
+                                                    class="btn btn-sm btn-primary"
+                                                    onclick="event.stopPropagation()">
+                                                <i class="fa fa-play me-1"/>ابدأ
+                                            </button>
+                                        </t>
+                                        <t t-if="record.state.raw_value == 'in_progress'">
+                                            <button name="action_next_stage" type="object"
+                                                    class="btn btn-sm btn-success"
+                                                    onclick="event.stopPropagation()">
+                                                <i class="fa fa-check me-1"/>أكد
+                                            </button>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- FORM VIEW -->
+        <record id="view_sale_operation_form" model="ir.ui.view">
+            <field name="name">sale.operation.form</field>
+            <field name="model">sale.operation</field>
+            <field name="arch" type="xml">
+                <form string="تفاصيل العملية">
+                    <header>
+                        <button name="action_start"
+                                string="▶  ابدأ العمليات"
+                                type="object"
+                                class="btn-primary"
+                                invisible="state != 'draft'"/>
+                        <button name="action_next_stage"
+                                string="✅  أكد المرحلة"
+                                type="object"
+                                class="btn-primary"
+                                invisible="state != 'in_progress'"/>
+                        <button name="action_cancel"
+                                string="إلغاء"
+                                type="object"
+                                invisible="state in ('done', 'cancelled')"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,in_progress,done"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group string="بيانات الأوردر">
+                                <field name="name"          readonly="1" string="رقم العملية"/>
+                                <field name="sale_order_id" readonly="1" string="الأوردر"
+                                       options="{'no_open': True}"/>
+                                <field name="partner_id"    readonly="1" string="العميل"/>
+                            </group>
+                            <group string="المنتج">
+                                <field name="product_id" string="الصنف"/>
+                                <field name="qty"        string="الكمية"/>
+                                <field name="uom_id"     string="الوحدة"/>
+                            </group>
+                        </group>
+                        <group string="المرحلة الحالية">
+                            <group>
+                                <field name="stage_id" string="المرحلة"/>
+                            </group>
+                            <group/>
+                        </group>
+                        <separator string="سجل المراحل اللي اتأكدت"/>
+                        <field name="stage_history_ids" readonly="1" nolabel="1">
+                            <list create="false" delete="false">
+                                <field name="date"     string="وقت التأكيد"/>
+                                <field name="stage_id" string="المرحلة" widget="badge"/>
+                                <field name="user_id"  string="أكدها"/>
+                            </list>
+                        </field>
+                        <group invisible="not notes">
+                            <field name="notes" nolabel="1" readonly="1"/>
+                        </group>
+                    </sheet>
+                    <chatter/>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="action_sale_operations" model="ir.actions.act_window">
+            <field name="name">العمليات</field>
+            <field name="res_model">sale.operation</field>
+            <field name="view_mode">list,kanban,form</field>
+        </record>
+
+    </data>
+</odoo>

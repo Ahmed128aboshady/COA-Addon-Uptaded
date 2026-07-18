@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_order_form_coa_qty_warning" model="ir.ui.view">
+        <field name="name">sale.order.form.coa.qty.warning</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/list/field[@name='product_uom_qty']"
+                   position="after">
+                <field name="coa_free_qty" optional="show"
+                       string="Available"
+                       decoration-danger="coa_qty_warning"/>
+                <field name="coa_qty_warning" column_invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

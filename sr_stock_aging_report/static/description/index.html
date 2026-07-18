@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory/Stock Aging Report — Community of Accountants</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy:       #0B3B56;
+            --navy-dark:  #072537;
+            --navy-mid:   #0f4d6e;
+            --red:        #E72B2E;
+            --red-hover:  #c42022;
+            --red-light:  rgba(231,43,46,0.08);
+            --red-border: rgba(231,43,46,0.18);
+            --ink:        #1E293B;
+            --muted:      #64748B;
+            --light:      #F8FAFC;
+            --border:     #E2E8F0;
+            --white:      #FFFFFF;
+            --success:    #10B981;
+            --gold:       #F59E0B;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        .coa { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--white); line-height: 1.6; max-width: 1100px; margin: 0 auto; padding: 0 0 60px; }
+
+        /* ─── HERO ─────────────────────────────────────────────── */
+        .hero {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 55%, var(--navy-mid) 100%);
+            border-radius: 0 0 24px 24px;
+            padding: 52px 48px 48px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 48px;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px; right: -80px;
+            width: 520px; height: 520px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(231,43,46,0.12) 0%, transparent 68%);
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px; left: -60px;
+            width: 340px; height: 340px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-inner { display: flex; gap: 48px; align-items: center; position: relative; z-index: 2; flex-wrap: wrap; }
+        .hero-icon-wrap { flex-shrink: 0; }
+        .hero-icon-wrap img {
+            width: 110px; height: 110px;
+            border-radius: 22px;
+            border: 3px solid rgba(255,255,255,0.25);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+        }
+        .hero-body { flex: 1 1 320px; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 7px;
+            background: rgba(231,43,46,0.18);
+            border: 1px solid rgba(231,43,46,0.35);
+            color: #FCA5A5;
+            font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 1.2px; text-transform: uppercase;
+            padding: 5px 12px; border-radius: 20px;
+            margin-bottom: 14px;
+        }
+        .hero-badge svg { width: 12px; height: 12px; }
+        .hero h1 {
+            font-size: 2.4rem; font-weight: 900;
+            line-height: 1.15; letter-spacing: -0.8px;
+            color: var(--white); margin-bottom: 14px;
+        }
+        .hero h1 em { color: #FCA5A5; font-style: normal; }
+        .hero-desc { font-size: 1.05rem; color: #CBD5E1; line-height: 1.7; margin-bottom: 22px; max-width: 580px; }
+
+        /* ─── SECTION TITLE ──────────────────────────────────────── */
+        .section { padding: 0 24px; margin-bottom: 56px; }
+        .sec-head { text-align: center; margin-bottom: 36px; }
+        .sec-label {
+            display: inline-block;
+            font-size: 0.7rem; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase;
+            color: var(--red); background: var(--red-light);
+            border: 1px solid var(--red-border);
+            padding: 4px 12px; border-radius: 20px; margin-bottom: 12px;
+        }
+        .sec-title { font-size: 1.9rem; font-weight: 800; color: var(--navy); letter-spacing: -0.6px; margin-bottom: 10px; line-height: 1.2; }
+        .sec-sub { font-size: 1rem; color: var(--muted); max-width: 580px; margin: 0 auto; }
+
+        /* ─── FEATURE CARDS 3-COL ────────────────────────────────── */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        @media (max-width: 800px) { .features-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 520px) { .features-grid { grid-template-columns: 1fr; } }
+
+        .feat-card {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px 24px;
+            background: var(--white);
+            transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+        }
+        .feat-card:hover { box-shadow: 0 12px 28px rgba(11,59,86,0.09); transform: translateY(-3px); border-color: rgba(11,59,86,0.2); }
+        .feat-icon {
+            width: 48px; height: 48px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 18px; flex-shrink: 0;
+        }
+        .feat-icon.navy { background: rgba(11,59,86,0.08); }
+        .feat-icon.red  { background: rgba(231,43,46,0.08); }
+        .feat-icon.green { background: rgba(16,185,129,0.09); }
+        .feat-icon.gold { background: rgba(245,158,11,0.1); }
+        .feat-card h4 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+        .feat-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+        /* ─── SPECS TABLE ────────────────────────────────────────── */
+        .specs {
+            width: 100%; border-collapse: collapse;
+            border: 1px solid var(--border); border-radius: 14px;
+            overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .specs tr:last-child td { border-bottom: none; }
+        .specs td { padding: 16px 24px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+        .specs td.k { font-weight: 700; color: var(--navy); width: 28%; background: rgba(11,59,86,0.02); }
+        .specs td.v { color: var(--ink); }
+        .specs td.v code {
+            background: rgba(11,59,86,0.06); color: var(--navy);
+            padding: 2px 7px; border-radius: 5px; font-size: 0.83rem; font-weight: 600;
+        }
+        .specs-tag {
+            display: inline-block;
+            background: rgba(16,185,129,0.1); color: #059669;
+            border: 1px solid rgba(16,185,129,0.25);
+            padding: 2px 8px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; margin-left: 8px;
+        }
+
+        /* ─── FOOTER / SUPPORT ───────────────────────────────────── */
+        .footer-block {
+            background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+            border-radius: 20px;
+            padding: 52px 36px;
+            text-align: center;
+            border-top: 5px solid var(--red);
+            box-shadow: 0 16px 40px rgba(7,37,55,0.18);
+            margin: 0 24px;
+        }
+        .footer-logo { font-size: 1.45rem; font-weight: 900; color: var(--white); letter-spacing: -0.5px; margin-bottom: 14px; }
+        .footer-logo em { color: var(--red); font-style: normal; }
+        .footer-desc { font-size: 0.96rem; color: #94A3B8; max-width: 600px; margin: 0 auto 28px; line-height: 1.7; }
+        .footer-btns { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+        .footer-btn {
+            display: inline-flex; align-items: center; gap: 9px;
+            background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);
+            color: var(--white); text-decoration: none;
+            padding: 12px 26px; border-radius: 10px; font-size: 0.88rem; font-weight: 600;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .footer-btn:hover { background: var(--red); border-color: var(--red); }
+        .footer-btn.primary { background: var(--red); border-color: var(--red); }
+        .footer-btn.primary:hover { background: var(--red-hover); border-color: var(--red-hover); }
+        .footer-copy { margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.07); font-size: 0.78rem; color: #475569; }
+
+        @media (max-width: 760px) {
+            .hero { padding: 36px 24px; }
+            .hero h1 { font-size: 1.8rem; }
+            .section { padding: 0 16px; }
+            .footer-block { margin: 0 16px; }
+        }
+    </style>
+</head>
+<body>
+<div class="coa">
+
+    <!-- ═══ HERO ═══════════════════════════════════════════ -->
+    <div class="hero">
+        <div class="hero-inner">
+            <div class="hero-icon-wrap">
+                <img src="icon.png" alt="Inventory/Stock Aging Report Icon">
+            </div>
+            <div class="hero-body">
+                <div class="hero-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    Odoo 19.0 · Community &amp; Enterprise
+                </div>
+                <h1>Inventory/Stock Aging Report</h1>
+                <p class="hero-desc">
+                    Stock Aging Report By Warehouse and By Location
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ KEY FEATURES ═══════════════════════════════════ -->
+    <div class="section">
+        <div class="sec-head">
+            <span class="sec-label">Key Features</span>
+            <h2 class="sec-title">Key Capabilities</h2>
+            <p class="sec-sub">Streamline your workflows with these features built directly into your Odoo instance.</p>
+        </div>
+        <div class="features-grid">
+            
+        <div class="feat-card">
+            <div class="feat-icon navy">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--navy);">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            <h4>Feature 1</h4>
+            <p>Stock Aging Report by Warehouse</p>
+        </div>
+        
+        <div class="feat-card">
+            <div class="feat-icon red">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--red);">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            <h4>Feature 2</h4>
+            <p>Stock Aging Report by Location</p>
+        </div>
+        
+        <div class="feat-card">
+            <div class="feat-icon green">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--green);">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            <h4>Feature 3</h4>
+            <p>Filter by Products or Product Categories</p>
+        </div>
+        
+        <div class="feat-card">
+            <div class="feat-icon gold">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--navy);">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            <h4>Feature 4</h4>
+            <p>Configurable aging periods (e.g. 0-30, 31-60, 61-90, 91-120, 120+ days)</p>
+        </div>
+        
+        <div class="feat-card">
+            <div class="feat-icon navy">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--navy);">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            <h4>Feature 5</h4>
+            <p>PDF Export</p>
+        </div>
+        
+        <div class="feat-card">
+            <div class="feat-icon red">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--red);">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            <h4>Feature 6</h4>
+            <p>FIFO-based age calculation</p>
+        </div>
+        
+        </div>
+    </div>
+
+    <!-- ═══ DESCRIPTION ════════════════════════════════════ -->
+    <div class="section">
+        <div class="sec-head">
+            <span class="sec-label">Overview</span>
+            <h2 class="sec-title">Functional Description</h2>
+        </div>
+        <div style="background: var(--light); padding: 32px; border-radius: 16px; border: 1px solid var(--border); font-size: 0.95rem; color: var(--ink); line-height: 1.8; white-space: pre-line;">
+            
+        Stock Aging Report
+        ==================
+        The stock aging analysis report helps you analyze the age of your stock
+        by organizing the value and quantity into configurable time periods.
+
+        Features:
+        - Stock Aging Report by Warehouse
+        - Stock Aging Report by Location
+        - Filter by Products or Product Categories
+        - Configurable aging periods (e.g. 0-30, 31-60, 61-90, 91-120, 120+ days)
+        - PDF Export
+        - FIFO-based age calculation
+    
+        </div>
+    </div>
+
+    <!-- ═══ TECHNICAL SPECS ════════════════════════════════ -->
+    <div class="section">
+        <div class="sec-head">
+            <span class="sec-label">Specifications</span>
+            <h2 class="sec-title">Technical Information</h2>
+        </div>
+        <table class="specs">
+            <tr>
+                <td class="k">Module Technical Name</td>
+                <td class="v"><code>sr_stock_aging_report</code></td>
+            </tr>
+            <tr>
+                <td class="k">Version</td>
+                <td class="v">19.0.1.0.0</td>
+            </tr>
+            <tr>
+                <td class="k">License</td>
+                <td class="v">LGPL-3</td>
+            </tr>
+            <tr>
+                <td class="k">Dependencies</td>
+                <td class="v"><code>stock</code>, <code>mail</code></td>
+            </tr>
+            <tr>
+                <td class="k">Price</td>
+                <td class="v"><strong>79.0 USD</strong><span class="specs-tag">Paid App</span></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- ═══ FOOTER ═════════════════════════════════════════ -->
+    <div class="footer-block">
+        <div class="footer-logo">Community of <em>Accountants</em></div>
+        <p class="footer-desc">Professional Odoo applications designed to streamline accounting, sales, and warehouse operations.</p>
+        <div class="footer-btns">
+            <a href="https://wa.me/201013907174" class="footer-btn primary" target="_blank">
+                Contact Support
+            </a>
+            <a href="https://www.communityofaccountants.com" class="footer-btn" target="_blank">
+                Visit Website
+            </a>
+        </div>
+        <div class="footer-copy">&copy; 2026 Community of Accountants. All rights reserved.</div>
+    </div>
+
+</div>
+</body>
+</html>

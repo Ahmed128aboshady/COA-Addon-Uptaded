@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- مخزن العمليات -->
+        <record id="stock_location_operations" model="stock.location">
+            <field name="name">مخزن العمليات</field>
+            <field name="usage">internal</field>
+            <field name="comment">مخزن مؤقت للمنتجات أثناء تنفيذ العمليات (حفر / طباعة / إلخ)</field>
+        </record>
+
+    </data>
+</odoo>

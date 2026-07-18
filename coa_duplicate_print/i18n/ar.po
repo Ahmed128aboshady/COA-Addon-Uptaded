@@ -1,0 +1,62 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* coa_duplicate_print
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#. module: coa_duplicate_print
+#: model:ir.model.fields,field_description:coa_duplicate_print.field_sale_order__coa_print_count
+#: model:ir.model.fields,field_description:coa_duplicate_print.field_stock_picking__coa_print_count
+msgid "Print Count"
+msgstr "عدد مرات الطباعة"
+
+#. module: coa_duplicate_print
+#: model:ir.model.fields,field_description:coa_duplicate_print.field_sale_order__coa_last_print_date
+#: model:ir.model.fields,field_description:coa_duplicate_print.field_stock_picking__coa_last_print_date
+msgid "Last Printed On"
+msgstr "آخر طباعة في"
+
+#. module: coa_duplicate_print
+#: model:ir.model.fields,field_description:coa_duplicate_print.field_sale_order__coa_last_print_uid
+#: model:ir.model.fields,field_description:coa_duplicate_print.field_stock_picking__coa_last_print_uid
+msgid "Last Printed By"
+msgstr "آخر طباعة بواسطة"
+
+#. module: coa_duplicate_print
+#: model:ir.model.fields,field_description:coa_duplicate_print.field_res_company__coa_duplicate_print_mode
+msgid "Duplicate Print Watermark"
+msgstr "علامة النسخة المكررة"
+
+#. module: coa_duplicate_print
+#: model:ir.model.fields.selection,name:coa_duplicate_print.selection__res_company__coa_duplicate_print_mode__none
+msgid "Disabled"
+msgstr "معطّل"
+
+#. module: coa_duplicate_print
+#: model:ir.model.fields.selection,name:coa_duplicate_print.selection__res_company__coa_duplicate_print_mode__stock
+msgid "Inventory only"
+msgstr "المخازن فقط"
+
+#. module: coa_duplicate_print
+#: model:ir.model.fields.selection,name:coa_duplicate_print.selection__res_company__coa_duplicate_print_mode__sale
+msgid "Sales only"
+msgstr "المبيعات فقط"
+
+#. module: coa_duplicate_print
+#: model:ir.model.fields.selection,name:coa_duplicate_print.selection__res_company__coa_duplicate_print_mode__both
+msgid "Inventory and Sales"
+msgstr "المخازن والمبيعات"
+
+#. module: coa_duplicate_print
+#: model:ir.actions.server,name:coa_duplicate_print.action_reset_print_count_sale
+#: model:ir.actions.server,name:coa_duplicate_print.action_reset_print_count_picking
+msgid "Reset Print Count"
+msgstr "تصفير عداد الطباعة"

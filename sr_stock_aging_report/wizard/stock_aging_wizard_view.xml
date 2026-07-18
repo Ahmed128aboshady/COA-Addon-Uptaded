@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ─── Wizard Form View ──────────────────────────────────────────────── -->
+    <record id="view_stock_aging_report_wizard_form" model="ir.ui.view">
+        <field name="name">stock.aging.report.wizard.form</field>
+        <field name="model">stock.aging.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Stock Aging Report">
+
+                <group string="Report Configuration">
+                    <group>
+                        <field name="report_type" widget="radio"/>
+                        <field name="date_to"/>
+                    </group>
+                    <group>
+                        <!-- Warehouse filter (shown when by warehouse) -->
+                        <field name="warehouse_ids"
+                               widget="many2many_tags"
+                               invisible="report_type != 'warehouse'"
+                               placeholder="All Warehouses"/>
+
+                        <!-- Location filter (shown when by location) -->
+                        <field name="location_ids"
+                               widget="many2many_tags"
+                               invisible="report_type != 'location'"
+                               placeholder="All Internal Locations"/>
+                    </group>
+                </group>
+
+                <group string="Product Filters">
+                    <group>
+                        <field name="product_ids"
+                               widget="many2many_tags"
+                               placeholder="All Products"/>
+                    </group>
+                    <group>
+                        <field name="categ_ids"
+                               widget="many2many_tags"
+                               placeholder="All Categories"/>
+                    </group>
+                </group>
+
+                <group string="Aging Periods (days)">
+                    <group>
+                        <field name="period1" string="Period 1 (e.g. 30 days)"/>
+                        <field name="period2" string="Period 2 (e.g. 60 days)"/>
+                    </group>
+                    <group>
+                        <field name="period3" string="Period 3 (e.g. 90 days)"/>
+                        <field name="period4" string="Period 4 (e.g. 120 days)"/>
+                    </group>
+                    <div class="text-muted" colspan="2">
+                        The report will show 5 aging buckets:
+                        0–Period1, Period1+1–Period2, Period2+1–Period3,
+                        Period3+1–Period4, and &gt; Period4 days.
+                    </div>
+                </group>
+
+                <footer>
+                    <button name="action_print_report"
+                            string="Print PDF Report"
+                            type="object"
+                            class="btn-primary"
+                            icon="fa-print"/>
+                    <button name="action_export_excel"
+                            string="Export to Excel"
+                            type="object"
+                            class="btn-success"
+                            icon="fa-file-excel-o"/>
+                    <button string="Cancel"
+                            class="btn-secondary"
+                            special="cancel"/>
+                </footer>
+
+            </form>
+        </field>
+    </record>
+
+    <!-- ─── Action to open wizard ─────────────────────────────────────────── -->
+    <record id="action_stock_aging_report_wizard" model="ir.actions.act_window">
+        <field name="name">Stock Aging Report</field>
+        <field name="res_model">stock.aging.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

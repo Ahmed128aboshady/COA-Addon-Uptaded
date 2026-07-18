@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Record rules replaced by Python _search() overrides in:
+          - models/account_account.py   → filters chart of accounts
+          - models/account_move_line.py → filters journal items AND all
+                                          SQL-based accounting reports
+
+        Using _search() overrides instead of record rules because:
+          1. record rules on account.account block internal report computation
+             (reports browse accounts they need via ORM → AccessError)
+          2. _search() skips when env.su=True so system/automation is safe
+          3. _get_report_query() calls account.move.line._search() internally,
+             so the filter is injected into the SQL WHERE clause automatically
+    -->
+</odoo>

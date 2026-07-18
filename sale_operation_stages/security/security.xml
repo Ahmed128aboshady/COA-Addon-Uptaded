@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="module_category_sale_operations" model="ir.module.category">
+            <field name="name">عمليات المبيعات</field>
+            <field name="sequence">100</field>
+        </record>
+
+        <!-- مدير العمليات -->
+        <record id="group_operation_manager" model="res.groups">
+            <field name="name">مدير العمليات</field>
+            <field name="category_id" ref="module_category_sale_operations"/>
+            <field name="comment">يقدر يدير ويأكد كل مراحل العمليات</field>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+        <!-- موظف العمليات -->
+        <record id="group_operation_user" model="res.groups">
+            <field name="name">موظف العمليات</field>
+            <field name="category_id" ref="module_category_sale_operations"/>
+            <field name="comment">يقدر يشوف ويأكد المراحل بتاعته</field>
+            <field name="implied_ids" eval="[]"/>
+        </record>
+
+        <!-- مشاهدة فقط -->
+        <record id="group_operation_viewer" model="res.groups">
+            <field name="name">مشاهدة العمليات فقط</field>
+            <field name="category_id" ref="module_category_sale_operations"/>
+            <field name="comment">يقدر يشوف حالة العمليات بس بدون تعديل</field>
+        </record>
+
+    </data>
+</odoo>

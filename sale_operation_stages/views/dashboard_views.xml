@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- ============================================================
+             FORM بسيطة للداشبورد — بتفتح لما تدوس على أي سطر
+             ============================================================ -->
+        <record id="view_operations_dashboard_form" model="ir.ui.view">
+            <field name="name">sale.operation.dashboard.form</field>
+            <field name="model">sale.operation</field>
+            <field name="arch" type="xml">
+                <form string="تفاصيل العملية">
+                    <header>
+                        <button name="action_start"
+                                string="▶  ابدأ العمليات"
+                                type="object"
+                                class="btn-primary"
+                                invisible="state != 'draft'"/>
+                        <button name="action_next_stage"
+                                string="✅  أكد المرحلة"
+                                type="object"
+                                class="btn-primary"
+                                invisible="state != 'in_progress'"/>
+                        <button name="action_cancel"
+                                string="إلغاء"
+                                type="object"
+                                invisible="state in ('done', 'cancelled')"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,in_progress,done"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group string="بيانات الأوردر">
+                                <field name="name"          readonly="1" string="رقم العملية"/>
+                                <field name="sale_order_id" readonly="1" string="الأوردر"
+                                       options="{'no_open': True}"/>
+                                <field name="partner_id"    readonly="1" string="العميل"/>
+                            </group>
+                            <group string="المنتج">
+                                <field name="product_id" readonly="1" string="الصنف"/>
+                                <field name="qty"        readonly="1" string="الكمية"/>
+                                <field name="uom_id"     readonly="1" string="الوحدة"/>
+                            </group>
+                        </group>
+                        <group string="المرحلة الحالية">
+                            <group>
+                                <field name="stage_id" string="المرحلة"/>
+                            </group>
+                            <group/>
+                        </group>
+                        <separator string="المراحل اللي اتأكدت"/>
+                        <field name="stage_history_ids" readonly="1" nolabel="1">
+                            <list create="false" delete="false">
+                                <field name="date"     string="وقت التأكيد"/>
+                                <field name="stage_id" string="المرحلة"  widget="badge"/>
+                                <field name="user_id"  string="أكدها"/>
+                            </list>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- ============================================================
+             LIST VIEW — بدون grouping default عشان مفيش header links
+             ============================================================ -->
+        <record id="view_operations_dashboard_list" model="ir.ui.view">
+            <field name="name">sale.operation.dashboard.list</field>
+            <field name="model">sale.operation</field>
+            <field name="arch" type="xml">
+                <list string="العمليات"
+                      decoration-success="state == 'done'"
+                      decoration-warning="state == 'in_progress'"
+                      decoration-danger="state == 'cancelled'">
+                    <field name="name"          string="رقم العملية"/>
+                    <field name="sale_order_id" string="الأوردر"
+                           options="{'no_open': True}" readonly="1"/>
+                    <field name="partner_id"    string="العميل"   readonly="1" optional="show"/>
+                    <field name="product_id"    string="الصنف"/>
+                    <field name="qty"           string="الكمية"/>
+                    <field name="uom_id"        string="الوحدة"   optional="show"/>
+                    <field name="stage_id"      string="المرحلة"  widget="badge"/>
+                    <field name="state"         string="الحالة"   widget="badge"
+                           decoration-success="state == 'done'"
+                           decoration-warning="state == 'in_progress'"
+                           decoration-danger="state == 'cancelled'"/>
+                    <button name="action_start"
+                            string="▶ ابدأ"
+                            type="object"
+                            class="btn-sm btn-primary"
+                            invisible="state != 'draft'"/>
+                    <button name="action_next_stage"
+                            string="✅ أكد"
+                            type="object"
+                            class="btn-sm btn-success"
+                            invisible="state != 'in_progress'"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- ============================================================
+             KANBAN VIEW — board بالمراحل
+             ============================================================ -->
+        <record id="view_operations_dashboard_kanban" model="ir.ui.view">
+            <field name="name">sale.operation.dashboard.kanban</field>
+            <field name="model">sale.operation</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="stage_id" quick_create="false">
+                    <field name="name"/>
+                    <field name="sale_order_id"/>
+                    <field name="partner_id"/>
+                    <field name="product_id"/>
+                    <field name="qty"/>
+                    <field name="uom_id"/>
+                    <field name="stage_id"/>
+                    <field name="state"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click
+                                #{record.state.raw_value == 'done' ? 'border border-success' : ''}
+                                #{record.state.raw_value == 'cancelled' ? 'o_kanban_record_muted' : ''}">
+                                <div class="o_kanban_record_top">
+                                    <div class="o_kanban_record_headings">
+                                        <strong><field name="name"/></strong>
+                                    </div>
+                                    <field name="state" widget="badge"
+                                           decoration-success="state == 'done'"
+                                           decoration-warning="state == 'in_progress'"
+                                           decoration-danger="state == 'cancelled'"/>
+                                </div>
+                                <div class="o_kanban_record_body">
+                                    <div class="fw-semibold text-primary mb-1">
+                                        <i class="fa fa-file-text-o me-1"/>
+                                        <t t-esc="record.sale_order_id.value"/>
+                                    </div>
+                                    <div><i class="fa fa-cube me-1 text-muted"/>
+                                        <t t-esc="record.product_id.value"/>
+                                    </div>
+                                    <div class="text-muted small mt-1">
+                                        <i class="fa fa-user me-1"/>
+                                        <t t-esc="record.partner_id.value"/>
+                                    </div>
+                                </div>
+                                <div class="o_kanban_record_bottom mt-2">
+                                    <div class="oe_kanban_bottom_left">
+                                        <span class="text-muted small">
+                                            <t t-esc="record.qty.value"/>
+                                            <t t-esc="record.uom_id.value"/>
+                                        </span>
+                                    </div>
+                                    <div class="oe_kanban_bottom_right">
+                                        <t t-if="record.state.raw_value == 'draft'">
+                                            <button name="action_start" type="object"
+                                                    class="btn btn-sm btn-primary"
+                                                    onclick="event.stopPropagation()">
+                                                <i class="fa fa-play me-1"/>ابدأ
+                                            </button>
+                                        </t>
+                                        <t t-if="record.state.raw_value == 'in_progress'">
+                                            <button name="action_next_stage" type="object"
+                                                    class="btn btn-sm btn-success"
+                                                    onclick="event.stopPropagation()">
+                                                <i class="fa fa-check me-1"/>أكد
+                                            </button>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Search View -->
+        <record id="view_sale_operation_search" model="ir.ui.view">
+            <field name="name">sale.operation.search</field>
+            <field name="model">sale.operation</field>
+            <field name="arch" type="xml">
+                <search string="بحث في العمليات">
+                    <field name="name"          string="رقم العملية"/>
+                    <field name="sale_order_id" string="الأوردر"/>
+                    <field name="partner_id"    string="العميل"/>
+                    <field name="product_id"    string="الصنف"/>
+                    <field name="stage_id"      string="المرحلة"/>
+                    <separator/>
+                    <filter string="مسودة"        name="draft"       domain="[('state','=','draft')]"/>
+                    <filter string="جاري التنفيذ" name="in_progress" domain="[('state','=','in_progress')]"/>
+                    <filter string="اكتملت"        name="done"        domain="[('state','=','done')]"/>
+                    <separator/>
+                    <group expand="0" string="تجميع حسب">
+                        <filter string="الأوردر"  name="by_order"   context="{'group_by': 'sale_order_id'}"/>
+                        <filter string="المرحلة"  name="by_stage"   context="{'group_by': 'stage_id'}"/>
+                        <filter string="العميل"   name="by_partner" context="{'group_by': 'partner_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- ============================================================
+             Dashboard Action — يحدد الـ views الثلاثة بالظبط
+             ============================================================ -->
+        <record id="action_operations_dashboard" model="ir.actions.act_window">
+            <field name="name">داشبورد العمليات</field>
+            <field name="res_model">sale.operation</field>
+            <field name="view_mode">list,kanban,form</field>
+            <field name="search_view_id" ref="view_sale_operation_search"/>
+            <field name="view_ids" eval="[
+                (5, 0, 0),
+                (0, 0, {'view_mode': 'list',   'view_id': ref('view_operations_dashboard_list')}),
+                (0, 0, {'view_mode': 'kanban', 'view_id': ref('view_operations_dashboard_kanban')}),
+                (0, 0, {'view_mode': 'form',   'view_id': ref('view_operations_dashboard_form')}),
+            ]"/>
+            <field name="context">{'search_default_in_progress': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">لا توجد عمليات جارية</p>
+                <p>عند تأكيد سيلز أوردر وتفعيل "يوجد عمليات" ستظهر هنا.</p>
+            </field>
+        </record>
+
+    </data>
+</odoo>
