@@ -6,32 +6,16 @@
     <title>Customer Portal: Order Request — Community of Accountants</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --navy:       #0B3B56;
-            --navy-dark:  #072537;
-            --navy-mid:   #0f4d6e;
-            --red:        #E72B2E;
-            --red-hover:  #c42022;
-            --red-light:  rgba(231,43,46,0.08);
-            --red-border: rgba(231,43,46,0.18);
-            --ink:        #1E293B;
-            --muted:      #64748B;
-            --light:      #F8FAFC;
-            --border:     #E2E8F0;
-            --white:      #FFFFFF;
-            --success:    #10B981;
-            --gold:       #F59E0B;
-        }
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .coa { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--white); line-height: 1.6; max-width: 1100px; margin: 0 auto; padding: 0 0 60px; }
+        .coa { font-family: 'Inter', sans-serif; color: #1E293B; background: #FFFFFF; line-height: 1.6; max-width: 1100px; margin: 0 auto; padding: 0 0 60px; }
 
         /* ─── HERO ─────────────────────────────────────────────── */
         .hero {
-            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 55%, var(--navy-mid) 100%);
+            background: linear-gradient(135deg, #072537 0%, #0B3B56 55%, #0f4d6e 100%);
             border-radius: 0 0 24px 24px;
             padding: 52px 48px 48px;
-            color: var(--white);
+            color: #FFFFFF;
             position: relative;
             overflow: hidden;
             margin-bottom: 48px;
@@ -73,39 +57,13 @@
             padding: 5px 12px; border-radius: 20px;
             margin-bottom: 14px;
         }
-        .hero-badge svg { width: 12px; height: 12px; }
         .hero h1 {
             font-size: 2.4rem; font-weight: 900;
             line-height: 1.15; letter-spacing: -0.8px;
-            color: var(--white); margin-bottom: 14px;
+            color: #FFFFFF; margin-bottom: 14px;
         }
         .hero h1 em { color: #FCA5A5; font-style: normal; }
         .hero-desc { font-size: 1.05rem; color: #CBD5E1; line-height: 1.7; margin-bottom: 22px; max-width: 580px; }
-        .hero-meta { display: flex; flex-wrap: wrap; gap: 20px; }
-        .hero-meta-item { display: flex; align-items: center; gap: 7px; font-size: 0.82rem; color: #94A3B8; font-weight: 500; }
-        .hero-meta-item svg { color: var(--red); flex-shrink: 0; }
-        .hero-meta-item strong { color: var(--white); }
-
-        /* ─── STATS ROW ─────────────────────────────────────────── */
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            background: var(--border);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-            margin: 0 24px 52px;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.04);
-        }
-        .stat-cell {
-            background: var(--white);
-            padding: 24px 20px;
-            text-align: center;
-        }
-        .stat-num { font-size: 2rem; font-weight: 900; color: var(--navy); letter-spacing: -1px; }
-        .stat-num span { color: var(--red); }
-        .stat-label { font-size: 0.78rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; margin-top: 4px; }
 
         /* ─── SECTION TITLE ──────────────────────────────────────── */
         .section { padding: 0 24px; margin-bottom: 56px; }
@@ -113,30 +71,12 @@
         .sec-label {
             display: inline-block;
             font-size: 0.7rem; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase;
-            color: var(--red); background: var(--red-light);
-            border: 1px solid var(--red-border);
+            color: #E72B2E; background: rgba(231,43,46,0.08);
+            border: 1px solid rgba(231,43,46,0.18);
             padding: 4px 12px; border-radius: 20px; margin-bottom: 12px;
         }
-        .sec-title { font-size: 1.9rem; font-weight: 800; color: var(--navy); letter-spacing: -0.6px; margin-bottom: 10px; line-height: 1.2; }
-        .sec-sub { font-size: 1rem; color: var(--muted); max-width: 580px; margin: 0 auto; }
-
-        /* ─── ALERT BANNER ───────────────────────────────────────── */
-        .alert-banner {
-            display: flex; gap: 20px; align-items: flex-start;
-            background: linear-gradient(135deg, #FFF5F5, #FFF9F9);
-            border: 1px solid var(--red-border);
-            border-left: 5px solid var(--red);
-            border-radius: 14px;
-            padding: 24px 28px;
-            margin: 0 24px 52px;
-        }
-        .alert-icon {
-            background: var(--red-light);
-            border-radius: 50%; padding: 11px;
-            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-        }
-        .alert-content h3 { font-size: 1.15rem; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
-        .alert-content p { font-size: 0.95rem; color: var(--ink); line-height: 1.65; }
+        .sec-title { font-size: 1.9rem; font-weight: 800; color: #0B3B56; letter-spacing: -0.6px; margin-bottom: 10px; line-height: 1.2; }
+        .sec-sub { font-size: 1rem; color: #64748B; max-width: 580px; margin: 0 auto; }
 
         /* ─── FEATURE CARDS 3-COL ────────────────────────────────── */
         .features-grid {
@@ -148,10 +88,10 @@
         @media (max-width: 520px) { .features-grid { grid-template-columns: 1fr; } }
 
         .feat-card {
-            border: 1px solid var(--border);
+            border: 1px solid #E2E8F0;
             border-radius: 16px;
             padding: 28px 24px;
-            background: var(--white);
+            background: #FFFFFF;
             transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
         }
         .feat-card:hover { box-shadow: 0 12px 28px rgba(11,59,86,0.09); transform: translateY(-3px); border-color: rgba(11,59,86,0.2); }
@@ -164,161 +104,21 @@
         .feat-icon.red  { background: rgba(231,43,46,0.08); }
         .feat-icon.green { background: rgba(16,185,129,0.09); }
         .feat-icon.gold { background: rgba(245,158,11,0.1); }
-        .feat-icon.purple { background: rgba(139,92,246,0.09); }
-        .feat-icon.teal { background: rgba(6,182,212,0.09); }
-        .feat-card h4 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-        .feat-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
-
-        /* ─── BROWSER MOCKUP ─────────────────────────────────────── */
-        .mockup-wrap {
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.07);
-        }
-        .mockup-bar {
-            background: #F1F5F9;
-            border-bottom: 1px solid var(--border);
-            padding: 11px 20px;
-            display: flex; align-items: center; gap: 16px;
-        }
-        .dots { display: flex; gap: 6px; }
-        .dot { width: 11px; height: 11px; border-radius: 50%; }
-        .dot-r { background: #EF4444; }
-        .dot-y { background: #F59E0B; }
-        .dot-g { background: #10B981; }
-        .url-bar {
-            background: var(--white); border: 1px solid var(--border);
-            border-radius: 8px; padding: 5px 16px;
-            font-size: 0.78rem; color: var(--muted); font-family: monospace;
-            flex-grow: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
-        }
-        .mockup-body {
-            display: grid; grid-template-columns: 230px 1fr;
-            background: #F8FAFC; min-height: 500px;
-        }
-        @media (max-width: 620px) { .mockup-body { grid-template-columns: 1fr; } .m-sidebar { display: none; } }
-
-        /* Sidebar */
-        .m-sidebar {
-            background: var(--navy-dark);
-            color: var(--white);
-            padding: 28px 16px;
-            display: flex; flex-direction: column; gap: 28px;
-        }
-        .m-brand { font-size: 0.8rem; font-weight: 800; letter-spacing: 0.4px; line-height: 1.3; }
-        .m-brand em { color: var(--red); font-style: normal; }
-        .m-nav { display: flex; flex-direction: column; gap: 4px; }
-        .m-nav-item {
-            padding: 9px 12px; border-radius: 8px;
-            font-size: 0.8rem; font-weight: 500; color: #94A3B8;
-            display: flex; align-items: center; gap: 10px;
-        }
-        .m-nav-item.active { background: rgba(255,255,255,0.07); color: var(--white); border-left: 3px solid var(--red); }
-        .m-user { margin-top: auto; }
-        .m-user-row { display: flex; align-items: center; gap: 10px; }
-        .m-avatar {
-            width: 34px; height: 34px; border-radius: 8px;
-            background: rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center;
-            font-size: 0.82rem; font-weight: 700;
-        }
-        .m-user-name { font-size: 0.8rem; font-weight: 600; }
-        .m-user-role { font-size: 0.72rem; color: #64748B; }
-
-        /* Main content */
-        .m-main { padding: 28px; display: flex; flex-direction: column; gap: 20px; }
-        .m-page-title { font-size: 1.15rem; font-weight: 800; color: var(--navy); }
-        .m-card {
-            background: var(--white); border: 1px solid var(--border);
-            border-radius: 10px; padding: 22px; box-shadow: 0 1px 4px rgba(0,0,0,0.03);
-        }
-        .m-card-title { font-size: 0.82rem; font-weight: 700; color: var(--navy); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
-        .m-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px; }
-        .m-field label { font-size: 0.72rem; font-weight: 600; color: var(--ink); display: block; margin-bottom: 5px; }
-        .m-input {
-            border: 1px solid var(--border); border-radius: 6px;
-            padding: 7px 10px; font-size: 0.8rem; color: var(--muted);
-            background: #FAFAFA; width: 100%;
-        }
-        .m-addr {
-            margin-top: 6px; padding: 8px 10px; font-size: 0.75rem;
-            color: var(--muted); background: var(--light); border: 1px solid var(--border); border-radius: 6px;
-        }
-        /* Search */
-        .m-search-wrap { position: relative; margin-bottom: 18px; }
-        .m-search-label { font-size: 0.72rem; font-weight: 600; color: var(--ink); margin-bottom: 5px; }
-        .m-search-box {
-            display: flex; align-items: center;
-            border: 1.5px solid var(--navy); border-radius: 8px;
-            background: var(--white); overflow: hidden;
-        }
-        .m-search-input { flex: 1; padding: 9px 12px; border: none; outline: none; font-size: 0.82rem; }
-        .m-search-icon { padding: 0 12px; color: var(--navy); }
-        .m-dropdown {
-            position: absolute; top: 100%; left: 0; right: 0;
-            background: var(--white); border: 1.5px solid var(--navy); border-top: none;
-            border-radius: 0 0 8px 8px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); z-index: 5;
-        }
-        .m-drop-row {
-            padding: 9px 14px; display: flex; justify-content: space-between; align-items: center;
-            font-size: 0.82rem; border-bottom: 1px solid #F1F5F9; background: #FFFAFA;
-        }
-        .m-drop-code {
-            font-size: 0.68rem; color: var(--navy); background: rgba(11,59,86,0.06);
-            padding: 2px 6px; border-radius: 4px; margin-left: 7px; font-weight: 600;
-        }
-        .m-drop-price { font-weight: 700; color: var(--navy); font-size: 0.82rem; }
-        .m-add-btn {
-            background: var(--red); color: var(--white);
-            border: none; border-radius: 5px; width: 24px; height: 24px;
-            font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem;
-        }
-        /* Table */
-        .m-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
-        .m-table th { background: var(--light); padding: 8px 10px; border-bottom: 2px solid var(--border); color: var(--navy); font-weight: 700; text-align: left; }
-        .m-table td { padding: 10px 10px; border-bottom: 1px solid var(--border); }
-        .m-table td:last-child { text-align: center; }
-        .m-qty { width: 44px; text-align: center; border: 1px solid var(--border); border-radius: 5px; padding: 3px; font-weight: 600; }
-        .m-sub { font-weight: 700; color: var(--navy); }
-        .m-del { color: #EF4444; background: none; border: none; cursor: pointer; }
-        .m-submit-btn {
-            background: var(--navy); color: var(--white);
-            border: none; width: 100%; padding: 12px 20px;
-            border-radius: 8px; font-weight: 700; font-size: 0.9rem;
-            display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer;
-        }
-        .m-submit-tag {
-            background: var(--red); padding: 2px 9px; border-radius: 4px; font-size: 0.7rem; font-weight: 600;
-        }
-
-        /* ─── CAPABILITIES LIST ──────────────────────────────────── */
-        .caps-panel {
-            background: var(--light); border: 1px solid var(--border);
-            border-radius: 20px; padding: 44px;
-        }
-        .caps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-        @media (max-width: 680px) { .caps-grid { grid-template-columns: 1fr; } }
-        .cap-item { display: flex; gap: 16px; align-items: flex-start; }
-        .cap-icon {
-            background: var(--red-light); border: 1px solid var(--red-border);
-            border-radius: 50%; padding: 10px; flex-shrink: 0;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .cap-text h5 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
-        .cap-text p { font-size: 0.88rem; color: var(--muted); line-height: 1.55; }
+        .feat-card h4 { font-size: 1.05rem; font-weight: 700; color: #0B3B56; margin-bottom: 8px; }
+        .feat-card p { font-size: 0.9rem; color: #64748B; line-height: 1.6; }
 
         /* ─── SPECS TABLE ────────────────────────────────────────── */
         .specs {
             width: 100%; border-collapse: collapse;
-            border: 1px solid var(--border); border-radius: 14px;
+            border: 1px solid #E2E8F0; border-radius: 14px;
             overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.03);
         }
         .specs tr:last-child td { border-bottom: none; }
-        .specs td { padding: 16px 24px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
-        .specs td.k { font-weight: 700; color: var(--navy); width: 28%; background: rgba(11,59,86,0.02); }
-        .specs td.v { color: var(--ink); }
+        .specs td { padding: 16px 24px; border-bottom: 1px solid #E2E8F0; font-size: 0.9rem; }
+        .specs td.k { font-weight: 700; color: #0B3B56; width: 28%; background: rgba(11,59,86,0.02); }
+        .specs td.v { color: #1E293B; }
         .specs td.v code {
-            background: rgba(11,59,86,0.06); color: var(--navy);
+            background: rgba(11,59,86,0.06); color: #0B3B56;
             padding: 2px 7px; border-radius: 5px; font-size: 0.83rem; font-weight: 600;
         }
         .specs-tag {
@@ -328,53 +128,36 @@
             padding: 2px 8px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; margin-left: 8px;
         }
 
-        /* ─── WORKFLOW STEPS ─────────────────────────────────────── */
-        .workflow { display: flex; flex-direction: column; gap: 0; }
-        .wf-step { display: flex; gap: 24px; align-items: flex-start; padding: 22px 0; border-bottom: 1px solid var(--border); }
-        .wf-step:last-child { border-bottom: none; }
-        .wf-num {
-            width: 40px; height: 40px; border-radius: 50%;
-            background: var(--navy); color: var(--white);
-            font-size: 0.9rem; font-weight: 800;
-            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-        }
-        .wf-body h5 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
-        .wf-body p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
-        .wf-arrow { width: 1px; height: 20px; background: var(--border); margin-left: 19px; }
-
         /* ─── FOOTER / SUPPORT ───────────────────────────────────── */
         .footer-block {
-            background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+            background: linear-gradient(135deg, #072537, #0B3B56);
             border-radius: 20px;
             padding: 52px 36px;
             text-align: center;
-            border-top: 5px solid var(--red);
+            border-top: 5px solid #E72B2E;
             box-shadow: 0 16px 40px rgba(7,37,55,0.18);
             margin: 0 24px;
         }
-        .footer-logo { font-size: 1.45rem; font-weight: 900; color: var(--white); letter-spacing: -0.5px; margin-bottom: 14px; }
-        .footer-logo em { color: var(--red); font-style: normal; }
+        .footer-logo { font-size: 1.45rem; font-weight: 900; color: #FFFFFF; letter-spacing: -0.5px; margin-bottom: 14px; }
+        .footer-logo em { color: #E72B2E; font-style: normal; }
         .footer-desc { font-size: 0.96rem; color: #94A3B8; max-width: 600px; margin: 0 auto 28px; line-height: 1.7; }
         .footer-btns { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
         .footer-btn {
             display: inline-flex; align-items: center; gap: 9px;
             background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);
-            color: var(--white); text-decoration: none;
+            color: #FFFFFF; text-decoration: none;
             padding: 12px 26px; border-radius: 10px; font-size: 0.88rem; font-weight: 600;
             transition: background 0.2s, border-color 0.2s;
         }
-        .footer-btn:hover { background: var(--red); border-color: var(--red); }
-        .footer-btn.primary { background: var(--red); border-color: var(--red); }
-        .footer-btn.primary:hover { background: var(--red-hover); border-color: var(--red-hover); }
+        .footer-btn:hover { background: #E72B2E; border-color: #E72B2E; }
+        .footer-btn.primary { background: #E72B2E; border-color: #E72B2E; }
+        .footer-btn.primary:hover { background: #c42022; border-color: #c42022; }
         .footer-copy { margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.07); font-size: 0.78rem; color: #475569; }
 
         @media (max-width: 760px) {
             .hero { padding: 36px 24px; }
             .hero h1 { font-size: 1.8rem; }
-            .stats-row { grid-template-columns: repeat(2, 1fr); }
             .section { padding: 0 16px; }
-            .stats-row { margin: 0 16px 40px; }
-            .alert-banner { margin: 0 16px 40px; }
             .footer-block { margin: 0 16px; }
         }
     </style>
@@ -386,404 +169,163 @@
     <div class="hero">
         <div class="hero-inner">
             <div class="hero-icon-wrap">
-                <img src="icon.png" alt="Customer Portal Order Icon">
+                <img src="icon.png" alt="Customer Portal: Order Request Icon">
             </div>
             <div class="hero-body">
                 <div class="hero-badge">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                     Odoo 18.0 · Community &amp; Enterprise
                 </div>
-                <h1>Customer Portal: <em>Order Request</em></h1>
+                <h1>Customer Portal: Order Request</h1>
                 <p class="hero-desc">
-                    Empower B2B clients to submit order requests directly from their native Odoo portal.
-                    Real-time product search, pricelist-aware pricing, multi-address routing — zero admin overhead.
+                    Empower customers to search products, select addresses, and request new sales quotations directly from their portal.
                 </p>
-                <div class="hero-meta">
-                    <div class="hero-meta-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                        by <strong>Community of Accountants</strong>
-                    </div>
-                    <div class="hero-meta-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                        <strong>LGPL-3</strong> License
-                    </div>
-                    <div class="hero-meta-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                        No configuration required
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 
-    <!-- ═══ STATS ════════════════════════════════════════════ -->
-    <div class="stats-row">
-        <div class="stat-cell">
-            <div class="stat-num">24<span>/7</span></div>
-            <div class="stat-label">Self-Service Ordering</div>
-        </div>
-        <div class="stat-cell">
-            <div class="stat-num">0<span>s</span></div>
-            <div class="stat-label">Admin Touch Required</div>
-        </div>
-        <div class="stat-cell">
-            <div class="stat-num"><span>#</span>1</div>
-            <div class="stat-label">Instant Draft Quotation</div>
-        </div>
-        <div class="stat-cell">
-            <div class="stat-num">100<span>%</span></div>
-            <div class="stat-label">Native Odoo Integration</div>
-        </div>
-    </div>
-
-    <!-- ═══ ALERT BANNER ════════════════════════════════════ -->
-    <div class="alert-banner">
-        <div class="alert-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <div class="alert-content">
-            <h3>B2B Self-Service — Without Touching Your ERP</h3>
-            <p>
-                Traditional order intake requires customers to email, call, or manually enter data into your system.
-                This module gives wholesale buyers a professional ordering portal tied directly to their Odoo pricelist, addresses, and product catalog —
-                generating a draft quotation automatically with a single click.
-            </p>
-        </div>
-    </div>
-
-    <!-- ═══ FEATURES ════════════════════════════════════════ -->
+    <!-- ═══ KEY FEATURES ═══════════════════════════════════ -->
     <div class="section">
         <div class="sec-head">
-            <div class="sec-label">Core Features</div>
-            <h2 class="sec-title">Everything Your B2B Customers Need</h2>
-            <p class="sec-sub">A complete ordering loop — from product search to quotation creation — without leaving the portal.</p>
+            <span class="sec-label">Key Features</span>
+            <h2 class="sec-title">Key Capabilities</h2>
+            <p class="sec-sub">Streamline your workflows with these features built directly into your Odoo instance.</p>
         </div>
         <div class="features-grid">
-            <div class="feat-card">
-                <div class="feat-icon navy">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B3B56" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                </div>
-                <h4>Live Product Autocomplete</h4>
-                <p>Customers search by product name or internal reference code. Results are fetched directly from your live inventory catalog in real time.</p>
+            
+        <div class="feat-card">
+            <div class="feat-icon navy">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #0B3B56;">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
             </div>
-            <div class="feat-card">
-                <div class="feat-icon red">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                </div>
-                <h4>Pricelist-Aware Pricing</h4>
-                <p>Displays each product's unit price from the partner's assigned B2B pricelist. Prevents unauthorized price lookups or discount mismatches.</p>
+            <h4>Feature 1</h4>
+            <p>Instant Product Search: Customers can search for items by name or barcode with live autocomplete suggestions.</p>
+        </div>
+        
+        <div class="feat-card">
+            <div class="feat-icon red">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #E72B2E;">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
             </div>
-            <div class="feat-card">
-                <div class="feat-icon green">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                </div>
-                <h4>Multi-Address Support</h4>
-                <p>Fetches all billing and shipping addresses tied to the partner. Perfect for multi-branch B2B clients with different delivery destinations.</p>
+            <h4>Feature 2</h4>
+            <p>Rich Product Details: Displays high-quality product images, internal reference codes, pricing, and units of measure (UoM).</p>
+        </div>
+        
+        <div class="feat-card">
+            <div class="feat-icon green">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #10B981;">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
             </div>
-            <div class="feat-card">
-                <div class="feat-icon gold">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                </div>
-                <h4>Draft Quotation Creation</h4>
-                <p>Submission instantly creates a sale order in draft status. No data entry needed — your team receives a ready-to-review quotation.</p>
+            <h4>Feature 3</h4>
+            <p>Multi-Address Support: Customers can select separate shipping and billing addresses associated with their account.</p>
+        </div>
+        
+        <div class="feat-card">
+            <div class="feat-icon gold">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #F59E0B;">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
             </div>
-            <div class="feat-card">
-                <div class="feat-icon purple">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                </div>
-                <h4>Quotation Sent Notification</h4>
-                <p>After creation, the order is set to "Quotation Sent" state — triggering standard Odoo email notifications and chatter logs automatically.</p>
+            <h4>Feature 4</h4>
+            <p>Custom Instructions: Provides a dedicated field for delivery instructions or special order notes.</p>
+        </div>
+        
+        <div class="feat-card">
+            <div class="feat-icon navy">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #0B3B56;">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
             </div>
-            <div class="feat-card">
-                <div class="feat-icon teal">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-                </div>
-                <h4>Mobile Responsive</h4>
-                <p>The portal form is fully responsive. Your customers can place order requests from desktop, tablet, or smartphone with the same professional experience.</p>
+            <h4>Feature 5</h4>
+            <p>Auto-Quotation Creation: Instantly generates draft Sale Orders (quotations) in the Odoo backend, sets them to 'Quotation Sent', and sends notifications.</p>
+        </div>
+        
+        <div class="feat-card">
+            <div class="feat-icon red">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #E72B2E;">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
             </div>
+            <h4>Feature 6</h4>
+            <p>Confirmation Receipt: Displays a professional confirmation screen with the generated quotation number and details.</p>
+        </div>
+        
         </div>
     </div>
 
-    <!-- ═══ BROWSER MOCKUP ═══════════════════════════════════ -->
+    <!-- ═══ DESCRIPTION ════════════════════════════════════ -->
     <div class="section">
         <div class="sec-head">
-            <div class="sec-label">Live Preview</div>
-            <h2 class="sec-title">The Ordering Interface, Up Close</h2>
-            <p class="sec-sub">A high-fidelity mockup of the customer-facing order request form integrated into the Odoo portal.</p>
+            <span class="sec-label">Overview</span>
+            <h2 class="sec-title">Functional Description</h2>
         </div>
-        <div class="mockup-wrap">
-            <div class="mockup-bar">
-                <div class="dots">
-                    <span class="dot dot-r"></span>
-                    <span class="dot dot-y"></span>
-                    <span class="dot dot-g"></span>
-                </div>
-                <div class="url-bar">https://portal.communityofaccountants.com/my/order/request</div>
-            </div>
-            <div class="mockup-body">
-                <!-- Sidebar -->
-                <div class="m-sidebar">
-                    <div class="m-brand">COMMUNITY OF <em>ACCOUNTANTS</em></div>
-                    <div class="m-nav">
-                        <div class="m-nav-item">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                            Dashboard
-                        </div>
-                        <div class="m-nav-item">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                            Quotations
-                        </div>
-                        <div class="m-nav-item">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-                            Invoices
-                        </div>
-                        <div class="m-nav-item active">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-                            Order Request
-                        </div>
-                    </div>
-                    <div class="m-user">
-                        <div class="m-user-row">
-                            <div class="m-avatar">AC</div>
-                            <div>
-                                <div class="m-user-name">Acme Corp.</div>
-                                <div class="m-user-role">B2B Customer</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Main -->
-                <div class="m-main">
-                    <div class="m-page-title">New Order Request</div>
-                    <div class="m-card">
-                        <div class="m-card-title">Delivery &amp; Billing Information</div>
-                        <div class="m-grid-2">
-                            <div class="m-field">
-                                <label>Invoicing Address</label>
-                                <div class="m-input">Acme Corporation — Cairo HQ</div>
-                                <div class="m-addr">🏢 102 Financial District, Cairo, Egypt</div>
-                            </div>
-                            <div class="m-field">
-                                <label>Shipping Address</label>
-                                <div class="m-input">Acme Warehouse — Dock 4</div>
-                                <div class="m-addr">📦 Plot 404 Industrial Zone, Giza, Egypt</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="m-card">
-                        <div class="m-card-title">Product Search &amp; Order Lines</div>
-                        <div class="m-search-wrap">
-                            <div class="m-search-label">Search Products</div>
-                            <div class="m-search-box">
-                                <input class="m-search-input" type="text" value="ergonomic chair" readonly>
-                                <div class="m-search-icon">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                                </div>
-                            </div>
-                            <div class="m-dropdown">
-                                <div class="m-drop-row">
-                                    <div>
-                                        <strong>Ergonomic Office Chair</strong>
-                                        <span class="m-drop-code">CHA-ERG</span>
-                                    </div>
-                                    <div style="display:flex;align-items:center;gap:12px;">
-                                        <span class="m-drop-price">$150.00 / Unit</span>
-                                        <button class="m-add-btn" onclick="return false;">+</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <table class="m-table">
-                            <thead>
-                                <tr>
-                                    <th>Product</th>
-                                    <th style="width:70px;text-align:center;">Qty</th>
-                                    <th>Unit Price</th>
-                                    <th>Subtotal</th>
-                                    <th style="width:36px;"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <strong>Ergonomic Office Chair</strong><br>
-                                        <small style="color:var(--muted)">Ref: CHA-ERG</small>
-                                    </td>
-                                    <td style="text-align:center;"><input class="m-qty" value="5" readonly></td>
-                                    <td>$150.00</td>
-                                    <td class="m-sub">$750.00</td>
-                                    <td><button class="m-del" onclick="return false;">
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-                                    </button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div style="text-align:right;padding:10px 0;font-size:0.85rem;color:var(--muted);">
-                            Total: <strong style="color:var(--navy);font-size:1.05rem;">$750.00</strong>
-                        </div>
-                        <button class="m-submit-btn" onclick="return false;">
-                            Submit Order Request <span class="m-submit-tag">Creates Draft Quotation</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
+        <div style="background: #F8FAFC; padding: 32px; border-radius: 16px; border: 1px solid #E2E8F0; font-size: 0.95rem; color: #1E293B; line-height: 1.8; white-space: pre-line;">
+            
+Customer Portal Order Request for Odoo
+======================================
+Boost your sales efficiency and customer satisfaction by offering a seamless self-service ordering interface inside the Odoo Customer Portal.
+
+Key Features:
+-------------
+* **Instant Product Search**: Customers can search for items by name or barcode with live autocomplete suggestions.
+* **Rich Product Details**: Displays high-quality product images, internal reference codes, pricing, and units of measure (UoM).
+* **Multi-Address Support**: Customers can select separate shipping and billing addresses associated with their account.
+* **Custom Instructions**: Provides a dedicated field for delivery instructions or special order notes.
+* **Auto-Quotation Creation**: Instantly generates draft Sale Orders (quotations) in the Odoo backend, sets them to 'Quotation Sent', and sends notifications.
+* **Confirmation Receipt**: Displays a professional confirmation screen with the generated quotation number and details.
+* **Mobile Responsive**: Fully optimized for mobile, tablet, and desktop viewports.
+
+This module is the perfect solution for B2B portal orders, wholesale customer portals, and quick reordering systems.
+    
         </div>
     </div>
 
-    <!-- ═══ HOW IT WORKS ════════════════════════════════════ -->
+    <!-- ═══ TECHNICAL SPECS ════════════════════════════════ -->
     <div class="section">
         <div class="sec-head">
-            <div class="sec-label">Workflow</div>
-            <h2 class="sec-title">How It Works — 4 Simple Steps</h2>
-            <p class="sec-sub">From customer login to backend quotation — fully automated, zero manual handling.</p>
-        </div>
-        <div class="workflow">
-            <div class="wf-step">
-                <div class="wf-num">1</div>
-                <div class="wf-body">
-                    <h5>Customer Logs into Their Portal</h5>
-                    <p>The client accesses the native Odoo Customer Portal with their existing credentials. A new "Order Request" menu item appears automatically — no configuration required on the customer side.</p>
-                </div>
-            </div>
-            <div class="wf-step">
-                <div class="wf-num">2</div>
-                <div class="wf-body">
-                    <h5>Selects Addresses &amp; Searches Products</h5>
-                    <p>The system pre-loads all billing and delivery addresses for the partner. The customer searches products live from your catalog, seeing their specific B2B pricing per item.</p>
-                </div>
-            </div>
-            <div class="wf-step">
-                <div class="wf-num">3</div>
-                <div class="wf-body">
-                    <h5>Builds and Submits the Order</h5>
-                    <p>Products are added to the order list with adjustable quantities. Once satisfied, the customer clicks Submit — triggering an instant backend call to create the sale order.</p>
-                </div>
-            </div>
-            <div class="wf-step">
-                <div class="wf-num">4</div>
-                <div class="wf-body">
-                    <h5>Your Team Receives a Ready-to-Confirm Quotation</h5>
-                    <p>A draft sale quotation appears in the Odoo backend with all line items, addresses, and partner data populated. The status is set to "Quotation Sent" — Odoo email notifications fire automatically.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ═══ CAPABILITIES ════════════════════════════════════ -->
-    <div class="section">
-        <div class="sec-head">
-            <div class="sec-label">Full Capabilities</div>
-            <h2 class="sec-title">Everything Built Into the Module</h2>
-            <p class="sec-sub">No third-party services, no external APIs — entirely native Odoo architecture.</p>
-        </div>
-        <div class="caps-panel">
-            <div class="caps-grid">
-                <div class="cap-item">
-                    <div class="cap-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                    </div>
-                    <div class="cap-text">
-                        <h5>Product Autocomplete Engine</h5>
-                        <p>Real-time product lookup by name, reference, or barcode. Returns matching results with unit pricing from partner pricelist.</p>
-                    </div>
-                </div>
-                <div class="cap-item">
-                    <div class="cap-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                    </div>
-                    <div class="cap-text">
-                        <h5>Pricelist Price Rendering</h5>
-                        <p>Prices are resolved from the partner's assigned pricelist. Customers only see their negotiated B2B rates, never the public price.</p>
-                    </div>
-                </div>
-                <div class="cap-item">
-                    <div class="cap-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                    </div>
-                    <div class="cap-text">
-                        <h5>Partner Address Loader</h5>
-                        <p>Retrieves all commercial, delivery, and invoice addresses from the partner's res.partner tree. Displayed in clear dropdown selectors.</p>
-                    </div>
-                </div>
-                <div class="cap-item">
-                    <div class="cap-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                    </div>
-                    <div class="cap-text">
-                        <h5>Instant Sale.Order Creation</h5>
-                        <p>Python controller writes a complete sale order with all lines, addresses, and partner data on submit. No queue or delay involved.</p>
-                    </div>
-                </div>
-                <div class="cap-item">
-                    <div class="cap-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                    </div>
-                    <div class="cap-text">
-                        <h5>Quotation Sent State Trigger</h5>
-                        <p>After creation, the quotation state advances to "Quotation Sent" — firing Odoo standard mail templates and chatter log entries.</p>
-                    </div>
-                </div>
-                <div class="cap-item">
-                    <div class="cap-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E72B2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                    </div>
-                    <div class="cap-text">
-                        <h5>Mobile-Optimized Portal Form</h5>
-                        <p>Bootstrap-compatible, responsive QWeb template. Renders cleanly across desktop, tablet, and mobile browsers without extra CSS overhead.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ═══ SPECS TABLE ══════════════════════════════════════ -->
-    <div class="section">
-        <div class="sec-head">
-            <div class="sec-label">Technical Info</div>
-            <h2 class="sec-title">Technical Specifications</h2>
-            <p class="sec-sub">Built entirely with native Odoo APIs — no external services or third-party dependencies.</p>
+            <span class="sec-label">Specifications</span>
+            <h2 class="sec-title">Technical Information</h2>
         </div>
         <table class="specs">
             <tr>
-                <td class="k">Odoo Compatibility</td>
-                <td class="v">Odoo 18.0 (Community &amp; Enterprise) <span class="specs-tag">Certified</span></td>
+                <td class="k">Module Technical Name</td>
+                <td class="v"><code>customer_portal_order</code></td>
             </tr>
             <tr>
-                <td class="k">Dependencies</td>
-                <td class="v"><code>sale_management</code> &nbsp; <code>portal</code> &nbsp; <code>website</code></td>
+                <td class="k">Version</td>
+                <td class="v">18.0.1.0.0</td>
             </tr>
             <tr>
                 <td class="k">License</td>
-                <td class="v">LGPL-3 — Free to use and modify with attribution</td>
+                <td class="v">LGPL-3</td>
             </tr>
             <tr>
-                <td class="k">Core Technologies</td>
-                <td class="v">Python controllers · QWeb XML templates · Bootstrap · Vanilla JavaScript</td>
+                <td class="k">Dependencies</td>
+                <td class="v"><code>sale_management</code>, <code>portal</code>, <code>website</code></td>
             </tr>
             <tr>
-                <td class="k">Publisher</td>
-                <td class="v">Community of Accountants · <a href="https://www.communityofaccountants.com" style="color:var(--navy);font-weight:600;">communityofaccountants.com</a></td>
+                <td class="k">Price</td>
+                <td class="v"><strong>59.0 USD</strong><span class="specs-tag">Paid App</span></td>
             </tr>
         </table>
     </div>
 
-    <!-- ═══ FOOTER ═══════════════════════════════════════════ -->
+    <!-- ═══ FOOTER ═════════════════════════════════════════ -->
     <div class="footer-block">
-        <div class="footer-logo">COMMUNITY OF <em>ACCOUNTANTS</em></div>
-        <p class="footer-desc">
-            COA is a premium Odoo systems integrator specializing in corporate ERP implementations, custom module development, financial automation, and inventory management systems across the MENA region.
-        </p>
+        <div class="footer-logo">Community of <em>Accountants</em></div>
+        <p class="footer-desc">Professional Odoo applications designed to streamline accounting, sales, and warehouse operations.</p>
         <div class="footer-btns">
-            <a href="mailto:support@communityofaccountants.com" class="footer-btn primary">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="https://wa.me/201013907174" class="footer-btn primary" target="_blank">
                 Contact Support
             </a>
             <a href="https://www.communityofaccountants.com" class="footer-btn" target="_blank">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                 Visit Website
             </a>
         </div>
-        <div class="footer-copy">© 2026 Community of Accountants. All rights reserved.</div>
+        <div class="footer-copy">&copy; 2026 Community of Accountants. All rights reserved.</div>
     </div>
 
 </div>

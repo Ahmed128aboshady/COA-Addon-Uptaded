@@ -23,7 +23,11 @@ This module is the perfect solution for B2B portal orders, wholesale customer po
     'author': 'Community of Accountants',
     'website': 'https://www.communityofaccountants.com',
     'category': 'Sales',
-    'depends': ['sale_management', 'portal', 'website'],
+    'depends': [
+        'sale_management',
+        'portal',
+        'website',
+    ],
     'data': [
         'views/portal_templates.xml',
     ],
@@ -32,10 +36,12 @@ This module is the perfect solution for B2B portal orders, wholesale customer po
             'customer_portal_order/static/src/js/portal_order.js',
         ],
     },
-    'price': 59.00,
+    'price': 59.0,
     'currency': 'USD',
     'installable': True,
     'application': False,
     'license': 'LGPL-3',
-    'images': ['static/description/banner.png'],
+    'images': [
+        'static/description/banner.png',
+    ],
 }
