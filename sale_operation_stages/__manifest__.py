@@ -1,9 +1,15 @@
 # -*- coding: utf-8 -*-
 {
+    'description': """Tracks custom operational steps for ordered items before warehouse shipping:
+
+Key Features:
+* Create and configure multiple steps (cutting, processing, quality inspection, etc.).
+* Interactive dashboard showing current pipeline stage of every order.
+* Automatic notifications when an order line moves between stages.""",
     'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Sale Operation Stages',
     'version': '18.0.1.0.0',
-    'summary': 'Add configurable operational stages to sale orders for better pipeline tracking.',
+    'summary': 'Track manufacturing and packing operations on sale order lines.',
     'author': 'Community of Accountants (COA)',
     'category': 'Sales/Inventory',
     'depends': [

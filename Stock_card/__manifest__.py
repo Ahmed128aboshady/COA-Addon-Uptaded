@@ -1,10 +1,16 @@
 # -*- coding: utf-8 -*-
 {
+    'description': """Generates historical ledger cards for inventory tracking:
+
+Key Features:
+* Displays inventory additions, subtractions, and net running balance.
+* Filter ledger card by individual product, warehouse, or location.
+* Perfect for inventory control, audit compliance, and discrepancy resolution.""",
     'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Stock Card Report',
     'version': '19.0.1.0.0',
     'category': 'Inventory/Inventory',
-    'summary': 'Stock Card Report with running balance per product and storage location.',
+    'summary': 'Stock card report with running balance per product and location.',
     'depends': [
         'stock',
     ],

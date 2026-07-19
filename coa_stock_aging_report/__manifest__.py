@@ -3,21 +3,20 @@
     'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Inventory/Stock Aging Report',
     'version': '19.0.1.0.0',
-    'summary': 'Stock Aging Report grouped by Warehouse and Location with running balance.',
-    'description': """
-        Stock Aging Report
-        ==================
-        The stock aging analysis report helps you analyze the age of your stock
-        by organizing the value and quantity into configurable time periods.
+    'summary': 'Analyze the age of stock by grouping quantities into time periods.',
+    'description': """Provides a comprehensive stock aging dashboard:
 
-        Features:
-        - Stock Aging Report by Warehouse
-        - Stock Aging Report by Location
-        - Filter by Products or Product Categories
-        - Configurable aging periods (e.g. 0-30, 31-60, 61-90, 91-120, 120+ days)
-        - PDF Export
-        - FIFO-based age calculation
-    """,
+Key Features:
+* Group stock age by warehouse or specific storage locations.
+* Filter results by products, product categories, or dates.
+* Configurable aging periods (0-30 days, 31-60 days, etc.).
+* Supports detailed PDF/Excel export.""""Provides a comprehensive stock aging dashboard:
+
+Key Features:
+* Group stock age by warehouse or specific storage locations.
+* Filter results by products, product categories, or dates.
+* Configurable aging periods (0-30 days, 31-60 days, etc.).
+* Supports detailed PDF/Excel export.""",
     'category': 'Inventory/Inventory',
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',

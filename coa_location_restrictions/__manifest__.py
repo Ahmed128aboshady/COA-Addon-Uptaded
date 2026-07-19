@@ -2,24 +2,20 @@
 {
     'name': 'Warehouse Location & Operation Restriction',
     'version': '19.0.1.0.2',
-    'summary': 'Restrict inventory operations and stock moves to allowed warehouses and locations per user.',
-    'description': """
-Warehouse Location & Operation Restriction for Odoo
-==================================================
-Secure your inventory management by limiting user access to specific warehouses, stock locations, and transfer picking operation types. Perfect for multi-warehouse companies and strict inventory audit compliance.
+    'summary': 'Restrict inventory operations and stock moves to allowed warehouses and locations.',
+    'description': """Limits user access to specific warehouses, locations, and picking operation types:
 
 Key Features:
--------------
-* **User-Level Restrictions Tab**: Easily configure restrictions directly on the User Form under a dedicated 'Location Restrictions' tab.
-* **Warehouse Access Control**: Restrict inventory users so they can only view and select their designated warehouses.
-* **Stock Location Restrictions**: Restrict access to specific locations (automatically includes all child stock locations recursively).
-* **Operation Type Scope**: Limit user operations (e.g. only allow Receipt picking type, or restrict Internal Transfers).
-* **Validation Security Guard**: Prevents validating, modifying, or viewing stock pickings, moves, and transfers involving unauthorized locations or operations, with clear and clean warning dialogs.
-* **Stock Levels & Quant Filtering**: Automatically scopes inventory/stock quants view so users only see quantities in their allowed locations.
-* **Odoo 19 Native Compatibility**: Rebuilt utilizing the Odoo 19 _search() hooks for optimal performance. Avoids legacy views and guards against admin bypass loop issues.
+* Configurable location permissions tab inside User profile.
+* Restricts stock picking, validating, and viewing of moves at unauthorized locations.
+* Automatically filters stock quants so users only see quantities in allowed places.
+* Fully compatible with recursive locations and multi-warehouse operations.""""Limits user access to specific warehouses, locations, and picking operation types:
 
-Protect your stock integrity and prevent unauthorized stock moves effortlessly.
-    """,
+Key Features:
+* Configurable location permissions tab inside User profile.
+* Restricts stock picking, validating, and viewing of moves at unauthorized locations.
+* Automatically filters stock quants so users only see quantities in allowed places.
+* Fully compatible with recursive locations and multi-warehouse operations.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',
     'support': 'https://api.whatsapp.com/send?phone=201013907174',

@@ -4,37 +4,23 @@
     'name': 'COA Account Merge',
     'version': '18.0.1.0.0',
     'category': 'Accounting',
-    'summary': 'Merge two or more GL accounts into one — similar to the native Contacts merge feature.'
+    'summary': 'Merge two or more GL accounts while preserving full journal ledger history.'
                'all journal items and references move to one account.',
-    'description': """
-COA Account Merge
-=================
-Adds a "Merge Accounts" action on the Chart of Accounts (list view,
-Actions menu), similar to the native Contacts merge:
+    'description': """Adds a "Merge Accounts" action on the Chart of Accounts list view:
 
-* Select 2+ accounts, pick the destination account.
-* ALL journal items are repointed to the destination account, so the
-  General Ledger / Partner Ledger show one combined account with the
-  movements naturally ordered by date and a correct running balance.
-* Every other reference in the database is repointed too (journal
-  default accounts, taxes, products, partner receivable/payable
-  properties, reconciliation models, fiscal positions, assets, ...),
-  using a generic foreign-key scan plus company-dependent (jsonb)
-  fields handling - the same technique as the native partner merge.
-* Source accounts are archived afterwards (not deleted), keeping the
-  chart clean while remaining reversible from the archived filter.
+Key Features:
+* Select two or more accounts, select a destination account, and merge.
+* Re-points all historical Journal Items to the destination account.
+* Keeps chronological date order and running balances completely intact.
+* Updates all default accounting rules, tax rules, product models, and partner records.
+* Archives source accounts safely instead of deleting them.""""Adds a "Merge Accounts" action on the Chart of Accounts list view:
 
-Safeguards
-----------
-* Accountant/Advisor (account manager) group only.
-* Accounts must share the same company scope.
-* Accounts must have the same Type, unless "Allow different types"
-  is explicitly checked.
-* Blocks the merge if any journal item on a source account belongs to
-  a hashed (inalterable) entry.
-* If any source account is reconcilable, the destination is made
-  reconcilable automatically so existing reconciliations stay valid.
-""",
+Key Features:
+* Select two or more accounts, select a destination account, and merge.
+* Re-points all historical Journal Items to the destination account.
+* Keeps chronological date order and running balances completely intact.
+* Updates all default accounting rules, tax rules, product models, and partner records.
+* Archives source accounts safely instead of deleting them.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',
     'license': 'LGPL-3',

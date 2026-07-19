@@ -3,24 +3,20 @@
     'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Customer Portal: Order Request',
     'version': '18.0.1.0.0',
-    'summary': 'Empower customers to search products, select addresses, and request new quotations from their portal.',
-    'description': """
-Customer Portal Order Request for Odoo
-======================================
-Boost your sales efficiency and customer satisfaction by offering a seamless self-service ordering interface inside the Odoo Customer Portal.
+    'summary': 'Empower customers to search products, select addresses, and request quotations.',
+    'description': """A complete customer self-service shopping experience inside the portal:
 
 Key Features:
--------------
-* **Instant Product Search**: Customers can search for items by name or barcode with live autocomplete suggestions.
-* **Rich Product Details**: Displays high-quality product images, internal reference codes, pricing, and units of measure (UoM).
-* **Multi-Address Support**: Customers can select separate shipping and billing addresses associated with their account.
-* **Custom Instructions**: Provides a dedicated field for delivery instructions or special order notes.
-* **Auto-Quotation Creation**: Instantly generates draft Sale Orders (quotations) in the Odoo backend, sets them to 'Quotation Sent', and sends notifications.
-* **Confirmation Receipt**: Displays a professional confirmation screen with the generated quotation number and details.
-* **Mobile Responsive**: Fully optimized for mobile, tablet, and desktop viewports.
+* Search products by name, barcode, or reference code with autocomplete.
+* Displays product images, detailed specifications, and customer-specific pricing.
+* Allows customers to select delivery address and shipping methods.
+* Instantly generates draft sale quotations in the backend.""""A complete customer self-service shopping experience inside the portal:
 
-This module is the perfect solution for B2B portal orders, wholesale customer portals, and quick reordering systems.
-    """,
+Key Features:
+* Search products by name, barcode, or reference code with autocomplete.
+* Displays product images, detailed specifications, and customer-specific pricing.
+* Allows customers to select delivery address and shipping methods.
+* Instantly generates draft sale quotations in the backend.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',
     'category': 'Sales',

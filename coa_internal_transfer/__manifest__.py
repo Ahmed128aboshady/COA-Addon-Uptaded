@@ -4,31 +4,20 @@
     'name': 'COA Accounting Internal Transfer',
     'version': '19.0.1.0.0',
     'category': 'Accounting/Accounting',
-    'summary': 'Restore the classic Internal Transfer feature on Payments screen (Odoo 19+).',
-    'description': """
-COA Accounting Internal Transfer
-=================================
-Restores the classic "Internal Transfer" workflow that existed on
-account.payment before it was removed from Odoo core (Odoo 18/19).
+    'summary': 'Restore the classic Internal Transfer feature on Payments screen.',
+    'description': """Restores the popular "Internal Transfer" payment type on Payments (account.payment):
 
-Features
---------
-* Adds back "Internal Transfer" as a payment type, selectable from a new
-  Payment Type radio (Send / Receive / Internal Transfer).
-* Adds a "Destination Journal" field, shown only for internal transfers.
-* On confirmation, automatically creates a paired payment in the
-  destination journal and links both records.
-* Fully configurable Outstanding Accounts behaviour:
-    - If the source and destination journals use their own default
-      account as both Outstanding Receipts/Payments account, the
-      transfer is created directly reconciled (status = Paid).
-    - If dedicated Outstanding Accounts are configured on the journals,
-      the transfer is posted through those accounts and stays
-      "In Process" until reconciled with the bank statement.
-* A dedicated filter to list/find all internal transfers.
+Key Features:
+* Adds a new "Internal Transfer" option to Payment Type selection.
+* Adds a "Destination Journal" field for transfers.
+* Automatically generates paired payment entries to reconcile both sides.
+* Supports outstanding receipt/payment account reconciliation.""""Restores the popular "Internal Transfer" payment type on Payments (account.payment):
 
-Developed by Community of Accountants (COA) - Odoo Silver Partner.
-""",
+Key Features:
+* Adds a new "Internal Transfer" option to Payment Type selection.
+* Adds a "Destination Journal" field for transfers.
+* Automatically generates paired payment entries to reconcile both sides.
+* Supports outstanding receipt/payment account reconciliation.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',
     'license': 'OPL-1',

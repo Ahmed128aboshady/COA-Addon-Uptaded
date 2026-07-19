@@ -5,17 +5,19 @@
     'version': '18.0.1.0.0',
     'category': 'Accounting/Accounting',
     'summary': 'Recognize vendor bill expenses over a period as accrued expenses.',
-    'description': """
-COA Accrued Expenses
-====================
-Mirrors Odoo's Deferred Expense mechanism, but as a separate *Accrued Expense*
-feature:
+    'description': """This module replicates deferred expense mechanics specifically for accrued expenses:
 
-* Choose a dedicated **Accrued Expense Account** and **Journal** in Settings.
-* On a vendor bill line, tick **Accrued** and set a **Start** and **End** date.
-* On posting the bill, the module moves the expense into the accrued account and
-  then recognizes it month by month back into the expense account.
-    """,
+Key Features:
+* Define custom accrued expense accounts and journals in Odoo Settings.
+* Flag vendor bill lines as "Accrued" and specify start/end dates.
+* Automatically creates reclassification entries moving expense to accrued account.
+* Periodically recognizes the expense month by month.""""This module replicates deferred expense mechanics specifically for accrued expenses:
+
+Key Features:
+* Define custom accrued expense accounts and journals in Odoo Settings.
+* Flag vendor bill lines as "Accrued" and specify start/end dates.
+* Automatically creates reclassification entries moving expense to accrued account.
+* Periodically recognizes the expense month by month.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',
     'license': 'OPL-1',

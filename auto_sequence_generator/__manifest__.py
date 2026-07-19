@@ -5,17 +5,21 @@
     'version': '19.0.1.0.0',
     'category': 'Technical',
     'summary': 'Auto-generate unique codes for products, customers, and vendors on record creation.',
-    'description': """
-Auto Sequence Generator
-========================
-Automatically assigns unique reference codes when clicking the New button for:
-- Products  → Internal Reference (PROD-0000001, PROD-0000002, ...)
-- Customers → Customer Code    (CUST-0000001, CUST-0000002, ...)
-- Vendors   → Vendor Code      (VEND-0000001, VEND-0000002, ...)
+    'description': """Automatically assigns unique reference codes when creating new records:
 
-The generated code is displayed immediately and is read-only to prevent manual edits.
-Sequences are fully configurable via Settings > Technical > Sequences.
-    """,
+Key Features:
+* Products: Automatically generates Internal References (e.g. PROD-00001).
+* Customers: Generates Customer Codes (e.g. CUST-00001).
+* Vendors: Generates Vendor Codes (e.g. VEND-00001).
+* Configurable: Easily edit sequences under Settings > Technical > Sequences.
+* Read-only: Protects auto-generated reference fields from unauthorized edits.""""Automatically assigns unique reference codes when creating new records:
+
+Key Features:
+* Products: Automatically generates Internal References (e.g. PROD-00001).
+* Customers: Generates Customer Codes (e.g. CUST-00001).
+* Vendors: Generates Vendor Codes (e.g. VEND-00001).
+* Configurable: Easily edit sequences under Settings > Technical > Sequences.
+* Read-only: Protects auto-generated reference fields from unauthorized edits.""",
     'author': 'Community of Accountants (COA)',
     'depends': [
         'product',

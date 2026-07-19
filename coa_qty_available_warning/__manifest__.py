@@ -4,23 +4,18 @@
     'name': 'COA Quantity Available Warning',
     'version': '18.0.1.0.0',
     'category': 'Sales/Sales',
-    'summary': 'Show a soft warning when the ordered quantity exceeds available free-to-use stock.',
-    'description': """
-COA Quantity Available Warning
-==============================
-Shows a non-blocking warning when the requested quantity is greater than the
-quantity available (Free To Use) across the whole company:
+    'summary': 'Soft warning when the ordered quantity exceeds available free-to-use stock.',
+    'description': """Displays helpful alerts when ordered quantities exceed available stock:
 
-* Sale Order Line: an onchange warning appears while entering the quantity or
-  the product, showing the available quantity. The user can still proceed.
-* Delivery (stock.picking): on validation, a confirmation dialog lists the
-  products short on stock. The user can press "Confirm Anyway" to continue.
+Key Features:
+* Onchange warning triggers on Sale Order line when typing quantity.
+* Interactive validation dialog triggers on Delivery validation listing stock shortage.
+* Warnings are informative only — users can bypass and proceed.""""Displays helpful alerts when ordered quantities exceed available stock:
 
-Nothing is blocked - the warning is informative only.
-
-Developed by Community of Accountants (COA) - Odoo Silver Partner
-WhatsApp: +20 101 390 7174
-    """,
+Key Features:
+* Onchange warning triggers on Sale Order line when typing quantity.
+* Interactive validation dialog triggers on Delivery validation listing stock shortage.
+* Warnings are informative only — users can bypass and proceed.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',
     'license': 'OPL-1',

@@ -2,35 +2,20 @@
 {
     'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'COA Partner Ledger - Invoice Details Drill-down',
-    'summary': 'Adds an expandable drill-down arrow next to each invoice in the Partner Ledger report.',
-    'description': """
-COA Partner Ledger - Invoice Details Drill-down
-===============================================
-Extends the Enterprise Partner Ledger report (account_reports) so that every
-invoice / journal-item line becomes unfoldable. When you click its arrow, the
-report expands into the invoice's PRODUCT LINES, showing:
+    'summary': 'Adds an expandable drill-down arrow to view invoice lines in Partner Ledger.',
+    'description': """Extends the Partner Ledger report to show itemized invoice line details:
 
-    Product name  -  Quantity (UoM)   |   Line Total
+Key Features:
+* Adds an expandable arrow next to every invoice move line.
+* Displays product name, quantities, and line totals directly within the ledger.
+* Works natively with account_reports without modifying core databases.
+* Perfect for credit control and detailed customer balance analysis.""""Extends the Partner Ledger report to show itemized invoice line details:
 
-How it works (framework-safe):
-------------------------------
-* Inherits the report custom handler
-  'account.partner.ledger.report.handler'.
-* After the standard partner expansion runs, each move line that belongs to
-  an invoice is tagged unfoldable with a custom expand function.
-* Child (product) lines are built with the OFFICIAL
-  account.report._get_generic_line_id() helper - no hand-crafted line IDs,
-  so _parse_line_id never breaks.
-* No change to the account.report data record and no new columns: the line
-  total is rendered in the existing Balance column, and the quantity is shown
-  in the line label (the Partner Ledger has fixed Debit/Credit/Balance
-  columns).
-
-Requires: Odoo Enterprise (account_reports).
-
-Developed by Community of Accountants (COA)
-WhatsApp: +20 101 390 7174
-    """,
+Key Features:
+* Adds an expandable arrow next to every invoice move line.
+* Displays product name, quantities, and line totals directly within the ledger.
+* Works natively with account_reports without modifying core databases.
+* Perfect for credit control and detailed customer balance analysis.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',
     'category': 'Accounting/Accounting',

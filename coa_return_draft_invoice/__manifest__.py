@@ -2,43 +2,20 @@
 {
     'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'COA Adjust Draft Invoice on Stock Return',
-    'summary': 'Auto-reduce the linked draft invoice when a warehouse return is validated for a sale order.',
-    'description': """
-COA Adjust Draft Invoice on Stock Return
-========================================
-Business case:
---------------
-A customer invoice is created in DRAFT (before posting). Later, some goods
-are returned from the warehouse against the same Sale Order. Standard Odoo
-does NOT sync the already-created draft invoice with the return, so the
-draft still shows the old (higher) quantities.
+    'summary': 'Auto-reduce draft invoice quantities when warehouse returns are validated.',
+    'description': """Keeps draft customer invoices fully synced with warehouse returns:
 
-What this module does:
-----------------------
-On validation of a return picking:
-  1. Detects the return moves (moves with origin_returned_move_id).
-  2. Finds the related Sale Order through the original delivery move.
-  3. Finds that order's DRAFT customer invoice(s).
-  4. Reduces the matching invoice line quantity by the returned quantity
-     (UoM-aware). Lines that reach zero are removed.
-  5. Logs a note in the invoice chatter for traceability.
+Key Features:
+* On validating a stock return, automatically identifies related sale orders.
+* Finds any associated draft customer invoices.
+* Automatically reduces the draft invoice quantities by the returned amount.
+* Fully audit-safe: never modifies posted invoices.""""Keeps draft customer invoices fully synced with warehouse returns:
 
-Why draft only (audit trail safe):
------------------------------------
-The module never modifies a POSTED invoice, so it fully respects the
-Accounting Audit Trail. For posted invoices the correct accounting action
-is a Credit Note (reversal) - available as an optional extension.
-
-Notes:
-------
-* The adjustment runs inside a guarded block: if anything fails, the
-  warehouse operation is NOT blocked (error is logged instead).
-* Trigger is narrow: only return moves linked to a Sale Order that has a
-  draft customer invoice.
-
-Developed by Community of Accountants (COA)
-WhatsApp: +20 101 390 7174
-    """,
+Key Features:
+* On validating a stock return, automatically identifies related sale orders.
+* Finds any associated draft customer invoices.
+* Automatically reduces the draft invoice quantities by the returned amount.
+* Fully audit-safe: never modifies posted invoices.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',
     'category': 'Inventory/Sales',

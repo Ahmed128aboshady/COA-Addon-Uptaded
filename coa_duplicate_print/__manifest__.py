@@ -5,23 +5,21 @@
     'version': '18.0.1.0.0',
     'category': 'Technical',
     'summary': 'Show a DUPLICATE watermark automatically when a document is re-printed.',
-    'description': """
-COA Duplicate Print Watermark
-=============================
-Counts how many times a document has been printed to PDF and shows a big
-rotated "DUPLICATE - Copy #N" watermark from the 2nd print onwards.
+    'description': """Tracks document printing counts and applies watermarks:
 
-* Supported documents: Sale Order / Quotation, Delivery Slip (stock.picking).
-* Configurable in General Settings: Disabled / Inventory only / Sales only /
-  Inventory and Sales.
-* The counter only increases on a real PDF print, not when opening the form.
-* Print info (count, date, user) is visible on the document form.
-* A "Reset Print Count" server action is available to treat the next print as
-  the original again.
+Key Features:
+* Automatically prints a "DUPLICATE" watermark starting from the second print.
+* Supported documents include Sale Orders, Quotations, and Delivery Slips.
+* Configurable settings to enable/disable for Sales, Inventory, or both.
+* Displays print logs including printer user, count, and date.
+* Includes a "Reset Print Count" action for managers.""""Tracks document printing counts and applies watermarks:
 
-Developed by Community of Accountants (COA) - Odoo Silver Partner
-WhatsApp: +20 101 390 7174
-    """,
+Key Features:
+* Automatically prints a "DUPLICATE" watermark starting from the second print.
+* Supported documents include Sale Orders, Quotations, and Delivery Slips.
+* Configurable settings to enable/disable for Sales, Inventory, or both.
+* Displays print logs including printer user, count, and date.
+* Includes a "Reset Print Count" action for managers.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',
     'license': 'OPL-1',

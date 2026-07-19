@@ -4,8 +4,18 @@
     'name': 'Edit Sale Order Date',
     'version': '18.0.1.0.0',
     'category': 'Sales',
-    'summary': 'Allow specific user groups to change the order date on confirmed sale orders.',
-    'description': 'We can change the order date of the confirmed sale order.The access for the editing the order date can berestricted to particular user group. The user who have no access to edit the field got a user error while trying tochange the field',
+    'summary': 'Allow specific user groups to edit the date of confirmed Sale Orders.',
+    'description': """Enables modifying the order date field even after sale orders are confirmed:
+
+Key Features:
+* Access is governed strictly by user groups and security permissions.
+* Displays clear validation error messages to unauthorized users.
+* Maintains full system integrity by updating corresponding scheduler entries.""""Enables modifying the order date field even after sale orders are confirmed:
+
+Key Features:
+* Access is governed strictly by user groups and security permissions.
+* Displays clear validation error messages to unauthorized users.
+* Maintains full system integrity by updating corresponding scheduler entries.""",
     'author': 'Community of Accountants (COA)',
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
