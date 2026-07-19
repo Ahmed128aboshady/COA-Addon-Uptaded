@@ -4,7 +4,7 @@
     'name': 'COA Accounting Internal Transfer',
     'version': '19.0.1.0.0',
     'category': 'Accounting/Accounting',
-    'summary': 'Restore the classic Internal Transfer feature on Payments (Odoo 19)',
+    'summary': 'Restore the classic Internal Transfer feature on Payments screen (Odoo 19+).',
     'description': """
 COA Accounting Internal Transfer
 =================================

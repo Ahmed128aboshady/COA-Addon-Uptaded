@@ -3,7 +3,7 @@
     'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Sale Operation Stages',
     'version': '18.0.1.0.0',
-    'summary': 'مراحل عمليات على المنتج قبل التسليم - مخزن عمليات - داشبورد تتبع',
+    'summary': 'Add configurable operational stages to sale orders for better pipeline tracking.',
     'author': 'Community of Accountants (COA)',
     'category': 'Sales/Inventory',
     'depends': [

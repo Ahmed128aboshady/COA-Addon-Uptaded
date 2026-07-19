@@ -2,7 +2,7 @@
 {
     'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'COA Adjust Draft Invoice on Stock Return',
-    'summary': 'When a warehouse return of a Sale Order is validated, the linked DRAFT customer invoice is automatically reduced by the returned quantities. Audit-trail safe (never touches posted entries).',
+    'summary': 'Auto-reduce the linked draft invoice when a warehouse return is validated for a sale order.',
     'description': """
 COA Adjust Draft Invoice on Stock Return
 ========================================

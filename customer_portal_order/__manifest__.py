@@ -3,7 +3,7 @@
     'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Customer Portal: Order Request',
     'version': '18.0.1.0.0',
-    'summary': 'Empower customers to search products, select addresses, and request new sales quotations directly from their portal.',
+    'summary': 'Empower customers to search products, select addresses, and request new quotations from their portal.',
     'description': """
 Customer Portal Order Request for Odoo
 ======================================

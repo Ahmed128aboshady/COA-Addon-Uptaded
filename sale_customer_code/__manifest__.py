@@ -3,7 +3,7 @@
     'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Customer Code on Sale Order Report',
     'version': '18.0.1.0.0',
-    'summary': 'Show customer reference code (Customer Code) on Sale Order and Invoice printed reports',
+    'summary': 'Display the customer reference code on printed sale order and invoice reports.',
     'author': 'Community of Accountants (COA)',
     'category': 'Sales',
     'depends': [

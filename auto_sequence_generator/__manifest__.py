@@ -4,7 +4,7 @@
     'name': 'Auto Sequence Generator',
     'version': '19.0.1.0.0',
     'category': 'Technical',
-    'summary': 'Auto-generate unique codes for products, customers, and vendors on record creation',
+    'summary': 'Auto-generate unique codes for products, customers, and vendors on record creation.',
     'description': """
 Auto Sequence Generator
 ========================

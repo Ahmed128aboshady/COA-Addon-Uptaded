@@ -3,7 +3,7 @@
     'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Journal Payment Commission',
     'version': '18.0.1.0.0',
-    'summary': 'خصم عمولة تلقائي على الـ Journal - مبيعات ومشتريات منفصلين',
+    'summary': 'Add a configurable commission percentage on journal payment entries for specific accounts.',
     'author': 'Community of Accountants (COA)',
     'category': 'Accounting',
     'depends': [

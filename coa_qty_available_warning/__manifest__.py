@@ -4,7 +4,7 @@
     'name': 'COA Quantity Available Warning',
     'version': '18.0.1.0.0',
     'category': 'Sales/Sales',
-    'summary': 'Soft warning when the ordered quantity exceeds the free-to-use stock',
+    'summary': 'Show a soft warning when the ordered quantity exceeds available free-to-use stock.',
     'description': """
 COA Quantity Available Warning
 ==============================

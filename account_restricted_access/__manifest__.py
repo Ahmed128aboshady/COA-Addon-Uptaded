@@ -4,7 +4,7 @@
     'name': 'Account Restricted Access - COA',
     'version': '19.0.1.0.0',
     'category': 'Accounting',
-    'summary': 'تقييد رؤية المحاسب على حسابات معينة في الجينرال ليدجر وحركة الحسابات',
+    'summary': 'Restrict accountant visibility to specific accounts in General Ledger and account moves.',
     'description': """
 Account Restricted Access
 ==========================

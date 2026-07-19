@@ -3,7 +3,7 @@
     'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Inventory/Stock Aging Report',
     'version': '19.0.1.0.0',
-    'summary': 'Stock Aging Report By Warehouse and By Location',
+    'summary': 'Stock Aging Report grouped by Warehouse and Location with running balance.',
     'description': """
         Stock Aging Report
         ==================

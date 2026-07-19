@@ -2,7 +2,7 @@
 {
     'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'COA Partner Ledger - Invoice Details Drill-down',
-    'summary': 'Adds an expandable arrow next to each invoice in the Partner Ledger. Unfolding shows the invoice product lines with quantity and total.',
+    'summary': 'Adds an expandable drill-down arrow next to each invoice in the Partner Ledger report.',
     'description': """
 COA Partner Ledger - Invoice Details Drill-down
 ===============================================

@@ -2,7 +2,7 @@
 {
     'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'COA Sale Order - Direct Invoice Print',
-    'summary': 'Print the Sale Order invoice(s) directly from the SO with one click. Opens the browser print dialog immediately (no download). Works for Sales users without Accounting access.',
+    'summary': 'Print sale order invoices directly from the SO with one click — no accounting access needed.',
     'description': """
 COA Sale Order - Direct Invoice Print
 =====================================

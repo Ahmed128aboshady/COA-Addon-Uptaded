@@ -4,7 +4,7 @@
     'name': 'COA Accrued Expenses',
     'version': '18.0.1.0.0',
     'category': 'Accounting/Accounting',
-    'summary': 'Recognize vendor bill expenses over a period as accrued expenses',
+    'summary': 'Recognize vendor bill expenses over a period as accrued expenses.',
     'description': """
 COA Accrued Expenses
 ====================

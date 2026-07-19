@@ -3,7 +3,7 @@
     'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Sale: Stock Info in Product Search',
     'version': '18.0.1.0.0',
-    'summary': 'يظهر الكمية المتاحة والـ On Hand في سيرش المنتجات داخل المبيعات',
+    'summary': 'Display real-time On Hand and available stock info inside the product search on sale orders.',
     'author': 'Community of Accountants (COA)',
     'category': 'Sales',
     'depends': [

@@ -4,7 +4,7 @@
     'name': 'COA Account Merge',
     'version': '18.0.1.0.0',
     'category': 'Accounting',
-    'summary': 'Merge two or more GL accounts like the Contacts merge: '
+    'summary': 'Merge two or more GL accounts into one — similar to the native Contacts merge feature.'
                'all journal items and references move to one account.',
     'description': """
 COA Account Merge

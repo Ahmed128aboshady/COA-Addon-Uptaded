@@ -4,7 +4,7 @@
     'name': 'Stock Card Report',
     'version': '19.0.1.0.0',
     'category': 'Inventory/Inventory',
-    'summary': 'Stock card report with running balance per product and location',
+    'summary': 'Stock Card Report with running balance per product and storage location.',
     'depends': [
         'stock',
     ],

@@ -4,7 +4,7 @@
     'name': 'COA Duplicate Print Watermark',
     'version': '18.0.1.0.0',
     'category': 'Technical',
-    'summary': 'Show a DUPLICATE watermark when a document is re-printed',
+    'summary': 'Show a DUPLICATE watermark automatically when a document is re-printed.',
     'description': """
 COA Duplicate Print Watermark
 =============================

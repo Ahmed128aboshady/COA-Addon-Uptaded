@@ -3,7 +3,7 @@
     'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Sale: Own View - Any Salesperson Create',
     'version': '18.0.1.0.0',
-    'summary': 'صلاحية جديدة: يشوف بتاعته بس ويعمل أوردر لأي salesperson',
+    'summary': 'Allow any salesperson to create sale orders on behalf of others in the own-view mode.',
     'author': 'Community of Accountants (COA)',
     'category': 'Sales',
     'depends': [
