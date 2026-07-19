@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 {
+    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'COA Quantity Available Warning',
     'version': '18.0.1.0.0',
     'category': 'Sales/Sales',
@@ -20,8 +21,8 @@ Nothing is blocked - the warning is informative only.
 Developed by Community of Accountants (COA) - Odoo Silver Partner
 WhatsApp: +20 101 390 7174
     """,
-    'author': 'Community of Accountants',
-    'website': 'https://www.communityofaccountants.com',
+    'author': 'Community of Accountants (COA)',
+    'website': 'https://coa-egy.odoo.com/',
     'license': 'OPL-1',
     'depends': [
         'sale_stock',

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 {
+    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'COA Accrued Expenses',
     'version': '18.0.1.0.0',
     'category': 'Accounting/Accounting',
@@ -15,9 +16,9 @@ feature:
 * On posting the bill, the module moves the expense into the accrued account and
   then recognizes it month by month back into the expense account.
     """,
-    'author': 'Community of Accountants',
-    'website': 'https://www.communityofaccountants.com',
-    'license': 'LGPL-3',
+    'author': 'Community of Accountants (COA)',
+    'website': 'https://coa-egy.odoo.com/',
+    'license': 'OPL-1',
     'depends': [
         'account',
     ],

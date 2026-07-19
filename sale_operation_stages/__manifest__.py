@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 {
+    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Sale Operation Stages',
     'version': '18.0.1.0.0',
     'summary': 'مراحل عمليات على المنتج قبل التسليم - مخزن عمليات - داشبورد تتبع',
-    'author': 'Community of Accountants',
+    'author': 'Community of Accountants (COA)',
     'category': 'Sales/Inventory',
     'depends': [
         'sale_stock',
@@ -22,8 +23,8 @@
     ],
     'installable': True,
     'application': True,
-    'license': 'LGPL-3',
-    'website': 'https://www.communityofaccountants.com',
+    'license': 'OPL-1',
+    'website': 'https://coa-egy.odoo.com/',
     'price': 89.0,
     'currency': 'USD',
     'images': [

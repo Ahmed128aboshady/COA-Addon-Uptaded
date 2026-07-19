@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 {
+    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Sale: Stock Info in Product Search',
     'version': '18.0.1.0.0',
     'summary': 'يظهر الكمية المتاحة والـ On Hand في سيرش المنتجات داخل المبيعات',
-    'author': 'Community of Accountants',
+    'author': 'Community of Accountants (COA)',
     'category': 'Sales',
     'depends': [
         'sale_stock',
@@ -14,8 +15,8 @@
     ],
     'installable': True,
     'application': False,
-    'license': 'LGPL-3',
-    'website': 'https://www.communityofaccountants.com',
+    'license': 'OPL-1',
+    'website': 'https://coa-egy.odoo.com/',
     'price': 29.0,
     'currency': 'USD',
     'images': [

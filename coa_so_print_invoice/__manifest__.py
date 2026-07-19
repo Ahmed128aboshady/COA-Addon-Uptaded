@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 {
+    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'COA Sale Order - Direct Invoice Print',
     'summary': 'Print the Sale Order invoice(s) directly from the SO with one click. Opens the browser print dialog immediately (no download). Works for Sales users without Accounting access.',
     'description': """
@@ -17,11 +18,11 @@ COA Sale Order - Direct Invoice Print
 Developed by Community of Accountants (COA)
 WhatsApp: +20 101 390 7174
     """,
-    'author': 'Community of Accountants',
-    'website': 'https://www.communityofaccountants.com',
+    'author': 'Community of Accountants (COA)',
+    'website': 'https://coa-egy.odoo.com/',
     'category': 'Sales',
     'version': '18.0.1.0.0',
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
     'depends': [
         'sale',
         'account',

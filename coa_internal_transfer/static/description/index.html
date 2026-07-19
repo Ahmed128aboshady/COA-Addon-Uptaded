@@ -1,340 +1,134 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COA Accounting Internal Transfer — Community of Accountants</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+<div style="direction: ltr; text-align: left; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #2c3e50; background-color: #ffffff; padding: 15px; max-width: 1000px; margin: 0 auto;">
 
-        .coa { font-family: 'Inter', sans-serif; color: #1E293B; background: #FFFFFF; line-height: 1.6; max-width: 1100px; margin: 0 auto; padding: 0 0 60px; }
+    <!-- ===== HERO SECTION ===== -->
+    <div style="background-color: #0a2f4d; background-image: linear-gradient(135deg, #0a2f4d 0%, #104169 55%, #e52b2b 100%); color: #ffffff; border-radius: 16px; padding: 50px 30px; margin-bottom: 45px; box-shadow: 0 10px 30px rgba(10, 47, 77, 0.15); border-bottom: 6px solid #e52b2b; text-align: center;">
+        <span style="display: inline-block; background-color: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 20px; padding: 5px 18px; font-size: 13px; font-weight: 600; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 0.5px; color: #ffffff;">
+            Odoo Premium Addon &middot; COA Certified
+        </span>
+        <h1 style="font-size: 36px; font-weight: 800; margin-bottom: 15px; color: #ffffff; text-align: center;">COA Accounting Internal Transfer</h1>
+        <p style="font-size: 18px; max-width: 750px; margin: 0 auto 30px; opacity: 0.95; line-height: 1.6; text-align: center; color: #ffffff;">
+            Restore the classic Internal Transfer feature on Payments (Odoo 19)
+        </p>
+        <div style="text-align: center; width: 100%; margin-top: 15px;">
+            <span style="display: inline-block; background: #28a745; color: #ffffff; padding: 6px 14px; border-radius: 6px; font-weight: 700; border: 1px solid rgba(255,255,255,0.2); margin: 5px 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">Price: 49.00 USD</span>
+            <span style="display: inline-block; background: rgba(0,0,0,0.25); padding: 6px 14px; border-radius: 6px; font-weight: 600; border: 1px solid rgba(255,255,255,0.15); margin: 5px 10px; color: #ffffff;">License: OPL-1</span>
+            <span style="display: inline-block; background: rgba(0,0,0,0.25); padding: 6px 14px; border-radius: 6px; font-weight: 600; border: 1px solid rgba(255,255,255,0.15); margin: 5px 10px; color: #ffffff;">Developer: COA</span>
+        </div>
+    </div>
 
-        /* ─── HERO ─────────────────────────────────────────────── */
-        .hero {
-            background: linear-gradient(135deg, #072537 0%, #0B3B56 55%, #0f4d6e 100%);
-            border-radius: 0 0 24px 24px;
-            padding: 52px 48px 48px;
-            color: #FFFFFF;
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 48px;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -120px; right: -80px;
-            width: 520px; height: 520px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(231,43,46,0.12) 0%, transparent 68%);
-            pointer-events: none;
-        }
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -100px; left: -60px;
-            width: 340px; height: 340px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .hero-inner { display: flex; gap: 48px; align-items: center; position: relative; z-index: 2; flex-wrap: wrap; }
-        .hero-icon-wrap { flex-shrink: 0; }
-        .hero-icon-wrap img {
-            width: 110px; height: 110px;
-            border-radius: 22px;
-            border: 3px solid rgba(255,255,255,0.25);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-        }
-        .hero-body { flex: 1 1 320px; }
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 7px;
-            background: rgba(231,43,46,0.18);
-            border: 1px solid rgba(231,43,46,0.35);
-            color: #FCA5A5;
-            font-size: 0.72rem; font-weight: 700;
-            letter-spacing: 1.2px; text-transform: uppercase;
-            padding: 5px 12px; border-radius: 20px;
-            margin-bottom: 14px;
-        }
-        .hero h1 {
-            font-size: 2.4rem; font-weight: 900;
-            line-height: 1.15; letter-spacing: -0.8px;
-            color: #FFFFFF; margin-bottom: 14px;
-        }
-        .hero h1 em { color: #FCA5A5; font-style: normal; }
-        .hero-desc { font-size: 1.05rem; color: #CBD5E1; line-height: 1.7; margin-bottom: 22px; max-width: 580px; }
-
-        /* ─── SECTION TITLE ──────────────────────────────────────── */
-        .section { padding: 0 24px; margin-bottom: 56px; }
-        .sec-head { text-align: center; margin-bottom: 36px; }
-        .sec-label {
-            display: inline-block;
-            font-size: 0.7rem; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase;
-            color: #E72B2E; background: rgba(231,43,46,0.08);
-            border: 1px solid rgba(231,43,46,0.18);
-            padding: 4px 12px; border-radius: 20px; margin-bottom: 12px;
-        }
-        .sec-title { font-size: 1.9rem; font-weight: 800; color: #0B3B56; letter-spacing: -0.6px; margin-bottom: 10px; line-height: 1.2; }
-        .sec-sub { font-size: 1rem; color: #64748B; max-width: 580px; margin: 0 auto; }
-
-        /* ─── FEATURE CARDS 3-COL ────────────────────────────────── */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-        @media (max-width: 800px) { .features-grid { grid-template-columns: 1fr 1fr; } }
-        @media (max-width: 520px) { .features-grid { grid-template-columns: 1fr; } }
-
-        .feat-card {
-            border: 1px solid #E2E8F0;
-            border-radius: 16px;
-            padding: 28px 24px;
-            background: #FFFFFF;
-            transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
-        }
-        .feat-card:hover { box-shadow: 0 12px 28px rgba(11,59,86,0.09); transform: translateY(-3px); border-color: rgba(11,59,86,0.2); }
-        .feat-icon {
-            width: 48px; height: 48px; border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 18px; flex-shrink: 0;
-        }
-        .feat-icon.navy { background: rgba(11,59,86,0.08); }
-        .feat-icon.red  { background: rgba(231,43,46,0.08); }
-        .feat-icon.green { background: rgba(16,185,129,0.09); }
-        .feat-icon.gold { background: rgba(245,158,11,0.1); }
-        .feat-card h4 { font-size: 1.05rem; font-weight: 700; color: #0B3B56; margin-bottom: 8px; }
-        .feat-card p { font-size: 0.9rem; color: #64748B; line-height: 1.6; }
-
-        /* ─── SPECS TABLE ────────────────────────────────────────── */
-        .specs {
-            width: 100%; border-collapse: collapse;
-            border: 1px solid #E2E8F0; border-radius: 14px;
-            overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-        }
-        .specs tr:last-child td { border-bottom: none; }
-        .specs td { padding: 16px 24px; border-bottom: 1px solid #E2E8F0; font-size: 0.9rem; }
-        .specs td.k { font-weight: 700; color: #0B3B56; width: 28%; background: rgba(11,59,86,0.02); }
-        .specs td.v { color: #1E293B; }
-        .specs td.v code {
-            background: rgba(11,59,86,0.06); color: #0B3B56;
-            padding: 2px 7px; border-radius: 5px; font-size: 0.83rem; font-weight: 600;
-        }
-        .specs-tag {
-            display: inline-block;
-            background: rgba(16,185,129,0.1); color: #059669;
-            border: 1px solid rgba(16,185,129,0.25);
-            padding: 2px 8px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; margin-left: 8px;
-        }
-
-        /* ─── FOOTER / SUPPORT ───────────────────────────────────── */
-        .footer-block {
-            background: linear-gradient(135deg, #072537, #0B3B56);
-            border-radius: 20px;
-            padding: 52px 36px;
-            text-align: center;
-            border-top: 5px solid #E72B2E;
-            box-shadow: 0 16px 40px rgba(7,37,55,0.18);
-            margin: 0 24px;
-        }
-        .footer-logo { font-size: 1.45rem; font-weight: 900; color: #FFFFFF; letter-spacing: -0.5px; margin-bottom: 14px; }
-        .footer-logo em { color: #E72B2E; font-style: normal; }
-        .footer-desc { font-size: 0.96rem; color: #94A3B8; max-width: 600px; margin: 0 auto 28px; line-height: 1.7; }
-        .footer-btns { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
-        .footer-btn {
-            display: inline-flex; align-items: center; gap: 9px;
-            background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);
-            color: #FFFFFF; text-decoration: none;
-            padding: 12px 26px; border-radius: 10px; font-size: 0.88rem; font-weight: 600;
-            transition: background 0.2s, border-color 0.2s;
-        }
-        .footer-btn:hover { background: #E72B2E; border-color: #E72B2E; }
-        .footer-btn.primary { background: #E72B2E; border-color: #E72B2E; }
-        .footer-btn.primary:hover { background: #c42022; border-color: #c42022; }
-        .footer-copy { margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.07); font-size: 0.78rem; color: #475569; }
-
-        @media (max-width: 760px) {
-            .hero { padding: 36px 24px; }
-            .hero h1 { font-size: 1.8rem; }
-            .section { padding: 0 16px; }
-            .footer-block { margin: 0 16px; }
-        }
-    </style>
-</head>
-<body>
-<div class="coa">
-
-    <!-- ═══ HERO ═══════════════════════════════════════════ -->
-    <div class="hero">
-        <div class="hero-inner">
-            <div class="hero-icon-wrap">
-                <img src="icon.png" alt="COA Accounting Internal Transfer Icon">
-            </div>
-            <div class="hero-body">
-                <div class="hero-badge">
-                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                    Odoo 19.0 · Community &amp; Enterprise
+    <!-- ===== SECTION: KEY FEATURES ===== -->
+    <div style="margin-bottom: 50px; background-color: #f7fafb; border-radius: 16px; padding: 40px 30px; border: 1px solid #e8f0f2;">
+        <div style="text-align: center; margin-bottom: 35px;">
+            <h2 style="font-size: 28px; font-weight: 700; color: #0a2f4d; margin-bottom: 10px;">Key Features &amp; Capabilities</h2>
+            <p style="font-size: 15px; color: #6c7a89; max-width: 600px; margin: 0 auto;">Designed to improve workflow efficiency and add robust validation safety layers.</p>
+        </div>
+        <div class="row">
+            
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm" style="border: none; border-left: 5px solid #e52b2b; border-radius: 8px; padding: 20px; background-color: #ffffff; min-height: 110px;">
+                    <p style="font-size: 14px; color: #2c3e50; line-height: 1.6; margin: 0; font-weight: 600;">
+                        COA Accounting Internal Transfer
+                    </p>
                 </div>
-                <h1>COA Accounting Internal Transfer</h1>
-                <p class="hero-desc">
-                    Restore the classic Internal Transfer feature on Payments (Odoo 19)
-                </p>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm" style="border: none; border-left: 5px solid #0a2f4d; border-radius: 8px; padding: 20px; background-color: #ffffff; min-height: 110px;">
+                    <p style="font-size: 14px; color: #2c3e50; line-height: 1.6; margin: 0; font-weight: 600;">
+                        Restores the classic "Internal Transfer" workflow that existed on
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm" style="border: none; border-left: 5px solid #e52b2b; border-radius: 8px; padding: 20px; background-color: #ffffff; min-height: 110px;">
+                    <p style="font-size: 14px; color: #2c3e50; line-height: 1.6; margin: 0; font-weight: 600;">
+                        account.payment before it was removed from Odoo core (Odoo 18/19).
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm" style="border: none; border-left: 5px solid #0a2f4d; border-radius: 8px; padding: 20px; background-color: #ffffff; min-height: 110px;">
+                    <p style="font-size: 14px; color: #2c3e50; line-height: 1.6; margin: 0; font-weight: 600;">
+                        Features
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm" style="border: none; border-left: 5px solid #e52b2b; border-radius: 8px; padding: 20px; background-color: #ffffff; min-height: 110px;">
+                    <p style="font-size: 14px; color: #2c3e50; line-height: 1.6; margin: 0; font-weight: 600;">
+                        Adds back "Internal Transfer" as a payment type, selectable from a new
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm" style="border: none; border-left: 5px solid #0a2f4d; border-radius: 8px; padding: 20px; background-color: #ffffff; min-height: 110px;">
+                    <p style="font-size: 14px; color: #2c3e50; line-height: 1.6; margin: 0; font-weight: 600;">
+                        Payment Type radio (Send / Receive / Internal Transfer).
+                    </p>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- ═══ KEY FEATURES ═══════════════════════════════════ -->
-    <div class="section">
-        <div class="sec-head">
-            <span class="sec-label">Key Features</span>
-            <h2 class="sec-title">Key Capabilities</h2>
-            <p class="sec-sub">Streamline your workflows with these features built directly into your Odoo instance.</p>
+    <!-- ===== SECTION: HOW IT WORKS ===== -->
+    <div style="margin-bottom: 50px;">
+        <div style="text-align: center; margin-bottom: 35px;">
+            <h2 style="font-size: 28px; font-weight: 700; color: #0a2f4d; margin-bottom: 10px;">How It Works &mdash; Simple Set Up</h2>
+            <p style="font-size: 15px; color: #6c7a89; max-width: 600px; margin: 0 auto;">Get up and running in minutes with no complex development.</p>
         </div>
-        <div class="features-grid">
+        <div class="row" style="text-align: center;">
             
-        <div class="feat-card">
-            <div class="feat-icon navy">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #0B3B56;">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
+            <div class="col-md-3 mb-4">
+                <div style="padding: 15px;">
+                    <div style="width: 50px; height: 50px; border-radius: 25px; background-color: #0a2f4d; color: #ffffff; font-size: 20px; font-weight: 800; text-align: center; line-height: 50px; display: block; margin: 0 auto 15px;">1</div>
+                    <h4 style="font-size: 16px; font-weight: 700; color: #0a2f4d; margin-bottom: 8px;">Install Module</h4>
+                    <p style="font-size: 13px; color: #6c7a89; line-height: 1.5; margin: 0;">Install the module in your Odoo database from the apps list.</p>
+                </div>
             </div>
-            <h4>Feature 1</h4>
-            <p>Adds back "Internal Transfer" as a payment type, selectable from a new</p>
-        </div>
-        
-        <div class="feat-card">
-            <div class="feat-icon red">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #E72B2E;">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
+            <div class="col-md-3 mb-4">
+                <div style="padding: 15px;">
+                    <div style="width: 50px; height: 50px; border-radius: 25px; background-color: #0a2f4d; color: #ffffff; font-size: 20px; font-weight: 800; text-align: center; line-height: 50px; display: block; margin: 0 auto 15px;">2</div>
+                    <h4 style="font-size: 16px; font-weight: 700; color: #0a2f4d; margin-bottom: 8px;">Configure Settings</h4>
+                    <p style="font-size: 13px; color: #6c7a89; line-height: 1.5; margin: 0;">Go to Settings or corresponding menu to adjust settings.</p>
+                </div>
             </div>
-            <h4>Feature 2</h4>
-            <p>Adds a "Destination Journal" field, shown only for internal transfers.</p>
-        </div>
-        
-        <div class="feat-card">
-            <div class="feat-icon green">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #10B981;">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
+            <div class="col-md-3 mb-4">
+                <div style="padding: 15px;">
+                    <div style="width: 50px; height: 50px; border-radius: 25px; background-color: #0a2f4d; color: #ffffff; font-size: 20px; font-weight: 800; text-align: center; line-height: 50px; display: block; margin: 0 auto 15px;">3</div>
+                    <h4 style="font-size: 16px; font-weight: 700; color: #0a2f4d; margin-bottom: 8px;">Use Features</h4>
+                    <p style="font-size: 13px; color: #6c7a89; line-height: 1.5; margin: 0;">Start using the new automations and fields on transactions.</p>
+                </div>
             </div>
-            <h4>Feature 3</h4>
-            <p>On confirmation, automatically creates a paired payment in the</p>
-        </div>
-        
-        <div class="feat-card">
-            <div class="feat-icon gold">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #F59E0B;">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
+            <div class="col-md-3 mb-4">
+                <div style="padding: 15px;">
+                    <div style="width: 50px; height: 50px; border-radius: 25px; background-color: #0a2f4d; color: #ffffff; font-size: 20px; font-weight: 800; text-align: center; line-height: 50px; display: block; margin: 0 auto 15px;">4</div>
+                    <h4 style="font-size: 16px; font-weight: 700; color: #0a2f4d; margin-bottom: 8px;">Check Output</h4>
+                    <p style="font-size: 13px; color: #6c7a89; line-height: 1.5; margin: 0;">Verify the reports and workflows operate as expected.</p>
+                </div>
             </div>
-            <h4>Feature 4</h4>
-            <p>Fully configurable Outstanding Accounts behaviour:</p>
-        </div>
-        
-        <div class="feat-card">
-            <div class="feat-icon navy">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #0B3B56;">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-            </div>
-            <h4>Feature 5</h4>
-            <p>If the source and destination journals use their own default</p>
-        </div>
-        
-        <div class="feat-card">
-            <div class="feat-icon red">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #E72B2E;">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-            </div>
-            <h4>Feature 6</h4>
-            <p>If dedicated Outstanding Accounts are configured on the journals,</p>
-        </div>
-        
         </div>
     </div>
 
-    <!-- ═══ DESCRIPTION ════════════════════════════════════ -->
-    <div class="section">
-        <div class="sec-head">
-            <span class="sec-label">Overview</span>
-            <h2 class="sec-title">Functional Description</h2>
-        </div>
-        <div style="background: #F8FAFC; padding: 32px; border-radius: 16px; border: 1px solid #E2E8F0; font-size: 0.95rem; color: #1E293B; line-height: 1.8; white-space: pre-line;">
-            
-COA Accounting Internal Transfer
-=================================
-Restores the classic "Internal Transfer" workflow that existed on
-account.payment before it was removed from Odoo core (Odoo 18/19).
-
-Features
---------
-* Adds back "Internal Transfer" as a payment type, selectable from a new
-  Payment Type radio (Send / Receive / Internal Transfer).
-* Adds a "Destination Journal" field, shown only for internal transfers.
-* On confirmation, automatically creates a paired payment in the
-  destination journal and links both records.
-* Fully configurable Outstanding Accounts behaviour:
-    - If the source and destination journals use their own default
-      account as both Outstanding Receipts/Payments account, the
-      transfer is created directly reconciled (status = Paid).
-    - If dedicated Outstanding Accounts are configured on the journals,
-      the transfer is posted through those accounts and stays
-      "In Process" until reconciled with the bank statement.
-* A dedicated filter to list/find all internal transfers.
-
-Developed by Community of Accountants (COA) - Odoo Silver Partner.
-
-        </div>
-    </div>
-
-    <!-- ═══ TECHNICAL SPECS ════════════════════════════════ -->
-    <div class="section">
-        <div class="sec-head">
-            <span class="sec-label">Specifications</span>
-            <h2 class="sec-title">Technical Information</h2>
-        </div>
-        <table class="specs">
-            <tr>
-                <td class="k">Module Technical Name</td>
-                <td class="v"><code>coa_internal_transfer</code></td>
-            </tr>
-            <tr>
-                <td class="k">Version</td>
-                <td class="v">19.0.1.0.0</td>
-            </tr>
-            <tr>
-                <td class="k">License</td>
-                <td class="v">LGPL-3</td>
-            </tr>
-            <tr>
-                <td class="k">Dependencies</td>
-                <td class="v"><code>account</code></td>
-            </tr>
-            <tr>
-                <td class="k">Price</td>
-                <td class="v"><strong>49.0 USD</strong><span class="specs-tag">Paid App</span></td>
-            </tr>
-        </table>
-    </div>
-
-    <!-- ═══ FOOTER ═════════════════════════════════════════ -->
-    <div class="footer-block">
-        <div class="footer-logo">Community of <em>Accountants</em></div>
-        <p class="footer-desc">Professional Odoo applications designed to streamline accounting, sales, and warehouse operations.</p>
-        <div class="footer-btns">
-            <a href="https://wa.me/201013907174" class="footer-btn primary" target="_blank">
-                Contact Support
-            </a>
-            <a href="https://www.communityofaccountants.com" class="footer-btn" target="_blank">
-                Visit Website
+    <!-- ===== SECTION: SUPPORT CTA ===== -->
+    <div style="background-color: #0a2f4d; background-image: linear-gradient(135deg, #0a2f4d 0%, #104169 100%); color: #ffffff; border-radius: 16px; padding: 40px 30px; text-align: center; box-shadow: 0 10px 25px rgba(10, 47, 77, 0.15); border-bottom: 6px solid #e52b2b;">
+        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 10px; color: #ffffff; text-align: center;">Need Help or Customization?</h3>
+        <p style="font-size: 15px; opacity: 0.9; max-width: 600px; margin: 0 auto 10px; line-height: 1.6; color: #ffffff; text-align: center;">
+            The COA (Community of Accountants) team provides configuration assistance, custom feature integrations, and training for all our Odoo modules.
+        </p>
+        <p style="font-size: 13.5px; opacity: 0.8; margin-bottom: 25px; text-align: center; color: #ffffff;">
+            Click the official "Support" button on the right sidebar, or chat with us directly on WhatsApp.
+        </p>
+        <div style="margin-top: 15px; text-align: center;">
+            <a href="https://api.whatsapp.com/send?phone=201013907174" target="_blank" style="color: #ffc107; font-size: 19px; font-weight: 800; text-decoration: underline; display: inline-block;">
+                Click here to chat on WhatsApp: +201013907174
             </a>
         </div>
-        <div class="footer-copy">&copy; 2026 Community of Accountants. All rights reserved.</div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #e8f0f2; font-size: 12.5px; color: #6c7a89; text-align: center;">
+        <p>
+            COA Accounting Internal Transfer &copy; 2024 &middot; Developed by <a href="https://coa-egy.odoo.com/" target="_blank" style="color: #e52b2b; font-weight: 600; text-decoration: none;">Community of Accountants (COA)</a> &middot; Licensed under OPL-1
+        </p>
     </div>
 
 </div>
-</body>
-</html>

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 {
+    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Customer Portal: Order Request',
     'version': '18.0.1.0.0',
     'summary': 'Empower customers to search products, select addresses, and request new sales quotations directly from their portal.',
@@ -20,8 +21,8 @@ Key Features:
 
 This module is the perfect solution for B2B portal orders, wholesale customer portals, and quick reordering systems.
     """,
-    'author': 'Community of Accountants',
-    'website': 'https://www.communityofaccountants.com',
+    'author': 'Community of Accountants (COA)',
+    'website': 'https://coa-egy.odoo.com/',
     'category': 'Sales',
     'depends': [
         'sale_management',
@@ -40,7 +41,7 @@ This module is the perfect solution for B2B portal orders, wholesale customer po
     'currency': 'USD',
     'installable': True,
     'application': False,
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
     'images': [
         'static/description/banner.png',
     ],

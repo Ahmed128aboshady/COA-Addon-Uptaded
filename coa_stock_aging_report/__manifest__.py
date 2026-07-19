@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 {
+    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Inventory/Stock Aging Report',
     'version': '19.0.1.0.0',
     'summary': 'Stock Aging Report By Warehouse and By Location',
@@ -18,9 +19,9 @@
         - FIFO-based age calculation
     """,
     'category': 'Inventory/Inventory',
-    'author': 'Community of Accountants',
-    'website': 'https://www.communityofaccountants.com',
-    'license': 'LGPL-3',
+    'author': 'Community of Accountants (COA)',
+    'website': 'https://coa-egy.odoo.com/',
+    'license': 'OPL-1',
     'depends': [
         'stock',
         'mail',

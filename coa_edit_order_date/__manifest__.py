@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 {
+    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Edit Sale Order Date',
     'version': '18.0.1.0.0',
     'category': 'Sales',
     'summary': 'Change the order date for particular user group',
     'description': 'We can change the order date of the confirmed sale order.The access for the editing the order date can berestricted to particular user group. The user who have no access to edit the field got a user error while trying tochange the field',
-    'author': 'Community of Accountants',
+    'author': 'Community of Accountants (COA)',
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
-    'website': 'https://www.communityofaccountants.com',
+    'website': 'https://coa-egy.odoo.com/',
     'depends': [
         'sale_management',
     ],
@@ -19,7 +20,7 @@
     'images': [
         'static/description/banner.png',
     ],
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
     'installable': True,
     'application': False,
     'auto_install': False,

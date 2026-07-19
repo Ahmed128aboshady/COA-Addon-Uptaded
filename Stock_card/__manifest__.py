@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 {
+    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Stock Card Report',
     'version': '19.0.1.0.0',
     'category': 'Inventory/Inventory',
@@ -12,9 +13,9 @@
         'views/stock_card_wizard_views.xml',
     ],
     'installable': True,
-    'license': 'LGPL-3',
-    'author': 'Community of Accountants',
-    'website': 'https://www.communityofaccountants.com',
+    'license': 'OPL-1',
+    'author': 'Community of Accountants (COA)',
+    'website': 'https://coa-egy.odoo.com/',
     'price': 69.0,
     'currency': 'USD',
     'images': [

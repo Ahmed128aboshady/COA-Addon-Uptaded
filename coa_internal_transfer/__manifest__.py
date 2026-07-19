@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 {
+    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'COA Accounting Internal Transfer',
     'version': '19.0.1.0.0',
     'category': 'Accounting/Accounting',
@@ -28,9 +29,9 @@ Features
 
 Developed by Community of Accountants (COA) - Odoo Silver Partner.
 """,
-    'author': 'Community of Accountants',
-    'website': 'https://www.communityofaccountants.com',
-    'license': 'LGPL-3',
+    'author': 'Community of Accountants (COA)',
+    'website': 'https://coa-egy.odoo.com/',
+    'license': 'OPL-1',
     'depends': [
         'account',
     ],

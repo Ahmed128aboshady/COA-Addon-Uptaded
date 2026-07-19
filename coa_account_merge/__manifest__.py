@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 {
+    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'COA Account Merge',
     'version': '18.0.1.0.0',
     'category': 'Accounting',
@@ -35,7 +36,7 @@ Safeguards
   reconcilable automatically so existing reconciliations stay valid.
 """,
     'author': 'Community of Accountants (COA)',
-    'website': 'https://wa.me/201013907174',
+    'website': 'https://coa-egy.odoo.com/',
     'license': 'LGPL-3',
     'depends': ['account'],
     'data': [

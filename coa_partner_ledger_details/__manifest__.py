@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 {
+    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'COA Partner Ledger - Invoice Details Drill-down',
     'summary': 'Adds an expandable arrow next to each invoice in the Partner Ledger. Unfolding shows the invoice product lines with quantity and total.',
     'description': """
@@ -30,8 +31,8 @@ Requires: Odoo Enterprise (account_reports).
 Developed by Community of Accountants (COA)
 WhatsApp: +20 101 390 7174
     """,
-    'author': 'Community of Accountants',
-    'website': 'https://www.communityofaccountants.com',
+    'author': 'Community of Accountants (COA)',
+    'website': 'https://coa-egy.odoo.com/',
     'category': 'Accounting/Accounting',
     'version': '18.0.1.0.0',
     'license': 'OPL-1',

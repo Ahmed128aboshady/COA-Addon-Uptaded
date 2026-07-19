@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 {
+    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Auto Sequence Generator',
     'version': '19.0.1.0.0',
     'category': 'Technical',
@@ -15,7 +16,7 @@ Automatically assigns unique reference codes when clicking the New button for:
 The generated code is displayed immediately and is read-only to prevent manual edits.
 Sequences are fully configurable via Settings > Technical > Sequences.
     """,
-    'author': 'Community of Accountants',
+    'author': 'Community of Accountants (COA)',
     'depends': [
         'product',
     ],
@@ -30,8 +31,8 @@ Sequences are fully configurable via Settings > Technical > Sequences.
     'installable': True,
     'auto_install': False,
     'application': False,
-    'license': 'LGPL-3',
-    'website': 'https://www.communityofaccountants.com',
+    'license': 'OPL-1',
+    'website': 'https://coa-egy.odoo.com/',
     'price': 29.0,
     'currency': 'USD',
 }

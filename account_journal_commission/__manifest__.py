@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 {
+    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Journal Payment Commission',
     'version': '18.0.1.0.0',
     'summary': 'خصم عمولة تلقائي على الـ Journal - مبيعات ومشتريات منفصلين',
-    'author': 'Community of Accountants',
+    'author': 'Community of Accountants (COA)',
     'category': 'Accounting',
     'depends': [
         'account',
@@ -16,8 +17,8 @@
     ],
     'installable': True,
     'application': False,
-    'license': 'LGPL-3',
-    'website': 'https://www.communityofaccountants.com',
+    'license': 'OPL-1',
+    'website': 'https://coa-egy.odoo.com/',
     'price': 49.0,
     'currency': 'USD',
     'images': [

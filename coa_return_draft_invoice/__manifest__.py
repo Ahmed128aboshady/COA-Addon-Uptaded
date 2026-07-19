@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 {
+    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'COA Adjust Draft Invoice on Stock Return',
     'summary': 'When a warehouse return of a Sale Order is validated, the linked DRAFT customer invoice is automatically reduced by the returned quantities. Audit-trail safe (never touches posted entries).',
     'description': """
@@ -38,11 +39,11 @@ Notes:
 Developed by Community of Accountants (COA)
 WhatsApp: +20 101 390 7174
     """,
-    'author': 'Community of Accountants',
-    'website': 'https://www.communityofaccountants.com',
+    'author': 'Community of Accountants (COA)',
+    'website': 'https://coa-egy.odoo.com/',
     'category': 'Inventory/Sales',
     'version': '18.0.1.0.0',
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
     'depends': [
         'sale_stock',
         'account',
