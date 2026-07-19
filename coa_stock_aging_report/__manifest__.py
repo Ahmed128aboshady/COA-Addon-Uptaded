@@ -10,12 +10,6 @@ Key Features:
 * Group stock age by warehouse or specific storage locations.
 * Filter results by products, product categories, or dates.
 * Configurable aging periods (0-30 days, 31-60 days, etc.).
-* Supports detailed PDF/Excel export.""""Provides a comprehensive stock aging dashboard:
-
-Key Features:
-* Group stock age by warehouse or specific storage locations.
-* Filter results by products, product categories, or dates.
-* Configurable aging periods (0-30 days, 31-60 days, etc.).
 * Supports detailed PDF/Excel export.""",
     'category': 'Inventory/Inventory',
     'author': 'Community of Accountants (COA)',

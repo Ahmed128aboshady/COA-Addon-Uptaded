@@ -9,12 +9,6 @@ Key Features:
 * On validating a stock return, automatically identifies related sale orders.
 * Finds any associated draft customer invoices.
 * Automatically reduces the draft invoice quantities by the returned amount.
-* Fully audit-safe: never modifies posted invoices.""""Keeps draft customer invoices fully synced with warehouse returns:
-
-Key Features:
-* On validating a stock return, automatically identifies related sale orders.
-* Finds any associated draft customer invoices.
-* Automatically reduces the draft invoice quantities by the returned amount.
 * Fully audit-safe: never modifies posted invoices.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',

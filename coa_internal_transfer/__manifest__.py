@@ -11,12 +11,6 @@ Key Features:
 * Adds a new "Internal Transfer" option to Payment Type selection.
 * Adds a "Destination Journal" field for transfers.
 * Automatically generates paired payment entries to reconcile both sides.
-* Supports outstanding receipt/payment account reconciliation.""""Restores the popular "Internal Transfer" payment type on Payments (account.payment):
-
-Key Features:
-* Adds a new "Internal Transfer" option to Payment Type selection.
-* Adds a "Destination Journal" field for transfers.
-* Automatically generates paired payment entries to reconcile both sides.
 * Supports outstanding receipt/payment account reconciliation.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',

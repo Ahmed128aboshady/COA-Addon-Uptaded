@@ -10,11 +10,6 @@
 Key Features:
 * Access is governed strictly by user groups and security permissions.
 * Displays clear validation error messages to unauthorized users.
-* Maintains full system integrity by updating corresponding scheduler entries.""""Enables modifying the order date field even after sale orders are confirmed:
-
-Key Features:
-* Access is governed strictly by user groups and security permissions.
-* Displays clear validation error messages to unauthorized users.
 * Maintains full system integrity by updating corresponding scheduler entries.""",
     'author': 'Community of Accountants (COA)',
     'company': 'Cybrosys Techno Solutions',

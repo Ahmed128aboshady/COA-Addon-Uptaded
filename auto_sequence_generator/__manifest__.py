@@ -12,13 +12,6 @@ Key Features:
 * Customers: Generates Customer Codes (e.g. CUST-00001).
 * Vendors: Generates Vendor Codes (e.g. VEND-00001).
 * Configurable: Easily edit sequences under Settings > Technical > Sequences.
-* Read-only: Protects auto-generated reference fields from unauthorized edits.""""Automatically assigns unique reference codes when creating new records:
-
-Key Features:
-* Products: Automatically generates Internal References (e.g. PROD-00001).
-* Customers: Generates Customer Codes (e.g. CUST-00001).
-* Vendors: Generates Vendor Codes (e.g. VEND-00001).
-* Configurable: Easily edit sequences under Settings > Technical > Sequences.
 * Read-only: Protects auto-generated reference fields from unauthorized edits.""",
     'author': 'Community of Accountants (COA)',
     'depends': [

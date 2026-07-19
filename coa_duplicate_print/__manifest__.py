@@ -12,13 +12,6 @@ Key Features:
 * Supported documents include Sale Orders, Quotations, and Delivery Slips.
 * Configurable settings to enable/disable for Sales, Inventory, or both.
 * Displays print logs including printer user, count, and date.
-* Includes a "Reset Print Count" action for managers.""""Tracks document printing counts and applies watermarks:
-
-Key Features:
-* Automatically prints a "DUPLICATE" watermark starting from the second print.
-* Supported documents include Sale Orders, Quotations, and Delivery Slips.
-* Configurable settings to enable/disable for Sales, Inventory, or both.
-* Displays print logs including printer user, count, and date.
 * Includes a "Reset Print Count" action for managers.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',

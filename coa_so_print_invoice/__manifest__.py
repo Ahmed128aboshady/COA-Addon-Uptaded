@@ -8,11 +8,6 @@
 Key Features:
 * Adds a "Print Invoice" button directly on the Sale Order header.
 * Opens the invoice PDF and launches the browser print dialog instantly.
-* Enables salespeople to print invoices even without accounting permissions.""""Simplifies printing invoice documents directly from the sale order form:
-
-Key Features:
-* Adds a "Print Invoice" button directly on the Sale Order header.
-* Opens the invoice PDF and launches the browser print dialog instantly.
 * Enables salespeople to print invoices even without accounting permissions.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',

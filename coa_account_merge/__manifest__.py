@@ -13,13 +13,6 @@ Key Features:
 * Re-points all historical Journal Items to the destination account.
 * Keeps chronological date order and running balances completely intact.
 * Updates all default accounting rules, tax rules, product models, and partner records.
-* Archives source accounts safely instead of deleting them.""""Adds a "Merge Accounts" action on the Chart of Accounts list view:
-
-Key Features:
-* Select two or more accounts, select a destination account, and merge.
-* Re-points all historical Journal Items to the destination account.
-* Keeps chronological date order and running balances completely intact.
-* Updates all default accounting rules, tax rules, product models, and partner records.
 * Archives source accounts safely instead of deleting them.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',

@@ -10,12 +10,6 @@ Key Features:
 * Search products by name, barcode, or reference code with autocomplete.
 * Displays product images, detailed specifications, and customer-specific pricing.
 * Allows customers to select delivery address and shipping methods.
-* Instantly generates draft sale quotations in the backend.""""A complete customer self-service shopping experience inside the portal:
-
-Key Features:
-* Search products by name, barcode, or reference code with autocomplete.
-* Displays product images, detailed specifications, and customer-specific pricing.
-* Allows customers to select delivery address and shipping methods.
 * Instantly generates draft sale quotations in the backend.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',

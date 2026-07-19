@@ -10,11 +10,6 @@
 Key Features:
 * Onchange warning triggers on Sale Order line when typing quantity.
 * Interactive validation dialog triggers on Delivery validation listing stock shortage.
-* Warnings are informative only — users can bypass and proceed.""""Displays helpful alerts when ordered quantities exceed available stock:
-
-Key Features:
-* Onchange warning triggers on Sale Order line when typing quantity.
-* Interactive validation dialog triggers on Delivery validation listing stock shortage.
 * Warnings are informative only — users can bypass and proceed.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',

@@ -9,12 +9,6 @@ Key Features:
 * Configurable location permissions tab inside User profile.
 * Restricts stock picking, validating, and viewing of moves at unauthorized locations.
 * Automatically filters stock quants so users only see quantities in allowed places.
-* Fully compatible with recursive locations and multi-warehouse operations.""""Limits user access to specific warehouses, locations, and picking operation types:
-
-Key Features:
-* Configurable location permissions tab inside User profile.
-* Restricts stock picking, validating, and viewing of moves at unauthorized locations.
-* Automatically filters stock quants so users only see quantities in allowed places.
 * Fully compatible with recursive locations and multi-warehouse operations.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',

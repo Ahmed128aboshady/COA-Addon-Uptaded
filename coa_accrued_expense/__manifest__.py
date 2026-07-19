@@ -11,12 +11,6 @@ Key Features:
 * Define custom accrued expense accounts and journals in Odoo Settings.
 * Flag vendor bill lines as "Accrued" and specify start/end dates.
 * Automatically creates reclassification entries moving expense to accrued account.
-* Periodically recognizes the expense month by month.""""This module replicates deferred expense mechanics specifically for accrued expenses:
-
-Key Features:
-* Define custom accrued expense accounts and journals in Odoo Settings.
-* Flag vendor bill lines as "Accrued" and specify start/end dates.
-* Automatically creates reclassification entries moving expense to accrued account.
 * Periodically recognizes the expense month by month.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',

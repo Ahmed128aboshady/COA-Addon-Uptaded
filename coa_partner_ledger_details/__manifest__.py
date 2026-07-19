@@ -9,12 +9,6 @@ Key Features:
 * Adds an expandable arrow next to every invoice move line.
 * Displays product name, quantities, and line totals directly within the ledger.
 * Works natively with account_reports without modifying core databases.
-* Perfect for credit control and detailed customer balance analysis.""""Extends the Partner Ledger report to show itemized invoice line details:
-
-Key Features:
-* Adds an expandable arrow next to every invoice move line.
-* Displays product name, quantities, and line totals directly within the ledger.
-* Works natively with account_reports without modifying core databases.
 * Perfect for credit control and detailed customer balance analysis.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',
