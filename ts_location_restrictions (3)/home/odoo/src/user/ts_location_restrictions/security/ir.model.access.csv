@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_stock_warehouse_loc_mgr,stock.warehouse loc mgr,stock.model_stock_warehouse,ts_location_restrictions.group_location_restriction_manager,1,1,1,1
-access_stock_location_loc_mgr,stock.location loc mgr,stock.model_stock_location,ts_location_restrictions.group_location_restriction_manager,1,1,1,1
-access_stock_picking_type_loc_mgr,stock.picking.type loc mgr,stock.model_stock_picking_type,ts_location_restrictions.group_location_restriction_manager,1,1,1,1

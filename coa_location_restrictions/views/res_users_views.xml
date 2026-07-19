@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_res_users_form_location_restriction" model="ir.ui.view">
+            <field name="name">res.users.form.location.restriction</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//page[@name='page_security']" position="after">
+                    <page string="Location Restrictions"
+                          name="location_restrictions"
+                          groups="ts_location_restrictions.group_location_restriction_manager">
+
+                        <!-- Information Banner -->
+                        <div class="alert alert-info d-flex align-items-center gap-3 mb-4 shadow-sm" role="alert" style="border-right: 5px solid #0a2f4d; border-radius: 8px;">
+                            <span class="fa fa-info-circle fa-2x" style="color: #0a2f4d;"/>
+                            <div>
+                                <strong style="font-size: 15px; color: #0a2f4d;">Location Restrictions Security Manager</strong><br/>
+                                <span class="text-muted" style="font-size: 13px;">
+                                    Limit this user's visibility and actions to specific inventory nodes. When enabled, they will only see and process stock pickings, moves, and quantities associated with their allowed warehouses, locations, and operations. Leaving fields empty grants unrestricted access.
+                                </span>
+                            </div>
+                        </div>
+
+                        <group>
+                            <group string="Restriction Activation" class="p-3 bg-light rounded" style="border: 1px solid #dee2e6;">
+                                <field name="location_restriction_enabled"
+                                       widget="boolean_toggle"
+                                       string="Enable Restrictions"
+                                       class="oe_inline"/>
+                            </group>
+                        </group>
+
+                        <!-- Allowed Scopes Section -->
+                        <div invisible="not location_restriction_enabled" class="mt-3">
+                            <h4 class="mb-3" style="color: #0a2f4d; font-weight: 700; border-bottom: 2px solid #e8f0f2; padding-bottom: 8px;">
+                                <i class="fa fa-sliders me-1" style="color: #e52b2b;"/> Allowed Scopes &amp; Rules
+                            </h4>
+                            <group>
+                                <group string="Allowed Warehouses" class="p-3 bg-light rounded" style="border: 1px solid #dee2e6; height: 100%;">
+                                    <field name="allowed_warehouse_ids"
+                                           nolabel="1"
+                                           widget="many2many_tags"
+                                           options="{'no_create': True}"
+                                           placeholder="Leave empty to allow all warehouses…"/>
+                                    <p class="text-muted small mt-2">
+                                        <i class="fa fa-question-circle me-1"/> Scopes the user's default dashboard and picking views to these warehouses.
+                                    </p>
+                                </group>
+
+                                <group string="Allowed Locations" class="p-3 bg-light rounded" style="border: 1px solid #dee2e6; height: 100%;">
+                                    <field name="allowed_location_ids"
+                                           nolabel="1"
+                                           widget="many2many_tags"
+                                           options="{'no_create': True}"
+                                           domain="[('usage', 'in', ['internal', 'transit'])]"
+                                           placeholder="Leave empty to allow all locations…"/>
+                                    <p class="text-muted small mt-2">
+                                        <i class="fa fa-question-circle me-1"/> Restricts access to specific stock locations. Child locations are automatically authorized recursively.
+                                    </p>
+                                </group>
+                            </group>
+
+                            <group class="mt-3">
+                                <group string="Allowed Operation Types" class="p-3 bg-light rounded" style="border: 1px solid #dee2e6; width: 100%;" colspan="2">
+                                    <field name="allowed_picking_type_ids"
+                                           nolabel="1"
+                                           widget="many2many_tags"
+                                           options="{'no_create': True}"
+                                           placeholder="Leave empty to allow all operation types…"/>
+                                    <p class="text-muted small mt-2">
+                                        <i class="fa fa-question-circle me-1"/> Limits the types of operations (e.g. only Receipts or Deliveries) this user is allowed to view, modify, or validate.
+                                    </p>
+                                </group>
+                            </group>
+                        </div>
+
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

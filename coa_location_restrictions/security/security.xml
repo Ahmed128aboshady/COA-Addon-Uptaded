@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- ── Category ───────────────────────────────────────────── -->
+        <record id="module_category_location_restriction" model="ir.module.category">
+            <field name="name">Location Restriction</field>
+            <field name="description">Manage warehouse and location access restrictions per user.</field>
+            <field name="sequence">100</field>
+        </record>
+
+        <!-- ── Privilege (Odoo 19: groups use privilege_id instead of category_id) -->
+        <record id="privilege_location_restriction" model="res.groups.privilege">
+            <field name="name">Location Restriction</field>
+            <field name="category_id" ref="module_category_location_restriction"/>
+            <field name="sequence">100</field>
+        </record>
+
+        <!-- ── Manager group ─────────────────────────────────────── -->
+        <record id="group_location_restriction_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="privilege_id" ref="privilege_location_restriction"/>
+            <field name="user_ids" eval="[(4, ref('base.user_admin'))]"/>
+        </record>
+
+        <!-- ── User group (restricted users) ─────────────────────── -->
+        <record id="group_location_restriction_user" model="res.groups">
+            <field name="name">User</field>
+            <field name="privilege_id" ref="privilege_location_restriction"/>
+        </record>
+
+    </data>
+</odoo>
