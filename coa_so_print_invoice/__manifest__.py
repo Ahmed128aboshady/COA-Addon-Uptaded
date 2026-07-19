@@ -3,12 +3,9 @@
     'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'COA Sale Order - Direct Invoice Print',
     'summary': 'Print sale order invoices directly from the SO with one click.',
-    'description': """Simplifies printing invoice documents directly from the sale order form:
-
-Key Features:
-* Adds a "Print Invoice" button directly on the Sale Order header.
-* Opens the invoice PDF and launches the browser print dialog instantly.
-* Enables salespeople to print invoices even without accounting permissions.""",
+    'description': """Direct Print: Adds a "Print Invoice" button directly on the Sale Order header.
+Browser Dialog: Opens the invoice PDF and launches the browser print dialog instantly.
+Access Bypass: Enables salespeople to print invoices even without accounting permissions.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',
     'category': 'Sales',

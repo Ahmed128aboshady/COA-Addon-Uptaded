@@ -5,13 +5,10 @@
     'version': '18.0.1.0.0',
     'category': 'Accounting/Accounting',
     'summary': 'Recognize vendor bill expenses over a period as accrued expenses.',
-    'description': """This module replicates deferred expense mechanics specifically for accrued expenses:
-
-Key Features:
-* Define custom accrued expense accounts and journals in Odoo Settings.
-* Flag vendor bill lines as "Accrued" and specify start/end dates.
-* Automatically creates reclassification entries moving expense to accrued account.
-* Periodically recognizes the expense month by month.""",
+    'description': """Accrued Accounts: Define custom accrued expense accounts and journals in Odoo Settings.
+Vendor Bills: Flag vendor bill lines as "Accrued" and specify start/end dates.
+Accrual Reclass: Automatically creates reclassification entries moving expense to accrued account.
+Periodic Recognition: Periodically recognizes the expense month by month.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',
     'license': 'OPL-1',

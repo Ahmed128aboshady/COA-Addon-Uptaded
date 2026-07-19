@@ -4,13 +4,10 @@
     'name': 'Customer Portal: Order Request',
     'version': '18.0.1.0.0',
     'summary': 'Empower customers to search products, select addresses, and request quotations.',
-    'description': """A complete customer self-service shopping experience inside the portal:
-
-Key Features:
-* Search products by name, barcode, or reference code with autocomplete.
-* Displays product images, detailed specifications, and customer-specific pricing.
-* Allows customers to select delivery address and shipping methods.
-* Instantly generates draft sale quotations in the backend.""",
+    'description': """Portal Search: Search products by name, barcode, or reference code with autocomplete.
+Rich UI: Displays product images, detailed specifications, and customer-specific pricing.
+Addresses: Allows customers to select delivery address and shipping methods.
+Quotation Request: Instantly generates draft sale quotations in the backend.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',
     'category': 'Sales',

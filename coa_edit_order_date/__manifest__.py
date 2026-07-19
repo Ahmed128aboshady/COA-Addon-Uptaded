@@ -5,12 +5,10 @@
     'version': '18.0.1.0.0',
     'category': 'Sales',
     'summary': 'Allow specific user groups to edit the date of confirmed Sale Orders.',
-    'description': """Enables modifying the order date field even after sale orders are confirmed:
-
-Key Features:
-* Access is governed strictly by user groups and security permissions.
-* Displays clear validation error messages to unauthorized users.
-* Maintains full system integrity by updating corresponding scheduler entries.""",
+    'description': """Order Dates: Enables modifying the order date field even after sale orders are confirmed.
+Access Control: Access is governed strictly by user groups and security permissions.
+Security Checks: Displays clear validation error messages to unauthorized users.
+Scheduler Updates: Maintains full system integrity by updating corresponding scheduler entries.""",
     'author': 'Community of Accountants (COA)',
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',

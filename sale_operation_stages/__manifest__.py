@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 {
-    'description': """Tracks custom operational steps for ordered items before warehouse shipping:
-
-Key Features:
-* Create and configure multiple steps (cutting, processing, quality inspection, etc.).
-* Interactive dashboard showing current pipeline stage of every order.
-* Automatic notifications when an order line moves between stages.""",
+    'description': """Operational Steps: Create and configure multiple steps (cutting, processing, quality inspection, etc.).
+Tracking Dashboard: Interactive dashboard showing current pipeline stage of every order.
+Alert System: Automatic notifications when an order line moves between stages.""",
     'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Sale Operation Stages',
     'version': '18.0.1.0.0',

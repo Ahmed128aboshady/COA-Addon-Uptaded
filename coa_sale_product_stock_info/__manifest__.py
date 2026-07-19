@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 {
-    'description': """Helps sales reps quickly verify stock status directly from sale order lines:
-
-Key Features:
-* Displays product stock (On Hand / Available) inside the search list view.
-* Seamlessly integrates with Odoo sales portal and backend forms.
-* Prevents committing to orders for out-of-stock items.""",
+    'description': """Product Search: Displays product stock (On Hand / Available) inside the search list view.
+Sales Integration: Seamlessly integrates with Odoo sales portal and backend forms.
+Stock Availability: Helps sales reps verify stock status directly from sale order lines.""",
     'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Sale: Stock Info in Product Search',
     'version': '18.0.1.0.0',

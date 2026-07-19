@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 {
-    'description': """Automatically appends the customer's unique account code to printed documents:
-
-Key Features:
-* Appears on Sale Orders, Quotations, and Invoice PDFs.
-* Helps warehouses and billing teams quickly map paperwork.
-* Clean styling integration matching standard Odoo document templates.""",
+    'description': """Document Codes: Automatically appends the customer's unique account code to printed documents.
+Reports Supported: Appears on Sale Orders, Quotations, and Invoice PDFs.
+Template Alignment: Clean styling integration matching standard Odoo document templates.""",
     'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Customer Code on Sale Order Report',
     'version': '18.0.1.0.0',

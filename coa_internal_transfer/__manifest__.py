@@ -5,13 +5,10 @@
     'version': '19.0.1.0.0',
     'category': 'Accounting/Accounting',
     'summary': 'Restore the classic Internal Transfer feature on Payments screen.',
-    'description': """Restores the popular "Internal Transfer" payment type on Payments (account.payment):
-
-Key Features:
-* Adds a new "Internal Transfer" option to Payment Type selection.
-* Adds a "Destination Journal" field for transfers.
-* Automatically generates paired payment entries to reconcile both sides.
-* Supports outstanding receipt/payment account reconciliation.""",
+    'description': """Payment Type: Adds a new "Internal Transfer" option to Payment Type selection.
+Destination Journal: Adds a "Destination Journal" field for transfers.
+Paired Entries: Automatically generates paired payment entries to reconcile both sides.
+Reconciliation: Supports outstanding receipt/payment account reconciliation.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',
     'license': 'OPL-1',

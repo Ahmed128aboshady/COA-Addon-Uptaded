@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 {
-    'description': """Balances sales security with flexible creation permissions:
-
-Key Features:
-* Restricts salespeople to viewing only their own orders (Own Documents group).
-* Retains the ability to create new orders on behalf of other colleagues.
-* Enhances collaborative selling without compromising pipeline privacy.""",
+    'description': """Salesperson View: Restricts salespeople to viewing only their own orders (Own Documents group).
+Order Placement: Retains the ability to create new orders on behalf of other colleagues.
+Pipeline Security: Enhances collaborative selling without compromising pipeline privacy.""",
     'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Sale: Own View - Any Salesperson Create',
     'version': '18.0.1.0.0',

@@ -6,14 +6,11 @@
     'category': 'Accounting',
     'summary': 'Merge two or more GL accounts while preserving full journal ledger history.'
                'all journal items and references move to one account.',
-    'description': """Adds a "Merge Accounts" action on the Chart of Accounts list view:
-
-Key Features:
-* Select two or more accounts, select a destination account, and merge.
-* Re-points all historical Journal Items to the destination account.
-* Keeps chronological date order and running balances completely intact.
-* Updates all default accounting rules, tax rules, product models, and partner records.
-* Archives source accounts safely instead of deleting them.""",
+    'description': """Chart of Accounts: Adds a "Merge Accounts" action on the Chart of Accounts list view.
+Move Relinking: Re-points all historical Journal Items to the destination account.
+Ledger Integrity: Keeps chronological date order and running balances completely intact.
+Database Scanner: Updates all default accounting rules, tax rules, product models, and partner records.
+Safe Archiving: Archives source accounts safely instead of deleting them.""",
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',
     'license': 'LGPL-3',
