@@ -8,16 +8,14 @@
     'description': """
 Account Restricted Access
 ==========================
-يسمح هذا الموديول بتحديد قائمة حسابات (Many2many) لكل مستخدم من خلال بطاقة
-المستخدم (Users). المستخدم المنتمي لمجموعة "محاسب مقيّد الصلاحية" لن يرى
-ولن يستطيع الوصول إلا إلى:
+This module allows defining a list of allowed accounts (Many2many) for each user in their user profile card.
+Users belonging to the 'Restricted Accountant' group will only see and be able to access:
 
-- حركة القيود (Journal Items / account.move.line) الخاصة بالحسابات المسموح بها فقط
-- دفتر الأستاذ العام (General Ledger) محدود بهذه الحسابات
-- شجرة الحسابات (Chart of Accounts) محدودة بهذه الحسابات فقط
+- Journal Items (account.move.line) for the allowed accounts only.
+- General Ledger restricted to these accounts.
+- Chart of Accounts restricted to these accounts only.
 
-تم تطويره بواسطة Community of Accountants - COA
-Odoo Silver Partner
+Developed by Community of Accountants (COA).
     """,
     'author': 'Community of Accountants (COA)',
     'website': 'https://coa-egy.odoo.com/',

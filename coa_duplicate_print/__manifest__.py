@@ -9,7 +9,7 @@
 COA Duplicate Print Watermark
 =============================
 Counts how many times a document has been printed to PDF and shows a big
-rotated "DUPLICATE - مكرر - Copy #N" watermark from the 2nd print onwards.
+rotated "DUPLICATE - Copy #N" watermark from the 2nd print onwards.
 
 * Supported documents: Sale Order / Quotation, Delivery Slip (stock.picking).
 * Configurable in General Settings: Disabled / Inventory only / Sales only /
