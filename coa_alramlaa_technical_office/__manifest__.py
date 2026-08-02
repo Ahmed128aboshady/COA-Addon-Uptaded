@@ -10,7 +10,7 @@
     'license': 'OPL-1',
     'price': 79.0,
     'currency': 'EUR',
-    'depends': ['sale_management', 'mrp', 'mail', 'alramlaa_product_dimensions'],
+    'depends': ['sale_management', 'mrp', 'mail', 'coa_alramlaa_product_dimensions'],
     'data': ['security/security.xml', 'security/ir.model.access.csv', 'data/ir_sequence.xml', 'wizard/reject_wizard_views.xml', 'views/technical_review_views.xml', 'views/sale_order_views.xml', 'views/menus.xml'],
     'images': ['static/description/banner.png'],
     'installable': True,

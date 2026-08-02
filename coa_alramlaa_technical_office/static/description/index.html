@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COA Technical Office Engineering Suite - Odoo Apps Store</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {{
+            --coa-primary: #714B67;
+            --coa-secondary: #00A09D;
+            --coa-dark: #0F172A;
+            --coa-accent: #38BDF8;
+        }}
+        body {{
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            background-color: #F8FAFC;
+            color: #1E293B;
+            line-height: 1.6;
+        }}
+        .hero-section {{
+            background: radial-gradient(circle at top right, #875A7B 0%, #714B67 40%, #1E1B2E 100%);
+            color: white;
+            padding: 4rem 2.5rem;
+            border-radius: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(113, 75, 103, 0.3);
+            margin-bottom: 2.5rem;
+        }}
+        .pill-badge {{
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-right: 0.5rem;
+            margin-bottom: 1rem;
+        }}
+        .badge-cat-ninja {{ background: rgba(0, 160, 157, 0.25); color: #2DD4BF; border: 1px solid rgba(45, 212, 191, 0.4); }}
+        .badge-ver-ninja {{ background: rgba(255, 255, 255, 0.15); color: #F1F5F9; border: 1px solid rgba(255, 255, 255, 0.25); }}
+        .badge-price-ninja {{ background: rgba(16, 185, 129, 0.25); color: #34D399; border: 1px solid rgba(52, 211, 153, 0.4); }}
+
+        .ninja-card {{
+            background: #FFFFFF;
+            border-radius: 1.25rem;
+            border: 1px solid #E2E8F0;
+            padding: 2rem;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            height: 100%;
+        }}
+        .ninja-card:hover {{
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -10px rgba(113, 75, 103, 0.15);
+            border-color: rgba(113, 75, 103, 0.3);
+        }}
+        .ninja-icon-wrapper {{
+            width: 65px;
+            height: 65px;
+            border-radius: 1rem;
+            background: linear-gradient(135deg, rgba(113, 75, 103, 0.1) 0%, rgba(0, 160, 157, 0.1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.85rem;
+            color: var(--coa-primary);
+            margin-bottom: 1.25rem;
+        }}
+        .browser-mockup {{
+            border-radius: 1.25rem;
+            box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+            overflow: hidden;
+            border: 1px solid #334155;
+            background: #0F172A;
+            margin-bottom: 3rem;
+        }}
+        .browser-header {{
+            background: #1E293B;
+            padding: 0.75rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }}
+        .browser-dot {{ width: 12px; height: 12px; border-radius: 50%; display: inline-block; }}
+        .btn-wa-ninja {{
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            font-weight: 700;
+            padding: 0.9rem 2rem;
+            border-radius: 50rem;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }}
+        .btn-wa-ninja:hover {{ color: white; transform: translateY(-2px); box-shadow: 0 15px 25px rgba(37, 211, 102, 0.4); }}
+        .btn-web-ninja {{
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-weight: 600;
+            padding: 0.9rem 2rem;
+            border-radius: 50rem;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }}
+        .btn-web-ninja:hover {{ background: rgba(255, 255, 255, 0.25); color: white; }}
+
+        .workflow-step {{
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 2rem;
+        }}
+        .workflow-step::before {{
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 2rem;
+            bottom: -2rem;
+            width: 2px;
+            background: #E2E8F0;
+        }}
+        .workflow-step:last-child::before {{ display: none; }}
+        .workflow-badge {{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 50%;
+            background: var(--coa-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }}
+    </style>
+</head>
+<body>
+    <div class="container my-4">
+        <!-- Hero Header -->
+        <div class="hero-section">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="icon.png" width="90" height="90" class="rounded-4 me-3 p-1 bg-white shadow-sm" alt="COA Logo">
+                        <div>
+                            <span class="pill-badge badge-cat-ninja"><i class="fa-solid fa-compass-drafting me-2"></i>Engineering & Project</span>
+                            <span class="pill-badge badge-ver-ninja"><i class="fa-solid fa-code-branch me-2"></i>Odoo 17.0 & 18.0</span>
+                            <span class="pill-badge badge-price-ninja"><i class="fa-solid fa-tag me-2"></i>€79.00 EUR</span>
+                        </div>
+                    </div>
+                    <h1 class="display-4 fw-extrabold text-white mb-3">COA Technical Office & BOQ Review Workflow</h1>
+                    <p class="fs-5 text-slate-200 mb-4 fw-medium">نظام المكتب الفني الهندسي الشامل لحصر الكشوفات وتدقيق المقايسات وأوامر الإنتاج والمشتريات بين أودو Sales و Manufacturing</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="https://wa.me/201013907174" target="_blank" class="btn-wa-ninja">
+                            <i class="fa-brands fa-whatsapp fs-5"></i> Contact WhatsApp (+20 10 13907174)
+                        </a>
+                        <a href="https://www.coa-egy.com" target="_blank" class="btn-web-ninja">
+                            <i class="fa-solid fa-globe fs-5"></i> Visit Website (www.coa-egy.com)
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center mt-4 mt-lg-0">
+                    <div class="p-4 rounded-4 text-dark text-start shadow-lg" style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px);">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fa-solid fa-award text-success fs-2 me-2"></i>
+                            <div>
+                                <h6 class="fw-bold mb-0 text-slate-900">Flagship Engineering Module</h6>
+                                <small class="text-muted">COA Technical Office Suite</small>
+                            </div>
+                        </div>
+                        <hr class="my-2">
+                        <div class="small text-secondary mb-3">
+                            <i class="fa-solid fa-check-double text-primary me-2"></i>Engineering Review Approval Gate<br>
+                            <i class="fa-solid fa-calculator text-primary me-2"></i>Automatic BOQ Raw Material Formula<br>
+                            <i class="fa-solid fa-cubes-stacked text-primary me-2"></i>Dimensions (Length/Width/Thickness/Waste%)<br>
+                            <i class="fa-solid fa-headset text-primary me-2"></i>Direct COA Support & Updates
+                        </div>
+                        <a href="https://wa.me/201013907174" target="_blank" class="btn btn-dark w-100 fw-bold py-2 rounded-3">
+                            <i class="fa-solid fa-cart-shopping me-2"></i>Get Commercial License
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- High-Resolution Browser Screenshot Frame -->
+        <div class="browser-mockup">
+            <div class="browser-header">
+                <span class="browser-dot" style="background: #FF5F56;"></span>
+                <span class="browser-dot" style="background: #FFBD2E;"></span>
+                <span class="browser-dot" style="background: #27C93F;"></span>
+                <small class="text-slate-400 ms-3 font-monospace">Odoo Technical Office Interface — coa_alramlaa_technical_office</small>
+            </div>
+            <img src="banner.png" class="w-100 d-block" alt="COA Technical Office Cover Banner" style="object-fit: cover; max-height: 550px;">
+        </div>
+
+        <!-- Key Engineering Features Grid (4 Cards) -->
+        <h2 class="fw-bold mb-4 text-center" style="color: var(--coa-primary);">المميزات الهندسية والفنية الرئيسية (Key Technical Features)</h2>
+        <div class="row g-4 mb-5">
+            <div class="col-md-6 col-lg-3">
+                <div class="ninja-card">
+                    <div class="ninja-icon-wrapper"><i class="fa-solid fa-user-gear"></i></div>
+                    <h5 class="fw-bold mb-2">مراجعة المكتب الفني</h5>
+                    <p class="text-muted small mb-0">مرحلة مراجعة هندسية إلزامية قبل اعتماد أمر البيع وتحويله لتصنيع أو توريد مع منع التعديل غير المعتمد.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="ninja-card">
+                    <div class="ninja-icon-wrapper"><i class="fa-solid fa-ruler-combined"></i></div>
+                    <h5 class="fw-bold mb-2">حساب الأبعاد والـ Waste %</h5>
+                    <p class="text-muted small mb-0">حساب أوتوماتيكي للطول والعرض والسمك والمتر المربع والمكعب ونسبة الهالك الكلية (Waste Ratio).</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="ninja-card">
+                    <div class="ninja-icon-wrapper"><i class="fa-solid fa-boxes-packing"></i></div>
+                    <h5 class="fw-bold mb-2">توليد معادلات الـ BOM</h5>
+                    <p class="text-muted small mb-0">تحديث قوائم المواد الخام (Bill of Materials) ديناميكياً بناءً على مواصفات المهندس المدخلة في العرض.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="ninja-card">
+                    <div class="ninja-icon-wrapper"><i class="fa-solid fa-file-signature"></i></div>
+                    <h5 class="fw-bold mb-2">طباعة تقارير المراجعة</h5>
+                    <p class="text-muted small mb-0">طباعة كشوفات التقييم الفني المزدوجة (عربي/إنجليزي) الموجهة لإدارة الإنتاج والورشة والمخازن.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Workflow Step-by-Step Breakdown -->
+        <div class="card border-0 shadow-sm rounded-4 mb-5">
+            <div class="card-body p-4 p-md-5">
+                <h3 class="fw-bold mb-4" style="color: var(--coa-primary);"><i class="fa-solid fa-diagram-project me-3"></i>دورة عمل المكتب الفني (Engineering Workflow)</h3>
+                <div class="workflow-step">
+                    <div class="workflow-badge">1</div>
+                    <h5 class="fw-bold mb-1">إدخال مقايسة المبيعات الأوليّة (Quotation Entry)</h5>
+                    <p class="text-muted mb-0">يقوم مسئول المبيعات بإدخال الأصناف والمواصفات المبدئية في مقايسة العرض.</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="workflow-badge">2</div>
+                    <h5 class="fw-bold mb-1">إحالة العرض للمكتب الفني (Submit to Technical Office)</h5>
+                    <p class="text-muted mb-0">يتغير وضع العرض إلى حالة `Technical Office Review` لتنبيه مهندسي المكتب الفني.</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="workflow-badge">3</div>
+                    <h5 class="fw-bold mb-1">التدقيق الهندسي وحساب الهالك والتصنيع (Engineering Review & BOQ)</h5>
+                    <p class="text-muted mb-0">يقوم المهندس بمراجعة المقايسات، تعديل الأبعاد، إضافة نسبة الهالك، وضبط معادلة التصنيع BOM.</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="workflow-badge">4</div>
+                    <h5 class="fw-bold mb-1">الاعتماد النهائي وتحويل لأمر إنتاج (Final Approval & MO Generation)</h5>
+                    <p class="text-muted mb-0">بعد اعتماد المهندس الفني، يتم تأكيد العرض تلقائياً وتوليد أوامر الإنتاج MO والمشتريات المعززة بالمعادلات الدقيقة.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Specification Table -->
+        <div class="card border-0 shadow-sm rounded-4 mb-5">
+            <div class="card-body p-4 p-md-5">
+                <h3 class="fw-bold mb-4" style="color: var(--coa-primary);"><i class="fa-solid fa-sliders me-3"></i>المواصفات الفنية والاعتماديات (Technical Specs)</h3>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <tbody>
+                            <tr>
+                                <th class="py-3 text-muted" style="width: 35%;"><i class="fa-solid fa-box me-2"></i>Technical Name</th>
+                                <td class="py-3 font-monospace fw-bold text-dark"><code>coa_alramlaa_technical_office</code></td>
+                            </tr>
+                            <tr>
+                                <th class="py-3 text-muted"><i class="fa-solid fa-code-branch me-2"></i>Odoo Compatibility</th>
+                                <td class="py-3"><span class="badge bg-primary px-3 py-2 fs-6">Odoo 17.0 & 18.0 (Community & Enterprise)</span></td>
+                            </tr>
+                            <tr>
+                                <th class="py-3 text-muted"><i class="fa-solid fa-certificate me-2"></i>License Type</th>
+                                <td class="py-3"><span class="badge bg-dark px-3 py-2 fs-6">OPL-1</span></td>
+                            </tr>
+                            <tr>
+                                <th class="py-3 text-muted"><i class="fa-solid fa-link me-2"></i>Dependencies</th>
+                                <td class="py-3 fw-semibold text-slate-700">sale_management, manufacturing, project, product</td>
+                            </tr>
+                            <tr>
+                                <th class="py-3 text-muted"><i class="fa-solid fa-building me-2"></i>Author / Vendor</th>
+                                <td class="py-3 fw-bold text-slate-900">COA (Chart of Accounts)</td>
+                            </tr>
+                            <tr>
+                                <th class="py-3 text-muted"><i class="fa-solid fa-tag me-2"></i>Official Store Price</th>
+                                <td class="py-3 fw-bold text-success fs-5">€79.00 EUR</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Official Support Footer -->
+        <div class="p-5 rounded-4 text-white text-center shadow-lg" style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); border: 1px solid rgba(255,255,255,0.1);">
+            <h2 class="fw-bold mb-3">Designed & Supported by COA Egypt</h2>
+            <p class="fs-5 text-slate-300 mb-4 max-w-700 mx-auto">Chart of Accounts (COA) is a leading ERP implementation firm specializing in Odoo development, engineering workflows, and enterprise automation.</p>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="https://wa.me/201013907174" target="_blank" class="btn-wa-ninja">
+                    <i class="fa-brands fa-whatsapp fs-4"></i> Direct WhatsApp (+20 10 13907174)
+                </a>
+                <a href="https://www.coa-egy.com" target="_blank" class="btn-web-ninja">
+                    <i class="fa-solid fa-globe fs-4"></i> Official Portal (www.coa-egy.com)
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
