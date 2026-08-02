@@ -2,7 +2,7 @@
 {
     'name': 'COA Account Restricted Access',
     'summary': 'تقييد رؤية المحاسب على حسابات معينة في الجينرال ليدجر وحركة الحسابات',
-    'description': 'COA Account Restricted Access developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'description': 'COA Account Restricted Access developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.19.0.1.0.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Accounting',

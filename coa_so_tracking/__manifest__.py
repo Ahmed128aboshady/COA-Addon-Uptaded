@@ -2,7 +2,7 @@
 {
     'name': 'COA So Tracking',
     'summary': 'متابعة أوامر البيع: كميات التصنيع والتسليم والفوترة لكل صنف',
-    'description': 'COA So Tracking developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.1.0.',
+    'description': 'COA So Tracking developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.19.0.1.1.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',

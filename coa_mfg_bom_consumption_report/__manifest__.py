@@ -2,7 +2,7 @@
 {
     'name': 'COA Mfg Bom Consumption Report',
     'summary': 'Compare planned BOM quantities with actual stock consumption per MO',
-    'description': 'COA Mfg Bom Consumption Report developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.1.',
+    'description': 'COA Mfg Bom Consumption Report developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.19.0.1.0.1.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Manufacturing',

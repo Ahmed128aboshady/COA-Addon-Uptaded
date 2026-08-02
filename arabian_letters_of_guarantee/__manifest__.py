@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'COA Arabian Letters Of Guarantee',
-    'summary': 'Professional Arabian Letters Of Guarantee solution for Odoo Accounting. Streamlines business operations, automates workflow validations, and enhances ERP reporting.',
-    'description': 'COA Arabian Letters Of Guarantee developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.0.1.',
+    'summary': 'Professional Arabian Letters Of Guarantee solution for Odoo Accounting. Streamlines business operations, automates workflow val...',
+    'description': 'COA Arabian Letters Of Guarantee developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.0.1.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Accounting',

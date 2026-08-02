@@ -2,7 +2,7 @@
 {
     'name': 'COA Partner Ledger Invoice Lines',
     'summary': 'Display invoice lines details in Partner Ledger Report',
-    'description': 'COA Partner Ledger Invoice Lines developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.1.4.',
+    'description': 'COA Partner Ledger Invoice Lines developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.1.4.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Accounting',

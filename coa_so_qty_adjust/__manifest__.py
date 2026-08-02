@@ -2,7 +2,7 @@
 {
     'name': 'COA So Qty Adjust',
     'summary': 'Decrease draft delivery quantities in place instead of creating a delivery + return when the SO quantity is reduced.',
-    'description': 'COA So Qty Adjust developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 18.0.1.0.0.',
+    'description': 'COA So Qty Adjust developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 18.0.1.0.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Inventory',

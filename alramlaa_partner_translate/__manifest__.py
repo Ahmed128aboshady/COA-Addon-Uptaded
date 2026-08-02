@@ -2,7 +2,7 @@
 {
     'name': 'COA Alramlaa Partner Translate',
     'summary': 'Make partner name translatable (Arabic/English)',
-    'description': 'COA Alramlaa Partner Translate developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.1.1.',
+    'description': 'COA Alramlaa Partner Translate developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.19.0.1.1.1.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',

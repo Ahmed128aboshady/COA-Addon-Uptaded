@@ -2,7 +2,7 @@
 {
     'name': 'COA Devnix Gl Account Balance',
     'summary': 'Advanced GL Balance in Accounting Dashboard module for Odoo ERP.',
-    'description': 'COA Devnix Gl Account Balance developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.1.0.0.',
+    'description': 'COA Devnix Gl Account Balance developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.1.0.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Accounting',

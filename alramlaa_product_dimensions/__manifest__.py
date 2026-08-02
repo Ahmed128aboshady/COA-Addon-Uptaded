@@ -2,7 +2,7 @@
 {
     'name': 'COA Alramlaa Product Dimensions',
     'summary': 'Add Length, Width, Thickness, Square/Cubic Meter and Waste % to products',
-    'description': 'COA Alramlaa Product Dimensions developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'description': 'COA Alramlaa Product Dimensions developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.19.0.1.0.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',

@@ -2,7 +2,7 @@
 {
     'name': 'COA Return Draft Invoice',
     'summary': 'When a warehouse return of a Sale Order is validated, the linked DRAFT customer invoice is automatically reduced by t...',
-    'description': 'COA Return Draft Invoice developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 18.0.1.3.0.',
+    'description': 'COA Return Draft Invoice developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 18.0.1.3.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Accounting',

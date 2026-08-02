@@ -2,7 +2,7 @@
 {
     'name': 'COA Advanced Web Domain Widget',
     'summary': 'Set all relational fields domain by selecting its records unsing `in, not in` operator.',
-    'description': 'COA Advanced Web Domain Widget developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.2.0.3.',
+    'description': 'COA Advanced Web Domain Widget developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.19.0.2.0.3.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',

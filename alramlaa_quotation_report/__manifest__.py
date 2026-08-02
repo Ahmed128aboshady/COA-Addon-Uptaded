@@ -2,7 +2,7 @@
 {
     'name': 'COA Alramlaa Quotation Report',
     'summary': 'Custom Quotation/Sales Order PDF Report - Al Ramlaa Wooden Products Style',
-    'description': 'COA Alramlaa Quotation Report developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'description': 'COA Alramlaa Quotation Report developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.19.0.1.0.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Sales',

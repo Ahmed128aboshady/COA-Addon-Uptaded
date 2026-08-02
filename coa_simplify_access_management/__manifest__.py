@@ -2,7 +2,7 @@
 {
     'name': 'COA Simplify Access Management',
     'summary': 'All In One Access Management App for setting the correct access rights for fields, models, menus, views for any modul...',
-    'description': 'COA Simplify Access Management developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.2.1.8.',
+    'description': 'COA Simplify Access Management developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.19.0.2.1.8.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',

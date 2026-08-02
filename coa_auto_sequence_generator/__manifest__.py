@@ -2,7 +2,7 @@
 {
     'name': 'COA Auto Sequence Generator',
     'summary': 'Auto-generate unique codes for products, customers, and vendors on record creation',
-    'description': 'COA Auto Sequence Generator developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.2.2.',
+    'description': 'COA Auto Sequence Generator developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.19.0.1.2.2.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',
