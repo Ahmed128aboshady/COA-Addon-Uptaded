@@ -2,7 +2,7 @@
 {
     'name': 'COA Sh Pdc',
     'summary': 'Post Dated Cheque Management, Manage Post Dated Cheque App, View Vendor Invoice PDC , List Of Customer PDC Payment, T...',
-    'description': 'COA Sh Pdc developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.19.0.8.0.2.',
+    'description': 'COA Sh Pdc developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 17.0.19.0.8.0.2.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Accounting',

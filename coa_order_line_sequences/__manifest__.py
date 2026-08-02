@@ -2,7 +2,7 @@
 {
     'name': 'COA Order Line Sequences',
     'summary': 'Sequence numbers in order lines of sales,purchase and delivery.',
-    'description': 'COA Order Line Sequences developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 18.0.1.0.0.',
+    'description': 'COA Order Line Sequences developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 18.0.1.0.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Sales',

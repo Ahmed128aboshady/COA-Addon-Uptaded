@@ -2,7 +2,7 @@
 {
     'name': 'COA Partner Ref Exact Search',
     'summary': 'Exact-match search on partner Reference (ref) in search bar and dropdowns',
-    'description': 'COA Partner Ref Exact Search developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 18.0.1.0.0.',
+    'description': 'COA Partner Ref Exact Search developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 18.0.1.0.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',

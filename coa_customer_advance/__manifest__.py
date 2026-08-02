@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'COA Customer Advance',
-    'summary': 'دفعات مقدمة من العملاء في حساب التزام مستقل مع تسوية تلقائية ودعم مسار Down Payment من أمر البيع',
-    'description': 'COA Customer Advance developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.19.0.1.1.0.',
+    'summary': 'Enterprise-grade Customer Advance solution for Odoo Sales. Streamlines workflow execution, automates journal validations, and delivers real-time business insights.',
+    'description': 'COA Customer Advance developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 17.0.19.0.1.1.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Sales',

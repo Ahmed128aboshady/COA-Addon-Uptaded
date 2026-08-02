@@ -2,7 +2,7 @@
 {
     'name': 'COA Petty Cash',
     'summary': 'Manage petty cash custodies and expenses with full accounting integration',
-    'description': 'COA Petty Cash developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.19.0.3.0.0.',
+    'description': 'COA Petty Cash developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 17.0.19.0.3.0.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',

@@ -2,7 +2,7 @@
 {
     'name': 'COA Multi Approval',
     'summary': 'Multi-stage approval workflow for Sales, Purchase, Inventory and Accounting',
-    'description': 'COA Multi Approval developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.19.0.1.2.0.',
+    'description': 'COA Multi Approval developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 17.0.19.0.1.2.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Project',

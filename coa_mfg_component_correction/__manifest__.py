@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'COA Mfg Component Correction',
-    'summary': 'تصحيح كميات المكونات بعد إتمام أوامر التصنيع',
-    'description': 'COA Mfg Component Correction developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.19.0.1.0.0.',
+    'summary': 'Enterprise-grade Mfg Component Correction solution for Odoo Manufacturing. Streamlines workflow execution, automates journal validations, and delivers real-time business insights.',
+    'description': 'COA Mfg Component Correction developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 17.0.19.0.1.0.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Manufacturing',

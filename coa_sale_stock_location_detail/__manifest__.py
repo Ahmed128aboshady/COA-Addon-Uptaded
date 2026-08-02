@@ -2,7 +2,7 @@
 {
     'name': 'COA Sale Stock Location Detail',
     'summary': 'Show reserved sub-locations per SO line (from stock.move.line) in SO, invoice & print',
-    'description': 'COA Sale Stock Location Detail developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 18.0.1.0.0.',
+    'description': 'COA Sale Stock Location Detail developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 18.0.1.0.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Sales',

@@ -2,7 +2,7 @@
 {
     'name': 'COA Custom Background',
     'summary': 'Custom Background',
-    'description': 'COA Custom Background developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 18.0.1.0.2.',
+    'description': 'COA Custom Background developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 18.0.1.0.2.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',

@@ -2,7 +2,7 @@
 {
     'name': 'COA Om Data Remove',
     'summary': 'Data Clean up, Remove Data, Database Clean UP, Reset Database',
-    'description': 'COA Om Data Remove developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.1.0.0.',
+    'description': 'COA Om Data Remove developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 17.0.1.0.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',

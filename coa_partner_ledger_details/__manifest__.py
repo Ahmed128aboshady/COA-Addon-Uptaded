@@ -2,7 +2,7 @@
 {
     'name': 'COA Partner Ledger Details',
     'summary': 'Adds an expandable arrow next to each invoice in the Partner Ledger. Unfolding shows the invoice product lines with q...',
-    'description': 'COA Partner Ledger Details developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 18.0.1.0.0.',
+    'description': 'COA Partner Ledger Details developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 18.0.1.0.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Accounting',

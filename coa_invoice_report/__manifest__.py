@@ -2,7 +2,7 @@
 {
     'name': 'COA Invoice Report',
     'summary': 'Professional Invoice Report solution for Odoo Accounting. Streamlines business operations, automates workflow validations, and ...',
-    'description': 'COA Invoice Report developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.18.2.0.',
+    'description': 'COA Invoice Report developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 17.0.18.2.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Accounting',

@@ -2,7 +2,7 @@
 {
     'name': 'COA Custom Report Product Image',
     'summary': 'Adds product image to Delivery prints and splits product name / reference code into separate columns across all modul...',
-    'description': 'COA Custom Report Product Image developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.19.0.1.0.0.',
+    'description': 'COA Custom Report Product Image developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 17.0.19.0.1.0.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',

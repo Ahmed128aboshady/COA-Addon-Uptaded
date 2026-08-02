@@ -2,7 +2,7 @@
 {
     'name': 'COA Sale Reservation',
     'summary': 'Reservation checkbox on Sales Orders routed to a dedicated "Reservation" operation type (no routes needed)',
-    'description': 'COA Sale Reservation developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 18.0.1.0.1.',
+    'description': 'COA Sale Reservation developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 18.0.1.0.1.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Accounting',

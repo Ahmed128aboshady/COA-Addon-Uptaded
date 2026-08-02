@@ -2,7 +2,7 @@
 {
     'name': 'COA Alramlaa Company Duplicator',
     'summary': 'Seamlessly duplicate Chart of Accounts, Taxes, Journals, and Warehouses for Multi-Company Setup',
-    'description': 'COA Alramlaa Company Duplicator developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.19.0.1.0.0.',
+    'description': 'COA Alramlaa Company Duplicator developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 17.0.19.0.1.0.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',

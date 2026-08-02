@@ -2,7 +2,7 @@
 {
     'name': 'COA Sale Confirm Date',
     'summary': 'Sale Confirm Date',
-    'description': 'COA Sale Confirm Date developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 18.0.1.0.1.',
+    'description': 'COA Sale Confirm Date developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 18.0.1.0.1.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Sales',

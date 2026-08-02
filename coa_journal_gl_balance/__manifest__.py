@@ -2,7 +2,7 @@
 {
     'name': 'COA Journal Gl Balance',
     'summary': 'Show the General Ledger balance on the bank/cash journal dashboard instead of the statement-based balance. For foreig...',
-    'description': 'COA Journal Gl Balance developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.19.0.2.0.0.',
+    'description': 'COA Journal Gl Balance developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 17.0.19.0.2.0.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Accounting',

@@ -2,7 +2,7 @@
 {
     'name': 'COA Arfad Payslip Report',
     'summary': 'Custom Bilingual Payslip Report Layout for Arfad',
-    'description': 'COA Arfad Payslip Report developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.19.0.1.0.0.',
+    'description': 'COA Arfad Payslip Report developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 17.0.19.0.1.0.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Human Resources',

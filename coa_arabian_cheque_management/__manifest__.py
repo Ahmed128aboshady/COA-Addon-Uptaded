@@ -2,7 +2,7 @@
 {
     'name': 'COA Arabian Cheque Management',
     'summary': 'Professional Arabian Cheque Management solution for Odoo Accounting. Streamlines business operations, automates workflow valida...',
-    'description': 'COA Arabian Cheque Management developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.0.1.',
+    'description': 'COA Arabian Cheque Management developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 17.0.0.1.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Accounting',

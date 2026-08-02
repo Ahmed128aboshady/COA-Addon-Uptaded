@@ -2,7 +2,7 @@
 {
     'name': 'COA Arabian Construction Management',
     'summary': 'Professional Arabian Construction Management solution for Odoo Project. Streamlines business operations, automates workflow val...',
-    'description': 'COA Arabian Construction Management developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.0.3.',
+    'description': 'COA Arabian Construction Management developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 17.0.0.3.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Project',

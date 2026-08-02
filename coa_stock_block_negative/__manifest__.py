@@ -2,7 +2,7 @@
 {
     'name': 'COA Stock Block Negative',
     'summary': 'Prevent stock levels from going negative anywhere in the system (manufacturing, deliveries, internal transfers, POS, ...',
-    'description': 'COA Stock Block Negative developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.19.0.1.0.0.',
+    'description': 'COA Stock Block Negative developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 17.0.19.0.1.0.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Inventory',

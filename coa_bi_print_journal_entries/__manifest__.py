@@ -2,7 +2,7 @@
 {
     'name': 'COA Bi Print Journal Entries',
     'summary': 'Allow to print pdf report of Journal Entries.',
-    'description': 'COA Bi Print Journal Entries developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.19.0.0.0.',
+    'description': 'COA Bi Print Journal Entries developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 17.0.19.0.0.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Accounting',

@@ -2,7 +2,7 @@
 {
     'name': 'COA So Print Invoice',
     'summary': 'Print the Sale Order invoice(s) directly from the SO with one click. Opens the browser print dialog immediately (no d...',
-    'description': 'COA So Print Invoice developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 18.0.1.0.0.',
+    'description': 'COA So Print Invoice developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 18.0.1.0.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Accounting',

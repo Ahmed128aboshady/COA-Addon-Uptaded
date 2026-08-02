@@ -2,7 +2,7 @@
 {
     'name': 'COA Alramlaa Custom Hr Updates',
     'summary': 'Customizations for HR Units, Departments, and Kafala Status',
-    'description': 'COA Alramlaa Custom Hr Updates developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 17.0.1.0.0.',
+    'description': 'COA Alramlaa Custom Hr Updates developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 17.0.1.0.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Human Resources',

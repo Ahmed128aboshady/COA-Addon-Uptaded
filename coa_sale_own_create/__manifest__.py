@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'COA Sale Own Create',
-    'summary': 'صلاحية جديدة: يشوف بتاعته بس ويعمل أوردر لأي salesperson',
-    'description': 'COA Sale Own Create developed by COA Egypt (https://www.coa-egy.com). Flagship enterprise solution for Odoo 18.0.1.0.0.',
+    'summary': ':       salesperson',
+    'description': 'COA Sale Own Create developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 18.0.1.0.0.',
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Sales',
