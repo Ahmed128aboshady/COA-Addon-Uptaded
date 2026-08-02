@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- List view: كل المؤشرات في شاشة واحدة -->
+    <record id="view_so_tracking_list" model="ir.ui.view">
+        <field name="name">so.tracking.list</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <list string="متابعة أوامر البيع" create="false"
+                  default_order="date_order desc">
+                <field name="name" string="أمر البيع"/>
+                <field name="partner_id" string="العميل"/>
+                <field name="date_order" string="التاريخ"/>
+                <field name="state" string="الحالة"
+                       widget="badge"
+                       decoration-success="state == 'sale'"
+                       decoration-muted="state in ('draft','sent')"/>
+                <field name="amount_untaxed" string="قيمة الأمر" sum="الإجمالي"/>
+                <field name="tracking_manufactured_value" string="مُصنَّع"
+                       sum="مُصنَّع" optional="show"/>
+                <field name="tracking_to_manufacture_value" string="متبقي تصنيع"
+                       sum="متبقي تصنيع" optional="show"
+                       decoration-warning="tracking_to_manufacture_value > 0"/>
+                <field name="tracking_delivered_value" string="مُسلَّم"
+                       sum="مُسلَّم" optional="show"/>
+                <field name="tracking_to_deliver_value" string="متبقي تسليم"
+                       sum="متبقي تسليم" optional="show"
+                       decoration-warning="tracking_to_deliver_value > 0"/>
+                <field name="tracking_invoiced_value" string="مُفوتَر"
+                       sum="مُفوتَر" optional="show"/>
+                <field name="tracking_to_invoice_value" string="متبقي فوترة"
+                       sum="متبقي فوترة" optional="show"
+                       decoration-warning="tracking_to_invoice_value > 0"/>
+                <field name="currency_id" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Pivot view -->
+    <record id="view_so_tracking_pivot" model="ir.ui.view">
+        <field name="name">so.tracking.pivot</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <pivot string="متابعة أوامر البيع">
+                <field name="partner_id" type="row"/>
+                <field name="amount_untaxed" type="measure"/>
+                <field name="tracking_manufactured_value" type="measure"/>
+                <field name="tracking_to_manufacture_value" type="measure"/>
+                <field name="tracking_delivered_value" type="measure"/>
+                <field name="tracking_to_deliver_value" type="measure"/>
+                <field name="tracking_invoiced_value" type="measure"/>
+                <field name="tracking_to_invoice_value" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Graph view -->
+    <record id="view_so_tracking_graph" model="ir.ui.view">
+        <field name="name">so.tracking.graph</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <graph string="متابعة أوامر البيع" type="bar">
+                <field name="name"/>
+                <field name="tracking_manufactured_value" type="measure"/>
+                <field name="tracking_delivered_value" type="measure"/>
+                <field name="tracking_invoiced_value" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Search view -->
+    <record id="view_so_tracking_search" model="ir.ui.view">
+        <field name="name">so.tracking.search</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <search string="بحث في أوامر البيع">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <filter name="confirmed" string="مؤكدة"
+                        domain="[('state', '=', 'sale')]"/>
+                <group>
+                    <filter name="group_partner" string="العميل"
+                            context="{'group_by': 'partner_id'}"/>
+                    <filter name="group_state" string="الحالة"
+                            context="{'group_by': 'state'}"/>
+                    <filter name="group_date" string="تاريخ الأمر"
+                            context="{'group_by': 'date_order'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_so_tracking" model="ir.actions.act_window">
+        <field name="name">متابعة أوامر البيع</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">list,pivot,graph,form</field>
+        <field name="search_view_id" ref="view_so_tracking_search"/>
+        <field name="domain">[('state', 'not in', ('draft', 'sent'))]</field>
+        <field name="context">{
+            'search_default_confirmed': 1,
+        }</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">لا توجد أوامر بيع للعرض</p>
+            <p>تقرير متابعة أوامر البيع يعرض حالة التصنيع والتسليم والفوترة لكل أمر.</p>
+        </field>
+    </record>
+
+    <!-- تخصيص العروض للأكشن -->
+    <record id="action_so_tracking_list" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="view_so_tracking_list"/>
+        <field name="act_window_id" ref="action_so_tracking"/>
+    </record>
+    <record id="action_so_tracking_pivot" model="ir.actions.act_window.view">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">pivot</field>
+        <field name="view_id" ref="view_so_tracking_pivot"/>
+        <field name="act_window_id" ref="action_so_tracking"/>
+    </record>
+    <record id="action_so_tracking_graph" model="ir.actions.act_window.view">
+        <field name="sequence" eval="3"/>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="view_so_tracking_graph"/>
+        <field name="act_window_id" ref="action_so_tracking"/>
+    </record>
+
+    <!-- OWL Dashboard (primary interface) -->
+    <record id="action_so_tracking_dashboard" model="ir.actions.client">
+        <field name="name">متابعة أوامر البيع</field>
+        <field name="tag">coa_so_tracking_dashboard</field>
+    </record>
+
+    <!-- Menu → OWL Dashboard -->
+    <menuitem id="menu_so_tracking_root"
+              name="متابعة الأوامر"
+              parent="sale.sale_order_menu"
+              action="action_so_tracking_dashboard"
+              sequence="90"/>
+
+</odoo>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Purchase Order Form – serial badge only -->
+    <record id="view_purchase_order_form_serial" model="ir.ui.view">
+        <field name="name">purchase.order.form.serial</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="serial_number" readonly="1" string="Serial #"
+                       widget="badge" decoration-info="serial_number"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Purchase Order List – serial column -->
+    <record id="view_purchase_order_list_serial" model="ir.ui.view">
+        <field name="name">purchase.order.list.serial</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="serial_number" string="Serial #" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Search – serial filter -->
+    <record id="view_purchase_order_search_serial" model="ir.ui.view">
+        <field name="name">purchase.order.search.serial</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <field name="serial_number" string="Serial #"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

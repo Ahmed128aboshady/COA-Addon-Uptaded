@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Kanban view: add color highlight and color picker menu -->
+    <record id="product_template_kanban_color" model="ir.ui.view">
+        <field name="name">product.template.kanban.color</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_kanban_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="highlight_color">color</attribute>
+            </xpath>
+            <xpath expr="//kanban/field[@name='currency_id']" position="before">
+                <field name="color"/>
+            </xpath>
+            <xpath expr="//kanban/templates" position="inside">
+                <t t-name="menu">
+                    <a role="menuitem" type="open" class="dropdown-item">Edit</a>
+                    <a role="menuitem" type="delete" class="dropdown-item">Delete</a>
+                    <div role="separator" class="dropdown-divider"/>
+                    <field name="color" widget="kanban_color_picker"/>
+                </t>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- List view: add color column and custom js_class -->
+    <record id="product_template_tree_color" model="ir.ui.view">
+        <field name="name">product.template.list.color</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="attributes">
+                <attribute name="js_class">product_color_list</attribute>
+            </xpath>
+            <xpath expr="//field[@name='is_favorite']" position="before">
+                <field name="color" widget="color_picker" optional="show" nolabel="1"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

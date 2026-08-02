@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         MRP Production Form – serial + component expiry info (read-only)
+    ══════════════════════════════════════════════════════════════════ -->
+    <record id="view_mrp_production_form_serial" model="ir.ui.view">
+        <field name="name">mrp.production.form.serial</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+
+            <!-- Serial badge after MO name -->
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="serial_number" readonly="1" string="Serial #"
+                       widget="badge" decoration-info="serial_number"/>
+            </xpath>
+
+            <!-- Component expiry status in header (informational only) -->
+            <xpath expr="//header/field[@name='state']" position="before">
+                <field name="component_expiry_status" widget="badge"
+                       string="Component Expiry"
+                       decoration-success="component_expiry_status == 'ok'"
+                       decoration-warning="component_expiry_status == 'near'"
+                       decoration-danger="component_expiry_status == 'expired'"
+                       decoration-muted="component_expiry_status == 'none'"
+                       invisible="component_expiry_status == 'none'"
+                />
+            </xpath>
+
+            <!-- Info banner about FIFO lot consumption -->
+            <xpath expr="//field[@name='move_raw_ids']" position="before">
+                <div class="alert alert-info" role="alert"
+                     invisible="state in ('done','cancel')">
+                    <i class="fa fa-info-circle"/>
+                    Raw material lots are consumed via <strong>FIFO</strong>
+                    (earliest expiry first). Set lot strategy on each
+                    raw material product to enforce this.
+                    <field name="earliest_component_expiry" readonly="1"
+                           string="Earliest Component Expiry"
+                           invisible="not earliest_component_expiry"
+                           widget="date"
+                    />
+                </div>
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         MRP Production List – serial column
+    ══════════════════════════════════════════════════════════════════ -->
+    <record id="view_mrp_production_list_serial" model="ir.ui.view">
+        <field name="name">mrp.production.list.serial</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="serial_number" string="Serial #" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

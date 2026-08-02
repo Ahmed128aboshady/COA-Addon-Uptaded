@@ -83,6 +83,13 @@ class SaleOperation(models.Model):
     notes = fields.Text(string='ملاحظات')
     color = fields.Integer(related='stage_id.color', store=True)
 
+    # حقول المرحلة الحالية — بيتحفظوا في السجل لما بتأكد
+    stage_notes = fields.Text(string='تعليق المرحلة')
+    stage_image = fields.Image(
+        string='صورة المرحلة',
+        max_width=1920, max_height=1920,
+    )
+
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
@@ -172,7 +179,11 @@ class SaleOperation(models.Model):
             'stage_id': stage.id,
             'user_id': self.env.uid,
             'date': fields.Datetime.now(),
+            'notes': self.stage_notes,
+            'image': self.stage_image,
         })
+        # امسح الحقول بعد الحفظ عشان تكون جاهزة للمرحلة الجاية
+        self.write({'stage_notes': False, 'stage_image': False})
 
 
 class SaleOperationStageLog(models.Model):
@@ -184,4 +195,5 @@ class SaleOperationStageLog(models.Model):
     stage_id = fields.Many2one('sale.operation.stage', string='المرحلة', required=True)
     user_id = fields.Many2one('res.users', string='بواسطة')
     date = fields.Datetime(string='التاريخ', default=fields.Datetime.now)
-    notes = fields.Char(string='ملاحظة')
+    notes = fields.Text(string='تعليق')
+    image = fields.Image(string='صورة', max_width=1920, max_height=1920)

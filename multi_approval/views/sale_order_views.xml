@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sale_order_form_approval" model="ir.ui.view">
+        <field name="name">sale.order.form.approval</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Approval buttons in header -->
+            <xpath expr="//header" position="inside">
+                <button name="action_submit_for_approval"
+                        type="object"
+                        string="Submit for Approval"
+                        class="btn-primary"
+                        invisible="approval_state in ('pending', 'approved') or state in ('sale', 'cancel')"/>
+                <button name="action_approve_request"
+                        type="object"
+                        string="Approve"
+                        class="btn-success"
+                        invisible="not can_approve"/>
+                <button name="action_refuse_request"
+                        type="object"
+                        string="Refuse"
+                        class="btn-danger"
+                        invisible="not can_approve"/>
+                <!-- Print Quotation button: intercepts print to enforce approval -->
+                <button name="action_print_quotation"
+                        type="object"
+                        string="Print Quotation"
+                        class="btn-secondary"
+                        invisible="state in ('sale', 'cancel')"/>
+                <field name="approval_request_id" invisible="1"/>
+                <field name="approval_state" invisible="1"/>
+                <field name="can_approve" invisible="1"/>
+                <field name="approval_current_stage" invisible="1"/>
+            </xpath>
+            <!-- Approval smart button -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_approval_request"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-check-circle"
+                        invisible="not approval_request_id">
+                    <div class="o_stat_info">
+                        <span class="o_stat_text">Approval</span>
+                        <span class="o_stat_value">
+                            <field name="approval_state" widget="badge"
+                                   decoration-success="approval_state == 'approved'"
+                                   decoration-danger="approval_state == 'refused'"
+                                   decoration-warning="approval_state == 'pending'"/>
+                        </span>
+                    </div>
+                </button>
+            </xpath>
+            <!-- Approval info group after sale_header group -->
+            <xpath expr="//group[@name='sale_header']" position="after">
+                <group name="approval_info" string="Approval Information"
+                       invisible="not approval_request_id">
+                    <field name="approval_current_stage" string="Current Stage" readonly="1"/>
+                    <field name="approval_state" string="Approval Status" readonly="1"
+                           widget="badge"
+                           decoration-success="approval_state == 'approved'"
+                           decoration-danger="approval_state == 'refused'"
+                           decoration-warning="approval_state == 'pending'"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

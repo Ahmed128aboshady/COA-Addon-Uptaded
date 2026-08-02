@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============ قائمة العمولات ============ -->
+    <record id="view_commission_line_tree" model="ir.ui.view">
+        <field name="name">commission.line.tree</field>
+        <field name="model">commission.line</field>
+        <field name="arch" type="xml">
+            <list string="العمولات"
+                  decoration-success="state == 'paid'"
+                  decoration-info="state in ('confirmed', 'partial')"
+                  decoration-muted="state == 'draft'">
+                <field name="name"/>
+                <field name="date_from"/>
+                <field name="date_to"/>
+                <field name="salesperson_id"/>
+                <field name="total_commission" sum="إجمالي العمولات"/>
+                <field name="amount_paid" sum="المدفوع"/>
+                <field name="amount_residual" sum="المتبقي"/>
+                <field name="currency_id" invisible="1"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'paid'"
+                       decoration-warning="state == 'partial'"
+                       decoration-info="state == 'confirmed'"
+                       decoration-muted="state == 'draft'"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ============ نموذج العمولة ============ -->
+    <record id="view_commission_line_form" model="ir.ui.view">
+        <field name="name">commission.line.form</field>
+        <field name="model">commission.line</field>
+        <field name="arch" type="xml">
+            <form string="حساب العمولة">
+                <header>
+                    <button name="action_compute_commission"
+                            string="احسب العمولة"
+                            type="object" class="oe_highlight"
+                            invisible="state != 'draft'"/>
+                    <button name="action_confirm"
+                            string="تأكيد"
+                            type="object" class="oe_highlight"
+                            invisible="state != 'draft'"/>
+                    <button name="action_create_journal_entry"
+                            string="إنشاء قيد استحقاق"
+                            type="object" class="oe_highlight"
+                            invisible="state != 'confirmed' or move_id"/>
+                    <button name="action_register_payment"
+                            string="💳 تسجيل دفعة"
+                            type="object" class="oe_highlight"
+                            invisible="state not in ('confirmed', 'partial') or amount_residual &lt;= 0"/>
+                    <button name="action_mark_paid"
+                            string="تم الدفع الكامل"
+                            type="object"
+                            invisible="state not in ('confirmed', 'partial')"/>
+                    <button name="action_reset_draft"
+                            string="إعادة للمسودة"
+                            type="object"
+                            invisible="state not in ('confirmed', 'partial')"/>
+                    <button name="action_print_report"
+                            string="طباعة التقرير"
+                            type="object"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,confirmed,partial,paid"/>
+                </header>
+
+                <sheet>
+                    <!-- أزرار ذكية -->
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_journal_entry"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-book"
+                                invisible="not move_id">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">قيد الاستحقاق</span>
+                                <span class="o_stat_value">
+                                    <field name="move_id" readonly="1"/>
+                                </span>
+                            </div>
+                        </button>
+                        <button type="object" name="action_register_payment"
+                                class="oe_stat_button" icon="fa-money"
+                                invisible="state not in ('confirmed','partial')">
+                            <field name="amount_residual" widget="statinfo"
+                                   string="المتبقي" readonly="1"/>
+                        </button>
+                    </div>
+
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+
+                    <!-- بطاقات الملخص -->
+                    <div class="row mb-3" invisible="not line_ids">
+                        <div class="col-3 text-center border rounded p-2 me-2">
+                            <div class="text-muted small">المبيعات</div>
+                            <div class="fw-bold text-primary fs-5">
+                                <field name="total_invoiced" widget="monetary"/>
+                            </div>
+                        </div>
+                        <div class="col-3 text-center border rounded p-2 me-2">
+                            <div class="text-muted small">المرتجعات</div>
+                            <div class="fw-bold text-danger fs-5">
+                                <field name="total_refunded" widget="monetary"/>
+                            </div>
+                        </div>
+                        <div class="col-3 text-center border rounded p-2 me-2">
+                            <div class="text-muted small">صافي المبيعات</div>
+                            <div class="fw-bold text-info fs-5">
+                                <field name="total_net_sales" widget="monetary"/>
+                            </div>
+                        </div>
+                        <div class="col-2 text-center border rounded p-2 me-2">
+                            <div class="text-muted small">إجمالي العمولة</div>
+                            <div class="fw-bold text-success fs-5">
+                                <field name="total_commission" widget="monetary"/>
+                            </div>
+                        </div>
+                        <div class="col-2 text-center border rounded p-2 me-2"
+                             invisible="state == 'draft'">
+                            <div class="text-muted small">المدفوع</div>
+                            <div class="fw-bold text-success fs-5">
+                                <field name="amount_paid" widget="monetary"/>
+                            </div>
+                        </div>
+                        <div class="col-2 text-center border rounded p-2"
+                             invisible="state == 'draft'">
+                            <div class="text-muted small">المتبقي</div>
+                            <div class="fw-bold text-danger fs-5">
+                                <field name="amount_residual" widget="monetary"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <group>
+                        <group string="الفترة الزمنية">
+                            <field name="date_from" readonly="state != 'draft'"/>
+                            <field name="date_to" readonly="state != 'draft'"/>
+                        </group>
+                        <group string="المندوب">
+                            <field name="salesperson_id" readonly="state != 'draft'"/>
+                            <field name="currency_id" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <!-- إعدادات قيد اليومية — للعرض فقط من الإعدادات -->
+                    <group string="إعدادات قيد الاستحقاق (من الإعدادات العامة)" invisible="not move_id">
+                        <group>
+                            <field name="journal_id" readonly="1"/>
+                            <field name="debit_account_id" string="حساب المدين" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="credit_account_id" string="حساب الدائن" readonly="1"/>
+                            <field name="move_state" string="حالة القيد" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="تفاصيل العمولة">
+                            <field name="line_ids" readonly="state != 'draft'">
+                                <list decoration-muted="not customer_tag_id">
+                                    <field name="customer_tag_id"
+                                           optional="show"
+                                           string="تاج العميل"/>
+                                    <field name="rate_percent" string="نسبة %"/>
+                                    <field name="invoiced_amount" string="المبيعات"
+                                           sum="إجمالي المبيعات"/>
+                                    <field name="refunded_amount" string="المرتجعات"
+                                           sum="إجمالي المرتجعات"/>
+                                    <field name="net_sales" string="صافي المبيعات"
+                                           sum="إجمالي الصافي"/>
+                                    <field name="commission_amount" string="العمولة"
+                                           sum="إجمالي العمولة"/>
+                                    <field name="currency_id" invisible="1"/>
+                                </list>
+                            </field>
+                            <p class="text-muted small mt-2" invisible="not line_ids">
+                                * الصفوف الرمادية: عملاء بدون تاج مربوط بنسبة عمولة (العمولة = صفر)
+                            </p>
+                        </page>
+                        <page string="الدفعات" invisible="state == 'draft'">
+                            <field name="payment_ids" readonly="1">
+                                <list>
+                                    <field name="name" string="المرجع"/>
+                                    <field name="date" string="التاريخ"/>
+                                    <field name="journal_id" string="البنك / الصندوق"/>
+                                    <field name="amount" string="المبلغ" sum="إجمالي المدفوع"/>
+                                    <field name="memo" string="البيان"/>
+                                    <field name="move_id" string="القيد"/>
+                                    <field name="currency_id" invisible="1"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- ============ البحث ============ -->
+    <record id="view_commission_line_search" model="ir.ui.view">
+        <field name="name">commission.line.search</field>
+        <field name="model">commission.line</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="salesperson_id"/>
+                <field name="name"/>
+                <filter name="draft" string="مسودة" domain="[('state','=','draft')]"/>
+                <filter name="confirmed" string="مؤكد" domain="[('state','=','confirmed')]"/>
+                <filter name="partial" string="مدفوع جزئياً" domain="[('state','=','partial')]"/>
+                <filter name="paid" string="مدفوع بالكامل" domain="[('state','=','paid')]"/>
+                <filter name="has_entry" string="له قيد محاسبي" domain="[('move_id','!=',False)]"/>
+                <filter name="has_residual" string="له متبقي" domain="[('amount_residual','&gt;',0)]"/>
+                <group expand="0" string="تجميع حسب">
+                    <filter name="group_salesperson" string="المندوب"
+                            context="{'group_by': 'salesperson_id'}"/>
+                    <filter name="group_state" string="الحالة"
+                            context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ============ الإجراء ============ -->
+    <record id="action_commission_line" model="ir.actions.act_window">
+        <field name="name">حساب العمولات</field>
+        <field name="res_model">commission.line</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">أنشئ حساب عمولة جديد</p>
+            <p>حدد المندوب والفترة الزمنية ثم اضغط "احسب العمولة".</p>
+        </field>
+    </record>
+
+    <!-- ============ التسلسل ============ -->
+    <record id="seq_commission_line" model="ir.sequence">
+        <field name="name">Commission Line</field>
+        <field name="code">commission.line</field>
+        <field name="prefix">COM/%(year)s/</field>
+        <field name="padding">4</field>
+    </record>
+
+    <record id="seq_commission_payment" model="ir.sequence">
+        <field name="name">Commission Payment</field>
+        <field name="code">commission.payment</field>
+        <field name="prefix">PAY/%(year)s/</field>
+        <field name="padding">4</field>
+    </record>
+
+</odoo>

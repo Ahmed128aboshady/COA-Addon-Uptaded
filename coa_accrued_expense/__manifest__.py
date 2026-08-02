@@ -1,31 +1,19 @@
 # -*- coding: utf-8 -*-
 {
-    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'COA Accrued Expenses',
-    'version': '18.0.1.0.0',
-    'category': 'Accounting/Accounting',
     'summary': 'Recognize vendor bill expenses over a period as accrued expenses.',
-    'description': """Accrued Accounts: Define custom accrued expense accounts and journals in Odoo Settings.
-Vendor Bills: Flag vendor bill lines as "Accrued" and specify start/end dates.
-Accrual Reclass: Automatically creates reclassification entries moving expense to accrued account.
-Periodic Recognition: Periodically recognizes the expense month by month.""",
-    'author': 'Community of Accountants (COA)',
-    'website': 'https://coa-egy.odoo.com/',
+    'description': 'Accrued Accounts: Define custom accrued expense accounts and journals in Odoo Settings.\nVendor Bills: Flag vendor bill lines as "Accrued" and specify start/end dates.\nAccrual Reclass: Automatically creates reclassification entries moving expense to accrued account.\nPeriodic Recognition: Periodically recognizes the expense month by month.',
+    'author': 'COA / Ahmed Aboshady',
+    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'category': 'Accounting',
+    'version': '18.0.1.0.0',
     'license': 'OPL-1',
-    'depends': [
-        'account',
-    ],
-    'data': [
-        'data/ir_cron.xml',
-        'views/res_config_settings_views.xml',
-        'views/account_move_views.xml',
-    ],
+    'price': 35.0,
+    'currency': 'EUR',
+    'depends': ['account'],
+    'data': ['data/ir_cron.xml', 'views/res_config_settings_views.xml', 'views/account_move_views.xml'],
+    'images': ['static/description/banner.png'],
     'installable': True,
-    'application': False,
+    'application': True,
     'auto_install': False,
-    'price': 59.0,
-    'currency': 'USD',
-    'images': [
-        'static/description/banner.png',
-    ],
 }

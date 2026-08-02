@@ -1,0 +1,483 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* arabian_letters_of_guarantee
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-27 13:55+0000\n"
+"PO-Revision-Date: 2024-11-27 17:00+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields.selection,name:arabian_letters_of_guarantee.selection__check_lg_accounts__lg_type__bid_cancellation
+msgid " Bid Cancellation"
+msgstr ""
+
+#. module: arabian_letters_of_guarantee
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.res_config_settings_form
+msgid ""
+"<span class=\"o_form_label\">Default Accounts for Letters of "
+"Guarantee:</span>"
+msgstr ""
+
+#. module: arabian_letters_of_guarantee
+#. odoo-python
+#: code:addons/arabian_letters_of_guarantee/models/advance_payment_guarantee.py:0
+#: code:addons/arabian_letters_of_guarantee/models/bid_bond.py:0
+#: code:addons/arabian_letters_of_guarantee/models/maintenance_bond.py:0
+#: code:addons/arabian_letters_of_guarantee/models/performance_bond.py:0
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__account_move_line_ids
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__account_move_line_ids
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__account_move_line_ids
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__account_move_line_ids
+#, python-format
+msgid "Account Move Line"
+msgstr ""
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields.selection,name:arabian_letters_of_guarantee.selection__check_lg_accounts__lg_type__advance_payment
+msgid "Advance Payment"
+msgstr "دفعة مقدمة"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields.selection,name:arabian_letters_of_guarantee.selection__check_lg_accounts__lg_type__advance_payment_cancellation
+msgid "Advance Payment Cancellation"
+msgstr "إلغاء خطاب ضمان الدفعة المقدمة"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.ui.menu,name:arabian_letters_of_guarantee.lg_advance_payment_guarantee_menu
+#: model_terms:ir.actions.act_window,help:arabian_letters_of_guarantee.lg_advance_payment_guarantee_action
+msgid "Advance Payment Guarantee"
+msgstr " خطاب ضمان الدفعة المقدمة"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_check_lg_accounts__advance_payment_guarantee_account_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__advance_payment_guarantee_account_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_res_company__advance_payment_guarantee_account_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_res_config_settings__advance_payment_guarantee_account_id
+msgid "Advance Payment Guarantee Account"
+msgstr "حساب  خطاب ضمان الدفعة المقدمة"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model,name:arabian_letters_of_guarantee.model_account_asset
+msgid "Asset/Revenue Recognition"
+msgstr "إثبات الأصل/الإيرادات "
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_check_lg_accounts__bank_account_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__bank_account_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__bank_account_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__bank_account_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__bank_account_id
+msgid "Bank Account"
+msgstr "حساب البنكي"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__beneficiary_address
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__beneficiary_address
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__beneficiary_address
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__beneficiary_address
+msgid "Beneficiary Address"
+msgstr "المستفيد"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__beneficiary_name
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__beneficiary_name
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__beneficiary_name
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__beneficiary_name
+msgid "Beneficiary Name"
+msgstr "المستفيد"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.actions.act_window,name:arabian_letters_of_guarantee.lg_bid_bond_action
+#: model:ir.model.fields.selection,name:arabian_letters_of_guarantee.selection__check_lg_accounts__lg_type__bid_bond
+#: model:ir.ui.menu,name:arabian_letters_of_guarantee.lg_bid_bond_menu
+#: model_terms:ir.actions.act_window,help:arabian_letters_of_guarantee.lg_bid_bond_action
+msgid "Bid Bond"
+msgstr "خطاب ضمان ابتدائي"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_check_lg_accounts__bid_bond_account_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__bid_bond_account_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_res_company__bid_bond_account_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_res_config_settings__bid_bond_account_id
+msgid "Bid Bond Account"
+msgstr "حساب خطاب ضمان ابتدائي"
+
+#. module: arabian_letters_of_guarantee
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.check_lg_accounts_form
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields.selection,name:arabian_letters_of_guarantee.selection__lg_advance_payment_guarantee__state__cancellation
+#: model:ir.model.fields.selection,name:arabian_letters_of_guarantee.selection__lg_bid_bond__state__cancellation
+#: model:ir.model.fields.selection,name:arabian_letters_of_guarantee.selection__lg_maintenance_bond__state__cancellation
+#: model:ir.model.fields.selection,name:arabian_letters_of_guarantee.selection__lg_performance_bond__state__cancellation
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_advance_payment_guarantee_form
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_bid_bond_form
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_maintenance_bond_form
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_performance_bond_form
+msgid "Cancellation"
+msgstr "إلغاء"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields.selection,name:arabian_letters_of_guarantee.selection__check_lg_accounts__lg_type__cancellation_performance
+msgid "Cancellation Performance"
+msgstr "إلغاء خطاب الضمان النهائي"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model,name:arabian_letters_of_guarantee.model_check_lg_accounts
+msgid "Check Lg Accounts"
+msgstr "التحقق من حسابات خطابات الضمان"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.actions.act_window,name:arabian_letters_of_guarantee.check_lg_accounts_action
+msgid "Check lg Accounts"
+msgstr "التحقق من حسابات خطابات الضمان"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model,name:arabian_letters_of_guarantee.model_res_company
+msgid "Companies"
+msgstr "الشركات"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model,name:arabian_letters_of_guarantee.model_res_config_settings
+msgid "Config Settings"
+msgstr "إعدادات التكوين"
+
+#. module: arabian_letters_of_guarantee
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.check_lg_accounts_form
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_advance_payment_guarantee_form
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_bid_bond_form
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_maintenance_bond_form
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_performance_bond_form
+msgid "Confirm"
+msgstr "تأكيد"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields.selection,name:arabian_letters_of_guarantee.selection__lg_advance_payment_guarantee__state__confirmed
+#: model:ir.model.fields.selection,name:arabian_letters_of_guarantee.selection__lg_bid_bond__state__confirmed
+#: model:ir.model.fields.selection,name:arabian_letters_of_guarantee.selection__lg_maintenance_bond__state__confirmed
+#: model:ir.model.fields.selection,name:arabian_letters_of_guarantee.selection__lg_performance_bond__state__confirmed
+msgid "Confirmed"
+msgstr "تم التأكيد "
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__count_move_line
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__count_move_line
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__count_move_line
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__count_move_line
+msgid "Count Move Line"
+msgstr ""
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_check_lg_accounts__create_uid
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__create_uid
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__create_uid
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__create_uid
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_check_lg_accounts__create_date
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__create_date
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__create_date
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__create_date
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__currency_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__currency_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__currency_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__partner_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__partner_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__partner_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__partner_id
+msgid "Customer"
+msgstr "العميل:"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_check_lg_accounts__date
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__date
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__date
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__date
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__date
+msgid "Date"
+msgstr "التاريخ:"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__description
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__description
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__description
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__description
+msgid "Description"
+msgstr "الوصف"
+
+#. module: arabian_letters_of_guarantee
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_advance_payment_guarantee_form
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_bid_bond_form
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_maintenance_bond_form
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_performance_bond_form
+msgid "Details..."
+msgstr "التفاصيل"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_check_lg_accounts__display_name
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__display_name
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__display_name
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__display_name
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields.selection,name:arabian_letters_of_guarantee.selection__lg_advance_payment_guarantee__state__draft
+#: model:ir.model.fields.selection,name:arabian_letters_of_guarantee.selection__lg_bid_bond__state__draft
+#: model:ir.model.fields.selection,name:arabian_letters_of_guarantee.selection__lg_maintenance_bond__state__draft
+#: model:ir.model.fields.selection,name:arabian_letters_of_guarantee.selection__lg_performance_bond__state__draft
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__expiry_date
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__expiry_date
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__expiry_date
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__expiry_date
+msgid "Expiry Date"
+msgstr ""
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__guarantee_amount
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__guarantee_amount
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__guarantee_amount
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__guarantee_amount
+msgid "Guarantee Amount"
+msgstr "مبلغ الضمان"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__guarantee_details
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__guarantee_details
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__guarantee_details
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__guarantee_details
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_advance_payment_guarantee_form
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_bid_bond_form
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_maintenance_bond_form
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_performance_bond_form
+msgid "Guarantee Details"
+msgstr "تفاضيل الضمان"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_check_lg_accounts__id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__id
+msgid "ID"
+msgstr ""
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_check_lg_accounts__journal_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__journal_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__journal_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__journal_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__journal_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_res_company__journal_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_res_config_settings__journal_id
+msgid "Journal"
+msgstr "دفتر اليومية: "
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model,name:arabian_letters_of_guarantee.model_account_move
+msgid "Journal Entry"
+msgstr "قيد اليومية"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model,name:arabian_letters_of_guarantee.model_account_move_line
+msgid "Journal Item"
+msgstr "عنصر اليومية"
+
+#. module: arabian_letters_of_guarantee
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_advance_payment_guarantee_form
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_bid_bond_form
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_maintenance_bond_form
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_performance_bond_form
+msgid "Journal Items"
+msgstr "عناصر اليومية"
+
+#. module: arabian_letters_of_guarantee
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_advance_payment_guarantee_form
+msgid "LG Advance Payment Guarantee Purpose..."
+msgstr " خطاب ضمان الدفعة المقدمة"
+
+#. module: arabian_letters_of_guarantee
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_bid_bond_form
+msgid "LG Bid Bond Purpose..."
+msgstr "الغرض من خطاب الضمان الابتدائي"
+
+#. module: arabian_letters_of_guarantee
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_maintenance_bond_form
+msgid "LG Maintenance Bond Purpose..."
+msgstr "الغرض خطاب ضمان الصيانة"
+
+#. module: arabian_letters_of_guarantee
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.lg_performance_bond_form
+msgid "LG Performance Bond Purpose..."
+msgstr "الغرض من خطاب الضمان النهائي"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_check_lg_accounts__write_uid
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__write_uid
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__write_uid
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__write_uid
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_check_lg_accounts__write_date
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__write_date
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__write_date
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__write_date
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.ui.menu,name:arabian_letters_of_guarantee.letters_of_guarantee_menu
+msgid "Letters Of Guarantee"
+msgstr "خطابات الضمان"
+
+#. module: arabian_letters_of_guarantee
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.res_config_settings_form
+msgid "Letters of Guarantee"
+msgstr "خطابات الضمان"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model,name:arabian_letters_of_guarantee.model_lg_advance_payment_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_account_bank_statement_line__lg_advance_payment_guarantee_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_account_move__lg_advance_payment_guarantee_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_account_move_line__lg_advance_payment_guarantee_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_account_payment__lg_advance_payment_guarantee_id
+msgid "Lg Advance Payment Guarantee"
+msgstr " خطاب ضمان الدفعة المقدمة"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model,name:arabian_letters_of_guarantee.model_lg_bid_bond
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_account_bank_statement_line__lg_bid_bond_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_account_move__lg_bid_bond_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_account_move_line__lg_bid_bond_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_account_payment__lg_bid_bond_id
+msgid "Lg Bid Bond"
+msgstr "خطاب ضمان ابتدائي"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model,name:arabian_letters_of_guarantee.model_lg_maintenance_bond
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_account_bank_statement_line__lg_maintenance_bond_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_account_move__lg_maintenance_bond_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_account_move_line__lg_maintenance_bond_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_account_payment__lg_maintenance_bond_id
+msgid "Lg Maintenance Bond"
+msgstr "خطاب ضمان الصيانة"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model,name:arabian_letters_of_guarantee.model_lg_performance_bond
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_account_bank_statement_line__lg_performance_bond_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_account_move__lg_performance_bond_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_account_move_line__lg_performance_bond_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_account_payment__lg_performance_bond_id
+msgid "Lg Performance Bond"
+msgstr "خطاب الضمان النهائي"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_check_lg_accounts__lg_type
+msgid "Lg Type"
+msgstr "نوع خطاب الضمان"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.actions.act_window,name:arabian_letters_of_guarantee.lg_maintenance_bond_action
+#: model:ir.model.fields.selection,name:arabian_letters_of_guarantee.selection__check_lg_accounts__lg_type__maintenance_bond
+#: model:ir.ui.menu,name:arabian_letters_of_guarantee.lg_maintenance_bond_menu
+#: model_terms:ir.actions.act_window,help:arabian_letters_of_guarantee.lg_maintenance_bond_action
+msgid "Maintenance Bond"
+msgstr "خطاب ضمان الصيانة"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_check_lg_accounts__maintenance_bond_account_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__maintenance_bond_account_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_res_company__maintenance_bond_account_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_res_config_settings__maintenance_bond_account_id
+msgid "Maintenance Bond Account"
+msgstr "حساب خطاب ضمان الصيانة"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields.selection,name:arabian_letters_of_guarantee.selection__check_lg_accounts__lg_type__maintenance_bond_cancellation
+msgid "Maintenance Bond Cancellation"
+msgstr "إلغاء خطاب ضمان الصيانة"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__name
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__name
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__name
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__name
+msgid "Name"
+msgstr ""
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.actions.act_window,name:arabian_letters_of_guarantee.lg_performance_bond_action
+#: model:ir.model.fields.selection,name:arabian_letters_of_guarantee.selection__check_lg_accounts__lg_type__performance_bond
+#: model:ir.ui.menu,name:arabian_letters_of_guarantee.lg_performance_bond_menu
+#: model_terms:ir.actions.act_window,help:arabian_letters_of_guarantee.lg_performance_bond_action
+msgid "Performance Bond"
+msgstr "خطاب الضمان النهائي"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_check_lg_accounts__performance_bond_account_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__performance_bond_account_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_res_company__performance_bond_account_id
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_res_config_settings__performance_bond_account_id
+msgid "Performance Bond Account"
+msgstr "حساب خطاب الضمان النهائي"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__state
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__state
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__state
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__state
+msgid "Status"
+msgstr "الحالة"
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_advance_payment_guarantee__tender_no
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_bid_bond__tender_no
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_maintenance_bond__tender_no
+#: model:ir.model.fields,field_description:arabian_letters_of_guarantee.field_lg_performance_bond__tender_no
+msgid "Tender No"
+msgstr "رقم المناقصة"
+
+#. module: arabian_letters_of_guarantee
+#: model_terms:ir.ui.view,arch_db:arabian_letters_of_guarantee.check_lg_accounts_form
+msgid "You will cancel the letter of guarantee and get the money back."
+msgstr ""
+
+#. module: arabian_letters_of_guarantee
+#: model:ir.actions.act_window,name:arabian_letters_of_guarantee.lg_advance_payment_guarantee_action
+msgid "خطاب ضمان الدفعة المقدمة (Advance Payment Guarantee)"
+msgstr "خطاب ضمان الدفعة المقدمة "

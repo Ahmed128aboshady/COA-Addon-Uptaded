@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="residential_construction" model="construction.project.type">
+            <field name="name">Residential construction</field>
+            <field name="contracting_project_classification_id" ref="construction_projects"/>
+            <field name="description">Includes construction of houses, villas and residential complexes.</field>
+        </record>
+        <record id="commercial_construction" model="construction.project.type">
+            <field name="name">Commercial construction</field>
+            <field name="description">Includes construction of offices, commercial complexes, hotels and hospitals.</field>
+            <field name="contracting_project_classification_id" ref="construction_projects"/>
+        </record>
+        <record id="industrial_construction" model="construction.project.type">
+            <field name="name">Industrial construction</field>
+            <field name="description">Includes construction of factories, warehouses and industrial structures.</field>
+            <field name="contracting_project_classification_id" ref="construction_projects"/>
+        </record>
+        <record id="institutional_construction" model="construction.project.type">
+            <field name="name">Institutional construction</field>
+            <field name="description">Includes schools, universities, hospitals and government buildings.</field>
+            <field name="contracting_project_classification_id" ref="construction_projects"/>
+        </record>
+
+        <record id="roads_bridges" model="construction.project.type">
+            <field name="name">Roads and Bridges</field>
+            <field name="description">Construction and development of highways, bridges and tunnels.</field>
+            <field name="contracting_project_classification_id" ref="civil_engineering_infrastructure_projects"/>
+        </record>
+        <record id="airports_ports" model="construction.project.type">
+            <field name="name">Airports and Ports</field>
+            <field name="description">Construction and expansion of airports and seaports.</field>
+            <field name="contracting_project_classification_id" ref="civil_engineering_infrastructure_projects"/>
+        </record>
+        <record id="water_projects" model="construction.project.type">
+            <field name="name">Water Projects</field>
+            <field name="description">Including dams, canals, water and sewage treatment plants.</field>
+            <field name="contracting_project_classification_id" ref="civil_engineering_infrastructure_projects"/>
+        </record>
+        <record id="railway_projects" model="construction.project.type">
+            <field name="name">Railway Projects</field>
+            <field name="description">Construction of railway lines and stations.</field>
+            <field name="contracting_project_classification_id" ref="civil_engineering_infrastructure_projects"/>
+        </record>
+
+        <record id="electrical_works" model="construction.project.type">
+            <field name="name">Electrical works</field>
+            <field name="description">such as installing electrical networks, transformers, and electrical systems in buildings.</field>
+            <field name="contracting_project_classification_id" ref="mechanical_electrical_plumbing"/>
+        </record>
+        <record id="mechanical_works" model="construction.project.type">
+            <field name="name">Mechanical works</field>
+            <field name="description">Air conditioning, refrigeration, and ventilation systems.</field>
+            <field name="contracting_project_classification_id" ref="civil_engineering_infrastructure_projects"/>
+        </record>
+        <record id="sanitary_plumbing_works" model="construction.project.type">
+            <field name="name">Sanitary and plumbing works</field>
+            <field name="description">Includes water and sewage networks and plumbing fixtures.</field>
+            <field name="contracting_project_classification_id" ref="civil_engineering_infrastructure_projects"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Menu under Inventory > Reporting -->
+    <menuitem
+        id="menu_sale_stock_reserved_inventory"
+        name="Reserved Stock"
+        parent="stock.menu_warehouse_report"
+        action="action_sale_stock_reserved"
+        sequence="20"
+        groups="stock.group_stock_user"/>
+
+    <!-- Menu under Sales > Reporting -->
+    <menuitem
+        id="menu_sale_stock_reserved_sales"
+        name="Reserved Stock"
+        parent="sale.menu_sale_report"
+        action="action_sale_stock_reserved"
+        sequence="50"
+        groups="sales_team.group_sale_manager"/>
+
+</odoo>

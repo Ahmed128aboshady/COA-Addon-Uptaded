@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_sale_order_form_return" model="ir.ui.view">
+        <field name="name">sale.order.form.return</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Smart button: Return transfers count -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_returns"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-undo"
+                        invisible="return_count == 0">
+                    <field name="return_count" widget="statinfo" string="Returns"/>
+                </button>
+            </xpath>
+
+            <!-- Return button next to the main action buttons -->
+            <xpath expr="//button[@name='action_cancel']" position="after">
+                <button name="action_return"
+                        string="Return"
+                        type="object"
+                        class="btn-secondary"
+                        icon="fa-undo"
+                        invisible="state not in ('sale', 'done')"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

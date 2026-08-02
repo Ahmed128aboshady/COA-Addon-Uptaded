@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="inherit_lg_bid_bond_form" model="ir.ui.view">
+        <field name="name">inherit.lg.bid.bond.form</field>
+        <field name="model">lg.bid.bond</field>
+        <field name="inherit_id" ref="arabian_letters_of_guarantee.lg_bid_bond_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tender_no']" position="after">
+                <field name="construction_project_id"/>
+                <field name="project_name"/>
+                <field name="project_number"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

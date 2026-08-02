@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ══════════════════════════════════════
+         ROOT APP MENU
+         ══════════════════════════════════════ -->
+    <menuitem id="menu_multi_approval_root"
+              name="Approvals"
+              sequence="72"/>
+
+    <!-- ══════════════════════════════════════
+         MY APPROVALS
+         ══════════════════════════════════════ -->
+    <menuitem id="menu_my_approvals"
+              name="My Approvals"
+              parent="menu_multi_approval_root"
+              action="action_my_approval_requests"
+              sequence="5"/>
+
+    <!-- ══════════════════════════════════════
+         ALL REQUESTS (Manager)
+         ══════════════════════════════════════ -->
+    <menuitem id="menu_all_approval_requests"
+              name="All Requests"
+              parent="menu_multi_approval_root"
+              action="action_multi_approval_request"
+              sequence="10"
+              groups="multi_approval.group_approval_manager"/>
+
+    <!-- ══════════════════════════════════════
+         SALES
+         ══════════════════════════════════════ -->
+    <menuitem id="menu_approval_sales_root"
+              name="Sales"
+              parent="menu_multi_approval_root"
+              sequence="20"/>
+
+    <menuitem id="menu_approval_sales_requests"
+              name="Sales Requests"
+              parent="menu_approval_sales_root"
+              action="action_sale_approval_requests"
+              sequence="10"/>
+
+    <menuitem id="menu_approval_sales_config"
+              name="Configure"
+              parent="menu_approval_sales_root"
+              action="action_sale_approval_type_config"
+              sequence="20"
+              groups="multi_approval.group_approval_manager"/>
+
+    <!-- ══════════════════════════════════════
+         PURCHASE
+         ══════════════════════════════════════ -->
+    <menuitem id="menu_approval_purchase_root"
+              name="Purchase"
+              parent="menu_multi_approval_root"
+              sequence="30"/>
+
+    <menuitem id="menu_approval_purchase_requests"
+              name="Purchase Requests"
+              parent="menu_approval_purchase_root"
+              action="action_purchase_approval_requests"
+              sequence="10"/>
+
+    <menuitem id="menu_approval_purchase_config"
+              name="Configure"
+              parent="menu_approval_purchase_root"
+              action="action_purchase_approval_type_config"
+              sequence="20"
+              groups="multi_approval.group_approval_manager"/>
+
+    <!-- ══════════════════════════════════════
+         ACCOUNTING — INVOICES
+         ══════════════════════════════════════ -->
+    <menuitem id="menu_approval_accounting_root"
+              name="Accounting"
+              parent="menu_multi_approval_root"
+              sequence="40"/>
+
+    <menuitem id="menu_approval_invoice_requests"
+              name="Invoice Requests"
+              parent="menu_approval_accounting_root"
+              action="action_account_approval_requests"
+              sequence="10"/>
+
+    <menuitem id="menu_approval_payment_requests"
+              name="Payment Requests"
+              parent="menu_approval_accounting_root"
+              action="action_payment_approval_requests"
+              sequence="20"/>
+
+    <menuitem id="menu_approval_journal_entry_requests"
+              name="Journal Entry Requests"
+              parent="menu_approval_accounting_root"
+              action="action_journal_entry_approval_requests"
+              sequence="25"/>
+
+    <menuitem id="menu_approval_invoice_config"
+              name="Configure Invoices"
+              parent="menu_approval_accounting_root"
+              action="action_account_approval_type_config"
+              sequence="30"
+              groups="multi_approval.group_approval_manager"/>
+
+    <menuitem id="menu_approval_payment_config"
+              name="Configure Payments"
+              parent="menu_approval_accounting_root"
+              action="action_payment_approval_type_config"
+              sequence="40"
+              groups="multi_approval.group_approval_manager"/>
+
+    <menuitem id="menu_approval_journal_entry_config"
+              name="Configure Journal Entries"
+              parent="menu_approval_accounting_root"
+              action="action_journal_entry_approval_type_config"
+              sequence="50"
+              groups="multi_approval.group_approval_manager"/>
+
+    <!-- ══════════════════════════════════════
+         INVENTORY
+         ══════════════════════════════════════ -->
+    <menuitem id="menu_approval_inventory_root"
+              name="Inventory"
+              parent="menu_multi_approval_root"
+              sequence="50"/>
+
+    <menuitem id="menu_approval_inventory_requests"
+              name="Inventory Requests"
+              parent="menu_approval_inventory_root"
+              action="action_inventory_approval_requests"
+              sequence="10"/>
+
+    <menuitem id="menu_approval_inventory_config"
+              name="Configure"
+              parent="menu_approval_inventory_root"
+              action="action_inventory_approval_type_config"
+              sequence="20"
+              groups="multi_approval.group_approval_manager"/>
+
+    <!-- ══════════════════════════════════════
+         CONFIGURATION (Manager only)
+         ══════════════════════════════════════ -->
+    <menuitem id="menu_multi_approval_config"
+              name="Configuration"
+              parent="menu_multi_approval_root"
+              sequence="100"
+              groups="multi_approval.group_approval_manager"/>
+
+    <menuitem id="menu_multi_approval_settings"
+              name="Approval Settings"
+              parent="menu_multi_approval_config"
+              action="action_multi_approval_settings"
+              sequence="10"
+              groups="multi_approval.group_approval_manager"/>
+
+</odoo>

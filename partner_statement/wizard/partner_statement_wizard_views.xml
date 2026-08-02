@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Wizard Form View -->
+    <record id="view_partner_statement_wizard_form" model="ir.ui.view">
+        <field name="name">partner.statement.wizard.form</field>
+        <field name="model">partner.statement.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Partner Statement Report">
+                <group>
+                    <group>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                        <field name="all_accounts"/>
+                        <field name="account_id"
+                               invisible="all_accounts"
+                               required="not all_accounts"/>
+                        <field name="partner_id"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="action_print_report"
+                            string="Print Report"
+                            type="object"
+                            class="btn-primary"/>
+                    <button string="Cancel"
+                            class="btn-secondary"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action to open the wizard -->
+    <record id="action_partner_statement_wizard" model="ir.actions.act_window">
+        <field name="name">Partner Statement Report</field>
+        <field name="res_model">partner.statement.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Add Statement button to contact form -->
+    <record id="view_partner_form_inherit_statement" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.statement</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_view_partner_invoices']" position="after">
+                <button name="%(action_partner_statement_wizard)d"
+                        type="action"
+                        class="oe_stat_button"
+                        icon="fa-book"
+                        string="Statement"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Add button to Accounting > Customers menu -->
+    <record id="action_partner_statement_wizard_menu" model="ir.actions.act_window">
+        <field name="name">Partner Statement</field>
+        <field name="res_model">partner.statement.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem
+        id="menu_partner_statement_report"
+        name="Partner Statement"
+        parent="contacts.res_partner_menu_contacts"
+        action="action_partner_statement_wizard_menu"
+        sequence="99"/>
+
+</odoo>

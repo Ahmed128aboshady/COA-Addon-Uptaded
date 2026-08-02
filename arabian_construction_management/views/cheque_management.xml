@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="inherit_incoming_cheque_form" model="ir.ui.view">
+        <field name="name">inherit.incoming.cheque.form</field>
+        <field name="model">incoming.cheque</field>
+        <field name="inherit_id" ref="arabian_cheque_management.incoming_cheque_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='currency_id']" position="after">
+                <field name="construction_project_id"/>
+                <field name="project_name"/>
+                <field name="project_number"/>
+            </xpath>
+        </field>
+    </record>
+    
+    <record id="inherit_outgoing_cheque_form" model="ir.ui.view">
+        <field name="name">inherit.outgoing.cheque.form</field>
+        <field name="model">outgoing.cheque</field>
+        <field name="inherit_id" ref="arabian_cheque_management.outgoing_cheque_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='currency_id']" position="after">
+                <field name="construction_project_id"/>
+                <field name="project_name"/>
+                <field name="project_number"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

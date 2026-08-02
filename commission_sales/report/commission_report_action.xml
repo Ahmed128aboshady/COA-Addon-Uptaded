@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_commission_report" model="ir.actions.report">
+        <field name="name">تقرير العمولة</field>
+        <field name="model">commission.line</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">commission_sales.commission_report_template</field>
+        <field name="report_file">commission_sales.commission_report_template</field>
+        <field name="print_report_name">'تقرير العمولة - ' + object.salesperson_id.name</field>
+        <field name="binding_model_id" ref="model_commission_line"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

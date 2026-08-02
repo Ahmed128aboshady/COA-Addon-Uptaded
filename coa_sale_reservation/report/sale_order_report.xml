@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_saleorder_document_reservation"
+              inherit_id="sale.report_saleorder_document">
+
+        <!-- Add "حجز" badge right after the order number inside the title -->
+        <xpath expr="//t[@t-set='layout_document_title']//span[@t-field='doc.name']"
+               position="after">
+            <t t-if="doc.is_reservation">
+                <t t-set="ribbon_color" t-value="doc.company_id.primary_color or '#875A7B'"/>
+                <span t-attf-style="
+                    display: inline-block;
+                    background-color: {{ ribbon_color }};
+                    color: #ffffff;
+                    font-size: 0.52em;
+                    font-weight: 700;
+                    padding: 3px 10px;
+                    border-radius: 4px;
+                    vertical-align: middle;
+                    margin-left: 10px;
+                    letter-spacing: 0.5px;
+                    font-family: Arial, sans-serif;
+                ">حجز</span>
+            </t>
+        </xpath>
+
+    </template>
+
+</odoo>

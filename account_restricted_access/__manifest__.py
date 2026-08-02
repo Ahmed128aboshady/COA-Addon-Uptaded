@@ -1,33 +1,19 @@
 # -*- coding: utf-8 -*-
 {
-    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Account Restricted Access - COA',
-    'version': '19.0.1.0.0',
+    'summary': 'تقييد رؤية المحاسب على حسابات معينة في الجينرال ليدجر وحركة الحسابات',
+    'description': '\nAccount Restricted Access\n==========================\nيسمح هذا الموديول بتحديد قائمة حسابات (Many2many) لكل مستخدم من خلال بطاقة\nالمستخدم (Users). المستخدم المنتمي لمجموعة "محاسب مقيّد الصلاحية" لن يرى\nولن يستطيع الوصول إلا إلى:\n\n- حركة القيود (Journal Items / account.move.line) الخاصة بالحسابات المسموح بها فقط\n- دفتر الأستاذ العام (General Ledger) محدود بهذه الحسابات\n- شجرة الحسابات (Chart of Accounts) محدودة بهذه الحسابات فقط\n\nتم تطويره بواسطة Community of Accountants - COA\nOdoo Silver Partner\n    ',
+    'author': 'COA / Ahmed Aboshady',
+    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
     'category': 'Accounting',
-    'summary': 'Restrict accountant visibility to specific General Ledger accounts.',
-    'description': """User-Level Settings: Configure a list of allowed accounts directly on the User Form (Many2many).
-Journal Restrictions: Restricts access to Journal Items (account.move.line) to only allowed accounts.
-Ledger Restrictions: Restricts General Ledger report views to permitted accounts.
-Recursive Filters: Filters the Chart of Accounts recursively based on user settings.
-Multi-Company Guard: Fully compatible with multi-company environments.""",
-    'author': 'Community of Accountants (COA)',
-    'website': 'https://coa-egy.odoo.com/',
-    'license': 'OPL-1',
-    'depends': [
-        'account',
-    ],
-    'data': [
-        'security/account_restricted_security.xml',
-        'security/account_restricted_rules.xml',
-        'security/ir.model.access.csv',
-        'views/res_users_views.xml',
-    ],
+    'version': '17.0.19.0.1.0.0',
+    'license': 'LGPL-3',
+    'price': 35.0,
+    'currency': 'EUR',
+    'depends': ['account'],
+    'data': ['security/account_restricted_security.xml', 'security/account_restricted_rules.xml', 'security/ir.model.access.csv', 'views/res_users_views.xml'],
+    'images': ['static/description/banner.png'],
     'installable': True,
-    'application': False,
+    'application': True,
     'auto_install': False,
-    'price': 79.0,
-    'currency': 'USD',
-    'images': [
-        'static/description/banner.png',
-    ],
 }

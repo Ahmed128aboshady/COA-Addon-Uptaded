@@ -52,21 +52,20 @@ class CoaDuplicatePrintMixin(models.AbstractModel):
         return _('DUPLICATE - مكرر - Copy #%(num)s', num=self.coa_print_count)
 
     def _coa_register_print(self):
-        """Increment the counter and commit it immediately.
+        """Increment the counter on the current request transaction.
 
-        wkhtmltopdf renders the PDF by making HTTP sub-requests to Odoo;
-        those requests run in *new* PostgreSQL transactions and can only read
-        **committed** data.  If we increment inside the current transaction
-        (and flush but don't commit), wkhtmltopdf will still see the old
-        count and the watermark will never appear.
+        In Odoo 18, the QWeb HTML is rendered entirely server-side inside the
+        same database transaction before wkhtmltopdf is invoked.  wkhtmltopdf
+        only fetches static assets (CSS, images) via HTTP — it does NOT make
+        sub-requests to re-read record data.  Therefore we can safely write on
+        env.cr (the main cursor) and the template will see the updated count.
 
-        The fix: write the new count in a separate cursor that commits before
-        we return, so that any subsequent DB reads – including the ones
-        wkhtmltopdf makes – see the updated value.
+        Writing on the main cursor also avoids the deadlock that would occur if
+        a sibling override (e.g. coa_so_date_on_print) writes to the same
+        table on env.cr while our separate cursor holds a row lock.
 
         We use a SQL-level atomic increment (SET col = col + 1) to avoid
-        double-counting when the same record ID appears more than once in
-        ``self`` (e.g. duplicated active_ids in the print URL).
+        double-counting when the same record ID appears more than once.
         """
         # Deduplicate IDs so we count each distinct document exactly once.
         unique_ids = list(dict.fromkeys(self.ids))  # preserves order, drops duplicates
@@ -76,24 +75,29 @@ class CoaDuplicatePrintMixin(models.AbstractModel):
         uid = self.env.user.id
         table = self.env[self._name]._table
         try:
-            with self.env.registry.cursor() as new_cr:
-                # Atomic SQL increment — immune to read-before-write races.
-                new_cr.execute(
-                    f"""
-                    UPDATE {table}
-                       SET coa_print_count    = coa_print_count + 1,
-                           coa_last_print_date = %s,
-                           coa_last_print_uid  = %s
-                     WHERE id = ANY(%s)
-                    """,
-                    (now, uid, unique_ids),
-                )
+            self.env.cr.execute(
+                f"""
+                UPDATE {table}
+                   SET coa_print_count    = coa_print_count + 1,
+                       coa_last_print_date = %s,
+                       coa_last_print_uid  = %s
+                 WHERE id = ANY(%s)
+                """,
+                (now, uid, unique_ids),
+            )
         except Exception:
             # Never block printing because of a counter failure.
             _logger.exception(
                 "Could not update print count for %s %s",
                 self._name, self.ids,
             )
+            return
+        # Flush stale ORM cache so field reads in the same transaction
+        # (including the QWeb template) see the values we just wrote.
+        self.invalidate_recordset(
+            ['coa_print_count', 'coa_last_print_date', 'coa_last_print_uid'],
+            flush=False,
+        )
 
     def action_coa_reset_print_count(self):
         """Reset the counter so the next print is treated as the original."""

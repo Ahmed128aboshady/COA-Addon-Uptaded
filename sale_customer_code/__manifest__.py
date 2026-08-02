@@ -1,27 +1,19 @@
 # -*- coding: utf-8 -*-
 {
-    'description': """Document Codes: Automatically appends the customer's unique account code to printed documents.
-Reports Supported: Appears on Sale Orders, Quotations, and Invoice PDFs.
-Template Alignment: Clean styling integration matching standard Odoo document templates.""",
-    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Customer Code on Sale Order Report',
-    'version': '18.0.1.0.0',
-    'summary': 'Display the customer reference code on printed sale order and invoice reports.',
-    'author': 'Community of Accountants (COA)',
+    'summary': 'Show customer reference code (Customer Code) on Sale Order and Invoice printed reports',
+    'description': 'Professional Customer Code on Sale Order Report custom module for Odoo.',
+    'author': 'COA / Ahmed Aboshady',
+    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
     'category': 'Sales',
-    'depends': [
-        'sale',
-    ],
-    'data': [
-        'report/sale_report_templates.xml',
-    ],
+    'version': '18.0.1.0.0',
+    'license': 'LGPL-3',
+    'price': 29.0,
+    'currency': 'EUR',
+    'depends': ['sale'],
+    'data': ['report/sale_report_templates.xml'],
+    'images': ['static/description/banner.png'],
     'installable': True,
+    'application': False,
     'auto_install': False,
-    'license': 'OPL-1',
-    'website': 'https://coa-egy.odoo.com/',
-    'price': 15.0,
-    'currency': 'USD',
-    'images': [
-        'static/description/banner.png',
-    ],
 }

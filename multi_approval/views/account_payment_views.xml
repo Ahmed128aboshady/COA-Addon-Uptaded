@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_payment_form_approval" model="ir.ui.view">
+        <field name="name">account.payment.form.approval</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_submit_for_approval" type="object"
+                        string="Submit for Approval" class="btn-primary"
+                        invisible="approval_state in ('pending', 'approved') or state != 'draft'"/>
+                <button name="action_approve_request" type="object"
+                        string="Approve" class="btn-success"
+                        invisible="not can_approve"/>
+                <button name="action_refuse_request" type="object"
+                        string="Refuse" class="btn-danger"
+                        invisible="not can_approve"/>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_approval_request" type="object"
+                        class="oe_stat_button" icon="fa-check-circle"
+                        invisible="not approval_request_id">
+                    <div class="o_stat_info">
+                        <span class="o_stat_text">Approval</span>
+                        <span class="o_stat_value">
+                            <field name="approval_state" widget="badge"
+                                   decoration-success="approval_state == 'approved'"
+                                   decoration-danger="approval_state == 'refused'"
+                                   decoration-warning="approval_state == 'pending'"/>
+                        </span>
+                    </div>
+                </button>
+            </xpath>
+            <!-- Hidden fields for button visibility conditions -->
+            <xpath expr="//header" position="inside">
+                <field name="approval_request_id" invisible="1"/>
+                <field name="approval_state" invisible="1"/>
+                <field name="can_approve" invisible="1"/>
+                <field name="approval_current_stage" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

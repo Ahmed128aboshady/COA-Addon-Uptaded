@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         Product Template Form – add "Requires Expiry Date on Purchase"
+         checkbox in the General Information tab, after Category field
+    ══════════════════════════════════════════════════════════════════ -->
+    <record id="view_product_template_form_expiry_check" model="ir.ui.view">
+        <field name="name">product.template.form.expiry.check</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+
+            <!-- Add our checkbox in the General Information tab, after categ_id -->
+            <xpath expr="//page[@name='general_information']//field[@name='categ_id']" position="after">
+                <field name="requires_expiry_on_purchase"
+                       widget="boolean_toggle"
+                       invisible="type not in ['consu', 'product']"
+                />
+                <div class="text-muted small ps-1"
+                     invisible="not requires_expiry_on_purchase">
+                    Receipt cannot be validated without an Expiry Date for this product.
+                    Lot tracking is enforced automatically.
+                </div>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

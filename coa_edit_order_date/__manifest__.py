@@ -1,32 +1,19 @@
 # -*- coding: utf-8 -*-
 {
-    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Edit Sale Order Date',
-    'version': '18.0.1.0.0',
-    'category': 'Sales',
     'summary': 'Allow specific user groups to edit the date of confirmed Sale Orders.',
-    'description': """Order Dates: Enables modifying the order date field even after sale orders are confirmed.
-Access Control: Access is governed strictly by user groups and security permissions.
-Security Checks: Displays clear validation error messages to unauthorized users.
-Scheduler Updates: Maintains full system integrity by updating corresponding scheduler entries.""",
-    'author': 'Community of Accountants (COA)',
-    'company': 'Cybrosys Techno Solutions',
-    'maintainer': 'Cybrosys Techno Solutions',
-    'website': 'https://coa-egy.odoo.com/',
-    'depends': [
-        'sale_management',
-    ],
-    'data': [
-        'security/coa_edit_order_date_groups.xml',
-        'views/sale_order_views.xml',
-    ],
-    'images': [
-        'static/description/banner.png',
-    ],
+    'description': 'Order Dates: Enables modifying the order date field even after sale orders are confirmed.\nAccess Control: Access is governed strictly by user groups and security permissions.\nSecurity Checks: Displays clear validation error messages to unauthorized users.\nScheduler Updates: Maintains full system integrity by updating corresponding scheduler entries.',
+    'author': 'COA / Ahmed Aboshady',
+    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'category': 'Sales',
+    'version': '18.0.1.0.0',
     'license': 'OPL-1',
+    'price': 15.0,
+    'currency': 'EUR',
+    'depends': ['sale_management'],
+    'data': ['security/coa_edit_order_date_groups.xml', 'views/sale_order_views.xml'],
+    'images': ['static/description/banner.png'],
     'installable': True,
     'application': False,
     'auto_install': False,
-    'price': 19.0,
-    'currency': 'USD',
 }

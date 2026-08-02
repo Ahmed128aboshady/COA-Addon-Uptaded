@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_commission_payment_wizard_form" model="ir.ui.view">
+        <field name="name">commission.payment.wizard.form</field>
+        <field name="model">commission.payment.wizard</field>
+        <field name="arch" type="xml">
+            <form string="تسجيل دفعة عمولة">
+
+                <!-- ملخص العمولة -->
+                <div class="row mb-3 bg-light p-2 rounded">
+                    <div class="col-12 mb-1">
+                        <strong>المندوب: </strong>
+                        <field name="salesperson_name" readonly="1" nolabel="1"/>
+                    </div>
+                    <div class="col-4 text-center">
+                        <div class="text-muted small">إجمالي العمولة</div>
+                        <div class="fw-bold text-primary">
+                            <field name="total_commission" widget="monetary" readonly="1" nolabel="1"/>
+                        </div>
+                    </div>
+                    <div class="col-4 text-center">
+                        <div class="text-muted small">المدفوع سابقاً</div>
+                        <div class="fw-bold text-success">
+                            <field name="amount_paid" widget="monetary" readonly="1" nolabel="1"/>
+                        </div>
+                    </div>
+                    <div class="col-4 text-center">
+                        <div class="text-muted small">المتبقي</div>
+                        <div class="fw-bold text-danger">
+                            <field name="amount_residual" widget="monetary" readonly="1" nolabel="1"/>
+                        </div>
+                    </div>
+                </div>
+
+                <field name="commission_id" invisible="1"/>
+                <field name="currency_id" invisible="1"/>
+
+                <!-- تفاصيل الدفعة -->
+                <group string="تفاصيل الدفعة">
+                    <field name="amount"/>
+                    <field name="date"/>
+                    <field name="journal_id"/>
+                    <field name="memo"/>
+                </group>
+
+                <footer>
+                    <button name="action_pay"
+                            string="تأكيد الدفع"
+                            type="object"
+                            class="oe_highlight"/>
+                    <button string="إلغاء" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_commission_payment_wizard" model="ir.actions.act_window">
+        <field name="name">تسجيل دفعة</field>
+        <field name="res_model">commission.payment.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

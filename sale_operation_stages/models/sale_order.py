@@ -109,7 +109,7 @@ class SaleOrder(models.Model):
                 picking.move_ids.filtered('operation_locked').write({'operation_locked': False})
 
         # احجز الكميات تاني عشان الـ backorder يتسلم بدون مشكلة
-        pickings.action_assign()
+        # pickings.action_assign()
 
         # إشعار على الأوردر
         self.message_post(
@@ -174,42 +174,42 @@ class StockPicking(models.Model):
         default=False,
         tracking=True,
     )
-
-    def button_validate(self):
-        """منع التسليم لو في عمليات لسه مش خلصت"""
-        for picking in self:
-            # all mode: الـ picking كله محجوز — وقف كامل
-            if picking.operation_locked:
-                raise UserError(
-                    '⚠️ مش ممكن تسلم!\n'
-                    'كل المنتجات لسه في مرحلة العمليات.\n'
-                    'لازم تكتمل جميع العمليات الأول.'
-                )
-
-            locked_moves = picking.move_ids.filtered('operation_locked')
-            if not locked_moves:
-                continue
-
-            unlocked_moves = picking.move_ids - locked_moves
-
-            # لو كل الأصناف محجوزة بالعمليات (مفيش حاجة تتسلم دلوقتي)
-            if not unlocked_moves:
-                names = '\n'.join('• ' + n for n in locked_moves.mapped('product_id.name'))
-                raise UserError(
-                    '⚠️ مش ممكن تسلم — الأصناف دي لسه في مرحلة العمليات:\n\n'
-                    '%s\n\n'
-                    'لازم تكتمل العمليات الأول.' % names
-                )
-
-            # تأكد إن الأصناف العادية عندها كمية تسليم
-            for move in unlocked_moves:
-                if not move.move_line_ids:
-                    move.action_assign()
-                for ml in move.move_line_ids:
-                    if not ml.quantity:
-                        ml.quantity = ml.quantity_product_uom
-
-            # صفّر الأصناف المحجوزة → Odoo يعمل backorder لها تلقائياً
-            locked_moves.move_line_ids.write({'quantity': 0})
-
-        return super().button_validate()
+    #
+    # def button_validate(self):
+    #     """منع التسليم لو في عمليات لسه مش خلصت"""
+    #     for picking in self:
+    #         # all mode: الـ picking كله محجوز — وقف كامل
+    #         if picking.operation_locked:
+    #             raise UserError(
+    #                 '⚠️ مش ممكن تسلم!\n'
+    #                 'كل المنتجات لسه في مرحلة العمليات.\n'
+    #                 'لازم تكتمل جميع العمليات الأول.'
+    #             )
+    #
+    #         locked_moves = picking.move_ids.filtered('operation_locked')
+    #         if not locked_moves:
+    #             continue
+    #
+    #         unlocked_moves = picking.move_ids - locked_moves
+    #
+    #         # لو كل الأصناف محجوزة بالعمليات (مفيش حاجة تتسلم دلوقتي)
+    #         if not unlocked_moves:
+    #             names = '\n'.join('• ' + n for n in locked_moves.mapped('product_id.name'))
+    #             raise UserError(
+    #                 '⚠️ مش ممكن تسلم — الأصناف دي لسه في مرحلة العمليات:\n\n'
+    #                 '%s\n\n'
+    #                 'لازم تكتمل العمليات الأول.' % names
+    #             )
+    #
+    #         # تأكد إن الأصناف العادية عندها كمية تسليم
+    #         for move in unlocked_moves:
+    #             if not move.move_line_ids:
+    #                 move.action_assign()
+    #             for ml in move.move_line_ids:
+    #                 if not ml.quantity:
+    #                     ml.quantity = ml.quantity_product_uom
+    #
+    #         # صفّر الأصناف المحجوزة → Odoo يعمل backorder لها تلقائياً
+    #         locked_moves.move_line_ids.write({'quantity': 0})
+    #
+    #     return super().button_validate()

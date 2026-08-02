@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Extend stock picking form: add secondary qty in move lines -->
+    <record id="view_picking_form_secondary_uom" model="ir.ui.view">
+        <field name="name">stock.picking.form.secondary.uom</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <!-- In the operations (stock.move) list within the picking -->
+            <xpath expr="//field[@name='move_ids']//list//field[@name='product_uom']" position="after">
+                <field name="has_secondary_uom" column_invisible="True"/>
+                <field name="secondary_product_uom_qty"
+                       string="Sec. Demand"
+                       invisible="not has_secondary_uom"
+                       optional="show"/>
+                <field name="secondary_quantity"
+                       string="Sec. Done"
+                       invisible="not has_secondary_uom"
+                       optional="show"/>
+                <field name="secondary_uom_id"
+                       string="Sec. UoM"
+                       invisible="not has_secondary_uom"
+                       optional="show"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

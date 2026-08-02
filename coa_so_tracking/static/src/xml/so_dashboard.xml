@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+<t t-name="coa_so_tracking.Dashboard">
+<div class="coa_so_dashboard">
+
+    <!-- ─── Header ──────────────────────────────────────────────────────── -->
+    <div class="coa_sod_header">
+        <div>
+            <h2>متابعة أوامر البيع</h2>
+            <span class="coa_sod_subtitle">
+                اضغط على أي أمر لرؤية تفاصيل الأصناف &#160;·&#160; التصنيع &#160;·&#160; التسليم &#160;·&#160; الفوترة
+            </span>
+        </div>
+    </div>
+
+    <!-- ─── Filter bar ───────────────────────────────────────────────────── -->
+    <div class="coa_sod_filter_bar">
+        <div class="coa_sod_filter_group">
+            <label class="coa_sod_filter_label">من تاريخ</label>
+            <input type="date" class="coa_sod_filter_input o_input"
+                   t-att-value="filters.dateFrom"
+                   t-on-change="(e) => { this.filters.dateFrom = e.target.value; }"/>
+        </div>
+        <div class="coa_sod_filter_group">
+            <label class="coa_sod_filter_label">إلى تاريخ</label>
+            <input type="date" class="coa_sod_filter_input o_input"
+                   t-att-value="filters.dateTo"
+                   t-on-change="(e) => { this.filters.dateTo = e.target.value; }"/>
+        </div>
+        <div class="coa_sod_filter_group">
+            <label class="coa_sod_filter_label">الحالة</label>
+            <select class="coa_sod_filter_input o_input"
+                    t-on-change="(e) => { this.filters.state = e.target.value; }">
+                <option value="all">الكل</option>
+                <option value="sale">مؤكدة</option>
+                <option value="done">مغلقة</option>
+            </select>
+        </div>
+        <button class="btn btn-primary coa_sod_apply_btn"
+                t-on-click="() => this.applyFilters()">
+            <i class="fa fa-search"/>&#160;تطبيق
+        </button>
+        <button class="btn btn-success coa_sod_export_btn"
+                t-on-click="() => this.exportExcel()"
+                t-att-disabled="state.loading or !state.data.length">
+            <i class="fa fa-file-excel-o"/>&#160;تصدير Excel
+        </button>
+    </div>
+
+    <!-- ─── Loading ──────────────────────────────────────────────────────── -->
+    <t t-if="state.loading">
+        <div class="coa_sod_loading">
+            <i class="fa fa-spinner fa-spin fa-2x"/>
+            <div>جاري تحميل البيانات…</div>
+        </div>
+    </t>
+
+    <!-- ─── Error ────────────────────────────────────────────────────────── -->
+    <t t-elif="state.error">
+        <div class="coa_sod_error_box">
+            <i class="fa fa-exclamation-triangle fa-2x"/>
+            <div class="coa_sod_error_msg"><t t-esc="state.error"/></div>
+            <button class="btn btn-sm btn-outline-danger mt-2"
+                    t-on-click="() => this.loadData()">إعادة المحاولة</button>
+        </div>
+    </t>
+
+    <!-- ─── Empty ─────────────────────────────────────────────────────────── -->
+    <t t-elif="!state.data.length">
+        <div class="coa_sod_empty">
+            <i class="fa fa-inbox fa-3x"/>
+            <p>لا توجد أوامر بيع في هذه الفترة</p>
+        </div>
+    </t>
+
+    <!-- ─── Main table ────────────────────────────────────────────────────── -->
+    <t t-else="">
+        <div class="coa_sod_card">
+            <table class="coa_sod_table">
+                <thead>
+                    <!-- Row 1: group headers -->
+                    <tr class="coa_sod_head1">
+                        <th class="coa_sod_expand_th" rowspan="2"></th>
+                        <th rowspan="2">أمر البيع</th>
+                        <th rowspan="2">العميل</th>
+                        <th rowspan="2">التاريخ</th>
+                        <th rowspan="2">الحالة</th>
+                        <th rowspan="2" class="text-center">أصناف</th>
+                        <th colspan="2" class="coa_sod_mfg_hd text-center">التصنيع (كمية)</th>
+                        <th colspan="2" class="coa_sod_dlv_hd text-center">التسليم (كمية)</th>
+                        <th colspan="2" class="coa_sod_inv_hd text-center">الفوترة (كمية)</th>
+                    </tr>
+                    <!-- Row 2: sub-headers -->
+                    <tr class="coa_sod_head2">
+                        <th class="coa_sod_mfg_hd text-center">تم</th>
+                        <th class="coa_sod_mfg_hd text-center">متبقي</th>
+                        <th class="coa_sod_dlv_hd text-center">تم</th>
+                        <th class="coa_sod_dlv_hd text-center">متبقي</th>
+                        <th class="coa_sod_inv_hd text-center">تم</th>
+                        <th class="coa_sod_inv_hd text-center">متبقي</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="state.data" t-as="so" t-key="so.id">
+
+                        <!-- ── SO summary row (clickable) ── -->
+                        <tr t-att-class="{
+                                'coa_sod_so_row': true,
+                                'coa_sod_so_active': this.isExpanded(so.id)
+                            }"
+                            t-on-click="() => this.toggleSO(so.id)">
+
+                            <td class="coa_sod_expand_td">
+                                <i t-att-class="{
+                                    'fa': true,
+                                    'fa-chevron-down':  this.isExpanded(so.id),
+                                    'fa-chevron-left':  !this.isExpanded(so.id),
+                                    'coa_sod_chevron':  true
+                                }"/>
+                            </td>
+                            <td class="coa_sod_so_name"><t t-esc="so.name"/></td>
+                            <td><t t-esc="so.partner"/></td>
+                            <td><t t-esc="so.date"/></td>
+                            <td>
+                                <span t-att-class="'coa_sod_badge ' + this.stateBadgeClass(so.state)">
+                                    <t t-esc="this.stateLabel(so.state)"/>
+                                </span>
+                            </td>
+                            <td class="text-center coa_sod_lines_count">
+                                <t t-esc="so.lines.length"/>
+                            </td>
+                            <!-- Manufacturing totals -->
+                            <td t-att-class="{
+                                    'text-center': true,
+                                    'coa_sod_done': so.total_to_manufacture_qty === 0 and so.total_manufactured_qty > 0
+                                }">
+                                <t t-esc="this.fmtQty(so.total_manufactured_qty)"/>
+                            </td>
+                            <td t-att-class="{
+                                    'text-center': true,
+                                    'coa_sod_warn': so.total_to_manufacture_qty > 0
+                                }">
+                                <t t-esc="this.fmtQty(so.total_to_manufacture_qty)"/>
+                            </td>
+                            <!-- Delivery totals -->
+                            <td t-att-class="{
+                                    'text-center': true,
+                                    'coa_sod_done': so.total_to_deliver_qty === 0 and so.total_delivered_qty > 0
+                                }">
+                                <t t-esc="this.fmtQty(so.total_delivered_qty)"/>
+                            </td>
+                            <td t-att-class="{
+                                    'text-center': true,
+                                    'coa_sod_warn': so.total_to_deliver_qty > 0
+                                }">
+                                <t t-esc="this.fmtQty(so.total_to_deliver_qty)"/>
+                            </td>
+                            <!-- Invoice totals -->
+                            <td t-att-class="{
+                                    'text-center': true,
+                                    'coa_sod_done': so.total_to_invoice_qty === 0 and so.total_invoiced_qty > 0
+                                }">
+                                <t t-esc="this.fmtQty(so.total_invoiced_qty)"/>
+                            </td>
+                            <td t-att-class="{
+                                    'text-center': true,
+                                    'coa_sod_warn': so.total_to_invoice_qty > 0
+                                }">
+                                <t t-esc="this.fmtQty(so.total_to_invoice_qty)"/>
+                            </td>
+                        </tr>
+
+                        <!-- ── Expanded: product lines ── -->
+                        <t t-if="this.isExpanded(so.id)">
+                            <tr class="coa_sod_lines_row">
+                                <td colspan="12" class="coa_sod_lines_cell">
+                                    <t t-if="so.lines.length">
+                                        <table class="coa_sod_lines_table">
+                                            <thead>
+                                                <tr>
+                                                    <th>المنتج</th>
+                                                    <th class="text-center">الوحدة</th>
+                                                    <th class="text-center coa_sod_ordered_col">المطلوب</th>
+                                                    <!-- MFG -->
+                                                    <th class="coa_sod_mfg_hd text-center">تصنيع تم</th>
+                                                    <th class="coa_sod_mfg_hd text-center">نسبة</th>
+                                                    <th class="coa_sod_mfg_hd text-center">متبقي</th>
+                                                    <!-- DLV -->
+                                                    <th class="coa_sod_dlv_hd text-center">تسليم تم</th>
+                                                    <th class="coa_sod_dlv_hd text-center">نسبة</th>
+                                                    <th class="coa_sod_dlv_hd text-center">متبقي</th>
+                                                    <!-- INV -->
+                                                    <th class="coa_sod_inv_hd text-center">فوترة تم</th>
+                                                    <th class="coa_sod_inv_hd text-center">نسبة</th>
+                                                    <th class="coa_sod_inv_hd text-center">متبقي</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <t t-foreach="so.lines" t-as="line" t-key="line.id">
+                                                    <tr class="coa_sod_line_row">
+                                                        <td class="coa_sod_prod_name">
+                                                            <t t-esc="line.product_name"/>
+                                                        </td>
+                                                        <td class="text-center coa_sod_uom">
+                                                            <t t-esc="line.uom"/>
+                                                        </td>
+                                                        <td class="text-center coa_sod_qty_bold">
+                                                            <t t-esc="this.fmtQty(line.ordered_qty)"/>
+                                                        </td>
+
+                                                        <!-- Manufacturing -->
+                                                        <td class="text-center">
+                                                            <t t-esc="this.fmtQty(line.manufactured_qty)"/>
+                                                        </td>
+                                                        <td class="text-center coa_sod_pct_cell">
+                                                            <div class="coa_sod_bar_wrap">
+                                                                <div class="coa_sod_bar_fill coa_sod_mfg_bar"
+                                                                     t-attf-style="width:#{this.pct(line.manufactured_qty, line.ordered_qty)}%;"/>
+                                                            </div>
+                                                            <span class="coa_sod_pct_txt">
+                                                                <t t-esc="this.pct(line.manufactured_qty, line.ordered_qty)"/>%
+                                                            </span>
+                                                        </td>
+                                                        <td t-att-class="{
+                                                                'text-center': true,
+                                                                'coa_sod_qty_warn': line.to_manufacture_qty > 0
+                                                            }">
+                                                            <t t-esc="this.fmtQty(line.to_manufacture_qty)"/>
+                                                        </td>
+
+                                                        <!-- Delivery -->
+                                                        <td class="text-center">
+                                                            <t t-esc="this.fmtQty(line.delivered_qty)"/>
+                                                        </td>
+                                                        <td class="text-center coa_sod_pct_cell">
+                                                            <div class="coa_sod_bar_wrap">
+                                                                <div class="coa_sod_bar_fill coa_sod_dlv_bar"
+                                                                     t-attf-style="width:#{this.pct(line.delivered_qty, line.ordered_qty)}%;"/>
+                                                            </div>
+                                                            <span class="coa_sod_pct_txt">
+                                                                <t t-esc="this.pct(line.delivered_qty, line.ordered_qty)"/>%
+                                                            </span>
+                                                        </td>
+                                                        <td t-att-class="{
+                                                                'text-center': true,
+                                                                'coa_sod_qty_warn': line.to_deliver_qty > 0
+                                                            }">
+                                                            <t t-esc="this.fmtQty(line.to_deliver_qty)"/>
+                                                        </td>
+
+                                                        <!-- Invoice -->
+                                                        <td class="text-center">
+                                                            <t t-esc="this.fmtQty(line.invoiced_qty)"/>
+                                                        </td>
+                                                        <td class="text-center coa_sod_pct_cell">
+                                                            <div class="coa_sod_bar_wrap">
+                                                                <div class="coa_sod_bar_fill coa_sod_inv_bar"
+                                                                     t-attf-style="width:#{this.pct(line.invoiced_qty, line.ordered_qty)}%;"/>
+                                                            </div>
+                                                            <span class="coa_sod_pct_txt">
+                                                                <t t-esc="this.pct(line.invoiced_qty, line.ordered_qty)"/>%
+                                                            </span>
+                                                        </td>
+                                                        <td t-att-class="{
+                                                                'text-center': true,
+                                                                'coa_sod_qty_warn': line.to_invoice_qty > 0
+                                                            }">
+                                                            <t t-esc="this.fmtQty(line.to_invoice_qty)"/>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                            </tbody>
+                                        </table>
+                                    </t>
+                                    <t t-else="">
+                                        <div class="coa_sod_no_lines">لا توجد أصناف في هذا الأمر</div>
+                                    </t>
+                                </td>
+                            </tr>
+                        </t>
+
+                    </t><!-- /t-foreach -->
+                </tbody>
+            </table>
+        </div>
+    </t>
+
+</div>
+</t>
+</templates>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_saleorder_document_reservation"
+              inherit_id="sale.report_saleorder_document">
+
+        <xpath expr="//t[@t-set='layout_document_title']" position="inside">
+            <t t-if="doc.is_reservation and not doc.invoice_ids">
+                <span style="background-color:#6f42c1;
+                             color:#fff;
+                             font-size:15px;
+                             font-weight:bold;
+                             padding:3px 9px;
+                             border-radius:4px;
+                             vertical-align:middle;
+                             margin-left:8px;">
+                    حجز
+                </span>
+            </t>
+        </xpath>
+
+    </template>
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_commission_analysis_report" model="ir.actions.report">
+        <field name="name">تقرير تحليل مبيعات المندوبين</field>
+        <field name="model">commission.analysis.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">commission_sales.commission_analysis_report_template</field>
+        <field name="report_file">commission_sales.commission_analysis_report_template</field>
+        <field name="print_report_name">'تقرير تحليل المبيعات - ' + str(object.date_from) + ' : ' + str(object.date_to)</field>
+    </record>
+</odoo>

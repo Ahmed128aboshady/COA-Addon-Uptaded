@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Inherit Sale Order Report to add Partner Balance Section -->
+    <template id="report_saleorder_document_inherit_balance" inherit_id="sale.report_saleorder_document">
+        <!-- Add partner balance section after the total summary -->
+        <xpath expr="//div[@name='so_total_summary']" position="after">
+            <div class="clearfix" name="partner_balance_section">
+                <div id="partner_balance" class="row mt-3" name="partner_balance">
+                    <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ms-auto">
+                        <table class="table table-sm table-borderless mb-0" style="border: 1px solid #dee2e6;">
+                            <thead style="background-color: #f8f9fa;">
+                                <tr>
+                                    <th colspan="2" class="text-center py-2" style="border-bottom: 2px solid #dee2e6;">
+                                        <strong>CUSTOMER BALANCE / رصيد العميل</strong>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- الرصيد السابق -->
+                                <tr>
+                                    <td class="text-start py-1">
+                                        <span>Previous Balance / الرصيد السابق</span>
+                                    </td>
+                                    <td class="text-end py-1">
+                                        <span t-field="doc.partner_previous_balance"
+                                              t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                    </td>
+                                </tr>
+                                <!-- + الطلب الحالي -->
+                                <tr>
+                                    <td class="text-start py-1">
+                                        <span>+ Current Order / الطلب الحالي</span>
+                                    </td>
+                                    <td class="text-end py-1">
+                                        <span t-field="doc.amount_total"
+                                              t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                    </td>
+                                </tr>
+                                <!-- الرصيد الحالي -->
+                                <tr style="border-top: 2px solid #dee2e6; background-color: #e9ecef;">
+                                    <td class="text-start py-2">
+                                        <strong>Current Balance / الرصيد الحالي</strong>
+                                    </td>
+                                    <td class="text-end py-2">
+                                        <strong>
+                                            <span t-field="doc.partner_current_balance"
+                                                  t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                        </strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

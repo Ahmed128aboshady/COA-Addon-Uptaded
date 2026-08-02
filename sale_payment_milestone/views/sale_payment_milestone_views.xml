@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ─── List View ─── -->
+    <record id="view_sale_payment_milestone_list" model="ir.ui.view">
+        <field name="name">sale.payment.milestone.list</field>
+        <field name="model">sale.payment.milestone</field>
+        <field name="arch" type="xml">
+            <list string="مراحل السداد" editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="trigger"/>
+                <field name="percentage" sum="إجمالي النسب"/>
+                <field name="amount" sum="الإجمالي"/>
+                <field name="paid_amount" sum="المدفوع"/>
+                <field name="remaining_amount" sum="المتبقي"/>
+                <field name="paid_percentage" widget="progressbar"/>
+                <field name="state" widget="badge"
+                    decoration-success="state == 'paid'"
+                    decoration-warning="state == 'partial'"
+                    decoration-muted="state == 'pending'"/>
+                <field name="currency_id" column_invisible="True"/>
+                <button name="action_open_reconcile_wizard"
+                    type="object"
+                    string="ربط دفعة"
+                    icon="fa-link"
+                    invisible="state == 'paid'"
+                    class="btn-secondary btn-sm"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ─── Form View (detail) ─── -->
+    <record id="view_sale_payment_milestone_form" model="ir.ui.view">
+        <field name="name">sale.payment.milestone.form</field>
+        <field name="model">sale.payment.milestone</field>
+        <field name="arch" type="xml">
+            <form string="مرحلة سداد">
+                <header>
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="pending,partial,paid"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group string="بيانات المرحلة">
+                            <field name="order_id" readonly="1"/>
+                            <field name="name"/>
+                            <field name="trigger"/>
+                            <field name="sequence"/>
+                            <field name="note"/>
+                        </group>
+                        <group string="القيم">
+                            <field name="percentage"/>
+                            <field name="amount" readonly="1"/>
+                            <field name="paid_amount" readonly="1"/>
+                            <field name="remaining_amount" readonly="1"/>
+                            <field name="paid_percentage" widget="progressbar" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="الدفعات المرتبطة" name="payments">
+                            <field name="payment_line_ids" readonly="1">
+                                <list>
+                                    <field name="payment_id"/>
+                                    <field name="payment_date"/>
+                                    <field name="payment_ref"/>
+                                    <field name="journal_id"/>
+                                    <field name="amount" sum="الإجمالي"/>
+                                    <field name="currency_id" column_invisible="True"/>
+                                    <field name="note"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

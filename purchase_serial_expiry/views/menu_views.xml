@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Inventory Reporting ▶ Lot Expiry Report -->
+    <menuitem id="menu_inventory_lot_expiry_report"
+              name="Lot Expiry Report"
+              parent="stock.menu_warehouse_report"
+              action="action_lot_expiry_report"
+              sequence="50"/>
+
+</odoo>

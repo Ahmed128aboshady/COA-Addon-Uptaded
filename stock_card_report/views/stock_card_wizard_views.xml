@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="stock_card_report_wizard_form" model="ir.ui.view">
+        <field name="name">stock.card.report.wizard.form</field>
+        <field name="model">stock.card.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Stock Card Report">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Stock Card Report</h1>
+                    </div>
+                    <group>
+                        <group string="Filters">
+                            <field name="product_ids" widget="many2many_tags"
+                                   options="{'no_create': True}"
+                                   placeholder="All storable products"/>
+                            <field name="location_ids" widget="many2many_tags"
+                                   options="{'no_create': True}"
+                                   placeholder="All internal locations"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                        <group string="Date Range">
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                        </group>
+                    </group>
+                    <div class="oe_button_box mb-3" name="button_box">
+                        <button name="action_view_report" type="object"
+                                string="View Report" class="btn-primary me-2"/>
+                        <button name="action_export_excel" type="object"
+                                string=" Export to Excel" class="btn-success"
+                                icon="fa-file-excel-o"/>
+                    </div>
+                    <field name="line_ids" invisible="not line_ids">
+                        <list decoration-info="is_opening" create="false" delete="false" edit="false">
+                            <field name="product_id"/>
+                            <field name="location_id"/>
+                            <field name="date"/>
+                            <field name="reference"/>
+                            <field name="location_from"/>
+                            <field name="location_to"/>
+                            <field name="qty_in" sum="Total IN"/>
+                            <field name="qty_out" sum="Total OUT"/>
+                            <field name="balance"/>
+                            <field name="product_uom"/>
+                            <field name="is_opening" column_invisible="True"/>
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_stock_card_report_wizard" model="ir.actions.act_window">
+        <field name="name">Stock Card Report</field>
+        <field name="res_model">stock.card.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_stock_card_report"
+              name="Stock Card Report"
+              parent="stock.menu_warehouse_report"
+              action="action_stock_card_report_wizard"
+              sequence="210"/>
+
+</odoo>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form_vdc" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.coa.vdc</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Duplicate Check" name="coa_vendor_duplicate_check"
+                     logo="/coa_vendor_duplicate_check/static/description/icon.png">
+                    <block title="Vendor Duplicate Detection" name="coa_vdc_block">
+                        <setting string="Duplicate Handling"
+                                 help="Block prevents saving a contact whose email/phone already exists. Warn only shows a non-blocking message.">
+                            <field name="coa_vdc_mode" widget="radio"/>
+                        </setting>
+                        <setting string="Apply To"
+                                 help="Vendors only checks partners with a vendor rank. All contacts checks every partner.">
+                            <field name="coa_vdc_scope" widget="radio"/>
+                        </setting>
+                        <setting string="Detect duplicate Email"
+                                 help="Flag when another contact already uses this email (case-insensitive).">
+                            <field name="coa_vdc_check_email"/>
+                        </setting>
+                        <setting string="Detect duplicate Phone"
+                                 help="Flag when another contact already uses this phone number. In Odoo 19 the mobile number is stored in Phone.">
+                            <field name="coa_vdc_check_phone"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_production_variance_wizard_form" model="ir.ui.view">
+        <field name="name">coa.production.variance.wizard.form</field>
+        <field name="model">coa.production.variance.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Production Variance Report">
+                <group>
+                    <group string="Period">
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+                    <group string="Filters">
+                        <field name="state_filter"/>
+                        <field name="variance_filter"/>
+                        <field name="mto_only"/>
+                    </group>
+                </group>
+                <group>
+                    <field name="partner_ids" widget="many2many_tags"
+                           options="{'no_create': True}"/>
+                    <field name="product_ids" widget="many2many_tags"
+                           options="{'no_create': True}"/>
+                    <field name="categ_ids" widget="many2many_tags"
+                           options="{'no_create': True}"/>
+                </group>
+                <footer>
+                    <button name="action_print_pdf" string="Print PDF"
+                            type="object" class="btn-primary" icon="fa-file-pdf-o"/>
+                    <button name="action_export_xlsx" string="Export Excel"
+                            type="object" class="btn-primary" icon="fa-file-excel-o"/>
+                    <button name="action_open_view" string="Open in View"
+                            type="object" class="btn-secondary" icon="fa-list"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_production_variance_wizard" model="ir.actions.act_window">
+        <field name="name">Production Variance (PDF / Excel)</field>
+        <field name="res_model">coa.production.variance.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_production_variance_wizard"
+              name="Production Variance (PDF/Excel)"
+              parent="mrp.menu_mrp_reporting"
+              action="action_production_variance_wizard"
+              sequence="26"/>
+
+</odoo>

@@ -1,31 +1,19 @@
 # -*- coding: utf-8 -*-
 {
-    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'COA Quantity Available Warning',
+    'summary': 'Soft warning when the ordered quantity exceeds the free-to-use stock',
+    'description': '\nCOA Quantity Available Warning\n==============================\nShows a non-blocking warning when the requested quantity is greater than the\nquantity available (Free To Use) across the whole company:\n\n* Sale Order Line: an onchange warning appears while entering the quantity or\n  the product, showing the available quantity. The user can still proceed.\n* Delivery (stock.picking): on validation, a confirmation dialog lists the\n  products short on stock. The user can press "Confirm Anyway" to continue.\n\nNothing is blocked - the warning is informative only.\n\nDeveloped by Community of Accountants (COA) - Odoo Silver Partner\nWhatsApp: +20 101 390 7174\n    ',
+    'author': 'COA / Ahmed Aboshady',
+    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'category': 'Inventory',
     'version': '18.0.1.0.0',
-    'category': 'Sales/Sales',
-    'summary': 'Soft warning when the ordered quantity exceeds available free-to-use stock.',
-    'description': """Sale Warnings: Onchange warning triggers on Sale Order line when typing quantity.
-Delivery Guards: Interactive validation dialog triggers on Delivery validation listing stock shortage.
-Soft Warnings: Warnings are informative only — users can bypass and proceed.""",
-    'author': 'Community of Accountants (COA)',
-    'website': 'https://coa-egy.odoo.com/',
     'license': 'OPL-1',
-    'depends': [
-        'sale_stock',
-        'stock',
-    ],
-    'data': [
-        'security/ir.model.access.csv',
-        'wizard/qty_warning_wizard_views.xml',
-        'views/sale_order_views.xml',
-        'views/res_config_settings_views.xml',
-    ],
+    'price': 15.0,
+    'currency': 'EUR',
+    'depends': ['sale_stock', 'stock'],
+    'data': ['security/ir.model.access.csv', 'wizard/qty_warning_wizard_views.xml', 'views/sale_order_views.xml', 'views/res_config_settings_views.xml'],
+    'images': ['static/description/banner.png'],
     'installable': True,
     'application': False,
-    'price': 29.0,
-    'currency': 'USD',
-    'images': [
-        'static/description/banner.png',
-    ],
+    'auto_install': False,
 }

@@ -1,0 +1,772 @@
+# Arabic translation for petty_cash module
+# Copyright (C) 2024
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-01 00:00+0000\n"
+"PO-Revision-Date: 2024-01-01 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Arabic\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#. module: petty_cash
+#: model:ir.model,name:petty_cash.model_petty_cash_approver
+msgid "Petty Cash Approver"
+msgstr "معتمد العهدة النثرية"
+
+#. module: petty_cash
+#: model:ir.model,name:petty_cash.model_petty_cash_custody
+msgid "Petty Cash Custody"
+msgstr "عهدة نثرية"
+
+#. module: petty_cash
+#: model:ir.model,name:petty_cash.model_petty_cash_expense
+msgid "Petty Cash Expense"
+msgstr "مصروف نثري"
+
+#. module: petty_cash
+#: model:ir.model,name:petty_cash.model_petty_cash_category
+msgid "Petty Cash Expense Category"
+msgstr "تصنيف المصاريف النثرية"
+
+#. module: petty_cash
+#: model:res.groups,name:petty_cash.group_petty_cash_user
+msgid "Petty Cash / User"
+msgstr "العهدة النثرية / موظف"
+
+#. module: petty_cash
+#: model:res.groups,name:petty_cash.group_petty_cash_accountant
+msgid "Petty Cash / Accountant"
+msgstr "العهدة النثرية / محاسب"
+
+#. module: petty_cash
+#: model:res.groups,name:petty_cash.group_petty_cash_manager
+msgid "Petty Cash / Manager"
+msgstr "العهدة النثرية / مدير"
+
+#. module: petty_cash
+#: model:ir.sequence,name:petty_cash.seq_petty_cash_custody
+msgid "Petty Cash Custody Sequence"
+msgstr "تسلسل رقم العهدة النثرية"
+
+#. module: petty_cash
+#: model:ir.sequence,name:petty_cash.seq_petty_cash_expense
+msgid "Petty Cash Expense Sequence"
+msgstr "تسلسل رقم المصروف النثري"
+
+#. module: petty_cash
+#: model:ir.actions.act_window,name:petty_cash.action_petty_cash_custody
+msgid "Petty Cash Custodies"
+msgstr "العهد النثرية"
+
+#. module: petty_cash
+#: model:ir.actions.act_window,name:petty_cash.action_petty_cash_custody_pending
+msgid "Custodies Pending My Approval"
+msgstr "عهد في انتظار اعتمادي"
+
+#. module: petty_cash
+#: model:ir.actions.act_window,name:petty_cash.action_petty_cash_expense
+msgid "Petty Cash Expenses"
+msgstr "مصاريفي"
+
+#. module: petty_cash
+#: model:ir.actions.act_window,name:petty_cash.action_petty_cash_expense_all
+msgid "All Expenses"
+msgstr "كل المصاريف"
+
+#. module: petty_cash
+#: model:ir.actions.act_window,name:petty_cash.action_petty_cash_expense_pending
+msgid "Expenses Pending Approval"
+msgstr "المصاريف المقدمة للاعتماد"
+
+#. module: petty_cash
+#: model:ir.actions.act_window,name:petty_cash.action_petty_cash_category
+msgid "Expense Categories"
+msgstr "تصنيفات المصاريف"
+
+#. module: petty_cash
+#: model:ir.actions.act_window,name:petty_cash.action_petty_cash_approver
+msgid "Approver Settings"
+msgstr "إعدادات المعتمدين"
+
+#. module: petty_cash
+#: model:ir.ui.menu,name:petty_cash.menu_petty_cash_root
+msgid "Petty Cash"
+msgstr "العهدة النثرية"
+
+#. module: petty_cash
+#: model:ir.ui.menu,name:petty_cash.menu_petty_cash_employee
+msgid "My Petty Cash"
+msgstr "مصاريفي"
+
+#. module: petty_cash
+#: model:ir.ui.menu,name:petty_cash.menu_my_expenses
+msgid "Log Expense"
+msgstr "سجل مصروف"
+
+#. module: petty_cash
+#: model:ir.ui.menu,name:petty_cash.menu_my_custody
+msgid "My Custodies"
+msgstr "عهدتي"
+
+#. module: petty_cash
+#: model:ir.ui.menu,name:petty_cash.menu_petty_cash_approvals
+msgid "Approvals"
+msgstr "الاعتماد"
+
+#. module: petty_cash
+#: model:ir.ui.menu,name:petty_cash.menu_pending_custody_approval
+msgid "Custodies Pending Approval"
+msgstr "عهد في انتظار اعتمادي"
+
+#. module: petty_cash
+#: model:ir.ui.menu,name:petty_cash.menu_pending_expense_approval
+msgid "Expenses Pending Approval"
+msgstr "مصاريف في انتظار اعتمادي"
+
+#. module: petty_cash
+#: model:ir.ui.menu,name:petty_cash.menu_petty_cash_accounting
+msgid "Accounting"
+msgstr "المحاسبة"
+
+#. module: petty_cash
+#: model:ir.ui.menu,name:petty_cash.menu_all_custody
+msgid "All Custodies"
+msgstr "كل العهد"
+
+#. module: petty_cash
+#: model:ir.ui.menu,name:petty_cash.menu_all_expenses
+msgid "All Expenses"
+msgstr "كل المصاريف"
+
+#. module: petty_cash
+#: model:ir.ui.menu,name:petty_cash.menu_petty_cash_config
+msgid "Settings"
+msgstr "الإعدادات"
+
+#. module: petty_cash
+#: model:ir.ui.menu,name:petty_cash.menu_petty_cash_categories
+msgid "Expense Categories"
+msgstr "تصنيفات المصاريف"
+
+#. module: petty_cash
+#: model:ir.ui.menu,name:petty_cash.menu_petty_cash_approvers
+msgid "Approver Settings"
+msgstr "إعدادات المعتمدين"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_approver__level
+msgid "Approval Level"
+msgstr "مستوى الاعتماد"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_approver__sequence
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_category__sequence
+msgid "Sequence"
+msgstr "الترتيب"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_approver__name
+msgid "Role / Position"
+msgstr "الدور / الوظيفة"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_approver__approval_type
+msgid "Approval Type"
+msgstr "نوع الاعتماد"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_approver__user_ids
+msgid "Approvers"
+msgstr "المعتمدون"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_approver__active
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_category__active
+msgid "Active"
+msgstr "نشط"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_approver__company_id
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_custody__company_id
+msgid "Company"
+msgstr "الشركة"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_approver__notes
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_custody__notes
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_expense__notes
+msgid "Notes"
+msgstr "ملاحظات"
+
+#. module: petty_cash
+#: model:ir.model.fields.selection,name:petty_cash.selection__petty_cash_approver__approval_type__custody
+msgid "Custody Approval"
+msgstr "اعتماد العهدات"
+
+#. module: petty_cash
+#: model:ir.model.fields.selection,name:petty_cash.selection__petty_cash_approver__approval_type__expense
+msgid "Expense Approval"
+msgstr "اعتماد المصاريف"
+
+#. module: petty_cash
+#: model:ir.model.fields.selection,name:petty_cash.selection__petty_cash_approver__approval_type__both
+msgid "Both"
+msgstr "كلاهما"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_category__name
+msgid "Category Name"
+msgstr "اسم التصنيف"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_category__code
+msgid "Code"
+msgstr "الكود"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_category__account_id
+msgid "Expense Account"
+msgstr "حساب المصاريف"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_category__analytic_account_id
+msgid "Cost Center"
+msgstr "مركز التكلفة"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_category__description
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_expense__description
+msgid "Description"
+msgstr "البيان"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_category__color
+msgid "Color"
+msgstr "اللون"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_category__expense_ids
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_custody__expense_ids
+msgid "Expenses"
+msgstr "المصاريف"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_category__expense_count
+msgid "Expenses Count"
+msgstr "عدد المصاريف"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_category__total_amount
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_custody__total_expenses
+msgid "Total Expenses"
+msgstr "إجمالي المصاريف"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_res_config_settings__petty_cash_account_id
+msgid "Petty Cash Account"
+msgstr "حساب العهدة النثرية"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_res_config_settings__petty_cash_payment_account_id
+msgid "Default Cash/Bank Account"
+msgstr "حساب الصندوق / البنك (افتراضي)"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_res_config_settings__petty_cash_require_manager_approval
+msgid "Require Manager Approval for Large Custodies"
+msgstr "يتطلب موافقة مدير للعهدات الكبيرة"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_res_config_settings__petty_cash_manager_approval_limit
+msgid "Manager Approval Amount Limit"
+msgstr "حد مبلغ موافقة المدير"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_res_config_settings__petty_cash_custody_approver_id
+msgid "Default Custody Approver"
+msgstr "المعتمد الافتراضي للعهدات"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_res_config_settings__petty_cash_expense_approver_id
+msgid "Default Expense Approver"
+msgstr "المعتمد الافتراضي للمصاريف"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_custody__name
+msgid "Custody Number"
+msgstr "رقم العهدة"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_custody__employee_id
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_expense__employee_id
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_custody__user_id
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_expense__user_id
+msgid "User"
+msgstr "المستخدم"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_custody__date
+msgid "Custody Date"
+msgstr "تاريخ العهدة"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_custody__amount
+msgid "Custody Amount"
+msgstr "مبلغ العهدة"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_custody__currency_id
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_expense__currency_id
+msgid "Currency"
+msgstr "العملة"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_custody__state
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_expense__state
+msgid "Status"
+msgstr "الحالة"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_custody__current_approval_level
+msgid "Current Approval Level"
+msgstr "مستوى الاعتماد الحالي"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_custody__journal_id
+msgid "Journal"
+msgstr "دفتر اليومية"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_custody__payment_account_id
+msgid "Cash/Bank Account"
+msgstr "حساب الصندوق / البنك"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_custody__move_id
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_expense__move_id
+msgid "Journal Entry"
+msgstr "القيد المحاسبي"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_custody__move_state
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_expense__move_state
+msgid "Entry Status"
+msgstr "حالة القيد"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_custody__remaining_amount
+msgid "Remaining Amount"
+msgstr "المبلغ المتبقي"
+
+#. module: petty_cash
+#: model:ir.model.fields.selection,name:petty_cash.selection__petty_cash_custody__state__draft
+#: model:ir.model.fields.selection,name:petty_cash.selection__petty_cash_expense__state__draft
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: petty_cash
+#: model:ir.model.fields.selection,name:petty_cash.selection__petty_cash_custody__state__pending_approval
+msgid "Pending Approval"
+msgstr "في انتظار الاعتماد"
+
+#. module: petty_cash
+#: model:ir.model.fields.selection,name:petty_cash.selection__petty_cash_custody__state__approved
+#: model:ir.model.fields.selection,name:petty_cash.selection__petty_cash_expense__state__approved
+msgid "Approved"
+msgstr "معتمدة"
+
+#. module: petty_cash
+#: model:ir.model.fields.selection,name:petty_cash.selection__petty_cash_custody__state__closed
+msgid "Closed"
+msgstr "مغلقة"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_expense__name
+msgid "Expense Number"
+msgstr "رقم المصروف"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_expense__custody_id
+msgid "Custody"
+msgstr "العهدة"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_expense__date
+msgid "Expense Date"
+msgstr "تاريخ المصروف"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_expense__amount
+msgid "Amount"
+msgstr "المبلغ"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_expense__category_id
+msgid "Category"
+msgstr "التصنيف"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_expense__account_id
+msgid "Account"
+msgstr "الحساب المحاسبي"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_expense__analytic_distribution
+msgid "Analytic Distribution"
+msgstr "التوزيع التحليلي"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_expense__receipt
+msgid "Receipt"
+msgstr "صورة الإيصال"
+
+#. module: petty_cash
+#: model:ir.model.fields,field_description:petty_cash.field_petty_cash_expense__receipt_filename
+msgid "Filename"
+msgstr "اسم الملف"
+
+#. module: petty_cash
+#: model:ir.model.fields.selection,name:petty_cash.selection__petty_cash_expense__state__submitted
+msgid "Submitted"
+msgstr "مقدمة"
+
+#. module: petty_cash
+#: model:ir.model.fields.selection,name:petty_cash.selection__petty_cash_expense__state__rejected
+msgid "Rejected"
+msgstr "مرفوضة"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_custody_form
+msgid "Submit for Approval"
+msgstr "إرسال للاعتماد"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_custody_form
+msgid "Approve"
+msgstr "اعتماد"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_custody_form
+msgid "Refuse"
+msgstr "رفض"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_custody_form
+msgid "Close Custody"
+msgstr "إغلاق العهدة"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_custody_form
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_expense_form
+msgid "Reset to Draft"
+msgstr "إرجاع للمسودة"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_custody_form
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_expense_form
+msgid "Journal Entry"
+msgstr "قيد محاسبي"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_custody_form
+msgid "Awaiting approval of level"
+msgstr "في انتظار اعتماد المستوى"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_custody_form
+msgid "Custody Details"
+msgstr "بيانات العهدة"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_custody_form
+msgid "Custody Summary"
+msgstr "ملخص العهدة"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_custody_form
+msgid "Notes..."
+msgstr "ملاحظات..."
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_custody_form
+msgid "Expenses"
+msgstr "المصاريف"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_custody_list
+msgid "Petty Cash Custodies"
+msgstr "العهد النثرية"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_custody_list
+msgid "Approval Level"
+msgstr "مستوى الاعتماد"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_custody_search
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_expense_search
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_custody_search
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_expense_search
+msgid "Approved"
+msgstr "معتمدة"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_custody_search
+msgid "Pending Approval"
+msgstr "في انتظار الاعتماد"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_custody_search
+msgid "Closed"
+msgstr "مغلقة"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_custody_search
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_expense_search
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_custody_search
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_expense_search
+msgid "Status"
+msgstr "الحالة"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_expense_form
+msgid "Petty Cash Expense"
+msgstr "مصروف نثري"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_expense_form
+msgid "Approve &amp; Post Entry"
+msgstr "اعتماد وتسجيل قيد"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_expense_form
+msgid "Reject"
+msgstr "رفض"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_expense_form
+msgid "Expense Details"
+msgstr "بيانات المصروف"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_expense_form
+msgid "Category &amp; Accounts"
+msgstr "التصنيف والحسابات"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_expense_form
+msgid "Receipt"
+msgstr "الإيصال"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_expense_form
+msgid "Additional notes..."
+msgstr "ملاحظات إضافية..."
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_expense_list
+msgid "Petty Cash Expenses"
+msgstr "المصاريف النثرية"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_expense_search
+msgid "Submitted"
+msgstr "مقدمة"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_expense_search
+msgid "Rejected"
+msgstr "مرفوضة"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_expense_search
+msgid "My Expenses"
+msgstr "مصاريفي"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_expense_search
+msgid "Category"
+msgstr "التصنيف"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_expense_search
+msgid "Account"
+msgstr "الحساب"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_approver_form
+msgid "Approver Details"
+msgstr "بيانات المعتمد"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_approver_form
+msgid "Approvers"
+msgstr "المعتمدون"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_approver_list
+msgid "Level"
+msgstr "المستوى"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_category_form
+msgid "Expense Category"
+msgstr "تصنيف المصاريف"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_category_form
+msgid "Approved Expenses"
+msgstr "مصروف معتمد"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_category_form
+msgid "Category Details"
+msgstr "بيانات التصنيف"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_category_form
+msgid "Accounting Link"
+msgstr "الربط المحاسبي"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_category_form
+msgid "Category description..."
+msgstr "وصف التصنيف..."
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_category_list
+msgid "Expense Categories"
+msgstr "تصنيفات المصاريف"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_config_settings
+msgid "Petty Cash"
+msgstr "العهدة النثرية"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_config_settings
+msgid "Accounting Accounts"
+msgstr "الحسابات المحاسبية"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_config_settings
+msgid "Approval Settings"
+msgstr "إعدادات الاعتماد"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_config_settings
+msgid "Manager Approval for Large Custodies"
+msgstr "موافقة مدير للعهدات الكبيرة"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_config_settings
+msgid "Default Custody Approver"
+msgstr "المعتمد الافتراضي للعهدات"
+
+#. module: petty_cash
+#: model_terms:ir.ui.view,arch_db:petty_cash.view_petty_cash_config_settings
+msgid "Default Expense Approver"
+msgstr "المعتمد الافتراضي للمصاريف"
+
+#. module: petty_cash
+#: code:models/petty_cash_approver.py:0
+msgid "At least one approver must be specified!"
+msgstr "يجب تحديد معتمد واحد على الأقل!"
+
+#. module: petty_cash
+#: code:models/petty_cash_approver.py:0
+msgid "Approval level must be 1 or greater!"
+msgstr "مستوى الاعتماد يجب أن يكون 1 أو أكبر!"
+
+#. module: petty_cash
+#: code:models/petty_cash_category.py:0
+msgid "Expenses of %s"
+msgstr "مصاريف %s"
+
+#. module: petty_cash
+#: code:models/petty_cash_custody.py:0
+msgid "Please configure the Petty Cash Account in Settings first!\nSettings \u2192 Petty Cash \u2192 Petty Cash Account"
+msgstr "يرجى تحديد حساب العهدة النثرية في الإعدادات أولاً!\nالإعدادات \u2190 العهدة النثرية \u2190 حساب العهدة النثرية"
+
+#. module: petty_cash
+#: code:models/petty_cash_custody.py:0
+msgid "Please specify the Cash/Bank Account on the custody!"
+msgstr "يرجى تحديد حساب الصندوق / البنك على العهدة!"
+
+#. module: petty_cash
+#: code:models/petty_cash_custody.py:0
+msgid "No cash or bank journal found!"
+msgstr "لا يوجد دفتر يومية نقدية أو بنكية!"
+
+#. module: petty_cash
+#: code:models/petty_cash_custody.py:0
+msgid "Custody Disbursement"
+msgstr "صرف عهدة"
+
+#. module: petty_cash
+#: code:models/petty_cash_custody.py:0
+msgid "Custody submitted for approval (no approvers configured)"
+msgstr "تم إرسال العهدة للاعتماد (لا يوجد معتمدون مضبوطون)"
+
+#. module: petty_cash
+#: code:models/petty_cash_custody.py:0
+msgid "You are not authorized to approve at level %s!\nAuthorized approvers: %s"
+msgstr "ليس لديك صلاحية الاعتماد في المستوى %s!\nالمعتمدون في هذا المستوى: %s"
+
+#. module: petty_cash
+#: code:models/petty_cash_custody.py:0
+msgid "You are not authorized to approve this custody!\nAuthorized approvers: %s"
+msgstr "ليس لديك صلاحية اعتماد العهدة!\nالمعتمدون المخصصون: %s"
+
+#. module: petty_cash
+#: code:models/petty_cash_custody.py:0
+msgid "Custody amount must be greater than zero!"
+msgstr "مبلغ العهدة يجب أن يكون أكبر من صفر!"
+
+#. module: petty_cash
+#: code:models/petty_cash_expense.py:0
+msgid "Amount (%(amount)s) exceeds the remaining custody balance (%(remaining)s)!"
+msgstr "المبلغ (%(amount)s) أكبر من المتبقي في العهدة (%(remaining)s)!"
+
+#. module: petty_cash
+#: code:models/petty_cash_expense.py:0
+msgid "Category \"%s\" has no accounting account!"
+msgstr "التصنيف \"%s\" ليس له حساب محاسبي!"
+
+#. module: petty_cash
+#: code:models/petty_cash_expense.py:0
+msgid "Please configure the Petty Cash Account in Settings!"
+msgstr "يرجى تحديد حساب العهدة النثرية في الإعدادات!"
+
+#. module: petty_cash
+#: code:models/petty_cash_expense.py:0
+msgid "Custody Settlement"
+msgstr "تسوية عهدة"
+
+#. module: petty_cash
+#: code:models/petty_cash_expense.py:0
+msgid "You are not authorized to approve this expense!\nAuthorized approvers: %s"
+msgstr "ليس لديك صلاحية اعتماد هذا المصروف!\nالمعتمدون المخصصون: %s"
+
+#. module: petty_cash
+#: code:models/petty_cash_expense.py:0
+msgid "Amount must be greater than zero!"
+msgstr "المبلغ يجب أن يكون أكبر من صفر!"

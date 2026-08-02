@@ -18,11 +18,32 @@ class StockPicking(models.Model):
         res = super()._action_done()
         for picking in self:
             try:
-                picking._coa_handle_return_invoice()
+                # sudo(): warehouse users usually have NO access rights on
+                # account.move. The invoice adjustment / credit note is a
+                # system-triggered action, so we elevate rights here.
+                # Traceability is kept: chatter author remains the real user.
+                picking.sudo()._coa_handle_return_invoice()
             except Exception as err:
                 _logger.warning(
                     "COA: could not process invoice on return for "
                     "picking %s: %s", picking.name, err, exc_info=True)
+                # Alert accounting so the return is handled manually
+                try:
+                    picking.sudo().message_post(
+                        body=_(
+                            "COA: automatic invoice adjustment for this "
+                            "return FAILED (%(error)s). Accounting must "
+                            "handle the invoice/credit note manually.",
+                            error=err,
+                        ),
+                        partner_ids=picking.sudo()
+                        ._coa_accounting_notify_partners().ids,
+                        subtype_xmlid='mail.mt_comment',
+                    )
+                except Exception:
+                    _logger.exception(
+                        "COA: could not notify accounting for picking %s",
+                        picking.name)
         return res
 
     # ------------------------------------------------------------------
@@ -70,6 +91,31 @@ class StockPicking(models.Model):
         return order, sale_line
 
     # ------------------------------------------------------------------
+    # Helper: accounting users to notify
+    # ------------------------------------------------------------------
+
+    def _coa_accounting_notify_partners(self):
+        """Partners of ALL internal users having any Accounting access.
+
+        Odoo accounting groups are hierarchical (Manager implies
+        Accountant implies Billing...), so we union the base groups to
+        catch everyone: Read-only, Billing, Accountant, and Manager.
+        """
+        group_xmlids = [
+            'account.group_account_readonly',
+            'account.group_account_invoice',
+            'account.group_account_user',
+            'account.group_account_manager',
+        ]
+        users = self.env['res.users']
+        for xmlid in group_xmlids:
+            group = self.env.ref(xmlid, raise_if_not_found=False)
+            if group:
+                users |= group.users
+        users = users.filtered(lambda u: u.active and not u.share)
+        return users.partner_id
+
+    # ------------------------------------------------------------------
     # Main dispatcher
     # ------------------------------------------------------------------
 
@@ -114,16 +160,45 @@ class StockPicking(models.Model):
                 and inv.move_type == 'out_invoice'
             )
 
-            if posted_invoices:
-                self._coa_create_draft_credit_note(
-                    order, posted_invoices[0], pairs, precision)
-            elif draft_invoices:
-                self._coa_adjust_draft_invoices(
-                    draft_invoices, pairs, precision)
-            else:
-                _logger.info(
-                    "COA: No invoice found for order %s on return %s – skipped.",
-                    order.name, self.name)
+            # Split pairs by invoice policy on the product
+            #
+            # 'order'    → invoice is for the committed ORDERED qty.
+            #              A return ALWAYS generates a credit note —
+            #              we never reduce the draft invoice because it
+            #              already reflects the full order commitment.
+            #
+            # 'delivery' → invoice is for what was actually delivered.
+            #              If still draft we reduce it; if posted we CN.
+            ordered_pairs  = [(m, sl) for m, sl in pairs
+                              if m.product_id.invoice_policy == 'order']
+            delivery_pairs = [(m, sl) for m, sl in pairs
+                              if m.product_id.invoice_policy != 'order']
+
+            # ── ordered-qty policy ───────────────────────────────────────
+            if ordered_pairs:
+                source = posted_invoices[0] if posted_invoices else (
+                    draft_invoices[0] if draft_invoices else None
+                )
+                if source:
+                    self._coa_create_draft_credit_note(
+                        order, source, ordered_pairs, precision)
+                else:
+                    _logger.info(
+                        "COA: No invoice for order %s (ordered-qty) "
+                        "– credit note skipped.", order.name)
+
+            # ── delivery policy ──────────────────────────────────────────
+            if delivery_pairs:
+                if posted_invoices:
+                    self._coa_create_draft_credit_note(
+                        order, posted_invoices[0], delivery_pairs, precision)
+                elif draft_invoices:
+                    self._coa_adjust_draft_invoices(
+                        draft_invoices, delivery_pairs, precision)
+                else:
+                    _logger.info(
+                        "COA: No invoice for order %s (delivery-qty) "
+                        "– skipped.", order.name)
 
     # ------------------------------------------------------------------
     # Case 1 – Posted invoice  →  create draft Credit Note
@@ -176,23 +251,42 @@ class StockPicking(models.Model):
         if not invoice_line_vals:
             return
 
-        credit_note = self.env['account.move'].create({
+        cn_vals = {
             'move_type': 'out_refund',
             'partner_id': order.partner_invoice_id.id,
             'currency_id': source_invoice.currency_id.id,
             'journal_id': source_invoice.journal_id.id,
             'invoice_date': fields.Date.today(),
-            'invoice_origin': self.name,
-            'reversed_entry_id': source_invoice.id,
+            'invoice_origin': '%s (%s)' % (self.name, source_invoice.name),
             'invoice_line_ids': invoice_line_vals,
-        })
+        }
+        # Link to source only when it is NOT fully reconciled.
+        # Paid / in-payment invoices may trigger reconciliation
+        # constraints when set as reversed_entry_id.
+        if (source_invoice.state == 'posted'
+                and source_invoice.payment_state
+                not in ('paid', 'in_payment', 'reversed')):
+            cn_vals['reversed_entry_id'] = source_invoice.id
 
-        credit_note.message_post(body=_(
-            "Draft credit note automatically created (COA) "
-            "for stock return %(picking)s – linked to invoice %(invoice)s.",
-            picking=self.name,
-            invoice=source_invoice.name,
-        ))
+        credit_note = self.env['account.move'].create(cn_vals)
+
+        paid_note = ''
+        if source_invoice.payment_state in ('paid', 'in_payment'):
+            paid_note = _(
+                " Note: the source invoice is already paid — "
+                "manual reconciliation may be needed.")
+
+        credit_note.message_post(
+            body=_(
+                "Draft credit note automatically created (COA) "
+                "for stock return %(picking)s – linked to invoice %(invoice)s. "
+                "Please review and post it.",
+                picking=self.name,
+                invoice=source_invoice.name,
+            ) + paid_note,
+            partner_ids=self._coa_accounting_notify_partners().ids,
+            subtype_xmlid='mail.mt_comment',
+        )
         source_invoice.message_post(body=_(
             "A draft credit note %(cn)s was automatically created (COA) "
             "following stock return %(picking)s.",
@@ -266,10 +360,15 @@ class StockPicking(models.Model):
                     adjusted = True
 
                 if adjusted:
-                    invoice.message_post(body=_(
-                        "Draft invoice automatically adjusted (COA): "
-                        "returned %(qty)s × %(product)s via return %(picking)s.",
-                        qty=move.quantity,
-                        product=move.product_id.display_name,
-                        picking=self.name,
-                    ))
+                    invoice.message_post(
+                        body=_(
+                            "Draft invoice automatically adjusted (COA): "
+                            "returned %(qty)s × %(product)s via return "
+                            "%(picking)s. Please review before posting.",
+                            qty=move.quantity,
+                            product=move.product_id.display_name,
+                            picking=self.name,
+                        ),
+                        partner_ids=self._coa_accounting_notify_partners().ids,
+                        subtype_xmlid='mail.mt_comment',
+                    )

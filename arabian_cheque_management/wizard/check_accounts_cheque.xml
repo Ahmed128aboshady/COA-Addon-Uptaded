@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="check_accounts_cheque_form" model="ir.ui.view">
+        <field name="name">check.accounts.cheque.form</field>
+        <field name="model">check.accounts.cheque</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h5 invisible="transient_state not in ['incoming_cancel','outgoing_cancel']">
+                        Are you sure you want to cancel the cheque?
+                    </h5>
+                    <group>
+
+                        <group>
+                            <field name="transient_state" invisible="1"/>
+                            <field name="outgoing_journal_id"
+                                   invisible="transient_state != 'outgoing_confirm'"/>
+                            <field name="incoming_journal_id"
+                                   invisible="transient_state != 'incoming_confirm'"/>
+                            <field name="notes_payable_account_id"
+                                   invisible="transient_state != 'outgoing_confirm'"/>
+                            <field name="notes_receivable_account_id"
+                                   invisible="transient_state != 'incoming_confirm'"/>
+                            <field name="outgoing_bank_account_id"
+                                   invisible="transient_state != 'cheque_settlement'"/>
+                            <field name="incoming_bank_account_id"
+                                   invisible="transient_state != 'incoming_deposit'"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="incoming_confirm" type="object"
+                            string="Confirm" class="oe_highlight"
+                            invisible="transient_state != 'incoming_confirm'"/>
+                    <button name="incoming_deposit" type="object"
+                            string="Confirm" class="oe_highlight"
+                            invisible="transient_state != 'incoming_deposit'"/>
+                    <button name="incoming_cancel" type="object"
+                            string="Confirm" class="oe_highlight"
+                            invisible="transient_state != 'incoming_cancel'"/>
+                    <button name="outgoing_confirm" type="object"
+                            string="Confirm" class="oe_highlight"
+                            invisible="transient_state != 'outgoing_confirm'"/>
+                    <button name="outgoing_cheque_settlement" type="object"
+                            string="Confirm" class="oe_highlight"
+                            invisible="transient_state != 'cheque_settlement'"/>
+                    <button name="outgoing_cancel" type="object"
+                            string="Confirm" class="oe_highlight"
+                            invisible="transient_state != 'outgoing_cancel'"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="check_accounts_cheque_action">
+        <field name="name">Check Accounts Cheque</field>
+        <field name="res_model">check.accounts.cheque</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+
+</odoo>

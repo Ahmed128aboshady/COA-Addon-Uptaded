@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ========================== -->
+    <!-- GROUPS                     -->
+    <!-- ========================== -->
+
+    <!-- Regular employee: registers own expenses only -->
+    <record id="group_petty_cash_user" model="res.groups">
+        <field name="name">Petty Cash / User</field>
+        <field name="implied_ids" eval="[Command.link(ref('base.group_user'))]"/>
+    </record>
+
+    <!-- Accountant / Approver: sees all custodies and expenses, can approve -->
+    <record id="group_petty_cash_accountant" model="res.groups">
+        <field name="name">Petty Cash / Accountant</field>
+        <field name="implied_ids" eval="[Command.link(ref('group_petty_cash_user'))]"/>
+    </record>
+
+    <!-- Manager: full access -->
+    <record id="group_petty_cash_manager" model="res.groups">
+        <field name="name">Petty Cash / Manager</field>
+        <field name="implied_ids" eval="[Command.link(ref('group_petty_cash_accountant'))]"/>
+    </record>
+
+
+    <!-- ========================== -->
+    <!-- RECORD RULES: Custodies    -->
+    <!-- ========================== -->
+
+    <!-- Regular user sees only their own custodies -->
+    <record id="rule_custody_own_user" model="ir.rule">
+        <field name="name">User sees own custodies only</field>
+        <field name="model_id" ref="model_petty_cash_custody"/>
+        <field name="domain_force">[('user_id', '=', user.id)]</field>
+        <field name="groups" eval="[Command.link(ref('group_petty_cash_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <!-- Accountant sees all custodies (overrides user restriction) -->
+    <record id="rule_custody_accountant" model="ir.rule">
+        <field name="name">Accountant sees all custodies</field>
+        <field name="model_id" ref="model_petty_cash_custody"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[Command.link(ref('group_petty_cash_accountant'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+
+    <!-- ========================== -->
+    <!-- RECORD RULES: Expenses     -->
+    <!-- ========================== -->
+
+    <!-- Regular user sees only their own expenses -->
+    <record id="rule_expense_own_user" model="ir.rule">
+        <field name="name">User sees own expenses only</field>
+        <field name="model_id" ref="model_petty_cash_expense"/>
+        <field name="domain_force">[('user_id', '=', user.id)]</field>
+        <field name="groups" eval="[Command.link(ref('group_petty_cash_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <!-- Accountant sees all expenses -->
+    <record id="rule_expense_accountant" model="ir.rule">
+        <field name="name">Accountant sees all expenses</field>
+        <field name="model_id" ref="model_petty_cash_expense"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[Command.link(ref('group_petty_cash_accountant'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+
+    <!-- ========================== -->
+    <!-- SEQUENCES                  -->
+    <!-- ========================== -->
+
+    <record id="seq_petty_cash_custody" model="ir.sequence">
+        <field name="name">Petty Cash Custody Sequence</field>
+        <field name="code">petty.cash.custody</field>
+        <field name="prefix">PC/%(year)s/</field>
+        <field name="padding">4</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <record id="seq_petty_cash_expense" model="ir.sequence">
+        <field name="name">Petty Cash Expense Sequence</field>
+        <field name="code">petty.cash.expense</field>
+        <field name="prefix">EXP/%(year)s/</field>
+        <field name="padding">4</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+    </record>
+
+</odoo>

@@ -1,88 +1,204 @@
-<section class="oe_container" style="font-family:'Montserrat', 'Segoe UI', Arial, sans-serif; background-color: #ffffff; padding: 20px 0;">
-    <!-- HERO SECTION -->
-    <div class="row oe_spaced" style="margin-bottom: 40px; text-align: center;">
-        <div class="col-12">
-            <h2 class="oe_slogan" style="color: #0a2f4d; font-size: 38px; font-weight: 900; margin-top: 20px; text-align: center;">COA Accrued Expenses</h2>
-            <h3 class="oe_slogan" style="font-size: 20px; color: #e52b2b; opacity: 0.95; font-weight: 600; margin-top: 10px; text-align: center;">Recognize vendor bill expenses over a period as accrued expenses.</h3>
-            <div style="max-width: 800px; margin: 20px auto 0; font-size: 16px; color: #666; line-height: 1.8; text-align: center;">
-                <p>A certified premium Odoo extension developed by Community of Accountants (COA).</p>
-                <div style="margin-top: 15px; text-align: center;">
-                    <span style="display: inline-block; background: #28a745; color: #fff; padding: 5px 12px; border-radius: 4px; font-size: 13px; font-weight: 700; margin: 3px 6px;">Price: $59 USD</span>
-                    <span style="display: inline-block; background: #0a2f4d; color: #fff; padding: 5px 12px; border-radius: 4px; font-size: 13px; font-weight: 700; margin: 3px 6px;">License: OPL-1</span>
-                    <span style="display: inline-block; background: #e52b2b; color: #fff; padding: 5px 12px; border-radius: 4px; font-size: 13px; font-weight: 700; margin: 3px 6px;">By: COA Egypt</span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COA Accrued Expenses - Odoo Apps Store</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --odoo-purple: #714B67;
+            --odoo-teal: #00A09D;
+            --odoo-dark: #1E293B;
+            --odoo-light: #F8FAFC;
+        }
+        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background-color: var(--odoo-light); color: var(--odoo-dark); }
+        .app-header {
+            background: linear-gradient(135deg, var(--odoo-purple) 0%, #4A2E44 50%, var(--odoo-teal) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(113, 75, 103, 0.2);
+        }
+        .badge-app { font-size: 0.9rem; padding: 0.5rem 1rem; border-radius: 50rem; font-weight: 600; margin-right: 0.5rem; }
+        .badge-version { background-color: rgba(255,255,255,0.2); color: white; }
+        .badge-price { background-color: #10B981; color: white; }
+        .badge-cat { background-color: var(--odoo-teal); color: white; }
+        .feature-card {
+            background: white;
+            border: 1px solid #E2E8F0;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 12px 20px rgba(0,0,0,0.08); }
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 0.5rem;
+            background: rgba(113, 75, 103, 0.1);
+            color: var(--odoo-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .ui-mockup-bar {
+            background: #E2E8F0;
+            height: 30px;
+            border-top-left-radius: 0.75rem;
+            border-top-right-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            gap: 6px;
+        }
+        .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+        .dot-red { background: #EF4444; }
+        .dot-yellow { background: #F59E0B; }
+        .dot-green { background: #10B981; }
+        .ui-mockup-body {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-bottom-left-radius: 0.75rem;
+            border-bottom-right-radius: 0.75rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-4">
+        <!-- Header Banner -->
+        <div class="app-header text-center text-md-start">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="mb-3">
+                        <span class="badge badge-app badge-cat"><i class="fa-solid fa-folder me-1"></i> Accounting</span>
+                        <span class="badge badge-app badge-version"><i class="fa-solid fa-code-branch me-1"></i> Odoo 18.0.1.0.0</span>
+                        <span class="badge badge-app badge-price"><i class="fa-solid fa-tag me-1"></i> €35.00 EUR</span>
+                    </div>
+                    <h1 class="display-5 fw-bold mb-2">COA Accrued Expenses</h1>
+                    <p class="lead mb-0">Recognize vendor bill expenses over a period as accrued expenses.</p>
+                </div>
+                <div class="col-md-4 text-center mt-3 mt-md-0">
+                    <div class="p-3 bg-white text-dark rounded-4 shadow-sm">
+                        <h4 class="fw-bold mb-1" style="color: var(--odoo-purple);">COA Addons Suite</h4>
+                        <p class="small text-muted mb-2">Professional & Fully Tested</p>
+                        <a href="https://github.com/Ahmed128aboshady/-COA-Addons" class="btn btn-primary w-100 fw-semibold" style="background-color: var(--odoo-purple); border:none;">
+                            <i class="fa-solid fa-download me-2"></i>Get App Module
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- FEATURES SECTION -->
-    <div class="row oe_spaced" style="margin-bottom: 40px;">
-        <div class="col-12 text-center" style="margin-bottom: 30px;">
-            <h3 style="color: #0a2f4d; font-weight: 900; font-size: 28px; text-align: center;">Key Features &amp; Capabilities</h3>
-        </div>
-        
-        <div class="col-lg-6 col-md-12 mb-4">
-            <div style="background-color: #f8f9fa; padding: 22px; border-radius: 10px; border-left: 4px solid #e52b2b; height: 100%; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
-                <h4 style="color: #0a2f4d; font-weight: 800; font-size: 18px; margin-bottom: 8px;">
-                    <i class="fa fa-check-circle" style="color: #e52b2b; margin-right: 8px;"></i> Accrued Accounts
-                </h4>
-                <p style="color: #555555; font-size: 14px; line-height: 1.6; margin: 0;">Define custom accrued expense accounts and journals in Odoo Settings.</p>
-            </div>
-        </div>
-        <div class="col-lg-6 col-md-12 mb-4">
-            <div style="background-color: #f8f9fa; padding: 22px; border-radius: 10px; border-left: 4px solid #e52b2b; height: 100%; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
-                <h4 style="color: #0a2f4d; font-weight: 800; font-size: 18px; margin-bottom: 8px;">
-                    <i class="fa fa-check-circle" style="color: #e52b2b; margin-right: 8px;"></i> Vendor Bills
-                </h4>
-                <p style="color: #555555; font-size: 14px; line-height: 1.6; margin: 0;">Flag vendor bill lines as "Accrued" and specify start/end dates.</p>
-            </div>
-        </div>
-        <div class="col-lg-6 col-md-12 mb-4">
-            <div style="background-color: #f8f9fa; padding: 22px; border-radius: 10px; border-left: 4px solid #e52b2b; height: 100%; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
-                <h4 style="color: #0a2f4d; font-weight: 800; font-size: 18px; margin-bottom: 8px;">
-                    <i class="fa fa-check-circle" style="color: #e52b2b; margin-right: 8px;"></i> Accrual Reclass
-                </h4>
-                <p style="color: #555555; font-size: 14px; line-height: 1.6; margin: 0;">Automatically creates reclassification entries moving expense to accrued account.</p>
-            </div>
-        </div>
-        <div class="col-lg-6 col-md-12 mb-4">
-            <div style="background-color: #f8f9fa; padding: 22px; border-radius: 10px; border-left: 4px solid #e52b2b; height: 100%; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
-                <h4 style="color: #0a2f4d; font-weight: 800; font-size: 18px; margin-bottom: 8px;">
-                    <i class="fa fa-check-circle" style="color: #e52b2b; margin-right: 8px;"></i> Periodic Recognition
-                </h4>
-                <p style="color: #555555; font-size: 14px; line-height: 1.6; margin: 0;">Periodically recognizes the expense month by month.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- HOW IT WORKS SECTION -->
-    <div class="row oe_spaced" style="margin-bottom: 50px;">
-        <div class="col-12 text-center">
-            <h3 style="color: #0a2f4d; font-weight: 900; font-size: 28px; margin-bottom: 30px; text-align: center;">How It Works</h3>
-            <div style="max-width: 800px; margin: auto; text-align: left; padding: 30px; border-radius: 12px; border: 1px solid #e2e8f0; background-color: #f8fafc; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
-                <ol style="font-size: 16px; line-height: 2.2; color: #334155; margin: 0; padding-left: 20px;">
-                    <li>Install the module from the Odoo Apps list.</li>
-                    <li>Configure relevant rules or parameters under the Settings menu.</li>
-                    <li>Use the newly added fields, validations, and workflows on documents.</li>
-                    <li>Verify outputs and check generated logs or reports.</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-
-    <!-- SUPPORT / CTA SECTION -->
-    <div class="row oe_spaced">
-        <div class="col-12">
-            <div style="background-color: #0a2f4d; color: white; padding: 45px 30px; border-radius: 15px; text-align: center; border-bottom: 6px solid #e52b2b; box-shadow: 0 10px 15px -3px rgba(10, 47, 77, 0.15);">
-                <h3 style="font-weight: 900; font-size: 26px; color: #ffffff; margin-bottom: 10px; text-align: center;">Need Help or Customization?</h3>
-                <p style="font-size: 15px; opacity: 0.9; max-width: 600px; margin: 0 auto 20px; text-align: center; color: #ffffff;">The COA Egypt team provides setup assistance, Odoo functional training, and custom extension development. Get in touch with us today!</p>
-                <div style="margin-top: 20px; text-align: center;">
-                    <a href="https://api.whatsapp.com/send?phone=201013907174" target="_blank" style="background-color: #e52b2b; color: white; padding: 12px 28px; border-radius: 6px; font-weight: bold; font-size: 16px; text-decoration: none; display: inline-block; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                        <i class="fa fa-whatsapp" style="margin-right: 8px;"></i> Chat on WhatsApp: +20 101 390 7174
-                    </a>
+        <!-- Highlights & Features -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h5>High Efficiency</h5>
+                    <p class="text-muted small mb-0">Designed for optimal Odoo performance with streamlined workflows and zero bottlenecks.</p>
                 </div>
-                <p style="margin-top: 15px; font-size: 13px; opacity: 0.8; text-align: center; color: #ffffff;">Or visit our website: <a href="https://coa-egy.odoo.com/" target="_blank" style="color: #ffffff; text-decoration: underline;">coa-egy.odoo.com</a></p>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h5>Fully Compatible</h5>
+                    <p class="text-muted small mb-0">Tested for Odoo 18.0.1.0.0 Community & Enterprise editions without modifying core files.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
+                    <h5>Professional Support</h5>
+                    <p class="text-muted small mb-0">Comes with dedicated documentation, seamless installation, and technical support.</p>
+                </div>
             </div>
         </div>
+
+        <!-- Description & Details -->
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-body p-4">
+                <h4 class="fw-bold mb-3" style="color: var(--odoo-purple);"><i class="fa-solid fa-circle-info me-2"></i>Module Overview & Features</h4>
+                <div class="lead-text mb-4">
+                    <p>Recognize vendor bill expenses over a period as accrued expenses.</p>
+                    <p>This module provides advanced capabilities tailored for business operations in Odoo 18.0.1.0.0. It extends default system features to ensure accuracy, automated controls, and seamless data visualization.</p>
+                </div>
+
+                <!-- Live System UI Mockup Showcase -->
+                <h4 class="fw-bold mb-3 mt-4" style="color: var(--odoo-purple);"><i class="fa-solid fa-desktop me-2"></i>System Interface & Workflow Preview</h4>
+                <div class="ui-mockup-bar">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                    <small class="text-muted ms-2">Odoo 18.0.1.0.0 - COA Accrued Expenses</small>
+                </div>
+                <div class="ui-mockup-body text-center">
+                    <div class="p-4 rounded-3" style="background-color: #F1F5F9; border: 1px solid #E2E8F0;">
+                        <i class="fa-solid fa-layer-group fa-3x mb-3" style="color: var(--odoo-teal);"></i>
+                        <h5 class="fw-bold">COA Accrued Expenses Interactive Screen</h5>
+                        <p class="text-muted max-w-600 mx-auto">Full integration with Odoo Accounting views, action menus, smart buttons, and automated triggers.</p>
+                        <span class="badge bg-secondary p-2"><i class="fa-solid fa-check-circle me-1"></i> Tested on Live Odoo Instance</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Specs -->
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-body p-4">
+                <h4 class="fw-bold mb-3" style="color: var(--odoo-purple);"><i class="fa-solid fa-list-check me-2"></i>Technical Information</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><i class="fa-solid fa-box me-2 text-muted"></i>Technical Name</span>
+                                <span class="fw-bold"><code>coa_accrued_expense</code></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><i class="fa-solid fa-code-branch me-2 text-muted"></i>Odoo Version</span>
+                                <span class="badge bg-primary">18.0.1.0.0</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><i class="fa-solid fa-certificate me-2 text-muted"></i>License</span>
+                                <span class="badge bg-dark">OPL-1</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><i class="fa-solid fa-cube me-2 text-muted"></i>Dependencies</span>
+                                <span class="fw-bold">account</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><i class="fa-solid fa-user me-2 text-muted"></i>Author</span>
+                                <span class="fw-bold">COA / Ahmed Aboshady</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><i class="fa-solid fa-euro-sign me-2 text-muted"></i>Price</span>
+                                <span class="fw-bold text-success">€35.00 EUR</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer / Support -->
+        <div class="text-center p-4 bg-white rounded-4 shadow-sm">
+            <h5 class="fw-bold" style="color: var(--odoo-purple);">Need Customization or Support?</h5>
+            <p class="text-muted small">Designed and maintained by COA (Ahmed Aboshady). Contact us for custom Odoo development, migration, or support.</p>
+            <a href="https://github.com/Ahmed128aboshady/-COA-Addons" target="_blank" class="btn btn-outline-dark me-2">
+                <i class="fa-brands fa-github me-1"></i> GitHub Repository
+            </a>
+        </div>
     </div>
-</section>
+</body>
+</html>

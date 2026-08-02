@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_milestone_reconcile_wizard_form" model="ir.ui.view">
+        <field name="name">milestone.reconcile.wizard.form</field>
+        <field name="model">milestone.reconcile.wizard</field>
+        <field name="arch" type="xml">
+            <form string="ربط دفعة بمرحلة">
+                <sheet>
+                    <group string="المرحلة">
+                        <field name="order_id" readonly="1"/>
+                        <field name="milestone_id" required="1"/>
+                        <field name="milestone_amount" readonly="1"/>
+                        <field name="milestone_paid" readonly="1"/>
+                        <field name="milestone_remaining" readonly="1"/>
+                    </group>
+
+                    <separator string="اختر سند القبض من المحاسبة"/>
+
+                    <group string="سند القبض">
+                        <field name="partner_id" invisible="1"/>
+                        <field name="available_payment_ids" invisible="1"/>
+                        <field name="payment_id"
+                               required="1"
+                               options="{'no_create': True}"
+                               domain="[('id', 'in', available_payment_ids)]"/>
+                        <field name="payment_date" readonly="1"
+                               invisible="not payment_id"/>
+                        <field name="payment_amount" readonly="1"
+                               invisible="not payment_id"/>
+                        <field name="currency_id" invisible="1"/>
+                    </group>
+
+                    <!-- الرصيد المتبقي في السند — يظهر بمجرد اختيار السند -->
+                    <div class="alert alert-success o_field_widget" role="alert"
+                         invisible="not payment_id or payment_available &lt;= 0">
+                        <i class="fa fa-check-circle me-1" title="متاح"/>
+                        <strong>الرصيد المتاح في السند:</strong>
+                        <field name="payment_available" readonly="1"
+                               widget="monetary" class="d-inline ms-1"/>
+                    </div>
+                    <div class="alert alert-danger o_field_widget" role="alert"
+                         invisible="not payment_id or payment_available &gt; 0">
+                        <i class="fa fa-exclamation-circle me-1" title="تحذير"/>
+                        <strong>هذا السند مُستنفَد بالكامل — لا يوجد رصيد متاح</strong>
+                    </div>
+
+                    <group string="مبلغ الترحيل">
+                        <field name="amount" required="1"/>
+                        <field name="note"/>
+                    </group>
+
+                    <!-- ملخص -->
+                    <div class="alert alert-info" role="alert"
+                         invisible="not payment_id">
+                        <i class="fa fa-info-circle me-1" title="معلومة"/>
+                        المتاح في السند:
+                        <strong><field name="payment_available" readonly="1" class="d-inline"/></strong>
+                        &#160;·&#160; المتبقي للمرحلة:
+                        <strong><field name="milestone_remaining" readonly="1" class="d-inline"/></strong>
+                    </div>
+                </sheet>
+                <footer>
+                    <button name="action_reconcile"
+                        type="object"
+                        string="ترحيل الدفعة"
+                        class="btn-primary"/>
+                    <button name="action_reconcile_and_new"
+                        type="object"
+                        string="ترحيل وإضافة أخرى"
+                        class="btn-secondary"/>
+                    <button string="إلغاء" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action لفتح الـ Wizard مستقلاً (اختياري) -->
+    <record id="action_milestone_reconcile_wizard" model="ir.actions.act_window">
+        <field name="name">ربط دفعة بمرحلة</field>
+        <field name="res_model">milestone.reconcile.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

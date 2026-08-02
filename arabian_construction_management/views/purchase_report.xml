@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+
+    <record id="inherit_purchase_report_pivot" model="ir.ui.view">
+        <field name="name">inherit.purchase.report.pivot</field>
+        <field name="model">purchase.report</field>
+        <field name="inherit_id" ref="purchase.view_purchase_order_pivot"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_id']" position="after">
+                <field name="construction_project_id"/>
+                <field name="project_name"/>
+                <field name="project_number"/>
+                <field name="boq_cost_estimation_line_id"/>
+                <field name="project_id"/>
+                <field name="project_task_id"/>
+                <field name="detailed_boq_id"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

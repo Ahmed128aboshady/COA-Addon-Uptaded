@@ -1,28 +1,19 @@
 # -*- coding: utf-8 -*-
 {
-    'description': """Salesperson View: Restricts salespeople to viewing only their own orders (Own Documents group).
-Order Placement: Retains the ability to create new orders on behalf of other colleagues.
-Pipeline Security: Enhances collaborative selling without compromising pipeline privacy.""",
-    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Sale: Own View - Any Salesperson Create',
-    'version': '18.0.1.0.0',
-    'summary': 'Allow salesperson to create orders for any salesperson while restricted to own view.',
-    'author': 'Community of Accountants (COA)',
+    'summary': 'صلاحية جديدة: يشوف بتاعته بس ويعمل أوردر لأي salesperson',
+    'description': 'Professional Sale: Own View - Any Salesperson Create custom module for Odoo.',
+    'author': 'COA / Ahmed Aboshady',
+    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
     'category': 'Sales',
-    'depends': [
-        'sale',
-    ],
-    'data': [
-        'security/security.xml',
-        'security/ir.model.access.csv',
-    ],
+    'version': '18.0.1.0.0',
+    'license': 'LGPL-3',
+    'price': 29.0,
+    'currency': 'EUR',
+    'depends': ['sale'],
+    'data': ['security/security.xml', 'security/ir.model.access.csv'],
+    'images': ['static/description/banner.png'],
     'installable': True,
     'application': False,
-    'license': 'OPL-1',
-    'website': 'https://coa-egy.odoo.com/',
-    'price': 25.0,
-    'currency': 'USD',
-    'images': [
-        'static/description/banner.png',
-    ],
+    'auto_install': False,
 }

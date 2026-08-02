@@ -1,31 +1,19 @@
 # -*- coding: utf-8 -*-
 {
-    'description': """Payment Integration: Automatically calculates and deducts commission when posting payments.
-Journal Commission: Supports separate rules for sales and purchase payment journals.
-Automatic Entries: Automatically handles journal entry generation for commission deductions.
-Unified Workflow: Fully integrated with Odoo accounting workflows.""",
-    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'Journal Payment Commission',
-    'version': '18.0.1.0.0',
-    'summary': 'Automate commission deductions on payments for configured sales and purchase journals.',
-    'author': 'Community of Accountants (COA)',
+    'summary': 'خصم عمولة تلقائي على الـ Journal - مبيعات ومشتريات منفصلين',
+    'description': 'Professional Journal Payment Commission custom module for Odoo.',
+    'author': 'COA / Ahmed Aboshady',
+    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
     'category': 'Accounting',
-    'depends': [
-        'account',
-    ],
-    'data': [
-        'security/ir.model.access.csv',
-        'views/account_journal_views.xml',
-        'views/account_payment_views.xml',
-        'views/account_payment_register_views.xml',
-    ],
-    'installable': True,
-    'application': False,
-    'license': 'OPL-1',
-    'website': 'https://coa-egy.odoo.com/',
+    'version': '18.0.1.0.0',
+    'license': 'LGPL-3',
     'price': 49.0,
-    'currency': 'USD',
-    'images': [
-        'static/description/banner.png',
-    ],
+    'currency': 'EUR',
+    'depends': ['account'],
+    'data': ['security/ir.model.access.csv', 'views/account_journal_views.xml', 'views/account_payment_views.xml', 'views/account_payment_register_views.xml'],
+    'images': ['static/description/banner.png'],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
 }

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="commission_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page" dir="rtl" style="font-family: Arial, sans-serif; direction: rtl;">
+
+                        <!-- ═══ العنوان ════════════════════════════════════════════ -->
+                        <div class="text-center mb-4">
+                            <h2 class="text-primary">تقرير عمولة المندوب</h2>
+                            <h4><t t-esc="doc.salesperson_id.name"/></h4>
+                            <p class="text-muted">
+                                الفترة من <strong><t t-esc="doc.date_from"/></strong>
+                                إلى <strong><t t-esc="doc.date_to"/></strong>
+                                &#160;|&#160; المرجع: <strong><t t-esc="doc.name"/></strong>
+                            </p>
+                            <p>
+                                الحالة:
+                                <span t-if="doc.state == 'draft'">مسودة</span>
+                                <span t-if="doc.state == 'confirmed'">مؤكد</span>
+                                <span t-if="doc.state == 'paid'">مدفوع</span>
+                            </p>
+                        </div>
+
+                        <!-- ═══ بطاقات الملخص ═══════════════════════════════════ -->
+                        <div class="row mb-4 text-center">
+                            <div class="col-3">
+                                <div class="border rounded p-2">
+                                    <div class="text-muted small">المبيعات</div>
+                                    <div class="fw-bold text-primary">
+                                        <t t-esc="doc.total_invoiced"
+                                           t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="border rounded p-2">
+                                    <div class="text-muted small">المرتجعات</div>
+                                    <div class="fw-bold text-danger">
+                                        (<t t-esc="doc.total_refunded"
+                                           t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="border rounded p-2">
+                                    <div class="text-muted small">صافي المبيعات</div>
+                                    <div class="fw-bold text-info">
+                                        <t t-esc="doc.total_net_sales"
+                                           t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="border rounded p-2">
+                                    <div class="text-muted small">إجمالي العمولة</div>
+                                    <div class="fw-bold text-success">
+                                        <t t-esc="doc.total_commission"
+                                           t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ═══ جدول التفاصيل حسب التاج ══════════════════════════ -->
+                        <table class="table table-bordered table-striped table-sm">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>تاج العميل</th>
+                                    <th class="text-center">نسبة العمولة %</th>
+                                    <th class="text-end">المبيعات</th>
+                                    <th class="text-end">المرتجعات</th>
+                                    <th class="text-end">صافي المبيعات</th>
+                                    <th class="text-end">العمولة المستحقة</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.line_ids" t-as="line">
+                                    <tr>
+                                        <td><t t-esc="line.customer_tag_id.name"/></td>
+                                        <td class="text-center">
+                                            <t t-esc="line.rate_percent"/>%
+                                        </td>
+                                        <td class="text-end">
+                                            <t t-esc="line.invoiced_amount"
+                                               t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                                        </td>
+                                        <td class="text-end text-danger">
+                                            (<t t-esc="line.refunded_amount"
+                                               t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>)
+                                        </td>
+                                        <td class="text-end fw-bold">
+                                            <t t-esc="line.net_sales"
+                                               t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                                        </td>
+                                        <td class="text-end text-success fw-bold">
+                                            <t t-esc="line.commission_amount"
+                                               t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            <tfoot class="table-secondary fw-bold">
+                                <tr>
+                                    <td colspan="2">الإجمالي</td>
+                                    <td class="text-end">
+                                        <t t-esc="doc.total_invoiced"
+                                           t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                                    </td>
+                                    <td class="text-end text-danger">
+                                        (<t t-esc="doc.total_refunded"
+                                           t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>)
+                                    </td>
+                                    <td class="text-end">
+                                        <t t-esc="doc.total_net_sales"
+                                           t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                                    </td>
+                                    <td class="text-end text-success">
+                                        <t t-esc="doc.total_commission"
+                                           t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                        <!-- ═══ ملاحظة ════════════════════════════════════════════ -->
+                        <div class="mt-3">
+                            <p class="text-muted small">
+                                * البيانات مستخرجة من الفواتير المؤكدة للمندوب في الفترة المحددة.
+                                &#160;|&#160;
+                                صافي المبيعات = المبيعات &#8722; المرتجعات.
+                                &#160;|&#160;
+                                العمولة محسوبة حسب تاجات العملاء ونسب العمولة في الإعدادات.
+                            </p>
+                        </div>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

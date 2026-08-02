@@ -21,6 +21,15 @@ class StockPicking(models.Model):
             if move.state in ('done', 'cancel'):
                 continue
             free_qty = product.with_company(self.company_id).free_qty
+            # Add back this move's own reservation so it doesn't count
+            # against itself (e.g. internal transfers reserving from the
+            # same internal location they're leaving).
+            reserved_by_move = sum(
+                move.move_line_ids.filtered(
+                    lambda ml: ml.location_id.usage == 'internal'
+                ).mapped('quantity')
+            )
+            free_qty += reserved_by_move
             if move.product_uom and move.product_uom != product.uom_id:
                 free_qty = product.uom_id._compute_quantity(
                     free_qty, move.product_uom, rounding_method='HALF-UP')

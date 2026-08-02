@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_category_user,category user,model_petty_cash_category,petty_cash.group_petty_cash_user,1,0,0,0
+access_category_accountant,category accountant,model_petty_cash_category,petty_cash.group_petty_cash_accountant,1,0,0,0
+access_category_manager,category manager,model_petty_cash_category,petty_cash.group_petty_cash_manager,1,1,1,1
+access_custody_user,custody user,model_petty_cash_custody,petty_cash.group_petty_cash_user,1,0,0,0
+access_custody_accountant,custody accountant,model_petty_cash_custody,petty_cash.group_petty_cash_accountant,1,1,1,0
+access_custody_manager,custody manager,model_petty_cash_custody,petty_cash.group_petty_cash_manager,1,1,1,1
+access_expense_user,expense user,model_petty_cash_expense,petty_cash.group_petty_cash_user,1,1,1,0
+access_expense_accountant,expense accountant,model_petty_cash_expense,petty_cash.group_petty_cash_accountant,1,1,1,0
+access_expense_manager,expense manager,model_petty_cash_expense,petty_cash.group_petty_cash_manager,1,1,1,1
+access_approver_user,approver user,model_petty_cash_approver,petty_cash.group_petty_cash_user,1,0,0,0
+access_approver_accountant,approver accountant,model_petty_cash_approver,petty_cash.group_petty_cash_accountant,1,0,0,0
+access_approver_manager,approver manager,model_petty_cash_approver,petty_cash.group_petty_cash_manager,1,1,1,1

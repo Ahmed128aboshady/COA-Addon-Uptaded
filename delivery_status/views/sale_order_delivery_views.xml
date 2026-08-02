@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_orders_delivery_ready" model="ir.actions.act_window">
+        <field name="name">Delivery Less Than Invoiced</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('invoice_status', '=', 'invoiced'), ('delivery_status', 'in', ['pending', 'started', 'partial'])]</field>
+    </record>
+
+    <record id="action_orders_delivered_not_invoiced" model="ir.actions.act_window">
+        <field name="name">Delivered Not Invoiced</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('invoice_status', '!=', 'invoiced'), ('delivery_status', '=', 'full')]</field>
+    </record>
+
+    <menuitem id="menu_delivery_ready_orders" name="Delivery Ready" action="action_orders_delivery_ready" parent="sale.menu_sale_invoicing" sequence="15"/>
+    <menuitem id="menu_delivered_not_invoiced_orders" name="Delivered Not Invoiced" action="action_orders_delivered_not_invoiced" parent="sale.menu_sale_invoicing" sequence="25"/>
+</odoo>

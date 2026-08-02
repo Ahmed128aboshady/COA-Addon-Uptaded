@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Extend MRP production form view -->
+    <record id="mrp_production_form_view_secondary_uom" model="ir.ui.view">
+        <field name="name">mrp.production.form.secondary.uom</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <!-- Secondary qty for produced product -->
+            <xpath expr="//div[@name='qty']" position="after">
+                <field name="has_secondary_uom" invisible="1"/>
+                <label for="secondary_product_qty" string="Secondary Quantity"
+                       invisible="not has_secondary_uom"/>
+                <div class="o_row" invisible="not has_secondary_uom">
+                    <field name="secondary_product_qty" class="oe_inline"
+                           readonly="state != 'draft'"/>
+                    <field name="secondary_uom_id" class="oe_inline" readonly="1"
+                           options="{'no_open': True}"/>
+                </div>
+            </xpath>
+            <!-- Secondary columns in component lines (move_raw_ids) -->
+            <xpath expr="//field[@name='move_raw_ids']//list//field[@name='product_uom'][@widget='many2one_uom']" position="after">
+                <field name="has_secondary_uom" column_invisible="True"/>
+                <field name="secondary_product_uom_qty"
+                       string="Sec. Demand"
+                       invisible="not has_secondary_uom"
+                       optional="show"/>
+                <field name="secondary_quantity"
+                       string="Sec. Done"
+                       invisible="not has_secondary_uom"
+                       column_invisible="parent.state == 'draft'"
+                       optional="show"/>
+                <field name="secondary_uom_id"
+                       string="Sec. UoM"
+                       invisible="not has_secondary_uom"
+                       optional="show"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

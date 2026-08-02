@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="interim_invoice_form" model="ir.ui.view">
+        <field name="name">interim.invoice.form</field>
+        <field name="model">interim.invoice</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="confirm" type="object" string="Confirm"
+                            class="oe_highlight" invisible="state != 'draft'"/>
+                    <button name="create_invoice" type="object"
+                            string="Create Invoice" class="oe_highlight"
+                            invisible="state != 'confirm' or interim_type != 'owner_interim'"/>
+                    <button name="create_bill" type="object"
+                            string="Create Bill" class="oe_highlight"
+                            invisible="state != 'confirm' or interim_type != 'subcontractor_interim'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,confirm,invoice_created"
+                           invisible="interim_type != 'owner_interim'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,confirm,bill_created" invisible="interim_type != 'subcontractor_interim'"/>
+                </header>
+
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <button name="action_view_all_interim_invoice"
+                                type="object" class="oe_stat_button"
+                                icon="fa-pencil-square-o"
+                                invisible="count_invoice == 0">
+                            <field name="count_invoice" widget="statinfo"
+                                   string="Invoice" force_save="1"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="reference"/>
+                            <field name="interim_type" widget="radio"
+                                   options="{'horizontal': True}"/>
+                            <field name="attribution_type" widget="radio"
+                                   options="{'horizontal': True}"/>
+                            <field name="construction_project_id"/>
+                            <field name="project_name"/>
+                            <field name="project_number"/>
+                            <field name="project_description"/>
+                            <field name="project_type_id"/>
+                        </group>
+                        <group>
+                            <field name="registration_date"/>
+                            <field name="assay_id"/>
+                            <field name="partner_id" string="Customer"
+                                   invisible="interim_type != 'owner_interim'"/>
+                            <field name="partner_id" string="Vendor"
+                                   invisible="interim_type != 'subcontractor_interim'"/>
+                            <field name="project_location"/>
+                            <field name="from_date"/>
+                            <field name="to_date"/>
+                            <field name="note"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Details">
+                            <field name="interim_invoice_line_ids">
+                                <list editable="bottom">
+                                    <field name="boq_cost_estimation_line_id"
+                                           column_invisible="parent.attribution_type != 'complete_boq'"/>
+                                    <field name="bill_quantities_labour_machines_id"
+                                           column_invisible="parent.attribution_type != 'part_boq'"/>
+                                    <field name="product_id"
+                                           column_invisible="parent.attribution_type != 'part_boq'"/>
+                                    <field name="interim_invoice_id"
+                                           column_invisible="1"/>
+                                    <field name="business_item_id"
+                                           column_invisible="parent.attribution_type != 'complete_boq'"/>
+                                    <field name="business_items_types_id"
+                                           column_invisible="parent.attribution_type != 'complete_boq'"/>
+                                    <field name="name"/>
+                                    <field name="boq_quantity"/>
+                                    <field name="uom_id"/>
+                                    <field name="previous_qty"/>
+                                    <field name="current_qty"/>
+                                    <field name="total_qty"/>
+                                    <field name="item_price"/>
+                                    <field name="currency_id"/>
+                                    <field name="progress"/>
+                                    <field name="current_subtotal"
+                                           optional="hide"/>
+                                    <field name="subtotal"/>
+                                </list>
+                            </field>
+                            <group name="note_group" col="6"
+                                   class="mt-2 mt-md-0">
+                                <group colspan="4">
+                                    <field colspan="2" name="total_works_note"
+                                           nolabel="1" placeholder="Note..."/>
+                                </group>
+                                <group class="oe_subtotal_footer oe_right"
+                                       colspan="2" name="sale_total">
+
+                                    <field name="total_current_works"
+                                           force_save="1"
+                                           options="{'currency_field': 'currency_id'}"
+                                           readonly="1"/>
+                                    <field name="total_works"
+                                           force_save="1"
+                                           options="{'currency_field': 'currency_id'}"
+                                           readonly="1"/>
+
+                                </group>
+                                <div class="clearfix"/>
+                            </group>
+                        </page>
+                    </notebook>
+                    <notebook>
+                        <page string="Deductions">
+                            <field name="interim_invoice_deductions_ids">               <!-- add  context="{'default_field' : field}" to set default value -->
+                                <list editable="bottom">
+                                    <field name="interim_invoice_id"
+                                           column_invisible="1"/>       <!-- add  domain="[('id','=',parent.field)]" to set default domain -->
+                                    <field name="name" required="1"/>
+                                    <field name="amount"/>
+                                    <field name="type" required="1"/>
+                                    <field name="deduction_value"/>
+                                    <field name="current_deduction_value"/>
+                                    <field name="total_works"/>
+                                    <field name="total_current_works"/>
+                                </list>
+                            </field>
+                            <group name="note_group" col="6"
+                                   class="mt-2 mt-md-0">
+                                <group colspan="4">
+                                    <field colspan="2"
+                                           name="total_deduction_note"
+                                           nolabel="1" placeholder="Note..."/>
+                                </group>
+                                <group class="oe_subtotal_footer oe_right"
+                                       colspan="2" name="sale_total">
+
+                                    <field name="current_works_after_deduction"
+                                           force_save="1"
+                                           options="{'currency_field': 'currency_id'}"
+                                           readonly="1"/>
+                                    <field name="works_after_deduction"
+                                           force_save="1"
+                                           options="{'currency_field': 'currency_id'}"
+                                           readonly="1"/>
+
+                                </group>
+                                <div class="clearfix"/>
+                            </group>
+                        </page>
+                    </notebook>
+
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="interim_invoice_tree" model="ir.ui.view">
+        <field name="name">interim.invoice.tree</field>
+        <field name="model">interim.invoice</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="construction_project_id"/>
+                <field name="project_name"/>
+                <field name="project_number"/>
+                <field name="project_description"/>
+                <field name="project_type_id"/>
+                <field name="assay_id"/>
+                <field name="partner_id"/>
+                <field name="project_location"/>
+                <field name="from_date"/>
+                <field name="to_date"/>
+            </list>
+        </field>
+    </record>
+
+
+    <record id="interim_invoice_sequence" model="ir.sequence">
+        <field name="name">interim.invoice</field>
+        <field name="code">interim.invoice</field>
+        <field name="prefix">interim-inv/</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <record id="interim_invoice_action" model="ir.actions.act_window">
+        <field name="name">Owner Interim Invoice</field>
+        <field name="res_model">interim.invoice</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'default_interim_type': 'owner_interim'}</field>
+        <field name="domain">[('interim_type','=','owner_interim')]</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Owner Interim Invoice
+            </p>
+        </field>
+    </record>
+
+    <record id="subcontractor_interim_invoice_action"
+            model="ir.actions.act_window">
+        <field name="name">Subcontractor Interim Invoice</field>
+        <field name="res_model">interim.invoice</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'default_interim_type':
+            'subcontractor_interim'}
+        </field>
+        <field name="domain">[('interim_type','=','subcontractor_interim')]
+        </field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Subcontractor Interim Invoice
+            </p>
+        </field>
+    </record>
+
+</odoo>

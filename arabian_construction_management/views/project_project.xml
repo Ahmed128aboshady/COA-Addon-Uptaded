@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="inherit_project_project_form" model="ir.ui.view">
+        <field name="name">inherit.project.project.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook[last()]" position="inside">
+                <page string="Construction Details">
+                    <group>
+                        <group>
+                            <field name="construction_project_id"/>
+                            <field name="project_number"/>
+                            <field name="project_type_id"/>
+                        </group>
+                        <group>
+                            <field name="project_manager_id"/>
+                            <field name="project_description"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

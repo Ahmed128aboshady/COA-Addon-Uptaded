@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Extend purchase order form: add secondary qty columns in order line tree -->
+    <record id="purchase_order_form_secondary_uom" model="ir.ui.view">
+        <field name="name">purchase.order.form.secondary.uom</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <!-- In the order line tree (embedded list) -->
+            <xpath expr="//field[@name='order_line']//list//field[@name='product_uom_id'][1]" position="after">
+                <field name="has_secondary_uom" column_invisible="True"/>
+                <field name="secondary_product_qty"
+                       string="Sec. Qty"
+                       invisible="not has_secondary_uom"
+                       optional="show"/>
+                <field name="secondary_uom_id"
+                       string="Sec. UoM"
+                       invisible="not has_secondary_uom"
+                       optional="show"/>
+                <field name="secondary_qty_received"
+                       string="Sec. Received"
+                       invisible="not has_secondary_uom"
+                       optional="hide"/>
+            </xpath>
+            <!-- In the order line form dialog, after qty_received_method -->
+            <xpath expr="//field[@name='order_line']//form//field[@name='qty_received_method']" position="before">
+                <field name="has_secondary_uom" invisible="1"/>
+                <label for="secondary_product_qty" string="Secondary Qty"
+                       invisible="not has_secondary_uom"/>
+                <div class="o_row" invisible="not has_secondary_uom">
+                    <field name="secondary_product_qty"/>
+                    <field name="secondary_uom_id" readonly="1"
+                           options="{'no_open': True}"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Add payment_method_ids to sale order form -->
+    <record id="view_sale_order_form_payment_method" model="ir.ui.view">
+        <field name="name">sale.order.form.payment.method</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="payment_method_ids" widget="many2many_tags"
+                       options="{'color_field': 'color', 'no_create_edit': False}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Add payment_method_ids to sale order list -->
+    <record id="view_sale_order_list_payment_method" model="ir.ui.view">
+        <field name="name">sale.order.list.payment.method</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.sale_order_tree"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="payment_method_ids" optional="show" widget="many2many_tags"
+                       options="{'color_field': 'color'}"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Add filter in sale order search -->
+    <record id="view_sale_order_search_payment_method" model="ir.ui.view">
+        <field name="name">sale.order.search.payment.method</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <filter name="my_sale_orders_filter" position="after">
+                <separator/>
+                <filter name="filter_cash" string="Cash"
+                        domain="[('payment_method_ids.name', '=', 'Cash')]"/>
+                <filter name="filter_credit" string="Credit"
+                        domain="[('payment_method_ids.name', '=', 'Credit')]"/>
+                <filter name="filter_cheque" string="Cheque"
+                        domain="[('payment_method_ids.name', '=', 'Cheque')]"/>
+            </filter>
+        </field>
+    </record>
+
+</odoo>

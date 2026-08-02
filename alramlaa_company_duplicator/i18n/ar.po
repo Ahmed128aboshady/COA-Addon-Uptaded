@@ -1,0 +1,132 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* alramlaa_company_duplicator
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-08 14:43+0000\n"
+"PO-Revision-Date: 2026-04-08 14:43+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: alramlaa_company_duplicator
+#: model_terms:ir.ui.view,arch_db:alramlaa_company_duplicator.view_company_duplicator_wizard_form
+msgid ""
+"<strong>ملاحظة:</strong> هذه الأداة تقوم بنسخ الإعدادات الأساسية (حسابات، "
+"مخازن، يوميات). لا يتم نسخ الفواتير المُرحلة للحفاظ على النزاهة المحاسبية."
+msgstr ""
+
+#. module: alramlaa_company_duplicator
+#: model:ir.model.fields,field_description:alramlaa_company_duplicator.field_company_duplicator_wizard__copy_coa
+msgid "Copy Chart of Accounts"
+msgstr ""
+
+#. module: alramlaa_company_duplicator
+#: model:ir.model.fields,field_description:alramlaa_company_duplicator.field_company_duplicator_wizard__copy_journals
+msgid "Copy Journals"
+msgstr ""
+
+#. module: alramlaa_company_duplicator
+#: model:ir.model.fields,field_description:alramlaa_company_duplicator.field_company_duplicator_wizard__copy_taxes
+msgid "Copy Taxes"
+msgstr ""
+
+#. module: alramlaa_company_duplicator
+#: model:ir.model.fields,field_description:alramlaa_company_duplicator.field_company_duplicator_wizard__copy_warehouses
+msgid "Copy Warehouses"
+msgstr ""
+
+#. module: alramlaa_company_duplicator
+#: model:ir.model.fields,field_description:alramlaa_company_duplicator.field_company_duplicator_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: alramlaa_company_duplicator
+#: model:ir.model.fields,field_description:alramlaa_company_duplicator.field_company_duplicator_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: alramlaa_company_duplicator
+#: model:ir.model.fields,field_description:alramlaa_company_duplicator.field_company_duplicator_wizard__dest_company_id
+msgid "Destination Company"
+msgstr ""
+
+#. module: alramlaa_company_duplicator
+#: model:ir.model.fields,field_description:alramlaa_company_duplicator.field_company_duplicator_wizard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: alramlaa_company_duplicator
+#: model_terms:ir.ui.view,arch_db:alramlaa_company_duplicator.view_company_duplicator_wizard_form
+msgid "Duplicate Company Data"
+msgstr ""
+
+#. module: alramlaa_company_duplicator
+#: model:ir.model,name:alramlaa_company_duplicator.model_company_duplicator_wizard
+msgid "Duplicate Company Data Wizard Pro"
+msgstr ""
+
+#. module: alramlaa_company_duplicator
+#: model:ir.model.fields,field_description:alramlaa_company_duplicator.field_company_duplicator_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: alramlaa_company_duplicator
+#: model:ir.model.fields,field_description:alramlaa_company_duplicator.field_company_duplicator_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: alramlaa_company_duplicator
+#: model:ir.model.fields,field_description:alramlaa_company_duplicator.field_company_duplicator_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: alramlaa_company_duplicator
+#: model:ir.model.fields,field_description:alramlaa_company_duplicator.field_company_duplicator_wizard__source_company_id
+msgid "Source Company"
+msgstr ""
+
+#. module: alramlaa_company_duplicator
+#: model_terms:ir.ui.view,arch_db:alramlaa_company_duplicator.view_company_duplicator_wizard_form
+msgid "إلغاء"
+msgstr ""
+
+#. module: alramlaa_company_duplicator
+#: model:ir.actions.act_window,name:alramlaa_company_duplicator.action_company_duplicator_wizard
+#: model:ir.ui.menu,name:alramlaa_company_duplicator.menu_company_duplicator
+msgid "استنساخ شركة (PRO)"
+msgstr ""
+
+#. module: alramlaa_company_duplicator
+#: model_terms:ir.ui.view,arch_db:alramlaa_company_duplicator.view_company_duplicator_wizard_form
+msgid "بدء النسخ"
+msgstr ""
+
+#. module: alramlaa_company_duplicator
+#. odoo-python
+#: code:addons/alramlaa_company_duplicator/models/company_wizard.py:0
+msgid "تم استنساخ البيانات بنجاح!"
+msgstr ""
+
+#. module: alramlaa_company_duplicator
+#. odoo-python
+#: code:addons/alramlaa_company_duplicator/models/company_wizard.py:0
+msgid "تم بنجاح"
+msgstr ""
+
+#. module: alramlaa_company_duplicator
+#. odoo-python
+#: code:addons/alramlaa_company_duplicator/models/company_wizard.py:0
+msgid "لا يمكن اختيار نفس الشركة!"
+msgstr ""
+
+#. module: alramlaa_company_duplicator
+#: model_terms:ir.ui.view,arch_db:alramlaa_company_duplicator.view_company_duplicator_wizard_form
+msgid "ماذا تريد أن تنسخ؟"
+msgstr ""

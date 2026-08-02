@@ -43,20 +43,58 @@
                             </group>
                         </group>
                         <group string="المرحلة الحالية">
-                            <group>
-                                <field name="stage_id" string="المرحلة"/>
-                            </group>
-                            <group/>
+                            <field name="stage_id" string="المرحلة"/>
                         </group>
-                        <separator string="المراحل اللي اتأكدت"/>
-                        <field name="stage_history_ids" readonly="1" nolabel="1">
+
+                        <separator string="تعليق وصورة المرحلة الجاية"/>
+                        <group>
+                            <group string="التعليق">
+                                <field name="stage_notes"
+                                       nolabel="1" colspan="2"
+                                       placeholder="اكتب ملاحظة للمرحلة الجاية قبل ما تأكد..."/>
+                            </group>
+                            <group string="الصورة">
+                                <field name="stage_image"
+                                       widget="image" nolabel="1" colspan="2"
+                                       options="{'size': [200, 200]}"/>
+                            </group>
+                        </group>
+
+                        <separator string="سجل المراحل — اضغط على أي مرحلة تضيف تعليق وصورة"/>
+                        <field name="stage_history_ids" nolabel="1">
                             <list create="false" delete="false">
-                                <field name="date"     string="وقت التأكيد"/>
-                                <field name="stage_id" string="المرحلة"  widget="badge"/>
+                                <field name="stage_id" string="المرحلة" widget="badge"/>
                                 <field name="user_id"  string="أكدها"/>
+                                <field name="date"     string="الوقت"/>
+                                <field name="notes"    string="التعليق" readonly="1"/>
+                                <field name="image"    string="صورة"    widget="image"
+                                       options="{'size': [40, 40]}"     readonly="1"/>
                             </list>
+                            <form string="تفاصيل المرحلة">
+                                <sheet>
+                                    <group>
+                                        <group string="بيانات المرحلة">
+                                            <field name="stage_id" readonly="1" string="المرحلة"/>
+                                            <field name="user_id"  readonly="1" string="أكدها"/>
+                                            <field name="date"     readonly="1" string="وقت التأكيد"/>
+                                        </group>
+                                        <group string="الصورة">
+                                            <field name="image"
+                                                   widget="image"
+                                                   nolabel="1"
+                                                   colspan="2"
+                                                   options="{'size': [300, 300]}"/>
+                                        </group>
+                                    </group>
+                                    <separator string="التعليق"/>
+                                    <field name="notes"
+                                           nolabel="1"
+                                           placeholder="اكتب تعليق أو وصف للشغل اللي اتعمل في المرحلة دي..."/>
+                                </sheet>
+                            </form>
                         </field>
                     </sheet>
+                    <chatter/>
                 </form>
             </field>
         </record>

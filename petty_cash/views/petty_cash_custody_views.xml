@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form View -->
+    <record id="view_petty_cash_custody_form" model="ir.ui.view">
+        <field name="name">petty.cash.custody.form</field>
+        <field name="model">petty.cash.custody</field>
+        <field name="arch" type="xml">
+            <form string="Petty Cash Custody">
+                <header>
+                    <button name="action_submit_for_approval"
+                        string="Submit for Approval" type="object"
+                        class="oe_highlight"
+                        invisible="state != 'draft'"/>
+
+                    <button name="action_approve"
+                        string="Approve" type="object"
+                        class="oe_highlight"
+                        invisible="state != 'pending_approval'"
+                        groups="petty_cash.group_petty_cash_accountant"/>
+
+                    <button name="action_refuse"
+                        string="Refuse" type="object"
+                        invisible="state != 'pending_approval'"
+                        groups="petty_cash.group_petty_cash_accountant"/>
+
+                    <button name="action_close"
+                        string="Close Custody" type="object"
+                        invisible="state != 'approved'"
+                        groups="petty_cash.group_petty_cash_accountant"/>
+
+                    <button name="action_reset_draft"
+                        string="Reset to Draft" type="object"
+                        invisible="state not in ['pending_approval', 'approved']"
+                        groups="petty_cash.group_petty_cash_manager"/>
+
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="draft,pending_approval,approved,closed"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_journal_entry" type="object"
+                                class="oe_stat_button" icon="fa-book"
+                                invisible="not move_id">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">Journal Entry</span>
+                                <span class="o_stat_value">
+                                    <field name="move_state"/>
+                                </span>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Approval level banner -->
+                    <div class="alert alert-info" role="alert"
+                        invisible="state != 'pending_approval'">
+                        <i class="fa fa-clock-o"/> Awaiting approval of level
+                        <field name="current_approval_level" readonly="1" nolabel="1"
+                            class="d-inline-block" style="width:30px"/>
+                    </div>
+
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group string="Custody Details">
+                            <field name="employee_id" readonly="state != 'draft'"
+                                groups="petty_cash.group_petty_cash_accountant"/>
+                            <field name="date" readonly="state != 'draft'"/>
+                            <field name="amount" readonly="state != 'draft'"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="journal_id" readonly="state != 'draft'"
+                                groups="petty_cash.group_petty_cash_accountant"/>
+                            <field name="payment_account_id" readonly="state != 'draft'"
+                                groups="petty_cash.group_petty_cash_accountant"/>
+                        </group>
+                        <group string="Custody Summary">
+                            <field name="total_expenses"/>
+                            <field name="remaining_amount"
+                                decoration-danger="remaining_amount &lt; 0"
+                                decoration-success="remaining_amount &gt; 0"/>
+                        </group>
+                    </group>
+                    <field name="notes" placeholder="Notes..."/>
+                    <notebook>
+                        <page string="Expenses">
+                            <field name="expense_ids" mode="list">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="date"/>
+                                    <field name="description"/>
+                                    <field name="category_id"/>
+                                    <field name="account_id" optional="show"/>
+                                    <field name="amount"/>
+                                    <field name="state" widget="badge"
+                                        decoration-success="state == 'approved'"
+                                        decoration-danger="state == 'rejected'"
+                                        decoration-warning="state == 'submitted'"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- List View -->
+    <record id="view_petty_cash_custody_list" model="ir.ui.view">
+        <field name="name">petty.cash.custody.list</field>
+        <field name="model">petty.cash.custody</field>
+        <field name="arch" type="xml">
+            <list string="Petty Cash Custodies"
+                decoration-muted="state == 'closed'"
+                decoration-success="state == 'approved'"
+                decoration-warning="state == 'pending_approval'">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="date"/>
+                <field name="amount"/>
+                <field name="total_expenses"/>
+                <field name="remaining_amount"
+                    decoration-danger="remaining_amount &lt; 0"
+                    decoration-success="remaining_amount &gt; 0"/>
+                <field name="current_approval_level" optional="show"
+                    string="Approval Level"/>
+                <field name="move_id" optional="show"/>
+                <field name="state" widget="badge"
+                    decoration-success="state == 'approved'"
+                    decoration-muted="state == 'closed'"
+                    decoration-warning="state == 'pending_approval'"
+                    decoration-info="state == 'draft'"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_petty_cash_custody_search" model="ir.ui.view">
+        <field name="name">petty.cash.custody.search</field>
+        <field name="model">petty.cash.custody</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <filter name="draft" string="Draft"
+                    domain="[('state','=','draft')]"/>
+                <filter name="pending" string="Pending Approval"
+                    domain="[('state','=','pending_approval')]"/>
+                <filter name="approved" string="Approved"
+                    domain="[('state','=','approved')]"/>
+                <filter name="closed" string="Closed"
+                    domain="[('state','=','closed')]"/>
+                <separator/>
+                <filter name="group_employee" string="Employee"
+                    context="{'group_by': 'employee_id'}"/>
+                <filter name="group_state" string="Status"
+                    context="{'group_by': 'state'}"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action - All custodies -->
+    <record id="action_petty_cash_custody" model="ir.actions.act_window">
+        <field name="name">Petty Cash Custodies</field>
+        <field name="res_model">petty.cash.custody</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_petty_cash_custody_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create your first petty cash custody!</p>
+        </field>
+    </record>
+
+    <!-- Action - Pending My Approval -->
+    <record id="action_petty_cash_custody_pending" model="ir.actions.act_window">
+        <field name="name">Custodies Pending My Approval</field>
+        <field name="res_model">petty.cash.custody</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('state', '=', 'pending_approval')]</field>
+        <field name="search_view_id" ref="view_petty_cash_custody_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No custodies are pending approval.
+            </p>
+        </field>
+    </record>
+
+</odoo>

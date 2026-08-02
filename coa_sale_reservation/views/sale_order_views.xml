@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Sale Order Form: checkbox + ribbon -->
+    <record id="view_order_form_reservation" model="ir.ui.view">
+        <field name="name">sale.order.form.reservation</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="is_reservation"
+                       readonly="state not in ('draft', 'sent')"/>
+            </xpath>
+            <xpath expr="//sheet" position="inside">
+                <widget name="web_ribbon" title="حجز"
+                        bg_color="text-bg-warning"
+                        invisible="not is_reservation"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Sale Order List: optional column -->
+    <record id="view_order_tree_reservation" model="ir.ui.view">
+        <field name="name">sale.order.list.reservation</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state']" position="before">
+                <field name="is_reservation" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Sale Order Search: filter -->
+    <record id="view_sales_order_filter_reservation" model="ir.ui.view">
+        <field name="name">sale.order.search.reservation</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <separator/>
+                <filter string="حجوزات / Reservations" name="filter_reservation"
+                        domain="[('is_reservation', '=', True)]"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

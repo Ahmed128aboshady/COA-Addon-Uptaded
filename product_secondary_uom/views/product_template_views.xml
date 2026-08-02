@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Extend product template form view: add secondary_uom_id after categ_id -->
+    <record id="product_template_form_view_secondary_uom" model="ir.ui.view">
+        <field name="name">product.template.form.secondary.uom</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <field name="categ_id" position="after">
+                <field name="secondary_uom_id" options="{'no_quick_create': True}"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Extend product template tree view: add secondary_uom_id after uom_id -->
+    <record id="product_template_tree_view_secondary_uom" model="ir.ui.view">
+        <field name="name">product.template.list.secondary.uom</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="uom_id" position="after">
+                <field name="secondary_uom_id" optional="hide" string="Secondary UoM"/>
+            </field>
+        </field>
+    </record>
+</odoo>

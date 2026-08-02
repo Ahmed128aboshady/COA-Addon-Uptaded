@@ -1,26 +1,19 @@
 # -*- coding: utf-8 -*-
 {
-    'support': 'https://api.whatsapp.com/send?phone=201013907174',
     'name': 'COA Partner Ledger - Invoice Details Drill-down',
-    'summary': 'Adds an expandable drill-down arrow to view invoice lines in Partner Ledger.',
-    'description': """Drill-Down: Adds an expandable arrow next to every invoice move line.
-Invoice Details: Displays product name, quantities, and line totals directly within the ledger.
-Native Integration: Works natively with account_reports without modifying core databases.
-Credit Control: Perfect for credit control and detailed customer balance analysis.""",
-    'author': 'Community of Accountants (COA)',
-    'website': 'https://coa-egy.odoo.com/',
-    'category': 'Accounting/Accounting',
+    'summary': 'Adds an expandable arrow next to each invoice in the Partner Ledger. Unfolding shows the invoice product lines with q...',
+    'description': "\nCOA Partner Ledger - Invoice Details Drill-down\n===============================================\nExtends the Enterprise Partner Ledger report (account_reports) so that every\ninvoice / journal-item line becomes unfoldable. When you click its arrow, the\nreport expands into the invoice's PRODUCT LINES, showing:\n\n    Product name  -  Quantity (UoM)   |   Line Total\n\nHow it works (framework-safe):\n------------------------------\n* Inherits the report custom handler\n  'account.partner.ledger.report.handler'.\n* After the standard partner expansion runs, each move line that belongs to\n  an invoice is tagged unfoldable with a custom expand function.\n* Child (product) lines are built with the OFFICIAL\n  account.report._get_generic_line_id() helper - no hand-crafted line IDs,\n  so _parse_line_id never breaks.\n* No change to the account.report data record and no new columns: the line\n  total is rendered in the existing Balance column, and the quantity is shown\n  in the line label (the Partner Ledger has fixed Debit/Credit/Balance\n  columns).\n\nRequires: Odoo Enterprise (account_reports).\n\nDeveloped by Community of Accountants (COA)\nWhatsApp: +20 101 390 7174\n    ",
+    'author': 'COA / Ahmed Aboshady',
+    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'category': 'Accounting',
     'version': '18.0.1.0.0',
-    'license': 'OPL-1',
-    'depends': [
-        'account_reports',
-    ],
+    'license': 'OEEL-1',
+    'price': 35.0,
+    'currency': 'EUR',
+    'depends': ['account_reports'],
     'data': [],
+    'images': ['static/description/banner.png'],
     'installable': True,
-    'application': False,
-    'price': 69.0,
-    'currency': 'USD',
-    'images': [
-        'static/description/banner.png',
-    ],
+    'application': True,
+    'auto_install': False,
 }

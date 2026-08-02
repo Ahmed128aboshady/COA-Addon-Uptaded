@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mfg_machine_user,mfg.machine.user,model_mfg_machine,base.group_user,1,1,1,0
+access_mfg_machine_manager,mfg.machine.manager,model_mfg_machine,base.group_system,1,1,1,1
+access_mfg_maintenance_user,mfg.maintenance.user,model_mfg_maintenance,base.group_user,1,1,1,0
+access_mfg_maintenance_manager,mfg.maintenance.manager,model_mfg_maintenance,base.group_system,1,1,1,1
+access_mfg_maintenance_part,mfg.maintenance.part,model_mfg_maintenance_part,base.group_user,1,1,1,1
+access_mfg_production_user,mfg.production.user,model_mfg_production_order,base.group_user,1,1,1,0
+access_mfg_production_manager,mfg.production.manager,model_mfg_production_order,base.group_system,1,1,1,1
+access_mfg_labor_line,mfg.labor.line,model_mfg_labor_line,base.group_user,1,1,1,1
+access_mfg_overhead_line,mfg.overhead.line,model_mfg_overhead_line,base.group_user,1,1,1,1
+access_mfg_machine_line,mfg.production.machine.line,model_mfg_production_machine_line,base.group_user,1,1,1,1
+access_mfg_mrp_labor_line,mfg.mrp.labor.line,model_mfg_mrp_labor_line,base.group_user,1,1,1,1
+access_mfg_mrp_overhead_line,mfg.mrp.overhead.line,model_mfg_mrp_overhead_line,base.group_user,1,1,1,1

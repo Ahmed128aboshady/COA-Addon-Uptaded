@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         DELIVERY ORDER
+         - Column 1 : Image      (product image thumbnail)
+         - Column 2 : Reference  (product_id.default_code)
+         - Column 3 : Product    (product_id.name — name only)
+         - Column 4 : Ordered
+         - Column 5 : Delivered
+         ═══════════════════════════════════════════════════════════════════ -->
+    <template id="report_delivery_document_custom" inherit_id="stock.report_delivery_document">
+
+        <!-- ══ PENDING table (state != done) ══ -->
+
+        <!-- thead: replace "Product" th with Image + Reference + Product -->
+        <xpath expr="//table[@name='stock_move_table']/thead/tr/th[@name='th_sm_product']" position="replace">
+            <th name="th_sm_image" style="width:56px;"></th>
+            <th name="th_sm_ref" class="text-start text-nowrap" style="width:110px;">
+                <strong>Reference</strong>
+            </th>
+            <th name="th_sm_product" class="text-start">
+                <strong>Product</strong>
+            </th>
+        </xpath>
+
+        <!-- tbody: replace first td (product cell) with Image + Reference + Product name only -->
+        <xpath expr="//table[@name='stock_move_table']/tbody/tr/td[1]" position="replace">
+            <td style="width:56px; vertical-align:middle; text-align:center;">
+                <img t-if="move.product_id.image_128"
+                     t-att-src="image_data_uri(move.product_id.image_128)"
+                     style="max-height:44px; max-width:52px; object-fit:contain;"/>
+            </td>
+            <td class="text-start text-nowrap" style="width:110px; vertical-align:middle;">
+                <span t-out="move.product_id.default_code or ''"/>
+            </td>
+            <td style="vertical-align:middle;">
+                <span t-out="move.product_id.name or ''"/>
+            </td>
+        </xpath>
+
+        <!-- ══ DONE table (state == done) ══ -->
+
+        <!-- thead: replace "Product" th with Image + Reference + Product -->
+        <xpath expr="//table[@name='stock_move_line_table']/thead/tr/th[@name='th_sml_product']" position="replace">
+            <th name="th_sml_image" style="width:56px;"></th>
+            <th name="th_sml_ref" class="text-start text-nowrap" style="width:110px;">
+                <strong>Reference</strong>
+            </th>
+            <th name="th_sml_product" class="text-start">
+                <strong>Product</strong>
+            </th>
+        </xpath>
+
+        <!-- ══ BACKORDER table ══ -->
+
+        <!-- thead -->
+        <xpath expr="//table[@name='stock_backorder_table']/thead/tr/th[@name='th_sb_product']" position="replace">
+            <th name="th_sb_image" style="width:56px;"></th>
+            <th name="th_sb_ref" class="text-start text-nowrap" style="width:110px;">
+                <strong>Reference</strong>
+            </th>
+            <th name="th_sb_product" class="text-start">
+                <strong>Product</strong>
+            </th>
+        </xpath>
+
+        <!-- tbody: replace first td (product cell) -->
+        <xpath expr="//table[@name='stock_backorder_table']/tbody/tr/td[1]" position="replace">
+            <td style="width:56px; vertical-align:middle; text-align:center;">
+                <img t-if="bo_line.product_id.image_128"
+                     t-att-src="image_data_uri(bo_line.product_id.image_128)"
+                     style="max-height:44px; max-width:52px; object-fit:contain;"/>
+            </td>
+            <td class="text-start text-nowrap" style="width:110px; vertical-align:middle;">
+                <span t-out="bo_line.product_id.default_code or ''"/>
+            </td>
+            <td style="vertical-align:middle;">
+                <span t-out="bo_line.product_id.name or ''"/>
+            </td>
+        </xpath>
+
+    </template>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         DONE lines — serial number variant
+         ═══════════════════════════════════════════════════════════════════ -->
+    <template id="stock_report_delivery_has_serial_move_line_custom"
+              inherit_id="stock.stock_report_delivery_has_serial_move_line">
+        <!-- Replace first td (product cell) with image + reference + product name only -->
+        <xpath expr="//td[1]" position="replace">
+            <td style="width:56px; vertical-align:middle; text-align:center;">
+                <img t-if="move_line.product_id.image_128"
+                     t-att-src="image_data_uri(move_line.product_id.image_128)"
+                     style="max-height:44px; max-width:52px; object-fit:contain;"/>
+            </td>
+            <td class="text-start text-nowrap" style="width:110px; vertical-align:middle;">
+                <span t-out="move_line.product_id.default_code or ''"/>
+            </td>
+            <td style="vertical-align:middle;">
+                <span t-out="move_line.product_id.name or ''"/>
+            </td>
+        </xpath>
+    </template>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         DONE lines — aggregated (no serial numbers) variant
+         aggregated_lines[line]['product'] = product record
+         aggregated_lines[line]['name']    = product display name
+         ═══════════════════════════════════════════════════════════════════ -->
+    <template id="stock_report_delivery_aggregated_move_lines_custom"
+              inherit_id="stock.stock_report_delivery_aggregated_move_lines">
+        <!-- Replace first td (product cell) with image + reference + product name only -->
+        <xpath expr="//tr/td[1]" position="replace">
+            <td style="width:56px; vertical-align:middle; text-align:center;">
+                <t t-set="agg_product" t-value="aggregated_lines[line].get('product')"/>
+                <img t-if="agg_product and agg_product.image_128"
+                     t-att-src="image_data_uri(agg_product.image_128)"
+                     style="max-height:44px; max-width:52px; object-fit:contain;"/>
+            </td>
+            <td class="text-start text-nowrap" style="width:110px; vertical-align:middle;">
+                <span t-out="agg_product.default_code if agg_product else ''"/>
+            </td>
+            <td style="vertical-align:middle;">
+                <span t-out="agg_product.name if agg_product else aggregated_lines[line].get('name', '')"/>
+            </td>
+        </xpath>
+    </template>
+
+</odoo>

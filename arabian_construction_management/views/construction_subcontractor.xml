@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="construction_subcontractor_form" model="ir.ui.view">
+        <field name="name">construction.subcontractor.form</field>
+        <field name="model">construction.subcontractor</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="confirm" type="object" string="Confirm"
+                            class="oe_highlight" invisible="state != 'draft'"/>
+                    <button name="attribution" type="object"
+                            string="Attribution" class="oe_highlight"
+                            invisible="state != 'confirm'"/>
+                    <button name="start_project" type="object"
+                            string="Start Project" class="oe_highlight"
+                            invisible="state != 'attribution_done'"/>
+                    <button name="create_interim_invoice" type="object"
+                            string="Create Interim Invoice"
+                            class="oe_highlight"
+                            invisible="state not in ['attribution_done','project_in_progress','interim_invoice_created']"/>
+                    <button name="lock" type="object" string="Lock" invisible="state == 'lock'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,confirm,attribution_done,project_in_progress,interim_invoice_created,lock"/>
+                </header>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <button name="action_view_all_interim_invoice" type="object" class="oe_stat_button" icon="fa-pencil-square-o" invisible="count_interim_invoice == 0">
+                            <field name="count_interim_invoice" widget="statinfo" string="Interim Invoice"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="construction_project_id"/>
+                            <field name="project_name"/>
+                            <field name="project_number"/>
+                            <field name="project_id"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                            <field name="attribution_type"/>
+                            <field name="boq_cost_estimation_id"
+                                   invisible="attribution_type == False"/>
+                            <field name="bill_of_quantities_id"
+                                   invisible="attribution_type != 'part_boq'"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Items">
+                            <field name="construction_subcontractor_lines_ids">
+                                <list editable="bottom">
+                                    <field name="construction_subcontractor_id"
+                                           column_invisible="True"/>
+                                    <field name="boq_cost_estimation_line_id"
+                                           column_invisible="parent.attribution_type != 'complete_boq'"/>
+                                    <field name="bill_quantities_labour_machines_id"
+                                           column_invisible="parent.attribution_type != 'part_boq'"/>
+                                    <field name="construction_business_items_id"
+                                           column_invisible="parent.attribution_type != 'complete_boq'"/>
+                                    <field name="product_id"
+                                           column_invisible="parent.attribution_type != 'part_boq'"/>
+                                    <field name="business_item_id"
+                                           column_invisible="parent.attribution_type != 'complete_boq'"/>
+                                    <field name="business_items_types_id"
+                                           column_invisible="parent.attribution_type != 'complete_boq'"/>
+                                    <field name="description"/>
+                                    <field name="uom_id"/>
+                                    <field name="quantity"/>
+                                    <field name="rate"/>
+                                    <field name="currency_id"/>
+                                    <field name="total_cost"/>
+                                    <field name="previous_qty" optional="hide"/>
+                                    <field name="current_qty" optional="hide"/>
+                                    <field name="total_qty" optional="hide"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="construction_subcontractor_tree" model="ir.ui.view">
+        <field name="name">construction.subcontractor.tree</field>
+        <field name="model">construction.subcontractor</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="construction_project_id"/>
+                <field name="project_name"/>
+                <field name="project_number"/>
+            </list>
+        </field>
+    </record>
+
+
+    <record id="construction_subcontractor_sequence" model="ir.sequence">
+        <field name="name">construction.subcontractor</field>
+        <field name="code">construction.subcontractor</field>
+        <field name="prefix">SUB-CON/</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <record id="construction_subcontractor_action"
+            model="ir.actions.act_window">
+        <field name="name">Construction Subcontractor</field>
+        <field name="res_model">construction.subcontractor</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Construction Subcontractor
+            </p>
+        </field>
+    </record>
+</odoo>

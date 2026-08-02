@@ -51,6 +51,36 @@
             </field>
         </record>
 
+        <!-- Form popup لكل مرحلة في السجل — تعليق + صورة -->
+        <record id="view_stage_log_form" model="ir.ui.view">
+            <field name="name">sale.operation.stage.log.form</field>
+            <field name="model">sale.operation.stage.log</field>
+            <field name="arch" type="xml">
+                <form string="تفاصيل المرحلة">
+                    <sheet>
+                        <group>
+                            <group string="بيانات المرحلة">
+                                <field name="stage_id" readonly="1" string="المرحلة"/>
+                                <field name="user_id"  readonly="1" string="أكدها"/>
+                                <field name="date"     readonly="1" string="وقت التأكيد"/>
+                            </group>
+                            <group string="الصورة">
+                                <field name="image"
+                                       widget="image"
+                                       nolabel="1"
+                                       colspan="2"
+                                       options="{'size': [300, 300]}"/>
+                            </group>
+                        </group>
+                        <separator string="التعليق"/>
+                        <field name="notes"
+                               nolabel="1"
+                               placeholder="اكتب تعليق أو وصف للشغل اللي اتعمل في المرحلة دي..."/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
         <record id="action_operation_stages" model="ir.actions.act_window">
             <field name="name">مراحل العمليات</field>
             <field name="res_model">sale.operation.stage</field>

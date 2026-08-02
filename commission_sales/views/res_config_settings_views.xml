@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_commission" model="ir.ui.view">
+        <field name="name">res.config.settings.commission</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='sale_management']" position="after">
+                <app string="العمولات" name="commission_sales"
+                     groups="sales_team.group_sale_manager">
+                    <block title="إعدادات قيد استحقاق العمولات"
+                           help="تُستخدم هذه الحسابات افتراضياً في كل حساب عمولة جديد.">
+                        <setting string="يومية العمولات">
+                            <field name="commission_journal_id"/>
+                        </setting>
+                        <setting string="حساب المدين (Debit)" help="مثال: مصروف عمولات المبيعات">
+                            <field name="commission_debit_account_id"/>
+                        </setting>
+                        <setting string="حساب الدائن (Credit)" help="مثال: عمولات مستحقة الدفع">
+                            <field name="commission_credit_account_id"/>
+                        </setting>
+                    </block>
+                    <block title="صلاحيات العمولات"
+                           help="التحكم في من يرى سجلات العمولات.">
+                        <setting string="Own Documents Only"
+                                 help="عند التفعيل: كل مندوب يرى سجلاته هو فقط. المديرون يرون الكل دائماً.">
+                            <field name="commission_own_documents"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
