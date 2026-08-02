@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Inventory/Stock Aging Report',
+    'name': 'COA Stock Aging Report',
     'summary': 'Analyze the age of stock by grouping quantities into time periods.',
     'description': 'Aging Analysis: Group stock age by warehouse or specific storage locations.\nFilters: Filter results by products, product categories, or dates.\nAging Buckets: Configurable aging periods (0-30 days, 31-60 days, etc.).\nExports: Supports detailed PDF/Excel export.',
     'author': 'COA / Ahmed Aboshady',

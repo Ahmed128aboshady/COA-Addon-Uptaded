@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'arabian_expense_payment',
+    'name': 'COA Arabian Expense Payment',
     'summary': "Short (1 phrase/line) summary of the module's purpose, used as         subtitle on modules listing or apps.openerp.com",
     'description': "\n        Long description of module's purpose\n    ",
     'author': 'COA / Ahmed Aboshady',
     'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
     'category': 'Accounting',
     'version': '17.0.0.1',
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
     'price': 35.0,
     'currency': 'EUR',
     'depends': ['base', 'accountant', 'hr'],

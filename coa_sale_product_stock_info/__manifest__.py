@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Sale: Stock Info in Product Search',
-    'summary': 'Display real-time On Hand and available stock inside the sale product search.',
-    'description': 'Product Search: Displays product stock (On Hand / Available) inside the search list view.\nSales Integration: Seamlessly integrates with Odoo sales portal and backend forms.\nStock Availability: Helps sales reps verify stock status directly from sale order lines.',
+    'name': 'COA Sale Product Stock Info',
+    'summary': 'يظهر الكمية المتاحة والـ On Hand في سيرش المنتجات داخل المبيعات',
+    'description': 'Professional Sale: Stock Info in Product Search custom module for Odoo.',
     'author': 'COA / Ahmed Aboshady',
     'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
     'category': 'Sales',

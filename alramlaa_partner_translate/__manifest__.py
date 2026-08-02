@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Alramlaa Partner Name Translation',
+    'name': 'COA Alramlaa Partner Translate',
     'summary': 'Make partner name translatable (Arabic/English)',
     'description': 'Professional Alramlaa Partner Name Translation custom module for Odoo.',
     'author': 'COA / Ahmed Aboshady',
     'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
     'category': 'Extra Tools',
     'version': '17.0.19.0.1.1.1',
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
     'price': 19.0,
     'currency': 'EUR',
     'depends': ['contacts'],

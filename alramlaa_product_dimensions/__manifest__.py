@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Alramlaa Product Dimensions',
+    'name': 'COA Alramlaa Product Dimensions',
     'summary': 'Add Length, Width, Thickness, Square/Cubic Meter and Waste % to products',
     'description': 'Professional Alramlaa Product Dimensions custom module for Odoo.',
     'author': 'COA / Ahmed Aboshady',
     'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
     'category': 'Extra Tools',
     'version': '17.0.19.0.1.0.0',
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
     'price': 19.0,
     'currency': 'EUR',
     'depends': ['product', 'purchase', 'stock', 'account_asset', 'mrp', 'base', 'account'],

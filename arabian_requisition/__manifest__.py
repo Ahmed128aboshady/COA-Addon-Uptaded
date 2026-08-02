@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'arabian_requisition',
+    'name': 'COA Arabian Requisition',
     'summary': "Short (1 phrase/line) summary of the module's purpose",
     'description': "\nLong description of module's purpose\n    ",
     'author': 'COA / Ahmed Aboshady',
     'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
     'category': 'Project',
     'version': '17.0.0.1',
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
     'price': 59.0,
     'currency': 'EUR',
     'depends': ['base', 'hr', 'uom', 'stock', 'purchase', 'purchase_requisition'],

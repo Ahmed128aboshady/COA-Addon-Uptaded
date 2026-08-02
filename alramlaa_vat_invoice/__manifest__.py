@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Alramlaa VAT Invoice Report',
+    'name': 'COA Alramlaa Vat Invoice',
     'summary': 'Custom bilingual VAT Invoice PDF for Sale Orders',
     'description': 'Professional bilingual (Arabic/English) VAT Invoice report for Sale Orders',
     'author': 'COA / Ahmed Aboshady',
     'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
     'category': 'Accounting',
     'version': '17.0.19.0.1.0.0',
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
     'price': 35.0,
     'currency': 'EUR',
     'depends': ['sale_stock'],

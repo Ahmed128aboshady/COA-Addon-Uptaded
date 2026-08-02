@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Duplicate Company Data PRO',
+    'name': 'COA Alramlaa Company Duplicator',
     'summary': 'Seamlessly duplicate Chart of Accounts, Taxes, Journals, and Warehouses for Multi-Company Setup',
     'description': '\n        This module allows you to safely duplicate essential accounting and inventory configurations \n        from one company to another in a multi-company environment.\n        Fully compatible with Odoo 19 new shared accounts architecture.\n    ',
     'author': 'COA / Ahmed Aboshady',

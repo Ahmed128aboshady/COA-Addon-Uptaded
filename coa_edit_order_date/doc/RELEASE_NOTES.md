@@ -1,4 +1,4 @@
-## Module <coa_edit_order_date>
+## Module <edit_order_date>
 
 #### 25.11.2024
 #### Version 18.0.1.0.0

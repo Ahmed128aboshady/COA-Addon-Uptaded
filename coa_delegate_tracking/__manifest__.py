@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'coa delegate_tracking',
+    'name': 'COA Delegate Tracking',
     'summary': 'Live location tracking and dashboard for sales delegates in the field.',
     'description': '\nThis module tracks the locations of sales delegates, updates their last known coordinates,\nand displays their live and historical positions on an interactive OpenStreetMap map.\n    ',
     'author': 'COA / Ahmed Aboshady',
     'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
     'category': 'Extra Tools',
     'version': '17.0.1.0.0',
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
     'price': 19.0,
     'currency': 'EUR',
     'depends': ['base', 'web', 'sale'],

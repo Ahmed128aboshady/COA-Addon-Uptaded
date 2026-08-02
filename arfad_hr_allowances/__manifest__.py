@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Arfad HR Allowances',
+    'name': 'COA Arfad Hr Allowances',
     'summary': 'Add 5 allowance fields to employee form',
     'description': 'Professional Arfad HR Allowances custom module for Odoo.',
     'author': 'COA / Ahmed Aboshady',
     'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
     'category': 'Human Resources',
     'version': '17.0.1.1',
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
     'price': 39.0,
     'currency': 'EUR',
     'depends': ['hr', 'hr_payroll', 'l10n_sa_hr_payroll'],

@@ -7,7 +7,7 @@
     'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
     'category': 'Accounting',
     'version': '18.0.1.0.0',
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
     'price': 35.0,
     'currency': 'EUR',
     'depends': ['account'],

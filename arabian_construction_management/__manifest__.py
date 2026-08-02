@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'arabian_construction_managment',
+    'name': 'COA Arabian Construction Management',
     'summary': "Short (1 phrase/line) summary of the module's purpose",
     'description': "\nLong description of module's purpose\n    ",
     'author': 'COA / Ahmed Aboshady',
     'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
     'category': 'Project',
     'version': '17.0.0.3',
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
     'price': 79.0,
     'currency': 'EUR',
     'depends': ['base', 'hr', 'uom', 'account', 'purchase', 'utm', 'project', 'arabian_cheque_management', 'arabian_requisition', 'stock', 'arabian_letters_of_guarantee', 'documents', 'arabian_expense_payment', 'arabian_res_partner', 'hr_timesheet'],

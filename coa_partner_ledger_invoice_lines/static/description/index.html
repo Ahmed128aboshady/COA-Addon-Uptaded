@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COA Partner Ledger Invoice Lines - Odoo Apps Store</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --odoo-purple: #714B67;
+            --odoo-teal: #00A09D;
+            --odoo-dark: #1E293B;
+            --odoo-light: #F8FAFC;
+        }
+        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background-color: var(--odoo-light); color: var(--odoo-dark); }
+        .app-header {
+            background: linear-gradient(135deg, var(--odoo-purple) 0%, #4A2E44 50%, var(--odoo-teal) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(113, 75, 103, 0.2);
+        }
+        .badge-app { font-size: 0.9rem; padding: 0.5rem 1rem; border-radius: 50rem; font-weight: 600; margin-right: 0.5rem; }
+        .badge-version { background-color: rgba(255,255,255,0.2); color: white; }
+        .badge-price { background-color: #10B981; color: white; }
+        .badge-cat { background-color: var(--odoo-teal); color: white; }
+        .feature-card {
+            background: white;
+            border: 1px solid #E2E8F0;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 12px 20px rgba(0,0,0,0.08); }
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 0.5rem;
+            background: rgba(113, 75, 103, 0.1);
+            color: var(--odoo-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .ui-mockup-bar {
+            background: #E2E8F0;
+            height: 30px;
+            border-top-left-radius: 0.75rem;
+            border-top-right-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            gap: 6px;
+        }
+        .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+        .dot-red { background: #EF4444; }
+        .dot-yellow { background: #F59E0B; }
+        .dot-green { background: #10B981; }
+        .ui-mockup-body {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-bottom-left-radius: 0.75rem;
+            border-bottom-right-radius: 0.75rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-4">
+        <!-- Header Banner -->
+        <div class="app-header text-center text-md-start">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="mb-3">
+                        <span class="badge badge-app badge-cat"><i class="fa-solid fa-folder me-1"></i> Accounting</span>
+                        <span class="badge badge-app badge-version"><i class="fa-solid fa-code-branch me-1"></i> Odoo 17.0.1.4</span>
+                        <span class="badge badge-app badge-price"><i class="fa-solid fa-tag me-1"></i> €35.00 EUR</span>
+                    </div>
+                    <h1 class="display-5 fw-bold mb-2">COA Partner Ledger Invoice Lines</h1>
+                    <p class="lead mb-0">Display invoice lines details in Partner Ledger Report</p>
+                </div>
+                <div class="col-md-4 text-center mt-3 mt-md-0">
+                    <div class="p-3 bg-white text-dark rounded-4 shadow-sm">
+                        <h4 class="fw-bold mb-1" style="color: var(--odoo-purple);">COA Addons Suite</h4>
+                        <p class="small text-muted mb-2">Professional & Fully Tested</p>
+                        <a href="https://github.com/Ahmed128aboshady/-COA-Addons" class="btn btn-primary w-100 fw-semibold" style="background-color: var(--odoo-purple); border:none;">
+                            <i class="fa-solid fa-download me-2"></i>Get App Module
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Highlights & Features -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h5>High Efficiency</h5>
+                    <p class="text-muted small mb-0">Designed for optimal Odoo performance with streamlined workflows and zero bottlenecks.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h5>Fully Compatible</h5>
+                    <p class="text-muted small mb-0">Tested for Odoo 17.0.1.4 Community & Enterprise editions without modifying core files.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
+                    <h5>Professional Support</h5>
+                    <p class="text-muted small mb-0">Comes with dedicated documentation, seamless installation, and technical support.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Description & Details -->
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-body p-4">
+                <h4 class="fw-bold mb-3" style="color: var(--odoo-purple);"><i class="fa-solid fa-circle-info me-2"></i>Module Overview & Features</h4>
+                <div class="lead-text mb-4">
+                    <p>Display invoice lines details in Partner Ledger Report</p>
+                    <p>This module provides advanced capabilities tailored for business operations in Odoo 17.0.1.4. It extends default system features to ensure accuracy, automated controls, and seamless data visualization.</p>
+                </div>
+
+                <!-- Live System UI Mockup Showcase -->
+                <h4 class="fw-bold mb-3 mt-4" style="color: var(--odoo-purple);"><i class="fa-solid fa-desktop me-2"></i>System Interface & Workflow Preview</h4>
+                <div class="ui-mockup-bar">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                    <small class="text-muted ms-2">Odoo 17.0.1.4 - COA Partner Ledger Invoice Lines</small>
+                </div>
+                <div class="ui-mockup-body text-center">
+                    <div class="p-4 rounded-3" style="background-color: #F1F5F9; border: 1px solid #E2E8F0;">
+                        <i class="fa-solid fa-layer-group fa-3x mb-3" style="color: var(--odoo-teal);"></i>
+                        <h5 class="fw-bold">COA Partner Ledger Invoice Lines Interactive Screen</h5>
+                        <p class="text-muted max-w-600 mx-auto">Full integration with Odoo Accounting views, action menus, smart buttons, and automated triggers.</p>
+                        <span class="badge bg-secondary p-2"><i class="fa-solid fa-check-circle me-1"></i> Tested on Live Odoo Instance</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Specs -->
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-body p-4">
+                <h4 class="fw-bold mb-3" style="color: var(--odoo-purple);"><i class="fa-solid fa-list-check me-2"></i>Technical Information</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><i class="fa-solid fa-box me-2 text-muted"></i>Technical Name</span>
+                                <span class="fw-bold"><code>coa_partner_ledger_invoice_lines</code></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><i class="fa-solid fa-code-branch me-2 text-muted"></i>Odoo Version</span>
+                                <span class="badge bg-primary">17.0.1.4</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><i class="fa-solid fa-certificate me-2 text-muted"></i>License</span>
+                                <span class="badge bg-dark">OPL-1</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><i class="fa-solid fa-cube me-2 text-muted"></i>Dependencies</span>
+                                <span class="fw-bold">account_reports</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><i class="fa-solid fa-user me-2 text-muted"></i>Author</span>
+                                <span class="fw-bold">COA / Ahmed Aboshady</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><i class="fa-solid fa-euro-sign me-2 text-muted"></i>Price</span>
+                                <span class="fw-bold text-success">€35.00 EUR</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer / Support -->
+        <div class="text-center p-4 bg-white rounded-4 shadow-sm">
+            <h5 class="fw-bold" style="color: var(--odoo-purple);">Need Customization or Support?</h5>
+            <p class="text-muted small">Designed and maintained by COA (Ahmed Aboshady). Contact us for custom Odoo development, migration, or support.</p>
+            <a href="https://github.com/Ahmed128aboshady/-COA-Addons" target="_blank" class="btn btn-outline-dark me-2">
+                <i class="fa-brands fa-github me-1"></i> GitHub Repository
+            </a>
+        </div>
+    </div>
+</body>
+</html>
