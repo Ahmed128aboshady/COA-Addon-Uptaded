@@ -2,9 +2,9 @@
 {
     'name': 'COA Warehouse Stock Restrictions',
     'summary': 'Warehouse and Stock Location Restriction on Users.',
-    'description': '\n        This Module Restricts the User from Accessing Warehouse and Process Stock Moves other than allowed to Warehouses and Stock Locations.\n    ',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Warehouse Stock Restrictions developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Inventory',
     'version': '17.0.1.0.0',
     'license': 'OPL-1',

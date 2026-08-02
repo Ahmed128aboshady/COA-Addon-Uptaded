@@ -2,9 +2,9 @@
 {
     'name': 'COA Account Journal Commission',
     'summary': 'خصم عمولة تلقائي على الـ Journal - مبيعات ومشتريات منفصلين',
-    'description': 'Professional Journal Payment Commission custom module for Odoo.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Account Journal Commission developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 18.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Accounting',
     'version': '18.0.1.0.0',
     'license': 'OPL-1',

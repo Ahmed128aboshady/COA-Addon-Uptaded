@@ -2,9 +2,9 @@
 {
     'name': 'COA Alramlaa Vat Invoice',
     'summary': 'Custom bilingual VAT Invoice PDF for Sale Orders',
-    'description': 'Professional bilingual (Arabic/English) VAT Invoice report for Sale Orders',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Alramlaa Vat Invoice developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Accounting',
     'version': '17.0.19.0.1.0.0',
     'license': 'OPL-1',

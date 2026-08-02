@@ -2,9 +2,9 @@
 {
     'name': 'COA Stock Aging Report',
     'summary': 'Analyze the age of stock by grouping quantities into time periods.',
-    'description': 'Aging Analysis: Group stock age by warehouse or specific storage locations.\nFilters: Filter results by products, product categories, or dates.\nAging Buckets: Configurable aging periods (0-30 days, 31-60 days, etc.).\nExports: Supports detailed PDF/Excel export.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Stock Aging Report developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Inventory',
     'version': '17.0.19.0.1.0.0',
     'license': 'OPL-1',

@@ -2,9 +2,9 @@
 {
     'name': 'COA Location Restrictions',
     'summary': 'Restrict inventory operations and stock moves to allowed warehouses and locations.',
-    'description': 'Permissions Tab: Configurable location permissions tab inside User profile.\nLocation Security: Restricts stock picking, validating, and viewing of moves at unauthorized locations.\nQuant Filtering: Automatically filters stock quants so users only see quantities in allowed places.\nRecursive Scoping: Fully compatible with recursive locations and multi-warehouse operations.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Location Restrictions developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.2.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Inventory',
     'version': '17.0.19.0.1.0.2',
     'license': 'OPL-1',

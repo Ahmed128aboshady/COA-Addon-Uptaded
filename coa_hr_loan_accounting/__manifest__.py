@@ -2,9 +2,9 @@
 {
     'name': 'COA Hr Loan Accounting',
     'summary': 'Accounting integration for HR Loans',
-    'description': 'Adds journal entry creation on loan approval, smart button for journal entries, and installment delay wizard.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Hr Loan Accounting developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Accounting',
     'version': '17.0.19.0.1.0.0',
     'license': 'OPL-1',

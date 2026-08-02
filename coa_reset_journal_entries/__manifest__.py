@@ -2,9 +2,9 @@
 {
     'name': 'COA Reset Journal Entries',
     'summary': 'Using this module, multiple journal entries can be set as     draft, canceled, and posted in invoicing.',
-    'description': 'This module allows users to post multiple journal entries\n    in draft state to posted, reset posted entries back to draft state, and\n    cancel entries.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Reset Journal Entries developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 18.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Accounting',
     'version': '18.0.1.0.0',
     'license': 'OPL-1',

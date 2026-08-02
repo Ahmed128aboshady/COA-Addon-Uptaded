@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'COA Invoice Report',
-    'summary': 'invoice_report',
-    'description': '\n    this module use for print journal Entries in PDF report"\n    ',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'summary': 'Professional Invoice Report solution for Odoo Accounting. Streamlines business operations, automates workflow validations, and enhances ERP reporting.',
+    'description': 'COA Invoice Report developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.18.2.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Accounting',
     'version': '17.0.18.2.0',
     'license': 'OPL-1',

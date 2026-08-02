@@ -2,9 +2,9 @@
 {
     'name': 'COA Customer Portal Order',
     'summary': 'Empower customers to search products, select addresses, and request quotations.',
-    'description': 'Portal Search: Search products by name, barcode, or reference code with autocomplete.\nRich UI: Displays product images, detailed specifications, and customer-specific pricing.\nAddresses: Allows customers to select delivery address and shipping methods.\nQuotation Request: Instantly generates draft sale quotations in the backend.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Customer Portal Order developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 18.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Sales',
     'version': '18.0.1.0.0',
     'license': 'OPL-1',

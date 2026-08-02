@@ -2,9 +2,9 @@
 {
     'name': 'COA Category Location Route 19',
     'summary': 'Auto-create routes from product category location settings',
-    'description': "\n        Add sales and manufacturing source locations to product categories.\n        The addon automatically creates/updates routes and procurement rules\n        so each product is pulled from its category's designated location.\n        Returns go back to the same source location automatically.\n    ",
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Category Location Route 19 developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Inventory',
     'version': '17.0.19.0.1.0.0',
     'license': 'OPL-1',

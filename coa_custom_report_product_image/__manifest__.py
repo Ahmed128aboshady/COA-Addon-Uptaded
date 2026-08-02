@@ -2,9 +2,9 @@
 {
     'name': 'COA Custom Report Product Image',
     'summary': 'Adds product image to Delivery prints and splits product name / reference code into separate columns across all modul...',
-    'description': '\n        Customises printed reports for:\n        - Inventory / Delivery Orders  : adds product image column + separate Reference column\n        - Sales Orders / Quotations    : adds separate Reference column\n        - Purchase Orders              : adds separate Reference column\n        - Invoices & Bills             : adds separate Reference column\n\n        The "Reference" column shows the product\'s Internal Reference (default_code).\n    ',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Custom Report Product Image developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',
     'version': '17.0.19.0.1.0.0',
     'license': 'OPL-1',

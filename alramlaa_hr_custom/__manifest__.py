@@ -2,9 +2,9 @@
 {
     'name': 'COA Alramlaa Hr Custom',
     'summary': 'Custom HR fields for Al-Ramlaa Project (Family & Insurance)',
-    'description': 'Professional Al-Ramlaa HR Customization custom module for Odoo.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Alramlaa Hr Custom developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Human Resources',
     'version': '17.0.19.0.1.0.0',
     'license': 'OPL-1',

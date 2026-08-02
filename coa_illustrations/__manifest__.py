@@ -2,9 +2,9 @@
 {
     'name': 'COA Illustrations',
     'summary': 'Advanced Illustrations module for Odoo ERP.',
-    'description': 'Professional Illustrations custom module for Odoo.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Illustrations developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',
     'version': '17.0.1.0.0',
     'license': 'OPL-1',

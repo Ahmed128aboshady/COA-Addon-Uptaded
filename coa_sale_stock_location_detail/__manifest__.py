@@ -2,9 +2,9 @@
 {
     'name': 'COA Sale Stock Location Detail',
     'summary': 'Show reserved sub-locations per SO line (from stock.move.line) in SO, invoice & print',
-    'description': 'Professional Sale Line Reserved Location Detail custom module for Odoo.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Sale Stock Location Detail developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 18.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Sales',
     'version': '18.0.1.0.0',
     'license': 'OPL-1',

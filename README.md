@@ -1,6 +1,11 @@
-# 🚀 COA Odoo Addons Collection
+# 🚀 COA Egypt - Odoo Enterprise & Community Addons Collection
 
-Welcome to the **COA Odoo Addons Store Repository**. This suite contains **109+ production-ready, fully tested custom modules** compatible with **Odoo 17.0 & 18.0** Community and Enterprise editions.
+Welcome to **COA Egypt (Chart of Accounts)** official Odoo Apps Store repository. This suite contains **109+ senior-level, production-grade custom modules** fully compatible with **Odoo 17.0 & 18.0** Community and Enterprise editions.
+
+🌐 **Official Website:** [www.coa-egy.com](https://www.coa-egy.com)  
+📱 **WhatsApp Contact:** [+20 10 13907174](https://wa.me/201013907174)
+
+--- 
 
 ## 🛒 Module Catalog & Store Index
 
@@ -14,14 +19,14 @@ Welcome to the **COA Odoo Addons Store Repository**. This suite contains **109+ 
 | [`alramlaa_quotation_report`](./alramlaa_quotation_report) | **COA Alramlaa Quotation Report** | `Sales` | `Odoo 17.0.19.0.1.0.0` | **€29.00** | Custom Quotation/Sales Order PDF Report - Al Ramlaa Wooden Products Style |
 | [`alramlaa_technical_office`](./alramlaa_technical_office) | **COA Alramlaa Technical Office** | `Project` | `Odoo 17.0.19.0.1.0.0` | **€79.00** | Technical Office review workflow between Sale Orders and Manufacturing |
 | [`alramlaa_vat_invoice`](./alramlaa_vat_invoice) | **COA Alramlaa Vat Invoice** | `Accounting` | `Odoo 17.0.19.0.1.0.0` | **€35.00** | Custom bilingual VAT Invoice PDF for Sale Orders |
-| [`arabian_cheque_management`](./arabian_cheque_management) | **COA Arabian Cheque Management** | `Accounting` | `Odoo 17.0.0.1` | **€49.00** | Short (1 phrase/line) summary of the module's purpose |
-| [`arabian_construction_management`](./arabian_construction_management) | **COA Arabian Construction Management** | `Project` | `Odoo 17.0.0.3` | **€79.00** | Short (1 phrase/line) summary of the module's purpose |
-| [`arabian_digits_numbers`](./arabian_digits_numbers) | **COA Arabian Digits Numbers** | `Extra Tools` | `Odoo 17.0.0.1` | **€15.00** | Short (1 phrase/line) summary of the module's purpose |
-| [`arabian_expense_payment`](./arabian_expense_payment) | **COA Arabian Expense Payment** | `Accounting` | `Odoo 17.0.0.1` | **€35.00** | Short (1 phrase/line) summary of the module's purpose, used as         subtitle on modules listing or apps.openerp.com |
-| [`arabian_letters_of_guarantee`](./arabian_letters_of_guarantee) | **COA Arabian Letters Of Guarantee** | `Accounting` | `Odoo 17.0.0.1` | **€79.00** | Short (1 phrase/line) summary of the module's purpose |
-| [`arabian_requisition`](./arabian_requisition) | **COA Arabian Requisition** | `Project` | `Odoo 17.0.0.1` | **€59.00** | Short (1 phrase/line) summary of the module's purpose |
-| [`arabian_res_partner`](./arabian_res_partner) | **COA Arabian Res Partner** | `Extra Tools` | `Odoo 17.0.0.1` | **€19.00** | Short (1 phrase/line) summary of the module's purpose |
-| [`arabian_so_invoice_report`](./arabian_so_invoice_report) | **COA Arabian So Invoice Report** | `Accounting` | `Odoo 17.0.0.1` | **€35.00** | Short (1 phrase/line) summary of the module's purpose |
+| [`arabian_cheque_management`](./arabian_cheque_management) | **COA Arabian Cheque Management** | `Accounting` | `Odoo 17.0.0.1` | **€49.00** | Professional Arabian Cheque Management solution for Odoo Accounting. Streamlines business operations, automates workflow validations, and enhances ERP reporting. |
+| [`arabian_construction_management`](./arabian_construction_management) | **COA Arabian Construction Management** | `Project` | `Odoo 17.0.0.3` | **€79.00** | Professional Arabian Construction Management solution for Odoo Project. Streamlines business operations, automates workflow validations, and enhances ERP reporting. |
+| [`arabian_digits_numbers`](./arabian_digits_numbers) | **COA Arabian Digits Numbers** | `Extra Tools` | `Odoo 17.0.0.1` | **€15.00** | Professional Arabian Digits Numbers solution for Odoo Extra Tools. Streamlines business operations, automates workflow validations, and enhances ERP reporting. |
+| [`arabian_expense_payment`](./arabian_expense_payment) | **COA Arabian Expense Payment** | `Accounting` | `Odoo 17.0.0.1` | **€35.00** | Professional Arabian Expense Payment solution for Odoo Accounting. Streamlines business operations, automates workflow validations, and enhances ERP reporting. |
+| [`arabian_letters_of_guarantee`](./arabian_letters_of_guarantee) | **COA Arabian Letters Of Guarantee** | `Accounting` | `Odoo 17.0.0.1` | **€79.00** | Professional Arabian Letters Of Guarantee solution for Odoo Accounting. Streamlines business operations, automates workflow validations, and enhances ERP reporting. |
+| [`arabian_requisition`](./arabian_requisition) | **COA Arabian Requisition** | `Project` | `Odoo 17.0.0.1` | **€59.00** | Professional Arabian Requisition solution for Odoo Project. Streamlines business operations, automates workflow validations, and enhances ERP reporting. |
+| [`arabian_res_partner`](./arabian_res_partner) | **COA Arabian Res Partner** | `Extra Tools` | `Odoo 17.0.0.1` | **€19.00** | Professional Arabian Res Partner solution for Odoo Extra Tools. Streamlines business operations, automates workflow validations, and enhances ERP reporting. |
+| [`arabian_so_invoice_report`](./arabian_so_invoice_report) | **COA Arabian So Invoice Report** | `Accounting` | `Odoo 17.0.0.1` | **€35.00** | Professional Arabian So Invoice Report solution for Odoo Accounting. Streamlines business operations, automates workflow validations, and enhances ERP reporting. |
 | [`arfad_hr_allowances`](./arfad_hr_allowances) | **COA Arfad Hr Allowances** | `Human Resources` | `Odoo 17.0.1.1` | **€39.00** | Add 5 allowance fields to employee form |
 | [`arfad_invoice_report`](./arfad_invoice_report) | **COA Arfad Invoice Report** | `Accounting` | `Odoo 17.0.19.0.1.0.9` | **€35.00** | Custom Layout for Tax Invoice Report |
 | [`arfad_payslip_report`](./arfad_payslip_report) | **COA Arfad Payslip Report** | `Human Resources` | `Odoo 17.0.19.0.1.0.0` | **€39.00** | Custom Bilingual Payslip Report Layout for Arfad |
@@ -58,7 +63,7 @@ Welcome to the **COA Odoo Addons Store Repository**. This suite contains **109+ 
 | [`coa_hr_loan_accounting`](./coa_hr_loan_accounting) | **COA Hr Loan Accounting** | `Accounting` | `Odoo 17.0.19.0.1.0.0` | **€49.00** | Accounting integration for HR Loans |
 | [`coa_illustrations`](./coa_illustrations) | **COA Illustrations** | `Extra Tools` | `Odoo 17.0.1.0.0` | **€19.00** | Advanced Illustrations module for Odoo ERP. |
 | [`coa_internal_transfer`](./coa_internal_transfer) | **COA Internal Transfer** | `Extra Tools` | `Odoo 17.0.19.0.1.0.0` | **€19.00** | Restore the classic Internal Transfer feature on Payments (Odoo 19) |
-| [`coa_invoice_report`](./coa_invoice_report) | **COA Invoice Report** | `Accounting` | `Odoo 17.0.18.2.0` | **€35.00** | invoice_report |
+| [`coa_invoice_report`](./coa_invoice_report) | **COA Invoice Report** | `Accounting` | `Odoo 17.0.18.2.0` | **€35.00** | Professional Invoice Report solution for Odoo Accounting. Streamlines business operations, automates workflow validations, and enhances ERP reporting. |
 | [`coa_journal_gl_balance`](./coa_journal_gl_balance) | **COA Journal Gl Balance** | `Accounting` | `Odoo 17.0.19.0.2.0.0` | **€35.00** | Show the General Ledger balance on the bank/cash journal dashboard instead of the statement-based balance. For foreig... |
 | [`coa_location_restrictions`](./coa_location_restrictions) | **COA Location Restrictions** | `Inventory` | `Odoo 17.0.19.0.1.0.2` | **€25.00** | Restrict inventory operations and stock moves to allowed warehouses and locations. |
 | [`coa_location_warehouse_code`](./coa_location_warehouse_code) | **COA Location Warehouse Code** | `Inventory` | `Odoo 17.0.19.0.1.0.0` | **€25.00** | Add code field to Location and Warehouse configuration |
@@ -123,15 +128,15 @@ Welcome to the **COA Odoo Addons Store Repository**. This suite contains **109+ 
 | [`coa_zero_journal_entries_print`](./coa_zero_journal_entries_print) | **COA Zero Journal Entries Print** | `Accounting` | `Odoo 17.0.8.2.0` | **€15.00** | Print Journal Entries PDF |
 
 
-## 🛠️ Installation Guide
+## 🛠️ Installation & Setup Guide
 
-1. Clone this repository into your Odoo `custom_addons` path:
+1. Clone this repository into your Odoo `custom_addons` directory:
    ```bash
    git clone https://github.com/Ahmed128aboshady/-COA-Addons.git
    ```
-2. Add the repository directory to your `odoo.conf` file under `addons_path`.
-3. Restart your Odoo service and activate Developer Mode.
-4. Go to **Apps -> Update Apps List** and search for the module title.
+2. Add the repository directory to your `odoo.conf` under `addons_path`.
+3. Restart Odoo server and enable Developer Mode.
+4. Go to **Apps -> Update Apps List** and install your desired module.
 
 --- 
-Developed and maintained by **COA (Ahmed Aboshady)**.
+Developed and maintained by **COA Egypt (Chart of Accounts)**. For custom Odoo development, migration, or support, contact us via [WhatsApp](https://wa.me/201013907174) or visit [www.coa-egy.com](https://www.coa-egy.com).

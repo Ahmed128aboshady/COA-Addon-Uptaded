@@ -2,9 +2,9 @@
 {
     'name': 'COA So Date On Print',
     'summary': 'Set the Sale Order date to the print date on first print',
-    'description': 'Professional COA Sale Order Date on Print custom module for Odoo.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA So Date On Print developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 18.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',
     'version': '18.0.1.0.0',
     'license': 'OPL-1',

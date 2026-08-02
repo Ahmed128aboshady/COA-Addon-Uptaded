@@ -2,9 +2,9 @@
 {
     'name': 'COA Mfg Production Variance',
     'summary': 'Planned vs Produced quantity variance report for Manufacturing Orders',
-    'description': '\nProduction Quantity Variance Report\n===================================\nCompares the planned quantity (To Produce) against the actually produced\nquantity for each Manufacturing Order, with variance in quantity and\npercentage.\n\nFeatures:\n---------\n* SQL view based report model (fast, no stored duplication)\n* List, Pivot and Graph views\n* Full grouping flexibility: Product, Product Category, Responsible,\n  State, Finished Date (month), Company\n* Ready-made filters: Done MOs, Over-produced, Under-produced\n* Drill-down to the Manufacturing Order from the report line\n* Export wizard: PDF (QWeb, A4 Landscape) and Excel (xlsxwriter,\n  color-coded with totals and autofilter)\n\nCompatible with Odoo 18 and Odoo 19 (Community & Enterprise).\n    ',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Mfg Production Variance developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.2.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Manufacturing',
     'version': '17.0.19.0.1.2.0',
     'license': 'OPL-1',

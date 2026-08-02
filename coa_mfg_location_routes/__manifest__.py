@@ -2,9 +2,9 @@
 {
     'name': 'COA Mfg Location Routes',
     'summary': 'ربط لوكيشن السحب والتخزين بالكاتجوري تلقائياً في التصنيع والبيع والمرتجعات',
-    'description': '\n        المشاكل اللي بيحلها المديول ده:\n        ====================================\n        1. ربط source location بالكاتجوري لكل عملية (تصنيع / بيع / مرتجع)\n        2. حل مشكلة "No rule has been found to replenish" للأصناف في sub-locations\n        3. إنشاء Stock Rules تلقائياً لكل كاتجوري عند الحفظ\n        4. دعم BUY + MTO مع لوكيشن مخصص\n        5. حقل لوكيشن على component في BOM يورث من الكاتجوري\n    ',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Mfg Location Routes developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Inventory',
     'version': '17.0.19.0.1.0.0',
     'license': 'OPL-1',

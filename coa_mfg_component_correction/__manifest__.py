@@ -2,9 +2,9 @@
 {
     'name': 'COA Mfg Component Correction',
     'summary': 'تصحيح كميات المكونات بعد إتمام أوامر التصنيع',
-    'description': '\n        يتيح هذا الموديول إمكانية تصحيح كميات المكونات المستهلكة\n        بعد إغلاق أمر التصنيع، مع إرجاع الفارق للمخزن وتصحيح التكلفة تلقائياً.\n    ',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Mfg Component Correction developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Manufacturing',
     'version': '17.0.19.0.1.0.0',
     'license': 'OPL-1',

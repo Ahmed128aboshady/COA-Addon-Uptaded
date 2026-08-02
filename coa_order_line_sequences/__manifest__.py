@@ -2,9 +2,9 @@
 {
     'name': 'COA Order Line Sequences',
     'summary': 'Sequence numbers in order lines of sales,purchase and delivery.',
-    'description': 'This module will help you to add sequence for order lines\n    in sales, purchase and delivery. It will also add line numbers in report lines.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Order Line Sequences developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 18.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Sales',
     'version': '18.0.1.0.0',
     'license': 'OPL-1',

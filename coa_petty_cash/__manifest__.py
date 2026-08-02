@@ -2,9 +2,9 @@
 {
     'name': 'COA Petty Cash',
     'summary': 'Manage petty cash custodies and expenses with full accounting integration',
-    'description': '\n        Petty Cash Management System:\n        - Each employee registers their own expenses\n        - Accountants see all employee custodies and remaining balances\n        - Each employee sees only their own expenses\n        - Full accounting integration with automatic journal entries\n        - Each category has a dedicated expense account\n        - Custody account configured from Settings\n        - Multi-level approval workflow\n    ',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Petty Cash developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.3.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',
     'version': '17.0.19.0.3.0.0',
     'license': 'OPL-1',

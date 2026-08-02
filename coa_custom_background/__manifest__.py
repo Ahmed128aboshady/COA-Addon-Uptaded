@@ -2,9 +2,9 @@
 {
     'name': 'COA Custom Background',
     'summary': 'Custom Background',
-    'description': 'Professional Custom Background custom module for Odoo.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Custom Background developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 18.0.1.0.2.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',
     'version': '18.0.1.0.2',
     'license': 'OPL-1',

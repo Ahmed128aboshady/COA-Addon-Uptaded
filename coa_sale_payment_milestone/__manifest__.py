@@ -2,9 +2,9 @@
 {
     'name': 'COA Sale Payment Milestone',
     'summary': 'شروط سداد بالمراحل مع ربط مباشر بالمدفوعات المحاسبية',
-    'description': '\n        يتيح هذا الأدون للمبيعات تحديد جدول دفعات تفصيلي على أوردر البيع\n        (مثل 10% تعاقد، 25% بداية تصنيع، ...) وربطها بالمدفوعات الفعلية\n        المسجلة في المحاسبة دون الحاجة لإصدار فاتورة مسبقة.\n    ',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Sale Payment Milestone developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Accounting',
     'version': '17.0.19.0.1.0.0',
     'license': 'OPL-1',

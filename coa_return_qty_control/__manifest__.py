@@ -2,9 +2,9 @@
 {
     'name': 'COA Return Qty Control',
     'summary': 'Block returning more than the delivered quantity and show returned / remaining quantities on the return wizard and pi...',
-    'description': 'Professional COA Return Quantity Control custom module for Odoo.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Return Qty Control developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 18.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Inventory',
     'version': '18.0.1.0.0',
     'license': 'OPL-1',

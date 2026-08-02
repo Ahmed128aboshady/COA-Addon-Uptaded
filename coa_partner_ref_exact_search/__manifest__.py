@@ -2,9 +2,9 @@
 {
     'name': 'COA Partner Ref Exact Search',
     'summary': 'Exact-match search on partner Reference (ref) in search bar and dropdowns',
-    'description': '\nCOA Partner Exact Reference Search\n==================================\nSearching a partner by Reference (e.g. 538) with the default behaviour\nalso matches partners whose reference merely contains the digits\n(e.g. 1538). This module adds:\n\n* A "Reference (Exact)" search option in the partner search view\n  that matches the reference exactly.\n* An override of partner name_search so that typing a pure number in\n  any partner dropdown (Sales Orders, Invoices, Payments, ...) first\n  tries an exact match on the Reference field, falling back to the\n  standard behaviour when no exact match exists.\n',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Partner Ref Exact Search developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 18.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',
     'version': '18.0.1.0.0',
     'license': 'OPL-1',

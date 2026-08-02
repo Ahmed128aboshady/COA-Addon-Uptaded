@@ -2,9 +2,9 @@
 {
     'name': 'COA Edit Order Date',
     'summary': 'Change the order date for particular user group',
-    'description': 'We can change the order date of the confirmed sale order.The access for the editing the order date can berestricted to particular user group. The user who have no access to edit the field got a user error while trying tochange the field',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Edit Order Date developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 18.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Sales',
     'version': '18.0.1.0.0',
     'license': 'OPL-1',

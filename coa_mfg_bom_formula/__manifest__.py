@@ -2,9 +2,9 @@
 {
     'name': 'COA Mfg Bom Formula',
     'summary': 'إضافة حاسبة معادلات ديناميكية على BOM',
-    'description': '\n        يضيف تاب "حاسبة التصنيع" على BOM يمكّنك من:\n        - تعريف متغيرات (طول، عرض، سماكة، عدد، ثوابت)\n        - كتابة معادلات Python يدوياً لكل component\n        - حساب الكميات تلقائياً وتحديث BOM Lines\n    ',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Mfg Bom Formula developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Manufacturing',
     'version': '17.0.19.0.1.0.0',
     'license': 'OPL-1',

@@ -2,9 +2,9 @@
 {
     'name': 'COA Vendor Duplicate Check',
     'summary': "Warn or block when a vendor's email or phone is already used by another contact.",
-    'description': '\nVendor Duplicate Check\n======================\n\nOdoo natively alerts on duplicate Tax ID / Company Registry when a vendor is\ncreated (including by duplicating an existing vendor), but it does NOT check for\na duplicate Email or Phone number.\n\nThis module adds that check on ``res.partner``:\n\n* On save it can **block** the record (ValidationError) or only **warn**.\n* A live **on-change warning** flags duplicates while typing / after duplicating.\n* Configurable from *Settings > Duplicate Check*:\n    - Handling mode: Block save / Warn only\n    - Scope: Vendors only / All contacts\n    - Which fields to check: Email, Phone\n\nNote (Odoo 19): the separate ``mobile`` field was removed from contacts and\nmerged into ``phone``, so the mobile number is validated through ``phone``.\n',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Vendor Duplicate Check developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',
     'version': '17.0.19.0.1.0.0',
     'license': 'OPL-1',

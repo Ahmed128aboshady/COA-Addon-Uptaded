@@ -2,9 +2,9 @@
 {
     'name': 'COA Alramlaa Quotation Report',
     'summary': 'Custom Quotation/Sales Order PDF Report - Al Ramlaa Wooden Products Style',
-    'description': '\n        Custom QWeb PDF report for Quotations and Sales Orders.\n        Includes:\n        - Company header with logo\n        - Quotation summary page\n        - Detailed item pages with images, descriptions, materials, dimensions, qty & prices\n        - Joinery section\n        - Furniture section\n        - Payment terms & delivery terms\n        - Arabic + English bilingual support\n        - Footer with company info\n    ',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Alramlaa Quotation Report developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Sales',
     'version': '17.0.19.0.1.0.0',
     'license': 'OPL-1',

@@ -2,9 +2,9 @@
 {
     'name': 'COA Account Restricted Access',
     'summary': 'تقييد رؤية المحاسب على حسابات معينة في الجينرال ليدجر وحركة الحسابات',
-    'description': '\nAccount Restricted Access\n==========================\nيسمح هذا الموديول بتحديد قائمة حسابات (Many2many) لكل مستخدم من خلال بطاقة\nالمستخدم (Users). المستخدم المنتمي لمجموعة "محاسب مقيّد الصلاحية" لن يرى\nولن يستطيع الوصول إلا إلى:\n\n- حركة القيود (Journal Items / account.move.line) الخاصة بالحسابات المسموح بها فقط\n- دفتر الأستاذ العام (General Ledger) محدود بهذه الحسابات\n- شجرة الحسابات (Chart of Accounts) محدودة بهذه الحسابات فقط\n\nتم تطويره بواسطة Community of Accountants - COA\nOdoo Silver Partner\n    ',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Account Restricted Access developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Accounting',
     'version': '17.0.19.0.1.0.0',
     'license': 'OPL-1',

@@ -2,9 +2,9 @@
 {
     'name': 'COA Arfad Purchase Report',
     'summary': 'Custom PDF layout for Purchase Orders',
-    'description': '\n        Replaces the default Odoo Purchase Order PDF with a custom \n        layout matching Arfad company design.\n    ',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Arfad Purchase Report developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',
     'version': '17.0.19.0.1.0.0',
     'license': 'OPL-1',

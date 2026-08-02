@@ -2,9 +2,9 @@
 {
     'name': 'COA Ts Location Restrictions',
     'summary': 'Restrict warehouse/stock locations and operation types per user',
-    'description': "\nWarehouse Location Restriction\n================================\nRestrict inventory users' access to specific warehouses, transfer locations,\nand operation types on an individual basis. Users can only access designated locations.\n    ",
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Ts Location Restrictions developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Inventory',
     'version': '17.0.19.0.1.0.0',
     'license': 'OPL-1',

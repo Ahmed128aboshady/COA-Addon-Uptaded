@@ -2,9 +2,9 @@
 {
     'name': 'COA Delivery Status',
     'summary': 'Show delivery status in sales order form',
-    'description': 'Professional Delivery Status in Sales Order custom module for Odoo.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Delivery Status developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Inventory',
     'version': '17.0.1.0.0',
     'license': 'OPL-1',

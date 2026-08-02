@@ -2,9 +2,9 @@
 {
     'name': 'COA Commission Sales',
     'summary': 'Calculate sales commissions based on customer tag and net sales',
-    'description': '\n        Sales Commission Module\n        ========================\n        - Calculates commission from net sales (Invoice Analysis)\n        - Rate is determined based on the customer tag\n        - Tags and rates can be added and modified from the Settings\n        - Comprehensive report for each salesperson\n    ',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Commission Sales developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 18.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Sales',
     'version': '18.0.1.0.0',
     'license': 'OPL-1',

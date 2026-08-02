@@ -2,9 +2,9 @@
 {
     'name': 'COA Accrued Expense',
     'summary': 'Recognize vendor bill expenses over a period as accrued expenses.',
-    'description': 'Accrued Accounts: Define custom accrued expense accounts and journals in Odoo Settings.\nVendor Bills: Flag vendor bill lines as "Accrued" and specify start/end dates.\nAccrual Reclass: Automatically creates reclassification entries moving expense to accrued account.\nPeriodic Recognition: Periodically recognizes the expense month by month.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Accrued Expense developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 18.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Accounting',
     'version': '18.0.1.0.0',
     'license': 'OPL-1',

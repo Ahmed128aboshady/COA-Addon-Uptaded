@@ -2,9 +2,9 @@
 {
     'name': 'COA Stock Block Negative',
     'summary': 'Prevent stock levels from going negative anywhere in the system (manufacturing, deliveries, internal transfers, POS, ...',
-    'description': 'Professional Block Negative Stock custom module for Odoo.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Stock Block Negative developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Inventory',
     'version': '17.0.19.0.1.0.0',
     'license': 'OPL-1',

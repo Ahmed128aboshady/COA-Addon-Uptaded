@@ -2,9 +2,9 @@
 {
     'name': 'COA Custom Sale Price Lock',
     'summary': 'Lock sale order line unit price and allow editing for specific users only.',
-    'description': 'Professional Custom Sale Price Lock custom module for Odoo.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Custom Sale Price Lock developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Sales',
     'version': '17.0.1.0.0',
     'license': 'OPL-1',

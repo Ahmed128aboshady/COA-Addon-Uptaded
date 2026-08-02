@@ -2,9 +2,9 @@
 {
     'name': 'COA Sale Confirm Date',
     'summary': 'Sale Confirm Date',
-    'description': 'Professional Sale Confirm Date custom module for Odoo.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Sale Confirm Date developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 18.0.1.0.1.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Sales',
     'version': '18.0.1.0.1',
     'license': 'OPL-1',

@@ -2,9 +2,9 @@
 {
     'name': 'COA Account Merge',
     'summary': 'Merge two or more GL accounts while preserving full journal ledger history.all journal items and references move to o...',
-    'description': 'Chart of Accounts: Adds a "Merge Accounts" action on the Chart of Accounts list view.\nMove Relinking: Re-points all historical Journal Items to the destination account.\nLedger Integrity: Keeps chronological date order and running balances completely intact.\nDatabase Scanner: Updates all default accounting rules, tax rules, product models, and partner records.\nSafe Archiving: Archives source accounts safely instead of deleting them.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Account Merge developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 18.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Accounting',
     'version': '18.0.1.0.0',
     'license': 'OPL-1',

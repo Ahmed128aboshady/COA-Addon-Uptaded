@@ -2,9 +2,9 @@
 {
     'name': 'COA Arfad Payslip Report',
     'summary': 'Custom Bilingual Payslip Report Layout for Arfad',
-    'description': '\n        Replaces the default Odoo payslip PDF with a custom bilingual\n        (Arabic / English) layout matching Arfad company design.\n    ',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Arfad Payslip Report developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Human Resources',
     'version': '17.0.19.0.1.0.0',
     'license': 'OPL-1',

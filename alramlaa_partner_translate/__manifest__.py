@@ -2,9 +2,9 @@
 {
     'name': 'COA Alramlaa Partner Translate',
     'summary': 'Make partner name translatable (Arabic/English)',
-    'description': 'Professional Alramlaa Partner Name Translation custom module for Odoo.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Alramlaa Partner Translate developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.1.1.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',
     'version': '17.0.19.0.1.1.1',
     'license': 'OPL-1',

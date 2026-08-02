@@ -2,9 +2,9 @@
 {
     'name': 'COA Delegate Tracking',
     'summary': 'Live location tracking and dashboard for sales delegates in the field.',
-    'description': '\nThis module tracks the locations of sales delegates, updates their last known coordinates,\nand displays their live and historical positions on an interactive OpenStreetMap map.\n    ',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Delegate Tracking developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',
     'version': '17.0.1.0.0',
     'license': 'OPL-1',

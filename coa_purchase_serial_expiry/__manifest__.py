@@ -2,9 +2,9 @@
 {
     'name': 'COA Purchase Serial Expiry',
     'summary': 'Auto serial on PO/MO, expiry entry on receipts, FIFO auto-lot on delivery & MO',
-    'description': '\n    Features\n    ========\n    1. Checkbox on product: "Requires Expiry Date on Purchase"\n       - Blocks receipt validation if expiry date is missing\n       - Auto-enables Lot tracking + FIFO removal strategy\n\n    2. Expiry Date entry on Receipt (Detailed Operations):\n       - Storekeeper fills Lot # + Expiry Date per line\n       - Multiple lines = multiple lots with different expiry dates\n       - Lots created automatically in stock on validation\n\n    3. FIFO auto-assignment on delivery (Sales) and Manufacturing:\n       - Detailed Operations auto-sorted: earliest expiry lot first\n       - MO raw material lines auto-filled with FIFO lots on produce\n\n    4. Auto serial number on Purchase Orders and Manufacturing Orders\n\n    5. Daily cron: email + chatter + activity 30 days before lot expiry\n\n    6. Lot Expiry Report (List / Graph / Pivot / PDF)\n    ',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Purchase Serial Expiry developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',
     'version': '17.0.19.0.1.0.0',
     'license': 'OPL-1',

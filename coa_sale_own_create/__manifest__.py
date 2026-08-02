@@ -2,9 +2,9 @@
 {
     'name': 'COA Sale Own Create',
     'summary': 'صلاحية جديدة: يشوف بتاعته بس ويعمل أوردر لأي salesperson',
-    'description': 'Professional Sale: Own View - Any Salesperson Create custom module for Odoo.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Sale Own Create developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 18.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Sales',
     'version': '18.0.1.0.0',
     'license': 'OPL-1',

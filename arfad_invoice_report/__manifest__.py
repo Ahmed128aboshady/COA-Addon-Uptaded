@@ -2,9 +2,9 @@
 {
     'name': 'COA Arfad Invoice Report',
     'summary': 'Custom Layout for Tax Invoice Report',
-    'description': 'Professional Arfad Custom Invoice Report custom module for Odoo.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Arfad Invoice Report developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.9.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Accounting',
     'version': '17.0.19.0.1.0.9',
     'license': 'OPL-1',

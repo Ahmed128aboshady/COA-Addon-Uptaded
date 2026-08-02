@@ -2,9 +2,9 @@
 {
     'name': 'COA Multi Approval',
     'summary': 'Multi-stage approval workflow for Sales, Purchase, Inventory and Accounting',
-    'description': '\n        Configure multi-stage approval workflows for:\n        - Sale Orders (Quotations)\n        - Purchase Orders\n        - Vendor Bills / Customer Invoices (Accounting)\n        - Inventory Transfers (Stock Pickings)\n\n        Features:\n        - Unlimited configurable approval stages\n        - Per-stage approvers with flexible requirements (any/all/minimum)\n        - Automatic stage advancement\n        - Email & activity notifications\n        - Refuse with reason\n        - Auto-confirm option after full approval\n        - Full audit trail via chatter\n    ',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Multi Approval developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.2.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Project',
     'version': '17.0.19.0.1.2.0',
     'license': 'OPL-1',

@@ -2,9 +2,9 @@
 {
     'name': 'COA Sale Partner Balance',
     'summary': 'Display partner previous and current balance on Sale Order and Invoice reports',
-    'description': '\n        This module adds a balance section to Sale Order and Invoice reports showing:\n        - Previous Balance (الرصيد السابق)\n        - Current Document Amount (الفاتورة الحالية)\n        - Current Balance (الرصيد الحالي)\n    ',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Sale Partner Balance developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.2.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Accounting',
     'version': '17.0.19.0.2.0.0',
     'license': 'OPL-1',

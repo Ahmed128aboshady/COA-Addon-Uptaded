@@ -2,9 +2,9 @@
 {
     'name': 'COA Sale Price Security',
     'summary': 'Add a checkbox permission to control who can edit sale order prices',
-    'description': '\nAdds a new group "Can Edit Sale Prices" that appears as a checkbox\nin the user access rights page under the Sales section.\n\nWhen a user does NOT have this permission, the Unit Price field\nin sale order lines becomes read-only for them.\n\nBy default the group is granted to:\n- Administrators\n- Sales / Administrator (Sales Manager)\n    ',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Sale Price Security developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 18.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Sales',
     'version': '18.0.1.0.0',
     'license': 'OPL-1',

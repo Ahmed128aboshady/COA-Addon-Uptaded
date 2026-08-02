@@ -2,9 +2,9 @@
 {
     'name': 'COA Sale Payment Method',
     'summary': 'Add payment method tags on sales orders and invoices with reporting',
-    'description': 'Professional Sale Payment Method custom module for Odoo.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Sale Payment Method developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 18.0.2.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Accounting',
     'version': '18.0.2.0.0',
     'license': 'OPL-1',

@@ -2,9 +2,9 @@
 {
     'name': 'COA Hide Menu User',
     'summary': 'Hide Menu, Odoo18 Hide Menu, Hide Menu Odoo, Restrict Menu Items, Odoo18 Menu, Odoo18, Odoo Apps',
-    'description': 'Hide Any Menu Item User Wise, Hide Menu Items, Hide Menu',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Hide Menu User developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 18.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',
     'version': '18.0.1.0.0',
     'license': 'OPL-1',

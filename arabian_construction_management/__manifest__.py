@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'COA Arabian Construction Management',
-    'summary': "Short (1 phrase/line) summary of the module's purpose",
-    'description': "\nLong description of module's purpose\n    ",
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'summary': 'Professional Arabian Construction Management solution for Odoo Project. Streamlines business operations, automates workflow validations, and enhances ERP reporting.',
+    'description': 'COA Arabian Construction Management developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.0.3.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Project',
     'version': '17.0.0.3',
     'license': 'OPL-1',

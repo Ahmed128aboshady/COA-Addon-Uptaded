@@ -2,9 +2,9 @@
 {
     'name': 'COA Mfg Bom Consumption Report',
     'summary': 'Compare planned BOM quantities with actual stock consumption per MO',
-    'description': 'Professional BOM vs Actual Consumption Report custom module for Odoo.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Mfg Bom Consumption Report developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.1.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Manufacturing',
     'version': '17.0.19.0.1.0.1',
     'license': 'OPL-1',

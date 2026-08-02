@@ -2,9 +2,9 @@
 {
     'name': 'COA Custom Date Order',
     'summary': 'Advanced Custom Date Order module for Odoo ERP.',
-    'description': 'Professional Custom Date Order custom module for Odoo.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Custom Date Order developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 18.0.1.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Sales',
     'version': '18.0.1.0',
     'license': 'OPL-1',

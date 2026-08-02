@@ -2,9 +2,9 @@
 {
     'name': 'COA Partner Statement',
     'summary': 'Partner Account Statement Report with Opening Balance',
-    'description': '\n        Generates a partner account statement report showing:\n        - Opening balance before the selected period\n        - All debit/credit transactions within the period\n        - Running balance per line\n        - Totals at the bottom\n    ',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Partner Statement developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 18.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',
     'version': '18.0.1.0.0',
     'license': 'OPL-1',

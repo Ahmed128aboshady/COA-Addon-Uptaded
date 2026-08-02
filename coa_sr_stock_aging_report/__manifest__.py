@@ -2,9 +2,9 @@
 {
     'name': 'COA Sr Stock Aging Report',
     'summary': 'Stock Aging Report By Warehouse and By Location',
-    'description': '\n        Stock Aging Report\n        ==================\n        The stock aging analysis report helps you analyze the age of your stock\n        by organizing the value and quantity into configurable time periods.\n\n        Features:\n        - Stock Aging Report by Warehouse\n        - Stock Aging Report by Location\n        - Filter by Products or Product Categories\n        - Configurable aging periods (e.g. 0-30, 31-60, 61-90, 91-120, 120+ days)\n        - PDF Export\n        - FIFO-based age calculation\n    ',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Sr Stock Aging Report developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Inventory',
     'version': '17.0.19.0.1.0.0',
     'license': 'OPL-1',

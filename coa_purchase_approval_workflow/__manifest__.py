@@ -2,9 +2,9 @@
 {
     'name': 'COA Purchase Approval Workflow',
     'summary': 'Configurable multi-level purchase order approval workflow',
-    'description': "\nPurchase Approval Workflow\n==========================\nIntroduces a fully configurable, multi-level purchase order approval workflow\nwith 14 advanced features for enterprise-grade procurement governance.\n\nKey Features:\n1.  SLA & Escalation: per-level deadline, overdue badge, automatic escalation cron\n2.  One-Click Email Approval: tokenized Approve/Reject buttons in notification emails\n3.  Bulk Approval Dashboard: My/All Pending Approvals with inline actions and bulk server action\n4.  Delegation / Out-of-Office: delegate approvals to another user with an optional end date\n5.  Trusted Vendor Bypass: skip workflow for trusted vendors below a configurable amount limit\n6.  Parallel Approval (AND logic): require all group members to approve before advancing\n7.  HR Manager Auto-Routing: automatically route to the buyer's HR manager hierarchy\n8.  Budget Check Integration: real-time remaining budget warning on PO approval screen\n9.  Approval Analytics Dashboard: pivot + bar/trend graph views on approval history\n10. Change Summary on Resubmission: automatic chatter diff of what changed since last submission\n11. Approval Policy Templates: wizard to create pre-built matrix configurations in one click\n12. Vendor-Specific Rules: restrict matrix rules to a specific vendor\n13. Urgency Override: mark POs as Urgent or Critical to fast-track or escalate routing\n14. Export Audit Trail: download the full audit trail as a formatted Excel file or branded PDF\n    ",
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Purchase Approval Workflow developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.4.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Project',
     'version': '17.0.19.0.4.0.0',
     'license': 'OPL-1',

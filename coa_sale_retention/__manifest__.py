@@ -2,9 +2,9 @@
 {
     'name': 'COA Sale Retention',
     'summary': 'Customer retention/holdback on sales: configurable percentage and holding period per order, automatic split of the re...',
-    'description': 'Professional Sales Retention Money custom module for Odoo.',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Sale Retention developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.2.0.1.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Sales',
     'version': '17.0.19.0.2.0.1',
     'license': 'OPL-1',

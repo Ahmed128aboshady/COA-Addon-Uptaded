@@ -2,9 +2,9 @@
 {
     'name': 'COA Bi Print Journal Entries',
     'summary': 'Allow to print pdf report of Journal Entries.',
-    'description': '\n    Allow to print pdf report of Journal Entries.\n    journal entry\n    print journal entry \n    journal entries\n    print journal entry reports\n    account journal entry reports\n    journal reports\n    account entry reports\n\n    \n',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Bi Print Journal Entries developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Accounting',
     'version': '17.0.19.0.0.0',
     'license': 'OPL-1',

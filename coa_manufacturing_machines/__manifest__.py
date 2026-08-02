@@ -2,9 +2,9 @@
 {
     'name': 'COA Manufacturing Machines',
     'summary': 'إدارة الآلات والصيانة وتتبع التكاليف في التصنيع',
-    'description': '\n        نظام متكامل لإدارة:\n        - الآلات ومراكز الإنتاج\n        - الصيانة الوقائية والتصحيحية\n        - تتبع تكاليف العمال والمواد\n        - التكاليف الإضافية (Overhead)\n        - الربط بالحسابات تلقائياً\n    ',
-    'author': 'COA / Ahmed Aboshady',
-    'website': 'https://github.com/Ahmed128aboshady/-COA-Addons',
+    'description': 'COA Manufacturing Machines developed by COA Egypt (https://www.coa-egy.com). Fully integrated for Odoo 17.0.19.0.1.0.0.',
+    'author': 'COA (Chart of Accounts)',
+    'website': 'https://www.coa-egy.com',
     'category': 'Manufacturing',
     'version': '17.0.19.0.1.0.0',
     'license': 'OPL-1',
