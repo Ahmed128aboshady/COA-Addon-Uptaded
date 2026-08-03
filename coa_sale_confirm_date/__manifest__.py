@@ -6,7 +6,7 @@
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Sales',
-    'version': '18.0.1.0.1',
+    'version': '1.0.0',
     'license': 'OPL-1',
     'price': 15.0,
     'currency': 'EUR',

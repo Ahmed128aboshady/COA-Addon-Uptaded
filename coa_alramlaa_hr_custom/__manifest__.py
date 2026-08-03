@@ -6,7 +6,7 @@
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Human Resources',
-    'version': '17.0.19.0.1.0.0',
+    'version': '1.0.0',
     'license': 'OPL-1',
     'price': 39.0,
     'currency': 'EUR',

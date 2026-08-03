@@ -6,7 +6,7 @@
     'author': 'COA (Chart of Accounts)',
     'website': 'https://www.coa-egy.com',
     'category': 'Accounting',
-    'version': '17.0.19.0.8.0.2',
+    'version': '1.0.0',
     'license': 'OPL-1',
     'price': 49.0,
     'currency': 'EUR',
