@@ -10,7 +10,7 @@
     'license': 'OPL-1',
     'price': 79.0,
     'currency': 'EUR',
-    'depends': ['sale_management', 'manufacturing', 'project', 'product'],
+    'depends': ['sale_management', 'mrp', 'project', 'product'],
     'data': [],
     'images': ['static/description/banner.png'],
     'installable': True,
