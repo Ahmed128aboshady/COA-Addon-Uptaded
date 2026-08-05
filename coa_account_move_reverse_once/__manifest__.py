@@ -2,15 +2,19 @@
 {
     'name': 'COA Account Move Reverse Once',
     'summary': 'Block reversing a journal entry more than once and block reversing a reversal entry.',
-    'description': 'COA Account Move Reverse Once developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 17.0.19.0.1.0.0.',
-    'author': 'COA (Chart of Accounts)',
+    'description': """
+COA Account Move Reverse Once Suite
+====================
+Enterprise grade Odoo module developed by COA (Community of acountants). Connects seamlessly with Odoo ecosystem.
+    """,
+    'author': 'COA (Community of acountants)',
     'website': 'https://www.coa-egy.com',
     'category': 'Accounting',
     'version': '1.0.0',
     'license': 'OPL-1',
     'price': 35.0,
     'currency': 'EUR',
-    'depends': ['account'],
+    'depends': ['base'],
     'data': [],
     'images': ['static/description/banner.png'],
     'installable': True,

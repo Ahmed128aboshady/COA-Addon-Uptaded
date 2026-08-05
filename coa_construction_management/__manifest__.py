@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'COA Construction Management',
-    'summary': 'Comprehensive Contracting, Project BOQ Estimations, Subcontractor Agreements, Site Daily Logs & Cost Control Suite for Odoo',
+    'summary': 'COA Construction Management Suite for Odoo',
     'description': """
-COA Construction Management & Contracting Suite
-=================================================
-Complete end-to-end Construction Management suite for Odoo. Connect Project BOQ Estimations, Subcontractor Agreements, Site Daily Logs, Material Requisitions, Equipment Tracking, and Real-Time Profitability Analysis.
+COA Construction Management Suite
+====================
+Enterprise grade Odoo module developed by COA (Community of acountants). Connects seamlessly with Odoo ecosystem.
     """,
     'author': 'COA (Community of acountants)',
     'website': 'https://www.coa-egy.com',
-    'category': 'Construction',
+    'category': 'Extra Tools',
     'version': '1.0.0',
     'license': 'OPL-1',
-    'price': 79.0,
+    'price': 39.0,
     'currency': 'EUR',
-    'depends': ['base', 'mail', 'project', 'account', 'stock', 'purchase', 'hr'],
+    'depends': ['base'],
     'data': [],
     'images': ['static/description/banner.png'],
     'installable': True,

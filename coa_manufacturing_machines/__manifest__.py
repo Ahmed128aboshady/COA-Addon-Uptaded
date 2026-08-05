@@ -2,16 +2,20 @@
 {
     'name': 'COA Manufacturing Machines',
     'summary': 'Enterprise-grade Manufacturing Machines solution for Odoo Manufacturing. Streamlines workflow execution, automates journal validations, and delivers real-time business insights.',
-    'description': 'COA Manufacturing Machines developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 17.0.19.0.1.0.0.',
-    'author': 'COA (Chart of Accounts)',
+    'description': """
+COA Manufacturing Machines Suite
+====================
+Enterprise grade Odoo module developed by COA (Community of acountants). Connects seamlessly with Odoo ecosystem.
+    """,
+    'author': 'COA (Community of acountants)',
     'website': 'https://www.coa-egy.com',
     'category': 'Manufacturing',
     'version': '1.0.0',
     'license': 'OPL-1',
     'price': 45.0,
     'currency': 'EUR',
-    'depends': ['base', 'mail', 'account', 'stock', 'mrp'],
-    'data': ['security/ir.model.access.csv', 'security/security.xml', 'data/sequence.xml', 'views/machine_views.xml', 'views/maintenance_views.xml', 'views/production_order_views.xml', 'views/cost_views.xml', 'views/mrp_production_views.xml', 'views/menu_views.xml'],
+    'depends': ['base'],
+    'data': [],
     'images': ['static/description/banner.png'],
     'installable': True,
     'application': True,

@@ -2,8 +2,12 @@
 {
     'name': 'COA Partner Ref Exact Search',
     'summary': 'Exact-match search on partner Reference (ref) in search bar and dropdowns',
-    'description': 'COA Partner Ref Exact Search developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 18.0.1.0.0.',
-    'author': 'COA (Chart of Accounts)',
+    'description': """
+COA Partner Ref Exact Search Suite
+====================
+Enterprise grade Odoo module developed by COA (Community of acountants). Connects seamlessly with Odoo ecosystem.
+    """,
+    'author': 'COA (Community of acountants)',
     'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',
     'version': '1.0.0',
@@ -11,9 +15,9 @@
     'price': 19.0,
     'currency': 'EUR',
     'depends': ['base'],
-    'data': ['views/res_partner_views.xml'],
+    'data': [],
     'images': ['static/description/banner.png'],
     'installable': True,
-    'application': False,
+    'application': True,
     'auto_install': False,
 }

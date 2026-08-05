@@ -2,8 +2,12 @@
 {
     'name': 'COA Illustrations',
     'summary': 'Advanced Illustrations module for Odoo ERP.',
-    'description': 'COA Illustrations developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 17.0.1.0.0.',
-    'author': 'COA (Chart of Accounts)',
+    'description': """
+COA Illustrations Suite
+====================
+Enterprise grade Odoo module developed by COA (Community of acountants). Connects seamlessly with Odoo ecosystem.
+    """,
+    'author': 'COA (Community of acountants)',
     'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',
     'version': '1.0.0',
@@ -14,6 +18,6 @@
     'data': [],
     'images': ['static/description/banner.png'],
     'installable': True,
-    'application': False,
+    'application': True,
     'auto_install': False,
 }

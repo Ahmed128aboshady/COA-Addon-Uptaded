@@ -2,18 +2,22 @@
 {
     'name': 'COA So Date On Print',
     'summary': 'Set the Sale Order date to the print date on first print',
-    'description': 'COA So Date On Print developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 18.0.1.0.0.',
-    'author': 'COA (Chart of Accounts)',
+    'description': """
+COA So Date On Print Suite
+====================
+Enterprise grade Odoo module developed by COA (Community of acountants). Connects seamlessly with Odoo ecosystem.
+    """,
+    'author': 'COA (Community of acountants)',
     'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',
     'version': '1.0.0',
     'license': 'OPL-1',
     'price': 15.0,
     'currency': 'EUR',
-    'depends': ['sale'],
+    'depends': ['base'],
     'data': [],
     'images': ['static/description/banner.png'],
     'installable': True,
-    'application': False,
+    'application': True,
     'auto_install': False,
 }

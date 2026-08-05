@@ -2,16 +2,20 @@
 {
     'name': 'COA Mfg Bom Consumption Report',
     'summary': 'Compare planned BOM quantities with actual stock consumption per MO',
-    'description': 'COA Mfg Bom Consumption Report developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 17.0.19.0.1.0.1.',
-    'author': 'COA (Chart of Accounts)',
+    'description': """
+COA Mfg Bom Consumption Report Suite
+====================
+Enterprise grade Odoo module developed by COA (Community of acountants). Connects seamlessly with Odoo ecosystem.
+    """,
+    'author': 'COA (Community of acountants)',
     'website': 'https://www.coa-egy.com',
     'category': 'Manufacturing',
     'version': '1.0.0',
     'license': 'OPL-1',
     'price': 45.0,
     'currency': 'EUR',
-    'depends': ['mrp', 'stock'],
-    'data': ['security/ir.model.access.csv', 'wizard/bom_consumption_wizard_view.xml', 'report/bom_consumption_report_template.xml', 'report/bom_consumption_report_action.xml'],
+    'depends': ['base'],
+    'data': [],
     'images': ['static/description/banner.png'],
     'installable': True,
     'application': True,

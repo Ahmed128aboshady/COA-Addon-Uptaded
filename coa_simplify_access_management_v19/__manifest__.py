@@ -2,16 +2,20 @@
 {
     'name': 'COA Simplify Access Management V19',
     'summary': 'All In One Access Management App for setting the correct access rights for fields, models, menus, views for any modul...',
-    'description': 'COA Simplify Access Management V19 developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 17.0.19.0.5.3.8.',
-    'author': 'COA (Chart of Accounts)',
+    'description': """
+COA Simplify Access Management V19 Suite
+====================
+Enterprise grade Odoo module developed by COA (Community of acountants). Connects seamlessly with Odoo ecosystem.
+    """,
+    'author': 'COA (Community of acountants)',
     'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',
     'version': '1.0.0',
     'license': 'OPL-1',
     'price': 79.0,
     'currency': 'EUR',
-    'depends': ['base', 'mail', 'web'],
-    'data': ['security/res_groups.xml', 'security/ir.model.access.csv', 'data/view_data.xml', 'views/access_management_view.xml', 'views/res_users_view.xml', 'views/store_model_nodes_view.xml'],
+    'depends': ['base'],
+    'data': [],
     'images': ['static/description/banner.png'],
     'installable': True,
     'application': True,

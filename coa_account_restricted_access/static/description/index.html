@@ -1,293 +1,155 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COA Account Restricted Access — COA Egypt Enterprise Flagship</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --coa-primary: #714B67;
-            --coa-teal: #00A09D;
-            --coa-gold: #FFD700;
-            --coa-bg: #FFFFFF;
-            --coa-card-bg: #F8FAFC;
-            --coa-border: #E2E8F0;
-            --coa-text-dark: #0F172A;
-            --coa-text-muted: #64748B;
-        }
-        body {
-            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-            background-color: #FFFFFF;
-            color: var(--coa-text-dark);
-            line-height: 1.6;
-        }
-        /* GT-Apps Style Hero Header */
-        .gt-hero-header {
-            background: linear-gradient(135deg, #714B67 0%, #4A2B44 60%, #1E1B2E 100%);
-            color: white;
-            padding: 4rem 2rem 3.5rem 2rem;
-            border-radius: 1.5rem;
-            box-shadow: 0 15px 35px rgba(113, 75, 103, 0.25);
-            margin-bottom: 2.5rem;
-            text-align: center;
-        }
-        .gt-hero-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 3.2rem;
-            font-weight: 800;
-            color: var(--coa-gold) !important;
-            letter-spacing: -0.5px;
-            margin-bottom: 1rem;
-        }
-        .gt-hero-lead {
-            font-size: 1.25rem;
-            color: #F1F5F9;
-            max-width: 900px;
-            margin: 0 auto 2rem auto;
-            font-weight: 400;
-        }
-        .gt-hero-frame {
-            max-width: 850px;
-            margin: 0 auto 2rem auto;
-            border-radius: 1rem;
-            overflow: hidden;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-        }
-        .pill-btn-wa {
-            background: #FFD700;
-            color: #0F172A;
-            font-weight: 700;
-            padding: 0.85rem 2rem;
-            border-radius: 50rem;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.1rem;
-            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-        .pill-btn-wa:hover { background: #FFE033; color: #0F172A; transform: translateY(-2px); }
-        
-        .pill-btn-web {
-            border: 1.5px solid rgba(255, 255, 255, 0.4);
-            color: white;
-            font-weight: 700;
-            padding: 0.85rem 2rem;
-            border-radius: 50rem;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.1rem;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-        .pill-btn-web:hover { background: rgba(255, 255, 255, 0.15); color: white; }
+<div style="font-family: Arial, Helvetica, sans-serif; color: #1E293B; max-width: 1140px; margin: 0 auto; padding: 10px; box-sizing: border-box; line-height: 1.6; background-color: #FFFFFF;">
 
-        /* GT-Apps Module Suite Cards */
-        .gt-card {
-            background: #FFFFFF;
-            border: 1px solid var(--coa-border);
-            border-radius: 1.25rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-        }
-        .gt-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 160, 157, 0.15);
-            border-color: var(--coa-teal);
-        }
-        .gt-card-header {
-            padding: 1.25rem 1.5rem;
-            border-bottom: 1px solid var(--coa-border);
-            font-weight: 800;
-            font-size: 1.1rem;
-            border-radius: 1.25rem 1.25rem 0 0;
-        }
-        .badge-included {
-            background: #E0F2FE;
-            color: #0369A1;
-            font-weight: 700;
-            padding: 0.3rem 0.8rem;
-            border-radius: 50rem;
-            font-size: 0.75rem;
-        }
-        .badge-this-module {
-            background: #DCFCE7;
-            color: #15803D;
-            font-weight: 700;
-            padding: 0.3rem 0.8rem;
-            border-radius: 50rem;
-            font-size: 0.75rem;
-        }
-    </style>
-</head>
-<body>
-    <div class="container my-4">
-        <!-- GT-Apps Style Hero Section -->
-        <div class="gt-hero-header">
-            <h1 class="gt-hero-title">COA Account Restricted Access</h1>
-            <p class="gt-hero-lead">Enterprise-grade Account Restricted Access solution for Odoo Accounting. Streamlines workflow execution, automates journal vali...</p>
-            
-            <!-- High-Res Banner Frame -->
-            <div class="gt-hero-frame">
-                <img src="banner.png" class="w-100 d-block" alt="COA Account Restricted Access Banner" style="object-fit: cover; max-height: 520px;">
-            </div>
-
-            <!-- Pill Action Buttons -->
-            <div class="d-flex justify-content-center flex-wrap gap-3">
-                <a href="https://wa.me/201013907174" target="_blank" class="pill-btn-wa">
-                    <i class="fa-brands fa-whatsapp fs-5"></i> Contact WhatsApp (+20 10 13907174)
-                </a>
-                <a href="https://www.coa-egy.com" target="_blank" class="pill-btn-web">
-                    <i class="fa-solid fa-globe fs-5"></i> Visit Website (www.coa-egy.com)
-                </a>
-            </div>
-        </div>
-
-        <!-- Suite Introduction Banner -->
-        <div class="bg-white py-4 mb-5 text-center">
-            <h3 class="fw-bold mb-3" style="color: var(--coa-primary); font-size: 2rem;">
-                <b>COA Account Restricted Access</b> is an enterprise module in Odoo,<br>
-                integrated within the <b style="color: var(--coa-teal);">COA Enterprise ERP Suite</b>
+    <!-- TOP SECTION: BULLETPROOF HTML TABLE QR CODES BANNER -->
+    <div style="background-color: #FFFFFF; border: 2px solid #00A09D; border-radius: 20px; padding: 25px; margin-bottom: 35px; box-shadow: 0 8px 24px rgba(0, 160, 157, 0.12); text-align: center;">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <span style="background-color: #714B67; color: #FFFFFF; font-size: 11px; font-weight: 700; padding: 5px 16px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; margin-bottom: 8px;">
+                INSTANT MOBILE SCAN
+            </span>
+            <h3 style="margin: 0 0 6px 0; color: #714B67; font-size: 24px; font-weight: 800; text-align: center;">
+                Scan QR Codes for Direct Support &amp; Portal
             </h3>
-            <div class="alert alert-info py-3 mb-4 mx-auto max-w-800" style="border-radius: 0.75rem; max-width: 850px;">
-                <i class="fa-solid fa-circle-info me-2"></i>
-                Modules marked <b>INCLUDED</b> below are fully compatible and seamlessly integrated alongside this module at no extra cost.
-            </div>
-
-            <!-- 3 Column Module Cards Grid -->
-            <div class="row g-4 text-start mt-2">
-                <!-- Column 1: Core Framework -->
-                <div class="col-md-4">
-                    <div class="gt-card h-100">
-                        <div class="p-4">
-                            <h5 class="fw-bold mb-3" style="color: #714B67;">
-                                <i class="fa-solid fa-layer-group me-2"></i>Core Architecture
-                            </h5>
-                            <div class="p-3 mb-3 rounded-3" style="background: #F8FAFC; border: 1px solid #E2E8F0;">
-                                <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <span class="fw-bold text-dark"><i class="fa-solid fa-cube me-2 text-primary"></i>COA Account Restricted Access</span>
-                                    <span class="badge-this-module">THIS MODULE</span>
-                                </div>
-                                <p class="small text-muted mb-0">Primary functional core and business process rules.</p>
-                            </div>
-                            <div class="p-3 rounded-3" style="background: #F8FAFC; border: 1px solid #E2E8F0;">
-                                <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <span class="fw-bold text-dark"><i class="fa-solid fa-shield-halved me-2 text-info"></i>Access Security Base</span>
-                                    <span class="badge-included">INCLUDED</span>
-                                </div>
-                                <p class="small text-muted mb-0">Record rules, multi-company access & audit trails.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Column 2: Application Integration -->
-                <div class="col-md-4">
-                    <div class="gt-card h-100">
-                        <div class="p-4">
-                            <h5 class="fw-bold mb-3" style="color: #00A09D;">
-                                <i class="fa-solid fa-puzzle-piece me-2"></i>Application Suite
-                            </h5>
-                            <div class="p-3 mb-3 rounded-3" style="background: #F8FAFC; border: 1px solid #E2E8F0;">
-                                <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <span class="fw-bold text-dark"><i class="fa-solid fa-chart-line me-2 text-teal"></i>Accounting Workflow</span>
-                                    <span class="badge-included">INCLUDED</span>
-                                </div>
-                                <p class="small text-muted mb-0">Automated journal postings & financial calculations.</p>
-                            </div>
-                            <div class="p-3 rounded-3" style="background: #F8FAFC; border: 1px solid #E2E8F0;">
-                                <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <span class="fw-bold text-dark"><i class="fa-solid fa-file-pdf me-2 text-danger"></i>PDF Report Engine</span>
-                                    <span class="badge-included">INCLUDED</span>
-                                </div>
-                                <p class="small text-muted mb-0">Custom QWeb PDF report printouts.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Column 3: Enterprise Support -->
-                <div class="col-md-4">
-                    <div class="gt-card h-100">
-                        <div class="p-4">
-                            <h5 class="fw-bold mb-3" style="color: #059669;">
-                                <i class="fa-solid fa-headset me-2"></i>Enterprise Service
-                            </h5>
-                            <div class="p-3 mb-3 rounded-3" style="background: #F8FAFC; border: 1px solid #E2E8F0;">
-                                <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <span class="fw-bold text-dark"><i class="fa-solid fa-arrows-rotate me-2 text-success"></i>Lifetime Updates</span>
-                                    <span class="badge-included">INCLUDED</span>
-                                </div>
-                                <p class="small text-muted mb-0">Free version updates & bug fixes.</p>
-                            </div>
-                            <div class="p-3 rounded-3" style="background: #F8FAFC; border: 1px solid #E2E8F0;">
-                                <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <span class="fw-bold text-dark"><i class="fa-brands fa-whatsapp me-2 text-success"></i>Senior COA Support</span>
-                                    <span class="badge-included">INCLUDED</span>
-                                </div>
-                                <p class="small text-muted mb-0">Direct engineer assistance via WhatsApp (+20 10 13907174).</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <p style="margin: 0; color: #334155; font-size: 14px; font-weight: 600; text-align: center;">
+                Use your mobile camera to scan directly for instant WhatsApp technical assistance or official help desk portal access.
+            </p>
         </div>
 
-        <!-- Technical Specification Matrix -->
-        <div class="gt-card p-4 p-md-5 mb-5">
-            <h3 class="fw-bold text-dark mb-4" style="color: var(--coa-primary) !important;"><i class="fa-solid fa-sliders me-3 text-primary"></i>Technical Information & Specification</h3>
-            <div class="table-responsive">
-                <table class="table table-hover align-middle mb-0">
-                    <tbody>
+        <table align="center" style="margin: 0 auto; border-collapse: separate; border-spacing: 25px 12px; text-align: left;">
+            <tr>
+                <td style="background-color: #F8FAFC; border: 1px solid #CBD5E1; border-radius: 16px; padding: 18px 22px; vertical-align: middle; width: 380px;">
+                    <table style="border-collapse: collapse; width: 100%;">
                         <tr>
-                            <th class="py-3 text-secondary" style="width: 35%; border-color: var(--coa-border);"><i class="fa-solid fa-box me-2"></i>Technical Name</th>
-                            <td class="py-3 border-color font-monospace text-primary fw-bold" style="border-color: var(--coa-border);"><code>coa_account_restricted_access</code></td>
+                            <td style="width: 90px; padding-right: 20px; vertical-align: middle;">
+                                <img src="qr_whatsapp.png" alt="WhatsApp QR Code" style="width: 90px; height: 90px; border-radius: 10px; border: 1px solid #94A3B8; background-color: #FFFFFF; padding: 5px; object-fit: contain; display: block;" width="90" height="90">
+                            </td>
+                            <td style="vertical-align: middle;">
+                                <span style="background-color: #25D366; color: #FFFFFF; font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 12px; display: inline-block; margin-bottom: 6px;">
+                                    WHATSAPP CHAT
+                                </span>
+                                <div style="font-weight: 800; color: #0F172A; font-size: 15px; margin-bottom: 4px; line-height: 1.3;">Direct Technical Support</div>
+                                <div style="color: #1E293B; font-size: 13px; font-weight: 700; font-family: monospace;">+20 10 13907174</div>
+                            </td>
                         </tr>
+                    </table>
+                </td>
+                <td style="background-color: #F8FAFC; border: 1px solid #CBD5E1; border-radius: 16px; padding: 18px 22px; vertical-align: middle; width: 380px;">
+                    <table style="border-collapse: collapse; width: 100%;">
                         <tr>
-                            <th class="py-3 text-secondary" style="border-color: var(--coa-border);"><i class="fa-solid fa-code-branch me-2"></i>Odoo Compatibility</th>
-                            <td class="py-3" style="border-color: var(--coa-border);"><span class="badge bg-primary px-3 py-2">Odoo 17.0 & 18.0 (Community & Enterprise)</span></td>
+                            <td style="width: 90px; padding-right: 20px; vertical-align: middle;">
+                                <img src="qr_website.png" alt="Portal QR Code" style="width: 90px; height: 90px; border-radius: 10px; border: 1px solid #94A3B8; background-color: #FFFFFF; padding: 5px; object-fit: contain; display: block;" width="90" height="90">
+                            </td>
+                            <td style="vertical-align: middle;">
+                                <span style="background-color: #00A09D; color: #FFFFFF; font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 12px; display: inline-block; margin-bottom: 6px;">
+                                    OFFICIAL PORTAL
+                                </span>
+                                <div style="font-weight: 800; color: #0F172A; font-size: 15px; margin-bottom: 4px; line-height: 1.3;">Help Desk &amp; Portal</div>
+                                <div style="color: #1E293B; font-size: 13px; font-weight: 700; font-family: monospace;">www.coa-egy.com</div>
+                            </td>
                         </tr>
-                        <tr>
-                            <th class="py-3 text-secondary" style="border-color: var(--coa-border);"><i class="fa-solid fa-certificate me-2"></i>License Type</th>
-                            <td class="py-3" style="border-color: var(--coa-border);"><span class="badge bg-dark px-3 py-2">OPL-1</span></td>
-                        </tr>
-                        <tr>
-                            <th class="py-3 text-secondary" style="border-color: var(--coa-border);"><i class="fa-solid fa-link me-2"></i>Dependencies</th>
-                            <td class="py-3 fw-semibold text-dark" style="border-color: var(--coa-border);">account</td>
-                        </tr>
-                        <tr>
-                            <th class="py-3 text-secondary" style="border-color: var(--coa-border);"><i class="fa-solid fa-building me-2"></i>Author / Vendor</th>
-                            <td class="py-3 fw-bold text-dark" style="border-color: var(--coa-border);">COA (Chart of Accounts)</td>
-                        </tr>
-                        <tr>
-                            <th class="py-3 text-secondary" style="border-color: var(--coa-border);"><i class="fa-solid fa-tag me-2"></i>Official Store Price</th>
-                            <td class="py-3 fw-bold text-success fs-5" style="border-color: var(--coa-border);">€35.00 EUR</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
 
-        <!-- Official Support Footer -->
-        <div class="gt-card text-center p-5 mb-5" style="background: linear-gradient(135deg, #714B67 0%, #00A09D 100%); color: white;">
-            <h2 class="fw-bold text-white mb-2">Designed & Supported by COA Egypt</h2>
-            <p class="text-light fs-5 max-w-700 mx-auto mb-4">Chart of Accounts (COA) is an established ERP advisory and software development company delivering high-end Odoo customizations globally.</p>
-            <div class="d-flex flex-wrap justify-content-center gap-3">
-                <a href="https://wa.me/201013907174" target="_blank" class="pill-btn-wa">
-                    <i class="fa-brands fa-whatsapp fs-5"></i> Direct WhatsApp (+20 10 13907174)
-                </a>
-                <a href="https://www.coa-egy.com" target="_blank" class="pill-btn-web">
-                    <i class="fa-solid fa-globe fs-5"></i> Official Portal (www.coa-egy.com)
-                </a>
+    <!-- HERO HEADER SECTION -->
+    <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 20px; padding: 35px 25px; text-align: center; margin-bottom: 35px; box-shadow: 0 6px 18px rgba(0,0,0,0.04);">
+        <div style="margin-bottom: 20px;">
+            <img src="logo.png" alt="COA Logo" style="width: 95px; height: 95px; border-radius: 16px; background-color: #FFFFFF; padding: 6px; border: 1px solid #E2E8F0; object-fit: contain;" width="95" height="95">
+        </div>
+        <h1 style="color: #714B67; font-size: 32px; font-weight: 800; margin: 0 0 15px 0; line-height: 1.2;">
+            COA Account Restricted Access Suite
+        </h1>
+        <p style="color: #1E293B; font-size: 16px; max-width: 880px; margin: 0 auto 25px auto; line-height: 1.6; font-weight: 600;">
+            Comprehensive enterprise-grade solution for Odoo developed by COA (Community of acountants). Built for maximum reliability, speed, and seamless integration across all business workflows.
+        </p>
+        <div style="max-width: 880px; margin: 0 auto; border-radius: 14px; overflow: hidden; border: 2px solid #CBD5E1; box-shadow: 0 12px 30px rgba(0,0,0,0.08);">
+            <img src="screenshot1.jpg" alt="COA Account Restricted Access Odoo UI Screenshot" style="width: 100%; height: auto; display: block; border: 0;">
+        </div>
+    </div>
+
+    <!-- ECOSYSTEM 3-COLUMN GRID SECTION -->
+    <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="color: #714B67; font-size: 26px; font-weight: 800; margin: 0 0 12px 0;">
+            Integrated ERP Ecosystem within COA Suite
+        </h2>
+        <div style="background-color: #E0F2FE; color: #0369A1; border-radius: 10px; padding: 12px 20px; font-size: 14px; max-width: 800px; margin: 0 auto 25px auto; border: 1px solid #BAE6FD; font-weight: 600;">
+            Modules marked <b>INCLUDED</b> below come pre-packaged with this suite to ensure complete end-to-end operational control.
+        </div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; text-align: left;">
+            <div style="flex: 1 1 300px; max-width: 350px; background-color: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 16px; padding: 22px; box-shadow: 0 6px 18px rgba(0,0,0,0.04); box-sizing: border-box; margin: 10px;">
+                <h4 style="color: #714B67; font-size: 18px; font-weight: 800; margin: 0 0 18px 0; border-bottom: 2px solid #714B67; padding-bottom: 8px;">Core Framework</h4>
+                <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 14px; margin-bottom: 12px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                        <span style="font-weight: 700; color: #0F172A; font-size: 14px;">COA Account Restricted Access</span>
+                        <span style="background-color: #DCFCE7; color: #15803D; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px;">THIS MODULE</span>
+                    </div>
+                    <div style="color: #334155; font-size: 13px; line-height: 1.4;">Core engine and automated business processing.</div>
+                </div>
+            </div>
+            <div style="flex: 1 1 300px; max-width: 350px; background-color: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 16px; padding: 22px; box-shadow: 0 6px 18px rgba(0,0,0,0.04); box-sizing: border-box; margin: 10px;">
+                <h4 style="color: #00A09D; font-size: 18px; font-weight: 800; margin: 0 0 18px 0; border-bottom: 2px solid #00A09D; padding-bottom: 8px;">Application Integration</h4>
+                <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 14px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                        <span style="font-weight: 700; color: #0F172A; font-size: 14px;">ERP Accounting &amp; Stock Link</span>
+                        <span style="background-color: #E0F2FE; color: #0369A1; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px;">INCLUDED</span>
+                    </div>
+                    <div style="color: #334155; font-size: 13px; line-height: 1.4;">Seamless sync with standard Odoo inventory &amp; financials.</div>
+                </div>
+            </div>
+            <div style="flex: 1 1 300px; max-width: 350px; background-color: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 16px; padding: 22px; box-shadow: 0 6px 18px rgba(0,0,0,0.04); box-sizing: border-box; margin: 10px;">
+                <h4 style="color: #059669; font-size: 18px; font-weight: 800; margin: 0 0 18px 0; border-bottom: 2px solid #059669; padding-bottom: 8px;">Enterprise Guarantee</h4>
+                <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 14px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                        <span style="font-weight: 700; color: #0F172A; font-size: 14px;">Senior COA Support</span>
+                        <span style="background-color: #E0F2FE; color: #0369A1; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px;">INCLUDED</span>
+                    </div>
+                    <div style="color: #334155; font-size: 13px; line-height: 1.4;">Direct engineer assistance via WhatsApp (+20 10 13907174).</div>
+                </div>
             </div>
         </div>
     </div>
-</body>
-</html>
+
+    <!-- TECHNICAL SPECIFICATION MATRIX -->
+    <div style="background-color: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 16px; padding: 30px; margin-bottom: 35px; box-shadow: 0 6px 18px rgba(0,0,0,0.04);">
+        <h3 style="color: #714B67; font-size: 22px; font-weight: 800; margin: 0 0 20px 0;">Technical Information &amp; Specification</h3>
+        <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+            <tbody>
+                <tr style="border-bottom: 1px solid #E2E8F0;">
+                    <td style="padding: 14px; font-weight: 700; color: #64748B; width: 35%;">Technical Name</td>
+                    <td style="padding: 14px; font-family: monospace; font-weight: 700; color: #714B67;">coa_account_restricted_access</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #E2E8F0;">
+                    <td style="padding: 14px; font-weight: 700; color: #64748B;">Odoo Compatibility</td>
+                    <td style="padding: 14px;"><span style="background-color: #714B67; color: #FFFFFF; font-weight: 700; font-size: 11px; padding: 5px 12px; border-radius: 6px;">Odoo 17.0 &amp; 18.0 &amp; 19.0 (Community &amp; Enterprise)</span></td>
+                </tr>
+                <tr style="border-bottom: 1px solid #E2E8F0;">
+                    <td style="padding: 14px; font-weight: 700; color: #64748B;">License Type</td>
+                    <td style="padding: 14px;"><span style="background-color: #0F172A; color: #FFFFFF; font-weight: 700; font-size: 11px; padding: 5px 12px; border-radius: 6px;">OPL-1</span></td>
+                </tr>
+                <tr style="border-bottom: 1px solid #E2E8F0;">
+                    <td style="padding: 14px; font-weight: 700; color: #64748B;">Author / Vendor</td>
+                    <td style="padding: 14px; font-weight: 700; color: #0F172A;">COA (Community of acountants)</td>
+                </tr>
+                <tr>
+                    <td style="padding: 14px; font-weight: 700; color: #64748B;">Official Store Price</td>
+                    <td style="padding: 14px; font-weight: 800; color: #059669; font-size: 17px;">35.00 EUR</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- FAQ SECTION -->
+    <div style="background-color: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 16px; padding: 30px; margin-bottom: 20px; box-shadow: 0 6px 18px rgba(0,0,0,0.04);">
+        <h3 style="color: #714B67; font-size: 22px; font-weight: 800; margin: 0 0 20px 0;">Frequently Asked Questions (FAQ)</h3>
+        <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 16px; margin-bottom: 12px;">
+            <div style="font-weight: 700; color: #0F172A; font-size: 15px; margin-bottom: 6px;">Q: Is this module compatible with both Odoo Community and Enterprise?</div>
+            <div style="color: #334155; font-size: 13px; line-height: 1.5;">Yes! COA Account Restricted Access is 100% compatible with Odoo 17.0, 18.0, and 19.0 across both Community and Enterprise editions.</div>
+        </div>
+        <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 16px;">
+            <div style="font-weight: 700; color: #0F172A; font-size: 15px; margin-bottom: 6px;">Q: How do I obtain technical assistance or custom features?</div>
+            <div style="color: #334155; font-size: 13px; line-height: 1.5;">Our team of senior COA engineers provides direct technical support via WhatsApp (+20 10 13907174) or through our official portal at www.coa-egy.com.</div>
+        </div>
+    </div>
+
+</div>

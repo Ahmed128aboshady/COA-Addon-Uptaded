@@ -2,18 +2,22 @@
 {
     'name': 'COA Partner Statement',
     'summary': 'Partner Account Statement Report with Opening Balance',
-    'description': 'COA Partner Statement developed by COA Egypt (https://www.coa-egy.com). Silicon Valley grade solution for Odoo 18.0.1.0.0.',
-    'author': 'COA (Chart of Accounts)',
+    'description': """
+COA Partner Statement Suite
+====================
+Enterprise grade Odoo module developed by COA (Community of acountants). Connects seamlessly with Odoo ecosystem.
+    """,
+    'author': 'COA (Community of acountants)',
     'website': 'https://www.coa-egy.com',
     'category': 'Extra Tools',
     'version': '1.0.0',
     'license': 'OPL-1',
     'price': 19.0,
     'currency': 'EUR',
-    'depends': ['account'],
-    'data': ['security/ir.model.access.csv', 'wizard/partner_statement_wizard_views.xml', 'report/partner_statement_report.xml', 'report/partner_statement_template.xml'],
+    'depends': ['base'],
+    'data': [],
     'images': ['static/description/banner.png'],
     'installable': True,
-    'application': False,
+    'application': True,
     'auto_install': False,
 }
