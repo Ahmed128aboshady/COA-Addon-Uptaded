@@ -54,10 +54,48 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 550px;
+            height: 600px;
             z-index: 0;
             pointer-events: none;
             opacity: 0.55;
+        }
+
+        /* Top QR Codes Bar */
+        .qr-top-bar {
+            background: #FFFFFF;
+            border: 2px solid var(--coa-teal);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 15px 35px rgba(0, 160, 157, 0.15);
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        .qr-card {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 1rem;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            transition: all 0.3s ease;
+        }
+        .qr-card:hover {
+            background: #FFFFFF;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border-color: var(--coa-primary);
+        }
+        .qr-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 0.75rem;
+            padding: 4px;
+            background: #FFFFFF;
+            border: 1px solid #CBD5E1;
+            object-fit: contain;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.06);
         }
 
         /* Hero Section */
@@ -66,14 +104,13 @@
             background-size: 400% 400%;
             animation: gradientShift 12s ease infinite;
             color: white;
-            padding: 4rem 2rem 3.5rem 2rem;
+            padding: 3.5rem 2rem 3rem 2rem;
             border-radius: 1.75rem;
             box-shadow: 0 20px 40px rgba(113, 75, 103, 0.3);
             margin-bottom: 2.5rem;
             text-align: center;
             position: relative;
             z-index: 1;
-            animation: fadeInUp 0.8s ease-out;
         }
         .gt-hero-title {
             font-family: 'Space Grotesk', sans-serif;
@@ -100,38 +137,6 @@
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
             animation: floatAnimation 6s ease-in-out infinite;
         }
-        .pill-btn-wa {
-            background: #FFD700;
-            color: #0F172A;
-            font-weight: 800;
-            padding: 0.95rem 2.2rem;
-            border-radius: 50rem;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.1rem;
-            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
-            animation: pulseGlow 2.5s infinite;
-            transition: all 0.3s ease;
-        }
-        .pill-btn-wa:hover { background: #FFE033; color: #0F172A; transform: scale(1.04); }
-        
-        .pill-btn-web {
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            color: white;
-            font-weight: 700;
-            padding: 0.95rem 2.2rem;
-            border-radius: 50rem;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.1rem;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-        .pill-btn-web:hover { background: rgba(255, 255, 255, 0.25); color: white; transform: scale(1.04); }
 
         /* Animated Cards */
         .gt-card {
@@ -143,23 +148,11 @@
             position: relative;
             overflow: hidden;
         }
-        .gt-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--coa-primary), var(--coa-teal));
-            opacity: 0;
-            transition: opacity 0.35s ease;
-        }
         .gt-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 25px 45px rgba(0, 160, 157, 0.18);
             border-color: var(--coa-teal);
         }
-        .gt-card:hover::after { opacity: 1; }
 
         .badge-included {
             background: #E0F2FE;
@@ -220,12 +213,11 @@
             box-shadow: 0 5px 15px rgba(113, 75, 103, 0.3);
         }
 
-        /* Mobile Responsiveness Rules */
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .gt-hero-header { padding: 2.5rem 1rem 2rem 1rem; }
-            .gt-hero-frame { border-radius: 0.75rem; }
-            .pill-btn-wa, .pill-btn-web { width: 100%; justify-content: center; }
-            .workflow-step-card { margin-bottom: 1rem; }
+            .gt-hero-header { padding: 2rem 1rem; }
+            .qr-card { flex-direction: column; text-align: center; gap: 0.75rem; }
+            .qr-img { width: 110px; height: 110px; }
         }
     </style>
 </head>
@@ -235,10 +227,47 @@
 
     <div class="container my-4">
 
-        <!-- HERO HEADER WITH COA LOGO & ANIMATION -->
+        <!-- PROMINENT SCAN QR CODES HEADER BAR -->
+        <div class="qr-top-bar">
+            <div class="row align-items-center g-3">
+                <div class="col-lg-4 text-center text-lg-start">
+                    <span class="badge bg-primary px-3 py-2 mb-2" style="background: var(--coa-primary) !important;">
+                        <i class="fa-solid fa-qrcode me-1"></i> INSTANT MOBILE SCAN
+                    </span>
+                    <h4 class="fw-bold text-dark mb-1"><i class="fa-solid fa-mobile-screen me-2 text-teal"></i>Scan QR Codes to Connect</h4>
+                    <p class="small text-muted mb-0">Use your mobile camera to scan directly for instant WhatsApp support or portal access.</p>
+                </div>
+                
+                <!-- QR Code 1: WhatsApp -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="qr-card">
+                        <img src="qr_whatsapp.png" class="qr-img" alt="WhatsApp QR Code">
+                        <div>
+                            <span class="badge bg-success mb-1" style="background: #25D366 !important;"><i class="fa-brands fa-whatsapp me-1"></i>WHATSAPP CHAT</span>
+                            <h6 class="fw-bold text-dark mb-1">Direct Technical Support</h6>
+                            <p class="small text-muted mb-0">Scan to chat: <b>+20 10 13907174</b></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QR Code 2: Help Desk / Website -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="qr-card">
+                        <img src="qr_website.png" class="qr-img" alt="Official Website Portal QR Code">
+                        <div>
+                            <span class="badge bg-info mb-1" style="background: #00A09D !important;"><i class="fa-solid fa-globe me-1"></i>OFFICIAL PORTAL</span>
+                            <h6 class="fw-bold text-dark mb-1">Help Desk &amp; Portal</h6>
+                            <p class="small text-muted mb-0">Scan to visit: <b>www.coa-egy.com</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HERO HEADER SECTION -->
         <div class="gt-hero-header">
             <div class="d-flex align-items-center justify-content-center mb-3">
-                <img src="logo.png" width="110" height="110" class="rounded-4 p-2 bg-white shadow-lg border border-light" alt="COA Logo" style="object-fit: contain;">
+                <img src="logo.png" width="100" height="100" class="rounded-4 p-2 bg-white shadow-lg border border-light" alt="COA Logo" style="object-fit: contain;">
             </div>
 
             <h1 class="gt-hero-title">COA Technical Office & Engineering Suite</h1>
@@ -249,16 +278,6 @@
             <!-- Real Odoo UI Screenshot Showcase -->
             <div class="gt-hero-frame">
                 <img src="screenshot1.jpg" class="w-100 d-block" alt="COA Technical Office Odoo UI Screenshot">
-            </div>
-
-            <!-- Action Pill Buttons -->
-            <div class="d-flex justify-content-center flex-wrap gap-3">
-                <a href="https://wa.me/201013907174" target="_blank" class="pill-btn-wa">
-                    <i class="fa-brands fa-whatsapp fs-5"></i> Direct WhatsApp (+20 10 13907174)
-                </a>
-                <a href="https://www.coa-egy.com" target="_blank" class="pill-btn-web">
-                    <i class="fa-solid fa-globe fs-5"></i> Official Portal (www.coa-egy.com)
-                </a>
             </div>
         </div>
 
@@ -524,18 +543,24 @@
             </div>
         </div>
 
-        <!-- OFFICIAL SUPPORT FOOTER WITH LOGO -->
+        <!-- OFFICIAL SUPPORT FOOTER WITH QR CODES -->
         <div class="gt-card text-center p-5 mb-5" style="background: linear-gradient(135deg, #714B67 0%, #00A09D 100%); color: white;">
             <img src="logo.png" width="90" height="90" class="rounded-4 p-2 bg-white shadow-lg border border-light mb-3" alt="COA Logo" style="object-fit: contain;">
             <h2 class="fw-bold text-white mb-2">Designed &amp; Supported by COA (Community of acountants)</h2>
             <p class="text-light fs-5 max-w-700 mx-auto mb-4">COA (Community of acountants) is an established ERP advisory and software development organization delivering high-end Odoo customizations globally.</p>
-            <div class="d-flex flex-wrap justify-content-center gap-3">
-                <a href="https://wa.me/201013907174" target="_blank" class="pill-btn-wa">
-                    <i class="fa-brands fa-whatsapp fs-5"></i> Direct WhatsApp (+20 10 13907174)
-                </a>
-                <a href="https://www.coa-egy.com" target="_blank" class="pill-btn-web">
-                    <i class="fa-solid fa-globe fs-5"></i> Official Portal (www.coa-egy.com)
-                </a>
+            
+            <div class="d-flex flex-wrap justify-content-center gap-4 mt-4">
+                <div class="p-3 bg-white text-dark rounded-4 shadow-lg text-center" style="max-width: 220px;">
+                    <img src="qr_whatsapp.png" width="130" height="130" class="d-block mx-auto mb-2" alt="WhatsApp QR Code">
+                    <small class="fw-bold text-success"><i class="fa-brands fa-whatsapp me-1"></i>WhatsApp Support</small>
+                    <div class="small text-muted font-monospace">+20 10 13907174</div>
+                </div>
+
+                <div class="p-3 bg-white text-dark rounded-4 shadow-lg text-center" style="max-width: 220px;">
+                    <img src="qr_website.png" width="130" height="130" class="d-block mx-auto mb-2" alt="Website QR Code">
+                    <small class="fw-bold text-teal" style="color: #00A09D;"><i class="fa-solid fa-globe me-1"></i>Help Desk Portal</small>
+                    <div class="small text-muted font-monospace">www.coa-egy.com</div>
+                </div>
             </div>
         </div>
     </div>
@@ -545,12 +570,12 @@
         const container = document.getElementById('canvas-container');
         if (container) {
             const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 550, 0.1, 1000);
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 600, 0.1, 1000);
             const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            renderer.setSize(window.innerWidth, 550);
+            renderer.setSize(window.innerWidth, 600);
             container.appendChild(renderer.domElement);
 
-            const particlesCount = 200;
+            const particlesCount = 220;
             const geometry = new THREE.BufferGeometry();
             const positions = new Float32Array(particlesCount * 3);
             const colors = new Float32Array(particlesCount * 3);
@@ -582,9 +607,9 @@
             animate();
 
             window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / 550;
+                camera.aspect = window.innerWidth / 600;
                 camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, 550);
+                renderer.setSize(window.innerWidth, 600);
             });
         }
     </script>
