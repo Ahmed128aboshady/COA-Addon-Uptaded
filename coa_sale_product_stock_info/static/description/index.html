@@ -9,229 +9,240 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --coa-bg: #F8FAFC;
-            --coa-card-bg: #FFFFFF;
             --coa-primary: #714B67;
             --coa-teal: #00A09D;
-            --coa-sky: #0284C7;
-            --coa-emerald: #059669;
+            --coa-gold: #FFD700;
+            --coa-bg: #FFFFFF;
+            --coa-card-bg: #F8FAFC;
             --coa-border: #E2E8F0;
-            --coa-text-main: #0F172A;
+            --coa-text-dark: #0F172A;
             --coa-text-muted: #64748B;
         }
         body {
             font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-            background-color: var(--coa-bg);
-            color: var(--coa-text-main);
+            background-color: #FFFFFF;
+            color: var(--coa-text-dark);
             line-height: 1.6;
-            padding-bottom: 3rem;
         }
-        .hero-wrapper {
-            background: linear-gradient(135deg, #714B67 0%, #00A09D 100%);
+        /* GT-Apps Style Hero Header */
+        .gt-hero-header {
+            background: linear-gradient(135deg, #714B67 0%, #4A2B44 60%, #1E1B2E 100%);
             color: white;
             padding: 4rem 2rem 3.5rem 2rem;
-            border-radius: 1.75rem;
-            box-shadow: 0 20px 40px rgba(113, 75, 103, 0.25);
-            margin-bottom: 3rem;
-            position: relative;
-            overflow: hidden;
+            border-radius: 1.5rem;
+            box-shadow: 0 15px 35px rgba(113, 75, 103, 0.25);
+            margin-bottom: 2.5rem;
+            text-align: center;
         }
-        .brand-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.45rem 1.15rem;
-            border-radius: 50rem;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin-right: 0.5rem;
-            margin-bottom: 1.25rem;
-            backdrop-filter: blur(10px);
-        }
-        .badge-teal { background: rgba(255, 255, 255, 0.2); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.35); }
-        .badge-purple { background: rgba(255, 255, 255, 0.15); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.3); }
-        .badge-green { background: rgba(16, 185, 129, 0.25); color: #D1FAE5; border: 1px solid rgba(52, 211, 153, 0.4); }
-
-        .hero-title {
+        .gt-hero-title {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 3.2rem;
             font-weight: 800;
-            letter-spacing: -1px;
-            color: #FFFFFF;
-            margin-bottom: 1.25rem;
+            color: var(--coa-gold) !important;
+            letter-spacing: -0.5px;
+            margin-bottom: 1rem;
         }
-        .hero-lead {
-            font-size: 1.2rem;
+        .gt-hero-lead {
+            font-size: 1.25rem;
             color: #F1F5F9;
-            max-width: 850px;
+            max-width: 900px;
+            margin: 0 auto 2rem auto;
             font-weight: 400;
-            margin-bottom: 2rem;
         }
-        /* Clean Light Mode Cards */
-        .light-card {
-            background: var(--coa-card-bg);
-            border: 1px solid var(--coa-border);
-            border-radius: 1.25rem;
-            padding: 2rem;
-            height: 100%;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-            position: relative;
-        }
-        .light-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--coa-teal);
-            box-shadow: 0 15px 30px rgba(0, 160, 157, 0.12);
-        }
-
-        .icon-box {
-            width: 60px;
-            height: 60px;
+        .gt-hero-frame {
+            max-width: 850px;
+            margin: 0 auto 2rem auto;
             border-radius: 1rem;
-            background: rgba(0, 160, 157, 0.08);
-            border: 1px solid rgba(0, 160, 157, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            color: var(--coa-teal);
-            margin-bottom: 1.5rem;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
         }
+        .pill-btn-wa {
+            background: #FFD700;
+            color: #0F172A;
+            font-weight: 700;
+            padding: 0.85rem 2rem;
+            border-radius: 50rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        .pill-btn-wa:hover { background: #FFE033; color: #0F172A; transform: translateY(-2px); }
+        
+        .pill-btn-web {
+            border: 1.5px solid rgba(255, 255, 255, 0.4);
+            color: white;
+            font-weight: 700;
+            padding: 0.85rem 2rem;
+            border-radius: 50rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .pill-btn-web:hover { background: rgba(255, 255, 255, 0.15); color: white; }
 
-        /* Clean Light Browser Frame */
-        .browser-window {
+        /* GT-Apps Module Suite Cards */
+        .gt-card {
             background: #FFFFFF;
             border: 1px solid var(--coa-border);
             border-radius: 1.25rem;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            margin-bottom: 3.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
         }
-        .browser-topbar {
-            background: #F1F5F9;
-            padding: 0.85rem 1.5rem;
-            display: flex;
-            align-items: center;
+        .gt-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 160, 157, 0.15);
+            border-color: var(--coa-teal);
+        }
+        .gt-card-header {
+            padding: 1.25rem 1.5rem;
             border-bottom: 1px solid var(--coa-border);
+            font-weight: 800;
+            font-size: 1.1rem;
+            border-radius: 1.25rem 1.25rem 0 0;
         }
-        .window-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-right: 6px; }
-
-        .btn-action-wa {
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            color: white;
+        .badge-included {
+            background: #E0F2FE;
+            color: #0369A1;
             font-weight: 700;
-            padding: 0.95rem 2.2rem;
+            padding: 0.3rem 0.8rem;
             border-radius: 50rem;
-            text-decoration: none;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 0.75rem;
         }
-        .btn-action-wa:hover { color: white; transform: translateY(-2px); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.45); }
-        
-        .btn-action-web {
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            font-weight: 600;
-            padding: 0.95rem 2.2rem;
+        .badge-this-module {
+            background: #DCFCE7;
+            color: #15803D;
+            font-weight: 700;
+            padding: 0.3rem 0.8rem;
             border-radius: 50rem;
-            text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 0.75rem;
         }
-        .btn-action-web:hover { background: rgba(255, 255, 255, 0.25); color: white; }
     </style>
 </head>
 <body>
     <div class="container my-4">
-        <!-- White/Light Mode Hero Header -->
-        <div class="hero-wrapper">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <div class="d-flex align-items-center mb-3">
-                        <img src="icon.png" width="80" height="80" class="rounded-4 me-3 p-1 bg-white border border-light shadow-sm" alt="COA Logo">
-                        <div>
-                            <span class="brand-badge badge-teal"><i class="fa-solid fa-cube me-2"></i>Sales</span>
-                            <span class="brand-badge badge-purple"><i class="fa-solid fa-code-branch me-2"></i>Odoo 17.0 & 18.0</span>
-                            <span class="brand-badge badge-green"><i class="fa-solid fa-tag me-2"></i>€29.00 EUR</span>
+        <!-- GT-Apps Style Hero Section -->
+        <div class="gt-hero-header">
+            <h1 class="gt-hero-title">COA Sale Product Stock Info</h1>
+            <p class="gt-hero-lead">Enterprise-grade Sale Product Stock Info solution for Odoo Sales. Streamlines workflow execution, automates journal validations...</p>
+            
+            <!-- High-Res Banner Frame -->
+            <div class="gt-hero-frame">
+                <img src="banner.png" class="w-100 d-block" alt="COA Sale Product Stock Info Banner" style="object-fit: cover; max-height: 520px;">
+            </div>
+
+            <!-- Pill Action Buttons -->
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+                <a href="https://wa.me/201013907174" target="_blank" class="pill-btn-wa">
+                    <i class="fa-brands fa-whatsapp fs-5"></i> Contact WhatsApp (+20 10 13907174)
+                </a>
+                <a href="https://www.coa-egy.com" target="_blank" class="pill-btn-web">
+                    <i class="fa-solid fa-globe fs-5"></i> Visit Website (www.coa-egy.com)
+                </a>
+            </div>
+        </div>
+
+        <!-- Suite Introduction Banner -->
+        <div class="bg-white py-4 mb-5 text-center">
+            <h3 class="fw-bold mb-3" style="color: var(--coa-primary); font-size: 2rem;">
+                <b>COA Sale Product Stock Info</b> is an enterprise module in Odoo,<br>
+                integrated within the <b style="color: var(--coa-teal);">COA Enterprise ERP Suite</b>
+            </h3>
+            <div class="alert alert-info py-3 mb-4 mx-auto max-w-800" style="border-radius: 0.75rem; max-width: 850px;">
+                <i class="fa-solid fa-circle-info me-2"></i>
+                Modules marked <b>INCLUDED</b> below are fully compatible and seamlessly integrated alongside this module at no extra cost.
+            </div>
+
+            <!-- 3 Column Module Cards Grid -->
+            <div class="row g-4 text-start mt-2">
+                <!-- Column 1: Core Framework -->
+                <div class="col-md-4">
+                    <div class="gt-card h-100">
+                        <div class="p-4">
+                            <h5 class="fw-bold mb-3" style="color: #714B67;">
+                                <i class="fa-solid fa-layer-group me-2"></i>Core Architecture
+                            </h5>
+                            <div class="p-3 mb-3 rounded-3" style="background: #F8FAFC; border: 1px solid #E2E8F0;">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="fw-bold text-dark"><i class="fa-solid fa-cube me-2 text-primary"></i>COA Sale Product Stock Info</span>
+                                    <span class="badge-this-module">THIS MODULE</span>
+                                </div>
+                                <p class="small text-muted mb-0">Primary functional core and business process rules.</p>
+                            </div>
+                            <div class="p-3 rounded-3" style="background: #F8FAFC; border: 1px solid #E2E8F0;">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="fw-bold text-dark"><i class="fa-solid fa-shield-halved me-2 text-info"></i>Access Security Base</span>
+                                    <span class="badge-included">INCLUDED</span>
+                                </div>
+                                <p class="small text-muted mb-0">Record rules, multi-company access & audit trails.</p>
+                            </div>
                         </div>
                     </div>
-                    <h1 class="hero-title">COA Sale Product Stock Info</h1>
-                    <p class="hero-lead">Enterprise-grade Sale Product Stock Info solution for Odoo Sales. Streamlines workflow execution, automates journal validations...</p>
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="https://wa.me/201013907174" target="_blank" class="btn-action-wa">
-                            <i class="fa-brands fa-whatsapp fs-5"></i> Contact WhatsApp (+20 10 13907174)
-                        </a>
-                        <a href="https://www.coa-egy.com" target="_blank" class="btn-action-web">
-                            <i class="fa-solid fa-globe fs-5"></i> Visit Website (www.coa-egy.com)
-                        </a>
+                </div>
+
+                <!-- Column 2: Application Integration -->
+                <div class="col-md-4">
+                    <div class="gt-card h-100">
+                        <div class="p-4">
+                            <h5 class="fw-bold mb-3" style="color: #00A09D;">
+                                <i class="fa-solid fa-puzzle-piece me-2"></i>Application Suite
+                            </h5>
+                            <div class="p-3 mb-3 rounded-3" style="background: #F8FAFC; border: 1px solid #E2E8F0;">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="fw-bold text-dark"><i class="fa-solid fa-chart-line me-2 text-teal"></i>Sales Workflow</span>
+                                    <span class="badge-included">INCLUDED</span>
+                                </div>
+                                <p class="small text-muted mb-0">Automated journal postings & financial calculations.</p>
+                            </div>
+                            <div class="p-3 rounded-3" style="background: #F8FAFC; border: 1px solid #E2E8F0;">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="fw-bold text-dark"><i class="fa-solid fa-file-pdf me-2 text-danger"></i>PDF Report Engine</span>
+                                    <span class="badge-included">INCLUDED</span>
+                                </div>
+                                <p class="small text-muted mb-0">Custom QWeb PDF report printouts.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-4 text-center mt-4 mt-lg-0">
-                    <div class="light-card text-start shadow-lg" style="background: rgba(255, 255, 255, 0.98);">
-                        <h5 class="fw-bold text-dark mb-1"><i class="fa-solid fa-shield-halved text-success me-2"></i>COA Verified Solution</h5>
-                        <p class="small text-muted mb-3">100% Odoo Compatible</p>
-                        <ul class="list-unstyled small text-secondary mb-4">
-                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Community & Enterprise Compatible</li>
-                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Includes Lifetime Version Updates</li>
-                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Direct Senior COA Support</li>
-                            <li><i class="fa-solid fa-check text-success me-2"></i>OPL-1 Commercial License</li>
-                        </ul>
-                        <a href="https://wa.me/201013907174" target="_blank" class="btn btn-dark w-100 fw-bold py-2.5 rounded-3" style="background: var(--coa-primary); border: none;">
-                            <i class="fa-solid fa-cart-shopping me-2"></i>Acquire Module License
-                        </a>
+
+                <!-- Column 3: Enterprise Support -->
+                <div class="col-md-4">
+                    <div class="gt-card h-100">
+                        <div class="p-4">
+                            <h5 class="fw-bold mb-3" style="color: #059669;">
+                                <i class="fa-solid fa-headset me-2"></i>Enterprise Service
+                            </h5>
+                            <div class="p-3 mb-3 rounded-3" style="background: #F8FAFC; border: 1px solid #E2E8F0;">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="fw-bold text-dark"><i class="fa-solid fa-arrows-rotate me-2 text-success"></i>Lifetime Updates</span>
+                                    <span class="badge-included">INCLUDED</span>
+                                </div>
+                                <p class="small text-muted mb-0">Free version updates & bug fixes.</p>
+                            </div>
+                            <div class="p-3 rounded-3" style="background: #F8FAFC; border: 1px solid #E2E8F0;">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="fw-bold text-dark"><i class="fa-brands fa-whatsapp me-2 text-success"></i>Senior COA Support</span>
+                                    <span class="badge-included">INCLUDED</span>
+                                </div>
+                                <p class="small text-muted mb-0">Direct engineer assistance via WhatsApp (+20 10 13907174).</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Light Mode Browser Showcase Frame -->
-        <div class="browser-window">
-            <div class="browser-topbar">
-                <span class="window-dot" style="background: #FF5F56;"></span>
-                <span class="window-dot" style="background: #FFBD2E;"></span>
-                <span class="window-dot" style="background: #27C93F;"></span>
-                <small class="text-muted ms-3 font-monospace">Odoo Apps Showcase — COA Sale Product Stock Info</small>
-            </div>
-            <img src="banner.png" class="w-100 d-block" alt="COA Sale Product Stock Info Banner" style="object-fit: cover; max-height: 540px;">
-        </div>
-
-        <!-- Key Business Capabilities -->
-        <h2 class="fw-bold mb-4 text-center font-monospace" style="color: var(--coa-primary); letter-spacing: -0.5px;">Core Business Capabilities</h2>
-        <div class="row g-4 mb-5">
-            <div class="col-md-4">
-                <div class="light-card">
-                    <div class="icon-box"><i class="fa-solid fa-bolt-lightning"></i></div>
-                    <h4 class="fw-bold text-dark mb-2">High Efficiency Workflow</h4>
-                    <p class="text-muted mb-0">Designed for optimal Odoo execution speed with zero SQL query bottlenecks and seamless database transactions.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="light-card">
-                    <div class="icon-box" style="background: rgba(113, 75, 103, 0.08); color: var(--coa-primary); border-color: rgba(113, 75, 103, 0.2);"><i class="fa-solid fa-chart-pie"></i></div>
-                    <h4 class="fw-bold text-dark mb-2">Executive Analytics</h4>
-                    <p class="text-muted mb-0">Delivers real-time operational visibility, automated journal postings, and executive management reports.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="light-card">
-                    <div class="icon-box" style="background: rgba(16, 185, 129, 0.08); color: var(--coa-emerald); border-color: rgba(16, 185, 129, 0.2);"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h4 class="fw-bold text-dark mb-2">Enterprise Security</h4>
-                    <p class="text-muted mb-0">Fully compliant with Odoo access groups, record rules, multi-company security, and audit trails.</p>
                 </div>
             </div>
         </div>
 
         <!-- Technical Specification Matrix -->
-        <div class="light-card mb-5 p-4 p-md-5">
-            <h3 class="fw-bold text-dark mb-4"><i class="fa-solid fa-sliders me-3 text-primary"></i>Technical Information & Specification</h3>
+        <div class="gt-card p-4 p-md-5 mb-5">
+            <h3 class="fw-bold text-dark mb-4" style="color: var(--coa-primary) !important;"><i class="fa-solid fa-sliders me-3 text-primary"></i>Technical Information & Specification</h3>
             <div class="table-responsive">
                 <table class="table table-hover align-middle mb-0">
                     <tbody>
@@ -240,7 +251,7 @@
                             <td class="py-3 border-color font-monospace text-primary fw-bold" style="border-color: var(--coa-border);"><code>coa_sale_product_stock_info</code></td>
                         </tr>
                         <tr>
-                            <th class="py-3 text-secondary" style="border-color: var(--coa-border);"><i class="fa-solid fa-code-branch me-2"></i>Odoo Version</th>
+                            <th class="py-3 text-secondary" style="border-color: var(--coa-border);"><i class="fa-solid fa-code-branch me-2"></i>Odoo Compatibility</th>
                             <td class="py-3" style="border-color: var(--coa-border);"><span class="badge bg-primary px-3 py-2">Odoo 17.0 & 18.0 (Community & Enterprise)</span></td>
                         </tr>
                         <tr>
@@ -265,14 +276,14 @@
         </div>
 
         <!-- Official Support Footer -->
-        <div class="light-card text-center p-5 mb-5" style="background: linear-gradient(135deg, #714B67 0%, #00A09D 100%); color: white;">
+        <div class="gt-card text-center p-5 mb-5" style="background: linear-gradient(135deg, #714B67 0%, #00A09D 100%); color: white;">
             <h2 class="fw-bold text-white mb-2">Designed & Supported by COA Egypt</h2>
             <p class="text-light fs-5 max-w-700 mx-auto mb-4">Chart of Accounts (COA) is an established ERP advisory and software development company delivering high-end Odoo customizations globally.</p>
             <div class="d-flex flex-wrap justify-content-center gap-3">
-                <a href="https://wa.me/201013907174" target="_blank" class="btn-action-wa">
+                <a href="https://wa.me/201013907174" target="_blank" class="pill-btn-wa">
                     <i class="fa-brands fa-whatsapp fs-5"></i> Direct WhatsApp (+20 10 13907174)
                 </a>
-                <a href="https://www.coa-egy.com" target="_blank" class="btn-action-web">
+                <a href="https://www.coa-egy.com" target="_blank" class="pill-btn-web">
                     <i class="fa-solid fa-globe fs-5"></i> Official Portal (www.coa-egy.com)
                 </a>
             </div>
