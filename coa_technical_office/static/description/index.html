@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
         :root {
             --coa-primary: #714B67;
@@ -23,26 +24,68 @@
             background-color: #FFFFFF;
             color: var(--coa-text-dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
+
+        /* Keyframe Animations */
+        @keyframes floatAnimation {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(0, 160, 157, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 160, 157, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 160, 157, 0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Canvas Background */
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 550px;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.55;
+        }
+
+        /* Hero Section */
         .gt-hero-header {
-            background: linear-gradient(135deg, #714B67 0%, #4A2B44 60%, #1E1B2E 100%);
+            background: linear-gradient(-45deg, #714B67, #4A2B44, #00A09D, #1E1B2E);
+            background-size: 400% 400%;
+            animation: gradientShift 12s ease infinite;
             color: white;
             padding: 4rem 2rem 3.5rem 2rem;
-            border-radius: 1.5rem;
-            box-shadow: 0 15px 35px rgba(113, 75, 103, 0.25);
+            border-radius: 1.75rem;
+            box-shadow: 0 20px 40px rgba(113, 75, 103, 0.3);
             margin-bottom: 2.5rem;
             text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out;
         }
         .gt-hero-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 3.2rem;
+            font-size: clamp(2rem, 4vw, 3.4rem);
             font-weight: 800;
             color: var(--coa-gold) !important;
             letter-spacing: -0.5px;
             margin-bottom: 1rem;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
         .gt-hero-lead {
-            font-size: 1.25rem;
+            font-size: clamp(1rem, 2vw, 1.25rem);
             color: #F1F5F9;
             max-width: 900px;
             margin: 0 auto 2rem auto;
@@ -51,32 +94,34 @@
         .gt-hero-frame {
             max-width: 850px;
             margin: 0 auto 2rem auto;
-            border-radius: 1rem;
+            border-radius: 1.25rem;
             overflow: hidden;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border: 3px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+            animation: floatAnimation 6s ease-in-out infinite;
         }
         .pill-btn-wa {
             background: #FFD700;
             color: #0F172A;
-            font-weight: 700;
-            padding: 0.85rem 2rem;
+            font-weight: 800;
+            padding: 0.95rem 2.2rem;
             border-radius: 50rem;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 10px;
             font-size: 1.1rem;
-            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+            animation: pulseGlow 2.5s infinite;
             transition: all 0.3s ease;
         }
-        .pill-btn-wa:hover { background: #FFE033; color: #0F172A; transform: translateY(-2px); }
+        .pill-btn-wa:hover { background: #FFE033; color: #0F172A; transform: scale(1.04); }
         
         .pill-btn-web {
-            border: 1.5px solid rgba(255, 255, 255, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.5);
             color: white;
             font-weight: 700;
-            padding: 0.85rem 2rem;
+            padding: 0.95rem 2.2rem;
             border-radius: 50rem;
             text-decoration: none;
             display: inline-flex;
@@ -86,20 +131,36 @@
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
-        .pill-btn-web:hover { background: rgba(255, 255, 255, 0.15); color: white; }
+        .pill-btn-web:hover { background: rgba(255, 255, 255, 0.25); color: white; transform: scale(1.04); }
 
+        /* Animated Cards */
         .gt-card {
             background: #FFFFFF;
             border: 1px solid var(--coa-border);
             border-radius: 1.25rem;
-            transition: all 0.3s ease;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .gt-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--coa-primary), var(--coa-teal));
+            opacity: 0;
+            transition: opacity 0.35s ease;
         }
         .gt-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 160, 157, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 25px 45px rgba(0, 160, 157, 0.18);
             border-color: var(--coa-teal);
         }
+        .gt-card:hover::after { opacity: 1; }
+
         .badge-included {
             background: #E0F2FE;
             color: #0369A1;
@@ -121,8 +182,14 @@
             background: #F8FAFC;
             border-left: 4px solid var(--coa-teal);
             padding: 1.25rem 1.5rem;
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
             margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        .feature-item-box:hover {
+            background: #FFFFFF;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+            transform: translateX(4px);
         }
         .workflow-step-card {
             background: #FFFFFF;
@@ -132,10 +199,15 @@
             text-align: center;
             position: relative;
             height: 100%;
+            transition: all 0.3s ease;
+        }
+        .workflow-step-card:hover {
+            transform: scale(1.03);
+            border-color: var(--coa-primary);
         }
         .step-number-badge {
-            width: 42px;
-            height: 42px;
+            width: 44px;
+            height: 44px;
             background: var(--coa-primary);
             color: white;
             font-weight: 800;
@@ -145,14 +217,30 @@
             justify-content: center;
             margin: 0 auto 1rem auto;
             font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(113, 75, 103, 0.3);
+        }
+
+        /* Mobile Responsiveness Rules */
+        @media (max-width: 768px) {
+            .gt-hero-header { padding: 2.5rem 1rem 2rem 1rem; }
+            .gt-hero-frame { border-radius: 0.75rem; }
+            .pill-btn-wa, .pill-btn-web { width: 100%; justify-content: center; }
+            .workflow-step-card { margin-bottom: 1rem; }
         }
     </style>
 </head>
 <body>
+    <!-- Three.js Canvas Particles -->
+    <div id="canvas-container"></div>
+
     <div class="container my-4">
 
-        <!-- SECTION 1: GT-APPS STYLE HERO HEADER -->
+        <!-- HERO HEADER WITH COA LOGO & ANIMATION -->
         <div class="gt-hero-header">
+            <div class="d-flex align-items-center justify-content-center mb-3">
+                <img src="logo.png" width="110" height="110" class="rounded-4 p-2 bg-white shadow-lg border border-light" alt="COA Logo" style="object-fit: contain;">
+            </div>
+
             <h1 class="gt-hero-title">COA Technical Office & Engineering Suite</h1>
             <p class="gt-hero-lead">
                 The ultimate end-to-end Technical Office Engineering suite for Odoo. Connect Sales Quotations directly with Engineering Technical Reviews, Bill of Quantities (BOQ) calculations, Scrap Waste Ratios, and Automated Manufacturing Orders (MO).
@@ -166,7 +254,7 @@
             <!-- Action Pill Buttons -->
             <div class="d-flex justify-content-center flex-wrap gap-3">
                 <a href="https://wa.me/201013907174" target="_blank" class="pill-btn-wa">
-                    <i class="fa-brands fa-whatsapp fs-5"></i> Contact WhatsApp (+20 10 13907174)
+                    <i class="fa-brands fa-whatsapp fs-5"></i> Direct WhatsApp (+20 10 13907174)
                 </a>
                 <a href="https://www.coa-egy.com" target="_blank" class="pill-btn-web">
                     <i class="fa-solid fa-globe fs-5"></i> Official Portal (www.coa-egy.com)
@@ -174,9 +262,9 @@
             </div>
         </div>
 
-        <!-- SECTION 2: PRODUCT ECOSYSTEM & INCLUDED MODULES -->
+        <!-- PRODUCT ECOSYSTEM & INCLUDED MODULES -->
         <div class="bg-white py-4 mb-5 text-center">
-            <h3 class="fw-bold mb-3" style="color: var(--coa-primary); font-size: 2.2rem;">
+            <h3 class="fw-bold mb-3" style="color: var(--coa-primary); font-size: clamp(1.6rem, 3vw, 2.2rem);">
                 <b>COA Technical Office & Engineering Suite</b><br>
                 Integrated Engineering Ecosystem within <b style="color: var(--coa-teal);">COA ERP Suite</b>
             </h3>
@@ -187,7 +275,6 @@
 
             <!-- 3 Column Module Cards Grid -->
             <div class="row g-4 text-start mt-2">
-                <!-- Column 1: Core Framework -->
                 <div class="col-md-4">
                     <div class="gt-card h-100">
                         <div class="p-4">
@@ -212,7 +299,6 @@
                     </div>
                 </div>
 
-                <!-- Column 2: Application Integration -->
                 <div class="col-md-4">
                     <div class="gt-card h-100">
                         <div class="p-4">
@@ -237,7 +323,6 @@
                     </div>
                 </div>
 
-                <!-- Column 3: Enterprise Service -->
                 <div class="col-md-4">
                     <div class="gt-card h-100">
                         <div class="p-4">
@@ -264,12 +349,11 @@
             </div>
         </div>
 
-        <!-- SECTION 3: IN-DEPTH DETAILED FEATURE BREAKDOWN -->
+        <!-- DETAILED FEATURE BREAKDOWN -->
         <div class="gt-card p-4 p-md-5 mb-5">
             <h2 class="fw-bold mb-4" style="color: var(--coa-primary);"><i class="fa-solid fa-cubes me-3"></i>In-Depth Key Features &amp; Technical Capabilities</h2>
             
             <div class="row g-4">
-                <!-- Feature 1 -->
                 <div class="col-md-6">
                     <div class="feature-item-box">
                         <h4 class="fw-bold text-dark mb-2"><i class="fa-solid fa-shield-halved text-primary me-2"></i>1. Mandatory Technical Review Gatekeeper</h4>
@@ -281,7 +365,6 @@
                     </div>
                 </div>
 
-                <!-- Feature 2 -->
                 <div class="col-md-6">
                     <div class="feature-item-box" style="border-left-color: var(--coa-primary);">
                         <h4 class="fw-bold text-dark mb-2"><i class="fa-solid fa-ruler-combined text-primary me-2"></i>2. Volumetric &amp; Scrap Waste Ratio Calculator</h4>
@@ -293,7 +376,6 @@
                     </div>
                 </div>
 
-                <!-- Feature 3 -->
                 <div class="col-md-6">
                     <div class="feature-item-box" style="border-left-color: var(--coa-gold);">
                         <h4 class="fw-bold text-dark mb-2"><i class="fa-solid fa-gears text-warning me-2"></i>3. Automated BOM &amp; Manufacturing Order (MO) Generation</h4>
@@ -305,7 +387,6 @@
                     </div>
                 </div>
 
-                <!-- Feature 4 -->
                 <div class="col-md-6">
                     <div class="feature-item-box" style="border-left-color: #059669;">
                         <h4 class="fw-bold text-dark mb-2"><i class="fa-solid fa-file-contract text-success me-2"></i>4. Technical QWeb PDF Reports &amp; Audit Trail</h4>
@@ -319,7 +400,7 @@
             </div>
         </div>
 
-        <!-- SECTION 4: STEP-BY-STEP WORKFLOW DIAGRAM -->
+        <!-- STEP-BY-STEP WORKFLOW DIAGRAM -->
         <div class="gt-card p-4 p-md-5 mb-5" style="background: #F8FAFC;">
             <h2 class="fw-bold text-center mb-4" style="color: var(--coa-primary);"><i class="fa-solid fa-diagram-project me-3"></i>Step-by-Step Technical Engineering Workflow</h2>
             
@@ -362,7 +443,7 @@
             </div>
         </div>
 
-        <!-- SECTION 5: TECHNICAL SPECIFICATION MATRIX -->
+        <!-- TECHNICAL SPECIFICATION MATRIX -->
         <div class="gt-card p-4 p-md-5 mb-5">
             <h3 class="fw-bold text-dark mb-4" style="color: var(--coa-primary) !important;"><i class="fa-solid fa-sliders me-3 text-primary"></i>Technical Information &amp; Specification</h3>
             <div class="table-responsive">
@@ -397,7 +478,7 @@
             </div>
         </div>
 
-        <!-- SECTION 6: FREQUENTLY ASKED QUESTIONS (FAQ) -->
+        <!-- FREQUENTLY ASKED QUESTIONS (FAQ) -->
         <div class="gt-card p-4 p-md-5 mb-5">
             <h3 class="fw-bold text-dark mb-4" style="color: var(--coa-primary) !important;"><i class="fa-solid fa-circle-question me-3 text-warning"></i>Frequently Asked Questions (FAQ)</h3>
             
@@ -443,8 +524,9 @@
             </div>
         </div>
 
-        <!-- SECTION 7: OFFICIAL SUPPORT FOOTER -->
+        <!-- OFFICIAL SUPPORT FOOTER WITH LOGO -->
         <div class="gt-card text-center p-5 mb-5" style="background: linear-gradient(135deg, #714B67 0%, #00A09D 100%); color: white;">
+            <img src="logo.png" width="90" height="90" class="rounded-4 p-2 bg-white shadow-lg border border-light mb-3" alt="COA Logo" style="object-fit: contain;">
             <h2 class="fw-bold text-white mb-2">Designed &amp; Supported by COA (Community of acountants)</h2>
             <p class="text-light fs-5 max-w-700 mx-auto mb-4">COA (Community of acountants) is an established ERP advisory and software development organization delivering high-end Odoo customizations globally.</p>
             <div class="d-flex flex-wrap justify-content-center gap-3">
@@ -457,5 +539,54 @@
             </div>
         </div>
     </div>
+
+    <!-- Three.js Canvas Animation Script -->
+    <script>
+        const container = document.getElementById('canvas-container');
+        if (container) {
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 550, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, 550);
+            container.appendChild(renderer.domElement);
+
+            const particlesCount = 200;
+            const geometry = new THREE.BufferGeometry();
+            const positions = new Float32Array(particlesCount * 3);
+            const colors = new Float32Array(particlesCount * 3);
+
+            for (let i = 0; i < particlesCount * 3; i += 3) {
+                positions[i] = (Math.random() - 0.5) * 15;
+                positions[i + 1] = (Math.random() - 0.5) * 10;
+                positions[i + 2] = (Math.random() - 0.5) * 15;
+                colors[i] = 0.44;
+                colors[i + 1] = 0.62;
+                colors[i + 2] = 0.61;
+            }
+
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+            const material = new THREE.PointsMaterial({ size: 0.08, vertexColors: true, transparent: true, opacity: 0.75 });
+            const points = new THREE.Points(geometry, material);
+            scene.add(points);
+
+            camera.position.z = 5;
+
+            function animate() {
+                requestAnimationFrame(animate);
+                points.rotation.y += 0.0012;
+                points.rotation.x += 0.0006;
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / 550;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, 550);
+            });
+        }
+    </script>
 </body>
 </html>
