@@ -116,99 +116,140 @@
             border-radius: 50rem;
             font-size: 0.75rem;
         }
+
+        .feature-item-box {
+            background: #F8FAFC;
+            border-left: 4px solid var(--coa-teal);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .workflow-step-card {
+            background: #FFFFFF;
+            border: 1px solid var(--coa-border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            height: 100%;
+        }
+        .step-number-badge {
+            width: 42px;
+            height: 42px;
+            background: var(--coa-primary);
+            color: white;
+            font-weight: 800;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem auto;
+            font-size: 1.2rem;
+        }
     </style>
 </head>
 <body>
     <div class="container my-4">
+
+        <!-- SECTION 1: GT-APPS STYLE HERO HEADER -->
         <div class="gt-hero-header">
             <h1 class="gt-hero-title">COA Technical Office & Engineering Suite</h1>
-            <p class="gt-hero-lead">Enterprise BOQ Bill of Quantities verification, automatic raw material formula calculation, dimension ratio controls, and engineering approval gates for Odoo.</p>
+            <p class="gt-hero-lead">
+                The ultimate end-to-end Technical Office Engineering suite for Odoo. Connect Sales Quotations directly with Engineering Technical Reviews, Bill of Quantities (BOQ) calculations, Scrap Waste Ratios, and Automated Manufacturing Orders (MO).
+            </p>
             
+            <!-- Real Odoo UI Screenshot Showcase -->
             <div class="gt-hero-frame">
-                <img src="screenshot1.jpg" class="w-100 d-block" alt="COA Technical Office Odoo UI Screenshot" style="object-fit: cover; max-height: 520px;">
+                <img src="screenshot1.jpg" class="w-100 d-block" alt="COA Technical Office Odoo UI Screenshot">
             </div>
 
+            <!-- Action Pill Buttons -->
             <div class="d-flex justify-content-center flex-wrap gap-3">
                 <a href="https://wa.me/201013907174" target="_blank" class="pill-btn-wa">
                     <i class="fa-brands fa-whatsapp fs-5"></i> Contact WhatsApp (+20 10 13907174)
                 </a>
                 <a href="https://www.coa-egy.com" target="_blank" class="pill-btn-web">
-                    <i class="fa-solid fa-globe fs-5"></i> Visit Website (www.coa-egy.com)
+                    <i class="fa-solid fa-globe fs-5"></i> Official Portal (www.coa-egy.com)
                 </a>
             </div>
         </div>
 
+        <!-- SECTION 2: PRODUCT ECOSYSTEM & INCLUDED MODULES -->
         <div class="bg-white py-4 mb-5 text-center">
-            <h3 class="fw-bold mb-3" style="color: var(--coa-primary); font-size: 2rem;">
-                <b>COA Technical Office & Engineering Suite</b> is an enterprise module in Odoo,<br>
-                integrated within the <b style="color: var(--coa-teal);">COA Enterprise ERP Suite</b>
+            <h3 class="fw-bold mb-3" style="color: var(--coa-primary); font-size: 2.2rem;">
+                <b>COA Technical Office & Engineering Suite</b><br>
+                Integrated Engineering Ecosystem within <b style="color: var(--coa-teal);">COA ERP Suite</b>
             </h3>
-            <div class="alert alert-info py-3 mb-4 mx-auto max-w-800" style="border-radius: 0.75rem; max-width: 850px;">
+            <div class="alert alert-info py-3 mb-4 mx-auto" style="border-radius: 0.75rem; max-width: 900px;">
                 <i class="fa-solid fa-circle-info me-2"></i>
-                Modules marked <b>INCLUDED</b> below are fully compatible and seamlessly integrated alongside this module at no extra cost.
+                Modules marked <b>INCLUDED</b> below come pre-packaged with this suite to ensure complete end-to-end engineering approval and manufacturing automation.
             </div>
 
+            <!-- 3 Column Module Cards Grid -->
             <div class="row g-4 text-start mt-2">
+                <!-- Column 1: Core Framework -->
                 <div class="col-md-4">
                     <div class="gt-card h-100">
                         <div class="p-4">
                             <h5 class="fw-bold mb-3" style="color: #714B67;">
-                                <i class="fa-solid fa-layer-group me-2"></i>Core Architecture
+                                <i class="fa-solid fa-layer-group me-2"></i>Core Engineering Framework
                             </h5>
                             <div class="p-3 mb-3 rounded-3" style="background: #F8FAFC; border: 1px solid #E2E8F0;">
                                 <div class="d-flex align-items-center justify-content-between mb-2">
                                     <span class="fw-bold text-dark"><i class="fa-solid fa-cube me-2 text-primary"></i>COA Technical Office</span>
                                     <span class="badge-this-module">THIS MODULE</span>
                                 </div>
-                                <p class="small text-muted mb-0">Primary functional core and business process rules.</p>
+                                <p class="small text-muted mb-0">Technical review engine, rejection wizard, and BOQ validator.</p>
                             </div>
                             <div class="p-3 rounded-3" style="background: #F8FAFC; border: 1px solid #E2E8F0;">
                                 <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <span class="fw-bold text-dark"><i class="fa-solid fa-shield-halved me-2 text-info"></i>Access Security Base</span>
+                                    <span class="fw-bold text-dark"><i class="fa-solid fa-calculator me-2 text-info"></i>Dimension &amp; Waste Engine</span>
                                     <span class="badge-included">INCLUDED</span>
                                 </div>
-                                <p class="small text-muted mb-0">Record rules, multi-company access & audit trails.</p>
+                                <p class="small text-muted mb-0">Calculates length, width, thickness, area &amp; scrap ratio %.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Column 2: Application Integration -->
                 <div class="col-md-4">
                     <div class="gt-card h-100">
                         <div class="p-4">
                             <h5 class="fw-bold mb-3" style="color: #00A09D;">
-                                <i class="fa-solid fa-puzzle-piece me-2"></i>Application Suite
+                                <i class="fa-solid fa-puzzle-piece me-2"></i>Application Integration
                             </h5>
                             <div class="p-3 mb-3 rounded-3" style="background: #F8FAFC; border: 1px solid #E2E8F0;">
                                 <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <span class="fw-bold text-dark"><i class="fa-solid fa-chart-line me-2 text-teal"></i>Project Workflow</span>
+                                    <span class="fw-bold text-dark"><i class="fa-solid fa-gears me-2 text-teal"></i>Manufacturing (MRP) Link</span>
                                     <span class="badge-included">INCLUDED</span>
                                 </div>
-                                <p class="small text-muted mb-0">Automated journal postings & financial calculations.</p>
+                                <p class="small text-muted mb-0">Auto-generates exact Bill of Materials (BOM) &amp; Manufacturing Orders.</p>
                             </div>
                             <div class="p-3 rounded-3" style="background: #F8FAFC; border: 1px solid #E2E8F0;">
                                 <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <span class="fw-bold text-dark"><i class="fa-solid fa-file-pdf me-2 text-danger"></i>PDF Report Engine</span>
+                                    <span class="fw-bold text-dark"><i class="fa-solid fa-file-pdf me-2 text-danger"></i>Technical QWeb PDF Reports</span>
                                     <span class="badge-included">INCLUDED</span>
                                 </div>
-                                <p class="small text-muted mb-0">Custom QWeb PDF report printouts.</p>
+                                <p class="small text-muted mb-0">Prints engineering review sheets for workshop and warehouse team.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Column 3: Enterprise Service -->
                 <div class="col-md-4">
                     <div class="gt-card h-100">
                         <div class="p-4">
                             <h5 class="fw-bold mb-3" style="color: #059669;">
-                                <i class="fa-solid fa-headset me-2"></i>Enterprise Service
+                                <i class="fa-solid fa-headset me-2"></i>Enterprise Guarantee
                             </h5>
                             <div class="p-3 mb-3 rounded-3" style="background: #F8FAFC; border: 1px solid #E2E8F0;">
                                 <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <span class="fw-bold text-dark"><i class="fa-solid fa-arrows-rotate me-2 text-success"></i>Lifetime Updates</span>
+                                    <span class="fw-bold text-dark"><i class="fa-solid fa-arrows-rotate me-2 text-success"></i>Multi-Version Upgrades</span>
                                     <span class="badge-included">INCLUDED</span>
                                 </div>
-                                <p class="small text-muted mb-0">Free version updates & bug fixes.</p>
+                                <p class="small text-muted mb-0">Free version updates across Odoo 17.0, 18.0 &amp; 19.0.</p>
                             </div>
                             <div class="p-3 rounded-3" style="background: #F8FAFC; border: 1px solid #E2E8F0;">
                                 <div class="d-flex align-items-center justify-content-between mb-2">
@@ -223,8 +264,107 @@
             </div>
         </div>
 
+        <!-- SECTION 3: IN-DEPTH DETAILED FEATURE BREAKDOWN -->
         <div class="gt-card p-4 p-md-5 mb-5">
-            <h3 class="fw-bold text-dark mb-4" style="color: var(--coa-primary) !important;"><i class="fa-solid fa-sliders me-3 text-primary"></i>Technical Information & Specification</h3>
+            <h2 class="fw-bold mb-4" style="color: var(--coa-primary);"><i class="fa-solid fa-cubes me-3"></i>In-Depth Key Features &amp; Technical Capabilities</h2>
+            
+            <div class="row g-4">
+                <!-- Feature 1 -->
+                <div class="col-md-6">
+                    <div class="feature-item-box">
+                        <h4 class="fw-bold text-dark mb-2"><i class="fa-solid fa-shield-halved text-primary me-2"></i>1. Mandatory Technical Review Gatekeeper</h4>
+                        <ul class="text-muted ps-3 mb-0 small">
+                            <li class="mb-1">Enforces a mandatory technical validation stage before any sales quotation can be confirmed into a binding Sales Order.</li>
+                            <li class="mb-1">Includes a specialized <b>Rejection Wizard</b> allowing engineers to send quotations back to sales reps with mandatory corrective notes.</li>
+                            <li>Strict role-based access rights ensuring only designated Technical Office Managers can authorize BOQ changes.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="col-md-6">
+                    <div class="feature-item-box" style="border-left-color: var(--coa-primary);">
+                        <h4 class="fw-bold text-dark mb-2"><i class="fa-solid fa-ruler-combined text-primary me-2"></i>2. Volumetric &amp; Scrap Waste Ratio Calculator</h4>
+                        <ul class="text-muted ps-3 mb-0 small">
+                            <li class="mb-1">Supports multi-dimensional measurements: Length, Width, Thickness, Surface Area (m²), and Cubic Volume (m³).</li>
+                            <li class="mb-1">Configurable Scrap/Waste percentage (Waste Ratio %) automatically added to raw material requirements to prevent shortage.</li>
+                            <li>Ideal for Marble, Granite, Woodworking, Glass, Aluminum, Fabrication, and Contracting industries.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="col-md-6">
+                    <div class="feature-item-box" style="border-left-color: var(--coa-gold);">
+                        <h4 class="fw-bold text-dark mb-2"><i class="fa-solid fa-gears text-warning me-2"></i>3. Automated BOM &amp; Manufacturing Order (MO) Generation</h4>
+                        <ul class="text-muted ps-3 mb-0 small">
+                            <li class="mb-1">Automatically calculates raw material quantities and creates dynamic Bill of Materials (BOM) formulas based on customer specifications.</li>
+                            <li class="mb-1">Instantly generates draft or confirmed Manufacturing Orders (MO) in Odoo MRP as soon as the technical review is approved.</li>
+                            <li>Eliminates manual data re-entry and prevents human error between sales desk and production floor.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="col-md-6">
+                    <div class="feature-item-box" style="border-left-color: #059669;">
+                        <h4 class="fw-bold text-dark mb-2"><i class="fa-solid fa-file-contract text-success me-2"></i>4. Technical QWeb PDF Reports &amp; Audit Trail</h4>
+                        <ul class="text-muted ps-3 mb-0 small">
+                            <li class="mb-1">Generates professional bilingual QWeb PDF Technical Review Sheets containing full BOQ breakdown, dimensions, and engineer signatures.</li>
+                            <li class="mb-1">Maintains full audit log tracking of all technical modifications, price adjustments, and approval timestamps.</li>
+                            <li>Fully compatible with Odoo 17.0, 18.0, and 19.0 Community &amp; Enterprise Editions.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 4: STEP-BY-STEP WORKFLOW DIAGRAM -->
+        <div class="gt-card p-4 p-md-5 mb-5" style="background: #F8FAFC;">
+            <h2 class="fw-bold text-center mb-4" style="color: var(--coa-primary);"><i class="fa-solid fa-diagram-project me-3"></i>Step-by-Step Technical Engineering Workflow</h2>
+            
+            <div class="row g-3">
+                <div class="col-md-2.4 col-sm-6">
+                    <div class="workflow-step-card">
+                        <div class="step-number-badge">1</div>
+                        <h6 class="fw-bold text-dark mb-1">Quotation Entry</h6>
+                        <small class="text-muted">Sales rep creates initial sales quotation with customer requirements.</small>
+                    </div>
+                </div>
+                <div class="col-md-2.4 col-sm-6">
+                    <div class="workflow-step-card">
+                        <div class="step-number-badge" style="background: var(--coa-teal);">2</div>
+                        <h6 class="fw-bold text-dark mb-1">Submit Review</h6>
+                        <small class="text-muted">Order is submitted to Technical Office; status changes to Pending Review.</small>
+                    </div>
+                </div>
+                <div class="col-md-2.4 col-sm-6">
+                    <div class="workflow-step-card">
+                        <div class="step-number-badge" style="background: #0284C7;">3</div>
+                        <h6 class="fw-bold text-dark mb-1">BOQ Calculation</h6>
+                        <small class="text-muted">Engineer enters dimensions, material specs, and scrap waste % ratio.</small>
+                    </div>
+                </div>
+                <div class="col-md-2.4 col-sm-6">
+                    <div class="workflow-step-card">
+                        <div class="step-number-badge" style="background: #059669;">4</div>
+                        <h6 class="fw-bold text-dark mb-1">Approval Gate</h6>
+                        <small class="text-muted">Engineer approves BOQ; system updates pricing and validates raw materials.</small>
+                    </div>
+                </div>
+                <div class="col-md-2.4 col-sm-6">
+                    <div class="workflow-step-card">
+                        <div class="step-number-badge" style="background: #D97706;">5</div>
+                        <h6 class="fw-bold text-dark mb-1">MO Generation</h6>
+                        <small class="text-muted">Sales Order confirmed; Manufacturing Orders (MO) auto-created for production.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 5: TECHNICAL SPECIFICATION MATRIX -->
+        <div class="gt-card p-4 p-md-5 mb-5">
+            <h3 class="fw-bold text-dark mb-4" style="color: var(--coa-primary) !important;"><i class="fa-solid fa-sliders me-3 text-primary"></i>Technical Information &amp; Specification</h3>
             <div class="table-responsive">
                 <table class="table table-hover align-middle mb-0">
                     <tbody>
@@ -234,7 +374,7 @@
                         </tr>
                         <tr>
                             <th class="py-3 text-secondary" style="border-color: var(--coa-border);"><i class="fa-solid fa-code-branch me-2"></i>Odoo Compatibility</th>
-                            <td class="py-3" style="border-color: var(--coa-border);"><span class="badge bg-primary px-3 py-2">Odoo 17.0 & 18.0 & 19.0 (Community & Enterprise)</span></td>
+                            <td class="py-3" style="border-color: var(--coa-border);"><span class="badge bg-primary px-3 py-2">Odoo 17.0 &amp; 18.0 &amp; 19.0 (Community &amp; Enterprise)</span></td>
                         </tr>
                         <tr>
                             <th class="py-3 text-secondary" style="border-color: var(--coa-border);"><i class="fa-solid fa-certificate me-2"></i>License Type</th>
@@ -257,8 +397,55 @@
             </div>
         </div>
 
+        <!-- SECTION 6: FREQUENTLY ASKED QUESTIONS (FAQ) -->
+        <div class="gt-card p-4 p-md-5 mb-5">
+            <h3 class="fw-bold text-dark mb-4" style="color: var(--coa-primary) !important;"><i class="fa-solid fa-circle-question me-3 text-warning"></i>Frequently Asked Questions (FAQ)</h3>
+            
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item border-0 mb-3 rounded-3 shadow-sm" style="border: 1px solid #E2E8F0 !important;">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            Is this module compatible with both Odoo Community and Enterprise?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-muted">
+                            Yes! COA Technical Office &amp; Engineering Suite is 100% compatible with Odoo 17.0, 18.0, and 19.0 across both Community and Enterprise editions without requiring extra third-party modules.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item border-0 mb-3 rounded-3 shadow-sm" style="border: 1px solid #E2E8F0 !important;">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            Does it support multi-dimension calculations for marble, wood, and aluminum?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-muted">
+                            Absolutely. The dimension calculator supports multi-unit volumetric and surface conversions (Length x Width x Thickness), surface area (m²), cubic volume (m³), and scrap waste percentages.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item border-0 rounded-3 shadow-sm" style="border: 1px solid #E2E8F0 !important;">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            How do I obtain custom enhancements or technical assistance?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-muted">
+                            Our team of senior COA engineers provides direct technical support via WhatsApp (+20 10 13907174) or through our official portal at www.coa-egy.com.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 7: OFFICIAL SUPPORT FOOTER -->
         <div class="gt-card text-center p-5 mb-5" style="background: linear-gradient(135deg, #714B67 0%, #00A09D 100%); color: white;">
-            <h2 class="fw-bold text-white mb-2">Designed & Supported by COA (Community of acountants)</h2>
+            <h2 class="fw-bold text-white mb-2">Designed &amp; Supported by COA (Community of acountants)</h2>
             <p class="text-light fs-5 max-w-700 mx-auto mb-4">COA (Community of acountants) is an established ERP advisory and software development organization delivering high-end Odoo customizations globally.</p>
             <div class="d-flex flex-wrap justify-content-center gap-3">
                 <a href="https://wa.me/201013907174" target="_blank" class="pill-btn-wa">
