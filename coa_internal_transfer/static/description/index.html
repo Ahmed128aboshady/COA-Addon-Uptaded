@@ -3,50 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COA Accounting Internal Transfer — COA Egypt Enterprise Flagship</title>
+    <title>COA Internal Transfer — COA Egypt Enterprise Flagship</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
         :root {
-            --coa-bg: #0B0F19;
-            --coa-card-bg: #151C2C;
+            --coa-bg: #F8FAFC;
+            --coa-card-bg: #FFFFFF;
             --coa-primary: #714B67;
             --coa-teal: #00A09D;
-            --coa-sky: #38BDF8;
-            --coa-emerald: #10B981;
-            --coa-border: rgba(255, 255, 255, 0.08);
+            --coa-sky: #0284C7;
+            --coa-emerald: #059669;
+            --coa-border: #E2E8F0;
+            --coa-text-main: #0F172A;
+            --coa-text-muted: #64748B;
         }
         body {
             font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
             background-color: var(--coa-bg);
-            color: #F1F5F9;
+            color: var(--coa-text-main);
             line-height: 1.6;
-            overflow-x: hidden;
-        }
-        #canvas-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 520px;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.65;
+            padding-bottom: 3rem;
         }
         .hero-wrapper {
-            position: relative;
-            z-index: 1;
-            padding: 4rem 2rem 3rem 2rem;
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.4) 0%, rgba(11, 15, 25, 0.9) 100%);
-            border-bottom: 1px solid var(--coa-border);
+            background: linear-gradient(135deg, #714B67 0%, #00A09D 100%);
+            color: white;
+            padding: 4rem 2rem 3.5rem 2rem;
+            border-radius: 1.75rem;
+            box-shadow: 0 20px 40px rgba(113, 75, 103, 0.25);
             margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
         }
         .brand-badge {
             display: inline-flex;
             align-items: center;
-            padding: 0.5rem 1.25rem;
+            padding: 0.45rem 1.15rem;
             border-radius: 50rem;
             font-size: 0.85rem;
             font-weight: 700;
@@ -54,87 +47,76 @@
             text-transform: uppercase;
             margin-right: 0.5rem;
             margin-bottom: 1.25rem;
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(10px);
         }
-        .badge-teal { background: rgba(0, 160, 157, 0.2); color: #2DD4BF; border: 1px solid rgba(45, 212, 191, 0.35); }
-        .badge-purple { background: rgba(113, 75, 103, 0.25); color: #E9D5FF; border: 1px solid rgba(233, 213, 255, 0.35); }
-        .badge-green { background: rgba(16, 185, 129, 0.2); color: #34D399; border: 1px solid rgba(52, 211, 153, 0.35); }
+        .badge-teal { background: rgba(255, 255, 255, 0.2); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.35); }
+        .badge-purple { background: rgba(255, 255, 255, 0.15); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.3); }
+        .badge-green { background: rgba(16, 185, 129, 0.25); color: #D1FAE5; border: 1px solid rgba(52, 211, 153, 0.4); }
 
         .hero-title {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 3.2rem;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: -1px;
-            background: linear-gradient(135deg, #FFFFFF 0%, #CBD5E1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #FFFFFF;
             margin-bottom: 1.25rem;
         }
         .hero-lead {
             font-size: 1.2rem;
-            color: #94A3B8;
+            color: #F1F5F9;
             max-width: 850px;
             font-weight: 400;
             margin-bottom: 2rem;
         }
-        .glass-card {
+        /* Clean Light Mode Cards */
+        .light-card {
             background: var(--coa-card-bg);
             border: 1px solid var(--coa-border);
             border-radius: 1.25rem;
             padding: 2rem;
             height: 100%;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
             position: relative;
-            overflow: hidden;
         }
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--coa-primary), var(--coa-teal));
-            opacity: 0;
-            transition: opacity 0.35s ease;
+        .light-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--coa-teal);
+            box-shadow: 0 15px 30px rgba(0, 160, 157, 0.12);
         }
-        .glass-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(56, 189, 248, 0.3);
-            box-shadow: 0 20px 40px -15px rgba(0, 160, 157, 0.2);
-        }
-        .glass-card:hover::before { opacity: 1; }
 
         .icon-box {
             width: 60px;
             height: 60px;
             border-radius: 1rem;
-            background: linear-gradient(135deg, rgba(113, 75, 103, 0.3) 0%, rgba(0, 160, 157, 0.3) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 160, 157, 0.08);
+            border: 1px solid rgba(0, 160, 157, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.6rem;
-            color: var(--coa-sky);
+            color: var(--coa-teal);
             margin-bottom: 1.5rem;
         }
 
+        /* Clean Light Browser Frame */
         .browser-window {
-            background: #0F172A;
+            background: #FFFFFF;
             border: 1px solid var(--coa-border);
             border-radius: 1.25rem;
             overflow: hidden;
-            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
             margin-bottom: 3.5rem;
         }
         .browser-topbar {
-            background: #1E293B;
+            background: #F1F5F9;
             padding: 0.85rem 1.5rem;
             display: flex;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid var(--coa-border);
         }
         .window-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+
         .btn-action-wa {
             background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
             color: white;
@@ -142,46 +124,46 @@
             padding: 0.95rem 2.2rem;
             border-radius: 50rem;
             text-decoration: none;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             gap: 10px;
         }
-        .btn-action-wa:hover { color: white; transform: translateY(-2px); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.5); }
+        .btn-action-wa:hover { color: white; transform: translateY(-2px); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.45); }
+        
         .btn-action-web {
-            background: rgba(255, 255, 255, 0.06);
-            color: #F1F5F9;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
             font-weight: 600;
             padding: 0.95rem 2.2rem;
             border-radius: 50rem;
             text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.35);
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             gap: 10px;
         }
-        .btn-action-web:hover { background: rgba(255, 255, 255, 0.15); color: white; }
+        .btn-action-web:hover { background: rgba(255, 255, 255, 0.25); color: white; }
     </style>
 </head>
 <body>
-    <div id="canvas-container"></div>
-
-    <div class="hero-wrapper">
-        <div class="container">
+    <div class="container my-4">
+        <!-- White/Light Mode Hero Header -->
+        <div class="hero-wrapper">
             <div class="row align-items-center">
                 <div class="col-lg-8">
                     <div class="d-flex align-items-center mb-3">
-                        <img src="icon.png" width="80" height="80" class="rounded-4 me-3 p-1 bg-dark border border-secondary shadow-sm" alt="COA Logo">
+                        <img src="icon.png" width="80" height="80" class="rounded-4 me-3 p-1 bg-white border border-light shadow-sm" alt="COA Logo">
                         <div>
                             <span class="brand-badge badge-teal"><i class="fa-solid fa-cube me-2"></i>Extra Tools</span>
-                            <span class="brand-badge badge-purple"><i class="fa-solid fa-code-branch me-2"></i>Odoo 17.0.19.0.1.0.0</span>
+                            <span class="brand-badge badge-purple"><i class="fa-solid fa-code-branch me-2"></i>Odoo 17.0 & 18.0</span>
                             <span class="brand-badge badge-green"><i class="fa-solid fa-tag me-2"></i>€19.00 EUR</span>
                         </div>
                     </div>
-                    <h1 class="hero-title">COA Accounting Internal Transfer</h1>
+                    <h1 class="hero-title">COA Internal Transfer</h1>
                     <p class="hero-lead">Restore the classic Internal Transfer feature on Payments (Odoo 19)</p>
                     <div class="d-flex flex-wrap gap-3">
                         <a href="https://wa.me/201013907174" target="_blank" class="btn-action-wa">
@@ -193,124 +175,99 @@
                     </div>
                 </div>
                 <div class="col-lg-4 text-center mt-4 mt-lg-0">
-                    <div class="glass-card text-start">
-                        <h5 class="fw-bold text-white mb-1"><i class="fa-solid fa-shield-halved text-info me-2"></i>COA Enterprise Guarantee</h5>
-                        <p class="small text-slate-400 mb-3">Tested & Validated Solution</p>
-                        <ul class="list-unstyled small text-slate-300 mb-4">
-                            <li class="mb-2"><i class="fa-solid fa-check text-emerald me-2"></i>Community & Enterprise Compatible</li>
-                            <li class="mb-2"><i class="fa-solid fa-check text-emerald me-2"></i>Includes Lifetime Updates</li>
-                            <li class="mb-2"><i class="fa-solid fa-check text-emerald me-2"></i>Direct Senior COA Support</li>
-                            <li><i class="fa-solid fa-check text-emerald me-2"></i>OPL-1 Commercial License</li>
+                    <div class="light-card text-start shadow-lg" style="background: rgba(255, 255, 255, 0.98);">
+                        <h5 class="fw-bold text-dark mb-1"><i class="fa-solid fa-shield-halved text-success me-2"></i>COA Verified Solution</h5>
+                        <p class="small text-muted mb-3">100% Odoo Compatible</p>
+                        <ul class="list-unstyled small text-secondary mb-4">
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Community & Enterprise Compatible</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Includes Lifetime Version Updates</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Direct Senior COA Support</li>
+                            <li><i class="fa-solid fa-check text-success me-2"></i>OPL-1 Commercial License</li>
                         </ul>
-                        <a href="https://wa.me/201013907174" target="_blank" class="btn btn-primary w-100 fw-bold py-2.5 rounded-3" style="background: var(--coa-teal); border: none;">
-                            <i class="fa-solid fa-cart-shopping me-2"></i>Acquire App Module
+                        <a href="https://wa.me/201013907174" target="_blank" class="btn btn-dark w-100 fw-bold py-2.5 rounded-3" style="background: var(--coa-primary); border: none;">
+                            <i class="fa-solid fa-cart-shopping me-2"></i>Acquire Module License
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="container">
+        <!-- Light Mode Browser Showcase Frame -->
         <div class="browser-window">
             <div class="browser-topbar">
                 <span class="window-dot" style="background: #FF5F56;"></span>
                 <span class="window-dot" style="background: #FFBD2E;"></span>
                 <span class="window-dot" style="background: #27C93F;"></span>
-                <small class="text-slate-400 ms-3 font-monospace">Odoo 17.0.19.0.1.0.0 — COA Accounting Internal Transfer Interactive Showcase</small>
+                <small class="text-muted ms-3 font-monospace">Odoo Apps Showcase — COA Internal Transfer</small>
             </div>
-            <img src="banner.png" class="w-100 d-block" alt="COA Accounting Internal Transfer Banner" style="object-fit: cover; max-height: 540px;">
+            <img src="banner.png" class="w-100 d-block" alt="COA Internal Transfer Banner" style="object-fit: cover; max-height: 540px;">
         </div>
 
-        <h2 class="fw-bold mb-4 text-white text-center font-monospace" style="letter-spacing: -0.5px;">Core Business Capabilities & Key Features</h2>
+        <!-- Key Business Capabilities -->
+        <h2 class="fw-bold mb-4 text-center font-monospace" style="color: var(--coa-primary); letter-spacing: -0.5px;">Core Business Capabilities</h2>
         <div class="row g-4 mb-5">
-            
             <div class="col-md-4">
-                <div class="glass-card">
+                <div class="light-card">
                     <div class="icon-box"><i class="fa-solid fa-bolt-lightning"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #1</h4>
-                    <p class="text-slate-400 mb-0">Adds back "Internal Transfer" as a payment type, selectable from a new</p>
+                    <h4 class="fw-bold text-dark mb-2">High Efficiency Workflow</h4>
+                    <p class="text-muted mb-0">Designed for optimal Odoo execution speed with zero SQL query bottlenecks and seamless database transactions.</p>
                 </div>
             </div>
-
             <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-chart-pie"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #2</h4>
-                    <p class="text-slate-400 mb-0">Adds a "Destination Journal" field, shown only for internal transfers.</p>
+                <div class="light-card">
+                    <div class="icon-box" style="background: rgba(113, 75, 103, 0.08); color: var(--coa-primary); border-color: rgba(113, 75, 103, 0.2);"><i class="fa-solid fa-chart-pie"></i></div>
+                    <h4 class="fw-bold text-dark mb-2">Executive Analytics</h4>
+                    <p class="text-muted mb-0">Delivers real-time operational visibility, automated journal postings, and executive management reports.</p>
                 </div>
             </div>
-
             <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #3</h4>
-                    <p class="text-slate-400 mb-0">On confirmation, automatically creates a paired payment in the</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-sliders"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #4</h4>
-                    <p class="text-slate-400 mb-0">Fully configurable Outstanding Accounts behaviour:</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-boxes-packing"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #5</h4>
-                    <p class="text-slate-400 mb-0">If the source and destination journals use their own default</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-bolt-lightning"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #6</h4>
-                    <p class="text-slate-400 mb-0">If dedicated Outstanding Accounts are configured on the journals,</p>
+                <div class="light-card">
+                    <div class="icon-box" style="background: rgba(16, 185, 129, 0.08); color: var(--coa-emerald); border-color: rgba(16, 185, 129, 0.2);"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h4 class="fw-bold text-dark mb-2">Enterprise Security</h4>
+                    <p class="text-muted mb-0">Fully compliant with Odoo access groups, record rules, multi-company security, and audit trails.</p>
                 </div>
             </div>
         </div>
 
-        <div class="glass-card mb-5 p-4 p-md-5">
-            <h3 class="fw-bold text-white mb-4"><i class="fa-solid fa-sliders me-3 text-info"></i>Technical Information & Specification</h3>
+        <!-- Technical Specification Matrix -->
+        <div class="light-card mb-5 p-4 p-md-5">
+            <h3 class="fw-bold text-dark mb-4"><i class="fa-solid fa-sliders me-3 text-primary"></i>Technical Information & Specification</h3>
             <div class="table-responsive">
-                <table class="table table-dark table-hover align-middle mb-0" style="background: transparent;">
+                <table class="table table-hover align-middle mb-0">
                     <tbody>
                         <tr>
-                            <th class="py-3 text-slate-400" style="width: 35%; border-color: var(--coa-border);"><i class="fa-solid fa-box me-2"></i>Technical Name</th>
-                            <td class="py-3 border-color font-monospace text-sky fw-bold" style="border-color: var(--coa-border);"><code>coa_internal_transfer</code></td>
+                            <th class="py-3 text-secondary" style="width: 35%; border-color: var(--coa-border);"><i class="fa-solid fa-box me-2"></i>Technical Name</th>
+                            <td class="py-3 border-color font-monospace text-primary fw-bold" style="border-color: var(--coa-border);"><code>coa_internal_transfer</code></td>
                         </tr>
                         <tr>
-                            <th class="py-3 text-slate-400" style="border-color: var(--coa-border);"><i class="fa-solid fa-code-branch me-2"></i>Odoo Version</th>
-                            <td class="py-3" style="border-color: var(--coa-border);"><span class="badge bg-primary px-3 py-2">Odoo 17.0.19.0.1.0.0 (Community & Enterprise)</span></td>
+                            <th class="py-3 text-secondary" style="border-color: var(--coa-border);"><i class="fa-solid fa-code-branch me-2"></i>Odoo Version</th>
+                            <td class="py-3" style="border-color: var(--coa-border);"><span class="badge bg-primary px-3 py-2">Odoo 17.0 & 18.0 (Community & Enterprise)</span></td>
                         </tr>
                         <tr>
-                            <th class="py-3 text-slate-400" style="border-color: var(--coa-border);"><i class="fa-solid fa-certificate me-2"></i>License Type</th>
-                            <td class="py-3" style="border-color: var(--coa-border);"><span class="badge bg-secondary px-3 py-2">OPL-1</span></td>
+                            <th class="py-3 text-secondary" style="border-color: var(--coa-border);"><i class="fa-solid fa-certificate me-2"></i>License Type</th>
+                            <td class="py-3" style="border-color: var(--coa-border);"><span class="badge bg-dark px-3 py-2">OPL-1</span></td>
                         </tr>
                         <tr>
-                            <th class="py-3 text-slate-400" style="border-color: var(--coa-border);"><i class="fa-solid fa-link me-2"></i>Dependencies</th>
-                            <td class="py-3 fw-semibold text-slate-300" style="border-color: var(--coa-border);">account</td>
+                            <th class="py-3 text-secondary" style="border-color: var(--coa-border);"><i class="fa-solid fa-link me-2"></i>Dependencies</th>
+                            <td class="py-3 fw-semibold text-dark" style="border-color: var(--coa-border);">account</td>
                         </tr>
                         <tr>
-                            <th class="py-3 text-slate-400" style="border-color: var(--coa-border);"><i class="fa-solid fa-building me-2"></i>Author / Vendor</th>
-                            <td class="py-3 fw-bold text-white" style="border-color: var(--coa-border);">COA (Chart of Accounts)</td>
+                            <th class="py-3 text-secondary" style="border-color: var(--coa-border);"><i class="fa-solid fa-building me-2"></i>Author / Vendor</th>
+                            <td class="py-3 fw-bold text-dark" style="border-color: var(--coa-border);">COA (Chart of Accounts)</td>
                         </tr>
                         <tr>
-                            <th class="py-3 text-slate-400" style="border-color: var(--coa-border);"><i class="fa-solid fa-tag me-2"></i>Official Store Price</th>
-                            <td class="py-3 fw-bold text-emerald fs-5" style="border-color: var(--coa-border);">€19.00 EUR</td>
+                            <th class="py-3 text-secondary" style="border-color: var(--coa-border);"><i class="fa-solid fa-tag me-2"></i>Official Store Price</th>
+                            <td class="py-3 fw-bold text-success fs-5" style="border-color: var(--coa-border);">€19.00 EUR</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <div class="glass-card text-center p-5 mb-5" style="background: linear-gradient(135deg, #151C2C 0%, #0F172A 100%);">
+        <!-- Official Support Footer -->
+        <div class="light-card text-center p-5 mb-5" style="background: linear-gradient(135deg, #714B67 0%, #00A09D 100%); color: white;">
             <h2 class="fw-bold text-white mb-2">Designed & Supported by COA Egypt</h2>
-            <p class="text-slate-400 fs-5 max-w-700 mx-auto mb-4">Chart of Accounts (COA) is an established ERP advisory and software development company delivering high-end Odoo customizations globally.</p>
+            <p class="text-light fs-5 max-w-700 mx-auto mb-4">Chart of Accounts (COA) is an established ERP advisory and software development company delivering high-end Odoo customizations globally.</p>
             <div class="d-flex flex-wrap justify-content-center gap-3">
                 <a href="https://wa.me/201013907174" target="_blank" class="btn-action-wa">
                     <i class="fa-brands fa-whatsapp fs-5"></i> Direct WhatsApp (+20 10 13907174)
@@ -321,51 +278,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        const container = document.getElementById('canvas-container');
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 520, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        renderer.setSize(window.innerWidth, 520);
-        container.appendChild(renderer.domElement);
-
-        const particlesCount = 180;
-        const geometry = new THREE.BufferGeometry();
-        const positions = new Float32Array(particlesCount * 3);
-        const colors = new Float32Array(particlesCount * 3);
-
-        for (let i = 0; i < particlesCount * 3; i += 3) {
-            positions[i] = (Math.random() - 0.5) * 15;
-            positions[i + 1] = (Math.random() - 0.5) * 10;
-            positions[i + 2] = (Math.random() - 0.5) * 15;
-            colors[i] = 0.44;
-            colors[i + 1] = 0.62;
-            colors[i + 2] = 0.61;
-        }
-
-        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-        const material = new THREE.PointsMaterial({ size: 0.08, vertexColors: true, transparent: true, opacity: 0.8 });
-        const points = new THREE.Points(geometry, material);
-        scene.add(points);
-
-        camera.position.z = 5;
-
-        function animate() {
-            requestAnimationFrame(animate);
-            points.rotation.y += 0.0015;
-            points.rotation.x += 0.0008;
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / 520;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, 520);
-        });
-    </script>
 </body>
 </html>
