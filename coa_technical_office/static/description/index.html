@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
         :root {
             --coa-primary: #714B67;
@@ -27,102 +26,52 @@
             overflow-x: hidden;
         }
 
-        /* Keyframe Animations */
-        @keyframes floatAnimation {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
-        }
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 0 0 rgba(0, 160, 157, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(0, 160, 157, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 160, 157, 0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Canvas Background */
-        #canvas-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 600px;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.55;
-        }
-
         /* Top QR Codes Bar */
         .qr-top-bar {
             background: #FFFFFF;
             border: 2px solid var(--coa-teal);
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            box-shadow: 0 15px 35px rgba(0, 160, 157, 0.15);
+            border-radius: 1.25rem;
+            padding: 1.25rem 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 160, 157, 0.12);
             margin-bottom: 2rem;
-            position: relative;
-            z-index: 2;
         }
         .qr-card {
             background: #F8FAFC;
             border: 1px solid #E2E8F0;
             border-radius: 1rem;
-            padding: 1rem 1.25rem;
+            padding: 0.85rem 1rem;
             display: flex;
             align-items: center;
-            gap: 1.25rem;
+            gap: 1rem;
             transition: all 0.3s ease;
         }
         .qr-card:hover {
             background: #FFFFFF;
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             border-color: var(--coa-primary);
-        }
-        .qr-img {
-            width: 90px;
-            height: 90px;
-            border-radius: 0.75rem;
-            padding: 4px;
-            background: #FFFFFF;
-            border: 1px solid #CBD5E1;
-            object-fit: contain;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.06);
         }
 
         /* Hero Section */
         .gt-hero-header {
-            background: linear-gradient(-45deg, #714B67, #4A2B44, #00A09D, #1E1B2E);
-            background-size: 400% 400%;
-            animation: gradientShift 12s ease infinite;
+            background: linear-gradient(135deg, #714B67 0%, #4A2B44 60%, #1E1B2E 100%);
             color: white;
             padding: 3.5rem 2rem 3rem 2rem;
-            border-radius: 1.75rem;
+            border-radius: 1.5rem;
             box-shadow: 0 20px 40px rgba(113, 75, 103, 0.3);
             margin-bottom: 2.5rem;
             text-align: center;
-            position: relative;
-            z-index: 1;
         }
         .gt-hero-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2rem, 4vw, 3.4rem);
+            font-size: clamp(2rem, 4vw, 3.2rem);
             font-weight: 800;
             color: var(--coa-gold) !important;
             letter-spacing: -0.5px;
             margin-bottom: 1rem;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
         .gt-hero-lead {
-            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-size: clamp(1rem, 2vw, 1.2rem);
             color: #F1F5F9;
             max-width: 900px;
             margin: 0 auto 2rem auto;
@@ -131,26 +80,22 @@
         .gt-hero-frame {
             max-width: 850px;
             margin: 0 auto 2rem auto;
-            border-radius: 1.25rem;
+            border-radius: 1rem;
             overflow: hidden;
-            border: 3px solid rgba(255, 255, 255, 0.25);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
-            animation: floatAnimation 6s ease-in-out infinite;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45);
         }
 
-        /* Animated Cards */
         .gt-card {
             background: #FFFFFF;
             border: 1px solid var(--coa-border);
             border-radius: 1.25rem;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.35s ease;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            position: relative;
-            overflow: hidden;
         }
         .gt-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 45px rgba(0, 160, 157, 0.18);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 160, 157, 0.15);
             border-color: var(--coa-teal);
         }
 
@@ -177,12 +122,6 @@
             padding: 1.25rem 1.5rem;
             border-radius: 0.75rem;
             margin-bottom: 1rem;
-            transition: all 0.3s ease;
-        }
-        .feature-item-box:hover {
-            background: #FFFFFF;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.06);
-            transform: translateX(4px);
         }
         .workflow-step-card {
             background: #FFFFFF;
@@ -190,13 +129,7 @@
             border-radius: 1rem;
             padding: 1.5rem;
             text-align: center;
-            position: relative;
             height: 100%;
-            transition: all 0.3s ease;
-        }
-        .workflow-step-card:hover {
-            transform: scale(1.03);
-            border-color: var(--coa-primary);
         }
         .step-number-badge {
             width: 44px;
@@ -210,42 +143,31 @@
             justify-content: center;
             margin: 0 auto 1rem auto;
             font-size: 1.2rem;
-            box-shadow: 0 5px 15px rgba(113, 75, 103, 0.3);
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .gt-hero-header { padding: 2rem 1rem; }
-            .qr-card { flex-direction: column; text-align: center; gap: 0.75rem; }
-            .qr-img { width: 110px; height: 110px; }
         }
     </style>
 </head>
 <body>
-    <!-- Three.js Canvas Particles -->
-    <div id="canvas-container"></div>
-
     <div class="container my-4">
 
-        <!-- PROMINENT SCAN QR CODES HEADER BAR -->
+        <!-- PROMINENT SCAN QR CODES HEADER BAR (STRICT SIZING) -->
         <div class="qr-top-bar">
             <div class="row align-items-center g-3">
                 <div class="col-lg-4 text-center text-lg-start">
                     <span class="badge bg-primary px-3 py-2 mb-2" style="background: var(--coa-primary) !important;">
                         <i class="fa-solid fa-qrcode me-1"></i> INSTANT MOBILE SCAN
                     </span>
-                    <h4 class="fw-bold text-dark mb-1"><i class="fa-solid fa-mobile-screen me-2 text-teal"></i>Scan QR Codes to Connect</h4>
+                    <h4 class="fw-bold text-dark mb-1"><i class="fa-solid fa-mobile-screen me-2 text-teal" style="color: #00A09D;"></i>Scan QR Codes to Connect</h4>
                     <p class="small text-muted mb-0">Use your mobile camera to scan directly for instant WhatsApp support or portal access.</p>
                 </div>
                 
                 <!-- QR Code 1: WhatsApp -->
                 <div class="col-lg-4 col-md-6">
                     <div class="qr-card">
-                        <img src="qr_whatsapp.png" class="qr-img" alt="WhatsApp QR Code">
+                        <img src="qr_whatsapp.png" alt="WhatsApp QR Code" style="max-width: 100px; width: 100px; height: 100px; object-fit: contain; border-radius: 0.5rem; border: 1px solid #CBD5E1; background: #FFF; padding: 4px;" width="100" height="100">
                         <div>
                             <span class="badge bg-success mb-1" style="background: #25D366 !important;"><i class="fa-brands fa-whatsapp me-1"></i>WHATSAPP CHAT</span>
-                            <h6 class="fw-bold text-dark mb-1">Direct Technical Support</h6>
-                            <p class="small text-muted mb-0">Scan to chat: <b>+20 10 13907174</b></p>
+                            <h6 class="fw-bold text-dark mb-1" style="font-size: 0.95rem;">Direct Technical Support</h6>
+                            <p class="small text-muted mb-0 font-monospace" style="font-size: 0.85rem;">Scan to chat:<br><b>+20 10 13907174</b></p>
                         </div>
                     </div>
                 </div>
@@ -253,11 +175,11 @@
                 <!-- QR Code 2: Help Desk / Website -->
                 <div class="col-lg-4 col-md-6">
                     <div class="qr-card">
-                        <img src="qr_website.png" class="qr-img" alt="Official Website Portal QR Code">
+                        <img src="qr_website.png" alt="Official Website Portal QR Code" style="max-width: 100px; width: 100px; height: 100px; object-fit: contain; border-radius: 0.5rem; border: 1px solid #CBD5E1; background: #FFF; padding: 4px;" width="100" height="100">
                         <div>
                             <span class="badge bg-info mb-1" style="background: #00A09D !important;"><i class="fa-solid fa-globe me-1"></i>OFFICIAL PORTAL</span>
-                            <h6 class="fw-bold text-dark mb-1">Help Desk &amp; Portal</h6>
-                            <p class="small text-muted mb-0">Scan to visit: <b>www.coa-egy.com</b></p>
+                            <h6 class="fw-bold text-dark mb-1" style="font-size: 0.95rem;">Help Desk &amp; Portal</h6>
+                            <p class="small text-muted mb-0 font-monospace" style="font-size: 0.85rem;">Scan to visit:<br><b>www.coa-egy.com</b></p>
                         </div>
                     </div>
                 </div>
@@ -267,24 +189,24 @@
         <!-- HERO HEADER SECTION -->
         <div class="gt-hero-header">
             <div class="d-flex align-items-center justify-content-center mb-3">
-                <img src="logo.png" width="100" height="100" class="rounded-4 p-2 bg-white shadow-lg border border-light" alt="COA Logo" style="object-fit: contain;">
+                <img src="logo.png" alt="COA Logo" style="max-width: 100px; width: 100px; height: 100px; object-fit: contain; border-radius: 1rem; background: #FFF; padding: 6px;" width="100" height="100">
             </div>
 
-            <h1 class="gt-hero-title">COA Technical Office & Engineering Suite</h1>
+            <h1 class="gt-hero-title">COA Technical Office &amp; Engineering Suite</h1>
             <p class="gt-hero-lead">
                 The ultimate end-to-end Technical Office Engineering suite for Odoo. Connect Sales Quotations directly with Engineering Technical Reviews, Bill of Quantities (BOQ) calculations, Scrap Waste Ratios, and Automated Manufacturing Orders (MO).
             </p>
             
             <!-- Real Odoo UI Screenshot Showcase -->
             <div class="gt-hero-frame">
-                <img src="screenshot1.jpg" class="w-100 d-block" alt="COA Technical Office Odoo UI Screenshot">
+                <img src="screenshot1.jpg" class="w-100 d-block" alt="COA Technical Office Odoo UI Screenshot" style="max-width: 100%; height: auto;">
             </div>
         </div>
 
         <!-- PRODUCT ECOSYSTEM & INCLUDED MODULES -->
         <div class="bg-white py-4 mb-5 text-center">
             <h3 class="fw-bold mb-3" style="color: var(--coa-primary); font-size: clamp(1.6rem, 3vw, 2.2rem);">
-                <b>COA Technical Office & Engineering Suite</b><br>
+                <b>COA Technical Office &amp; Engineering Suite</b><br>
                 Integrated Engineering Ecosystem within <b style="color: var(--coa-teal);">COA ERP Suite</b>
             </h3>
             <div class="alert alert-info py-3 mb-4 mx-auto" style="border-radius: 0.75rem; max-width: 900px;">
@@ -543,75 +465,26 @@
             </div>
         </div>
 
-        <!-- OFFICIAL SUPPORT FOOTER WITH QR CODES -->
+        <!-- OFFICIAL SUPPORT FOOTER WITH STRICTLY SIZED QR CODES -->
         <div class="gt-card text-center p-5 mb-5" style="background: linear-gradient(135deg, #714B67 0%, #00A09D 100%); color: white;">
-            <img src="logo.png" width="90" height="90" class="rounded-4 p-2 bg-white shadow-lg border border-light mb-3" alt="COA Logo" style="object-fit: contain;">
+            <img src="logo.png" alt="COA Logo" style="max-width: 90px; width: 90px; height: 90px; object-fit: contain; border-radius: 1rem; background: #FFF; padding: 6px;" width="90" height="90" class="mb-3">
             <h2 class="fw-bold text-white mb-2">Designed &amp; Supported by COA (Community of acountants)</h2>
             <p class="text-light fs-5 max-w-700 mx-auto mb-4">COA (Community of acountants) is an established ERP advisory and software development organization delivering high-end Odoo customizations globally.</p>
             
             <div class="d-flex flex-wrap justify-content-center gap-4 mt-4">
                 <div class="p-3 bg-white text-dark rounded-4 shadow-lg text-center" style="max-width: 220px;">
-                    <img src="qr_whatsapp.png" width="130" height="130" class="d-block mx-auto mb-2" alt="WhatsApp QR Code">
+                    <img src="qr_whatsapp.png" alt="WhatsApp QR Code" style="max-width: 130px; width: 130px; height: 130px; object-fit: contain; display: block; margin: 0 auto 0.5rem auto;" width="130" height="130">
                     <small class="fw-bold text-success"><i class="fa-brands fa-whatsapp me-1"></i>WhatsApp Support</small>
                     <div class="small text-muted font-monospace">+20 10 13907174</div>
                 </div>
 
                 <div class="p-3 bg-white text-dark rounded-4 shadow-lg text-center" style="max-width: 220px;">
-                    <img src="qr_website.png" width="130" height="130" class="d-block mx-auto mb-2" alt="Website QR Code">
+                    <img src="qr_website.png" alt="Website QR Code" style="max-width: 130px; width: 130px; height: 130px; object-fit: contain; display: block; margin: 0 auto 0.5rem auto;" width="130" height="130">
                     <small class="fw-bold text-teal" style="color: #00A09D;"><i class="fa-solid fa-globe me-1"></i>Help Desk Portal</small>
                     <div class="small text-muted font-monospace">www.coa-egy.com</div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Three.js Canvas Animation Script -->
-    <script>
-        const container = document.getElementById('canvas-container');
-        if (container) {
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 600, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            renderer.setSize(window.innerWidth, 600);
-            container.appendChild(renderer.domElement);
-
-            const particlesCount = 220;
-            const geometry = new THREE.BufferGeometry();
-            const positions = new Float32Array(particlesCount * 3);
-            const colors = new Float32Array(particlesCount * 3);
-
-            for (let i = 0; i < particlesCount * 3; i += 3) {
-                positions[i] = (Math.random() - 0.5) * 15;
-                positions[i + 1] = (Math.random() - 0.5) * 10;
-                positions[i + 2] = (Math.random() - 0.5) * 15;
-                colors[i] = 0.44;
-                colors[i + 1] = 0.62;
-                colors[i + 2] = 0.61;
-            }
-
-            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-            const material = new THREE.PointsMaterial({ size: 0.08, vertexColors: true, transparent: true, opacity: 0.75 });
-            const points = new THREE.Points(geometry, material);
-            scene.add(points);
-
-            camera.position.z = 5;
-
-            function animate() {
-                requestAnimationFrame(animate);
-                points.rotation.y += 0.0012;
-                points.rotation.x += 0.0006;
-                renderer.render(scene, camera);
-            }
-            animate();
-
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / 600;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, 600);
-            });
-        }
-    </script>
 </body>
 </html>
