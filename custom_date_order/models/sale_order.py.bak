@@ -1,0 +1,37 @@
+from odoo import fields, models, api, _
+from odoo.exceptions import ValidationError
+
+class SaleOrder(models.Model):
+    _inherit = 'sale.order'
+
+    order_date_only = fields.Date(
+        string='Quotation Date',
+        compute='_compute_order_date_only', # تم تصحيح الكلمة هنا
+        store=True,
+    )
+
+    @api.depends('order_date_only','date_order')
+    def _compute_order_date_only(self):
+        for rec in self:
+            rec.order_date_only = rec.date_order.date() if rec.date_order else False
+
+    # --- بداية الكود الجديد الخاص بالتحقق من الكميات ---
+    def action_confirm(self):
+        for order in self:
+            for line in order.order_line:
+                # تخطي السطور التي لا تحتوي على منتج فعلي (مثل الملاحظات والأقسام)
+                if line.display_type:
+                    continue
+                
+                # استخدام الحقل الذي استخرجناه من الاستوديو
+                available_qty = line.x_studio_qty_available 
+                
+                # التحقق مما إذا كانت الكمية المطلوبة أكبر من المتاحة
+                if line.product_uom_qty > available_qty:
+                    raise ValidationError(_(
+                        "عفواً، لا يمكنك تأكيد أمر البيع!\n"
+                        "الكمية المطلوبة من المنتج '%s' هي (%.2f)، بينما الكمية المتاحة هي (%.2f) فقط."
+                    ) % (line.product_id.display_name, line.product_uom_qty, available_qty))
+
+        # إذا كانت الكميات سليمة، يتم استدعاء الدالة الأصلية لتكملة التأكيد
+        return super(SaleOrder, self).action_confirm()

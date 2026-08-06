@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_loan_view_form_inherit" model="ir.ui.view">
+        <field name="name">hr.loan.view.form.inherit.accounting</field>
+        <field name="model">hr.loan</field>
+        <field name="inherit_id" ref="ent_ohrms_loan.hr_loan_view_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Smart button: Journal Entries -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_journal_entries"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-book"
+                        invisible="move_count == 0">
+                    <field name="move_count" widget="statinfo" string="Journal Entries"/>
+                </button>
+            </xpath>
+
+            <!-- Delay Installments button in header -->
+            <xpath expr="//header/field[@name='state']" position="before">
+                <button name="%(action_delay_installments_wizard)d"
+                        type="action"
+                        string="Delay Installments"
+                        invisible="state != 'approve'"
+                        class="oe_highlight"/>
+            </xpath>
+
+            <!-- Accounting fields after loan_amount -->
+            <xpath expr="//field[@name='loan_amount']" position="after">
+                <field name="journal_id"/>
+                <field name="loan_account_id"/>
+                <field name="treasury_account_id"/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="account_payment_register_commission_form" model="ir.ui.view">
+            <field name="name">account.payment.register.commission.form</field>
+            <field name="model">account.payment.register</field>
+            <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+            <field name="arch" type="xml">
+
+                <!-- خانة المبلغ قبل الخصم فوق خانة المبلغ -->
+                <xpath expr="//label[@for='amount']" position="before">
+                    <label for="amount_before_commission"
+                           invisible="not has_active_commission"/>
+                    <div invisible="not has_active_commission">
+                        <field name="amount_before_commission"
+                               help="اكتب المبلغ الكلي — وأودو هيحسب الصافي تلقائياً"/>
+                    </div>
+                </xpath>
+
+                <!-- نسبة وقيمة العمولة بعد خانة المبلغ -->
+                <xpath expr="//div[@name='amount_div']" position="after">
+                    <label for="commission_rate" invisible="not has_active_commission"/>
+                    <div invisible="not has_active_commission">
+                        <field name="commission_rate" readonly="1"/>
+                    </div>
+                    <label for="commission_amount" invisible="not has_active_commission"/>
+                    <div invisible="not has_active_commission">
+                        <field name="commission_amount" readonly="1"/>
+                    </div>
+                    <field name="has_active_commission" invisible="1"/>
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

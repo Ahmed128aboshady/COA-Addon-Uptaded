@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     بورتال Home — إضافة كارت "طلب أوردر جديد"
+     ══════════════════════════════════════════════════════════════════ -->
+<template id="portal_my_home_order_request"
+          name="Portal: Request New Order"
+          inherit_id="portal.portal_my_home"
+          priority="30">
+
+    <xpath expr="//div[hasclass('o_portal_docs')]" position="before">
+        <t t-set="portal_client_category_enable" t-value="True"/>
+    </xpath>
+
+    <div id="portal_client_category" position="inside">
+        <t t-call="portal.portal_docs_entry">
+            <t t-set="icon"              t-value="'/sale/static/src/img/bag.svg'"/>
+            <t t-set="title">طلب أوردر جديد</t>
+            <t t-set="text">اطلب منتجاتك مباشرة — سيصلك عرض السعر فوراً</t>
+            <t t-set="url"               t-value="'/my/order/request'"/>
+            <t t-set="placeholder_count" t-value="'order_request_count'"/>
+        </t>
+    </div>
+
+</template>
+
+
+<!-- ══════════════════════════════════════════════════════════════════
+     نموذج طلب الأوردر
+     ══════════════════════════════════════════════════════════════════ -->
+<template id="portal_order_form" name="Portal: Order Request Form">
+<t t-call="portal.portal_layout">
+
+    <t t-call="portal.portal_searchbar">
+        <t t-set="title">طلب أوردر جديد</t>
+    </t>
+
+    <div class="container mt-4 mb-5" dir="rtl">
+    <div class="row justify-content-center">
+    <div class="col-12 col-lg-10">
+
+        <!-- رسالة خطأ -->
+        <div t-if="error" class="alert alert-danger d-flex align-items-center gap-2" role="alert">
+            <i class="fa fa-exclamation-triangle fa-lg"/>
+            <span>يرجى إضافة منتج واحد على الأقل قبل الإرسال.</span>
+        </div>
+
+        <div class="card shadow-sm border-0">
+
+            <!-- Header -->
+            <div class="card-header py-3" style="background:#714B67;">
+                <h5 class="mb-0 text-white">
+                    <i class="fa fa-shopping-cart me-2"/>
+                    طلب أوردر جديد
+                </h5>
+            </div>
+
+            <div class="card-body p-4">
+            <form action="/my/order/submit" method="POST" id="portal_order_form">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                <!-- ── العناوين ── -->
+                <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">
+                            <i class="fa fa-truck text-muted me-1"/>
+                            عنوان الشحن
+                        </label>
+                        <select name="partner_shipping_id" class="form-select">
+                            <t t-foreach="addresses" t-as="addr">
+                                <option t-att-value="addr.id"
+                                        t-att-selected="'selected' if addr.id == partner.id else None">
+                                    <t t-esc="addr.display_name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">
+                            <i class="fa fa-file-text-o text-muted me-1"/>
+                            عنوان الفاتورة
+                        </label>
+                        <select name="partner_invoice_id" class="form-select">
+                            <t t-foreach="addresses" t-as="addr">
+                                <option t-att-value="addr.id"
+                                        t-att-selected="'selected' if addr.id == partner.id else None">
+                                    <t t-esc="addr.display_name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- ── جدول المنتجات ── -->
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">
+                        <i class="fa fa-list text-muted me-1"/>
+                        المنتجات
+                    </label>
+
+                    <div class="table-responsive">
+                    <table class="table table-bordered align-middle mb-2" id="order_lines_table">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="text-center" style="width:42px">#</th>
+                                <th>المنتج</th>
+                                <th style="width:110px">الكمية</th>
+                                <th class="text-center" style="width:52px">
+                                    <i class="fa fa-trash-o"/>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="order_lines_body">
+                            <!-- سطر نموذجي — JS يستخدمه للنسخ -->
+                            <tr class="order-line-row">
+                                <td class="text-center fw-bold row-num text-muted">1</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img class="product-thumb rounded border"
+                                             src="/web/static/img/placeholder.png"
+                                             style="width:42px;height:42px;object-fit:cover;flex-shrink:0;"/>
+                                        <div class="flex-grow-1 position-relative">
+                                            <input type="text"
+                                                   class="form-control form-control-sm product-search-input"
+                                                   placeholder="ابحث بالاسم أو الباركود..."
+                                                   autocomplete="off"/>
+                                            <input type="hidden"
+                                                   name="product_id[]"
+                                                   class="product-id-input"/>
+                                            <div class="product-dropdown list-group shadow position-absolute w-100"
+                                                 style="top:100%;z-index:1050;display:none;max-height:260px;overflow-y:auto;border-radius:8px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input type="number"
+                                           name="qty[]"
+                                           class="form-control form-control-sm"
+                                           value="1" min="0.01" step="0.01"/>
+                                </td>
+                                <td class="text-center">
+                                    <button type="button"
+                                            class="btn btn-sm btn-outline-danger remove-line-btn"
+                                            title="حذف السطر">
+                                        <i class="fa fa-times"/>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+
+                    <button type="button" id="add_line_btn" class="btn btn-outline-primary btn-sm">
+                        <i class="fa fa-plus me-1"/>
+                        إضافة منتج
+                    </button>
+                </div>
+
+                <!-- ── ملاحظات ── -->
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">
+                        <i class="fa fa-sticky-note-o text-muted me-1"/>
+                        ملاحظات التسليم
+                        <span class="text-muted fw-normal">(اختياري)</span>
+                    </label>
+                    <textarea name="note" class="form-control" rows="3"
+                              placeholder="أي تعليمات أو طلبات خاصة بالتسليم..."></textarea>
+                </div>
+
+                <!-- ── أزرار ── -->
+                <div class="d-flex justify-content-between align-items-center">
+                    <a href="/my" class="btn btn-outline-secondary">
+                        <i class="fa fa-arrow-right me-1"/>
+                        رجوع
+                    </a>
+                    <button type="submit" class="btn btn-primary px-4" id="submit_btn">
+                        <i class="fa fa-paper-plane me-1"/>
+                        إرسال الطلب
+                    </button>
+                </div>
+
+            </form>
+            </div><!-- /card-body -->
+        </div><!-- /card -->
+
+    </div>
+    </div>
+    </div>
+
+</t>
+</template>
+
+
+<!-- ══════════════════════════════════════════════════════════════════
+     صفحة التأكيد
+     ══════════════════════════════════════════════════════════════════ -->
+<template id="portal_order_confirm" name="Portal: Order Confirmed">
+<t t-call="portal.portal_layout">
+
+    <div class="container mt-5 mb-5" dir="rtl">
+    <div class="row justify-content-center">
+    <div class="col-12 col-md-7">
+
+        <div class="card shadow-sm border-0 text-center">
+            <div class="card-body py-5 px-4">
+
+                <div class="mb-3">
+                    <i class="fa fa-check-circle fa-5x" style="color:#714B67;"/>
+                </div>
+
+                <h3 class="fw-bold mb-2">تم إرسال طلبك بنجاح!</h3>
+                <p class="text-muted mb-1">
+                    تم إنشاء عرض السعر رقم
+                    <strong t-esc="order.name"/>
+                </p>
+                <p class="text-muted mb-4">
+                    سيتواصل معك فريق المبيعات في أقرب وقت ممكن.
+                </p>
+
+                <!-- ملخص الأوردر -->
+                <div class="table-responsive mb-4">
+                <table class="table table-sm table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>المنتج</th>
+                            <th class="text-center">الكمية</th>
+                            <th class="text-end">السعر</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="order.order_line" t-as="line">
+                        <tr>
+                            <td t-esc="line.product_id.display_name"/>
+                            <td class="text-center">
+                                <t t-esc="line.product_uom_qty"/> <small class="text-muted" t-esc="line.product_uom.name"/>
+                            </td>
+                            <td class="text-end">
+                                <t t-esc="'%.2f' % line.price_unit"/>
+                            </td>
+                        </tr>
+                        </t>
+                    </tbody>
+                    <tfoot>
+                        <tr class="fw-bold">
+                            <td colspan="2" class="text-end">الإجمالي:</td>
+                            <td class="text-end" t-esc="'%.2f' % order.amount_total"/>
+                        </tr>
+                    </tfoot>
+                </table>
+                </div>
+
+                <div class="d-flex justify-content-center flex-wrap gap-2">
+                    <a t-attf-href="/my/orders/#{order.id}" class="btn btn-primary">
+                        <i class="fa fa-eye me-1"/>
+                        عرض الطلب
+                    </a>
+                    <a href="/my/order/request" class="btn btn-outline-primary">
+                        <i class="fa fa-plus me-1"/>
+                        طلب جديد
+                    </a>
+                    <a href="/my" class="btn btn-outline-secondary">
+                        <i class="fa fa-home me-1"/>
+                        الرئيسية
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    </div>
+    </div>
+
+</t>
+</template>
+
+</data>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bom_formula_variable_user,mrp.bom.formula.variable user,model_mrp_bom_formula_variable,mrp.group_mrp_user,1,1,1,1
+access_bom_formula_variable_manager,mrp.bom.formula.variable manager,model_mrp_bom_formula_variable,mrp.group_mrp_manager,1,1,1,1
+access_bom_formula_line_user,mrp.bom.formula.line user,model_mrp_bom_formula_line,mrp.group_mrp_user,1,1,1,1
+access_bom_formula_line_manager,mrp.bom.formula.line manager,model_mrp_bom_formula_line,mrp.group_mrp_manager,1,1,1,1
