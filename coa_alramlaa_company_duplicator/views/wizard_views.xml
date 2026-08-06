@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_company_duplicator_wizard_form" model="ir.ui.view">
+        <field name="name">company.duplicator.wizard.form</field>
+        <field name="model">company.duplicator.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Duplicate Company Data">
+                <sheet>
+                    <div class="alert alert-info" role="alert">
+                        <strong>ملاحظة:</strong> هذه الأداة تقوم بنسخ الإعدادات الأساسية (حسابات، مخازن، يوميات). لا يتم نسخ الفواتير المُرحلة للحفاظ على النزاهة المحاسبية.
+                    </div>
+                    <group>
+                        <group>
+                            <field name="source_company_id" options="{'no_create': True}"/>
+                            <field name="dest_company_id" options="{'no_create': True}"/>
+                        </group>
+                    </group>
+                    <group string="ماذا تريد أن تنسخ؟">
+                        <group>
+                            <field name="copy_coa" widget="boolean_toggle"/>
+                            <field name="copy_taxes" widget="boolean_toggle"/>
+                        </group>
+                        <group>
+                            <field name="copy_journals" widget="boolean_toggle"/>
+                            <field name="copy_warehouses" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_duplicate_data" string="بدء النسخ" type="object" class="btn-primary" icon="fa-copy"/>
+                    <button string="إلغاء" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_company_duplicator_wizard" model="ir.actions.act_window">
+        <field name="name">استنساخ شركة (PRO)</field>
+        <field name="res_model">company.duplicator.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_company_duplicator" 
+              name="استنساخ شركة (PRO)" 
+              parent="base.menu_users" 
+              action="action_company_duplicator_wizard" 
+              sequence="100"/>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_construction_requisition,construction_requisition,model_construction_requisition,base.group_user,1,1,1,1
+access_construction_requisition_line,construction_requisition_line,model_construction_requisition_line,base.group_user,1,1,1,1
+access_transfer_requisition_order,transfer_requisition_order,model_transfer_requisition_order,base.group_user,1,1,1,1
+access_transfer_requisition_order_line,transfer_requisition_order_line,model_transfer_requisition_order_line,base.group_user,1,1,1,1

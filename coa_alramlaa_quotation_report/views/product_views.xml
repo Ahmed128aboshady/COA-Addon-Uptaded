@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ═══════════════════════════════════════════════
+         Product Form - show description field prominently
+         (Used as fallback for key_materials in report)
+    ═══════════════════════════════════════════════ -->
+    <record id="view_alramlaa_product_template_form" model="ir.ui.view">
+        <field name="name">product.template.form.alramlaa</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+
+            <!-- Add a hint in the Sales tab about using description for report -->
+            <xpath expr="//page[@name='sales']" position="inside">
+                <group string="Al Ramlaa Report / تقرير الرملاء">
+                    <field name="description_sale"
+                           string="Dimensions / الأبعاد (report fallback)"
+                           placeholder="e.g. 45 x 50 x 50 cm - used in report if line has no dimension"/>
+                    <field name="description"
+                           string="Key Materials Notes / ملاحظات المواد"
+                           widget="text"
+                           placeholder="Material specs used in detail report if line has no key_materials..."/>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

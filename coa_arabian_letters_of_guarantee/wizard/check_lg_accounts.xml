@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+
+    <record id="check_lg_accounts_form" model="ir.ui.view">
+        <field name="name">check.lg.accounts.form</field>
+        <field name="model">check.lg.accounts</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h5 invisible="lg_type not in ['bid_cancellation','cancellation_performance','advance_payment_cancellation','maintenance_bond_cancellation']">
+                        You will cancel the letter of guarantee and get the money back.
+                    </h5>
+
+                    <group>
+                        <group>
+                            <field name="journal_id" invisible="lg_type in ['bid_cancellation','cancellation_performance','advance_payment_cancellation','maintenance_bond_cancellation']"/>
+                            <field name="bid_bond_account_id" invisible="lg_type != 'bid_bond'"/>
+                            <field name="performance_bond_account_id" invisible="lg_type != 'performance_bond'"/>
+                            <field name="advance_payment_guarantee_account_id" invisible="lg_type != 'advance_payment'"/>
+                            <field name="maintenance_bond_account_id" invisible="lg_type != 'maintenance_bond'"/>
+
+                        </group>
+                        <group>
+                            <field name="date"/>
+                            <field name="bank_account_id" invisible="lg_type in ['bid_cancellation','cancellation_performance','advance_payment_cancellation','maintenance_bond_cancellation']"/>
+                            <field name="lg_type" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="bid_bond_confirm" type="object" string="Confirm" class="oe_highlight" invisible="lg_type != 'bid_bond'"/>
+                    <button name="bid_bond_Cancellation" type="object" string="Confirm" class="oe_highlight" invisible="lg_type != 'bid_cancellation'"/>
+                    <button name="performance_bond_confirm" type="object" string="Confirm" class="oe_highlight" invisible="lg_type != 'performance_bond'"/>
+                    <button name="performance_bond_Cancellation" type="object" string="Confirm" class="oe_highlight" invisible="lg_type != 'cancellation_performance'"/>
+                    <button name="advance_payment_confirm" type="object" string="Confirm" class="oe_highlight" invisible="lg_type != 'advance_payment'"/>
+                    <button name="advance_payment_Cancellation" type="object" string="Confirm" class="oe_highlight" invisible="lg_type != 'advance_payment_cancellation'"/>
+                    <button name="maintenance_bond_confirm" type="object" string="Confirm" class="oe_highlight" invisible="lg_type != 'maintenance_bond'"/>
+                    <button name="maintenance_bond_Cancellation" type="object" string="Confirm" class="oe_highlight" invisible="lg_type != 'maintenance_bond_cancellation'"/>
+
+                    <button string="Cancel" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="check_lg_accounts_action">
+        <field name="name">Check lg Accounts</field>
+        <field name="res_model">check.lg.accounts</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

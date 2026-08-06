@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="inherit_account_move_form" model="ir.ui.view">
+        <field name="name">inherit.account.move.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='ref']" position="after">
+                <field name="lg_bid_bond_id"
+                       invisible="lg_bid_bond_id != 'False'"/>
+                <field name="lg_performance_bond_id"
+                       invisible="lg_performance_bond_id != 'False'"/>
+                <field name="lg_advance_payment_guarantee_id"
+                       invisible="lg_advance_payment_guarantee_id != 'False'"/>
+                <field name="lg_maintenance_bond_id"
+                       invisible="lg_maintenance_bond_id != 'False'"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
