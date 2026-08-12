@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'COA Beacon Picking Report',
+    'name': 'COA Picking Report',
     'summary': 'Add sale order name under return reference in picking report',
     'description': """
-COA Beacon Picking Report Suite
+COA Picking Report Suite
 ====================
 Enterprise grade Odoo module developed by COA (Community of acountants). Connects seamlessly with Odoo ecosystem.
     """,

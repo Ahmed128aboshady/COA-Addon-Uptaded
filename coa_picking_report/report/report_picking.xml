@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <template id="report_picking_beacon" inherit_id="stock.report_picking">
+    <template id="report_picking_custom" inherit_id="stock.report_picking">
         <xpath expr="//div[@name='div_origin']/div[@t-field='o.origin']" position="after">
             <div t-if="o.sale_id and o.return_id" t-field="o.sale_id.name"/>
         </xpath>
