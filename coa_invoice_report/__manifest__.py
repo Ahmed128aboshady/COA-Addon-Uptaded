@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'COA Invoice Report',
-    'summary': 'Professional Invoice Report solution for Odoo Accounting. Streamlines business operations, automates workflow validations, and ...',
+    'summary': 'Professional Tax Invoice PDF Report Layout',
     'description': """
 COA Invoice Report Suite
 ====================

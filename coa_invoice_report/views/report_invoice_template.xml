@@ -2,8 +2,8 @@
 <odoo>
     <data>
         <!-- Custom Paper Format -->
-        <record id="paperformat_arfad_invoice" model="report.paperformat">
-            <field name="name">A4 Arfad Invoice</field>
+        <record id="paperformat_invoice" model="report.paperformat">
+            <field name="name">A4 Custom Invoice</field>
             <field name="default" eval="False"/>
             <field name="format">A4</field>
             <field name="orientation">Portrait</field>
@@ -17,15 +17,15 @@
 
         <!-- Link Paper Format to Invoice Reports -->
         <record id="account.account_invoices" model="ir.actions.report">
-            <field name="paperformat_id" ref="arfad_invoice_report.paperformat_arfad_invoice"/>
+            <field name="paperformat_id" ref="coa_invoice_report.paperformat_invoice"/>
         </record>
         <record id="account.account_invoices_without_payment" model="ir.actions.report">
-            <field name="paperformat_id" ref="arfad_invoice_report.paperformat_arfad_invoice"/>
+            <field name="paperformat_id" ref="coa_invoice_report.paperformat_invoice"/>
         </record>
 
         <!-- Inherit Form View to Add Custom Contracting Fields -->
-        <record id="view_move_form_inherit_arfad" model="ir.ui.view">
-            <field name="name">account.move.form.inherit.arfad</field>
+        <record id="view_move_form_inherit_invoice" model="ir.ui.view">
+            <field name="name">account.move.form.inherit.invoice</field>
             <field name="model">account.move</field>
             <field name="inherit_id" ref="account.view_move_form"/>
             <field name="arch" type="xml">
@@ -41,7 +41,7 @@
         </record>
 
         <!-- Invoice Custom Layout Base -->
-        <template id="arfad_custom_invoice_layout_base">
+        <template id="custom_invoice_layout_base">
             <t t-call="web.basic_layout">
                 <div class="page" dir="ltr" style="direction: ltr !important; font-family: 'Cairo', 'Arial', sans-serif !important; color: #333333; font-size: 12.5px;">
                     
@@ -276,7 +276,7 @@
             <xpath expr="//t[@t-foreach='docs']" position="replace">
                 <t t-foreach="docs" t-as="o">
                     <t t-set="lang" t-value="o.partner_id.lang"/>
-                    <t t-call="arfad_invoice_report.arfad_custom_invoice_layout_base" t-lang="lang"/>
+                    <t t-call="coa_invoice_report.custom_invoice_layout_base" t-lang="lang"/>
                 </t>
             </xpath>
         </template>

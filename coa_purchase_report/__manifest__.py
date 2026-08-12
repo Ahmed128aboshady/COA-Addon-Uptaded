@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'COA Arfad Purchase Report',
-    'summary': 'Custom PDF layout for Purchase Orders',
+    'name': 'COA Purchase Report',
+    'summary': 'Custom PDF Layout & Report for Purchase Orders',
     'description': """
-COA Arfad Purchase Report Suite
+COA Purchase Report Suite
 ====================
 Enterprise grade Odoo module developed by COA (Community of acountants). Connects seamlessly with Odoo ecosystem.
     """,
