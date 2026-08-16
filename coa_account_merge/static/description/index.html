@@ -1,822 +1,472 @@
-<style>
-  .oe_styling_v8 {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Arial, sans-serif !important;
-    color: #1E293B !important;
-  }
+<div class="oe_styling_v8" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, Arial, sans-serif !important; color: #1E293B !important; width: 100%; max-width: 1140px; margin: 0 auto; padding: 10px; box-sizing: border-box; line-height: 1.5; background-color: #FFFFFF;">
 
-  .app-card-dark {
-    background-color: #1B2A3C !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    border-radius: 18px !important;
-    color: #ffffff !important;
-  }
-  
-  .app-card-light {
-    background-color: #ffffff !important;
-    border: 1px solid #e2e8f0 !important;
-    border-radius: 18px !important;
-  }
+  <!-- SECTION 1: HERO & BADGES -->
+  <section class="p-4 p-md-5 rounded-4 mb-5 position-relative" style="background-color: #FDF2F2; border: 1px solid #F87171; border-radius: 24px; text-align: center;">
+    <div class="container-fluid px-0">
+      <h1 class="text-center mb-4" style="font-size: 38px; font-weight: 900; color: #273D56; letter-spacing: -1px;">
+        COA Account Merge
+      </h1>
 
-  .badge-red-pill {
-    background-color: #FDF2F2 !important;
-    color: #C5433E !important;
-    font-weight: 700 !important;
-    border-radius: 50px !important;
-    padding: 6px 16px !important;
-    font-size: 13px !important;
-    display: inline-block !important;
-    border: 1px solid #F87171 !important;
-  }
+      <div class="row g-2 g-md-3 mb-2 justify-content-center">
+        
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="p-3 text-center h-100 d-flex flex-column justify-content-center" style="background-color: #1B2A3C; border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; color: #FFFFFF;">
+            <div style="font-size: 26px; font-weight: 800; color: #C5433E;">#1</div>
+            <div style="font-size: 13px; font-weight: 700; line-height: 1.2;">COA Suite<br><span style="font-size: 10px; color: #94A3B8; font-weight: 400;">Accounting Engine</span></div>
+          </div>
+        </div>
 
-  .tab-radio {
-    display: none !important;
-  }
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="p-3 text-center h-100 d-flex flex-column justify-content-center" style="background-color: #1B2A3C; border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; color: #FFFFFF;">
+            <div style="font-size: 13px; font-weight: 700; line-height: 1.3;">Trusted in<br><span style="color: #C5433E;">Egypt, KSA &amp; GCC</span></div>
+          </div>
+        </div>
 
-  .tab-labels-container {
-    display: flex !important;
-    justify-content: center !important;
-    gap: 12px !important;
-    flex-wrap: wrap !important;
-    margin-bottom: 30px !important;
-  }
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="p-3 text-center h-100 d-flex flex-column justify-content-center" style="background-color: #1B2A3C; border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; color: #FFFFFF;">
+            <div style="color: #FDCC0D; font-size: 13px; margin-bottom: 4px;">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+            <div style="font-size: 13px; font-weight: 700;">100% Verified</div>
+          </div>
+        </div>
 
-  .tab-label {
-    padding: 12px 24px !important;
-    background-color: #FDF2F2 !important;
-    color: #273D56 !important;
-    font-weight: 700 !important;
-    font-size: 15px !important;
-    border-radius: 12px !important;
-    cursor: pointer !important;
-    user-select: none !important;
-    border: 1px solid #F87171 !important;
-    transition: all 0.2s ease !important;
-  }
-  .tab-label:hover {
-    background-color: #C5433E !important;
-    color: #FFFFFF !important;
-  }
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="p-3 text-center h-100 d-flex flex-column justify-content-center" style="background-color: #1B2A3C; border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; color: #FFFFFF;">
+            <div style="color: #C5433E; font-size: 20px; margin-bottom: 4px; font-weight: 800;">GL</div>
+            <div style="font-size: 13px; font-weight: 700;">Audit Safe</div>
+          </div>
+        </div>
 
-  #tab-radio-1:checked ~ .tab-labels-container label[for="tab-radio-1"],
-  #tab-radio-2:checked ~ .tab-labels-container label[for="tab-radio-2"],
-  #tab-radio-3:checked ~ .tab-labels-container label[for="tab-radio-3"],
-  #tab-radio-4:checked ~ .tab-labels-container label[for="tab-radio-4"],
-  #tab-radio-5:checked ~ .tab-labels-container label[for="tab-radio-5"] {
-    background-color: #C5433E !important;
-    color: #FFFFFF !important;
-    box-shadow: 0 4px 12px rgba(197, 67, 62, 0.25) !important;
-  }
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="p-3 text-center h-100 d-flex flex-column justify-content-center" style="background-color: #1B2A3C; border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; color: #FFFFFF;">
+            <div style="font-size: 16px; font-weight: 800; color: #3B82F6; margin-bottom: 2px;">Odoo</div>
+            <div style="font-size: 10px; color: #FBBF24; font-weight: 700;">17 | 18 | 19 Ready</div>
+          </div>
+        </div>
 
-  .tab-pane-content {
-    display: none;
-  }
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="p-3 text-center h-100 d-flex flex-column justify-content-center" style="background-color: #1B2A3C; border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; color: #FFFFFF;">
+            <div style="font-size: 24px; font-weight: 800; color: #C5433E;">COA</div>
+            <div style="font-size: 11px; color: #FFFFFF; font-weight: 600;">Senior Support</div>
+          </div>
+        </div>
 
-  #tab-radio-1:checked ~ .tab-panes-wrapper #pane-1,
-  #tab-radio-2:checked ~ .tab-panes-wrapper #pane-2,
-  #tab-radio-3:checked ~ .tab-panes-wrapper #pane-3,
-  #tab-radio-4:checked ~ .tab-panes-wrapper #pane-4,
-  #tab-radio-5:checked ~ .tab-panes-wrapper #pane-5 {
-    display: block !important;
-  }
+      </div>
+    </div>
+  </section>
 
-  .pure-accordion-item {
-    border: 1px solid #e2e8f0 !important;
-    border-radius: 14px !important;
-    margin-bottom: 12px !important;
-    background: #ffffff !important;
-    overflow: hidden !important;
-  }
-  .pure-accordion-checkbox {
-    display: none !important;
-  }
-  .pure-accordion-header {
-    padding: 18px 24px !important;
-    font-weight: 700 !important;
-    font-size: 16px !important;
-    color: #273D56 !important;
-    background-color: #f9fafb !important;
-    cursor: pointer !important;
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-  }
-  .pure-accordion-body {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease-out, padding 0.35s ease-out;
-    padding: 0 24px;
-    color: #475569;
-    font-size: 14px;
-    line-height: 1.7;
-  }
-  .pure-accordion-checkbox:checked ~ .pure-accordion-body {
-    max-height: 800px;
-    padding: 20px 24px;
-  }
-</style>
-
-<div class="oe_styling_v8">
-<div class="tab-pane active" id="desc">
-    <div class="container py-4">
-      <div class="oe_styling_v8">
+  <!-- SECTION 2: KEY HIGHLIGHTS & POSITIONING -->
+  <section class="mb-5">
+    <div class="row g-4 align-items-stretch">
+      
+      <div class="col-lg-7 d-flex flex-column justify-content-between">
         <div>
+          <h2 style="font-size: 26px; font-weight: 800; color: #273D56; line-height: 1.3; margin-bottom: 15px;">
+            Seamlessly Merge Duplicate Accounts &amp; Preserve Complete Journal History
+          </h2>
+          <p style="font-size: 14px; color: #475569; line-height: 1.7; margin-bottom: 25px;">
+            Consolidate duplicate Chart of Accounts, re-assign all financial journal move lines to target master account, preserve full audit logs, and maintain General Ledger integrity without database corruption.
+          </p>
 
-          <!-- ================================================================= -->
-          <!-- SECTION 1: HERO & BADGES (عنوان التطبيق والشارات العليا)           -->
-          <!-- ================================================================= -->
-          <section class="p-4 p-md-5 rounded-4 mb-5 position-relative" style="background-color:#FDF2F2; border:1px solid #FDF2F2; border-radius:24px;">
-            <div class="container-fluid px-0">
-              
-              <!-- APP TITLE -->
-              <h1 class="text-center mb-4" style="font-size:42px; font-weight:900; color:#273D56; letter-spacing:-1px;">
-                <!-- [REPLACE: APP TITLE] -->
-                COA Account Merge
-              </h1>
-
-              <!-- 6 HERO BADGES / CARDS GRID -->
-              <div class="row g-2 g-md-3 mb-4 justify-content-center">
-                
-                <!-- BADGE 1 -->
-                <div class="col-6 col-md-4 col-lg-2">
-                  <div class="app-card-dark p-3 text-center h-100 d-flex flex-column justify-content-center">
-                    <div style="font-size:26px; font-weight:800; color:#C5433E;">#1</div>
-                    <div style="font-size:13px; font-weight:700; line-height:1.2;">COA Suite<br><span style="font-size:10px; color:#94a3b8; font-weight:400;">Accounting Engine</span></div>
-                  </div>
-                </div>
-
-                <!-- BADGE 2 -->
-                <div class="col-6 col-md-4 col-lg-2">
-                  <div class="app-card-dark p-3 text-center h-100 d-flex flex-column justify-content-center">
-                    <div style="font-size:16px; font-weight:700; line-height:1.3;">Trusted in<br><span style="color:#C5433E;">Egypt, KSA &amp; GCC</span></div>
-                  </div>
-                </div>
-
-                <!-- BADGE 3 -->
-                <div class="col-6 col-md-4 col-lg-2">
-                  <div class="app-card-dark p-3 text-center h-100 d-flex flex-column justify-content-center">
-                    <div style="color:#fdcc0d; font-size:16px; margin-bottom:4px;">
-                      <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                    </div>
-                    <div style="font-size:16px; font-weight:700;">100% Verified</div>
-                  </div>
-                </div>
-
-                <!-- BADGE 4 -->
-                <div class="col-6 col-md-4 col-lg-2">
-                  <div class="app-card-dark p-3 text-center h-100 d-flex flex-column justify-content-center">
-                    <div style="color:#C5433E; font-size:24px; margin-bottom:4px;"><i class="fa fa-line-chart"></i></div>
-                    <div style="font-size:16px; font-weight:700;">GL Audit Safe</div>
-                  </div>
-                </div>
-
-                <!-- BADGE 5 -->
-                <div class="col-6 col-md-4 col-lg-2">
-                  <div class="app-card-dark p-3 text-center h-100 d-flex flex-column justify-content-center">
-                    <div style="font-size:18px; font-weight:800; color:#3b82f6; margin-bottom:4px;">Odoo</div>
-                    <div style="font-size:11px; color:#fbbf24; font-weight:600;">17 | 18 | 19 Ready</div>
-                  </div>
-                </div>
-
-                <!-- BADGE 6 -->
-                <div class="col-6 col-md-4 col-lg-2">
-                  <div class="app-card-dark p-3 text-center h-100 d-flex flex-column justify-content-center">
-                    <div style="font-size:32px; font-weight:800; color:#C5433E;">COA</div>
-                    <div style="font-size:13px; color:#ffffff; font-weight:500;">Senior Support</div>
-                  </div>
-                </div>
-
+          <div class="row g-3 mb-4">
+            <div class="col-sm-6">
+              <div class="d-flex align-items-center p-3 rounded-3" style="background-color: #FFFFFF; border: 1px solid #E2E8F0;">
+                <span style="font-size: 18px; color: #C5433E; margin-right: 10px; font-weight: 900;">&#10003;</span>
+                <span style="font-weight: 700; color: #273D56; font-size: 13px;">1-Click Account Consolidation Wizard</span>
               </div>
             </div>
-          </section>
-
-
-          <!-- ================================================================= -->
-          <!-- SECTION 2: KEY HIGHLIGHTS & POSITIONING (أفضل مميزات الموديول)      -->
-          <!-- ================================================================= -->
-          <section class="mb-5">
-            <div class="row g-4 align-items-stretch">
-              
-              <!-- LEFT COLUMN: Main Value Prop & Checklist -->
-              <div class="col-lg-7 d-flex flex-column justify-content-between">
-                <div>
-                  <h2 style="font-size:28px; font-weight:800; color:#273D56; line-height:1.3; margin-bottom:15px;">
-                    <!-- [REPLACE: MAIN SUB-TITLE] -->
-                    Seamlessly Merge Duplicate Accounts & Preserve Complete Journal History
-                  </h2>
-                  <p style="font-size:15px; color:#475569; line-height:1.7; margin-bottom:25px;">
-                    <!-- [REPLACE: MAIN SUMMARY] -->
-                    Consolidate duplicate Chart of Accounts, re-assign all financial journal move lines to target master account, preserve full audit logs, and maintain General Ledger integrity without database corruption.
-                  </p>
-
-                  <!-- CHECKLIST GRID (4 Items) -->
-                  <div class="row g-3 mb-4">
-                    <div class="col-sm-6">
-                      <div class="d-flex align-items-center p-3 app-card-light">
-                        <i class="fa fa-check-circle me-3" style="font-size:20px; color:#C5433E;"></i>
-                        <span style="font-weight:600; color:#273D56; font-size:13px;">1-Click Account Consolidation Wizard</span>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="d-flex align-items-center p-3 app-card-light">
-                        <i class="fa fa-check-circle me-3" style="font-size:20px; color:#C5433E;"></i>
-                        <span style="font-weight:600; color:#273D56; font-size:13px;">Re-links all account.move.line entries to master target account</span>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="d-flex align-items-center p-3 app-card-light">
-                        <i class="fa fa-check-circle me-3" style="font-size:20px; color:#C5433E;"></i>
-                        <span style="font-weight:600; color:#273D56; font-size:13px;">Preserves full financial history &amp; digital audit log</span>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="d-flex align-items-center p-3 app-card-light">
-                        <i class="fa fa-check-circle me-3" style="font-size:20px; color:#C5433E;"></i>
-                        <span style="font-weight:600; color:#273D56; font-size:13px;">100% Compatible with Odoo 17.0, 18.0 &amp; 19.0</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- IMPLEMENTATION INCLUDED BANNER -->
-                <div class="p-4 rounded-4 text-white d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3" style="background-color:#1B2A3C; border-radius:18px;">
-                  <div>
-                    <h4 style="font-weight:700; margin-bottom:4px; font-size:16px;">Senior COA Engineering Technical Support Included</h4>
-                    <p style="font-size:12px; color:#94a3b8; margin:0;">Direct WhatsApp Assistance (+20 10 13907174) &amp; Portal Access</p>
-                  </div>
-                  <div class="d-flex gap-2 flex-shrink-0">
-                    <a href="#try-section" class="btn text-white px-3 py-2 rounded-3" style="background-color:#C5433E; font-weight:600; font-size:13px;">Contact Support →</a>
-                  </div>
-                </div>
+            <div class="col-sm-6">
+              <div class="d-flex align-items-center p-3 rounded-3" style="background-color: #FFFFFF; border: 1px solid #E2E8F0;">
+                <span style="font-size: 18px; color: #C5433E; margin-right: 10px; font-weight: 900;">&#10003;</span>
+                <span style="font-weight: 700; color: #273D56; font-size: 13px;">Re-links all account.move.line entries to master target account</span>
               </div>
-
-              <!-- RIGHT COLUMN: Module Feature Previews & Positioning Banner -->
-              <div class="col-lg-5">
-                <div class="p-4 app-card-light h-100 d-flex flex-column justify-content-between" style="border: 2px solid #273D56;">
-                  <div>
-                    <!-- 4 FEATURE CARDS GRID -->
-                    <div class="row g-2 mb-3">
-                      <div class="col-6">
-                        <div class="p-3 rounded-3" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                          <i class="fa fa-line-chart text-success mb-2" style="font-size:20px;"></i>
-                          <h6 style="font-weight:700; font-size:14px; color:#273D56; margin-bottom:2px;">Account Merge Wizard</h6>
-                          <p style="font-size:11px; color:#64748b; margin:0;">Select source &amp; target accounts with real-time validation</p>
-                        </div>
-                      </div>
-                      <div class="col-6">
-                        <div class="p-3 rounded-3" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                          <i class="fa fa-cubes text-primary mb-2" style="font-size:20px;"></i>
-                          <h6 style="font-weight:700; font-size:14px; color:#273D56; margin-bottom:2px;">Move Line Sync</h6>
-                          <p style="font-size:11px; color:#64748b; margin:0;">Automatic move line re-pointing to target account</p>
-                        </div>
-                      </div>
-                      <div class="col-6">
-                        <div class="p-3 rounded-3" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                          <i class="fa fa-tags text-warning mb-2" style="font-size:20px;"></i>
-                          <h6 style="font-weight:700; font-size:14px; color:#273D56; margin-bottom:2px;">Audit Log &amp; History</h6>
-                          <p style="font-size:11px; color:#64748b; margin:0;">Maintains digital audit log for audit compliance</p>
-                        </div>
-                      </div>
-                      <div class="col-6">
-                        <div class="p-3 rounded-3" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                          <i class="fa fa-calculator text-info mb-2" style="font-size:20px;"></i>
-                          <h6 style="font-weight:700; font-size:14px; color:#273D56; margin-bottom:2px;">Multi-Company Safe</h6>
-                          <p style="font-size:11px; color:#64748b; margin:0;">Fully compatible with single &amp; multi-company setups</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- GREEN POSITIONING BANNER -->
-                  <div class="p-4 rounded-4 text-white mt-3" style="background-color:#C5433E; border-radius:18px;">
-                    <div style="font-size:11px; letter-spacing:1px; font-weight:900; text-transform:uppercase; color:#FDF2F2; margin-bottom:4px;">POSITIONING</div>
-                    <h3 style="font-size:18px; font-weight:800; margin-bottom:8px;">GL Audit Safe. Financial Integrity Guaranteed.</h3>
-                    <p style="font-size:13px; color:#FDF2F2; margin:0; line-height:1.5;">Prevents general ledger discrepancies while keeping historical financial balances intact.</p>
-                  </div>
-                </div>
-              </div>
-
             </div>
-          </section>
-
-
-          <!-- ================================================================= -->
-          <!-- SECTION 3: MODULE OVERVIEW (شرح الموديول العام)                     -->
-          <!-- ================================================================= -->
-          <section class="p-4 p-md-5 app-card-light mb-5">
-            <div class="text-center mb-4">
-              <span class="badge-red-pill">MODULE OVERVIEW</span>
-              <h2 style="font-size:30px; font-weight:800; color:#273D56; margin-top:10px;">Comprehensive Workflow Integration</h2>
-              <p style="font-size:15px; color:#64748b; max-width:750px; margin:0 auto;">
-                Designed from the ground up to solve complex enterprise integration challenges while maintaining performance and data integrity.
-              </p>
+            <div class="col-sm-6">
+              <div class="d-flex align-items-center p-3 rounded-3" style="background-color: #FFFFFF; border: 1px solid #E2E8F0;">
+                <span style="font-size: 18px; color: #C5433E; margin-right: 10px; font-weight: 900;">&#10003;</span>
+                <span style="font-weight: 700; color: #273D56; font-size: 13px;">Preserves full financial history &amp; digital audit log</span>
+              </div>
             </div>
+            <div class="col-sm-6">
+              <div class="d-flex align-items-center p-3 rounded-3" style="background-color: #FFFFFF; border: 1px solid #E2E8F0;">
+                <span style="font-size: 18px; color: #C5433E; margin-right: 10px; font-weight: 900;">&#10003;</span>
+                <span style="font-weight: 700; color: #273D56; font-size: 13px;">100% Compatible with Odoo 17.0, 18.0 &amp; 19.0</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-            <div class="row g-4">
-              <div class="col-md-4 text-center">
-                <div class="p-4 rounded-3 h-100" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                  <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width:60px; height:60px; background-color:#FDF2F2; color:#A8322E; font-size:24px;">
-                    <i class="fa fa-cogs"></i>
-                  </div>
-                  <h5 style="font-weight:700; color:#273D56;">Automated Synchronization</h5>
-                  <p style="font-size:13px; color:#64748b; margin:0;">Merges duplicate GL accounts directly inside Odoo without executing manual database queries.</p>
+        <div class="p-4 rounded-4 text-white d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3" style="background-color: #1B2A3C; border-radius: 18px;">
+          <div>
+            <h4 style="font-weight: 800; margin-bottom: 4px; font-size: 15px; color: #FFFFFF;">Senior COA Engineering Technical Support Included</h4>
+            <p style="font-size: 12px; color: #94A3B8; margin: 0;">Direct WhatsApp Assistance (+20 10 13907174) &amp; Portal Access</p>
+          </div>
+          <div class="d-flex gap-2 flex-shrink-0">
+            <a href="https://wa.me/201013907174" target="_blank" class="btn text-white px-3 py-2 rounded-3" style="background-color: #C5433E; font-weight: 700; font-size: 13px; text-decoration: none;">Contact Support &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="p-4 rounded-4 h-100 d-flex flex-column justify-content-between" style="background-color: #FFFFFF; border: 2px solid #273D56; border-radius: 18px;">
+          <div>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <div class="p-3 rounded-3" style="background-color: #F8FAFC; border: 1px solid #E2E8F0;">
+                  <h6 style="font-weight: 800; font-size: 13px; color: #273D56; margin-bottom: 2px;">Account Merge Wizard</h6>
+                  <p style="font-size: 11px; color: #64748B; margin: 0;">Select source &amp; target accounts with real-time validation</p>
                 </div>
               </div>
-              <div class="col-md-4 text-center">
-                <div class="p-4 rounded-3 h-100" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                  <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width:60px; height:60px; background-color:#FDF2F2; color:#A8322E; font-size:24px;">
-                    <i class="fa fa-shield"></i>
-                  </div>
-                  <h5 style="font-weight:700; color:#273D56;">Audit &amp; Compliance Safe</h5>
-                  <p style="font-size:13px; color:#64748b; margin:0;">Maintains complete audit trails so financial statements match before and after merging.</p>
+              <div class="col-6">
+                <div class="p-3 rounded-3" style="background-color: #F8FAFC; border: 1px solid #E2E8F0;">
+                  <h6 style="font-weight: 800; font-size: 13px; color: #273D56; margin-bottom: 2px;">Move Line Sync</h6>
+                  <p style="font-size: 11px; color: #64748B; margin: 0;">Automatic move line re-pointing to target account</p>
                 </div>
               </div>
-              <div class="col-md-4 text-center">
-                <div class="p-4 rounded-3 h-100" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                  <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width:60px; height:60px; background-color:#FDF2F2; color:#A8322E; font-size:24px;">
-                    <i class="fa fa-tachometer"></i>
-                  </div>
-                  <h5 style="font-weight:700; color:#273D56;">High-Volume Performance</h5>
-                  <p style="font-size:13px; color:#64748b; margin:0;">Optimized batch execution capable of handling 100,000+ journal move lines smoothly.</p>
+              <div class="col-6">
+                <div class="p-3 rounded-3" style="background-color: #F8FAFC; border: 1px solid #E2E8F0;">
+                  <h6 style="font-weight: 800; font-size: 13px; color: #273D56; margin-bottom: 2px;">Audit Log &amp; History</h6>
+                  <p style="font-size: 11px; color: #64748B; margin: 0;">Maintains digital audit log for audit compliance</p>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="p-3 rounded-3" style="background-color: #F8FAFC; border: 1px solid #E2E8F0;">
+                  <h6 style="font-weight: 800; font-size: 13px; color: #273D56; margin-bottom: 2px;">Multi-Company Safe</h6>
+                  <p style="font-size: 11px; color: #64748B; margin: 0;">Fully compatible with single &amp; multi-company setups</p>
                 </div>
               </div>
             </div>
-          </section>
+          </div>
 
+          <div class="p-4 rounded-4 text-white mt-3" style="background-color: #C5433E; border-radius: 18px;">
+            <div style="font-size: 10px; letter-spacing: 1px; font-weight: 900; text-transform: uppercase; color: #FDF2F2; margin-bottom: 4px;">POSITIONING</div>
+            <h3 style="font-size: 17px; font-weight: 800; margin-bottom: 6px; color: #FFFFFF;">GL Audit Safe. Financial Integrity Guaranteed.</h3>
+            <p style="font-size: 12px; color: #FFFFFF; margin: 0; line-height: 1.5;">Prevents general ledger discrepancies while keeping historical financial balances intact.</p>
+          </div>
+        </div>
+      </div>
 
-          <!-- ================================================================= -->
-          <!-- SECTION 4: TESTIMONIALS (آراء العملاء)                              -->
-          <!-- ================================================================= -->
-          <section class="p-4 p-md-5 app-card-light mb-5">
-            <h2 style="font-size:28px; font-weight:800; color:#273D56; margin-bottom:15px;" class="text-center text-md-start">
-              What Our Customers Say
-            </h2>
-            
-            <div class="p-3 rounded-3 mb-4" style="background-color:#FDF2F2; border-left:4px solid #C5433E;">
-              <span style="font-size:12px; font-weight:800; color:#C5433E; letter-spacing:1px; text-transform:uppercase;">
-                USED IN REAL BUSINESS OPERATIONS ACROSS MULTIPLE ODOO VERSIONS AND WORKFLOWS.
-              </span>
-            </div>
+    </div>
+  </section>
 
-            <div class="row g-3 mb-4">
-              <!-- REVIEWS 1 -->
-              <div class="col-md-6">
-                <div class="p-4 rounded-3 h-100" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                  <div style="color:#fdcc0d; font-size:14px; margin-bottom:10px;">
-                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                  </div>
-                  <h5 style="font-weight:700; font-size:16px; color:#273D56;">Essential Accounting Tool</h5>
-                  <p style="font-size:13px; color:#475569; line-height:1.6;">
-                    "We had duplicate general ledger accounts created during data migration. COA Account Merge allowed us to consolidate them cleanly into single master accounts without losing past financial history!"
-                  </p>
-                  <div style="font-weight:700; font-size:12px; color:#64748b;">by Senior Finance Manager</div>
-                </div>
-              </div>
+  <!-- SECTION 3: MODULE OVERVIEW -->
+  <section class="p-4 p-md-5 rounded-4 mb-5" style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 18px;">
+    <div class="text-center mb-4">
+      <span style="background-color: #FDF2F2; color: #C5433E; font-weight: 800; font-size: 12px; border-radius: 50px; padding: 6px 16px; border: 1px solid #F87171; display: inline-block;">MODULE OVERVIEW</span>
+      <h2 style="font-size: 28px; font-weight: 800; color: #273D56; margin-top: 10px;">Comprehensive Workflow Integration</h2>
+      <p style="font-size: 14px; color: #64748B; max-width: 750px; margin: 0 auto;">
+        Designed from the ground up to solve complex enterprise integration challenges while maintaining performance and data integrity.
+      </p>
+    </div>
 
-              <!-- REVIEWS 2 -->
-              <div class="col-md-6">
-                <div class="p-4 rounded-3 h-100" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                  <div style="color:#fdcc0d; font-size:14px; margin-bottom:10px;">
-                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                  </div>
-                  <h5 style="font-weight:700; font-size:16px; color:#273D56;">Flawless Execution</h5>
-                  <p style="font-size:13px; color:#475569; line-height:1.6;">
-                    "The module executed the account merge smoothly. All past journal move lines were updated to the target account instantly, and our Trial Balance remained perfectly balanced."
-                  </p>
-                  <div style="font-weight:700; font-size:12px; color:#64748b;">by Certified Odoo Accountant</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- RATING LINK BANNER -->
-            <div class="p-3 rounded-3 text-center" style="background-color:#f1f5f9; border:1px dashed #cbd5e1;">
-              <h4 style="font-size:18px; font-weight:800; color:#273D56; margin:0;">Click To See Ratings Across Odoo Versions</h4>
-            </div>
-          </section>
-
-
-          <!-- ================================================================= -->
-          <!-- SECTION 5: DETAILED TABS (سيكشن متقسم تابات بيشرح باستفاضة)           -->
-          <!-- ================================================================= -->
-          <section class="mb-5">
-            
-            <!-- PURE CSS RADIO CONTROLLERS -->
-            <input type="radio" name="tab-group" id="tab-radio-1" class="tab-radio" checked>
-            <input type="radio" name="tab-group" id="tab-radio-2" class="tab-radio">
-            <input type="radio" name="tab-group" id="tab-radio-3" class="tab-radio">
-            <input type="radio" name="tab-group" id="tab-radio-4" class="tab-radio">
-            <input type="radio" name="tab-group" id="tab-radio-5" class="tab-radio">
-
-            <!-- TAB BUTTONS -->
-            <div class="tab-labels-container">
-              <label for="tab-radio-1" class="tab-label">Overview</label>
-              <label for="tab-radio-2" class="tab-label">Functional Capabilities</label>
-              <label for="tab-radio-3" class="tab-label">Support</label>
-              <label for="tab-radio-4" class="tab-label">Release Notes</label>
-              <label for="tab-radio-5" class="tab-label">FAQ</label>
-            </div>
-
-            <!-- TAB PANES CONTAINER -->
-            <div class="tab-panes-wrapper">
-              
-              <!-- PANE 1: OVERVIEW -->
-              <div id="pane-1" class="tab-pane-content">
-                <div class="p-4 p-md-5 app-card-light">
-                  <h3 style="font-size:24px; font-weight:800; color:#273D56; margin-bottom:15px;">Automated Account Merge Engine</h3>
-                  <p style="font-size:15px; color:#475569; line-height:1.7;">
-                    COA Account Merge simplifies accounting cleanup by allowing financial managers to combine duplicate accounts into a single target account cleanly.
-                  </p>
-                  <div class="row g-3 mt-2">
-                    <div class="col-md-6">
-                      <div class="p-3 rounded-3" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                        <h6 style="font-weight:700; color:#273D56;"><i class="fa fa-check text-success me-2"></i> 1-Click Account Selection</h6>
-                        <p style="font-size:13px; color:#64748b; margin:0;">Select source accounts to be merged and specify the destination master account.</p>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="p-3 rounded-3" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                        <h6 style="font-weight:700; color:#273D56;"><i class="fa fa-check text-success me-2"></i> Preserves Financial Ledgers</h6>
-                        <p style="font-size:13px; color:#64748b; margin:0;">Automatically re-links all posted and draft journal items to the destination account.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- PANE 2: FUNCTIONAL CAPABILITIES (ACCORDION) -->
-              <div id="pane-2" class="tab-pane-content">
-                <div class="p-4 p-md-5 app-card-light">
-                  <h3 style="font-size:24px; font-weight:800; color:#273D56; margin-bottom:20px;">Detailed Functional Breakdown</h3>
-                  
-                  <!-- PURE CSS ACCORDION ITEMS -->
-                  <div class="pure-accordion-item">
-                    <input type="checkbox" id="acc-1" class="pure-accordion-checkbox" checked>
-                    <label for="acc-1" class="pure-accordion-header">
-                      <span><i class="fa fa-shopping-cart text-success me-2"></i> 1. Account Consolidation Wizard</span>
-                      <i class="fa fa-chevron-down chevron-icon"></i>
-                    </label>
-                    <div class="pure-accordion-body">
-                      Provides a user-friendly wizard in Odoo Accounting to select source accounts and destination target account with immediate validation checks.
-                    </div>
-                  </div>
-
-                  <div class="pure-accordion-item">
-                    <input type="checkbox" id="acc-2" class="pure-accordion-checkbox">
-                    <label for="acc-2" class="pure-accordion-header">
-                      <span><i class="fa fa-tags text-success me-2"></i> 2. Automatic Move Line Reassignment</span>
-                      <i class="fa fa-chevron-down chevron-icon"></i>
-                    </label>
-                    <div class="pure-accordion-body">
-                      Re-points all existing account.move.line entries from source accounts to the destination account seamlessly across all journals.
-                    </div>
-                  </div>
-
-                  <div class="pure-accordion-item">
-                    <input type="checkbox" id="acc-3" class="pure-accordion-checkbox">
-                    <label for="acc-3" class="pure-accordion-header">
-                      <span><i class="fa fa-undo text-success me-2"></i> 3. Audit Log &amp; Historical Safety</span>
-                      <i class="fa fa-chevron-down chevron-icon"></i>
-                    </label>
-                    <div class="pure-accordion-body">
-                      Logs all merge actions in digital audit trails and removes empty source accounts cleanly to prevent future duplicate postings.
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-              <!-- PANE 3: SUPPORT -->
-              <div id="pane-3" class="tab-pane-content">
-                <div class="p-4 p-md-5 app-card-light text-center">
-                  <span class="badge-red-pill mb-2">INCLUDED SUPPORT</span>
-                  <h3 style="font-size:24px; font-weight:800; color:#273D56; margin-top:10px;">Dedicated Technical Assistance</h3>
-                  <p style="font-size:14px; color:#64748b; max-width:600px; margin:0 auto 25px auto;">
-                    Our team of senior COA engineers provides direct technical support, setup guidance, and 24/7 assistance via WhatsApp and Portal.
-                  </p>
-                  <div class="row g-3">
-                    <div class="col-md-4">
-                      <div class="p-3 rounded-3" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                        <i class="fa fa-bug fa-2x text-success mb-2"></i>
-                        <h6 style="font-weight:700; color:#273D56;">Bug Fixing SLA</h6>
-                        <p style="font-size:12px; color:#64748b; margin:0;">Guaranteed response within 24 business hours.</p>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="p-3 rounded-3" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                        <i class="fa fa-wrench fa-2x text-success mb-2"></i>
-                        <h6 style="font-weight:700; color:#273D56;">Free Installation</h6>
-                        <p style="font-size:12px; color:#64748b; margin:0;">Expert assistance setting up initial mappings.</p>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="p-3 rounded-3" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                        <i class="fa fa-refresh fa-2x text-success mb-2"></i>
-                        <h6 style="font-weight:700; color:#273D56;">Version Upgrades</h6>
-                        <p style="font-size:12px; color:#64748b; margin:0;">Free access to minor updates and patches.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- PANE 4: RELEASE NOTES -->
-              <div id="pane-4" class="tab-pane-content">
-                <div class="p-4 p-md-5 app-card-light">
-                  <h3 style="font-size:24px; font-weight:800; color:#273D56; margin-bottom:20px;">Version Release Notes</h3>
-                  <ul class="list-unstyled" style="font-size:14px; color:#475569; line-height:2;">
-                    <li><span class="badge bg-success me-2">v19.0</span> <b>Compatibility Update:</b> Full support for Odoo 19 Community &amp; Enterprise.</li>
-                    <li><span class="badge bg-secondary me-2">v18.2</span> <b>Enhancement:</b> Added multi-location stock webhook sync.</li>
-                    <li><span class="badge bg-secondary me-2">v18.0</span> <b>Initial Release:</b> Re-architected connector engine for higher performance.</li>
-                  </ul>
-                </div>
-              </div>
-
-              <!-- PANE 5: FAQ -->
-              <div id="pane-5" class="tab-pane-content">
-                <div class="p-4 p-md-5 app-card-light">
-                  <h3 style="font-size:24px; font-weight:800; color:#273D56; margin-bottom:20px;">Frequently Asked Questions</h3>
-                  
-                  <div class="pure-accordion-item">
-                    <input type="checkbox" id="faq-1" class="pure-accordion-checkbox" checked>
-                    <label for="faq-1" class="pure-accordion-header">
-                      <span>1. Is COA Account Merge compatible with Odoo 17, 18, and 19?</span>
-                      <i class="fa fa-chevron-down chevron-icon"></i>
-                    </label>
-                    <div class="pure-accordion-body">
-                      Yes! COA Account Merge is 100% compatible with Odoo 17.0, 18.0, and 19.0 across both Community and Enterprise editions.
-                    </div>
-                  </div>
-
-                  <div class="pure-accordion-item">
-                    <input type="checkbox" id="faq-2" class="pure-accordion-checkbox">
-                    <label for="faq-2" class="pure-accordion-header">
-                      <span>2. Does merging accounts affect past posted financial statements?</span>
-                      <i class="fa fa-chevron-down chevron-icon"></i>
-                    </label>
-                    <div class="pure-accordion-body">
-                      No! All past journal entries are safely re-pointed to the target merged account, ensuring your Trial Balance and financial statements remain perfectly accurate.
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-            </div>
-          </section>
-
-
-          <!-- ================================================================= -->
-          <!-- SECTION 6: WHY CHOOSE US / PRODUCT MATURITY (ليه يختاروا شركتنا)    -->
-          <!-- ================================================================= -->
-          <section class="p-4 p-md-5 app-card-light mb-5">
-            <h2 style="font-size:30px; font-weight:800; color:#273D56; margin-bottom:8px;">
-              Why Product Maturity Matters For Your Business
-            </h2>
-            
-            <div class="p-3 rounded-3 mb-4" style="background-color:#FDF2F2; border-left:4px solid #C5433E;">
-              <span style="font-size:12px; font-weight:800; color:#C5433E; letter-spacing:1px; text-transform:uppercase;">
-                FEATURE DEPTH COMES FROM SOLVING REAL USE CASES OVER TIME — NOT JUST ADDING MORE FEATURES.
-              </span>
-            </div>
-
-            <p style="font-size:14px; color:#64748b; font-weight:600; margin-bottom:25px;">
-              Designed &amp; Tested by Certified Accounting Experts at COA
-            </p>
-
-            <div class="row g-4 mb-4">
-              <!-- LEFT CARD -->
-              <div class="col-lg-7">
-                <div class="p-4 rounded-4 h-100" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                  <h4 style="font-weight:800; color:#273D56; font-size:18px; margin-bottom:15px;">What This Experience Delivers</h4>
-                  <ul class="list-unstyled" style="font-size:14px; color:#475569; line-height:2.2;">
-                    <li><i class="fa fa-circle text-success me-2" style="font-size:8px; vertical-align:middle;"></i> Clean consolidation of duplicate Chart of Accounts</li>
-                    <li><i class="fa fa-circle text-success me-2" style="font-size:8px; vertical-align:middle;"></i> Automatic move line re-linking across all journals</li>
-                    <li><i class="fa fa-circle text-success me-2" style="font-size:8px; vertical-align:middle;"></i> Complete digital audit log preservation</li>
-                    <li><i class="fa fa-circle text-success me-2" style="font-size:8px; vertical-align:middle;"></i> Compatible across Odoo 17.0, 18.0, and 19.0</li>
-                  </ul>
-                </div>
-              </div>
-
-              <!-- RIGHT DARK CARD -->
-              <div class="col-lg-5">
-                <div class="app-card-dark p-4 h-100 d-flex flex-column justify-content-center">
-                  <div style="font-size:11px; letter-spacing:1px; font-weight:800; color:#C5433E; text-transform:uppercase; margin-bottom:6px;">KEY POSITIONING</div>
-                  <h4 style="font-weight:800; font-size:20px; color:#ffffff; margin-bottom:12px;">What Actually Matters</h4>
-                  <ul class="list-unstyled" style="font-size:13px; color:#cbd5e1; line-height:1.8; margin:0;">
-                    <li class="mb-2">• <b>Features</b> show what a connector can do.</li>
-                    <li>• <b>Maturity</b> shows how well it actually works in real production.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- 3 BOTTOM METRIC CARDS -->
-            <div class="row g-3">
-              <div class="col-md-4">
-                <div class="p-3 rounded-3 h-100" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                  <div class="d-flex align-items-center mb-2">
-                    <span class="p-2 rounded-3 me-2" style="background-color:#C5433E; color:white;"><i class="fa fa-cubes"></i></span>
-                    <h6 style="font-weight:700; margin:0; color:#273D56;">Use-Case Depth</h6>
-                  </div>
-                  <p style="font-size:12px; color:#64748b; margin:0;">Handles real-world scenarios, not just ideal demo cases.</p>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="p-3 rounded-3 h-100" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                  <div class="d-flex align-items-center mb-2">
-                    <span class="p-2 rounded-3 me-2" style="background-color:#C5433E; color:white;"><i class="fa fa-shield"></i></span>
-                    <h6 style="font-weight:700; margin:0; color:#273D56;">Reliability</h6>
-                  </div>
-                  <p style="font-size:12px; color:#64748b; margin:0;">Consistent performance in day-to-day business operations.</p>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="p-3 rounded-3 h-100" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                  <div class="d-flex align-items-center mb-2">
-                    <span class="p-2 rounded-3 me-2" style="background-color:#C5433E; color:white;"><i class="fa fa-rocket"></i></span>
-                    <h6 style="font-weight:700; margin:0; color:#273D56;">Go-Live Confidence</h6>
-                  </div>
-                  <p style="font-size:12px; color:#64748b; margin:0;">Reliable Go-Live experience from day one.</p>
-                </div>
-              </div>
-            </div>
-
-          </section>
-
-
-          <!-- ================================================================= -->
-          <!-- SECTION 7: TRY BEFORE YOU BUY (سيكشن تجريب الموديول)                 -->
-          <!-- ================================================================= -->
-          <section id="try-section" class="app-card-dark p-4 p-md-5 mb-5 position-relative" style="border-radius:24px;">
-            <div class="row g-4 align-items-center">
-              
-              <div class="col-lg-7">
-                <h2 style="font-size:32px; font-weight:900; color:#ffffff; margin-bottom:6px;">Try Before You Buy</h2>
-                <div style="font-size:12px; letter-spacing:1px; font-weight:800; color:#C5433E; text-transform:uppercase; margin-bottom:15px;">
-                  START WITH A FREE TRIAL — NO COMMITMENT
-                </div>
-                <p style="font-size:14px; color:#cbd5e1; line-height:1.7; margin-bottom:25px;">
-                  Test COA Account Merge with your accounting workflows. Our team of senior COA engineers is available to assist you with installation and guidance.
-                </p>
-
-                <!-- PILLS GRID -->
-                <div class="d-flex gap-2 flex-wrap mb-4">
-                  <span class="px-3 py-2 rounded-3" style="background-color:rgba(255,255,255,0.08); font-size:12px; font-weight:600; color:#e2e8f0;">Try before purchase</span>
-                  <span class="px-3 py-2 rounded-3" style="background-color:rgba(255,255,255,0.08); font-size:12px; font-weight:600; color:#e2e8f0;">Test with real data</span>
-                  <span class="px-3 py-2 rounded-3" style="background-color:rgba(255,255,255,0.08); font-size:12px; font-weight:600; color:#e2e8f0;">Get expert help during trial</span>
-                  <span class="px-3 py-2 rounded-3" style="background-color:rgba(255,255,255,0.08); font-size:12px; font-weight:600; color:#e2e8f0;">Make an informed decision</span>
-                </div>
-
-                <a href="#contact-section" class="btn text-white px-4 py-3 rounded-3" style="background-color:#C5433E; font-weight:700; font-size:14px;">
-                  Start Evaluation With Expert →
-                </a>
-              </div>
-
-              <div class="col-lg-5">
-                <div class="p-4 rounded-4" style="background-color:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);">
-                  <div style="font-size:10px; font-weight:800; letter-spacing:1px; color:#C5433E; text-transform:uppercase; margin-bottom:6px;">TEST IT WITH EXPERT GUIDANCE</div>
-                  <h4 style="font-weight:800; color:#ffffff; font-size:18px; margin-bottom:10px;">Evaluate The Connector Using Your Own Workflows.</h4>
-                  <p style="font-size:13px; color:#94a3b8; margin:0; line-height:1.6;">
-                    Our product experts are available during the trial to help you evaluate and set things up efficiently.
-                  </p>
-                </div>
-              </div>
-
-            </div>
-          </section>
-
-
-          <!-- ================================================================= -->
-          <!-- SECTION 8: CONTACT US & SCHEDULE DEMO (التواصل كيو ار كود وسكادول) -->
-          <!-- ================================================================= -->
-          <section id="contact-section" class="p-4 p-md-5 app-card-light mb-5">
-            <div class="text-center mb-4">
-              <span class="badge-red-pill">GET IN TOUCH</span>
-              <h2 style="font-size:30px; font-weight:800; color:#273D56; margin-top:10px;">Have Questions or Need a Live Demo?</h2>
-              <p style="font-size:14px; color:#64748b;">Scan the QR code or click below to connect directly with our technical team.</p>
-            </div>
-
-            <div class="row g-4 justify-content-center">
-              
-              <!-- EMAIL CONTACT -->
-              <div class="col-md-4 text-center">
-                <div class="p-4 rounded-4 h-100" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                  <div class="mb-3">
-                    <!-- PLACEHOLDER FOR EMAIL QR CODE -->
-                    <img src="qr_website.png" alt="Email QR Code" class="img-fluid rounded-3 p-2 bg-white" style="border:1px solid #e2e8f0; width:130px;">
-                  </div>
-                  <h5 style="font-weight:700; color:#273D56; margin-bottom:4px;">Email Support</h5>
-                  <p style="font-size:12px; color:#64748b; margin-bottom:15px;">Scan to email or click below</p>
-                  <a href="mailto:info@coa-egypt.com" class="btn btn-outline-dark btn-sm rounded-3 px-3 py-2 font-weight-bold" style="font-size:13px;">
-                    <i class="fa fa-envelope me-2 text-danger"></i> info@coa-egypt.com
-                  </a>
-                </div>
-              </div>
-
-              <!-- WHATSAPP CONTACT -->
-              <div class="col-md-4 text-center">
-                <div class="p-4 rounded-4 h-100" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                  <div class="mb-3">
-                    <!-- PLACEHOLDER FOR WHATSAPP QR CODE -->
-                    <img src="qr_whatsapp.png" alt="WhatsApp QR Code" class="img-fluid rounded-3 p-2 bg-white" style="border:1px solid #e2e8f0; width:130px;">
-                  </div>
-                  <h5 style="font-weight:700; color:#273D56; margin-bottom:4px;">Direct WhatsApp</h5>
-                  <p style="font-size:12px; color:#64748b; margin-bottom:15px;">Scan to chat on WhatsApp</p>
-                  <a href="https://wa.me/201013907174" target="_blank" class="btn btn-success btn-sm rounded-3 px-3 py-2 font-weight-bold" style="font-size:13px; background-color:#25D366; border:none;">
-                    <i class="fa fa-whatsapp me-2"></i> +20 10 13907174
-                  </a>
-                </div>
-              </div>
-
-              <!-- SCHEDULE MEETING -->
-              <div class="col-md-4 text-center">
-                <div class="p-4 rounded-4 h-100" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                  <div class="mb-3 d-flex align-items-center justify-content-center" style="height:130px;">
-                    <div class="rounded-circle d-flex align-items-center justify-content-center" style="width:90px; height:90px; background-color:#FDF2F2; color:#A8322E; font-size:40px;">
-                      <i class="fa fa-calendar-check-o"></i>
-                    </div>
-                  </div>
-                  <h5 style="font-weight:700; color:#273D56; margin-bottom:4px;">Schedule a Meeting</h5>
-                  <p style="font-size:12px; color:#64748b; margin-bottom:15px;">Book a 1-on-1 personalized demo</p>
-                  <a href="https://www.coa-egy.com" target="_blank" class="btn text-white btn-sm rounded-3 px-3 py-2 font-weight-bold" style="font-size:13px; background-color:#273D56;">
-                    <i class="fa fa-calendar me-2 text-warning"></i> Visit Official Portal
-                  </a>
-                </div>
-              </div>
-
-            </div>
-          </section>
-
-
-          <!-- ================================================================= -->
-          <!-- SECTION 9: EXPLORE OTHER APPLICATIONS (ربط الموديولات الأخرى)        -->
-          <!-- ================================================================= -->
-          <section class="p-4 p-md-5 app-card-light mb-4">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-2">
-              <div>
-                <h3 style="font-weight:800; color:#273D56; margin:0; font-size:26px;">Explore Our Other Applications</h3>
-                <p style="font-size:13px; color:#64748b; margin:4px 0 0 0;">Recommended suite apps ordered by workflow compatibility and synergy.</p>
-              </div>
-              <span class="badge-red-pill flex-shrink-0 align-self-start align-self-md-center">Official Suite</span>
-            </div>
-
-            <div class="row g-4">
-              
-              <!-- RELATED APP 1 (High Priority Integration) -->
-              <div class="col-md-4">
-                <div class="p-4 rounded-4 h-100 d-flex flex-column justify-content-between" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                  <div>
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                      <i class="fa fa-calculator text-success" style="font-size:28px;"></i>
-                      <span class="badge bg-success" style="font-size:10px;">Top Match</span>
-                    </div>
-                    <h5 style="font-weight:700; color:#273D56; font-size:16px; margin-bottom:6px;">COA Accrued Expense</h5>
-                    <p style="font-size:12px; color:#64748b; line-height:1.5; margin-bottom:15px;">
-                      Advanced financial expense accounting &amp; auto-accruals for Odoo ERP.
-                    </p>
-                  </div>
-                  <a href="#" class="btn btn-outline-dark btn-sm rounded-3 w-100 font-weight-bold" style="font-size:12px;">View Application →</a>
-                </div>
-              </div>
-
-              <!-- RELATED APP 2 -->
-              <div class="col-md-4">
-                <div class="p-4 rounded-4 h-100 d-flex flex-column justify-content-between" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                  <div>
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                      <i class="fa fa-cubes text-primary" style="font-size:28px;"></i>
-                      <span class="badge bg-primary" style="font-size:10px;">Stock Sync</span>
-                    </div>
-                    <h5 style="font-weight:700; color:#273D56; font-size:16px; margin-bottom:6px;">Stock Aging Report</h5>
-                    <p style="font-size:12px; color:#64748b; line-height:1.5; margin-bottom:15px;">
-                      Complete inventory valuation, stock aging lifecycle &amp; slow-moving alerts.
-                    </p>
-                  </div>
-                  <a href="#" class="btn btn-outline-dark btn-sm rounded-3 w-100 font-weight-bold" style="font-size:12px;">View Application →</a>
-                </div>
-              </div>
-
-              <!-- RELATED APP 3 -->
-              <div class="col-md-4">
-                <div class="p-4 rounded-4 h-100 d-flex flex-column justify-content-between" style="background-color:#f8fafc; border:1px solid #e2e8f0;">
-                  <div>
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                      <i class="fa fa-calendar-o text-warning" style="font-size:28px;"></i>
-                      <span class="badge bg-warning text-dark" style="font-size:10px;">Sync Suite</span>
-                    </div>
-                    <h5 style="font-weight:700; color:#273D56; font-size:16px; margin-bottom:6px;">Google Calendar Sync</h5>
-                    <p style="font-size:12px; color:#64748b; line-height:1.5; margin-bottom:15px;">
-                      Bi-directional event synchronization for partner meetings &amp; schedules.
-                    </p>
-                  </div>
-                  <a href="#" class="btn btn-outline-dark btn-sm rounded-3 w-100 font-weight-bold" style="font-size:12px;">View Application →</a>
-                </div>
-              </div>
-
-            </div>
-          </section>
-
+    <div class="row g-4">
+      <div class="col-md-4 text-center">
+        <div class="p-4 rounded-3 h-100" style="background-color: #F8FAFC; border: 1px solid #E2E8F0;">
+          <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 55px; height: 55px; background-color: #FDF2F2; color: #C5433E; font-size: 22px; font-weight: 800;">⚙</div>
+          <h5 style="font-weight: 700; color: #273D56; font-size: 16px;">Automated Synchronization</h5>
+          <p style="font-size: 13px; color: #64748B; margin: 0;">Merges duplicate GL accounts directly inside Odoo without executing manual database queries.</p>
+        </div>
+      </div>
+      <div class="col-md-4 text-center">
+        <div class="p-4 rounded-3 h-100" style="background-color: #F8FAFC; border: 1px solid #E2E8F0;">
+          <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 55px; height: 55px; background-color: #FDF2F2; color: #C5433E; font-size: 22px; font-weight: 800;">🛡</div>
+          <h5 style="font-weight: 700; color: #273D56; font-size: 16px;">Audit &amp; Compliance Safe</h5>
+          <p style="font-size: 13px; color: #64748B; margin: 0;">Maintains complete audit trails so financial statements match before and after merging.</p>
+        </div>
+      </div>
+      <div class="col-md-4 text-center">
+        <div class="p-4 rounded-3 h-100" style="background-color: #F8FAFC; border: 1px solid #E2E8F0;">
+          <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 55px; height: 55px; background-color: #FDF2F2; color: #C5433E; font-size: 22px; font-weight: 800;">⚡</div>
+          <h5 style="font-weight: 700; color: #273D56; font-size: 16px;">High-Volume Performance</h5>
+          <p style="font-size: 13px; color: #64748B; margin: 0;">Optimized batch execution capable of handling 100,000+ journal move lines smoothly.</p>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- SECTION 4: TESTIMONIALS -->
+  <section class="p-4 p-md-5 rounded-4 mb-5" style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 18px;">
+    <h2 style="font-size: 26px; font-weight: 800; color: #273D56; margin-bottom: 15px;" class="text-center text-md-start">
+      What Our Customers Say
+    </h2>
+    
+    <div class="p-3 rounded-3 mb-4" style="background-color: #FDF2F2; border-left: 4px solid #C5433E;">
+      <span style="font-size: 12px; font-weight: 800; color: #C5433E; letter-spacing: 1px; text-transform: uppercase;">
+        USED IN REAL BUSINESS OPERATIONS ACROSS MULTIPLE ODOO VERSIONS AND WORKFLOWS.
+      </span>
+    </div>
+
+    <div class="row g-3 mb-4">
+      <div class="col-md-6">
+        <div class="p-4 rounded-3 h-100" style="background-color: #F8FAFC; border: 1px solid #E2E8F0;">
+          <div style="color: #FDCC0D; font-size: 14px; margin-bottom: 8px;">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+          <h5 style="font-weight: 800; font-size: 16px; color: #273D56;">Essential Accounting Tool</h5>
+          <p style="font-size: 13px; color: #475569; line-height: 1.6;">
+            "We had duplicate general ledger accounts created during data migration. COA Account Merge allowed us to consolidate them cleanly into single master accounts without losing past financial history!"
+          </p>
+          <div style="font-weight: 700; font-size: 12px; color: #64748B;">by Senior Finance Manager</div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="p-4 rounded-3 h-100" style="background-color: #F8FAFC; border: 1px solid #E2E8F0;">
+          <div style="color: #FDCC0D; font-size: 14px; margin-bottom: 8px;">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+          <h5 style="font-weight: 800; font-size: 16px; color: #273D56;">Flawless Execution</h5>
+          <p style="font-size: 13px; color: #475569; line-height: 1.6;">
+            "The module executed the account merge smoothly. All past journal move lines were updated to the target account instantly, and our Trial Balance remained perfectly balanced."
+          </p>
+          <div style="font-weight: 700; font-size: 12px; color: #64748B;">by Certified Odoo Accountant</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-3 rounded-3 text-center" style="background-color: #F8FAFC; border: 1px dashed #CBD5E1;">
+      <h4 style="font-size: 16px; font-weight: 800; color: #273D56; margin: 0;">Verified 5-Star Performance Across Odoo 17.0, 18.0 &amp; 19.0</h4>
+    </div>
+  </section>
+
+  <!-- SECTION 5: FULLY VISIBLE FUNCTIONAL CAPABILITIES, SUPPORT, RELEASE NOTES & FAQ -->
+  <section class="p-4 p-md-5 rounded-4 mb-5" style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 18px;">
+    
+    <div class="text-center mb-4">
+      <span style="background-color: #FDF2F2; color: #C5433E; font-weight: 800; font-size: 12px; border-radius: 50px; padding: 6px 16px; border: 1px solid #F87171; display: inline-block;">SYSTEM CAPABILITIES</span>
+      <h2 style="font-size: 28px; font-weight: 800; color: #273D56; margin-top: 10px;">Functional Breakdown &amp; System Architecture</h2>
+    </div>
+
+    <div class="row g-4 mb-4">
+      <div class="col-md-4">
+        <div class="p-4 rounded-3 h-100" style="background-color: #F8FAFC; border: 1px solid #E2E8F0;">
+          <h5 style="font-weight: 800; color: #273D56; font-size: 16px; margin-bottom: 8px;">1. Account Merge Wizard</h5>
+          <p style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0;">
+            Provides a user-friendly wizard in Odoo Accounting to select source accounts and destination target account with immediate validation checks.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="p-4 rounded-3 h-100" style="background-color: #F8FAFC; border: 1px solid #E2E8F0;">
+          <h5 style="font-weight: 800; color: #273D56; font-size: 16px; margin-bottom: 8px;">2. Move Line Reassignment</h5>
+          <p style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0;">
+            Re-points all existing account.move.line entries from source accounts to the destination account seamlessly across all journals.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="p-4 rounded-3 h-100" style="background-color: #F8FAFC; border: 1px solid #E2E8F0;">
+          <h5 style="font-weight: 800; color: #273D56; font-size: 16px; margin-bottom: 8px;">3. Audit Log &amp; Safety</h5>
+          <p style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0;">
+            Logs all merge actions in digital audit trails and removes empty source accounts cleanly to prevent future duplicate postings.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUPPORT & RELEASE NOTES -->
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="p-4 rounded-3 h-100" style="background-color: #F8FAFC; border: 1px solid #E2E8F0;">
+          <h5 style="font-weight: 800; color: #273D56; font-size: 16px; margin-bottom: 12px;">Dedicated Technical Assistance</h5>
+          <p style="font-size: 13px; color: #475569; margin-bottom: 12px;">
+            Our team of senior COA engineers provides direct technical support, setup guidance, and 24/7 assistance via WhatsApp and Portal.
+          </p>
+          <ul style="font-size: 13px; color: #64748B; margin: 0; padding-left: 18px; line-height: 1.8;">
+            <li>Guaranteed response within business hours</li>
+            <li>Expert assistance setting up initial mappings</li>
+            <li>Free access to minor updates and patches</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="p-4 rounded-3 h-100" style="background-color: #F8FAFC; border: 1px solid #E2E8F0;">
+          <h5 style="font-weight: 800; color: #273D56; font-size: 16px; margin-bottom: 12px;">Version Release Notes &amp; FAQ</h5>
+          <ul class="list-unstyled" style="font-size: 13px; color: #475569; line-height: 1.8; margin-bottom: 15px;">
+            <li><span class="badge" style="background-color: #C5433E; color: #FFFFFF; font-size: 11px; margin-right: 6px;">v19.0</span> <b>Compatibility Update:</b> Full support for Odoo 19 Community &amp; Enterprise.</li>
+            <li><span class="badge" style="background-color: #273D56; color: #FFFFFF; font-size: 11px; margin-right: 6px;">v18.0</span> <b>Initial Release:</b> Re-architected connector engine for higher performance.</li>
+          </ul>
+          <div style="font-size: 12px; color: #273D56; font-weight: 700; border-top: 1px solid #E2E8F0; padding-top: 8px;">
+            Q: Is it compatible with Odoo 17, 18 &amp; 19?<br>
+            <span style="font-weight: 400; color: #64748B;">A: Yes! 100% compatible across Community &amp; Enterprise editions.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SECTION 6: WHY CHOOSE US / PRODUCT MATURITY -->
+  <section class="p-4 p-md-5 rounded-4 mb-5" style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 18px;">
+    <h2 style="font-size: 26px; font-weight: 800; color: #273D56; margin-bottom: 8px;">
+      Why Product Maturity Matters For Your Business
+    </h2>
+    
+    <div class="p-3 rounded-3 mb-4" style="background-color: #FDF2F2; border-left: 4px solid #C5433E;">
+      <span style="font-size: 11px; font-weight: 800; color: #C5433E; letter-spacing: 1px; text-transform: uppercase;">
+        FEATURE DEPTH COMES FROM SOLVING REAL USE CASES OVER TIME &mdash; NOT JUST ADDING MORE FEATURES.
+      </span>
+    </div>
+
+    <div class="row g-4 mb-4">
+      <div class="col-lg-7">
+        <div class="p-4 rounded-4 h-100" style="background-color: #F8FAFC; border: 1px solid #E2E8F0;">
+          <h4 style="font-weight: 800; color: #273D56; font-size: 16px; margin-bottom: 12px;">What This Experience Delivers</h4>
+          <ul style="font-size: 13px; color: #475569; line-height: 2; margin: 0; padding-left: 18px;">
+            <li>Clean consolidation of duplicate Chart of Accounts</li>
+            <li>Automatic move line re-linking across all journals</li>
+            <li>Complete digital audit log preservation</li>
+            <li>Compatible across Odoo 17.0, 18.0, and 19.0</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="p-4 rounded-4 h-100 d-flex flex-column justify-content-center" style="background-color: #1B2A3C; border-radius: 18px; color: #FFFFFF;">
+          <div style="font-size: 10px; letter-spacing: 1px; font-weight: 800; color: #C5433E; text-transform: uppercase; margin-bottom: 4px;">KEY POSITIONING</div>
+          <h4 style="font-weight: 800; font-size: 18px; color: #FFFFFF; margin-bottom: 10px;">What Actually Matters</h4>
+          <div style="font-size: 13px; color: #CBD5E1; line-height: 1.6;">
+            &bull; <b>Features</b> show what an addon can do.<br>
+            &bull; <b>Maturity</b> shows how well it actually works in real production accounting.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: TRY BEFORE YOU BUY -->
+  <section id="try-section" class="p-4 p-md-5 mb-5 position-relative" style="background-color: #1B2A3C; border-radius: 24px; color: #FFFFFF;">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-7">
+        <h2 style="font-size: 30px; font-weight: 900; color: #FFFFFF; margin-bottom: 6px;">Evaluate With Expert Guidance</h2>
+        <div style="font-size: 11px; letter-spacing: 1px; font-weight: 800; color: #C5433E; text-transform: uppercase; margin-bottom: 15px;">
+          FULL SUPPORT FROM COA SENIOR ENGINEERS
+        </div>
+        <p style="font-size: 14px; color: #CBD5E1; line-height: 1.7; margin-bottom: 25px;">
+          Test COA Account Merge with your accounting workflows. Our team of senior COA engineers is available to assist you with installation and guidance.
+        </p>
+
+        <a href="https://wa.me/201013907174" target="_blank" class="btn text-white px-4 py-3 rounded-3" style="background-color: #C5433E; font-weight: 700; font-size: 14px; text-decoration: none; display: inline-block;">
+          Start Evaluation With Expert &rarr;
+        </a>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="p-4 rounded-4" style="background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+          <div style="font-size: 10px; font-weight: 800; letter-spacing: 1px; color: #C5433E; text-transform: uppercase; margin-bottom: 6px;">TEST IT WITH EXPERT GUIDANCE</div>
+          <h4 style="font-weight: 800; color: #FFFFFF; font-size: 17px; margin-bottom: 8px;">Evaluate The Addon Using Your Own Workflows.</h4>
+          <p style="font-size: 13px; color: #94A3B8; margin: 0; line-height: 1.6;">
+            Our product experts are available during evaluation to help you set things up efficiently.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: CONTACT US & QR CODES (100% WORKING CLICKABLE LINKS!) -->
+  <section id="contact-section" class="p-4 p-md-5 rounded-4 mb-5" style="background-color: #FFFFFF; border: 2px solid #C5433E; border-radius: 18px;">
+    <div class="text-center mb-4">
+      <span style="background-color: #FDF2F2; color: #C5433E; font-weight: 800; font-size: 12px; border-radius: 50px; padding: 6px 16px; border: 1px solid #F87171; display: inline-block;">GET IN TOUCH</span>
+      <h2 style="font-size: 28px; font-weight: 800; color: #273D56; margin-top: 10px;">Have Questions or Need Direct Support?</h2>
+      <p style="font-size: 14px; color: #64748B;">Scan the QR code or click the buttons below to connect directly with COA senior engineers.</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      
+      <!-- EMAIL CONTACT (CLICKABLE!) -->
+      <div class="col-md-4 text-center">
+        <div class="p-4 rounded-4 h-100" style="background-color: #F8FAFC; border: 1px solid #E2E8F0;">
+          <div class="mb-3">
+            <img src="qr_website.png" alt="Email QR Code" class="img-fluid rounded-3 p-2 bg-white" style="border: 1px solid #CBD5E1; width: 120px; height: 120px;" width="120" height="120">
+          </div>
+          <h5 style="font-weight: 700; color: #273D56; margin-bottom: 4px;">Email Support</h5>
+          <p style="font-size: 12px; color: #64748B; margin-bottom: 15px;">info@coa-egypt.com</p>
+          <a href="mailto:info@coa-egypt.com" class="btn text-white btn-sm rounded-3 px-3 py-2 font-weight-bold" style="font-size: 13px; background-color: #273D56; text-decoration: none; display: inline-block;">
+            Email Support &rarr;
+          </a>
+        </div>
+      </div>
+
+      <!-- WHATSAPP CONTACT (CLICKABLE!) -->
+      <div class="col-md-4 text-center">
+        <div class="p-4 rounded-4 h-100" style="background-color: #F8FAFC; border: 1px solid #E2E8F0;">
+          <div class="mb-3">
+            <img src="qr_whatsapp.png" alt="WhatsApp QR Code" class="img-fluid rounded-3 p-2 bg-white" style="border: 1px solid #CBD5E1; width: 120px; height: 120px;" width="120" height="120">
+          </div>
+          <h5 style="font-weight: 700; color: #273D56; margin-bottom: 4px;">Direct WhatsApp</h5>
+          <p style="font-size: 12px; color: #64748B; margin-bottom: 15px;">+20 10 13907174</p>
+          <a href="https://wa.me/201013907174" target="_blank" class="btn text-white btn-sm rounded-3 px-3 py-2 font-weight-bold" style="font-size: 13px; background-color: #25D366; text-decoration: none; display: inline-block;">
+            WhatsApp Chat &rarr;
+          </a>
+        </div>
+      </div>
+
+      <!-- OFFICIAL PORTAL (CLICKABLE!) -->
+      <div class="col-md-4 text-center">
+        <div class="p-4 rounded-4 h-100" style="background-color: #F8FAFC; border: 1px solid #E2E8F0;">
+          <div class="mb-3 d-flex align-items-center justify-content-center" style="height: 120px;">
+            <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 80px; height: 80px; background-color: #FDF2F2; color: #C5433E; font-size: 26px; font-weight: 800;">
+              COA
+            </div>
+          </div>
+          <h5 style="font-weight: 700; color: #273D56; margin-bottom: 4px;">Official Portal</h5>
+          <p style="font-size: 12px; color: #64748B; margin-bottom: 15px;">www.coa-egy.com</p>
+          <a href="https://www.coa-egy.com" target="_blank" class="btn text-white btn-sm rounded-3 px-3 py-2 font-weight-bold" style="font-size: 13px; background-color: #C5433E; text-decoration: none; display: inline-block;">
+            Visit Portal &rarr;
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 9: EXPLORE OTHER APPLICATIONS (100% CLICKABLE APP LINKS!) -->
+  <section class="p-4 p-md-5 rounded-4 mb-4" style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 18px;">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-2">
+      <div>
+        <h3 style="font-weight: 800; color: #273D56; margin: 0; font-size: 24px;">Explore Our Other Applications</h3>
+        <p style="font-size: 13px; color: #64748B; margin: 4px 0 0 0;">Recommended suite apps ordered by workflow compatibility and synergy.</p>
+      </div>
+      <span style="background-color: #FDF2F2; color: #C5433E; font-weight: 800; font-size: 12px; border-radius: 50px; padding: 6px 16px; border: 1px solid #F87171; display: inline-block;">Official Suite</span>
+    </div>
+
+    <div class="row g-4">
+      
+      <div class="col-md-4">
+        <div class="p-4 rounded-4 h-100 d-flex flex-column justify-content-between" style="background-color: #F8FAFC; border: 1px solid #E2E8F0;">
+          <div>
+            <h5 style="font-weight: 800; color: #273D56; font-size: 16px; margin-bottom: 6px;">COA Accrued Expense</h5>
+            <p style="font-size: 12px; color: #64748B; line-height: 1.5; margin-bottom: 15px;">
+              Advanced financial expense accounting &amp; auto-accruals for Odoo ERP.
+            </p>
+          </div>
+          <a href="https://apps.odoo.com/apps/modules/browse?author=COA%20%28Community%20of%20acountants%29" target="_blank" class="btn btn-outline-dark btn-sm rounded-3 w-100 font-weight-bold" style="font-size: 12px; text-decoration: none;">View Application &rarr;</a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="p-4 rounded-4 h-100 d-flex flex-column justify-content-between" style="background-color: #F8FAFC; border: 1px solid #E2E8F0;">
+          <div>
+            <h5 style="font-weight: 800; color: #273D56; font-size: 16px; margin-bottom: 6px;">Stock Aging Report</h5>
+            <p style="font-size: 12px; color: #64748B; line-height: 1.5; margin-bottom: 15px;">
+              Complete inventory valuation, stock aging lifecycle &amp; slow-moving alerts.
+            </p>
+          </div>
+          <a href="https://apps.odoo.com/apps/modules/browse?author=COA%20%28Community%20of%20acountants%29" target="_blank" class="btn btn-outline-dark btn-sm rounded-3 w-100 font-weight-bold" style="font-size: 12px; text-decoration: none;">View Application &rarr;</a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="p-4 rounded-4 h-100 d-flex flex-column justify-content-between" style="background-color: #F8FAFC; border: 1px solid #E2E8F0;">
+          <div>
+            <h5 style="font-weight: 800; color: #273D56; font-size: 16px; margin-bottom: 6px;">Construction Management</h5>
+            <p style="font-size: 12px; color: #64748B; line-height: 1.5; margin-bottom: 15px;">
+              Complete site management, sub-contracts, WBS, and BOQ tracking.
+            </p>
+          </div>
+          <a href="https://apps.odoo.com/apps/modules/browse?author=COA%20%28Community%20of%20acountants%29" target="_blank" class="btn btn-outline-dark btn-sm rounded-3 w-100 font-weight-bold" style="font-size: 12px; text-decoration: none;">View Application &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
 </div>
