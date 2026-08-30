@@ -40,7 +40,6 @@ Welcome to **COA Egypt (Chart of Accounts)** official Odoo Apps Store repository
 | [`coa_arfad_purchase_report`](./coa_arfad_purchase_report) | **COA Arfad Purchase Report** | `Extra Tools` | `Odoo 17.0.19.0.1.0.0` | **€19.00** | Custom PDF layout for Purchase Orders |
 | [`coa_auto_sequence_generator`](./coa_auto_sequence_generator) | **COA Auto Sequence Generator** | `Extra Tools` | `Odoo 17.0.19.0.1.2.2` | **€15.00** | Auto-generate unique codes for products, customers, and vendors on record creation |
 | [`coa_beacon_picking_report`](./coa_beacon_picking_report) | **COA Beacon Picking Report** | `Inventory` | `Odoo 18.0.1.0.0` | **€25.00** | Add sale order name under return reference in picking report |
-| [`coa_bi_print_journal_entries`](./coa_bi_print_journal_entries) | **COA Bi Print Journal Entries** | `Accounting` | `Odoo 17.0.19.0.0.0` | **€15.00** | Allow to print pdf report of Journal Entries. |
 | [`coa_category_location_route_19`](./coa_category_location_route_19) | **COA Category Location Route 19** | `Inventory` | `Odoo 17.0.19.0.1.0.0` | **€25.00** | Auto-create routes from product category location settings |
 | [`coa_commission_sales`](./coa_commission_sales) | **COA Commission Sales** | `Sales` | `Odoo 18.0.1.0.0` | **€49.00** | Calculate sales commissions based on customer tag and net sales |
 | [`coa_custom_background`](./coa_custom_background) | **COA Custom Background** | `Extra Tools` | `Odoo 18.0.1.0.2` | **€19.00** | Custom Background |
