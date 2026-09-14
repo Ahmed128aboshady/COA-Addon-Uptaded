@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <template id="inherit_template_report_invoicee_document727"
+              inherit_id="l10n_gcc_invoice.arabic_english_invoice">
+        <xpath expr="//tbody[hasclass('invoice_tbody')]"
+               position="replace">
+
+            <tbody class="invoice_tbody">
+                <t t-set="current_subtotal" t-value="0"/>
+                <t t-set="lines"
+                   t-value="o.invoice_line_ids.sorted(key=lambda l: (-l.sequence, l.date, l.move_name, -l.id), reverse=True)"/>
+
+                <t t-foreach="lines" t-as="line">
+                    <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal"/>
+                    <t t-set="current_total" t-value="current_subtotal + line.price_total"
+                       t-if="o.tax_calculation_rounding_method == 'round_per_line'"/>
+
+                    <tr t-att-class="'fw-bold o_line_section' if line.display_type == 'line_section' else 'fst-italic o_line_note' if line.display_type == 'line_note' else ''">
+                        <t t-if="line.display_type not in ('line_note', 'line_section')"
+                           name="account_invoice_line_accountable">
+                            <td class="text-end o_price_total">
+                                <span class="text-nowrap" t-field="line.price_total"/>
+                            </td>
+                            <td class="text-end">
+                                <span class="text-nowrap" t-field="line.l10n_gcc_invoice_tax_amount"/>
+                            </td>
+                            <td class="text-end o_price_total">
+                                <span class="text-nowrap" t-field="line.price_subtotal"/>
+                            </td>
+
+                            <td class="text-end">
+                                <span t-out="', '.join(map(lambda x: (x.invoice_label or x.name), line.tax_ids))"
+                                      id="line_tax_ids"/>
+                            </td>
+                            <td t-if="display_discount"
+                                class="text-end">
+                                <span class="text-nowrap" t-field="line.discount"/>
+                            </td>
+                            <td class="text-end">
+                                <span class="text-nowrap" t-field="line.price_unit"/>
+                            </td>
+                            <td class="text-end">
+                                <span t-field="line.quantity"/>
+                                <span t-field="line.product_uom_id" groups="uom.group_uom"/>
+                            </td>
+                            <td name="account_invoice_line_name">
+                                <t t-if="line.product_id">
+                                    <t t-set="english_name"
+                                       t-value="line.with_context(lang='en_US').product_id.display_name"/>
+                                    <t t-set="arabic_name"
+                                       t-value="line.with_context(lang=o.env['res.lang']._get_code('ar_001')).product_id.display_name"/>
+
+                                    <span t-out="arabic_name + '\n'" t-if="arabic_name not in line.name"
+                                          t-options="{'widget': 'text'}" dir="rtl"/>
+                                    <span t-out="english_name + '\n'"
+                                          t-if="(english_name != arabic_name) and (english_name not in line.name)"
+                                          t-options="{'widget': 'text'}"/>
+                                </t>
+                                <span t-out="line.name" t-options="{'widget': 'text'}"
+                                      t-att-dir="o.env['res.lang']._get_data(code=o.partner_id.lang).direction"/>
+                            </td>
+
+                        </t>
+                        <t t-if="line.display_type == 'line_section'">
+                            <td colspan="99">
+                                <span t-field="line.name" t-options="{'widget': 'text'}"/>
+                            </td>
+                            <t t-set="current_section" t-value="line"/>
+                            <t t-set="current_subtotal" t-value="0"/>
+                        </t>
+                        <t t-if="line.display_type == 'line_note'">
+                            <td colspan="99">
+                                <span t-field="line.name" t-options="{'widget': 'text'}"/>
+                            </td>
+                        </t>
+                    </tr>
+
+                </t>
+            </tbody>
+
+        </xpath>
+
+    </template>
+</odoo>

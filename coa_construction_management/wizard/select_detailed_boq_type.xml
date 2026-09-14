@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="select_detailed_boq_type_form" model="ir.ui.view">
+        <field name="name">select.detailed.boq.type.form</field>
+        <field name="model">select.detailed.boq.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="detailed_boq_type" widget="radio" options="{'horizontal': true}"/>
+                        </group>
+                        <group/>
+                    </group>
+                </sheet>
+                 <footer>
+		 	<button name="create_breakdown" type="object" string="Confirm" class="oe_highlight" />
+		   	<button string="Cancel" special="cancel" />
+	    	</footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="select_detailed_boq_type_action">
+        <field name="name">Select Detailed BOQ Type</field>
+        <field name="res_model">select.detailed.boq.type</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Maintenance cost report -->
+    <record id="view_mfg_maintenance_cost_pivot" model="ir.ui.view">
+        <field name="name">mfg.maintenance.pivot</field>
+        <field name="model">mfg.maintenance</field>
+        <field name="arch" type="xml">
+            <pivot string="Maintenance Cost Analysis">
+                <field name="machine_id" type="row"/>
+                <field name="maintenance_type" type="col"/>
+                <field name="total_cost" type="measure"/>
+                <field name="labor_cost" type="measure"/>
+                <field name="spare_parts_cost" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_mfg_maintenance_graph" model="ir.ui.view">
+        <field name="name">mfg.maintenance.graph</field>
+        <field name="model">mfg.maintenance</field>
+        <field name="arch" type="xml">
+            <graph string="Maintenance Costs" type="bar">
+                <field name="machine_id"/>
+                <field name="total_cost" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_mfg_maintenance_cost" model="ir.actions.act_window">
+        <field name="name">Maintenance Cost Analysis</field>
+        <field name="res_model">mfg.maintenance</field>
+        <field name="view_mode">pivot,graph,list</field>
+        <field name="domain">[('state','=','done')]</field>
+    </record>
+
+    <!-- Production cost report from mrp.production -->
+    <record id="view_mfg_production_pivot" model="ir.ui.view">
+        <field name="name">mfg.production.mrp.pivot</field>
+        <field name="model">mrp.production</field>
+        <field name="arch" type="xml">
+            <pivot string="Machine Cost Analysis in Manufacturing">
+                <field name="primary_machine_id" type="row"/>
+                <field name="machine_total_cost" type="measure"/>
+                <field name="machine_total_hours" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_mfg_production_graph" model="ir.ui.view">
+        <field name="name">mfg.production.mrp.graph</field>
+        <field name="model">mrp.production</field>
+        <field name="arch" type="xml">
+            <graph string="Machine Costs in Manufacturing" type="bar">
+                <field name="primary_machine_id"/>
+                <field name="machine_total_cost" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_mfg_production_cost" model="ir.actions.act_window">
+        <field name="name">Machine Costs in Manufacturing</field>
+        <field name="res_model">mrp.production</field>
+        <field name="view_mode">pivot,graph,list</field>
+        <field name="domain">[('primary_machine_id', '!=', False)]</field>
+    </record>
+</odoo>

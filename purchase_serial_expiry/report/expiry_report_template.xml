@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="report_lot_expiry_document">
+    <t t-call="web.html_container">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <h2 class="text-center">Lot Expiry Report</h2>
+                <p class="text-muted text-center mb-4">Generated: <t t-esc="context_today()"/></p>
+
+                <div class="row mb-4 text-center">
+                    <div class="col-4">
+                        <div class="badge bg-danger p-2" style="font-size:1rem;">
+                            Expired: <t t-esc="len(docs.filtered(lambda r: r.expiry_status == 'expired'))"/>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="badge bg-warning text-dark p-2" style="font-size:1rem;">
+                            Expiring ≤30d: <t t-esc="len(docs.filtered(lambda r: r.expiry_status == 'near'))"/>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="badge bg-success p-2" style="font-size:1rem;">
+                            Valid: <t t-esc="len(docs.filtered(lambda r: r.expiry_status == 'ok'))"/>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table table-sm table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Lot / Batch</th>
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>On-Hand Qty</th>
+                            <th>Expiry Date</th>
+                            <th>Days Left</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="docs.sorted(key=lambda r: r.expiration_date or '')" t-as="lot">
+                            <tr t-att-class="'table-danger' if lot.expiry_status == 'expired' else ('table-warning' if lot.expiry_status == 'near' else '')">
+                                <td><strong><t t-esc="lot.name"/></strong></td>
+                                <td><t t-esc="lot.product_id.display_name"/></td>
+                                <td><t t-esc="lot.product_id.categ_id.name"/></td>
+                                <td><t t-esc="lot.product_qty"/></td>
+                                <td><t t-esc="lot.expiration_date" t-options="{'widget':'date'}"/></td>
+                                <td>
+                                    <t t-if="lot.days_to_expiry &lt; 0">
+                                        <span class="text-danger fw-bold"><t t-esc="lot.days_to_expiry"/>d</span>
+                                    </t>
+                                    <t t-else=""><t t-esc="lot.days_to_expiry"/>d</t>
+                                </td>
+                                <td>
+                                    <span t-att-class="'badge ' + ('bg-danger' if lot.expiry_status=='expired' else ('bg-warning text-dark' if lot.expiry_status=='near' else 'bg-success'))">
+                                        <t t-esc="dict(lot.fields_get(['expiry_status'])['expiry_status']['selection'])[lot.expiry_status]"/>
+                                    </span>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </t>
+</template>
+</odoo>

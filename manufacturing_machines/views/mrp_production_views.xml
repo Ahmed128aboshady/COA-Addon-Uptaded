@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form view for the machine line (dialog) -->
+    <record id="view_mfg_machine_line_form" model="ir.ui.view">
+        <field name="name">mfg.production.machine.line.form</field>
+        <field name="model">mfg.production.machine.line</field>
+        <field name="arch" type="xml">
+            <form string="Machine Operation">
+                <header>
+                    <button name="button_start"  string="▶ Start"    type="object" class="btn-success"
+                        invisible="state != 'draft' and state != 'paused'"/>
+                    <button name="button_pause"  string="⏸ Pause"   type="object" class="btn-warning"
+                        invisible="state != 'running'"/>
+                    <button name="button_resume" string="▶ Resume"  type="object" class="btn-info"
+                        invisible="state != 'paused'"/>
+                    <button name="button_done"   string="✔ Done"    type="object" class="btn-primary"
+                        invisible="state == 'done' or state == 'draft'"/>
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="draft,running,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="machine_id"/>
+                            <field name="machine_hourly_cost"/>
+                        </group>
+                        <group>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                            <field name="duration"/>
+                            <field name="cost"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Inherit mrp.production form — add Machines / Labor / Overhead tabs + buttons -->
+    <record id="view_mrp_production_machine_form" model="ir.ui.view">
+        <field name="name">mrp.production.machine.form</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+
+            <!-- Action buttons in the header -->
+            <xpath expr="//header/button[last()]" position="after">
+                <button name="action_mrp_post_accounting"
+                        string="Post Accounting Entry"
+                        type="object"
+                        class="btn-primary"
+                        invisible="mrp_cost_posted or mrp_grand_total == 0"/>
+                <button name="action_create_landed_cost"
+                        string="Create Landed Cost"
+                        type="object"
+                        class="btn-secondary"/>
+                <button name="action_view_mrp_journal_entry"
+                        string="View Journal Entry"
+                        type="object"
+                        class="btn-link"
+                        invisible="not mrp_cost_posted"/>
+            </xpath>
+
+            <!-- Cost summary group — shown above the notebook when there are costs -->
+            <xpath expr="//notebook" position="before">
+                <group string="Production Cost Summary" invisible="mrp_grand_total == 0">
+                    <group>
+                        <field name="machine_total_hours" readonly="1"/>
+                        <field name="machine_total_cost"  readonly="1"/>
+                        <field name="mrp_labor_cost"      readonly="1"/>
+                        <field name="mrp_overhead_cost"   readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="mrp_grand_total" readonly="1" class="fw-bold"/>
+                        <field name="mrp_move_id"     readonly="1" invisible="not mrp_cost_posted"/>
+                        <field name="mrp_cost_posted" readonly="1" widget="boolean_toggle"/>
+                    </group>
+                </group>
+            </xpath>
+
+            <!-- Tabs: Machines / Workers / Overhead — added inside the notebook -->
+            <xpath expr="//notebook" position="inside">
+
+                <!-- Machines tab -->
+                <page string="Machines" name="machine_lines">
+                    <field name="machine_line_ids">
+                        <list editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="machine_id"/>
+                            <field name="machine_hourly_cost" readonly="1"/>
+                            <field name="state" widget="badge"/>
+                            <field name="date_start" readonly="1"/>
+                            <field name="date_end"   readonly="1"/>
+                            <field name="duration"   readonly="1" sum="Total Hours"/>
+                            <field name="cost"       readonly="1" sum="Total Cost"/>
+                            <button name="button_start"  string="▶ Start"  type="object"
+                                class="btn-sm btn-success"
+                                invisible="state != 'draft' and state != 'paused'"/>
+                            <button name="button_pause"  string="⏸"       type="object"
+                                class="btn-sm btn-warning"
+                                invisible="state != 'running'"/>
+                            <button name="button_resume" string="▶"       type="object"
+                                class="btn-sm btn-info"
+                                invisible="state != 'paused'"/>
+                            <button name="button_done"   string="✔ Done"  type="object"
+                                class="btn-sm btn-primary"
+                                invisible="state == 'done' or state == 'draft'"/>
+                        </list>
+                    </field>
+                    <group class="mt-2">
+                        <group>
+                            <field name="machine_total_hours" readonly="1"/>
+                            <field name="machine_total_cost"  readonly="1"/>
+                        </group>
+                    </group>
+                </page>
+
+                <!-- Workers tab -->
+                <page string="Workers" name="labor_lines">
+                    <field name="labor_line_ids">
+                        <list editable="bottom">
+                            <field name="employee_name"/>
+                            <field name="job_title"/>
+                            <field name="hours"/>
+                            <field name="hourly_rate"/>
+                            <field name="total_cost" readonly="1" sum="Total"/>
+                        </list>
+                    </field>
+                    <group class="mt-2">
+                        <group>
+                            <field name="mrp_labor_cost" readonly="1" string="Total Labor Cost"/>
+                        </group>
+                    </group>
+                </page>
+
+                <!-- Overhead Costs tab -->
+                <page string="Overhead Costs" name="overhead_lines">
+                    <field name="overhead_line_ids">
+                        <list editable="bottom">
+                            <field name="overhead_type"/>
+                            <field name="name"/>
+                            <field name="amount" sum="Total Overhead"/>
+                        </list>
+                    </field>
+                    <group class="mt-2">
+                        <group>
+                            <field name="mrp_overhead_cost" readonly="1" string="Total Overhead"/>
+                        </group>
+                    </group>
+                </page>
+
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- Configuration in Settings -->
+    <record id="view_mfg_machine_settings" model="ir.ui.view">
+        <field name="name">mfg.machine.settings</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="mrp.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='mrp']" position="inside">
+                <block title="Machine &amp; Manufacturing Accounts" name="machine_accounting_block">
+
+                    <setting string="Machine Operating Hours Account">
+                        <field name="machine_cost_account_id" string="Account"/>
+                        <div class="text-muted mt-2">
+                            <strong>Debit ←</strong> Records the cost of each machine operating hour.<br/>
+                            Choose an <em>Equipment Operating Expenses</em> or <em>Direct Production Costs</em> account.
+                        </div>
+                    </setting>
+
+                    <setting string="Labor Wages Account">
+                        <field name="labor_cost_account_id" string="Account"/>
+                        <div class="text-muted mt-2">
+                            <strong>Debit ←</strong> Records total worker wages in production orders.<br/>
+                            Choose a <em>Manufacturing Worker Wages</em> or <em>Direct Labor Costs</em> account.
+                        </div>
+                    </setting>
+
+                    <setting string="Maintenance Expense Account">
+                        <field name="maintenance_cost_account_id" string="Account"/>
+                        <div class="text-muted mt-2">
+                            <strong>Debit ←</strong> Records the cost of each maintenance operation (labor + spare parts).<br/>
+                            Choose an <em>Equipment Maintenance and Repair</em> account.
+                        </div>
+                    </setting>
+
+                    <setting string="Overhead Costs Account (Electricity / Rent / Transport)">
+                        <field name="overhead_cost_account_id" string="Account"/>
+                        <div class="text-muted mt-2">
+                            <strong>Debit ←</strong> Records all overhead items added manually in production orders.<br/>
+                            Choose a <em>General Production Expenses</em> or <em>Indirect Costs</em> account.
+                        </div>
+                    </setting>
+
+                    <setting string="Contra Account (Credit Side)">
+                        <field name="contra_account_id" string="Account"/>
+                        <div class="text-muted mt-2">
+                            <strong>Credit ←</strong> The contra side for all cost entries above.<br/>
+                            Choose a <em>Work-in-Progress Costs</em> or <em>Accrued Payables</em> account.
+                        </div>
+                    </setting>
+
+                    <setting string="Accounting Journal">
+                        <field name="machine_journal_id" string="Journal"/>
+                        <div class="text-muted mt-2">
+                            The journal where all machine, maintenance, and production entries are recorded.<br/>
+                            Choose a journal of type <em>General</em>.
+                        </div>
+                    </setting>
+
+                </block>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Custom action: all manufacturing orders (mrp.production) -->
+    <record id="action_mrp_production_with_machines" model="ir.actions.act_window">
+        <field name="name">Production Orders</field>
+        <field name="res_model">mrp.production</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No manufacturing orders found.</p>
+        </field>
+    </record>
+
+    <!-- Search view inherit: add "Has Machines" filter on mrp.production -->
+    <record id="view_mrp_production_search_machines" model="ir.ui.view">
+        <field name="name">mrp.production.search.machines</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.view_mrp_production_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='filter_done']" position="after">
+                <separator/>
+                <filter
+                    string="Has Machines"
+                    name="filter_has_machines"
+                    domain="[('machine_line_ids', '!=', False)]"/>
+                <filter
+                    string="Not Posted"
+                    name="filter_not_posted"
+                    domain="[('mrp_grand_total', '&gt;', 0), ('mrp_cost_posted', '=', False)]"/>
+            </xpath>
+            <xpath expr="//filter[@name='date']" position="after">
+                <filter
+                    string="Machine"
+                    name="group_by_machine"
+                    context="{'group_by': 'primary_machine_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Top-level App Menu -->
+    <menuitem
+        id="menu_manufacturing_machines_root"
+        name="Machine Costs"
+        web_icon="manufacturing_machines,static/description/icon.png"
+        sequence="85"
+        groups="mrp.group_mrp_user"/>
+
+    <!-- Sub-menus -->
+    <menuitem
+        id="menu_manufacturing_machines_main"
+        name="Machine Costs"
+        parent="menu_manufacturing_machines_root"
+        sequence="1"/>
+
+    <menuitem
+        id="menu_manufacturing_machines"
+        name="Machines"
+        parent="menu_manufacturing_machines_main"
+        action="action_manufacturing_machine"
+        sequence="10"/>
+
+    <!-- Also keep it under MRP Configuration -->
+    <menuitem
+        id="menu_manufacturing_machines_mrp"
+        name="Machines"
+        parent="mrp.menu_mrp_configuration"
+        action="action_manufacturing_machine"
+        sequence="20"/>
+
+</odoo>

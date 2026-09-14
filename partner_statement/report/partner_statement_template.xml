@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="partner_statement_template">
+    <t t-call="web.html_container">
+        <t t-call="web.external_layout">
+            <div class="page">
+
+                <!-- ── HEADER ── -->
+                <div style="margin-bottom: 16px;">
+                    <h3 style="margin:0; color:#1B4F72;">
+                        Partner Statement Report
+                        <span style="font-size:14px; color:#555;"> — كشف حساب شريك</span>
+                    </h3>
+                    <table style="width:100%; margin-top:8px; font-size:12px;">
+                        <tr>
+                            <td style="width:50%;">
+                                <strong>Account:</strong>
+                                <t t-esc="account_name or 'All Accounts'"/>
+                            </td>
+                            <td style="width:50%; text-align:right;">
+                                <strong>Period:</strong>
+                                <t t-esc="date_from"/> — <t t-esc="date_to"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <strong>Partner:</strong>
+                                <t t-esc="partner_name"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <hr style="border-top: 2px solid #1B4F72; margin-bottom:8px;"/>
+
+                <!-- ── TABLE ── -->
+                <table class="table table-sm table-bordered" style="font-size:11px; width:100%;">
+                    <thead>
+                        <tr style="background-color:#1B4F72; color:#fff;">
+                            <th style="text-align:center;">Date<br/>التاريخ</th>
+                            <th style="text-align:center;">Journal Entry<br/>قيد اليومية</th>
+                            <th style="text-align:center;">Internal Ref<br/>الرقم الداخلي</th>
+                            <th style="text-align:right;">Label<br/>بطاقة العنوان</th>
+                            <th style="text-align:center;">Match<br/>مطابقة</th>
+                            <th style="text-align:right;">Debit<br/>المدين</th>
+                            <th style="text-align:right;">Credit<br/>الدائن</th>
+                            <th style="text-align:right;">Balance<br/>الرصيد</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="lines" t-as="line">
+
+                            <!-- Opening Balance Row -->
+                            <t t-if="line.get('is_opening')">
+                                <tr style="background-color:#D5F5E3; font-weight:bold;">
+                                    <td colspan="5" style="text-align:center;">
+                                        <t t-esc="line['label']"/>
+                                    </td>
+                                    <td style="text-align:right;">0.00</td>
+                                    <td style="text-align:right;">0.00</td>
+                                    <td style="text-align:right; color:#1A7A4A;">
+                                        <t t-esc="'%.2f' % line['balance']"/>
+                                    </td>
+                                </tr>
+                            </t>
+
+                            <!-- Total Row -->
+                            <t t-elif="line.get('is_total')">
+                                <tr style="background-color:#1B4F72; color:#fff; font-weight:bold;">
+                                    <td colspan="5" style="text-align:center;">
+                                        <t t-esc="line['label']"/>
+                                    </td>
+                                    <td style="text-align:right;">
+                                        <t t-esc="'%.2f' % line['debit']"/>
+                                    </td>
+                                    <td style="text-align:right;">
+                                        <t t-esc="'%.2f' % line['credit']"/>
+                                    </td>
+                                    <td style="text-align:right;">
+                                        <t t-esc="'%.2f' % line['balance']"/>
+                                    </td>
+                                </tr>
+                            </t>
+
+                            <!-- Normal Line -->
+                            <t t-else="">
+                                <tr t-att-style="'background-color:#F8F9FA;' if line_index % 2 == 0 else ''">
+                                    <td style="text-align:center; white-space:nowrap;">
+                                        <t t-esc="line['date']"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <t t-esc="line['journal']"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <t t-esc="line['ref']"/>
+                                    </td>
+                                    <td style="text-align:right;">
+                                        <t t-esc="line['label']"/>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <t t-esc="line['match']"/>
+                                    </td>
+                                    <td style="text-align:right;">
+                                        <t t-if="line['debit']">
+                                            <t t-esc="'%.2f' % line['debit']"/>
+                                        </t>
+                                        <t t-else="">0.00</t>
+                                    </td>
+                                    <td style="text-align:right;">
+                                        <t t-if="line['credit']">
+                                            <t t-esc="'%.2f' % line['credit']"/>
+                                        </t>
+                                        <t t-else="">0.00</t>
+                                    </td>
+                                    <td t-att-style="'text-align:right; color:' + ('#C00000' if line['balance'] &lt; 0 else '#1A7A4A')">
+                                        <t t-esc="'%.2f' % line['balance']"/>
+                                    </td>
+                                </tr>
+                            </t>
+
+                        </t>
+                    </tbody>
+                </table>
+
+                <!-- ── FOOTER NOTE ── -->
+                <div style="margin-top:16px; font-size:10px; color:#888; text-align:center;">
+                    <t t-esc="company.name"/> — Generated on
+                    <t t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                </div>
+
+            </div>
+        </t>
+    </t>
+</template>
+</odoo>

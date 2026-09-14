@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="inherit_lg_advance_payment_guarantee_form" model="ir.ui.view">
+        <field name="name">inherit.lg.advance.payment.guarantee.form</field>
+        <field name="model">lg.advance.payment.guarantee</field>
+        <field name="inherit_id" ref="arabian_letters_of_guarantee.lg_advance_payment_guarantee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tender_no']" position="after">
+                <field name="construction_project_id"/>
+                <field name="project_name"/>
+                <field name="project_number"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

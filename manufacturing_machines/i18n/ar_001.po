@@ -1,0 +1,1269 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* manufacturing_machines
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-02 07:31+0000\n"
+"PO-Revision-Date: 2026-06-02 07:31+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_settings
+msgid ""
+"<strong>Credit ←</strong> The contra side for all cost entries above.<br/>\n"
+"                            Choose a <em>Work-in-Progress Costs</em> or <em>Accrued Payables</em> account.\n"
+"                            <br/>Example entry: Dr/ Machine Operating Costs — Cr/ Work-in-Progress Costs."
+msgstr ""
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_settings
+msgid ""
+"<strong>Debit ←</strong> Records all overhead items added manually in production orders.<br/>\n"
+"                            Choose a <em>General Production Expenses</em> or <em>Indirect Costs</em> account."
+msgstr ""
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_settings
+msgid ""
+"<strong>Debit ←</strong> Records the cost of each machine operating hour.<br/>\n"
+"                            Choose an <em>Equipment Operating Expenses</em> or <em>Direct Production Costs</em> account."
+msgstr ""
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_settings
+msgid ""
+"<strong>Debit ←</strong> Records the cost of each maintenance operation (labor + spare parts).<br/>\n"
+"                            Choose an <em>Equipment Maintenance and Repair</em> account. If left empty, the account set on the machine itself will be used."
+msgstr ""
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_settings
+msgid ""
+"<strong>Debit ←</strong> Records total worker wages in production orders.<br/>\n"
+"                            Choose a <em>Manufacturing Worker Wages</em> or <em>Direct Labor Costs</em> account."
+msgstr ""
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_settings
+msgid "Account"
+msgstr "حساب"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_form
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_form
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_form
+msgid "Accounting"
+msgstr "المحاسبة"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_settings
+msgid "Accounting Journal"
+msgstr "اليومية المحاسبية"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__message_needaction
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__message_needaction
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__message_needaction
+msgid "Action Needed"
+msgstr "يحتاج إجراء"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__activity_ids
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__activity_ids
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__activity_ids
+msgid "Activities"
+msgstr "الأنشطة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__activity_exception_decoration
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__activity_exception_decoration
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "مؤشر استثناء النشاط"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__activity_state
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__activity_state
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__activity_state
+msgid "Activity State"
+msgstr "حالة النشاط"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__activity_type_icon
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__activity_type_icon
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "أيقونة نوع النشاط"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__actual_hours
+msgid "Actual Hours (Total)"
+msgstr "ساعات فعلية (إجمالي)"
+
+#. module: manufacturing_machines
+#: model_terms:ir.actions.act_window,help:manufacturing_machines.action_mfg_machine
+msgid "Add your first machine!"
+msgstr "أضف أول آلة!"
+
+#. module: manufacturing_machines
+#: model_terms:ir.actions.act_window,help:manufacturing_machines.action_mfg_maintenance
+msgid "Add your first maintenance record!"
+msgstr "أضف أول سجل صيانة!"
+
+#. module: manufacturing_machines
+#: model_terms:ir.actions.act_window,help:manufacturing_machines.action_mfg_production
+msgid "Add your first production order!"
+msgstr "أضف أول أمر إنتاج!"
+
+#. module: manufacturing_machines
+#: model:ir.ui.menu,name:manufacturing_machines.menu_mfg_machine_list
+msgid "All Machines"
+msgstr "كل الآلات"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_overhead_line__amount
+msgid "Amount"
+msgstr "المبلغ"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_machine__machine_type__assembly
+msgid "Assembly"
+msgstr "تجميع"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__message_attachment_count
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__message_attachment_count
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__message_attachment_count
+msgid "Attachment Count"
+msgstr "عدد المرفقات"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_machine__machine_type__cnc
+msgid "CNC"
+msgstr "CNC"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_form
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_form
+msgid "Cancel"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_maintenance__state__cancelled
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_production_order__state__cancelled
+msgid "Cancelled"
+msgstr "ملغي"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__date_done
+msgid "Completion Date"
+msgstr "تاريخ الانتهاء"
+
+#. module: manufacturing_machines
+#: model:ir.model,name:manufacturing_machines.model_res_config_settings
+msgid "Config Settings"
+msgstr "الإعدادات"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_form
+msgid "Confirm"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_production_order__state__confirmed
+msgid "Confirmed"
+msgstr "مؤكد"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_settings
+msgid "Contra Account (Credit Side)"
+msgstr "الحساب المقابل (دائن)"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_res_config_settings__contra_account_id
+msgid "Contra Account (Credit)"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_maintenance__maintenance_type__corrective
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_search
+msgid "Corrective"
+msgstr "تصحيحية"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_machine_line__cost
+msgid "Cost"
+msgstr "التكلفة"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_form
+msgid "Cost Summary"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_form
+msgid "Costs"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_labor_line__create_uid
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__create_uid
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__create_uid
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance_part__create_uid
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_overhead_line__create_uid
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_machine_line__create_uid
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_labor_line__create_date
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__create_date
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__create_date
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance_part__create_date
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_overhead_line__create_date
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_machine_line__create_date
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__create_date
+msgid "Created on"
+msgstr "تاريخ الإنشاء"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_machine__machine_type__cutting
+msgid "Cutting"
+msgstr "قطع"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__account_depreciation_id
+msgid "Depreciation Account"
+msgstr "حساب الإهلاك"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_form
+msgid "Describe the problem..."
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance_part__name
+msgid "Description"
+msgstr "الوصف"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_labor_line__display_name
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__display_name
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__display_name
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance_part__display_name
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_overhead_line__display_name
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_machine_line__display_name
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__display_name
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mrp_production__display_name
+#: model:ir.model.fields,field_description:manufacturing_machines.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_maintenance__state__done
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_production_machine_line__state__done
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_production_order__state__done
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_form
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_search
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_form
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_search
+msgid "Done"
+msgstr "منتهي"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_maintenance__state__draft
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_production_order__state__draft
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_machine_line__duration
+msgid "Duration (Hours)"
+msgstr "المدة (ساعات)"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_overhead_line__overhead_type__electricity
+msgid "Electricity"
+msgstr "كهرباء"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_maintenance__maintenance_type__emergency
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_search
+msgid "Emergency"
+msgstr "طارئة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__date_end
+msgid "End Date"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_machine_line__date_end
+msgid "End Time"
+msgstr "وقت الانتهاء"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__account_posted
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__account_posted
+msgid "Entry Posted"
+msgstr "تم الترحيل"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,help:manufacturing_machines.field_mrp_production__primary_machine_id
+msgid "First machine in the machines list — used for grouping and filtering"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__message_follower_ids
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__message_follower_ids
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__message_follower_ids
+msgid "Followers"
+msgstr "المتابعون"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__message_partner_ids
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__message_partner_ids
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "المتابعون (الشركاء)"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_machine__activity_type_icon
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_maintenance__activity_type_icon
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_production_order__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "أيقونة Font Awesome مثل fa-tasks"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mrp_production_search_machines
+msgid "Has Machines"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__has_message
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__has_message
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__has_message
+msgid "Has Message"
+msgstr "له رسائل"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__hourly_cost
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_machine_line__machine_hourly_cost
+msgid "Hourly Cost"
+msgstr "تكلفة الساعة"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_kanban
+msgid "Hourly Cost:"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_labor_line__hourly_rate
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__labor_rate
+msgid "Hourly Rate"
+msgstr "سعر الساعة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_labor_line__id
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__id
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__id
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance_part__id
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_overhead_line__id
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_machine_line__id
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__id
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mrp_production__id
+#: model:ir.model.fields,field_description:manufacturing_machines.field_res_config_settings__id
+msgid "ID"
+msgstr "المعرف"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__activity_exception_icon
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__activity_exception_icon
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__activity_exception_icon
+msgid "Icon"
+msgstr "الأيقونة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_machine__activity_exception_icon
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_maintenance__activity_exception_icon
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_production_order__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "أيقونة للإشارة إلى نشاط استثنائي."
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_machine__state__idle
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_search
+msgid "Idle"
+msgstr "متوقفة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_machine__message_needaction
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_maintenance__message_needaction
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_production_order__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "توجد رسائل جديدة تستلزم انتباهك."
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_machine__message_has_error
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_machine__message_has_sms_error
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_maintenance__message_has_error
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_maintenance__message_has_sms_error
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_production_order__message_has_error
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_production_order__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "بعض الرسائل تحتوي على خطأ في الإرسال."
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_maintenance__state__in_progress
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_production_order__state__in_progress
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_search
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_search
+msgid "In Progress"
+msgstr "جاري"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__message_is_follower
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__message_is_follower
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__message_is_follower
+msgid "Is Follower"
+msgstr "متابع"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_overhead_line__name
+msgid "Item"
+msgstr "البند"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_labor_line__job_title
+msgid "Job Title"
+msgstr "المهنة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__journal_id
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__journal_id
+#: model:ir.model.fields,field_description:manufacturing_machines.field_res_config_settings__machine_journal_id
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_settings
+msgid "Journal"
+msgstr "اليومية"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__move_id
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__move_id
+msgid "Journal Entry"
+msgstr "القيد المحاسبي"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__labor_cost
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__total_labor_cost
+msgid "Labor Cost"
+msgstr "تكلفة العمالة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_res_config_settings__labor_cost_account_id
+msgid "Labor Cost Account (Debit)"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__labor_hours
+msgid "Labor Hours"
+msgstr "ساعات العمل"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_settings
+msgid "Labor Wages Account"
+msgstr "حساب أجور العمال"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_labor_line__write_uid
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__write_uid
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__write_uid
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance_part__write_uid
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_overhead_line__write_uid
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_machine_line__write_uid
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_labor_line__write_date
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__write_date
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__write_date
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance_part__write_date
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_overhead_line__write_date
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_machine_line__write_date
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__write_date
+msgid "Last Updated on"
+msgstr "تاريخ آخر تحديث"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_machine__machine_type__lathe
+msgid "Lathe"
+msgstr "مخرطة"
+
+#. module: manufacturing_machines
+#: model:ir.model,name:manufacturing_machines.model_mfg_machine
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__machine_id
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_machine_line__machine_id
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mrp_production__primary_machine_id
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_form
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_search
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_search
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mrp_production_search_machines
+msgid "Machine"
+msgstr "الآلة"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_settings
+msgid "Machine & Manufacturing Accounts"
+msgstr "حسابات الآلات والتصنيع"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__code
+msgid "Machine Code"
+msgstr "كود الآلة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__machine_cost
+msgid "Machine Cost"
+msgstr "تكلفة الآلات"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_res_config_settings__machine_cost_account_id
+msgid "Machine Cost Account (Debit)"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_pivot
+msgid "Machine Cost Analysis in Manufacturing"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.ui.menu,name:manufacturing_machines.menu_mfg_machines_root
+msgid "Machine Costs"
+msgstr "تصنيع الآلات"
+
+#. module: manufacturing_machines
+#: model:ir.actions.act_window,name:manufacturing_machines.action_mfg_production_cost
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_graph
+msgid "Machine Costs in Manufacturing"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_form
+msgid "Machine Details"
+msgstr "بيانات الآلة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__image
+msgid "Machine Image"
+msgstr "صورة الآلة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__name
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_form
+msgid "Machine Name"
+msgstr "اسم الآلة"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_settings
+msgid "Machine Operating Hours Account"
+msgstr "حساب ساعات تشغيل الآلات"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_line_form
+msgid "Machine Operation"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__machine_type
+msgid "Machine Type"
+msgstr "نوع الآلة"
+
+#. module: manufacturing_machines
+#: model:ir.model,name:manufacturing_machines.model_mfg_production_machine_line
+msgid "Machine Usage in Production"
+msgstr "استخدام آلة في التصنيع"
+
+#. module: manufacturing_machines
+#: model:ir.actions.act_window,name:manufacturing_machines.action_mfg_machine
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__machine_line_ids
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mrp_production__machine_line_ids
+#: model:ir.ui.menu,name:manufacturing_machines.menu_mfg_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_list
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_form
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mrp_production_machine_form
+msgid "Machines"
+msgstr "الآلات"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance_part__maintenance_id
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_machine__state__maintenance
+#: model:ir.ui.menu,name:manufacturing_machines.menu_mfg_maintenance
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_form
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_search
+msgid "Maintenance"
+msgstr "الصيانة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__account_maintenance_id
+msgid "Maintenance Account"
+msgstr "حساب الصيانة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_res_config_settings__maintenance_cost_account_id
+msgid "Maintenance Cost Account (Debit)"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.actions.act_window,name:manufacturing_machines.action_mfg_maintenance_cost
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_cost_pivot
+msgid "Maintenance Cost Analysis"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.ui.menu,name:manufacturing_machines.menu_mfg_maintenance_cost
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_graph
+msgid "Maintenance Costs"
+msgstr "تكاليف الصيانة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__maintenance_count
+msgid "Maintenance Count"
+msgstr "عدد الصيانات"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__date
+msgid "Maintenance Date"
+msgstr "تاريخ الصيانة"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_form
+msgid "Maintenance Details"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_settings
+msgid "Maintenance Expense Account"
+msgstr "حساب مصروفات الصيانة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__name
+msgid "Maintenance Number"
+msgstr "رقم الصيانة"
+
+#. module: manufacturing_machines
+#: model:ir.model,name:manufacturing_machines.model_mfg_maintenance
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_form
+msgid "Maintenance Record"
+msgstr "سجل الصيانة"
+
+#. module: manufacturing_machines
+#: model:ir.actions.act_window,name:manufacturing_machines.action_mfg_maintenance
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__maintenance_ids
+#: model:ir.ui.menu,name:manufacturing_machines.menu_mfg_maintenance_list
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_form
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_list
+msgid "Maintenance Records"
+msgstr "سجلات الصيانة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__maintenance_type
+msgid "Maintenance Type"
+msgstr "نوع الصيانة"
+
+#. module: manufacturing_machines
+#: model:res.groups,name:manufacturing_machines.group_mfg_manager
+msgid "Manufacturing Machines Manager"
+msgstr "مدير الآلات"
+
+#. module: manufacturing_machines
+#: model:ir.model,name:manufacturing_machines.model_mrp_production
+msgid "Manufacturing Order"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_machine_line__production_id
+msgid "Manufacturing Order (MRP)"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__message_has_error
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__message_has_error
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__message_ids
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__message_ids
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__message_ids
+msgid "Messages"
+msgstr "الرسائل"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_search
+msgid "Month"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__depreciation_monthly
+msgid "Monthly Depreciation"
+msgstr "إهلاك شهري"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__my_activity_date_deadline
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__my_activity_date_deadline
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__activity_calendar_event_id
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__activity_calendar_event_id
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__activity_date_deadline
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__activity_date_deadline
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__activity_summary
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__activity_summary
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__activity_type_id
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__activity_type_id
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__next_maintenance_date
+msgid "Next Maintenance Date"
+msgstr "موعد الصيانة القادمة"
+
+#. module: manufacturing_machines
+#: model_terms:ir.actions.act_window,help:manufacturing_machines.action_mrp_production_with_machines
+msgid "No manufacturing orders found."
+msgstr "لا توجد أوامر تصنيع."
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_search
+msgid "Not Posted"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__notes
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__notes
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__notes
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_form
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_form
+msgid "Notes"
+msgstr "ملاحظات"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_form
+msgid "Notes..."
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__message_needaction_counter
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__message_needaction_counter
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__message_has_error_counter
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__message_has_error_counter
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_machine__message_needaction_counter
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_maintenance__message_needaction_counter
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_production_order__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_machine__message_has_error_counter
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_maintenance__message_has_error_counter
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_production_order__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_form
+msgid "Operating Costs"
+msgstr "التكاليف التشغيلية"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_form
+msgid "Order Details"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__name
+msgid "Order Number"
+msgstr "رقم الأمر"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_machine__machine_type__other
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_overhead_line__overhead_type__other
+msgid "Other"
+msgstr "أخرى"
+
+#. module: manufacturing_machines
+#: model:ir.model,name:manufacturing_machines.model_mfg_overhead_line
+msgid "Overhead Cost"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_res_config_settings__overhead_cost_account_id
+msgid "Overhead Cost Account (Debit)"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__overhead_lines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_form
+msgid "Overhead Costs"
+msgstr "تكاليف إضافية"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_settings
+msgid "Overhead Costs Account (Electricity / Rent / Transport)"
+msgstr "حساب التكاليف الإضافية (كهرباء / إيجار / نقل)"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_machine__machine_type__painting
+msgid "Painting"
+msgstr "دهان"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_production_machine_line__state__paused
+msgid "Paused"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_production_machine_line__state__draft
+msgid "Pending"
+msgstr "في الانتظار"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__planned_hours
+msgid "Planned Hours"
+msgstr "ساعات مخططة"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_form
+msgid "Post Accounting"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_form
+msgid "Post Accounting Entry"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_machine__machine_type__pressing
+msgid "Pressing"
+msgstr "ضغط"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_maintenance__maintenance_type__preventive
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_search
+msgid "Preventive"
+msgstr "وقائية"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__machine_id
+msgid "Primary Machine"
+msgstr "الآلة الرئيسية"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__description
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_form
+msgid "Problem Description"
+msgstr "وصف المشكلة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__product_name
+msgid "Product"
+msgstr "المنتج"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_form
+msgid "Production"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.ui.menu,name:manufacturing_machines.menu_mfg_production_cost
+msgid "Production Costs"
+msgstr "تكاليف الإنتاج"
+
+#. module: manufacturing_machines
+#: model:ir.model,name:manufacturing_machines.model_mfg_production_order
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_labor_line__production_id
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_overhead_line__production_id
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_machine_line__mfg_order_id
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_form
+msgid "Production Order"
+msgstr "أمر الإنتاج"
+
+#. module: manufacturing_machines
+#: model:ir.actions.act_window,name:manufacturing_machines.action_mfg_production
+#: model:ir.actions.act_window,name:manufacturing_machines.action_mrp_production_with_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__production_ids
+#: model:ir.ui.menu,name:manufacturing_machines.menu_mfg_production
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_form
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_list
+msgid "Production Orders"
+msgstr "أوامر الإنتاج"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__production_count
+msgid "Production Orders Count"
+msgstr "عدد أوامر الإنتاج"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__purchase_cost
+msgid "Purchase Cost"
+msgstr "تكلفة الشراء"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__purchase_date
+msgid "Purchase Date"
+msgstr "تاريخ الشراء"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance_part__quantity
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__quantity
+msgid "Quantity"
+msgstr "الكمية"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_overhead_line__overhead_type__rent
+msgid "Rent"
+msgstr "إيجار"
+
+#. module: manufacturing_machines
+#: model:ir.ui.menu,name:manufacturing_machines.menu_mfg_reports
+msgid "Reports & Costs"
+msgstr "التقارير والتكاليف"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__activity_user_id
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__activity_user_id
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_machine__state__active
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_production_machine_line__state__running
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_form
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_search
+msgid "Running"
+msgstr "تشتغل"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__message_has_sms_error
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__message_has_sms_error
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_machine__state__scrapped
+msgid "Scrapped"
+msgstr "خردة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_machine_line__sequence
+msgid "Sequence"
+msgstr "التسلسل"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__serial_number
+msgid "Serial Number"
+msgstr "الرقم التسلسلي"
+
+#. module: manufacturing_machines
+#: model:ir.ui.menu,name:manufacturing_machines.menu_mfg_configuration
+msgid "Settings"
+msgstr "الإعدادات"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__solution
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_form
+msgid "Solution"
+msgstr "الحل"
+
+#. module: manufacturing_machines
+#: model:ir.model,name:manufacturing_machines.model_mfg_maintenance_part
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance_part__product_id
+msgid "Spare Part"
+msgstr "قطعة غيار"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__spare_parts_ids
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_form
+msgid "Spare Parts"
+msgstr "قطع الغيار"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__spare_parts_cost
+msgid "Spare Parts Cost"
+msgstr "تكلفة قطع الغيار"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__date_start
+msgid "Start Date"
+msgstr "تاريخ البدء"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_form
+msgid "Start Maintenance"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_form
+msgid "Start Production"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_machine_line__date_start
+msgid "Start Time"
+msgstr "وقت البدء"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__state
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__state
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_machine_line__state
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__state
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_search
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_search
+msgid "Status"
+msgstr "الحالة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_machine__activity_state
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_maintenance__activity_state
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_production_order__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_form
+msgid "Stop"
+msgstr "إيقاف"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__supplier_id
+msgid "Supplier"
+msgstr "المورد"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__technician_id
+msgid "Technician"
+msgstr "الفني المسؤول"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_settings
+msgid ""
+"The journal where all machine, maintenance, and production entries are recorded.<br/>\n"
+"                            Choose a journal of type <em>General</em> — e.g. Manufacturing Journal or Operations Journal."
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_labor_line__total_cost
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance_part__total_cost
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_list
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_form
+msgid "Total"
+msgstr "الإجمالي"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__total_cost
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__total_cost
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_form
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mrp_production_machine_form
+msgid "Total Cost"
+msgstr "إجمالي التكلفة"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_list
+msgid "Total Costs"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_form
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mrp_production_machine_form
+msgid "Total Hours"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mrp_production__machine_total_cost
+msgid "Total Machine Cost"
+msgstr "إجمالي تكلفة الآلات"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mrp_production__machine_total_hours
+msgid "Total Machine Hours"
+msgstr "إجمالي ساعات الآلات"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__total_maintenance_cost
+msgid "Total Maintenance Cost"
+msgstr "إجمالي تكاليف الصيانة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__total_overhead
+msgid "Total Overhead Costs"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__total_production_hours
+msgid "Total Production Hours"
+msgstr "إجمالي ساعات الإنتاج"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_overhead_line__overhead_type__transport
+msgid "Transport"
+msgstr "نقل"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_overhead_line__overhead_type
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_search
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_search
+msgid "Type"
+msgstr "النوع"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_machine__activity_exception_decoration
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_maintenance__activity_exception_decoration
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_production_order__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_kanban
+msgid "Type:"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__cost_per_unit
+msgid "Unit Cost"
+msgstr "تكلفة الوحدة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance_part__unit_cost
+msgid "Unit Price"
+msgstr "سعر الوحدة"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__mrp_line_ids
+msgid "Usage in Manufacturing"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__warranty_expiry
+msgid "Warranty Expiry"
+msgstr "انتهاء الضمان"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_overhead_line__overhead_type__water
+msgid "Water"
+msgstr "مياه"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_machine__website_message_ids
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_maintenance__website_message_ids
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_machine__website_message_ids
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_maintenance__website_message_ids
+#: model:ir.model.fields,help:manufacturing_machines.field_mfg_production_order__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields.selection,name:manufacturing_machines.selection__mfg_machine__machine_type__welding
+msgid "Welding"
+msgstr "لحام"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_labor_line__hours
+msgid "Work Hours"
+msgstr "ساعات العمل"
+
+#. module: manufacturing_machines
+#: model:ir.model,name:manufacturing_machines.model_mfg_labor_line
+msgid "Worker Line"
+msgstr ""
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_labor_line__employee_name
+msgid "Worker Name"
+msgstr "اسم العامل"
+
+#. module: manufacturing_machines
+#: model:ir.model.fields,field_description:manufacturing_machines.field_mfg_production_order__labor_lines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_form
+msgid "Workers"
+msgstr "العمال"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_maintenance_form
+msgid "Write the solution..."
+msgstr ""
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_line_form
+msgid "⏸ Pause"
+msgstr "⏸ إيقاف مؤقت"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_line_form
+msgid "▶ Resume"
+msgstr "▶ استئناف"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_line_form
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_form
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mrp_production_machine_form
+msgid "▶ Start"
+msgstr "▶ بدء"
+
+#. module: manufacturing_machines
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_machine_line_form
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mfg_production_form
+#: model_terms:ir.ui.view,arch_db:manufacturing_machines.view_mrp_production_machine_form
+msgid "✔ Done"
+msgstr "✔ إنهاء"

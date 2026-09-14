@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- List View -->
+    <record id="view_sale_stock_reserved_list" model="ir.ui.view">
+        <field name="name">sale.stock.reserved.list</field>
+        <field name="model">sale.stock.reserved</field>
+        <field name="arch" type="xml">
+            <list string="Reserved Stock" create="false" edit="false" delete="false">
+                <header>
+                    <!-- Bulk unreserve: visible when rows are selected -->
+                    <button name="action_unreserve"
+                            string="Unreserve"
+                            type="object"
+                            confirm="Are you sure you want to unreserve the selected lines?"
+                            class="btn-warning"/>
+                </header>
+
+                <!-- Unreserve button on the Customer group header -->
+                <groupby name="partner_id">
+                    <button name="action_unreserve_sale_stock"
+                            string="Unreserve All"
+                            type="object"
+                            confirm="Unreserve all reserved stock for this customer?"
+                            class="btn-warning"/>
+                </groupby>
+
+                <!-- Unreserve button on the Product group header -->
+                <groupby name="product_id">
+                    <button name="action_unreserve_sale_stock"
+                            string="Unreserve All"
+                            type="object"
+                            confirm="Unreserve all reserved stock for this product?"
+                            class="btn-warning"/>
+                </groupby>
+
+                <field name="partner_id" optional="show"/>
+                <field name="sale_id" optional="show"/>
+                <field name="picking_id" optional="show"/>
+                <field name="product_id" optional="show"/>
+                <field name="product_uom_qty" string="Ordered Qty" optional="show" sum="Total Ordered"/>
+                <field name="reserved_qty" string="Reserved Qty" optional="show" sum="Total Reserved"/>
+                <field name="product_uom" optional="show"/>
+                <field name="state" optional="show" widget="badge"
+                       decoration-success="state == 'assigned'"
+                       decoration-warning="state == 'partially_available'"
+                       decoration-muted="state in ('confirmed', 'waiting')"/>
+                <!-- Per-row Unreserve button -->
+                <button name="action_unreserve"
+                        string="Unreserve"
+                        type="object"
+                        icon="fa-times-circle"
+                        confirm="Are you sure you want to unreserve this line?"
+                        class="btn-warning"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Pivot View -->
+    <record id="view_sale_stock_reserved_pivot" model="ir.ui.view">
+        <field name="name">sale.stock.reserved.pivot</field>
+        <field name="model">sale.stock.reserved</field>
+        <field name="arch" type="xml">
+            <pivot string="Reserved Stock" disable_linking="false">
+                <field name="partner_id" type="row"/>
+                <field name="product_id" type="row"/>
+                <field name="reserved_qty" type="measure"/>
+                <field name="product_uom_qty" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Graph View -->
+    <record id="view_sale_stock_reserved_graph" model="ir.ui.view">
+        <field name="name">sale.stock.reserved.graph</field>
+        <field name="model">sale.stock.reserved</field>
+        <field name="arch" type="xml">
+            <graph string="Reserved Stock" type="bar">
+                <field name="partner_id" type="row"/>
+                <field name="reserved_qty" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_sale_stock_reserved_search" model="ir.ui.view">
+        <field name="name">sale.stock.reserved.search</field>
+        <field name="model">sale.stock.reserved</field>
+        <field name="arch" type="xml">
+            <search string="Search Reservations">
+                <field name="partner_id" string="Customer"/>
+                <field name="product_id" string="Product"/>
+                <field name="sale_id" string="Sale Order"/>
+                <separator/>
+                <filter name="fully_reserved" string="Fully Reserved"
+                        domain="[('state', '=', 'assigned')]"/>
+                <filter name="partial" string="Partially Reserved"
+                        domain="[('state', '=', 'partially_available')]"/>
+                <separator/>
+                <group expand="1" string="Group By">
+                    <filter name="group_customer" string="Customer"
+                            context="{'group_by': 'partner_id'}"/>
+                    <filter name="group_product" string="Product"
+                            context="{'group_by': 'product_id'}"/>
+                    <filter name="group_sale" string="Sale Order"
+                            context="{'group_by': 'sale_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Window Action -->
+    <record id="action_sale_stock_reserved" model="ir.actions.act_window">
+        <field name="name">Reserved Stock</field>
+        <field name="res_model">sale.stock.reserved</field>
+        <field name="view_mode">list,pivot,graph</field>
+        <field name="search_view_id" ref="view_sale_stock_reserved_search"/>
+        <field name="context">{
+            'search_default_group_customer': 1,
+            'search_default_group_product': 1
+        }</field>
+    </record>
+
+</odoo>

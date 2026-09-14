@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_sh_pdc_cancel" model="res.groups">
+        <field name="name">PDC Cancel Feature</field>
+        <!-- implied_ids removed: caused jsonb query error on varchar name column -->
+    </record>
+</odoo>

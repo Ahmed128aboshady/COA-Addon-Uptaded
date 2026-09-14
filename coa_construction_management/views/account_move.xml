@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="inherit_account_move_form" model="ir.ui.view">
+        <field name="name">inherit.account.move.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="interim_invoice_id" invisible="move_type not in ['in_invoice','out_invoice']"/>
+                <field name="construction_project_id"/>
+                <field name="project_name"/>
+                <field name="project_number"/>
+                <field name="boq_cost_estimation_line_id"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

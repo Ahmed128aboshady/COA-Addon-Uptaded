@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="seq_technical_review" model="ir.sequence">
+            <field name="name">Technical Review</field>
+            <field name="code">technical.review</field>
+            <field name="prefix">TR/%(year)s/%(month)s/</field>
+            <field name="padding">4</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

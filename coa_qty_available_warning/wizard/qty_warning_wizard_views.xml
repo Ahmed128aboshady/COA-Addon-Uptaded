@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_coa_qty_warning_wizard_form" model="ir.ui.view">
+        <field name="name">coa.qty.warning.wizard.form</field>
+        <field name="model">coa.qty.warning.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Not Enough Quantity Available">
+                <div class="alert alert-warning" role="alert">
+                    <b>The requested quantity is greater than the quantity
+                    available (Free To Use).</b><br/>
+                    You can still confirm - this is a warning only.
+                </div>
+                <field name="picking_ids" invisible="1"/>
+                <field name="sale_order_ids" invisible="1"/>
+                <field name="line_ids" readonly="1" nolabel="1">
+                    <list create="false" delete="false" edit="false">
+                        <field name="picking_id"
+                               column_invisible="not parent.picking_ids"/>
+                        <field name="sale_order_id"
+                               column_invisible="not parent.sale_order_ids"/>
+                        <field name="product_id"/>
+                        <field name="demand_qty"/>
+                        <field name="free_qty"/>
+                        <field name="shortage_qty"
+                               decoration-danger="shortage_qty &gt; 0"/>
+                        <field name="uom_id"/>
+                    </list>
+                </field>
+                <footer>
+                    <!-- Picking mode: validate the transfer -->
+                    <button name="action_confirm_anyway" type="object"
+                            string="Confirm Anyway" class="btn-primary"
+                            invisible="not picking_ids"/>
+                    <!-- Sale mode: confirm the sale order -->
+                    <button name="action_confirm_sale_anyway" type="object"
+                            string="Confirm Anyway" class="btn-primary"
+                            invisible="not sale_order_ids"/>
+                    <button string="Cancel" special="cancel"
+                            class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

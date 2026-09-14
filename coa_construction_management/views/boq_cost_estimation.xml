@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="boq_cost_estimation_form" model="ir.ui.view">
+        <field name="name">boq.cost.estimation.form</field>
+        <field name="model">boq.cost.estimation</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="confirm" type="object" string="Confirm"
+                            class="oe_highlight" invisible="state != 'draft'"/>
+                    <button name="approved" type="object" string="Approved"
+                            class="oe_highlight"
+                            invisible="state != 'confirm'"/>
+                    <button name="rejected" type="object" string="Rejected"
+                            class="oe_highlight"
+                            invisible="state != 'confirm'"/>
+                    <button name="create_interim_invoice" type="object"
+                            string="Create Interim Invoice" class="oe_highlight"
+                            invisible="state not in ['project_in_progress','interim_invoice_created']"/>
+                    <button name="lock" type="object" string="Lock"
+                            invisible="state == 'lock'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,confirm,approved,rejected,interim_invoice_created,lock"
+                           statusbar_colors="{'KEY_IS_STATE':'VALUE_IS_COLOR'}"/>
+                </header>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <button name="action_view_all_interim_invoice"
+                                type="object" class="oe_stat_button"
+                                icon="fa-pencil-square-o"
+                                invisible="count_interim_invoice == 0">
+                            <field name="count_interim_invoice"
+                                   widget="statinfo" string="Interim Invoice"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+
+                            <field name="construction_business_items_id"/>
+                            <field name="project_id"/>
+                            <field name="project_name"/>
+                            <field name="project_number"/>
+                            <field name="partner_id"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                            <field name="project_description"/>
+                            <field name="project_type_id"/>
+                            <field name="project_location"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Details">
+                            <field name="boq_cost_estimation_ids">               <!-- add  context="{'default_field' : field}" to set default value -->
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="boq_cost_estimation_id"
+                                           column_invisible="True"/>       <!-- add  domain="[('id','=',parent.field)]" to set default domain -->
+                                    <field name="detailed_bill_of_quantities_id"
+                                           optional="hide"/>
+                                    <field name="business_item_id"/>
+                                    <field name="business_items_types_id"/>
+                                    <field name="description"/>
+                                    <field name="uom_id"/>
+                                    <field name="quantity"/>
+                                    <field name="rate"/>
+                                    <field name="currency_id"/>
+                                    <field name="total_cost"/>
+                                    <field name="previous_qty" optional="hide"/>
+                                    <field name="current_qty" optional="hide"/>
+                                    <field name="total_qty" optional="hide"/>
+                                </list>
+                            </field>
+
+                            <group name="note_group" col="6"
+                                   class="mt-2 mt-md-0">
+                                <group colspan="4">
+                                    <field colspan="2" name="note"
+                                           nolabel="1" placeholder="Note..."/>
+                                </group>
+                                <group class="oe_subtotal_footer oe_right"
+                                       colspan="2" name="sale_total">
+
+                                    <field name="total"
+                                           force_save="1"
+                                           options="{'currency_field': 'currency_id'}"
+                                           readonly="1"/>
+
+                                </group>
+                                <div class="clearfix"/>
+                            </group>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="boq_cost_estimation_tree" model="ir.ui.view">
+        <field name="name">boq.cost.estimation.tree</field>
+        <field name="model">boq.cost.estimation</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="construction_business_items_id"/>
+                <field name="project_id"/>
+                <field name="project_name"/>
+                <field name="project_number"/>
+                <field name="partner_id"/>
+                <field name="date"/>
+                <field name="project_description"/>
+                <field name="project_type_id"/>
+                <field name="project_location"/>
+            </list>
+        </field>
+    </record>
+
+
+    <record id="boq_cost_estimation_sequence" model="ir.sequence">
+        <field name="name">boq.cost.estimation</field>
+        <field name="code">boq.cost.estimation</field>
+        <field name="prefix">BOQ-COST/</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+
+<!--    <record id="boq_cost_estimation_line_sequence" model="ir.sequence">-->
+<!--        <field name="name">boq.cost.estimation.line</field>-->
+<!--        <field name="code">boq.cost.estimation.line</field>-->
+<!--        <field name="prefix">BOQ-%(year)s%(month)s%(day)s/</field>-->
+<!--        <field name="padding">5</field>-->
+<!--        <field name="number_next">1</field>-->
+<!--        <field name="number_increment">1</field>-->
+<!--    </record>-->
+
+    <record id="boq_cost_estimation_action" model="ir.actions.act_window">
+        <field name="name">Boq Cost Estimation</field>
+        <field name="res_model">boq.cost.estimation</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Boq Cost Estimation
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="report_stock_aging_template">
+    <t t-call="web.html_container">
+        <t t-call="web.external_layout">
+            <div class="page">
+
+                <!-- ── Title ────────────────────────────────────────────── -->
+                <div class="row">
+                    <div class="col-12 text-center mb-4">
+                        <h2><strong>Stock Aging Report</strong></h2>
+                        <h4>
+                            <t t-esc="report_type"/> |
+                            As of: <t t-esc="date_to"/>
+                        </h4>
+                        <p class="text-muted"><t t-esc="company_name"/></p>
+                    </div>
+                </div>
+
+                <!-- ── One section per group (Warehouse or Location) ─────── -->
+                <t t-foreach="groups" t-as="group">
+
+                    <!-- Group header -->
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <h5 style="background-color:#e8f4f8; padding:6px 10px;
+                                       border-left:4px solid #1a6496; margin-bottom:0;">
+                                <strong><t t-esc="group['name']"/></strong>
+                            </h5>
+                        </div>
+                    </div>
+
+                    <!-- Product lines table -->
+                    <table class="table table-sm table-bordered table-hover"
+                           style="font-size:10px; margin-bottom:0;">
+                        <thead style="background-color:#d9edf7;">
+                            <tr>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>UoM</th>
+                                <t t-foreach="col_headers" t-as="col">
+                                    <th class="text-right" style="min-width:70px;">
+                                        <t t-esc="col"/> days
+                                    </th>
+                                </t>
+                                <th class="text-right">Total Qty</th>
+                                <th class="text-right">Total Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="group['lines']" t-as="line">
+                                <tr>
+                                    <td><t t-esc="line['product']"/></td>
+                                    <td><t t-esc="line['category']"/></td>
+                                    <td><t t-esc="line['uom']"/></td>
+                                    <t t-foreach="line['qty']" t-as="q">
+                                        <td class="text-right">
+                                            <t t-if="q > 0.0009">
+                                                <t t-esc="'%.2f' % q"/>
+                                            </t>
+                                            <t t-else="">–</t>
+                                        </td>
+                                    </t>
+                                    <td class="text-right">
+                                        <strong><t t-esc="'%.2f' % line['total_qty']"/></strong>
+                                    </td>
+                                    <td class="text-right">
+                                        <strong>
+                                            <t t-if="currency_position == 'before'">
+                                                <t t-esc="currency"/>&#160;
+                                            </t>
+                                            <t t-esc="'{:,.2f}'.format(line['total_value'])"/>
+                                            <t t-if="currency_position == 'after'">
+                                                &#160;<t t-esc="currency"/>
+                                            </t>
+                                        </strong>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+
+                        <!-- Group subtotal row -->
+                        <tfoot>
+                            <tr style="background-color:#dff0d8; font-weight:bold;">
+                                <td colspan="3">
+                                    Subtotal – <t t-esc="group['name']"/>
+                                </td>
+                                <t t-foreach="group['subtotal']['qty']" t-as="q">
+                                    <td class="text-right">
+                                        <t t-if="q > 0.0009">
+                                            <t t-esc="'%.2f' % q"/>
+                                        </t>
+                                        <t t-else="">–</t>
+                                    </td>
+                                </t>
+                                <td class="text-right">
+                                    <t t-esc="'%.2f' % group['subtotal']['total_qty']"/>
+                                </td>
+                                <td class="text-right">
+                                    <t t-if="currency_position == 'before'">
+                                        <t t-esc="currency"/>&#160;
+                                    </t>
+                                    <t t-esc="'{:,.2f}'.format(group['subtotal']['total_value'])"/>
+                                    <t t-if="currency_position == 'after'">
+                                        &#160;<t t-esc="currency"/>
+                                    </t>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </t>
+                <!-- end foreach groups -->
+
+                <!-- ── Grand Total ───────────────────────────────────────── -->
+                <table class="table table-sm table-bordered mt-3"
+                       style="font-size:11px;">
+                    <tfoot>
+                        <tr style="background-color:#1a6496; color:white;
+                                   font-weight:bold; font-size:12px;">
+                            <td colspan="3">GRAND TOTAL</td>
+                            <t t-foreach="grand['qty']" t-as="q">
+                                <td class="text-right">
+                                    <t t-if="q > 0.0009">
+                                        <t t-esc="'%.2f' % q"/>
+                                    </t>
+                                    <t t-else="">–</t>
+                                </td>
+                            </t>
+                            <td class="text-right">
+                                <t t-esc="'%.2f' % grand['total_qty']"/>
+                            </td>
+                            <td class="text-right">
+                                <t t-if="currency_position == 'before'">
+                                    <t t-esc="currency"/>&#160;
+                                </t>
+                                <t t-esc="'{:,.2f}'.format(grand['total_value'])"/>
+                                <t t-if="currency_position == 'after'">
+                                    &#160;<t t-esc="currency"/>
+                                </t>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <!-- ── Footer note ────────────────────────────────────────── -->
+                <div class="row mt-2">
+                    <div class="col-12 text-muted" style="font-size:9px;">
+                        * Quantities calculated using FIFO based on confirmed
+                          stock move lines. Values use unit cost at time of receipt.
+                        Generated: <t t-esc="datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')"/>
+                    </div>
+                </div>
+
+            </div>
+        </t>
+    </t>
+</template>
+</odoo>

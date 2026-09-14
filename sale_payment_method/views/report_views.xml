@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- List View -->
+    <record id="view_payment_method_report_list" model="ir.ui.view">
+        <field name="name">payment.method.report.list</field>
+        <field name="model">payment.method.report</field>
+        <field name="arch" type="xml">
+            <list string="Payment Method Report" create="false" edit="false" delete="false">
+                <field name="invoice_date"/>
+                <field name="partner_id" string="Customer / Vendor"/>
+                <field name="user_id" string="Salesperson" optional="show" widget="many2one_avatar_user"/>
+                <field name="product_id" optional="show"/>
+                <field name="categ_id" string="Product Category" optional="show"/>
+                <field name="move_type" optional="show" widget="badge"
+                       decoration-info="move_type in ('out_invoice','out_refund')"
+                       decoration-warning="move_type in ('in_invoice','in_refund')"/>
+                <field name="payment_method_id" widget="many2one_tags"
+                       options="{'color_field': 'color'}"/>
+                <field name="payment_state" widget="badge"
+                       decoration-success="payment_state == 'paid'"
+                       decoration-warning="payment_state == 'partial'"
+                       decoration-danger="payment_state == 'not_paid'"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="amount_untaxed" sum="Total Untaxed" optional="show"/>
+                <field name="amount_tax" sum="Total Tax" optional="show"/>
+                <field name="amount_total" sum="Total" optional="show"/>
+                <field name="amount_due" sum="Total Due"
+                       decoration-danger="amount_due &gt; 0"
+                       decoration-success="amount_due == 0"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Pivot View -->
+    <record id="view_payment_method_report_pivot" model="ir.ui.view">
+        <field name="name">payment.method.report.pivot</field>
+        <field name="model">payment.method.report</field>
+        <field name="arch" type="xml">
+            <pivot string="Payment Method Report" disable_linking="false">
+                <field name="payment_method_id" type="col"/>
+                <field name="partner_id" type="row"/>
+                <field name="amount_total" type="measure"/>
+                <field name="amount_untaxed" type="measure"/>
+                <field name="amount_tax" type="measure"/>
+                <field name="amount_due" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Graph View -->
+    <record id="view_payment_method_report_graph" model="ir.ui.view">
+        <field name="name">payment.method.report.graph</field>
+        <field name="model">payment.method.report</field>
+        <field name="arch" type="xml">
+            <graph string="Payment Method Report" type="bar" stacked="1">
+                <field name="payment_method_id" type="row"/>
+                <field name="amount_total" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_payment_method_report_search" model="ir.ui.view">
+        <field name="name">payment.method.report.search</field>
+        <field name="model">payment.method.report</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="partner_id" string="Customer / Vendor"/>
+                <field name="user_id" string="Salesperson"/>
+                <field name="product_id" string="Product"/>
+                <field name="categ_id" string="Product Category"/>
+                <field name="payment_method_id" string="Payment Method"/>
+                <separator/>
+                <filter name="filter_cash" string="Cash"
+                        domain="[('payment_method_id.name','=','Cash')]"/>
+                <filter name="filter_credit" string="Credit"
+                        domain="[('payment_method_id.name','=','Credit')]"/>
+                <filter name="filter_cheque" string="Cheque"
+                        domain="[('payment_method_id.name','=','Cheque')]"/>
+                <separator/>
+                <filter name="filter_customer" string="Customer Invoices"
+                        domain="[('move_type','in',('out_invoice','out_refund'))]"/>
+                <filter name="filter_vendor" string="Vendor Bills"
+                        domain="[('move_type','in',('in_invoice','in_refund'))]"/>
+                <separator/>
+                <filter name="filter_paid" string="Paid"
+                        domain="[('payment_state','=','paid')]"/>
+                <filter name="filter_not_paid" string="Not Paid"
+                        domain="[('payment_state','=','not_paid')]"/>
+                <separator/>
+                <filter name="filter_this_month" string="This Month"
+                        domain="[('invoice_date','&gt;=',(context_today()).strftime('%Y-%m-01'))]"/>
+                <filter name="filter_this_year" string="This Year"
+                        domain="[('invoice_date','&gt;=',(context_today()).strftime('%Y-01-01'))]"/>
+                <group expand="1" string="Group By">
+                    <filter name="group_payment_method" string="Payment Method"
+                            context="{'group_by': 'payment_method_id'}"/>
+                    <filter name="group_partner" string="Customer / Vendor"
+                            context="{'group_by': 'partner_id'}"/>
+                    <filter name="group_salesperson" string="Salesperson"
+                            context="{'group_by': 'user_id'}"/>
+                    <filter name="group_product" string="Product"
+                            context="{'group_by': 'product_id'}"/>
+                    <filter name="group_categ" string="Product Category"
+                            context="{'group_by': 'categ_id'}"/>
+                    <filter name="group_type" string="Invoice Type"
+                            context="{'group_by': 'move_type'}"/>
+                    <filter name="group_month" string="Month"
+                            context="{'group_by': 'invoice_date:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Window Action -->
+    <record id="action_payment_method_report" model="ir.actions.act_window">
+        <field name="name">Payment Method Analysis</field>
+        <field name="res_model">payment.method.report</field>
+        <field name="view_mode">pivot,graph,list</field>
+        <field name="search_view_id" ref="view_payment_method_report_search"/>
+        <field name="context">{'search_default_group_payment_method': 1}</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!--
+            Odoo 19: groups no longer have category_id directly.
+            Instead we create a res.groups.privilege (which has category_id),
+            then assign the group a privilege_id pointing to it.
+        -->
+        <record id="privilege_account_restricted" model="res.groups.privilege">
+            <field name="name">Restricted Accountant</field>
+            <field name="category_id" ref="base.module_category_accounting"/>
+            <field name="sequence">100</field>
+        </record>
+
+        <!--
+            مجموعة "محاسب مقيّد الصلاحية"
+            أي مستخدم يُضاف لهذه المجموعة + يتم تحديد حسابات في allowed_account_ids
+            سيتم تطبيق Record Rules عليه لتقييد رؤيته في:
+            account.move.line / account.account
+            المستخدمون غير المنتمين لهذه المجموعة لا يتأثرون بأي شيء.
+        -->
+        <record id="group_account_restricted" model="res.groups">
+            <field name="name">محاسب مقيّد الصلاحية (حسابات محددة)</field>
+            <field name="privilege_id" ref="privilege_account_restricted"/>
+            <field name="comment">
+                مستخدم يرى فقط الحسابات المحددة له في بطاقته الشخصية (Many2many)
+                ضمن القيود المحاسبية ودفتر الأستاذ العام وشجرة الحسابات.
+            </field>
+            <!-- لازم يكون عنده صلاحية أساسية لقراءة المحاسبة أصلاً -->
+            <field name="implied_ids" eval="[(4, ref('account.group_account_user'))]"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_lg_bid_bond,lg_bid_bond,model_lg_bid_bond,base.group_user,1,1,1,1
+access_check_lg_accounts,check_lg_accounts,model_check_lg_accounts,base.group_user,1,1,1,1
+access_lg_performance_bond,lg_performance_bond,model_lg_performance_bond,base.group_user,1,1,1,1
+access_lg_advance_payment_guarantee,lg_advance_payment_guarantee,model_lg_advance_payment_guarantee,base.group_user,1,1,1,1
+access_lg_maintenance_bond,lg_maintenance_bond,model_lg_maintenance_bond,base.group_user,1,1,1,1

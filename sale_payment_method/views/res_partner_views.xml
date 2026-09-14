@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Add payment_method_ids to partner form (Sales & Purchase tab) -->
+    <record id="view_partner_form_payment_method" model="ir.ui.view">
+        <field name="name">res.partner.form.payment.method</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='property_payment_term_id']" position="after">
+                <field name="payment_method_ids" widget="many2many_tags"
+                       options="{'color_field': 'color', 'no_create_edit': False}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Add payment_method_ids to partner list (optional column) -->
+    <record id="view_partner_list_payment_method" model="ir.ui.view">
+        <field name="name">res.partner.list.payment.method</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <field name="phone" position="after">
+                <field name="payment_method_ids" optional="show" widget="many2many_tags"
+                       options="{'color_field': 'color'}"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

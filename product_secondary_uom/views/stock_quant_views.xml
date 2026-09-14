@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Extend stock quant on-hand list view -->
+    <record id="view_stock_quant_tree_simple_secondary_uom" model="ir.ui.view">
+        <field name="name">stock.quant.list.secondary.uom</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.view_stock_quant_tree_simple"/>
+        <field name="arch" type="xml">
+            <field name="product_uom_id" position="after">
+                <field name="has_secondary_uom" column_invisible="True"/>
+                <field name="secondary_quantity"
+                       string="Sec. On Hand"
+                       invisible="not has_secondary_uom"
+                       optional="show"/>
+                <field name="secondary_uom_id"
+                       string="Sec. UoM"
+                       invisible="not has_secondary_uom"
+                       optional="show"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Extend stock quant inventory adjustment list view -->
+    <record id="view_stock_quant_tree_inventory_editable_secondary_uom" model="ir.ui.view">
+        <field name="name">stock.quant.inventory.list.editable.secondary.uom</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.view_stock_quant_tree_inventory_editable"/>
+        <field name="arch" type="xml">
+            <field name="product_uom_id" position="after">
+                <field name="has_secondary_uom" column_invisible="True"/>
+                <field name="secondary_quantity"
+                       string="Sec. On Hand"
+                       invisible="not has_secondary_uom"
+                       readonly="1"
+                       optional="show"/>
+                <field name="secondary_inventory_quantity"
+                       string="Sec. Counted"
+                       invisible="not has_secondary_uom"
+                       optional="show"/>
+                <field name="secondary_inventory_diff_quantity"
+                       string="Sec. Diff"
+                       invisible="not has_secondary_uom or not inventory_quantity_set"
+                       optional="show"
+                       decoration-danger="secondary_inventory_diff_quantity &lt; 0"
+                       decoration-success="secondary_inventory_diff_quantity &gt; 0"/>
+                <field name="secondary_uom_id"
+                       string="Sec. UoM"
+                       invisible="not has_secondary_uom"
+                       optional="show"/>
+            </field>
+        </field>
+    </record>
+</odoo>

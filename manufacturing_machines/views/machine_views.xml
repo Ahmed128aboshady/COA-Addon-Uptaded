@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="view_mfg_machine_form" model="ir.ui.view">
+        <field name="name">mfg.machine.form</field>
+        <field name="model">mfg.machine</field>
+        <field name="arch" type="xml">
+            <form string="Machine">
+                <header>
+                    <button name="action_set_active" string="Running" type="object"
+                        class="btn-success" invisible="state == 'active'"/>
+                    <button name="action_set_maintenance" string="Maintenance" type="object"
+                        class="btn-warning" invisible="state == 'maintenance'"/>
+                    <button name="action_set_idle" string="Stop" type="object"
+                        class="btn-secondary" invisible="state == 'idle'"/>
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="active,maintenance,idle,scrapped"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_maintenance" type="object"
+                            class="oe_stat_button" icon="fa-wrench">
+                            <field name="maintenance_count" widget="statinfo" string="Maintenance"/>
+                        </button>
+                        <button name="action_view_productions" type="object"
+                            class="oe_stat_button" icon="fa-industry">
+                            <field name="production_count" widget="statinfo" string="Production"/>
+                        </button>
+                    </div>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Machine Name"/></h1>
+                        <h4><field name="code" readonly="1"/></h4>
+                    </div>
+                    <group>
+                        <group string="Machine Details">
+                            <field name="machine_type"/>
+                            <field name="serial_number"/>
+                            <field name="purchase_date"/>
+                            <field name="purchase_cost"/>
+                            <field name="supplier_id"/>
+                            <field name="warranty_expiry"/>
+                        </group>
+                        <group string="Operating Costs">
+                            <field name="hourly_cost"/>
+                            <field name="depreciation_monthly"/>
+                            <field name="total_maintenance_cost" readonly="1"/>
+                            <field name="total_production_hours" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="Accounting">
+                        <group>
+                            <field name="account_depreciation_id"/>
+                            <field name="account_maintenance_id"/>
+                        </group>
+                    </group>
+                    <field name="notes" placeholder="Notes..."/>
+                    <notebook>
+                        <page string="Maintenance Records">
+                            <field name="maintenance_ids" readonly="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="date"/>
+                                    <field name="maintenance_type"/>
+                                    <field name="state" widget="badge"/>
+                                    <field name="total_cost"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Production Orders">
+                            <field name="production_ids" readonly="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="product_name"/>
+                                    <field name="state" widget="badge"/>
+                                    <field name="actual_hours"/>
+                                    <field name="total_cost"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- List View -->
+    <record id="view_mfg_machine_list" model="ir.ui.view">
+        <field name="name">mfg.machine.list</field>
+        <field name="model">mfg.machine</field>
+        <field name="arch" type="xml">
+            <list string="Machines" decoration-danger="state == 'maintenance'">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="machine_type"/>
+                <field name="state" widget="badge"/>
+                <field name="hourly_cost"/>
+                <field name="total_maintenance_cost"/>
+                <field name="maintenance_count"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Kanban View -->
+    <record id="view_mfg_machine_kanban" model="ir.ui.view">
+        <field name="name">mfg.machine.kanban</field>
+        <field name="model">mfg.machine</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="state"/>
+                <field name="machine_type"/>
+                <field name="hourly_cost"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_record_top">
+                                <div class="o_kanban_record_headings">
+                                    <strong><field name="name"/></strong>
+                                    <small class="text-muted"> | <field name="code"/></small>
+                                </div>
+                                <field name="state" widget="badge"/>
+                            </div>
+                            <div>
+                                <span>Type: <field name="machine_type"/></span>
+                            </div>
+                            <div>
+                                <span>Hourly Cost: <field name="hourly_cost"/></span>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_mfg_machine_search" model="ir.ui.view">
+        <field name="name">mfg.machine.search</field>
+        <field name="model">mfg.machine</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="code"/>
+                <filter string="Running" name="active" domain="[('state','=','active')]"/>
+                <filter string="Maintenance" name="maintenance" domain="[('state','=','maintenance')]"/>
+                <filter string="Idle" name="idle" domain="[('state','=','idle')]"/>
+                <group>
+                    <filter name="group_type" string="Type" context="{'group_by': 'machine_type'}"/>
+                    <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_mfg_machine" model="ir.actions.act_window">
+        <field name="name">Machines</field>
+        <field name="res_model">mfg.machine</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="view_mfg_machine_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add your first machine!
+            </p>
+        </field>
+    </record>
+</odoo>

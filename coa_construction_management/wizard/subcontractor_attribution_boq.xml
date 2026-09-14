@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="subcontractor_attribution_boq_form" model="ir.ui.view">
+        <field name="name">subcontractor.attribution.boq.form</field>
+        <field name="model">subcontractor.attribution.boq</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="attribution_type" invisible="1"/>
+                    <notebook>
+                        <page string="Items">
+                            <field name="subcontractor_attribution_boq_line_ids">               <!-- add  context="{'default_field' : field}" to set default value -->
+                                <list editable="bottom">
+                                    <field name="subcontractor_attribution_boq_id" column_invisible="1"/>       <!-- add  domain="[('id','=',parent.field)]" to set default domain -->
+                                    <field name="construction_business_items_id" column_invisible="parent.attribution_type != 'complete_boq'"/>
+                                    <field name="business_item_id" column_invisible="parent.attribution_type != 'complete_boq'"/>
+                                    <field name="business_items_types_id" column_invisible="parent.attribution_type != 'complete_boq'"/>
+                                    <field name="product_id" column_invisible="parent.attribution_type != 'part_boq'"/>
+                                    <field name="description"/>
+                                    <field name="uom_id"/>
+                                    <field name="quantity"/>
+                                    <field name="determine_quantity"/>
+                                    <field name="rate"/>
+                                    <field name="currency_id"/>
+                                    <field name="total_cost"/>
+                                    <field name="productivity_per_unit_item"/>
+                                    <field name="name"/>
+                                    <field name="working_hours"/>
+                                    <field name="unit_price"/>
+                                    <field name="subtotal"/>
+                                    <field name="cost_per_item_unit"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+
+                </sheet>
+                <footer>
+                    <button name="confirm" type="object" string="Confirm" class="oe_highlight" />
+                    <button string="Cancel" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="subcontractor_attribution_boq_action">
+        <field name="name">Subcontractor Attribution BOQ</field>
+        <field name="res_model">subcontractor.attribution.boq</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

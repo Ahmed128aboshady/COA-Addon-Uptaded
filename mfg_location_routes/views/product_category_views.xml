@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Extend product.category form -->
+    <record id="view_product_category_form_inherit_location" model="ir.ui.view">
+        <field name="name">product.category.form.inherit.mfg_location</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+
+                <!-- Smart Buttons -->
+                <div class="oe_button_box" name="button_box">
+                    <button name="action_view_rules" type="object"
+                        class="oe_stat_button" icon="fa-random"
+                        invisible="rule_count == 0">
+                        <field name="rule_count" widget="statinfo" string="Stock Rules"/>
+                    </button>
+                    <button name="action_diagnose_routes" type="object"
+                        class="oe_stat_button" icon="fa-stethoscope">
+                        <span>تشخيص Routes</span>
+                    </button>
+                    <button name="action_sync_rules" type="object"
+                        class="oe_stat_button" icon="fa-refresh"
+                        invisible="not mfg_source_location_id and not sale_source_location_id and not mto_source_location_id">
+                        <span>تحديث Rules</span>
+                    </button>
+                    <button name="action_delete_rules" type="object"
+                        class="oe_stat_button" icon="fa-trash"
+                        invisible="rule_count == 0"
+                        confirm="هتمسح كل Stock Rules المرتبطة بالكاتجوري دي. متأكد؟">
+                        <span>مسح Rules</span>
+                    </button>
+                </div>
+
+                <!-- Locations Tab -->
+                <notebook>
+                    <page string="⚙️ لوكيشنات المخزون" name="stock_locations">
+
+                        <!-- Banner: explanation -->
+                        <div class="alert alert-info" role="alert" style="margin-bottom:16px;">
+                            <strong>إزاي بيشتغل؟</strong><br/>
+                            حدد اللوكيشن المناسب لكل عملية، والمديول هيعمل Stock Rules تلقائياً
+                            وهيربط الـ BOM components بلوكيشنها الصح.
+                            أصناف الكاتجوري دي هتتسحب وتتخزن في اللوكيشنات اللي هتحددها هنا.
+                        </div>
+
+                        <group>
+                            <!-- Manufacturing -->
+                            <group string="🏭 التصنيع (Manufacturing)">
+                                <field name="mfg_source_location_id"
+                                    placeholder="WH/accessories and hardware"/>
+                                <field name="mfg_wip_location_id"
+                                    placeholder="اختياري - مرحلة Production"/>
+                                <field name="mfg_dest_location_id"
+                                    placeholder="WH/Stock (افتراضي)"/>
+                            </group>
+
+                            <!-- Sales -->
+                            <group string="🛒 البيع (Sales Delivery)">
+                                <field name="sale_source_location_id"
+                                    placeholder="Make to Stock — من الرصيد الموجود"/>
+                                <field name="mto_source_location_id"
+                                    placeholder="Replenish on Order — يأمر ويجيب"/>
+                            </group>
+
+                            <!-- Returns -->
+                            <group string="↩️ مرتجعات المبيعات (Sales Returns)">
+                                <field name="return_location_id"
+                                    placeholder="المخزن اللي هيرجعله الصنف من العميل"/>
+                            </group>
+
+                            <!-- Purchasing -->
+                            <group string="🛍️ الشراء (Purchase Receipt)">
+                                <field name="purchase_dest_location_id"
+                                    placeholder="المخزن اللي هيتخزن فيه الصنف عند استلام الشراء"/>
+                            </group>
+
+                            <!-- Settings -->
+                            <group string="⚙️ إعدادات">
+                                <field name="auto_create_rules"/>
+                            </group>
+                        </group>
+
+                        <!-- Route summary -->
+                        <group string="Routes المخصصة" invisible="not mfg_route_id and not mto_route_id">
+                            <field name="mfg_route_id" readonly="1" invisible="not mfg_route_id"/>
+                            <field name="mto_route_id" readonly="1" invisible="not mto_route_id"/>
+                        </group>
+
+                        <!-- Rules summary -->
+                        <group string="Stock Rules المرتبطة" invisible="rule_count == 0">
+                            <field name="rule_ids" nolabel="1" readonly="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="rule_type" widget="badge"/>
+                                    <field name="route_id"/>
+                                    <field name="location_src_id" string="من"/>
+                                    <field name="location_dest_id" string="إلى"/>
+                                    <field name="warehouse_id"/>
+                                    <field name="active" widget="boolean_toggle"/>
+                                </list>
+                            </field>
+                        </group>
+
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- List view: add location columns -->
+    <record id="view_product_category_list_inherit_location" model="ir.ui.view">
+        <field name="name">product.category.list.inherit.mfg_location</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_list_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="inside">
+                <field name="mfg_source_location_id" string="لوكيشن التصنيع" optional="show"/>
+                <field name="sale_source_location_id" string="لوكيشن البيع" optional="show"/>
+                <field name="rule_count" string="Rules" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

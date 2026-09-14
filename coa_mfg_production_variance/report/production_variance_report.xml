@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Paperformat: A4 Landscape -->
+    <record id="paperformat_production_variance" model="report.paperformat">
+        <field name="name">Production Variance A4 Landscape</field>
+        <field name="format">A4</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">32</field>
+        <field name="margin_bottom">20</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">28</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <!-- Report Action -->
+    <record id="action_report_production_variance_pdf" model="ir.actions.report">
+        <field name="name">Production Variance</field>
+        <field name="model">coa.production.variance.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">coa_mfg_production_variance.report_production_variance_pdf</field>
+        <field name="report_file">coa_mfg_production_variance.report_production_variance_pdf</field>
+        <field name="paperformat_id" ref="paperformat_production_variance"/>
+        <field name="print_report_name">'Production Variance'</field>
+    </record>
+
+    <!-- QWeb Template -->
+    <template id="report_production_variance_pdf">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="wizard">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 class="text-center mb-2">Production Variance Report</h2>
+                        <p class="text-center text-muted" style="font-size:11px;">
+                            <span>Planned vs Produced Quantity</span>
+                            <t t-if="wizard.date_from"> | From: <span t-field="wizard.date_from"/></t>
+                            <t t-if="wizard.date_to"> | To: <span t-field="wizard.date_to"/></t>
+                            <span> | Printed on: <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/></span>
+                        </p>
+
+                        <t t-set="lines" t-value="wizard._get_lines()"/>
+                        <t t-set="totals" t-value="wizard._get_totals(lines)"/>
+
+                        <table class="table table-sm" style="font-size:10px;">
+                            <thead>
+                                <tr style="background-color:#1F4E78; color:white;">
+                                    <th>MO</th>
+                                    <th>Sale Order</th>
+                                    <th>Customer</th>
+                                    <th>Product</th>
+                                    <th>End Date</th>
+                                    <th>State</th>
+                                    <th class="text-end">Ordered (SO)</th>
+                                    <th class="text-end">Planned</th>
+                                    <th class="text-end">Produced</th>
+                                    <th class="text-end">Delivered</th>
+                                    <th class="text-end">Variance</th>
+                                    <th class="text-end">Var %</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="state_labels"
+                                   t-value="dict(lines._fields['state'].selection) if lines else {}"/>
+                                <tr t-foreach="lines" t-as="line">
+                                    <td><span t-field="line.production_id.name"/></td>
+                                    <td><span t-esc="line.sale_id.name or ''"/></td>
+                                    <td><span t-esc="line.partner_id.display_name or ''"/></td>
+                                    <td><span t-field="line.product_id.display_name"/></td>
+                                    <td><span t-field="line.date_finished"
+                                              t-options='{"format": "yyyy-MM-dd HH:mm"}'/></td>
+                                    <td><span t-esc="state_labels.get(line.state, '')"/></td>
+                                    <td class="text-end">
+                                        <span t-esc="line.ordered_qty"
+                                              t-options='{"widget": "float", "precision": 2}'/>
+                                    </td>
+                                    <td class="text-end">
+                                        <span t-esc="line.planned_qty"
+                                              t-options='{"widget": "float", "precision": 2}'/>
+                                    </td>
+                                    <td class="text-end">
+                                        <span t-esc="line.produced_qty"
+                                              t-options='{"widget": "float", "precision": 2}'/>
+                                    </td>
+                                    <td class="text-end">
+                                        <span t-esc="line.delivered_qty"
+                                              t-options='{"widget": "float", "precision": 2}'/>
+                                    </td>
+                                    <td class="text-end"
+                                        t-attf-style="font-weight:bold; color:{{ '#C00000' if line.variance_qty &lt; 0 else ('#2E7D32' if line.variance_qty &gt; 0 else '#000000') }};">
+                                        <span t-esc="line.variance_qty"
+                                              t-options='{"widget": "float", "precision": 2}'/>
+                                    </td>
+                                    <td class="text-end"
+                                        t-attf-style="color:{{ '#C00000' if line.variance_qty &lt; 0 else ('#2E7D32' if line.variance_qty &gt; 0 else '#000000') }};">
+                                        <span t-esc="line.variance_percent"
+                                              t-options='{"widget": "float", "precision": 2}'/>%
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr style="background-color:#D9E2F3; font-weight:bold;">
+                                    <td colspan="6" class="text-end">TOTALS</td>
+                                    <td class="text-end">
+                                        <span t-esc="totals['ordered']"
+                                              t-options='{"widget": "float", "precision": 2}'/>
+                                    </td>
+                                    <td class="text-end">
+                                        <span t-esc="totals['planned']"
+                                              t-options='{"widget": "float", "precision": 2}'/>
+                                    </td>
+                                    <td class="text-end">
+                                        <span t-esc="totals['produced']"
+                                              t-options='{"widget": "float", "precision": 2}'/>
+                                    </td>
+                                    <td class="text-end">
+                                        <span t-esc="totals['delivered']"
+                                              t-options='{"widget": "float", "precision": 2}'/>
+                                    </td>
+                                    <td class="text-end">
+                                        <span t-esc="totals['variance']"
+                                              t-options='{"widget": "float", "precision": 2}'/>
+                                    </td>
+                                    <td class="text-end">
+                                        <span t-esc="totals['percent']"
+                                              t-options='{"widget": "float", "precision": 2}'/>%
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

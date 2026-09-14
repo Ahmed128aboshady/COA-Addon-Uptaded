@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_category_form_view_location" model="ir.ui.view">
+        <field name="name">product.category.form.location.route</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_form_view"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//sheet" position="inside">
+                <group name="location_routes" string="Location &amp; Routes" col="2">
+
+                    <!-- ══ Sales ══════════════════════════════════════════ -->
+                    <group string="Sales – Source Location">
+                        <field name="sales_location_id"
+                               options="{'no_create': True}"
+                               help="Products in this category will be pulled from here on Sales Orders. Returns go back to this location automatically."/>
+                        <field name="sales_route_id"
+                               readonly="1"
+                               invisible="[('sales_route_id', '=', False)]"
+                               help="Auto-generated route. Do not edit manually."/>
+                    </group>
+
+                    <!-- ══ Manufacturing 3-step ═══════════════════════════ -->
+                    <group string="Manufacturing – 3-Step Flow">
+                        <field name="mfg_location_id"
+                               options="{'no_create': True}"
+                               help="Step 1 (Pull): Components pulled from this location to Pre-Production."/>
+                        <field name="mfg_pre_production_id"
+                               options="{'no_create': True}"
+                               help="Step 2 (Push): Components pushed from here to Production."/>
+                        <field name="mfg_store_location_id"
+                               options="{'no_create': True}"
+                               help="Step 3 (Push): Finished goods pushed here after manufacturing."/>
+                        <field name="mfg_route_id"
+                               colspan="2"
+                               readonly="1"
+                               invisible="[('mfg_route_id', '=', False)]"
+                               help="Auto-generated route. Do not edit manually."/>
+                    </group>
+
+                </group>
+
+                <!-- Flow diagram note -->
+                <div class="alert alert-info o_form_label" role="alert" style="margin-top:8px;">
+                    <strong>Manufacturing flow:</strong>
+                    <code>Components Source</code>
+                    <span> ──[Step1 Pull]──► </span>
+                    <code>Pre-Production</code>
+                    <span> ──[Step2 Push]──► </span>
+                    <code>Production</code>
+                    <span> ──[MO]──► </span>
+                    <code>Production</code>
+                    <span> ──[Step3 Push]──► </span>
+                    <code>Finished Goods Store</code>
+                    <br/>
+                    <small>
+                        Push rules are set to <i>Manual</i> by default —
+                        Odoo will suggest the transfers. You can change them to <i>Automatic</i> on the Route if needed.
+                    </small>
+                </div>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

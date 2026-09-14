@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ====================================================================
+         FORM VIEW
+    ==================================================================== -->
+    <record id="view_technical_review_form" model="ir.ui.view">
+        <field name="name">technical.review.form</field>
+        <field name="model">technical.review</field>
+        <field name="arch" type="xml">
+            <form string="Technical Review">
+                <header>
+                    <!-- State progression buttons -->
+                    <button name="action_start"
+                            string="Start Review"
+                            type="object"
+                            class="btn-primary"
+                            invisible="state != 'draft'"/>
+
+                    <button name="action_approve"
+                            string="Approve"
+                            type="object"
+                            class="btn-success"
+                            invisible="state != 'in_progress'"
+                            groups="alramlaa_technical_office.group_technical_office_manager"/>
+
+                    <button name="action_reject"
+                            string="Reject"
+                            type="object"
+                            class="btn-danger"
+                            invisible="state not in ('draft', 'in_progress')"
+                            groups="alramlaa_technical_office.group_technical_office_manager"/>
+
+                    <button name="action_reset_to_draft"
+                            string="Reset to Draft"
+                            type="object"
+                            invisible="state not in ('in_progress', 'rejected')"/>
+
+                    <field name="state"
+                           widget="statusbar"
+                           statusbar_visible="draft,in_progress,approved"/>
+                </header>
+
+                <sheet>
+                    <!-- Smart button: Sale Order -->
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_sale_order"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-shopping-cart"
+                                invisible="not sale_order_id">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">Sale Order</span>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Ribbons -->
+                    <widget name="web_ribbon"
+                            title="Approved"
+                            bg_color="bg-success"
+                            invisible="state != 'approved'"/>
+                    <widget name="web_ribbon"
+                            title="Rejected"
+                            bg_color="bg-danger"
+                            invisible="state != 'rejected'"/>
+                    <widget name="web_ribbon"
+                            title="In Progress"
+                            bg_color="bg-info"
+                            invisible="state != 'in_progress'"/>
+
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" readonly="True"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group string="Review Details">
+                            <field name="sale_order_id"
+                                   options="{'no_create': True}"
+                                   readonly="state != 'draft'"/>
+                            <field name="partner_id"/>
+                            <field name="reviewer_id"
+                                   widget="many2one_avatar_user"
+                                   options="{'no_create': True}"/>
+                            <field name="company_id"
+                                   groups="base.group_multi_company"/>
+                        </group>
+                        <group string="Progress">
+                            <field name="review_date"/>
+                            <field name="approval_date"
+                                   invisible="state not in ('approved', 'rejected')"/>
+                            <field name="lines_all_reviewed"
+                                   widget="boolean"
+                                   readonly="True"/>
+                        </group>
+                    </group>
+
+                    <!-- Rejection reason alert -->
+                    <div class="alert alert-danger mb-0" role="alert"
+                         invisible="state != 'rejected'">
+                        <strong>Rejection Reason:</strong>
+                        <field name="rejection_reason" readonly="True" nolabel="1"/>
+                    </div>
+
+                    <notebook>
+                        <page string="Products to Review" name="lines_page">
+                            <field name="line_ids"
+                                   readonly="state in ('approved', 'rejected')">
+                                <list editable="bottom"
+                                      decoration-success="line_state == 'reviewed'"
+                                      decoration-warning="line_state == 'pending'">
+                                    <!-- Product info (read-only) -->
+                                    <field name="product_tmpl_id" column_invisible="True"/>
+                                    <field name="product_id" readonly="True"/>
+                                    <field name="product_qty" readonly="True"/>
+                                    <field name="product_uom" readonly="True" string="UoM"/>
+
+                                    <!-- Dimensions from alramlaa_product_dimensions (read-only, optional) -->
+                                    <field name="dimension_length"
+                                           readonly="True"
+                                           optional="show"
+                                           string="L (mm)"/>
+                                    <field name="dimension_width"
+                                           readonly="True"
+                                           optional="show"
+                                           string="W (mm)"/>
+                                    <field name="dimension_thickness"
+                                           readonly="True"
+                                           optional="show"
+                                           string="T (mm)"/>
+                                    <field name="square_meter"
+                                           readonly="True"
+                                           optional="hide"
+                                           string="m²"/>
+                                    <field name="cubic_meter"
+                                           readonly="True"
+                                           optional="hide"
+                                           string="m³"/>
+
+                                    <!-- BOM -->
+                                    <field name="bom_id"
+                                           options="{'no_create': True}"
+                                           domain="[('product_tmpl_id', '=', product_tmpl_id)]"
+                                           string="BOM"/>
+
+                                    <!-- BOM action buttons -->
+                                    <button name="action_create_bom"
+                                            type="object"
+                                            icon="fa-plus-circle"
+                                            string="Create BOM"
+                                            title="Create Estimated BOM for this product"
+                                            class="btn-primary"
+                                            invisible="bom_id"/>
+                                    <button name="action_open_bom"
+                                            type="object"
+                                            icon="fa-pencil-square-o"
+                                            string="Open BOM"
+                                            title="Open and edit Bill of Materials"
+                                            class="btn-secondary"
+                                            invisible="not bom_id"/>
+
+                                    <!-- Line status -->
+                                    <field name="line_state"
+                                           widget="badge"
+                                           decoration-success="line_state == 'reviewed'"
+                                           decoration-warning="line_state == 'pending'"
+                                           string="Status"/>
+
+                                    <!-- Status toggle buttons -->
+                                    <button name="action_mark_reviewed"
+                                            type="object"
+                                            icon="fa-check"
+                                            string=""
+                                            title="Mark as Reviewed"
+                                            class="btn-success btn-sm"
+                                            invisible="line_state == 'reviewed'"/>
+                                    <button name="action_mark_pending"
+                                            type="object"
+                                            icon="fa-undo"
+                                            string=""
+                                            title="Reset to Pending"
+                                            class="btn-warning btn-sm"
+                                            invisible="line_state == 'pending'"/>
+
+                                    <field name="notes" optional="hide"/>
+                                </list>
+                            </field>
+                        </page>
+
+                        <page string="Notes" name="notes_page">
+                            <field name="notes"
+                                   placeholder="Add technical notes about this review…"/>
+                        </page>
+                    </notebook>
+                </sheet>
+
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- ====================================================================
+         LIST VIEW
+    ==================================================================== -->
+    <record id="view_technical_review_list" model="ir.ui.view">
+        <field name="name">technical.review.list</field>
+        <field name="model">technical.review</field>
+        <field name="arch" type="xml">
+            <list string="Technical Reviews"
+                  decoration-success="state == 'approved'"
+                  decoration-danger="state == 'rejected'"
+                  decoration-info="state == 'in_progress'"
+                  decoration-muted="state == 'draft'">
+                <field name="name"/>
+                <field name="sale_order_id"/>
+                <field name="partner_id"/>
+                <field name="reviewer_id" widget="many2one_avatar_user"/>
+                <field name="review_date"/>
+                <field name="approval_date" optional="hide"/>
+                <field name="lines_all_reviewed" widget="boolean" optional="show"/>
+                <field name="state"
+                       widget="badge"
+                       decoration-success="state == 'approved'"
+                       decoration-info="state == 'in_progress'"
+                       decoration-danger="state == 'rejected'"
+                       decoration-muted="state == 'draft'"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ====================================================================
+         SEARCH VIEW
+    ==================================================================== -->
+    <record id="view_technical_review_search" model="ir.ui.view">
+        <field name="name">technical.review.search</field>
+        <field name="model">technical.review</field>
+        <field name="arch" type="xml">
+            <search string="Technical Reviews">
+                <field name="name" string="Reference"/>
+                <field name="sale_order_id"/>
+                <field name="partner_id"/>
+                <field name="reviewer_id"/>
+                <separator/>
+                <filter string="Draft"
+                        name="filter_draft"
+                        domain="[('state', '=', 'draft')]"/>
+                <filter string="In Progress"
+                        name="filter_in_progress"
+                        domain="[('state', '=', 'in_progress')]"/>
+                <filter string="Approved"
+                        name="filter_approved"
+                        domain="[('state', '=', 'approved')]"/>
+                <filter string="Rejected"
+                        name="filter_rejected"
+                        domain="[('state', '=', 'rejected')]"/>
+                <separator/>
+                <filter string="My Reviews"
+                        name="filter_mine"
+                        domain="[('reviewer_id', '=', uid)]"/>
+                <separator/>
+                <group>
+                    <filter string="Status"
+                            name="group_state"
+                            context="{'group_by': 'state'}"/>
+                    <filter string="Customer"
+                            name="group_partner"
+                            context="{'group_by': 'partner_id'}"/>
+                    <filter string="Reviewer"
+                            name="group_reviewer"
+                            context="{'group_by': 'reviewer_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ====================================================================
+         ACTION
+    ==================================================================== -->
+    <!-- All reviews (default: filter in_progress) -->
+    <record id="action_technical_review" model="ir.actions.act_window">
+        <field name="name">Technical Reviews</field>
+        <field name="res_model">technical.review</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_technical_review_search"/>
+        <field name="context">{'search_default_filter_in_progress': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No technical reviews yet.</p>
+            <p>Open a Sale Order and click <b>Request Technical Review</b> to start.</p>
+        </field>
+    </record>
+
+    <!-- Pending Approval: draft + in_progress only -->
+    <record id="action_technical_review_pending" model="ir.actions.act_window">
+        <field name="name">Pending Approval</field>
+        <field name="res_model">technical.review</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_technical_review_search"/>
+        <field name="domain">[('state', 'in', ['draft', 'in_progress'])]</field>
+        <field name="context">{'search_default_filter_in_progress': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No reviews waiting for approval.</p>
+        </field>
+    </record>
+
+    <!-- History: approved + rejected -->
+    <record id="action_technical_review_history" model="ir.actions.act_window">
+        <field name="name">Review History</field>
+        <field name="res_model">technical.review</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_technical_review_search"/>
+        <field name="domain">[('state', 'in', ['approved', 'rejected'])]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No completed reviews yet.</p>
+        </field>
+    </record>
+
+    <!-- ====================================================================
+         MRP BOM: add "Estimated" badge to BOM form
+    ==================================================================== -->
+    <record id="view_mrp_bom_form_estimated" model="ir.ui.view">
+        <field name="name">mrp.bom.form.estimated.technical</field>
+        <field name="model">mrp.bom</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+        <field name="arch" type="xml">
+            <!-- Add is_estimated field below the product_tmpl_id field -->
+            <xpath expr="//field[@name='product_tmpl_id']" position="after">
+                <field name="is_estimated"
+                       widget="boolean_toggle"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

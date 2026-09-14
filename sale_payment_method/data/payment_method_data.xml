@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="payment_method_cash" model="sale.payment.method">
+        <field name="name">Cash</field>
+        <field name="sequence">1</field>
+        <field name="color">10</field>
+    </record>
+
+    <record id="payment_method_credit" model="sale.payment.method">
+        <field name="name">Credit</field>
+        <field name="sequence">2</field>
+        <field name="color">4</field>
+    </record>
+
+    <record id="payment_method_cheque" model="sale.payment.method">
+        <field name="name">Cheque</field>
+        <field name="sequence">3</field>
+        <field name="color">2</field>
+    </record>
+
+</odoo>

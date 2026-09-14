@@ -1,0 +1,33 @@
+<odoo>
+    <record id="view_employee_form_arfad_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.form.arfad.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            
+            <xpath expr="//field[@name='l10n_sa_work_permit_annual_amount']/.." position="after">
+                <field name="x_assignment_allowance" string="Assignment"/>
+                <field name="x_mobile_allowance" string="Mobile"/>
+                <field name="x_project_allowance" string="Project"/>
+                <field name="x_food_allowance" string="Food"/>
+                <field name="x_risk_allowance" string="Risk"/>
+            </xpath>
+
+            <xpath expr="//field[@name='identification_id']" position="after">
+                <field name="iqama_date"/>
+            </xpath>
+
+            <xpath expr="//page[@name='personal_information']" position="inside">
+                <group>
+                    <group string="Extra Documents" name="extra_documents">
+                        <field name="employee_contract" widget="binary"/>
+                        <field name="employee_cv" widget="binary"/>
+                        <field name="national_address" widget="binary"/>
+                        <field name="education_certificate" widget="binary"/>
+                    </group>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

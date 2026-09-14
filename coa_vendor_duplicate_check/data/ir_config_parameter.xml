@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="vdc_param_mode" model="ir.config_parameter">
+        <field name="key">coa_vendor_duplicate_check.mode</field>
+        <field name="value">block</field>
+    </record>
+
+    <record id="vdc_param_scope" model="ir.config_parameter">
+        <field name="key">coa_vendor_duplicate_check.scope</field>
+        <field name="value">vendor</field>
+    </record>
+
+    <record id="vdc_param_check_email" model="ir.config_parameter">
+        <field name="key">coa_vendor_duplicate_check.check_email</field>
+        <field name="value">True</field>
+    </record>
+
+    <record id="vdc_param_check_phone" model="ir.config_parameter">
+        <field name="key">coa_vendor_duplicate_check.check_phone</field>
+        <field name="value">True</field>
+    </record>
+
+</odoo>

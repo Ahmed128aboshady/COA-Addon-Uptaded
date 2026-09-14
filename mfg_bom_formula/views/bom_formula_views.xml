@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ==================== FORMULA VARIABLE STANDALONE VIEW ==================== -->
+    <record id="view_bom_formula_variable_tree" model="ir.ui.view">
+        <field name="name">mrp.bom.formula.variable.tree</field>
+        <field name="model">mrp.bom.formula.variable</field>
+        <field name="arch" type="xml">
+            <list editable="bottom" string="المتغيرات والثوابت">
+                <field name="sequence" widget="handle"/>
+                <field name="name" string="اسم المتغير" placeholder="L, W, T, N, q1"/>
+                <field name="label" string="الوصف" placeholder="الطول (م)"/>
+                <field name="var_type" string="النوع"/>
+                <field name="value" string="القيمة" digits="[16,6]"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ==================== FORMULA LINE STANDALONE VIEW ==================== -->
+    <record id="view_bom_formula_line_tree" model="ir.ui.view">
+        <field name="name">mrp.bom.formula.line.tree</field>
+        <field name="model">mrp.bom.formula.line</field>
+        <field name="arch" type="xml">
+            <list editable="bottom" string="معادلات المكونات"
+                  decoration-danger="formula_error != False and formula_error != ''">
+                <field name="sequence" widget="handle"/>
+                <field name="product_id" string="الصنف"/>
+                <field name="product_uom_id" string="الوحدة" readonly="1" optional="show"/>
+                <field name="description" string="الوصف" placeholder="الحلق، البرواز"/>
+                <field name="formula" string="المعادلة ✏️" widget="char"
+                       placeholder="IF(L > 2, L*W*q1*N, 0)"/>
+                <field name="computed_qty" string="الكمية المحسوبة" readonly="1" digits="[16,6]"/>
+                <field name="formula_error" string="⚠ خطأ" readonly="1" optional="show"/>
+                <field name="sync_to_bom" string="→ BOM" widget="boolean_toggle" optional="show"/>
+                <field name="bom_line_id" optional="hide" readonly="1"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ==================== MAIN BOM FORM EXTENSION ==================== -->
+    <record id="view_mrp_bom_formula_tab" model="ir.ui.view">
+        <field name="name">mrp.bom.formula.tab</field>
+        <field name="model">mrp.bom</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//notebook" position="inside">
+                <page string="🧮 حاسبة التصنيع" name="formula_calculator">
+
+                    <!-- ── شريط العمليات ── -->
+                    <div class="alert alert-info mb-3" role="alert">
+                        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+                            <div>
+                                <strong>📐 حاسبة المعادلات الديناميكية — بصيغة Excel</strong><br/>
+                                <small class="text-muted">
+                                    عرّف المتغيرات (L, W, T, N, ...) ثم اكتب معادلة لكل مكوّن
+                                    بدوال الإكسيل (IF, SUM, ROUND, CEILING ...).
+                                    استخدم <strong>^</strong> للقوة بدل **، و <strong>IF()</strong> للشروط.
+                                    اضغط "احسب الكل" لتحديث BOM Lines تلقائياً.
+                                </small>
+                            </div>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <button name="action_compute_all_formulas"
+                                        type="object"
+                                        class="btn btn-primary"
+                                        icon="fa-calculator"
+                                        string="⚡ احسب الكل وحدّث BOM"/>
+                                <button name="action_reset_formula_values"
+                                        type="object"
+                                        class="btn btn-outline-secondary"
+                                        string="↺ صفّر المدخلات"
+                                        confirm="هتتصفر قيم المدخلات فقط (مش الثوابت). تكمل؟"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ── قسم المتغيرات ── -->
+                    <group string="① المتغيرات والثوابت" colspan="2">
+                        <field name="formula_variable_ids"
+                               nolabel="1"
+                               colspan="2"
+                               context="{'default_bom_id': id}">
+                            <list editable="bottom">
+                                <field name="sequence" widget="handle"/>
+                                <field name="name"
+                                       string="اسم المتغير"
+                                       placeholder="L, W, T, N, q1, wall_k ..."/>
+                                <field name="label"
+                                       string="الوصف"
+                                       placeholder="الطول (م) / ثابت عرض حائط ..."/>
+                                <field name="var_type" string="النوع"/>
+                                <field name="value" string="القيمة" digits="[16,6]"/>
+                            </list>
+                        </field>
+                    </group>
+
+                    <separator string="② معادلات المكونات"/>
+
+                    <!-- ── مرجع سريع للمعادلات بصيغة Excel ── -->
+                    <div class="bg-light rounded p-2 mb-2">
+                        <strong>📋 أمثلة على المعادلات (صيغة Excel مدعومة):</strong>
+                        <ul class="mb-1 mt-1" style="font-size:12px; font-family:monospace;">
+                            <li><code>((L * 2) + W) * q1 * N * 1.1</code> — ضرب ومجموع عادي</li>
+                            <li><code>IF(T &lt; 0.1, 0, L * W * 2 * N)</code> — شرط IF بصيغة Excel</li>
+                            <li><code>IFS(L &lt; 1, 0, L &lt; 2, L*W*q1, L >= 2, L*W*q1*1.1)</code> — شروط متعددة</li>
+                            <li><code>L^2 * PI() * 0.001</code> — قوة بـ ^ مع PI()</li>
+                            <li><code>CEILING(L * q1 * N, 0.5)</code> — تقريب لأقرب نص للأعلى</li>
+                            <li><code>ROUNDUP(L * W * 2 * N, 4)</code> — تقريب لأعلى</li>
+                            <li><code>IF(AND(L > 0, W > 0), L * W * N, 0)</code> — شرط AND</li>
+                            <li><code>MOD(L, 3)</code> — باقي القسمة</li>
+                        </ul>
+                        <small class="text-muted">
+                            الدوال المتاحة: IF, IFS, AND, OR, NOT, SUM, AVERAGE, ROUND, ROUNDUP, ROUNDDOWN,
+                            CEILING, FLOOR, MOD, POWER, SQRT, ABS, MIN, MAX, LOG, LN, EXP, PI(), INT, IFERROR
+                            | عوامل: <strong>^</strong> للقوة | <strong>&lt;&gt;</strong> لغير مساوٍ
+                        </small>
+                    </div>
+
+                    <!-- ── جدول المعادلات ── -->
+                    <field name="formula_line_ids"
+                           nolabel="1"
+                           context="{'default_bom_id': id}">
+                        <list editable="bottom"
+                              decoration-danger="formula_error != False and formula_error != ''"
+                              decoration-success="computed_qty > 0 and (formula_error == False or formula_error == '')">
+                            <field name="sequence" widget="handle"/>
+                            <field name="product_id" string="الصنف"/>
+                            <field name="description"
+                                   string="الوصف"
+                                   placeholder="الحلق / البرواز / الشاسيه ..."
+                                   optional="show"/>
+                            <field name="formula"
+                                   string="المعادلة ✏️"
+                                   widget="char"
+                                   placeholder="IF(L > 2, L*W*q1*N, 0)"/>
+                            <field name="computed_qty"
+                                   string="الكمية المحسوبة"
+                                   readonly="1"
+                                   digits="[16,6]"/>
+                            <field name="product_uom_id"
+                                   string="الوحدة"
+                                   readonly="1"
+                                   optional="show"/>
+                            <field name="formula_error"
+                                   string="⚠ خطأ"
+                                   readonly="1"
+                                   optional="show"/>
+                            <field name="sync_to_bom"
+                                   string="→ BOM"
+                                   widget="boolean_toggle"
+                                   optional="show"/>
+                            <button name="action_compute"
+                                    type="object"
+                                    icon="fa-refresh"
+                                    title="احسب هذا السطر فقط"
+                                    string="احسب"/>
+                        </list>
+                    </field>
+
+                    <!-- ── ملاحظات ── -->
+                    <group string="③ ملاحظات وافتراضات">
+                        <field name="formula_note"
+                               string=""
+                               placeholder="اكتب هنا أي ملاحظات على المعادلات أو الافتراضات المستخدمة ..."
+                               colspan="2"
+                               nolabel="1"/>
+                    </group>
+
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sale_order_form_technical_review" model="ir.ui.view">
+        <field name="name">sale.order.form.technical.review</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <!-- ── Smart button: open linked technical review ────────────── -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_technical_review"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-drafting-compass"
+                        invisible="not technical_review_id">
+                    <div class="o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="technical_state"
+                                   widget="badge"
+                                   decoration-success="technical_state == 'approved'"
+                                   decoration-info="technical_state == 'in_progress'"
+                                   decoration-danger="technical_state == 'rejected'"
+                                   decoration-muted="technical_state == 'draft'"/>
+                        </span>
+                        <span class="o_stat_text">Tech Review</span>
+                    </div>
+                </button>
+            </xpath>
+
+            <!-- ── "Request Technical Review" button: before Confirm ─────── -->
+            <xpath expr="//button[@name='action_confirm']" position="before">
+                <button name="action_send_to_technical"
+                        string="Request Technical Review"
+                        type="object"
+                        class="btn-primary"
+                        invisible="state not in ('draft', 'sent') or not requires_technical_review or technical_state == 'approved'"/>
+            </xpath>
+
+            <!-- ── Technical review fields in "Other Info" tab ───────────── -->
+            <xpath expr="//page[@name='other_information']" position="inside">
+                <group string="Technical Review" name="technical_review_group">
+                    <field name="requires_technical_review"/>
+                    <field name="technical_review_id" readonly="True"
+                           invisible="not technical_review_id"/>
+                    <field name="technical_state" readonly="True"
+                           widget="badge"
+                           decoration-success="technical_state == 'approved'"
+                           decoration-info="technical_state == 'in_progress'"
+                           decoration-danger="technical_state == 'rejected'"
+                           decoration-muted="technical_state == 'draft'"
+                           invisible="not technical_review_id"/>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

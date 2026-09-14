@@ -1,0 +1,32 @@
+// Product Color List - Row colors matching Odoo's 12-color palette
+// Index 0 = no color (grey), 1-11 = actual colors
+
+$product-colors: (
+    1: #ee2d2d,   // Red
+    2: #dc8534,   // Orange
+    3: #e8bb1d,   // Yellow
+    4: #5794dd,   // Cyan
+    5: #9f628f,   // Purple
+    6: #db8865,   // Almond
+    7: #41a9a2,   // Teal
+    8: #304be0,   // Blue
+    9: #ee2f8a,   // Raspberry
+    10: #61c36e,  // Green
+    11: #9872e6,  // Violet
+);
+
+@each $index, $color in $product-colors {
+    .o_product_list_color_#{$index} {
+        background-color: rgba($color, 0.15) !important;
+        border-left: 3px solid $color !important;
+
+        &:hover {
+            background-color: rgba($color, 0.25) !important;
+        }
+
+        &.o_data_row_selected,
+        &.table-info {
+            background-color: rgba($color, 0.30) !important;
+        }
+    }
+}

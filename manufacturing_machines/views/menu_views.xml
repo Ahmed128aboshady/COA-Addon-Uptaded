@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Main menu -->
+    <menuitem id="menu_mfg_machines_root"
+        name="Machine Costs"
+        sequence="50"/>
+
+    <!-- Machines -->
+    <menuitem id="menu_mfg_machines"
+        name="Machines"
+        parent="menu_mfg_machines_root"
+        sequence="10"/>
+
+    <menuitem id="menu_mfg_machine_list"
+        name="All Machines"
+        parent="menu_mfg_machines"
+        action="action_mfg_machine"
+        sequence="10"/>
+
+    <!-- Maintenance -->
+    <menuitem id="menu_mfg_maintenance"
+        name="Maintenance"
+        parent="menu_mfg_machines_root"
+        sequence="20"/>
+
+    <menuitem id="menu_mfg_maintenance_list"
+        name="Maintenance Records"
+        parent="menu_mfg_maintenance"
+        action="action_mfg_maintenance"
+        sequence="10"/>
+
+    <!-- Production Orders -> opens mrp.production directly -->
+    <menuitem id="menu_mfg_production"
+        name="Production Orders"
+        parent="menu_mfg_machines_root"
+        action="action_mrp_production_with_machines"
+        sequence="30"/>
+
+    <!-- Reports -->
+    <menuitem id="menu_mfg_reports"
+        name="Reports &amp; Costs"
+        parent="menu_mfg_machines_root"
+        sequence="40"/>
+
+    <menuitem id="menu_mfg_maintenance_cost"
+        name="Maintenance Costs"
+        parent="menu_mfg_reports"
+        action="action_mfg_maintenance_cost"
+        sequence="10"/>
+
+    <menuitem id="menu_mfg_production_cost"
+        name="Production Costs"
+        parent="menu_mfg_reports"
+        action="action_mfg_production_cost"
+        sequence="20"/>
+
+    <!-- Settings -->
+    <menuitem id="menu_mfg_configuration"
+        name="Settings"
+        parent="menu_mfg_machines_root"
+        sequence="90"
+        action="mrp.action_mrp_configuration"
+        groups="base.group_system"/>
+</odoo>

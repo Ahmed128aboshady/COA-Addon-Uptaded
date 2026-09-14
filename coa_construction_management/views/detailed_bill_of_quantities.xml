@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="detailed_bill_of_quantities_form" model="ir.ui.view">
+        <field name="name">detailed.bill.of.quantities.form</field>
+        <field name="model">detailed.bill.of.quantities</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="confirm" type="object" string="Confirm"
+                            class="oe_highlight" invisible="state != 'draft'"/>
+                    <button name="send_to_assay" type="object"
+                            string="Send To Assay" class="oe_highlight"
+                            invisible="state != 'confirm'"/>
+                    <button name="action_create_purchase_orders"
+                            type="object"
+                            string="Create Purchase Orders"
+                            class="btn-primary"
+                            invisible="not not_create_purchase"/>
+
+                    <field name="state" widget="statusbar"
+                            statusbar_visible="draft,confirm,send_to_assay"/>
+                    <button name="action_create_journal_entry"
+                            type="object"
+                            string="Create Journal Entry"
+                            class="btn-primary"
+                            invisible="not not_journal_created"/>
+                </header>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <button name="action_view_purchase_orders"
+                                type="object"
+                                string="Purchase Orders"
+                                icon="fa-shopping-cart"
+                                class="oe_stat_button"
+                                invisible="purchase_order_count == 0"
+                        >
+                            <field name="purchase_order_count"
+                                    widget="statinfo"/>
+                        </button>
+                        <button name="action_view_journal_entry" type="object" class="oe_stat_button" icon="fa-book" invisible="not move_ids">
+                            <field name="move_count" string="Journal Entry" widget="statinfo"/>
+                        </button>
+
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="construction_business_items_id"/>
+                            <field name="item_code"/>
+                            <field name="project_id"/>
+                            <field name="project_name"/>
+                            <field name="project_number"/>
+                            <field name="project_description"/>
+                            <field name="project_type_id"/>
+                            <field name="partner_id"/>
+                            <field name="project_location"/>
+                            <field name="boq_cost_estimation_id"/>
+                            <field name="business_items_line_ids" invisible="1"/>
+                            <field name="move_ids" invisible="1"/>
+                            <field name="not_journal_created" invisible="1"/>
+                            <field name="not_create_purchase" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                            <field name="business_item_id"/>
+                            <field name="business_items_types_id"/>
+                            <field name="description" column_invisible="detailed_boq_type != 'multi_orders'"/>
+                            <field name="uom_id" column_invisible="detailed_boq_type != 'multi_orders'"/>
+                            <field name="quantity" column_invisible="detailed_boq_type != 'multi_orders'"/>
+
+                            <field name="margin"/>
+                            <field name="brokerage_margin"/>
+                            <field name="vat"/>
+                            <field name="additional_expenses" invisible="1"/>
+                            <field name="item_total_cost"/>
+                            <field name="item_total_margin"/>
+                            <field name="item_total_brokerage_margin"/>
+                            <field name="item_total_vat"/>
+                            <field name="item_total_vat_margin"/>
+                            <field name="detailed_boq_type" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Materials">
+                            <field name="bill_of_quantities_line_ids">               <!-- add  context="{'default_field' : field}" to set default value -->
+                                <list editable="bottom">
+                                    <field name="create_purchase"
+                                            column_invisible="True"/>
+                                    <field name="detailed_bill_of_quantities_id"
+                                            column_invisible="True"/>       <!-- add  domain="[('id','=',parent.field)]" to set default domain -->
+                                    <field name="construction_business_id"
+                                            column_invisible="parent.detailed_boq_type != 'single_order'" domain="[('id', 'in', parent.business_items_line_ids)]" options="{'no_open': True, 'no_create': True}"/>
+                                    <field name="product_id"/>
+                                    <!--                                    <field name="productivity_per_unit_item"-->
+                                    <!--                                           column_invisible="1"/>-->
+                                    <field name="damaged_percentage"/>
+                                    <field name="quantity"/>
+                                    <field name="uom_id"/>
+                                    <field name="unit_price"/>
+                                    <field name="currency_id"/>
+                                    <field name="partner_id"/>
+
+                                    <!--                                    <field name="cost_per_item_unit"/>-->
+                                    <field name="subtotal"/>
+
+                                </list>
+                            </field>
+                            <group name="note_group" col="6"
+                                    class="mt-2 mt-md-0">
+                                <group colspan="4">
+                                    <field colspan="2" name="material_note"
+                                            nolabel="1" placeholder="Note..."/>
+                                </group>
+                                <group class="oe_subtotal_footer oe_right"
+                                        colspan="2" name="sale_total">
+
+                                    <field name="total_material_cost"
+                                            force_save="1"
+                                            options="{'currency_field': 'currency_id'}"
+                                            readonly="1"/>
+                                    <field name="margin_amount"
+                                            force_save="1"
+                                            options="{'currency_field': 'currency_id'}"
+                                            readonly="1"/>
+                                    <field name="brokerage_margin_amount"
+                                            force_save="1"
+                                            options="{'currency_field': 'currency_id'}"
+                                            readonly="1"/>
+                                    <field name="material_vat_amount"
+                                            force_save="1"
+                                            options="{'currency_field': 'currency_id'}"
+                                            readonly="1"/>
+                                    <field name="material_total_margin_vat"
+                                            force_save="1"
+                                            options="{'currency_field': 'currency_id'}"
+                                            readonly="1"/>
+
+                                </group>
+                                <div class="clearfix"/>
+                            </group>
+                        </page>
+                        <page string="Labourers &amp; Machines">
+                            <group>
+                                <field name="credit_account_id"/>
+                            </group>
+                            <field name="bill_quantities_labour_machines_ids">               <!-- add  context="{'default_field' : field}" to set default value -->
+                                <list editable="bottom">
+                                    <!--                                    <control>-->
+                                    <!--                                        <create name="add_line_control" string="Add a line"/>-->
+                                    <!--                                        <create name="add_section_control" string="Add a section"-->
+                                    <!--                                                context="{'default_display_type': 'line_section'}"/>-->
+                                    <!--                                        <create name="add_note_control" string="Add a note"-->
+                                    <!--                                                context="{'default_display_type': 'line_note'}"/>-->
+                                    <!--                                    </control>-->
+                                    <!--                                    <field name="display_type" column_invisible="True"/>-->
+                                    <field name="construction_business_id"
+                                            column_invisible="parent.detailed_boq_type != 'single_order'" domain="[('id', 'in', parent.business_items_line_ids)]" options="{'no_open': True, 'no_create': True}"/>
+                                    <field name="name"/>
+                                    <field name="detailed_bill_of_quantities_id"
+                                            column_invisible="True"/>
+                                    <field name="journal_created"
+                                            column_invisible="True"/>       <!-- add  domain="[('id','=',parent.field)]" to set default domain -->
+                                    <field name="product_id"/>
+                                    <field name="the_date"/>
+                                    <field name="account_id"/>
+                                    <field name="worker_name"/>
+                                    <field name="boq_item_name"/>
+                                    <field name="total_amount_worker"/>
+                                    <field name="paid_amount_worker"/>
+                                    <field name="remaining_amount_worker"
+                                            readonly="1"/>
+                                    <field name="productivity_per_unit_item"/>
+                                    <field name="uom_id"/>
+                                    <field name="unit_price"/>
+                                    <field name="working_hours"
+                                            widget="timesheet_uom"
+                                            optional="hide"/>
+                                    <field name="currency_id"
+                                            column_invisible="True"/>
+                                    <field name="cost_per_item_unit"/>
+                                    <field name="subtotal"/>
+
+
+                                </list>
+                            </field>
+                            <group name="note_group" col="6"
+                                    class="mt-2 mt-md-0">
+                                <group colspan="4">
+                                    <field colspan="2" name="labour_note"
+                                            nolabel="1" placeholder="Note..."/>
+                                </group>
+                                <group class="oe_subtotal_footer oe_right"
+                                        colspan="2" name="sale_total">
+
+                                    <field name="total_labour_cost"
+                                            force_save="1"
+                                            options="{'currency_field': 'currency_id'}"
+                                            readonly="1"/>
+                                    <field name="labour_margin_amount"
+                                            force_save="1"
+                                            options="{'currency_field': 'currency_id'}"
+                                            readonly="1"/>
+                                    <field name="labour_brokerage_margin_amount"
+                                            force_save="1"
+                                            options="{'currency_field': 'currency_id'}"
+                                            readonly="1"/>
+                                    <field name="labour_vat_amount"
+                                            force_save="1"
+                                            options="{'currency_field': 'currency_id'}"
+                                            readonly="1"/>
+                                    <field name="labour_total_margin_vat"
+                                            force_save="1"
+                                            options="{'currency_field': 'currency_id'}"
+                                            readonly="1"/>
+                                </group>
+                                <div class="clearfix"/>
+                            </group>
+                        </page>
+                        <page string="Overhead">
+                            <field name="bill_quantities_overhead_ids">               <!-- add  context="{'default_field' : field}" to set default value -->
+                                <list editable="bottom">
+                                    <field name="detailed_bill_of_quantities_id"
+                                            column_invisible="True"/>       <!-- add  domain="[('id','=',parent.field)]" to set default domain -->
+                                    <field name="construction_business_id"
+                                            column_invisible="parent.detailed_boq_type != 'single_order'" domain="[('id', 'in', parent.business_items_line_ids)]" options="{'no_open': True, 'no_create': True}"/>
+                                    <field name="account_id"/>
+                                    <field name="partner_id"/>
+                                    <field name="product_id"/>
+                                    <field name="productivity_per_unit_item"
+                                            column_invisible="1"/>
+                                    <field name="journal_created" column_invisible="1"/>
+                                    <field name="name"/>
+                                    <field name="quantity"/>
+                                    <field name="uom_id"/>
+                                    <field name="unit_price"/>
+                                    <field name="currency_id"/>
+                                    <!--                                    <field name="cost_per_item_unit"/>-->
+                                    <field name="subtotal"/>
+                                </list>
+                            </field>
+                            <group name="note_group" col="6"
+                                    class="mt-2 mt-md-0">
+                                <group colspan="4">
+                                    <field colspan="2" name="overhead_note"
+                                            nolabel="1" placeholder="Note..."/>
+                                </group>
+                                <group class="oe_subtotal_footer oe_right"
+                                        colspan="2" name="sale_total">
+
+                                    <field name="total_overhead_cost"
+                                            force_save="1"
+                                            options="{'currency_field': 'currency_id'}"
+                                            readonly="1"/>
+                                    <field name="overhead_margin_amount"
+                                            force_save="1"
+                                            options="{'currency_field': 'currency_id'}"
+                                            readonly="1"/>
+                                    <field name="overhead_brokerage_margin_amount"
+                                            force_save="1"
+                                            options="{'currency_field': 'currency_id'}"
+                                            readonly="1"/>
+                                    <!--                                    <field name="overhead_vat_amount"-->
+                                    <!--                                           force_save="1"-->
+                                    <!--                                           options="{'currency_field': 'currency_id'}"-->
+                                    <!--                                           readonly="1"/>-->
+                                    <field name="overhead_total_margin_vat"
+                                            force_save="1"
+                                            options="{'currency_field': 'currency_id'}"
+                                            readonly="1"/>
+
+
+                                </group>
+                                <div class="clearfix"/>
+                            </group>
+                        </page>
+
+                    </notebook>
+
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="detailed_bill_of_quantities_tree" model="ir.ui.view">
+        <field name="name">detailed.bill.of.quantities.tree</field>
+        <field name="model">detailed.bill.of.quantities</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="project_name"/>
+                <field name="project_number"/>
+                <field name="project_description"/>
+                <field name="project_type_id"/>
+                <field name="partner_id"/>
+                <field name="project_location"/>
+                <field name="date"/>
+                <field name="business_item_id"/>
+                <field name="business_items_types_id"/>
+                <field name="description"/>
+                <field name="uom_id"/>
+                <field name="quantity"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="detailed_bill_of_quantities_sequence" model="ir.sequence">
+        <field name="name">detailed.bill.of.quantities</field>
+        <field name="code">detailed.bill.of.quantities</field>
+        <field name="prefix">D-BOQ/</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <record id="bill_quantities_labour_machines_sequence" model="ir.sequence">
+        <field name="name">bill.quantities.labour.machines</field>
+        <field name="code">bill.quantities.labour.machines</field>
+        <field name="prefix">Labour-%(year)s%(month)s%(day)s/</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <record id="detailed_bill_of_quantities_action"
+            model="ir.actions.act_window">
+        <field name="name">Detailed Bill Of Quantities</field>
+        <field name="res_model">detailed.bill.of.quantities</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Detailed Bill Of Quantities
+            </p>
+        </field>
+    </record>
+</odoo>

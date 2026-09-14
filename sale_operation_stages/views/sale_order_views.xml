@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="sale_order_operations_form" model="ir.ui.view">
+            <field name="name">sale.order.operations.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+
+                <!-- زر العمليات في الـ stat buttons -->
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="action_view_operations"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-cogs"
+                            invisible="not has_operations">
+                        <field name="operation_count" widget="statinfo" string="عمليات"/>
+                    </button>
+                </xpath>
+
+                <!-- صف منفصل بعد الـ header group الرئيسي -->
+                <xpath expr="//group[@name='sale_header']" position="after">
+                    <group name="operations_row">
+                        <group string="العمليات قبل التسليم">
+                            <field name="has_operations"
+                                   widget="boolean_toggle"
+                                   string="يوجد عمليات على المنتج قبل التسليم"/>
+                            <field name="operation_mode"
+                                   widget="radio"
+                                   invisible="not has_operations"
+                                   string="نطاق العمليات"/>
+                        </group>
+                        <group>
+                            <field name="operations_state"
+                                   invisible="not has_operations"
+                                   widget="badge"
+                                   decoration-warning="operations_state == 'in_progress'"
+                                   decoration-success="operations_state == 'done'"
+                                   decoration-info="operations_state == 'pending'"
+                                   string="حالة العمليات"/>
+                        </group>
+                    </group>
+                </xpath>
+
+                <!-- عمود "يحتاج عمليات" في جدول الأصناف — يظهر بس لما النطاق = منتجات محددة -->
+                <xpath expr="//field[@name='order_line']/list/field[@name='product_id']" position="after">
+                    <field name="has_operation"
+                           string="يحتاج عمليات؟"
+                           optional="show"
+                           column_invisible="parent.operation_mode != 'specific' or not parent.has_operations"/>
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

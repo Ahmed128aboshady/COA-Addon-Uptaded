@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Extend BOM form: add secondary qty columns in component line tree -->
+    <record id="mrp_bom_form_secondary_uom" model="ir.ui.view">
+        <field name="name">mrp.bom.form.secondary.uom</field>
+        <field name="model">mrp.bom</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='bom_line_ids']//list//field[@name='product_uom_id']" position="after">
+                <field name="has_secondary_uom" column_invisible="True"/>
+                <field name="secondary_product_qty"
+                       string="Sec. Qty"
+                       invisible="not has_secondary_uom"
+                       optional="show"/>
+                <field name="secondary_uom_id"
+                       string="Sec. UoM"
+                       invisible="not has_secondary_uom"
+                       optional="show"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ══ منيو رئيسي: العمولات داخل المبيعات ══════════════════════════════ -->
+    <menuitem id="menu_commission_root"
+              name="العمولات"
+              parent="sale.sale_menu_root"
+              sequence="36"/>
+
+    <!-- حساب العمولات -->
+    <menuitem id="menu_commission_line"
+              name="حساب العمولات"
+              parent="menu_commission_root"
+              action="action_commission_line"
+              sequence="10"/>
+
+    <!-- تقرير العمولات (Wizard طباعة) -->
+    <menuitem id="menu_commission_analysis"
+              name="تقرير العمولات"
+              parent="menu_commission_root"
+              action="action_commission_analysis_wizard"
+              sequence="20"/>
+
+    <!-- نسب العمولات — للمدير فقط -->
+    <menuitem id="menu_commission_rate"
+              name="نسب العمولات"
+              parent="menu_commission_root"
+              action="action_commission_rate"
+              sequence="30"
+              groups="sales_team.group_sale_manager"/>
+
+</odoo>

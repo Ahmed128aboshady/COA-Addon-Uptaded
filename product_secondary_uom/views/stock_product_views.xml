@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Extend stock product list view with secondary stock columns -->
+    <record id="product_product_stock_tree_secondary_uom" model="ir.ui.view">
+        <field name="name">product.product.stock.list.secondary.uom</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="stock.product_product_stock_tree"/>
+        <field name="arch" type="xml">
+            <field name="uom_id" position="after">
+                <field name="has_secondary_uom" column_invisible="True"/>
+                <field name="secondary_qty_available"
+                       string="Sec. On Hand"
+                       invisible="not has_secondary_uom"
+                       optional="show"/>
+                <field name="secondary_virtual_available"
+                       string="Sec. Forecasted"
+                       invisible="not has_secondary_uom"
+                       optional="hide"/>
+                <field name="secondary_incoming_qty"
+                       string="Sec. Incoming"
+                       invisible="not has_secondary_uom"
+                       optional="hide"/>
+                <field name="secondary_outgoing_qty"
+                       string="Sec. Outgoing"
+                       invisible="not has_secondary_uom"
+                       optional="hide"/>
+                <field name="secondary_uom_id"
+                       string="Sec. UoM"
+                       invisible="not has_secondary_uom"
+                       optional="show"/>
+            </field>
+        </field>
+    </record>
+</odoo>

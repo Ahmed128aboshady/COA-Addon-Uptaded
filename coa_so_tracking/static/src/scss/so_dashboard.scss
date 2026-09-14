@@ -1,0 +1,288 @@
+// ── COA SO Tracking Dashboard ─────────────────────────────────────────────────
+
+.coa_so_dashboard {
+    padding: 16px;
+    background: #f5f4f8;
+    // Self-scrolling inside Odoo's content area
+    height: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+
+    // ─── States ──────────────────────────────────────────────────────────────
+    .coa_sod_loading {
+        padding: 60px;
+        text-align: center;
+        color: #714B9A;
+        font-size: 16px;
+        > div { margin-top: 12px; }
+    }
+
+    .coa_sod_error_box {
+        margin: 40px auto;
+        max-width: 480px;
+        text-align: center;
+        background: #fff0f0;
+        border: 1px solid #f5c6cb;
+        border-radius: 12px;
+        padding: 32px;
+        color: #721c24;
+        i { font-size: 2rem; margin-bottom: 12px; display: block; }
+        .coa_sod_error_msg { font-size: 13px; white-space: pre-wrap; }
+    }
+
+    .coa_sod_empty {
+        padding: 60px;
+        text-align: center;
+        color: #aaa;
+        i { display: block; margin-bottom: 16px; }
+        p { font-size: 14px; }
+    }
+
+    // ─── Header ──────────────────────────────────────────────────────────────
+    .coa_sod_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+        h2 { color: #714B9A; margin: 0; font-weight: 700; font-size: 20px; }
+        .coa_sod_subtitle {
+            display: block;
+            color: #6b6b7b;
+            font-size: 12px;
+            margin-top: 3px;
+        }
+    }
+
+    // ─── Filter bar ──────────────────────────────────────────────────────────
+    .coa_sod_filter_bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        gap: 10px;
+        background: #fff;
+        border: 1px solid #ececf0;
+        border-radius: 10px;
+        padding: 12px 16px;
+        margin-bottom: 14px;
+    }
+
+    .coa_sod_filter_group {
+        display: flex;
+        flex-direction: column;
+        .coa_sod_filter_label {
+            font-size: 11px;
+            color: #6b6b7b;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .coa_sod_filter_input {
+            min-width: 150px;
+            font-size: 12px;
+        }
+    }
+
+    .coa_sod_apply_btn,
+    .coa_sod_export_btn {
+        align-self: flex-end;
+        height: 31px;
+        font-size: 12px;
+    }
+
+    // ─── Card ────────────────────────────────────────────────────────────────
+    .coa_sod_card {
+        background: #fff;
+        border: 1px solid #ececf0;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 16px;
+    }
+
+    // ─── Main SO table ────────────────────────────────────────────────────────
+    .coa_sod_table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+
+        // ── Column color variables ──
+        $mfg_color: #714B9A;
+        $dlv_color: #1565c0;
+        $inv_color: #2e7d32;
+
+        th, td { padding: 7px 9px; }
+
+        // Main header row
+        .coa_sod_head1 {
+            background: #714B9A;
+            color: #fff;
+            th { text-align: right; }
+            .coa_sod_mfg_hd { background: darken(#714B9A, 8%); }
+            .coa_sod_dlv_hd { background: #1565c0; }
+            .coa_sod_inv_hd { background: #2e7d32; }
+        }
+
+        // Sub-header row
+        .coa_sod_head2 {
+            background: #8b65b0;
+            color: #fff;
+            font-size: 11px;
+            .coa_sod_mfg_hd { background: lighten(#714B9A, 5%); }
+            .coa_sod_dlv_hd { background: lighten(#1565c0, 5%); }
+            .coa_sod_inv_hd { background: lighten(#2e7d32, 5%); }
+        }
+
+        // Column color tints (body)
+        .coa_sod_mfg_hd { background-color: rgba(113, 75, 154, 0.06); }
+        .coa_sod_dlv_hd { background-color: rgba(21, 101, 192, 0.06); }
+        .coa_sod_inv_hd { background-color: rgba(46, 125, 50, 0.06); }
+
+        // Expand column
+        .coa_sod_expand_th { width: 28px; }
+        .coa_sod_expand_td {
+            width: 28px;
+            text-align: center;
+            padding: 7px 4px;
+        }
+        .coa_sod_chevron {
+            color: #714B9A;
+            font-size: 11px;
+        }
+
+        // ── SO rows (clickable) ──
+        .coa_sod_so_row {
+            cursor: pointer;
+            border-bottom: 1px solid #f0edf7;
+            transition: background 0.12s;
+            &:nth-child(odd)  { background: #fff; }
+            &:nth-child(even) { background: #faf9fd; }
+            &:hover           { background: #efeaf6 !important; }
+            &.coa_sod_so_active {
+                background: #e8e0f5 !important;
+                border-bottom: 2px solid #714B9A;
+            }
+        }
+
+        .coa_sod_so_name {
+            font-weight: 700;
+            color: #714B9A;
+        }
+
+        .coa_sod_lines_count {
+            font-weight: 600;
+            color: #6b6b7b;
+        }
+
+        // Value cell colors
+        .coa_sod_done { color: #2e7d32; font-weight: 600; }
+        .coa_sod_warn { color: #b71c1c; }
+
+        // State badges
+        .coa_sod_badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .coa_badge_sale   { background: #ede7f6; color: #4a148c; }
+        .coa_badge_done   { background: #e8f5e9; color: #1b5e20; }
+        .coa_badge_draft  { background: #f5f5f5; color: #616161; }
+        .coa_badge_sent   { background: #fff3e0; color: #e65100; }
+        .coa_badge_cancel { background: #fce4ec; color: #880e4f; }
+
+        // ── Expanded lines row ──
+        .coa_sod_lines_row .coa_sod_lines_cell {
+            padding: 0;
+            border-top: none;
+            background: #f9f7fd;
+        }
+
+        .coa_sod_no_lines {
+            padding: 10px 16px;
+            color: #9a9aa9;
+            font-style: italic;
+            font-size: 12px;
+        }
+    }
+
+    // ─── Product lines sub-table ──────────────────────────────────────────────
+    .coa_sod_lines_table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 11px;
+
+        $mfg_color: #714B9A;
+        $dlv_color: #1565c0;
+        $inv_color: #2e7d32;
+
+        thead tr {
+            background: #4a2c73;
+            color: #fff;
+            th { padding: 6px 8px; text-align: right; }
+            .coa_sod_mfg_hd { background: darken(#714B9A, 10%); }
+            .coa_sod_dlv_hd { background: darken(#1565c0, 5%); }
+            .coa_sod_inv_hd { background: darken(#2e7d32, 5%); }
+        }
+
+        // Body column color tints
+        td.coa_sod_mfg_hd { background-color: rgba(113, 75, 154, 0.05); }
+        td.coa_sod_dlv_hd { background-color: rgba(21, 101, 192, 0.05); }
+        td.coa_sod_inv_hd { background-color: rgba(46, 125, 50, 0.05); }
+
+        .coa_sod_line_row {
+            border-bottom: 1px solid #ede8f5;
+            &:nth-child(even) { background: #f5f2fb; }
+            &:hover           { background: #ede8f5; }
+            td { padding: 6px 8px; }
+        }
+
+        .coa_sod_prod_name {
+            font-weight: 500;
+            max-width: 220px;
+        }
+        .coa_sod_uom  { color: #6b6b7b; font-size: 10px; }
+        .coa_sod_qty_bold { font-weight: 700; color: #333; }
+        .coa_sod_ordered_col { background-color: #f5f5f5; font-weight: 600; }
+        .coa_sod_qty_warn { color: #c62828; font-weight: 600; }
+    }
+
+    // ─── Progress bars ────────────────────────────────────────────────────────
+    .coa_sod_pct_cell {
+        white-space: nowrap;
+        min-width: 80px;
+    }
+
+    .coa_sod_bar_wrap {
+        display: inline-block;
+        width: 44px;
+        height: 6px;
+        background: #e0e0e0;
+        border-radius: 4px;
+        overflow: hidden;
+        vertical-align: middle;
+        margin-left: 4px;
+    }
+    .coa_sod_bar_fill {
+        height: 6px;
+        border-radius: 4px;
+        min-width: 2px;
+    }
+    .coa_sod_mfg_bar { background: #714B9A; }
+    .coa_sod_dlv_bar { background: #1565c0; }
+    .coa_sod_inv_bar { background: #2e7d32; }
+
+    .coa_sod_pct_txt {
+        font-size: 10px;
+        color: #6b6b7b;
+        vertical-align: middle;
+    }
+
+    // ─── Responsive ──────────────────────────────────────────────────────────
+    @media (max-width: 1100px) {
+        .coa_sod_table, .coa_sod_lines_table { font-size: 11px; }
+    }
+    @media (max-width: 800px) {
+        .coa_sod_card { overflow-x: auto; }
+    }
+}

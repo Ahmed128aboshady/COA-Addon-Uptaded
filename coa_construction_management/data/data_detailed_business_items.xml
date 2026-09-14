@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <data noupdate="1">
+        <record id="site_cleaning" model="detailed.business.items">
+            <field name="name">Site cleaning</field>
+            <field name="business_items_types_id" ref="business_preparatory_works"/>
+            <field name="description">removing waste, trees and debris from the site.</field>
+        </record>
+        <record id="site_marking" model="detailed.business.items">
+            <field name="name">Site marking</field>
+            <field name="business_items_types_id" ref="business_preparatory_works"/>
+            <field name="description">marking the site and its boundaries.</field>
+        </record>
+        <record id="trenching" model="detailed.business.items">
+            <field name="name">Trenching</field>
+            <field name="business_items_types_id" ref="business_preparatory_works"/>
+            <field name="description">digging the ground for foundations and pipes.</field>
+        </record>
+        <record id="excavation" model="detailed.business.items">
+            <field name="name">Excavation</field>
+            <field name="business_items_types_id" ref="business_earthworks"/>
+            <field name="description">digging the foundations and trenches needed for buildings and roads.</field>
+        </record>
+        <record id="backfilling" model="detailed.business.items">
+            <field name="name">Backfilling</field>
+            <field name="business_items_types_id" ref="business_earthworks"/>
+            <field name="description">refilling the holes with suitable materials such as sand or soil.</field>
+        </record>
+        <record id="foundations" model="detailed.business.items">
+            <field name="name">Foundations</field>
+            <field name="business_items_types_id" ref="business_concrete_works"/>
+            <field name="description">implementing regular and reinforced foundations (Strip footing, Raft foundation).</field>
+        </record>
+        <record id="data_columns" model="detailed.business.items">
+            <field name="name">Columns</field>
+            <field name="business_items_types_id" ref="business_concrete_works"/>
+            <field name="description">pouring concrete columns.</field>
+        </record>
+        <record id="data_ceilings" model="detailed.business.items">
+            <field name="name">Ceilings</field>
+            <field name="business_items_types_id" ref="business_concrete_works"/>
+            <field name="description">implementing reinforced concrete ceilings.</field>
+        </record>
+
+        <record id="data_beams" model="detailed.business.items">
+            <field name="name">beams</field>
+            <field name="business_items_types_id" ref="business_concrete_works"/>
+            <field name="description">pouring beams.</field>
+        </record>
+        <record id="data_rafting" model="detailed.business.items">
+            <field name="name">Rafting</field>
+            <field name="business_items_types_id" ref="business_concrete_works"/>
+            <field name="description">pouring concrete slab or mat for large buildings.</field>
+        </record>
+        <record id="data_rafting" model="detailed.business.items">
+            <field name="name">Rafting</field>
+            <field name="business_items_types_id" ref="business_concrete_works"/>
+            <field name="description">pouring concrete slab or mat for large buildings.</field>
+        </record>
+        <record id="data_construction_of_walls" model="detailed.business.items">
+            <field name="name">Construction of walls</field>
+            <field name="business_items_types_id" ref="business_structural_works"/>
+            <field name="description">brick or block works.</field>
+        </record>
+        <record id="data_insulation_works" model="detailed.business.items">
+            <field name="name">Insulation works</field>
+            <field name="business_items_types_id" ref="business_structural_works"/>
+            <field name="description">Insulating foundations, walls and ceilings against moisture and water.</field>
+        </record>
+        <record id="data_reinforced_carpentry_works" model="detailed.business.items">
+            <field name="name">Reinforced carpentry works</field>
+            <field name="business_items_types_id" ref="business_structural_works"/>
+            <field name="description">Preparing wooden forms for concrete.</field>
+        </record>
+        <record id="data_reinforcement_works" model="detailed.business.items">
+            <field name="name">Reinforcement works</field>
+            <field name="business_items_types_id" ref="business_structural_works"/>
+            <field name="description">Plastering reinforcing steel in place according to construction drawings.</field>
+        </record>
+        <record id="data_plastering" model="detailed.business.items">
+            <field name="name">Plastering</field>
+            <field name="business_items_types_id" ref="business_finishing_works"/>
+            <field name="description">Plastering walls and ceilings.</field>
+        </record>
+        <record id="data_electrical_works" model="detailed.business.items">
+            <field name="name">Electrical works</field>
+            <field name="business_items_types_id" ref="business_finishing_works"/>
+            <field name="description">Extending wires and installing electrical systems.</field>
+        </record>
+        <record id="data_sanitary_works" model="detailed.business.items">
+            <field name="name">Sanitary works</field>
+            <field name="business_items_types_id" ref="business_finishing_works"/>
+            <field name="description">Extending pipes and installing sanitary ware such as sinks and toilets.</field>
+        </record>
+        <record id="data_painting_works" model="detailed.business.items">
+            <field name="name">Painting works</field>
+            <field name="business_items_types_id" ref="business_finishing_works"/>
+            <field name="description">Painting walls and ceilings.</field>
+        </record>
+        :
+        <record id="data_ceramic_marble_works" model="detailed.business.items">
+            <field name="name">Ceramic and marble works</field>
+            <field name="business_items_types_id" ref="business_finishing_works"/>
+            <field name="description">Installing tiles or marble for floors and walls.</field>
+        </record>
+        <record id="data_wooden_works" model="detailed.business.items">
+            <field name="name">Wooden works</field>
+            <field name="business_items_types_id" ref="business_finishing_works"/>
+            <field name="description">Installing doors and windows.</field>
+        </record>
+        <record id="data_glass_aluminum" model="detailed.business.items">
+            <field name="name">Glass and aluminum</field>
+            <field name="business_items_types_id" ref="business_finishing_works"/>
+            <field name="description">Installing aluminum and glass windows and doors.</field>
+        </record>
+        <record id="data_air_conditioning_systems" model="detailed.business.items">
+            <field name="name">Air conditioning systems</field>
+            <field name="business_items_types_id" ref="business_mechanical_works"/>
+            <field name="description">Installing heating, ventilation and air conditioning (HVAC) systems.</field>
+        </record>
+        <record id="data_other_mechanical_systems" model="detailed.business.items">
+            <field name="name">Other mechanical systems</field>
+            <field name="business_items_types_id" ref="business_mechanical_works"/>
+            <field name="description">such as elevators and pumping.</field>
+        </record>
+        <record id="data_road_paving" model="detailed.business.items">
+            <field name="name">Road paving</field>
+            <field name="business_items_types_id" ref="business_data_external_works"/>
+            <field name="description">Implementing asphalt or concrete layers for roads inside and outside the site.</field>
+        </record>
+        <record id="data_landscaping" model="detailed.business.items">
+            <field name="name">Landscaping</field>
+            <field name="business_items_types_id" ref="business_data_external_works"/>
+            <field name="description">planting trees and flowers and implementing beautification works.</field>
+        </record>
+        <record id="data_fences_gates" model="detailed.business.items">
+            <field name="name">Fences and Gates</field>
+            <field name="business_items_types_id" ref="business_data_external_works"/>
+            <field name="description">building fences and installing gates.</field>
+        </record>
+        <record id="data_wrought_iron" model="detailed.business.items">
+            <field name="name">Wrought Iron</field>
+            <field name="business_items_types_id" ref="business_metal_works"/>
+            <field name="description">installing iron doors and windows and metal fences.</field>
+        </record>
+        <record id="data_metal_structures" model="detailed.business.items">
+            <field name="name">Metal Structures</field>
+            <field name="business_items_types_id" ref="business_metal_works"/>
+            <field name="description">creating metal structures for buildings or bridges.</field>
+        </record>
+        <record id="data_fire_systems" model="detailed.business.items">
+            <field name="name">Fire Systems</field>
+            <field name="business_items_types_id" ref="business_metal_works"/>
+            <field name="description">installing fire-fighting systems (sprinklers, extinguishers, sensors).</field>
+        </record>
+        <record id="data_security_systems" model="detailed.business.items">
+            <field name="name">Security Systems</field>
+            <field name="business_items_types_id" ref="business_metal_works"/>
+            <field name="description">installing surveillance cameras and alarm devices.</field>
+        </record>
+        <record id="data_wiring" model="detailed.business.items">
+            <field name="name">Wiring</field>
+            <field name="business_items_types_id" ref="business_date_electrical_works"/>
+            <field name="description">extending electrical wires from panels to different units.</field>
+        </record>
+        <record id="data_lighting" model="detailed.business.items">
+            <field name="name">lighting</field>
+            <field name="business_items_types_id" ref="business_date_electrical_works"/>
+            <field name="description">installing lighting units and switches.</field>
+        </record>
+        <record id="data_distribution_panels" model="detailed.business.items">
+            <field name="name">Distribution Panels</field>
+            <field name="business_items_types_id" ref="business_date_electrical_works"/>
+            <field name="description">installing electrical control panels.</field>
+        </record>
+        <record id="data_pipe_extension" model="detailed.business.items">
+            <field name="name">Pipe Extension</field>
+            <field name="business_items_types_id" ref="business_plumbing_works"/>
+            <field name="description">extending pipes for water and sewage.</field>
+        </record>
+        <record id="data_plumbing_installation" model="detailed.business.items">
+            <field name="name">Plumbing Installation</field>
+            <field name="business_items_types_id" ref="business_plumbing_works"/>
+            <field name="description">installing toilets, sinks, heaters, and other bathroom fixtures.</field>
+        </record>
+
+
+        <record id="project_stage_0" model="project.task.type">
+            <field name="sequence">1</field>
+            <field name="name">New</field>
+        </record>
+        <record id="project_stage_1" model="project.task.type">
+            <field name="sequence">10</field>
+            <field name="name">In Progress</field>
+        </record>
+        <record id="project_stage_2" model="project.task.type">
+            <field name="sequence">20</field>
+            <field name="name">Done</field>
+            <field name="fold" eval="True"/>
+        </record>
+        <record id="project_stage_3" model="project.task.type">
+            <field name="sequence">30</field>
+            <field name="name">Canceled</field>
+            <field name="fold" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

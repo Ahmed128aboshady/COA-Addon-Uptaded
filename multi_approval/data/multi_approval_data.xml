@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Sequence -->
+        <record id="seq_multi_approval_request" model="ir.sequence">
+            <field name="name">Multi Approval Request</field>
+            <field name="code">multi.approval.request</field>
+            <field name="prefix">APR/%(year)s/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- ══ SALES ══ -->
+        <record id="approval_type_sale_order_on_save" model="multi.approval.type">
+            <field name="name">Sales Orders — On Save</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="trigger">on_save</field>
+            <field name="is_active_approval" eval="False"/>
+            <field name="auto_confirm" eval="False"/>
+            <field name="description">Automatically requests approval the moment a new Quotation is saved. Blocks all actions (print, send, confirm) until fully approved.</field>
+        </record>
+
+        <record id="approval_type_sale_order" model="multi.approval.type">
+            <field name="name">Sales Orders — Confirm</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="trigger">confirm</field>
+            <field name="is_active_approval" eval="False"/>
+            <field name="auto_confirm" eval="False"/>
+            <field name="description">Approval required before confirming a Quotation into a Sale Order.</field>
+        </record>
+
+        <record id="approval_type_sale_order_send" model="multi.approval.type">
+            <field name="name">Sales Orders — Send Quotation</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="trigger">send</field>
+            <field name="is_active_approval" eval="False"/>
+            <field name="auto_confirm" eval="False"/>
+            <field name="description">Approval required before sending a Quotation by email to the customer.</field>
+        </record>
+
+        <record id="approval_type_sale_order_print" model="multi.approval.type">
+            <field name="name">Sales Orders — Print PDF</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="trigger">print</field>
+            <field name="is_active_approval" eval="False"/>
+            <field name="auto_confirm" eval="False"/>
+            <field name="description">Approval required before printing the Quotation PDF.</field>
+        </record>
+
+        <!-- ══ PURCHASE ══ -->
+        <record id="approval_type_purchase_order" model="multi.approval.type">
+            <field name="name">Purchase Orders</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="trigger">confirm</field>
+            <field name="is_active_approval" eval="False"/>
+            <field name="auto_confirm" eval="False"/>
+            <field name="description">Approval required before confirming a Purchase Order.</field>
+        </record>
+
+        <!-- ══ ACCOUNTING — INVOICES ══ -->
+        <record id="approval_type_account_move" model="multi.approval.type">
+            <field name="name">Invoices and Bills</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="trigger">confirm</field>
+            <field name="record_domain">[('move_type', 'in', ['out_invoice', 'out_refund', 'in_invoice', 'in_refund'])]</field>
+            <field name="is_active_approval" eval="False"/>
+            <field name="auto_confirm" eval="False"/>
+            <field name="description">Approval required before posting a Customer Invoice or Vendor Bill.</field>
+        </record>
+
+        <!-- ══ ACCOUNTING — JOURNAL ENTRIES ══ -->
+        <record id="approval_type_journal_entry" model="multi.approval.type">
+            <field name="name">Journal Entries</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="trigger">confirm</field>
+            <field name="record_domain">[('move_type', '=', 'entry')]</field>
+            <field name="is_active_approval" eval="False"/>
+            <field name="auto_confirm" eval="False"/>
+            <field name="description">Approval required before posting a Journal Entry (manual accounting entry).</field>
+        </record>
+
+        <!-- ══ ACCOUNTING — PAYMENTS ══ -->
+        <record id="approval_type_account_payment" model="multi.approval.type">
+            <field name="name">Bank Payments</field>
+            <field name="model_id" ref="account.model_account_payment"/>
+            <field name="trigger">confirm</field>
+            <field name="is_active_approval" eval="False"/>
+            <field name="auto_confirm" eval="False"/>
+            <field name="description">Approval required before validating a Bank Payment or Transfer.</field>
+        </record>
+
+        <!-- ══ INVENTORY ══ -->
+        <record id="approval_type_stock_picking" model="multi.approval.type">
+            <field name="name">Inventory Transfers</field>
+            <field name="model_id" ref="stock.model_stock_picking"/>
+            <field name="trigger">confirm</field>
+            <field name="is_active_approval" eval="False"/>
+            <field name="auto_confirm" eval="False"/>
+            <field name="description">Approval required before validating an Inventory Transfer or Delivery Order.</field>
+        </record>
+
+    </data>
+</odoo>

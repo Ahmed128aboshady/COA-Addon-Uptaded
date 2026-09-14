@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_operation_stage_manager,operation.stage.manager,model_sale_operation_stage,sale_operation_stages.group_operation_manager,1,1,1,1
+access_operation_stage_user,operation.stage.user,model_sale_operation_stage,sale_operation_stages.group_operation_user,1,0,0,0
+access_operation_stage_viewer,operation.stage.viewer,model_sale_operation_stage,sale_operation_stages.group_operation_viewer,1,0,0,0
+access_operation_stage_internal,operation.stage.internal,model_sale_operation_stage,base.group_user,1,0,0,0
+access_sale_operation_manager,sale.operation.manager,model_sale_operation,sale_operation_stages.group_operation_manager,1,1,1,1
+access_sale_operation_user,sale.operation.user,model_sale_operation,sale_operation_stages.group_operation_user,1,1,0,0
+access_sale_operation_viewer,sale.operation.viewer,model_sale_operation,sale_operation_stages.group_operation_viewer,1,0,0,0
+access_sale_operation_internal,sale.operation.internal,model_sale_operation,base.group_user,1,0,0,0
+access_operation_stage_log_manager,operation.stage.log.manager,model_sale_operation_stage_log,sale_operation_stages.group_operation_manager,1,1,1,1
+access_operation_stage_log_user,operation.stage.log.user,model_sale_operation_stage_log,sale_operation_stages.group_operation_user,1,1,1,0
+access_operation_stage_log_viewer,operation.stage.log.viewer,model_sale_operation_stage_log,sale_operation_stages.group_operation_viewer,1,0,0,0
+access_operation_stage_log_internal,operation.stage.log.internal,model_sale_operation_stage_log,base.group_user,1,0,0,0

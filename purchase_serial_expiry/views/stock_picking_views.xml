@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         Move Line Operations popup  (Details button on stock.move)
+         parent = stock.move  →  use parent.picking_code
+         • Incoming  → show expiry_date_input (editable)
+         • Outgoing / Internal → show lot_expiry_date (read-only from lot)
+    ══════════════════════════════════════════════════════════════════ -->
+    <record id="view_stock_move_line_operation_tree_custom_expiry" model="ir.ui.view">
+        <field name="name">stock.move.line.operations.expiry.list</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_stock_move_line_operation_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='lot_name']" position="after">
+                <!-- Receipt: editable expiry date input
+                     parent.picking_code == 'incoming' because parent is stock.move -->
+                <field name="expiry_date_input"
+                       string="Expiry Date"
+                       widget="date"
+                       optional="show"
+                       column_invisible="parent.picking_code != 'incoming'"
+                />
+                <!-- Delivery / Pick: read-only expiry from the assigned lot -->
+                <field name="lot_expiry_date"
+                       string="Lot Expiry Date"
+                       widget="date"
+                       readonly="1"
+                       optional="show"
+                       column_invisible="parent.picking_code == 'incoming'"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         Detailed Operations list  (Detailed Operations tab in picking form)
+         parent = stock.picking  →  use parent.picking_type_code
+         • Incoming  → show expiry_date_input (editable) + status badge
+         • Outgoing / Internal → show lot_expiry_date (read-only from lot)
+    ══════════════════════════════════════════════════════════════════ -->
+    <record id="view_stock_move_line_detailed_operation_tree_custom_expiry" model="ir.ui.view">
+        <field name="name">stock.move.line.detailed.operations.expiry.list</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_stock_move_line_detailed_operation_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='lot_name']" position="after">
+                <!-- Receipt: editable expiry date input + status badge
+                     parent.picking_type_code because parent is stock.picking -->
+                <field name="expiry_date_input"
+                       string="Expiry Date"
+                       widget="date"
+                       optional="show"
+                       column_invisible="parent.picking_type_code != 'incoming'"
+                />
+                <field name="expiry_status"
+                       widget="badge"
+                       decoration-success="expiry_status == 'ok'"
+                       decoration-warning="expiry_status == 'near'"
+                       decoration-danger="expiry_status == 'expired'"
+                       string="Expiry Status"
+                       optional="show"
+                       readonly="1"
+                       column_invisible="parent.picking_type_code != 'incoming'"
+                />
+                <!-- Delivery / Pick: read-only expiry from the assigned lot -->
+                <field name="lot_expiry_date"
+                       string="Lot Expiry Date"
+                       widget="date"
+                       readonly="1"
+                       optional="show"
+                       column_invisible="parent.picking_type_code == 'incoming'"
+                />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

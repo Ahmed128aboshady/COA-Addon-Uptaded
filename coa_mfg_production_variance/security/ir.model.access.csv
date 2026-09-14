@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_coa_mfg_production_variance_user,coa.mfg.production.variance.user,model_coa_mfg_production_variance,mrp.group_mrp_user,1,0,0,0
+access_coa_production_variance_wizard_user,coa.production.variance.wizard.user,model_coa_production_variance_wizard,mrp.group_mrp_user,1,1,1,1

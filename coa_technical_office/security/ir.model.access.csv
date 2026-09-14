@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_technical_review_internal,technical.review internal user,model_technical_review,base.group_user,1,1,1,0
+access_technical_review_manager,technical.review manager,model_technical_review,alramlaa_technical_office.group_technical_office_manager,1,1,1,1
+access_technical_review_line_internal,technical.review.line internal user,model_technical_review_line,base.group_user,1,1,1,0
+access_technical_review_line_manager,technical.review.line manager,model_technical_review_line,alramlaa_technical_office.group_technical_office_manager,1,1,1,1
+access_technical_reject_wizard,technical.review.reject.wizard,model_technical_review_reject_wizard,base.group_user,1,1,1,1

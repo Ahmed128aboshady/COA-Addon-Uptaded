@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_res_users_form_location_restriction" model="ir.ui.view">
+            <field name="name">res.users.form.location.restriction</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//page[@name='page_security']" position="after">
+                    <page string="Location Restrictions"
+                          name="location_restrictions"
+                          groups="ts_location_restrictions.group_location_restriction_manager">
+
+                        <group>
+                            <field name="location_restriction_enabled"
+                                   widget="boolean_toggle"
+                                   string="Enable Location Restriction"/>
+                        </group>
+
+                        <!-- Odoo 19: use invisible= attribute directly (no attrs={}) -->
+                        <div invisible="not location_restriction_enabled">
+
+                            <group string="Allowed Warehouses"
+                                   help="Leave empty to allow access to all warehouses.">
+                                <field name="allowed_warehouse_ids"
+                                       nolabel="1"
+                                       widget="many2many_tags"
+                                       options="{'no_create': True}"
+                                       placeholder="Leave empty to allow all warehouses…"/>
+                            </group>
+
+                            <group string="Allowed Locations"
+                                   help="Leave empty to allow access to all locations. Child locations are included automatically.">
+                                <field name="allowed_location_ids"
+                                       nolabel="1"
+                                       widget="many2many_tags"
+                                       options="{'no_create': True}"
+                                       domain="[('usage', 'in', ['internal', 'transit'])]"
+                                       placeholder="Leave empty to allow all locations…"/>
+                            </group>
+
+                            <group string="Allowed Operation Types"
+                                   help="Leave empty to allow all operation types (Receipts, Deliveries, Internal Transfers…).">
+                                <field name="allowed_picking_type_ids"
+                                       nolabel="1"
+                                       widget="many2many_tags"
+                                       options="{'no_create': True}"
+                                       placeholder="Leave empty to allow all operation types…"/>
+                            </group>
+
+                        </div>
+
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

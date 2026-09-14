@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_commission_analysis_wizard_form" model="ir.ui.view">
+        <field name="name">commission.analysis.wizard.form</field>
+        <field name="model">commission.analysis.wizard</field>
+        <field name="arch" type="xml">
+            <form string="تقرير تحليل مبيعات المندوبين">
+                <group>
+                    <group string="الفترة الزمنية">
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+                    <group string="تصفية">
+                        <field name="salesperson_ids" widget="many2many_tags"
+                               placeholder="الكل (اتركه فارغاً)"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="action_print_report"
+                            string="🖨 طباعة PDF"
+                            type="object"
+                            class="oe_highlight"/>
+                    <button name="action_export_excel"
+                            string="📥 تصدير Excel"
+                            type="object"
+                            class="btn-secondary"/>
+                    <button string="إغلاق" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_commission_analysis_wizard" model="ir.actions.act_window">
+        <field name="name">تقرير تحليل مبيعات المندوبين</field>
+        <field name="res_model">commission.analysis.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

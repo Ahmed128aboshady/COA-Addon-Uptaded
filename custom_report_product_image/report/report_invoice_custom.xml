@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         INVOICE / BILL / JOURNAL ENTRY
+         - Column 1 : Reference  (product_id.default_code)
+         - Column 2 : Product    (product_id.name  — name only, no notes)
+         Replaces the single "Description" column (line.name)
+         ═══════════════════════════════════════════════════════════════════ -->
+    <template id="report_invoice_document_custom" inherit_id="account.report_invoice_document">
+
+        <!-- ── thead: replace "Description" with two headers ── -->
+        <xpath expr="//th[@name='th_description']" position="replace">
+            <th name="th_ref" class="text-start text-nowrap" style="width:120px;">
+                <strong>Reference</strong>
+            </th>
+            <th name="th_description" class="text-start">
+                <strong>Product</strong>
+            </th>
+        </xpath>
+
+        <!-- ── product rows: replace the name td ── -->
+        <xpath expr="//td[@name='account_invoice_line_name']" position="replace">
+            <td name="account_invoice_line_ref" class="text-start text-nowrap" style="width:120px; vertical-align:top;">
+                <span t-out="line.product_id.default_code or ''"/>
+            </td>
+            <td name="account_invoice_line_name" t-att-class="padding_class" style="vertical-align:top;">
+                <span t-out="line.product_id.name or (line.name or '')"/>
+            </td>
+        </xpath>
+
+    </template>
+
+</odoo>

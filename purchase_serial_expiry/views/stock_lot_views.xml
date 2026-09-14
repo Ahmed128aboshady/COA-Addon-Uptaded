@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Add our custom expiry_date + computed columns to the lot list view -->
+    <record id="view_stock_lot_list_expiry" model="ir.ui.view">
+        <field name="name">stock.lot.list.expiry</field>
+        <field name="model">stock.lot</field>
+        <field name="inherit_id" ref="stock.view_production_lot_tree"/>
+        <field name="arch" type="xml">
+            <!-- Insert expiry columns before the optional product_qty column -->
+            <xpath expr="//field[@name='product_qty']" position="before">
+                <field name="expiry_date" string="Expiry Date" optional="show"/>
+                <field name="days_to_expiry" string="Days Left" optional="show"
+                       decoration-danger="days_to_expiry &lt; 0"
+                       decoration-warning="days_to_expiry &gt;= 0 and days_to_expiry &lt;= 30"
+                />
+                <field name="expiry_status" widget="badge"
+                       decoration-success="expiry_status == 'ok'"
+                       decoration-warning="expiry_status == 'near'"
+                       decoration-danger="expiry_status == 'expired'"
+                       string="Expiry Status" optional="show"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Add expiry_date to the lot form view (Inventory group) -->
+    <record id="view_stock_lot_form_expiry" model="ir.ui.view">
+        <field name="name">stock.lot.form.expiry</field>
+        <field name="model">stock.lot</field>
+        <field name="inherit_id" ref="stock.view_production_lot_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='inventory_group']" position="before">
+                <group string="Expiry">
+                    <field name="expiry_date" string="Expiry Date"/>
+                    <field name="days_to_expiry" string="Days Left"
+                           decoration-danger="days_to_expiry &lt; 0"
+                           decoration-warning="days_to_expiry &gt;= 0 and days_to_expiry &lt;= 30"
+                    />
+                    <field name="expiry_status" widget="badge"
+                           decoration-success="expiry_status == 'ok'"
+                           decoration-warning="expiry_status == 'near'"
+                           decoration-danger="expiry_status == 'expired'"
+                    />
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Extend stock.lot search to filter/group by our expiry fields -->
+    <record id="view_stock_lot_search_expiry" model="ir.ui.view">
+        <field name="name">stock.lot.search.expiry</field>
+        <field name="model">stock.lot</field>
+        <field name="inherit_id" ref="stock.search_product_lot_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <separator/>
+                <filter string="Expiring Soon (≤30 days)" name="filter_near"
+                        domain="[('expiry_status','=','near')]"/>
+                <filter string="Expired" name="filter_expired"
+                        domain="[('expiry_status','=','expired')]"/>
+                <filter string="Valid" name="filter_ok"
+                        domain="[('expiry_status','=','ok')]"/>
+                <filter string="Has Expiry Date" name="filter_has_expiry"
+                        domain="[('expiry_date','!=',False)]"/>
+            </xpath>
+            <xpath expr="//search/group" position="inside">
+                <filter string="Expiry Status" name="group_expiry_status"
+                        context="{'group_by':'expiry_status'}"/>
+                <filter string="Expiry Month" name="group_expiry_month"
+                        context="{'group_by':'expiry_date:month'}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

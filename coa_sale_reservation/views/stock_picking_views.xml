@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Transfers Search: filter reservations -->
+    <record id="view_picking_internal_search_reservation" model="ir.ui.view">
+        <field name="name">stock.picking.search.reservation</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <separator/>
+                <filter string="حجوزات / Reservations" name="filter_reservation"
+                        domain="[('is_reservation', '=', True)]"/>
+                <filter string="تسليم عادي (Non-Reservation)" name="filter_not_reservation"
+                        domain="[('is_reservation', '=', False)]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Picking Form: ribbon on reservation transfers -->
+    <record id="view_picking_form_reservation" model="ir.ui.view">
+        <field name="name">stock.picking.form.reservation</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <field name="is_reservation" invisible="1"/>
+                <widget name="web_ribbon" title="حجز"
+                        bg_color="text-bg-warning"
+                        invisible="not is_reservation"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

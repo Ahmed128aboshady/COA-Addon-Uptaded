@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Add payment_status to delivery form view -->
+    <record id="view_picking_form_payment_status" model="ir.ui.view">
+        <field name="name">stock.picking.form.payment.status</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <!-- Show it as a field in the second group, after origin -->
+            <xpath expr="//sheet//group//group[2]//field[@name='origin']" position="after">
+                <field name="payment_status" widget="badge" string="Payment Status"
+                       decoration-success="payment_status == 'paid'"
+                       decoration-warning="payment_status in ('partial', 'in_payment')"
+                       decoration-danger="payment_status == 'not_paid'"
+                       decoration-muted="payment_status == 'not_invoiced'"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Add payment_status to delivery list view -->
+    <record id="view_picking_list_payment_status" model="ir.ui.view">
+        <field name="name">stock.picking.list.payment.status</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree"/>
+        <field name="arch" type="xml">
+            <field name="state" position="before">
+                <field name="payment_status"
+                       optional="show"
+                       widget="badge"
+                       decoration-success="payment_status == 'paid'"
+                       decoration-warning="payment_status in ('partial', 'in_payment')"
+                       decoration-danger="payment_status == 'not_paid'"
+                       decoration-muted="payment_status == 'not_invoiced'"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

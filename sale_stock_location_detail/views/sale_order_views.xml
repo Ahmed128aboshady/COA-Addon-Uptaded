@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ══════════════════════════════════════════════════════
+         Sale Order Form — عمود "Reserved From" في الـ lines
+    ══════════════════════════════════════════════════════ -->
+    <record id="view_order_form_reserved_location" model="ir.ui.view">
+        <field name="name">sale.order.form.reserved.location</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='order_line']/list//field[@name='product_uom_qty']" position="after">
+                <field
+                    name="reserved_location_detail"
+                    string="Reserved From"
+                    optional="show"
+                    readonly="1"
+                    widget="char"
+                />
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- ══════════════════════════════════════════════════════
+         Picking Form — عمود "Source Location" في الـ moves
+    ══════════════════════════════════════════════════════ -->
+    <record id="view_picking_form_reserved_location" model="ir.ui.view">
+        <field name="name">stock.picking.form.reserved.location</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='move_ids_without_package']/list//field[@name='product_uom_qty']" position="after">
+                <field
+                    name="reserved_location_detail"
+                    string="Location Detail"
+                    optional="show"
+                    readonly="1"
+                    widget="char"
+                />
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- ══════════════════════════════════════════════════════
+         Invoice Form — عمود "Source Location" في الـ lines
+    ══════════════════════════════════════════════════════ -->
+    <record id="view_move_form_reserved_location" model="ir.ui.view">
+        <field name="name">account.move.form.reserved.location</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='invoice_line_ids']/list//field[@name='quantity']" position="after">
+                <field
+                    name="stock_location_detail"
+                    string="Source Location"
+                    optional="show"
+                    readonly="1"
+                    widget="char"
+                />
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

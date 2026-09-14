@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ─── إضافة Tab شروط السداد على Sales Order ─── -->
+    <record id="view_sale_order_payment_milestones" model="ir.ui.view">
+        <field name="name">sale.order.payment.milestones</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <!-- ─── Smart Button: سندات القبض ─── -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_milestone_payments"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-money"
+                    invisible="milestone_payment_count == 0">
+                    <div class="o_stat_info">
+                        <field name="milestone_payment_count" class="o_stat_value"/>
+                        <span class="o_stat_text">سند قبض مرتبط</span>
+                    </div>
+                </button>
+            </xpath>
+
+            <!-- إضافة الـ Tab داخل notebook -->
+            <xpath expr="//notebook" position="inside">
+                <page string="شروط السداد" name="payment_milestones"
+                      invisible="state == 'cancel'">
+
+                    <!-- تنبيه لو النسب مش 100% -->
+                    <div class="alert alert-warning"
+                         role="alert"
+                         invisible="not milestone_warning">
+                        <i class="fa fa-exclamation-triangle me-1" title="تحذير"/>
+                        <field name="milestone_warning" readonly="1" class="d-inline"/>
+                    </div>
+
+                    <!-- Summary Cards -->
+                    <div class="row mb-3">
+                        <div class="col-3">
+                            <div class="o_stat_button flex-column" style="cursor:default">
+                                <span class="o_stat_text text-muted small">إجمالي الأوردر</span>
+                                <field name="amount_total" readonly="1"
+                                    widget="monetary" class="o_stat_value"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="o_stat_button flex-column" style="cursor:default">
+                                <span class="o_stat_text text-muted small">إجمالي المدفوع</span>
+                                <field name="milestone_paid_amount" readonly="1"
+                                    widget="monetary" class="o_stat_value text-success"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="o_stat_button flex-column" style="cursor:default">
+                                <span class="o_stat_text text-muted small">المتبقي</span>
+                                <field name="milestone_remaining_amount" readonly="1"
+                                    widget="monetary" class="o_stat_value text-warning"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="o_stat_button flex-column" style="cursor:default">
+                                <span class="o_stat_text text-muted small">% السداد</span>
+                                <field name="milestone_paid_pct" readonly="1"
+                                    widget="progressbar" class="o_stat_value"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- جدول المراحل -->
+                    <field name="payment_milestone_ids"
+                           widget="one2many_list"
+                           context="{'default_order_id': id}">
+                        <list string="مراحل الدفع" editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="name"/>
+                            <field name="trigger"/>
+                            <field name="percentage" sum="إجمالي النسب"/>
+                            <field name="amount" readonly="1" sum="الإجمالي"/>
+                            <field name="paid_amount" readonly="1" sum="المدفوع"/>
+                            <field name="remaining_amount" readonly="1" sum="المتبقي"/>
+                            <field name="paid_percentage"
+                                   widget="progressbar"
+                                   options="{'editable': false}"
+                                   readonly="1"/>
+                            <field name="state" widget="badge"
+                                decoration-success="state == 'paid'"
+                                decoration-warning="state == 'partial'"
+                                decoration-muted="state == 'pending'"/>
+                            <field name="currency_id" column_invisible="True"/>
+                            <button name="action_open_reconcile_wizard"
+                                type="object"
+                                string="ربط دفعة"
+                                icon="fa-link"
+                                invisible="state == 'paid'"
+                                class="btn-secondary btn-sm"/>
+                        </list>
+                    </field>
+
+                    <!-- زر عرض كل الدفعات المرتبطة -->
+                    <div class="mt-2">
+                        <button name="action_view_milestone_payments"
+                            type="object"
+                            string="عرض سندات القبض المرتبطة"
+                            icon="fa-money"
+                            class="btn btn-secondary"
+                            invisible="milestone_payment_count == 0"/>
+                    </div>
+
+                    <!-- hidden computed fields -->
+                    <field name="milestone_total_pct" invisible="1"/>
+                    <field name="milestone_count" invisible="1"/>
+                    <field name="milestone_payment_count" invisible="1"/>
+                    <field name="milestone_warning" invisible="1"/>
+                    <field name="milestone_remaining_amount" invisible="1"/>
+                    <field name="milestone_paid_amount" invisible="1"/>
+                    <field name="milestone_paid_pct" invisible="1"/>
+
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

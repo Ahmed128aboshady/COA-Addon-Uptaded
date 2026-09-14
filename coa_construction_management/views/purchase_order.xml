@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="inherit_purchase_order_form" model="ir.ui.view">
+        <field name="name">inherit.purchase.order.form</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="construction_project_id"/>
+                <field name="project_name"/>
+                <field name="project_number"/>
+                <field name="project_id"/>
+                <field name="project_task_id"/>
+                <field name="boq_cost_estimation_line_id"/>
+            </xpath>
+
+            <xpath expr="//div[contains(@class, 'oe_title')]" position="replace">
+                <div class="oe_title">
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                </div>
+
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
+
+
+

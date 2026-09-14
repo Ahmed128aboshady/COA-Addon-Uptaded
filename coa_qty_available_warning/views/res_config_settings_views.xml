@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form_coa_qty_warning" model="ir.ui.view">
+        <field name="name">res.config.settings.form.coa.qty.warning</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="stock.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='stock']" position="inside">
+                <block title="COA Warnings" name="coa_qty_warning_block">
+                    <setting id="coa_qty_warning_setting"
+                             string="Quantity Available Warning"
+                             help="Warn (without blocking) when the requested quantity exceeds the company-wide Free To Use quantity, on sale order lines and on transfer validation.">
+                        <field name="coa_qty_warning_enabled"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

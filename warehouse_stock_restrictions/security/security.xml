@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="group_restrict_warehouse" model="res.groups">
+            <field name="name">Resrict Stock warehouses</field>
+        </record>
+
+        <record id="filter_user_stock_picking_type_allowed" model="ir.rule">
+            <field name="name">Filter Stock Picking Type Allowed new</field>
+            <field name="model_id" ref="stock.model_stock_picking_type"/>
+            <field name="groups" eval="[(4, ref('group_restrict_warehouse'))]"/>
+            <field name="domain_force">[('id','in', [ p.id for p in user.default_picking_type_ids ])]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+<!--        <record id="group_pos_restricted" model="res.groups">-->
+<!--            <field name="name">POS Config User</field>-->
+<!--            &lt;!&ndash;    <field name="category_id" ref="base.module_category_point_of_sale"/>&ndash;&gt;-->
+<!--        </record>-->
+
+<!--        <record id="group_pos_payment_restricted" model="res.groups">-->
+<!--            <field name="name">POS Payment User</field>-->
+<!--            &lt;!&ndash;    <field name="category_id" ref="base.module_category_point_of_sale"/>&ndash;&gt;-->
+<!--        </record>-->
+
+<!--        <record id="rule_pos_config_access" model="ir.rule">-->
+<!--            <field name="name">POS Config Access Rule</field>-->
+<!--            <field name="model_id" ref="point_of_sale.model_pos_config"/>-->
+<!--            <field name="domain_force">[('id', 'in', user.allowed_pos_config_ids.ids)]</field>-->
+<!--            <field name="groups" eval="[(4, ref('group_pos_restricted'))]"/>-->
+<!--        </record>-->
+
+<!--        <record id="rule_pos_payment_access" model="ir.rule">-->
+<!--            <field name="name">POS Payment Access Rule</field>-->
+<!--            <field name="model_id" ref="point_of_sale.model_pos_payment_method"/>-->
+<!--            <field name="domain_force">[('id', 'in', user.allowed_pos_payment_ids.ids)]</field>-->
+<!--            <field name="groups" eval="[(4, ref('group_pos_payment_restricted'))]"/>-->
+<!--        </record>-->
+        <record id="stock_quant_location_rule" model="ir.rule">
+            <field name="name">Stock Quant Location Rule</field>
+            <field name="model_id" ref="stock.model_stock_quant"/>
+            <field name="domain_force">[('location_id', 'in', user.stock_location_ids.ids)]</field>
+            <field name="groups" eval="[(4, ref('group_restrict_warehouse'))]"/>
+        </record>
+
+<!--        <record id="stock_location_access_rule" model="ir.rule">-->
+<!--            <field name="name">Stock Location Access Rule</field>-->
+<!--            <field name="model_id" ref="stock.model_stock_location"/>-->
+<!--            <field name="domain_force">[('id', 'in', user.stock_location_ids.ids)]</field>-->
+<!--            <field name="groups" eval="[(4, ref('group_restrict_warehouse'))]"/>-->
+<!--            <field name="perm_read" eval="True"/>-->
+<!--            <field name="perm_write" eval="True"/>-->
+<!--            <field name="perm_create" eval="True"/>-->
+<!--            <field name="perm_unlink" eval="False"/>-->
+<!--        </record>-->
+
+        <record id="stock_picking_location_rule" model="ir.rule">
+            <field name="name">Stock Picking Location Rule</field>
+            <field name="model_id" ref="stock.model_stock_picking"/>
+            <field name="domain_force">['|',('location_id', 'in', user.stock_location_ids.ids), ('location_dest_id', 'in', user.stock_location_ids.ids)]</field>
+            <field name="groups" eval="[(4, ref('group_restrict_warehouse'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

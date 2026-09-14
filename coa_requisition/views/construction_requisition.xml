@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="construction_requisition_form" model="ir.ui.view">
+        <field name="name">construction.requisition.form</field>
+        <field name="model">construction.requisition</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="confirm" type="object" string="Confirm"
+                            class="oe_highlight" invisible="state != 'draft'"/>
+                    <button name="send_to_pm_approve" type="object" string="Send To PM Approve"
+                            class="oe_highlight" invisible="state != 'confirmed'"/>
+                    <button name="pm_approved" type="object" string="PM Approved"
+                            class="oe_highlight" invisible="state != 'send_to_pm_approve'"
+                            groups="arabian_requisition.group_requisition_pm_manager"/>
+                    <button name="pm_rejected" type="object" string="PM Rejected"
+                            class="oe_highlight" invisible="state != 'send_to_pm_approve'"
+                            groups="arabian_requisition.group_requisition_pm_manager"/>
+                    <button name="transfer" type="object" string="Transfer"
+                            class="oe_highlight" invisible="state != 'pm_approved'"
+                            groups="arabian_requisition.group_requisition_administrator"/>
+                    <button name="purchase" type="object" string="Purchase"
+                            class="oe_highlight" invisible="state != 'pm_approved'"
+                            groups="arabian_requisition.group_requisition_administrator"/>
+                    <button name="lock_order" type="object" string="Lock"
+                            invisible="state != 'pm_approved'"
+                            groups="arabian_requisition.group_requisition_administrator"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,lock"/>
+                </header>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <button name="action_view_all_stock_picking"
+                                type="object" class="oe_stat_button"
+                                icon="fa-pencil-square-o"
+                                invisible="count_picking == 0">
+                            <field name="count_picking" widget="statinfo"
+                                   string="Picking"/>
+                        </button>
+                        <button name="action_view_all_purchase_requisition"
+                                type="object" class="oe_stat_button"
+                                icon="fa-pencil-square-o"
+                                invisible="count_purchase_requisition == 0">
+                            <field name="count_purchase_requisition"
+                                   widget="statinfo" string="Agreements"/>
+                        </button>
+                        <button name="action_view_all_purchase_order"
+                                type="object" class="oe_stat_button"
+                                icon="fa-pencil-square-o"
+                                invisible="count_purchase_order == 0">
+                            <field name="count_purchase_order" widget="statinfo"
+                                   string="Purchase"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                            <field name="user_id"/>
+                            <field name="state" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Lines">
+                            <field name="construction_requisition_line_ids">
+                                <list editable="bottom">
+                                    <field name="construction_requisition_id"
+                                           column_invisible="1"/>
+                                    <field name="product_id"/>
+                                    <field name="name"/>
+                                    <field name="uom_id"/>
+                                    <button name="open_on_hand" type="object"
+                                            string="Check On Hand"/>
+                                    <field name="quantity"/>
+                                    <field name="select"
+                                           column_invisible="parent.state != 'pm_approved'"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="construction_requisition_tree" model="ir.ui.view">
+        <field name="name">construction.requisition.tree</field>
+        <field name="model">construction.requisition</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="company_id"/>
+                <field name="date"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="construction_requisition_sequence" model="ir.sequence">
+        <field name="name">construction.requisition</field>
+        <field name="code">construction.requisition</field>
+        <field name="prefix">REQ/</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+
+
+    <record id="construction_requisition_action" model="ir.actions.act_window">
+        <field name="name">Construction Requisition</field>
+        <field name="res_model">construction.requisition</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Construction Requisition
+            </p>
+        </field>
+    </record>
+</odoo>

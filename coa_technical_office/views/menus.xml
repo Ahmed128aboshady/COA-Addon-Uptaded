@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root menu under Manufacturing -->
+    <menuitem id="menu_technical_office_root"
+              name="Technical Office"
+              parent="mrp.menu_mrp_root"
+              sequence="15"
+              groups="alramlaa_technical_office.group_technical_office_user"/>
+
+    <!-- Pending Approval: draft + in_progress reviews -->
+    <menuitem id="menu_technical_reviews_pending"
+              name="Pending Approval"
+              parent="menu_technical_office_root"
+              action="action_technical_review_pending"
+              sequence="10"/>
+
+    <!-- History: approved + rejected reviews -->
+    <menuitem id="menu_technical_reviews_history"
+              name="History"
+              parent="menu_technical_office_root"
+              action="action_technical_review_history"
+              sequence="20"/>
+
+    <!-- All reviews -->
+    <menuitem id="menu_technical_reviews_all"
+              name="All Reviews"
+              parent="menu_technical_office_root"
+              action="action_technical_review"
+              sequence="30"/>
+</odoo>

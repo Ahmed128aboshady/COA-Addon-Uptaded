@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Report Action -->
+    <record id="action_report_mrp_production_cost" model="ir.actions.report">
+        <field name="name">Production Cost Report</field>
+        <field name="model">mrp.production</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">manufacturing_machines.report_mrp_production_cost</field>
+        <field name="report_file">manufacturing_machines.report_mrp_production_cost</field>
+        <field name="binding_model_id" ref="mrp.model_mrp_production"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="base.paperformat_euro"/>
+    </record>
+
+    <!-- QWeb Template -->
+    <template id="report_mrp_production_cost">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+
+                        <!-- Header -->
+                        <div class="row mb-4">
+                            <div class="col-8">
+                                <h2>Production Cost Report</h2>
+                                <h4 class="text-muted">
+                                    <t t-esc="o.name"/> —
+                                    <t t-esc="o.product_id.display_name"/>
+                                </h4>
+                            </div>
+                            <div class="col-4 text-end">
+                                <table class="table table-sm table-borderless">
+                                    <tr>
+                                        <td class="text-muted">Date:</td>
+                                        <td><span t-field="o.date_start"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted">Qty:</td>
+                                        <td>
+                                            <t t-esc="o.product_qty"/>
+                                            <t t-esc="o.product_uom_id.name"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted">Status:</td>
+                                        <td><t t-esc="o.state"/></td>
+                                    </tr>
+                                    <t t-if="o.mrp_cost_posted">
+                                    <tr>
+                                        <td class="text-muted">Journal Entry:</td>
+                                        <td><t t-esc="o.mrp_move_id.name"/></td>
+                                    </tr>
+                                    </t>
+                                </table>
+                            </div>
+                        </div>
+
+                        <hr/>
+
+                        <!-- MACHINES -->
+                        <t t-if="o.machine_line_ids">
+                            <h5 class="mt-3">Machine Costs</h5>
+                            <table class="table table-sm table-striped">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Machine</th>
+                                        <th>Status</th>
+                                        <th class="text-end">Rate/hr</th>
+                                        <th class="text-end">Hours</th>
+                                        <th class="text-end">Cost</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="o.machine_line_ids" t-as="ml">
+                                        <tr>
+                                            <td><t t-esc="ml.machine_id.name"/></td>
+                                            <td><t t-esc="ml.state"/></td>
+                                            <td class="text-end">
+                                                <t t-esc="ml.machine_hourly_cost"
+                                                   t-options='{"widget":"float","precision":2}'/>
+                                            </td>
+                                            <td class="text-end">
+                                                <t t-esc="ml.duration"
+                                                   t-options='{"widget":"float","precision":2}'/>
+                                            </td>
+                                            <td class="text-end">
+                                                <t t-esc="ml.cost"
+                                                   t-options='{"widget":"float","precision":2}'/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="fw-bold">
+                                        <td colspan="3">Total Machine Cost</td>
+                                        <td class="text-end">
+                                            <t t-esc="o.machine_total_hours"
+                                               t-options='{"widget":"float","precision":2}'/>
+                                        </td>
+                                        <td class="text-end">
+                                            <t t-esc="o.machine_total_cost"
+                                               t-options='{"widget":"float","precision":2}'/>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </t>
+
+                        <!-- LABOR -->
+                        <t t-if="o.labor_line_ids">
+                            <h5 class="mt-4">Labor Costs</h5>
+                            <table class="table table-sm table-striped">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Worker</th>
+                                        <th>Job Title</th>
+                                        <th class="text-end">Rate/hr</th>
+                                        <th class="text-end">Hours</th>
+                                        <th class="text-end">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="o.labor_line_ids" t-as="ll">
+                                        <tr>
+                                            <td><t t-esc="ll.employee_name"/></td>
+                                            <td><t t-esc="ll.job_title or ''"/></td>
+                                            <td class="text-end">
+                                                <t t-esc="ll.hourly_rate"
+                                                   t-options='{"widget":"float","precision":2}'/>
+                                            </td>
+                                            <td class="text-end">
+                                                <t t-esc="ll.hours"
+                                                   t-options='{"widget":"float","precision":2}'/>
+                                            </td>
+                                            <td class="text-end">
+                                                <t t-esc="ll.total_cost"
+                                                   t-options='{"widget":"float","precision":2}'/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="fw-bold">
+                                        <td colspan="4">Total Labor Cost</td>
+                                        <td class="text-end">
+                                            <t t-esc="o.mrp_labor_cost"
+                                               t-options='{"widget":"float","precision":2}'/>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </t>
+
+                        <!-- OVERHEAD -->
+                        <t t-if="o.overhead_line_ids">
+                            <h5 class="mt-4">Overhead Costs</h5>
+                            <table class="table table-sm table-striped">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Type</th>
+                                        <th class="text-end">Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="o.overhead_line_ids" t-as="ol">
+                                        <tr>
+                                            <td><t t-esc="ol.name"/></td>
+                                            <td><t t-esc="ol.overhead_type"/></td>
+                                            <td class="text-end">
+                                                <t t-esc="ol.amount"
+                                                   t-options='{"widget":"float","precision":2}'/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="fw-bold">
+                                        <td colspan="2">Total Overhead</td>
+                                        <td class="text-end">
+                                            <t t-esc="o.mrp_overhead_cost"
+                                               t-options='{"widget":"float","precision":2}'/>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </t>
+
+                        <!-- GRAND TOTAL SUMMARY -->
+                        <div class="row mt-4">
+                            <div class="col-6 offset-6">
+                                <table class="table table-sm">
+                                    <tr>
+                                        <td>Machine Costs</td>
+                                        <td class="text-end fw-bold">
+                                            <t t-esc="o.machine_total_cost"
+                                               t-options='{"widget":"float","precision":2}'/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Labor Costs</td>
+                                        <td class="text-end fw-bold">
+                                            <t t-esc="o.mrp_labor_cost"
+                                               t-options='{"widget":"float","precision":2}'/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Overhead Costs</td>
+                                        <td class="text-end fw-bold">
+                                            <t t-esc="o.mrp_overhead_cost"
+                                               t-options='{"widget":"float","precision":2}'/>
+                                        </td>
+                                    </tr>
+                                    <tr class="table-dark">
+                                        <td class="fw-bold">Grand Total</td>
+                                        <td class="text-end fw-bold">
+                                            <t t-esc="o.mrp_grand_total"
+                                               t-options='{"widget":"float","precision":2}'/>
+                                        </td>
+                                    </tr>
+                                    <t t-if="o.product_qty">
+                                    <tr>
+                                        <td class="text-muted">Cost per Unit</td>
+                                        <td class="text-end text-muted">
+                                            <t t-esc="o.mrp_grand_total / o.product_qty"
+                                               t-options='{"widget":"float","precision":2}'/>
+                                        </td>
+                                    </tr>
+                                    </t>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

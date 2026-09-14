@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="view_mfg_maintenance_form" model="ir.ui.view">
+        <field name="name">mfg.maintenance.form</field>
+        <field name="model">mfg.maintenance</field>
+        <field name="arch" type="xml">
+            <form string="Maintenance Record">
+                <header>
+                    <button name="action_start" string="Start Maintenance" type="object"
+                        class="btn-warning" invisible="state != 'draft'"/>
+                    <button name="action_done" string="Done" type="object"
+                        class="btn-success" invisible="state != 'in_progress'"/>
+                    <button name="action_cancel" string="Cancel" type="object"
+                        class="btn-danger" invisible="state in ['done', 'cancelled']"/>
+                    <button name="action_post_accounting" string="Post Accounting Entry" type="object"
+                        class="btn-primary"
+                        invisible="state != 'done' or account_posted"/>
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="draft,in_progress,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group string="Maintenance Details">
+                            <field name="machine_id"/>
+                            <field name="maintenance_type"/>
+                            <field name="date"/>
+                            <field name="date_done" readonly="1"/>
+                            <field name="technician_id"/>
+                            <field name="next_maintenance_date"/>
+                        </group>
+                        <group string="Costs">
+                            <field name="labor_hours"/>
+                            <field name="labor_rate"/>
+                            <field name="labor_cost" readonly="1"/>
+                            <field name="spare_parts_cost" readonly="1"/>
+                            <field name="total_cost" readonly="1" class="fw-bold"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Accounting" invisible="not account_posted">
+                            <field name="move_id" readonly="1"/>
+                            <field name="account_posted" readonly="1" widget="boolean_toggle"/>
+                        </group>
+                        <group>
+                            <field name="journal_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Problem Description">
+                            <field name="description" placeholder="Describe the problem..."/>
+                        </page>
+                        <page string="Solution">
+                            <field name="solution" placeholder="Write the solution..."/>
+                        </page>
+                        <page string="Spare Parts">
+                            <field name="spare_parts_ids">
+                                <list editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="name"/>
+                                    <field name="quantity"/>
+                                    <field name="unit_cost"/>
+                                    <field name="total_cost" readonly="1"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- List View -->
+    <record id="view_mfg_maintenance_list" model="ir.ui.view">
+        <field name="name">mfg.maintenance.list</field>
+        <field name="model">mfg.maintenance</field>
+        <field name="arch" type="xml">
+            <list string="Maintenance Records"
+                  decoration-danger="maintenance_type == 'emergency'"
+                  decoration-warning="maintenance_type == 'corrective'">
+                <field name="name"/>
+                <field name="machine_id"/>
+                <field name="maintenance_type"/>
+                <field name="date"/>
+                <field name="state" widget="badge"/>
+                <field name="labor_cost"/>
+                <field name="spare_parts_cost"/>
+                <field name="total_cost" sum="Total"/>
+                <field name="account_posted" widget="boolean"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_mfg_maintenance_search" model="ir.ui.view">
+        <field name="name">mfg.maintenance.search</field>
+        <field name="model">mfg.maintenance</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="machine_id"/>
+                <filter string="Preventive" name="preventive" domain="[('maintenance_type','=','preventive')]"/>
+                <filter string="Corrective" name="corrective" domain="[('maintenance_type','=','corrective')]"/>
+                <filter string="Emergency" name="emergency" domain="[('maintenance_type','=','emergency')]"/>
+                <separator/>
+                <filter string="In Progress" name="in_progress" domain="[('state','=','in_progress')]"/>
+                <filter string="Done" name="done" domain="[('state','=','done')]"/>
+                <group>
+                    <filter name="group_machine" string="Machine" context="{'group_by': 'machine_id'}"/>
+                    <filter name="group_type" string="Type" context="{'group_by': 'maintenance_type'}"/>
+                    <filter name="group_month" string="Month" context="{'group_by': 'date:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_mfg_maintenance" model="ir.actions.act_window">
+        <field name="name">Maintenance Records</field>
+        <field name="res_model">mfg.maintenance</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_mfg_maintenance_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add your first maintenance record!
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_account_asset_form_inherit_category_link" model="ir.ui.view">
+        <field name="name">account.asset.form.inherit.category.link</field>
+        <field name="model">account.asset</field>
+        <field name="inherit_id" ref="account_asset.view_account_asset_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="category_id"/>
+                <field name="linked_asset_ids" widget="many2many_tags"/>
+            </xpath>
+
+            <xpath expr="//sheet" position="inside">
+                <group string="Purchase Information">
+                    <field name="purchase_date"/>
+                    <field name="purchase_price"/>
+                    <field name="asset_code"/>
+                </group>
+
+                <group string="Dimensions">
+                    <field name="dimension_length"/>
+                    <field name="dimension_width"/>
+                    <field name="dimension_thickness"/>
+                    <field name="square_meter" readonly="1"/>
+                    <field name="cubic_meter" readonly="1"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_asset_tree_inherit_category" model="ir.ui.view">
+        <field name="name">account.asset.tree.inherit.category</field>
+        <field name="model">account.asset</field>
+        <field name="inherit_id" ref="account_asset.view_account_asset_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="category_id"/>
+                <field name="asset_code"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_asset_category" model="ir.actions.act_window">
+        <field name="name">Asset Categories</field>
+        <field name="res_model">asset.category</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem
+        id="menu_asset_category"
+        name="Asset Categories"
+        parent="account.menu_finance_configuration"
+        action="action_asset_category"/>
+        
+</odoo>
