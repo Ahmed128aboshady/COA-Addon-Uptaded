@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_mrp_component_correction_wizard_user,mrp.component.correction.wizard.user,model_mrp_component_correction_wizard,mrp.group_mrp_user,1,1,1,1
-access_mrp_component_correction_wizard_manager,mrp.component.correction.wizard.manager,model_mrp_component_correction_wizard,mrp.group_mrp_manager,1,1,1,1
-access_mrp_component_correction_wizard_line_user,mrp.component.correction.wizard.line.user,model_mrp_component_correction_wizard_line,mrp.group_mrp_user,1,1,1,1
-access_mrp_component_correction_wizard_line_manager,mrp.component.correction.wizard.line.manager,model_mrp_component_correction_wizard_line,mrp.group_mrp_manager,1,1,1,1

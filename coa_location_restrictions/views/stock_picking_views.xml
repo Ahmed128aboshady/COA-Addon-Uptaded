@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <data>
-        <!--
-            Transfer list/form filtering is handled in stock_picking.py via _search().
-            No structural view changes required for Odoo 19.
-        -->
-    </data>
-</odoo>

@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_incoming_cheque,incoming_cheque,model_incoming_cheque,base.group_user,1,1,1,1
-access_outgoing_cheque,outgoing_cheque,model_outgoing_cheque,base.group_user,1,1,1,1
-access_check_accounts_cheque,check_accounts_cheque,model_check_accounts_cheque,base.group_user,1,1,1,1
