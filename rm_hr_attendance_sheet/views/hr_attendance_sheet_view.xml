@@ -257,7 +257,7 @@
 <!--                <field name="employee_id"/>-->
 <!--                <field name="company_id"/>-->
 <!--                <field name="department_id"/>-->
-<!--                <group expand="0" string="Group By">-->
+<!--                <group>-->
 <!--                    <filter name="group_employee" string="Employee"-->
 <!--                            context="{'group_by':'employee_id'}"/>-->
 <!--                    <separator/>-->

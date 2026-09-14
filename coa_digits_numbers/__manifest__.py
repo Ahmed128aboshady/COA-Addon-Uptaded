@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "arabian_digits_numbers",
+    'name': "coa_digits_numbers",
 
     'summary': "Short (1 phrase/line) summary of the module's purpose",
 

@@ -3,6 +3,5 @@
 <!--    Create the security group -->
     <record id="edit_order_date_group_user" model="res.groups">
        <field name="name">Edit Order Date</field>
-       <field name="category_id" ref="base.module_category_hidden"/>
-    </record>
+</record>
 </odoo>

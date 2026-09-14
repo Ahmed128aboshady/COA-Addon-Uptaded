@@ -4,8 +4,8 @@
 
 
 # class arabian_cheque_management(models.Model):
-#     _name = 'arabian_cheque_management.arabian_cheque_management'
-#     _description = 'arabian_cheque_management.arabian_cheque_management'
+#     _name = 'coa_cheque_management.arabian_cheque_management'
+#     _description = 'coa_cheque_management.arabian_cheque_management'
 
 #     name = fields.Char()
 #     value = fields.Integer()

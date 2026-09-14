@@ -4,8 +4,8 @@
 
 
 # class arabian_expense_payment(models.Model):
-#     _name = 'arabian_expense_payment.arabian_expense_payment'
-#     _description = 'arabian_expense_payment.arabian_expense_payment'
+#     _name = 'coa_expense_payment.arabian_expense_payment'
+#     _description = 'coa_expense_payment.arabian_expense_payment'
 
 #     name = fields.Char()
 #     value = fields.Integer()

@@ -15,10 +15,10 @@
         </record>
 
         <record id="purchase.action_report_purchase_order" model="ir.actions.report">
-            <field name="paperformat_id" ref="arfad_purchase_report.paperformat_arfad_purchase"/>
+            <field name="paperformat_id" ref="paperformat_arfad_purchase"/>
         </record>
         <record id="purchase.report_purchase_quotation" model="ir.actions.report">
-            <field name="paperformat_id" ref="arfad_purchase_report.paperformat_arfad_purchase"/>
+            <field name="paperformat_id" ref="paperformat_arfad_purchase"/>
         </record>
 
         <template id="arfad_custom_purchase_layout_base">

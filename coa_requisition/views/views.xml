@@ -2,9 +2,9 @@
   <data>
     <!-- explicit list view definition -->
 <!--
-    <record model="ir.ui.view" id="arabian_requisition.list">
+    <record model="ir.ui.view" id="coa_requisition.list">
       <field name="name">arabian_requisition list</field>
-      <field name="model">arabian_requisition.arabian_requisition</field>
+      <field name="model">coa_requisition.arabian_requisition</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
@@ -17,16 +17,16 @@
 
     <!-- actions opening views on models -->
 <!--
-    <record model="ir.actions.act_window" id="arabian_requisition.action_window">
+    <record model="ir.actions.act_window" id="coa_requisition.action_window">
       <field name="name">arabian_requisition window</field>
-      <field name="res_model">arabian_requisition.arabian_requisition</field>
+      <field name="res_model">coa_requisition.arabian_requisition</field>
       <field name="view_mode">tree,form</field>
     </record>
 -->
 
     <!-- server action to the one above -->
 <!--
-    <record model="ir.actions.server" id="arabian_requisition.action_server">
+    <record model="ir.actions.server" id="coa_requisition.action_server">
       <field name="name">arabian_requisition server</field>
       <field name="model_id" ref="model_arabian_requisition_arabian_requisition"/>
       <field name="state">code</field>
@@ -42,19 +42,19 @@
 
     <!-- Top menu item -->
 <!--
-    <menuitem name="arabian_requisition" id="arabian_requisition.menu_root"/>
+    <menuitem name="coa_requisition" id="coa_requisition.menu_root"/>
 -->
     <!-- menu categories -->
 <!--
-    <menuitem name="Menu 1" id="arabian_requisition.menu_1" parent="arabian_requisition.menu_root"/>
-    <menuitem name="Menu 2" id="arabian_requisition.menu_2" parent="arabian_requisition.menu_root"/>
+    <menuitem name="Menu 1" id="coa_requisition.menu_1" parent="coa_requisition.menu_root"/>
+    <menuitem name="Menu 2" id="coa_requisition.menu_2" parent="coa_requisition.menu_root"/>
 -->
     <!-- actions -->
 <!--
-    <menuitem name="List" id="arabian_requisition.menu_1_list" parent="arabian_requisition.menu_1"
-              action="arabian_requisition.action_window"/>
-    <menuitem name="Server to list" id="arabian_requisition" parent="arabian_requisition.menu_2"
-              action="arabian_requisition.action_server"/>
+    <menuitem name="List" id="coa_requisition.menu_1_list" parent="coa_requisition.menu_1"
+              action="coa_requisition.action_window"/>
+    <menuitem name="Server to list" id="coa_requisition" parent="coa_requisition.menu_2"
+              action="coa_requisition.action_server"/>
 -->
   </data>
 </odoo>

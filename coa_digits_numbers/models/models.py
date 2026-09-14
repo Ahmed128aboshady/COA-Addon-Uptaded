@@ -4,8 +4,8 @@
 
 
 # class arabian_digits_numbers(models.Model):
-#     _name = 'arabian_digits_numbers.arabian_digits_numbers'
-#     _description = 'arabian_digits_numbers.arabian_digits_numbers'
+#     _name = 'coa_digits_numbers.arabian_digits_numbers'
+#     _description = 'coa_digits_numbers.arabian_digits_numbers'
 
 #     name = fields.Char()
 #     value = fields.Integer()

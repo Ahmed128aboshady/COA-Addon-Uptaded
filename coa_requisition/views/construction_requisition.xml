@@ -13,19 +13,19 @@
                             class="oe_highlight" invisible="state != 'confirmed'"/>
                     <button name="pm_approved" type="object" string="PM Approved"
                             class="oe_highlight" invisible="state != 'send_to_pm_approve'"
-                            groups="arabian_requisition.group_requisition_pm_manager"/>
+                            groups="coa_requisition.group_requisition_pm_manager"/>
                     <button name="pm_rejected" type="object" string="PM Rejected"
                             class="oe_highlight" invisible="state != 'send_to_pm_approve'"
-                            groups="arabian_requisition.group_requisition_pm_manager"/>
+                            groups="coa_requisition.group_requisition_pm_manager"/>
                     <button name="transfer" type="object" string="Transfer"
                             class="oe_highlight" invisible="state != 'pm_approved'"
-                            groups="arabian_requisition.group_requisition_administrator"/>
+                            groups="coa_requisition.group_requisition_administrator"/>
                     <button name="purchase" type="object" string="Purchase"
                             class="oe_highlight" invisible="state != 'pm_approved'"
-                            groups="arabian_requisition.group_requisition_administrator"/>
+                            groups="coa_requisition.group_requisition_administrator"/>
                     <button name="lock_order" type="object" string="Lock"
                             invisible="state != 'pm_approved'"
-                            groups="arabian_requisition.group_requisition_administrator"/>
+                            groups="coa_requisition.group_requisition_administrator"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,lock"/>
                 </header>
                 <sheet>

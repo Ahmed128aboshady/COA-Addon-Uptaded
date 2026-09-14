@@ -5,8 +5,7 @@
 
         <record id="group_sale_own_view_any_create" model="res.groups">
             <field name="name">Sales: Own View / Any Salesperson Create</field>
-            <field name="category_id" ref="base.module_category_sales_sales"/>
-            <field name="implied_ids" eval="[(4, ref('sales_team.group_sale_salesman'))]"/>
+<field name="implied_ids" eval="[(4, ref('sales_team.group_sale_salesman'))]"/>
             <field name="comment">المندوب يشوف بتاعته بس - ويقدر يعمل سيلز أوردر لأي salesperson</field>
         </record>
 

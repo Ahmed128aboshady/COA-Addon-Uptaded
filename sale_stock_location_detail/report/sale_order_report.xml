@@ -39,7 +39,7 @@
         </xpath>
 
         <!-- Data cell للـ moves (state != done): قبل td الـ Delivered quantity -->
-        <xpath expr="//table[@name='stock_move_table']//tbody/tr/td/span[@t-field='move.quantity']/.." position="before">
+        <xpath expr="//table[@name='stock_move_table']//tbody/tr/td[last()]" position="before">
             <td class="text-start" style="font-size:90%; color:#555; white-space:pre-line;">
                 <span t-if="move.reserved_location_detail"
                       t-esc="move.reserved_location_detail"/>

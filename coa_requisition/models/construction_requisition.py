@@ -106,7 +106,7 @@ class ConstructionRequisition(models.Model):
         if items:
             action = \
                 self.env.ref(
-                    'arabian_requisition.transfer_requisition_order_action').sudo().read()[
+                    'coa_requisition.transfer_requisition_order_action').sudo().read()[
                     0]
             action['context'] = {
                 'default_transfer_requisition_order_line_ids': items,
@@ -114,7 +114,7 @@ class ConstructionRequisition(models.Model):
             }
             action['views'] = [
                 (self.env.ref(
-                    'arabian_requisition.transfer_requisition_order_form').id,
+                    'coa_requisition.transfer_requisition_order_form').id,
                  'form')]
             return action
         else:
@@ -134,7 +134,7 @@ class ConstructionRequisition(models.Model):
         if items:
             action = \
                 self.env.ref(
-                    'arabian_requisition.transfer_requisition_order_action').sudo().read()[
+                    'coa_requisition.transfer_requisition_order_action').sudo().read()[
                     0]
             action['context'] = {
                 'default_transfer_requisition_order_line_ids': items,
@@ -142,7 +142,7 @@ class ConstructionRequisition(models.Model):
             }
             action['views'] = [
                 (self.env.ref(
-                    'arabian_requisition.transfer_requisition_order_form').id,
+                    'coa_requisition.transfer_requisition_order_form').id,
                  'form')]
             return action
         else:

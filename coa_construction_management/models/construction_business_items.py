@@ -37,11 +37,11 @@ class ConstructionBusinessItems(models.Model):
         """ Transfer """
         action = \
             self.env.ref(
-                'arabian_construction_management.select_detailed_boq_type_action').sudo().read()[
+                'coa_construction_management.select_detailed_boq_type_action').sudo().read()[
                 0]
         action['views'] = [
             (self.env.ref(
-                'arabian_construction_management.select_detailed_boq_type_form').id,
+                'coa_construction_management.select_detailed_boq_type_form').id,
              'form')]
         return action
 

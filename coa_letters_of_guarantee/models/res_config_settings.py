@@ -28,8 +28,9 @@ class ResCompany(models.Model):
     maintenance_bond_account_id = fields.Many2one('account.account',string="Maintenance Bond Account")
 
 class AccountAsset(models.Model):
-    """ inherit Account Asset """
-    _inherit = 'account.asset'
+    """ Account Asset """
+    _name = 'account.asset'
+    _description = 'Asset'
 
     def _query_analytic_accounts(self, table=False):
         return SQL(

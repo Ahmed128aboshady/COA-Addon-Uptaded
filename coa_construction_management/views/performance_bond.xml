@@ -5,7 +5,7 @@
         <field name="name">inherit.lg.performance.bond.form</field>
         <field name="model">lg.performance.bond</field>
         <field name="inherit_id"
-               ref="arabian_letters_of_guarantee.lg_performance_bond_form"/>
+               ref="coa_letters_of_guarantee.lg_performance_bond_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='tender_no']" position="after">
                 <field name="construction_project_id"/>

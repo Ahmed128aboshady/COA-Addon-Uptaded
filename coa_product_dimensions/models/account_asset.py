@@ -2,7 +2,9 @@ from odoo import models, fields, api
 
 
 class AccountAsset(models.Model):
-    _inherit = "account.asset"
+    _name = "account.asset"
+    _description = "Asset"
+    name = fields.Char(string="Asset Name")
 
     category_id = fields.Many2one(
         "asset.category",

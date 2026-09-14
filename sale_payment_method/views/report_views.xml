@@ -93,7 +93,7 @@
                         domain="[('invoice_date','&gt;=',(context_today()).strftime('%Y-%m-01'))]"/>
                 <filter name="filter_this_year" string="This Year"
                         domain="[('invoice_date','&gt;=',(context_today()).strftime('%Y-01-01'))]"/>
-                <group expand="1" string="Group By">
+                <group>
                     <filter name="group_payment_method" string="Payment Method"
                             context="{'group_by': 'payment_method_id'}"/>
                     <filter name="group_partner" string="Customer / Vendor"

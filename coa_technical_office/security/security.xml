@@ -8,7 +8,7 @@
 
         <record id="group_technical_office_manager" model="res.groups">
             <field name="name">Technical Office Manager</field>
-            <field name="implied_ids" eval="[(4, ref('alramlaa_technical_office.group_technical_office_user'))]"/>
+            <field name="implied_ids" eval="[(4, ref('coa_technical_office.group_technical_office_user'))]"/>
             <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
         </record>
     </data>

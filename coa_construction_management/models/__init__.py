@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from . import documents_document
 from . import models
 from . import construction_project
 from . import construction_project_type

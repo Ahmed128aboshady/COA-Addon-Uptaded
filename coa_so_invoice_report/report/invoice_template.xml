@@ -128,11 +128,11 @@
 
 
     <template id="arabic_english_invoice_custom"
-              inherit_id="l10n_gcc_invoice.arabic_english_invoice">
+              inherit_id="l10n_gcc_invoice.l10n_gcc_report_invoice_document">
         <xpath expr="//t[@t-call='web.external_layout']" position="replace">
             <t t-set="company" t-value="o.company_id"/>
 
-            <t t-call="arabian_so_invoice_report.external_layout_bubble">
+            <t t-call="coa_so_invoice_report.external_layout_bubble">
                 <t t-set="o" t-value="o.with_context(lang=lang)"/>
                 <t t-set="forced_vat" t-value="o.fiscal_position_id.foreign_vat"/>
                 <!-- So that it appears in the footer of the report instead of the company VAT if it's set -->

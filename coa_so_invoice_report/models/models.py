@@ -4,8 +4,8 @@
 
 
 # class arabian_so_invoice_report(models.Model):
-#     _name = 'arabian_so_invoice_report.arabian_so_invoice_report'
-#     _description = 'arabian_so_invoice_report.arabian_so_invoice_report'
+#     _name = 'coa_so_invoice_report.arabian_so_invoice_report'
+#     _description = 'coa_so_invoice_report.arabian_so_invoice_report'
 
 #     name = fields.Char()
 #     value = fields.Integer()

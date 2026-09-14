@@ -16,7 +16,7 @@
     </record>
 
     <record id="l10n_sa_hr_payroll.action_report_payslip_sa" model="ir.actions.report">
-        <field name="paperformat_id" ref="arfad_payslip_report.paperformat_arfad_payslip"/>
+        <field name="paperformat_id" ref="paperformat_arfad_payslip"/>
     </record>
 
     <template id="report_payslip_arfad_content">

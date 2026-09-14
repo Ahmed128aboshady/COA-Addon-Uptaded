@@ -17,10 +17,10 @@
 
         <!-- Link Paper Format to Invoice Reports -->
         <record id="account.account_invoices" model="ir.actions.report">
-            <field name="paperformat_id" ref="arfad_invoice_report.paperformat_arfad_invoice"/>
+            <field name="paperformat_id" ref="coa_invoice_report.paperformat_arfad_invoice"/>
         </record>
         <record id="account.account_invoices_without_payment" model="ir.actions.report">
-            <field name="paperformat_id" ref="arfad_invoice_report.paperformat_arfad_invoice"/>
+            <field name="paperformat_id" ref="coa_invoice_report.paperformat_arfad_invoice"/>
         </record>
 
         <!-- Inherit Form View to Add Custom Contracting Fields -->
@@ -276,7 +276,7 @@
             <xpath expr="//t[@t-foreach='docs']" position="replace">
                 <t t-foreach="docs" t-as="o">
                     <t t-set="lang" t-value="o.partner_id.lang"/>
-                    <t t-call="arfad_invoice_report.arfad_custom_invoice_layout_base" t-lang="lang"/>
+                    <t t-call="coa_invoice_report.arfad_custom_invoice_layout_base" t-lang="lang"/>
                 </t>
             </xpath>
         </template>

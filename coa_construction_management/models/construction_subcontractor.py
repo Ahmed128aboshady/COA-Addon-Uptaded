@@ -81,10 +81,10 @@ class ConstructionSubcontractor(models.Model):
                     'project_manager_id': rec.construction_project_id.employee_id.id,
 
                     'type_ids': [
-                        (4, self.env.ref('arabian_construction_management.project_stage_0').id),
-                        (4, self.env.ref('arabian_construction_management.project_stage_1').id),
-                        (4, self.env.ref('arabian_construction_management.project_stage_2').id),
-                        (4, self.env.ref('arabian_construction_management.project_stage_3').id)
+                        (4, self.env.ref('coa_construction_management.project_stage_0').id),
+                        (4, self.env.ref('coa_construction_management.project_stage_1').id),
+                        (4, self.env.ref('coa_construction_management.project_stage_2').id),
+                        (4, self.env.ref('coa_construction_management.project_stage_3').id)
 
                     ],
 
@@ -106,7 +106,7 @@ class ConstructionSubcontractor(models.Model):
                      'project_description': rec.construction_project_id.project_description,
                      'project_type_id': rec.construction_project_id.project_type_id.id,
                      'project_manager_id': rec.construction_project_id.employee_id.id,
-                     'stage_id': self.env.ref("arabian_construction_management.project_stage_0").id,
+                     'stage_id': self.env.ref("coa_construction_management.project_stage_0").id,
                      'project_id': project,
                      # 'analytic_account_id': analytic
                      })
@@ -211,13 +211,13 @@ class ConstructionSubcontractor(models.Model):
                     'cost_per_item_unit': rec.cost_per_item_unit,
                 }))
 
-        action = self.env.ref('arabian_construction_management.subcontractor_attribution_boq_action').sudo().read()[0]
+        action = self.env.ref('coa_construction_management.subcontractor_attribution_boq_action').sudo().read()[0]
         action['context'] = {
             'default_subcontractor_attribution_boq_line_ids': items,
             'default_attribution_type': self.attribution_type
         }
         action['views'] = [
-            (self.env.ref('arabian_construction_management.subcontractor_attribution_boq_form').id, 'form')]
+            (self.env.ref('coa_construction_management.subcontractor_attribution_boq_form').id, 'form')]
         return action
 
     @api.model

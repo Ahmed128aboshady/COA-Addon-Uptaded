@@ -255,10 +255,10 @@ class ConstructionProject(models.Model):
                  'project_type_id': rec.project_type_id.id,
                  'project_manager_id': rec.employee_id.id,
 
-                 'type_ids': [(4, self.env.ref('arabian_construction_management.project_stage_0').id),
-                              (4, self.env.ref('arabian_construction_management.project_stage_1').id),
-                              (4, self.env.ref('arabian_construction_management.project_stage_2').id),
-                              (4, self.env.ref('arabian_construction_management.project_stage_3').id)
+                 'type_ids': [(4, self.env.ref('coa_construction_management.project_stage_0').id),
+                              (4, self.env.ref('coa_construction_management.project_stage_1').id),
+                              (4, self.env.ref('coa_construction_management.project_stage_2').id),
+                              (4, self.env.ref('coa_construction_management.project_stage_3').id)
 
                               ],
 
@@ -282,7 +282,7 @@ class ConstructionProject(models.Model):
                          'project_description': rec.project_description,
                          'project_type_id': rec.project_type_id.id,
                          'project_manager_id': rec.employee_id.id,
-                         'stage_id': self.env.ref("arabian_construction_management.project_stage_0").id,
+                         'stage_id': self.env.ref("coa_construction_management.project_stage_0").id,
                          'project_id': project,
                          # 'analytic_account_id': analytic
                          })
@@ -339,20 +339,20 @@ class ConstructionProject(models.Model):
     def create_business_items(self):
         """ Send To Bank """
         action = self.env.ref(
-            'arabian_construction_management.create_business_items_action').sudo().read()[
+            'coa_construction_management.create_business_items_action').sudo().read()[
             0]
         action['views'] = [(self.env.ref(
-            'arabian_construction_management.create_business_items_form').id,
+            'coa_construction_management.create_business_items_form').id,
                             'form')]
         return action
 
     def create_payment_request(self):
         """ Send To Bank """
         action = self.env.ref(
-            'arabian_construction_management.construction_project_payment_action').sudo().read()[
+            'coa_construction_management.construction_project_payment_action').sudo().read()[
             0]
         action['views'] = [(self.env.ref(
-            'arabian_construction_management.construction_project_payment_form').id,
+            'coa_construction_management.construction_project_payment_form').id,
                             'form')]
         return action
 
@@ -368,7 +368,7 @@ class ConstructionProject(models.Model):
             vals['documents_folder_id'] = self.env['documents.document'].create({
                 'name': project_name,
                 'folder_id': self.env.ref(
-                    'arabian_construction_management.construction_documents_folder').id
+                    'coa_construction_management.construction_documents_folder').id
             }).id
 
         return super(ConstructionProject, self).create(vals)

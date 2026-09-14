@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "arabian_so_invoice_report",
+    'name': "coa_so_invoice_report",
 
     'summary': "Short (1 phrase/line) summary of the module's purpose",
 

@@ -4,9 +4,8 @@
     <!-- ① Define the new permission group -->
     <record id="group_sale_price_edit" model="res.groups">
         <field name="name">Can Edit Sale Prices</field>
-        <field name="category_id" ref="base.module_category_sales_sales"/>
-        <!-- Admin always has it -->
-        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+<!-- Admin always has it -->
+        <field name="user_ids" eval="[(4, ref('base.user_admin'))]"/>
     </record>
 
     <!-- ② Sales Manager automatically gets price-edit rights (correct direction) -->

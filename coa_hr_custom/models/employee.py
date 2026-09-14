@@ -77,7 +77,7 @@ class HrEmployee(models.Model):
             version = self.env['hr.version'].search([
                 ('employee_id', '=', emp.id)
             ], order='date_version desc', limit=1)
-            housing = version.l10n_sa_housing_allowance if version else 0.0
+            housing = getattr(version, 'l10n_sa_housing_allowance', 0.0) if version else 0.0
             base = (emp.wage or 0.0) + housing
             emp.company_amount = round((emp.company_rate or 0.0) * base / 100, 2)
             emp.employee_amount = round((emp.employee_rate or 0.0) * base / 100, 2)

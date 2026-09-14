@@ -2,9 +2,9 @@
   <data>
     <!-- explicit list view definition -->
 <!--
-    <record model="ir.ui.view" id="arabian_letters_of_guarantee.list">
+    <record model="ir.ui.view" id="coa_letters_of_guarantee.list">
       <field name="name">arabian_letters_of_guarantee list</field>
-      <field name="model">arabian_letters_of_guarantee.arabian_letters_of_guarantee</field>
+      <field name="model">coa_letters_of_guarantee.arabian_letters_of_guarantee</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
@@ -17,16 +17,16 @@
 
     <!-- actions opening views on models -->
 <!--
-    <record model="ir.actions.act_window" id="arabian_letters_of_guarantee.action_window">
+    <record model="ir.actions.act_window" id="coa_letters_of_guarantee.action_window">
       <field name="name">arabian_letters_of_guarantee window</field>
-      <field name="res_model">arabian_letters_of_guarantee.arabian_letters_of_guarantee</field>
+      <field name="res_model">coa_letters_of_guarantee.arabian_letters_of_guarantee</field>
       <field name="view_mode">tree,form</field>
     </record>
 -->
 
     <!-- server action to the one above -->
 <!--
-    <record model="ir.actions.server" id="arabian_letters_of_guarantee.action_server">
+    <record model="ir.actions.server" id="coa_letters_of_guarantee.action_server">
       <field name="name">arabian_letters_of_guarantee server</field>
       <field name="model_id" ref="model_arabian_letters_of_guarantee_arabian_letters_of_guarantee"/>
       <field name="state">code</field>
@@ -42,19 +42,19 @@
 
     <!-- Top menu item -->
 <!--
-    <menuitem name="arabian_letters_of_guarantee" id="arabian_letters_of_guarantee.menu_root"/>
+    <menuitem name="coa_letters_of_guarantee" id="coa_letters_of_guarantee.menu_root"/>
 -->
     <!-- menu categories -->
 <!--
-    <menuitem name="Menu 1" id="arabian_letters_of_guarantee.menu_1" parent="arabian_letters_of_guarantee.menu_root"/>
-    <menuitem name="Menu 2" id="arabian_letters_of_guarantee.menu_2" parent="arabian_letters_of_guarantee.menu_root"/>
+    <menuitem name="Menu 1" id="coa_letters_of_guarantee.menu_1" parent="coa_letters_of_guarantee.menu_root"/>
+    <menuitem name="Menu 2" id="coa_letters_of_guarantee.menu_2" parent="coa_letters_of_guarantee.menu_root"/>
 -->
     <!-- actions -->
 <!--
-    <menuitem name="List" id="arabian_letters_of_guarantee.menu_1_list" parent="arabian_letters_of_guarantee.menu_1"
-              action="arabian_letters_of_guarantee.action_window"/>
-    <menuitem name="Server to list" id="arabian_letters_of_guarantee" parent="arabian_letters_of_guarantee.menu_2"
-              action="arabian_letters_of_guarantee.action_server"/>
+    <menuitem name="List" id="coa_letters_of_guarantee.menu_1_list" parent="coa_letters_of_guarantee.menu_1"
+              action="coa_letters_of_guarantee.action_window"/>
+    <menuitem name="Server to list" id="coa_letters_of_guarantee" parent="coa_letters_of_guarantee.menu_2"
+              action="coa_letters_of_guarantee.action_server"/>
 -->
   </data>
 </odoo>

@@ -36,16 +36,16 @@ class SaleOrderLine(models.Model):
     # ------------------------------------------------------------------
     # Computes
     # ------------------------------------------------------------------
-    @api.depends('product_id', 'product_uom', 'product_uom_qty')
+    @api.depends('product_id', 'product_uom_id', 'product_uom_qty')
     def _compute_coa_free_qty(self):
         for line in self:
-            free_qty = line._coa_get_free_qty(line.product_id, line.product_uom)
+            free_qty = line._coa_get_free_qty(line.product_id, line.product_uom_id)
             if free_qty is None:
                 line.coa_free_qty = 0.0
                 line.coa_qty_warning = False
                 continue
             line.coa_free_qty = free_qty
-            rounding = (line.product_uom or line.product_id.uom_id).rounding
+            rounding = (line.product_uom_id or line.product_id.uom_id).rounding
             line.coa_qty_warning = bool(
                 line.product_uom_qty
                 and float_compare(

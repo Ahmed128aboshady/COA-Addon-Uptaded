@@ -60,29 +60,29 @@ class IncomingCheque(models.Model):
     def confirm(self):
         """ Send To Bank """
         action = self.env.ref(
-            'arabian_cheque_management.check_accounts_cheque_action').sudo().read()[
+            'coa_cheque_management.check_accounts_cheque_action').sudo().read()[
             0]
         action['context'] = {'default_transient_state': 'incoming_confirm'}
         action['views'] = [(self.env.ref(
-            'arabian_cheque_management.check_accounts_cheque_form').id, 'form')]
+            'coa_cheque_management.check_accounts_cheque_form').id, 'form')]
         return action
 
     def deposit(self):
         """ Send To Bank """
         action = self.env.ref(
-            'arabian_cheque_management.check_accounts_cheque_action').sudo().read()[
+            'coa_cheque_management.check_accounts_cheque_action').sudo().read()[
             0]
         action['context'] = {'default_transient_state': 'incoming_deposit'}
         action['views'] = [(self.env.ref(
-            'arabian_cheque_management.check_accounts_cheque_form').id, 'form')]
+            'coa_cheque_management.check_accounts_cheque_form').id, 'form')]
         return action
 
     def cancel(self):
         """ Send To Bank """
         action = self.env.ref(
-            'arabian_cheque_management.check_accounts_cheque_action').sudo().read()[
+            'coa_cheque_management.check_accounts_cheque_action').sudo().read()[
             0]
         action['context'] = {'default_transient_state': 'incoming_cancel'}
         action['views'] = [(self.env.ref(
-            'arabian_cheque_management.check_accounts_cheque_form').id, 'form')]
+            'coa_cheque_management.check_accounts_cheque_form').id, 'form')]
         return action

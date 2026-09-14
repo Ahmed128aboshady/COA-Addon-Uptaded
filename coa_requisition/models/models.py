@@ -4,8 +4,8 @@
 
 
 # class arabian_requisition(models.Model):
-#     _name = 'arabian_requisition.arabian_requisition'
-#     _description = 'arabian_requisition.arabian_requisition'
+#     _name = 'coa_requisition.arabian_requisition'
+#     _description = 'coa_requisition.arabian_requisition'
 
 #     name = fields.Char()
 #     value = fields.Integer()

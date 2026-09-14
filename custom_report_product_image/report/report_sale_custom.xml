@@ -15,7 +15,7 @@
                 <strong>Reference</strong>
             </th>
             <th name="th_description" class="text-start">
-                <strong>Product</strong>
+                <span>Product</span>
             </th>
         </xpath>
 

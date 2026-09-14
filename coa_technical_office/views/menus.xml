@@ -5,7 +5,7 @@
               name="Technical Office"
               parent="mrp.menu_mrp_root"
               sequence="15"
-              groups="alramlaa_technical_office.group_technical_office_user"/>
+              groups="coa_technical_office.group_technical_office_user"/>
 
     <!-- Pending Approval: draft + in_progress reviews -->
     <menuitem id="menu_technical_reviews_pending"

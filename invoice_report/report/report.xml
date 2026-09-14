@@ -3,7 +3,7 @@
 
 
     <template id="inherit_template_report_invoicee_document727"
-              inherit_id="l10n_gcc_invoice.arabic_english_invoice">
+              inherit_id="account.report_invoice_document">
         <xpath expr="//tbody[hasclass('invoice_tbody')]"
                position="replace">
 

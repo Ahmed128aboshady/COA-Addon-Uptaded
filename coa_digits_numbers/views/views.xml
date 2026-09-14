@@ -13,9 +13,9 @@
         </record>
         <!-- explicit list view definition -->
         <!--
-            <record model="ir.ui.view" id="arabian_digits_numbers.list">
+            <record model="ir.ui.view" id="coa_digits_numbers.list">
               <field name="name">arabian_digits_numbers list</field>
-              <field name="model">arabian_digits_numbers.arabian_digits_numbers</field>
+              <field name="model">coa_digits_numbers.arabian_digits_numbers</field>
               <field name="arch" type="xml">
                 <list>
                   <field name="name"/>
@@ -28,16 +28,16 @@
 
         <!-- actions opening views on models -->
         <!--
-            <record model="ir.actions.act_window" id="arabian_digits_numbers.action_window">
+            <record model="ir.actions.act_window" id="coa_digits_numbers.action_window">
               <field name="name">arabian_digits_numbers window</field>
-              <field name="res_model">arabian_digits_numbers.arabian_digits_numbers</field>
+              <field name="res_model">coa_digits_numbers.arabian_digits_numbers</field>
               <field name="view_mode">list,form</field>
             </record>
         -->
 
         <!-- server action to the one above -->
         <!--
-            <record model="ir.actions.server" id="arabian_digits_numbers.action_server">
+            <record model="ir.actions.server" id="coa_digits_numbers.action_server">
               <field name="name">arabian_digits_numbers server</field>
               <field name="model_id" ref="model_arabian_digits_numbers_arabian_digits_numbers"/>
               <field name="state">code</field>
@@ -53,19 +53,19 @@
 
         <!-- Top menu item -->
         <!--
-            <menuitem name="arabian_digits_numbers" id="arabian_digits_numbers.menu_root"/>
+            <menuitem name="coa_digits_numbers" id="coa_digits_numbers.menu_root"/>
         -->
         <!-- menu categories -->
         <!--
-            <menuitem name="Menu 1" id="arabian_digits_numbers.menu_1" parent="arabian_digits_numbers.menu_root"/>
-            <menuitem name="Menu 2" id="arabian_digits_numbers.menu_2" parent="arabian_digits_numbers.menu_root"/>
+            <menuitem name="Menu 1" id="coa_digits_numbers.menu_1" parent="coa_digits_numbers.menu_root"/>
+            <menuitem name="Menu 2" id="coa_digits_numbers.menu_2" parent="coa_digits_numbers.menu_root"/>
         -->
         <!-- actions -->
         <!--
-            <menuitem name="List" id="arabian_digits_numbers.menu_1_list" parent="arabian_digits_numbers.menu_1"
-                      action="arabian_digits_numbers.action_window"/>
-            <menuitem name="Server to list" id="arabian_digits_numbers" parent="arabian_digits_numbers.menu_2"
-                      action="arabian_digits_numbers.action_server"/>
+            <menuitem name="List" id="coa_digits_numbers.menu_1_list" parent="coa_digits_numbers.menu_1"
+                      action="coa_digits_numbers.action_window"/>
+            <menuitem name="Server to list" id="coa_digits_numbers" parent="coa_digits_numbers.menu_2"
+                      action="coa_digits_numbers.action_server"/>
         -->
     </data>
 </odoo>

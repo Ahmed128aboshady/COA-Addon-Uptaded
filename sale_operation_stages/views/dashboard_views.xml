@@ -226,7 +226,7 @@
                     <filter string="جاري التنفيذ" name="in_progress" domain="[('state','=','in_progress')]"/>
                     <filter string="اكتملت"        name="done"        domain="[('state','=','done')]"/>
                     <separator/>
-                    <group expand="0" string="تجميع حسب">
+                    <group>
                         <filter string="الأوردر"  name="by_order"   context="{'group_by': 'sale_order_id'}"/>
                         <filter string="المرحلة"  name="by_stage"   context="{'group_by': 'stage_id'}"/>
                         <filter string="العميل"   name="by_partner" context="{'group_by': 'partner_id'}"/>

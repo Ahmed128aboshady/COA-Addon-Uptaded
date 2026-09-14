@@ -54,21 +54,21 @@ class LgAdvancePaymentGuarantee(models.Model):
     def confirm(self):
         """ Send To Bank """
         action = self.env.ref(
-            'arabian_letters_of_guarantee.check_lg_accounts_action').sudo().read()[
+            'coa_letters_of_guarantee.check_lg_accounts_action').sudo().read()[
             0]
         action['context'] = {'default_lg_type': 'advance_payment'}
         action['views'] = [(self.env.ref(
-            'arabian_letters_of_guarantee.check_lg_accounts_form').id, 'form')]
+            'coa_letters_of_guarantee.check_lg_accounts_form').id, 'form')]
         return action
 
     def cancellation(self):
         """ Send To Bank """
         action = self.env.ref(
-            'arabian_letters_of_guarantee.check_lg_accounts_action').sudo().read()[
+            'coa_letters_of_guarantee.check_lg_accounts_action').sudo().read()[
             0]
         action['context'] = {'default_lg_type': 'advance_payment_cancellation'}
         action['views'] = [(self.env.ref(
-            'arabian_letters_of_guarantee.check_lg_accounts_form').id, 'form')]
+            'coa_letters_of_guarantee.check_lg_accounts_form').id, 'form')]
         return action
 
     @api.model

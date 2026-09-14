@@ -214,7 +214,7 @@
                 <filter name="paid" string="مدفوع بالكامل" domain="[('state','=','paid')]"/>
                 <filter name="has_entry" string="له قيد محاسبي" domain="[('move_id','!=',False)]"/>
                 <filter name="has_residual" string="له متبقي" domain="[('amount_residual','&gt;',0)]"/>
-                <group expand="0" string="تجميع حسب">
+                <group>
                     <filter name="group_salesperson" string="المندوب"
                             context="{'group_by': 'salesperson_id'}"/>
                     <filter name="group_state" string="الحالة"

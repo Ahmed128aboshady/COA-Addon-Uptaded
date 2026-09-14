@@ -97,7 +97,7 @@
                 <filter name="partial" string="Partially Reserved"
                         domain="[('state', '=', 'partially_available')]"/>
                 <separator/>
-                <group expand="1" string="Group By">
+                <group>
                     <filter name="group_customer" string="Customer"
                             context="{'group_by': 'partner_id'}"/>
                     <filter name="group_product" string="Product"

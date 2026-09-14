@@ -4,8 +4,8 @@
 
 
 # class arabian_letters_of_guarantee(models.Model):
-#     _name = 'arabian_letters_of_guarantee.arabian_letters_of_guarantee'
-#     _description = 'arabian_letters_of_guarantee.arabian_letters_of_guarantee'
+#     _name = 'coa_letters_of_guarantee.arabian_letters_of_guarantee'
+#     _description = 'coa_letters_of_guarantee.arabian_letters_of_guarantee'
 
 #     name = fields.Char()
 #     value = fields.Integer()

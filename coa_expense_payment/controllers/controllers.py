@@ -9,13 +9,13 @@
 
 #     @http.route('/arabian_expense_payment/arabian_expense_payment/objects', auth='public')
 #     def list(self, **kw):
-#         return http.request.render('arabian_expense_payment.listing', {
+#         return http.request.render('coa_expense_payment.listing', {
 #             'root': '/arabian_expense_payment/arabian_expense_payment',
-#             'objects': http.request.env['arabian_expense_payment.arabian_expense_payment'].search([]),
+#             'objects': http.request.env['coa_expense_payment.arabian_expense_payment'].search([]),
 #         })
 
-#     @http.route('/arabian_expense_payment/arabian_expense_payment/objects/<model("arabian_expense_payment.arabian_expense_payment"):obj>', auth='public')
+#     @http.route('/arabian_expense_payment/arabian_expense_payment/objects/<model("coa_expense_payment.arabian_expense_payment"):obj>', auth='public')
 #     def object(self, obj, **kw):
-#         return http.request.render('arabian_expense_payment.object', {
+#         return http.request.render('coa_expense_payment.object', {
 #             'object': obj
 #         })

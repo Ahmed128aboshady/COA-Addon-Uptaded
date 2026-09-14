@@ -2,9 +2,9 @@
   <data>
     <!-- explicit list view definition -->
 <!--
-    <record model="ir.ui.view" id="arabian_expense_payment.list">
+    <record model="ir.ui.view" id="coa_expense_payment.list">
       <field name="name">arabian_expense_payment list</field>
-      <field name="model">arabian_expense_payment.arabian_expense_payment</field>
+      <field name="model">coa_expense_payment.arabian_expense_payment</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
@@ -17,16 +17,16 @@
 
     <!-- actions opening views on models -->
 <!--
-    <record model="ir.actions.act_window" id="arabian_expense_payment.action_window">
+    <record model="ir.actions.act_window" id="coa_expense_payment.action_window">
       <field name="name">arabian_expense_payment window</field>
-      <field name="res_model">arabian_expense_payment.arabian_expense_payment</field>
+      <field name="res_model">coa_expense_payment.arabian_expense_payment</field>
       <field name="view_mode">tree,form</field>
     </record>
 -->
 
     <!-- server action to the one above -->
 <!--
-    <record model="ir.actions.server" id="arabian_expense_payment.action_server">
+    <record model="ir.actions.server" id="coa_expense_payment.action_server">
       <field name="name">arabian_expense_payment server</field>
       <field name="model_id" ref="model_arabian_expense_payment_arabian_expense_payment"/>
       <field name="state">code</field>
@@ -42,19 +42,19 @@
 
     <!-- Top menu item -->
 <!--
-    <menuitem name="arabian_expense_payment" id="arabian_expense_payment.menu_root"/>
+    <menuitem name="coa_expense_payment" id="coa_expense_payment.menu_root"/>
 -->
     <!-- menu categories -->
 <!--
-    <menuitem name="Menu 1" id="arabian_expense_payment.menu_1" parent="arabian_expense_payment.menu_root"/>
-    <menuitem name="Menu 2" id="arabian_expense_payment.menu_2" parent="arabian_expense_payment.menu_root"/>
+    <menuitem name="Menu 1" id="coa_expense_payment.menu_1" parent="coa_expense_payment.menu_root"/>
+    <menuitem name="Menu 2" id="coa_expense_payment.menu_2" parent="coa_expense_payment.menu_root"/>
 -->
     <!-- actions -->
 <!--
-    <menuitem name="List" id="arabian_expense_payment.menu_1_list" parent="arabian_expense_payment.menu_1"
-              action="arabian_expense_payment.action_window"/>
-    <menuitem name="Server to list" id="arabian_expense_payment" parent="arabian_expense_payment.menu_2"
-              action="arabian_expense_payment.action_server"/>
+    <menuitem name="List" id="coa_expense_payment.menu_1_list" parent="coa_expense_payment.menu_1"
+              action="coa_expense_payment.action_window"/>
+    <menuitem name="Server to list" id="coa_expense_payment" parent="coa_expense_payment.menu_2"
+              action="coa_expense_payment.action_server"/>
 -->
   </data>
 </odoo>

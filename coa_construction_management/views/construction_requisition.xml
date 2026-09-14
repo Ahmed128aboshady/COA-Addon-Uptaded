@@ -4,7 +4,7 @@
     <record id="inherit_construction_requisition_form" model="ir.ui.view">
         <field name="name">inherit.construction.requisition.form</field>
         <field name="model">construction.requisition</field>
-        <field name="inherit_id" ref="arabian_requisition.construction_requisition_form"/>
+        <field name="inherit_id" ref="coa_requisition.construction_requisition_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='description']" position="before">
                 <field name="construction_project_id"/>
