@@ -1,4 +1,5 @@
 {
+    'website': 'https://www.coa-egy.com',
     'name': 'Sale Partner Balance',
     'version': '19.0.1.0.0',
     'category': 'Sales',
@@ -9,7 +10,7 @@
         - Current Document Amount (الفاتورة الحالية)
         - Current Balance (الرصيد الحالي)
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'depends': ['sale', 'account'],
     'data': [
         'report/sale_report_templates.xml',

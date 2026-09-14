@@ -1,4 +1,5 @@
 {
+    'website': 'https://www.coa-egy.com',
     'name': 'Category Location Route',
     'version': '19.0.1.0.0',
     'summary': 'Auto-create routes from product category location settings',
@@ -9,7 +10,7 @@
         Returns go back to the same source location automatically.
     """,
     'category': 'Inventory',
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'depends': ['stock', 'sale_stock', 'mrp'],
     'data': [
         'security/ir.model.access.csv',

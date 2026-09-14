@@ -20,7 +20,7 @@ Nothing is blocked - the warning is informative only.
 Developed by Community of Accountants (COA) - Odoo Silver Partner
 WhatsApp: +20 101 390 7174
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'website': 'https://www.coa-egy.com',
     'license': 'OPL-1',
     'depends': ['sale_stock', 'stock'],

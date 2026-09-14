@@ -1,4 +1,5 @@
 {
+    'website': 'https://www.coa-egy.com',
     'name': 'Purchase & Manufacturing Serial + Lot Expiry (FIFO)',
     'version': '19.0.1.0.0',
     'category': 'Inventory/Purchase',
@@ -25,7 +26,7 @@
 
     6. Lot Expiry Report (List / Graph / Pivot / PDF)
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'depends': ['purchase', 'mrp', 'stock', 'sale_stock', 'mail'],
     'data': [
         'security/ir.model.access.csv',

@@ -7,7 +7,7 @@
         'For foreign-currency journals, shows both the foreign-currency amount '
         'and the company-currency equivalent on two lines.'
     ),
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'website': 'https://www.coa-egy.com',
     'category': 'Accounting',
     'license': 'LGPL-3',

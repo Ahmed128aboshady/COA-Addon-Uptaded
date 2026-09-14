@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 {
+    'website': 'https://www.coa-egy.com',
+    'author': 'Community of accountants (COA-Egypt)',
     'name': 'Alramlaa Product Dimensions',
     'version': '19.0.1.0.0',
     'category': 'Inventory/Products',
     'summary': 'Add Length, Width, Thickness, Square/Cubic Meter and Waste % to products',
-    'depends': ['product', 'purchase', 'stock', 'account_asset', 'mrp', 'base', 'account'], # ضفنا mrp هنا
+    'depends': ['product', 'purchase', 'stock', 'account', 'mrp', 'base', 'account'], # ضفنا mrp هنا
     'data': [
         'security/ir.model.access.csv',
         'data/company_migration_action.xml', # 👈 ضفنا مسار ملف الـ Server Action الجديد هنا

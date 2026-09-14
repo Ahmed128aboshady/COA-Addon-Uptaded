@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 {
+    'website': 'https://www.coa-egy.com',
     'name': 'Journal Payment Commission',
     'version': '19.0.1.0.0',
     'summary': 'خصم عمولة تلقائي على الـ Journal - مبيعات ومشتريات منفصلين',
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'category': 'Accounting',
     'depends': ['account'],
     'data': [

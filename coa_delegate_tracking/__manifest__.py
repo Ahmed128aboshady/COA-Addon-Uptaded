@@ -8,7 +8,7 @@
 This module tracks the locations of sales delegates, updates their last known coordinates,
 and displays their live and historical positions on an interactive OpenStreetMap map.
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'website': 'https://www.coa-egy.com',
     'depends': ['base', 'web', 'sale'],
     'data': [

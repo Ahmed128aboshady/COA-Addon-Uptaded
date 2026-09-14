@@ -26,7 +26,7 @@ Key Features:
 13. Urgency Override: mark POs as Urgent or Critical to fast-track or escalate routing
 14. Export Audit Trail: download the full audit trail as a formatted Excel file or branded PDF
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'website': 'https://www.coa-egy.com',
     'support': 'engekramy_mohamed@hotmail.com',
     'license': 'OPL-1',

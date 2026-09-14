@@ -18,7 +18,7 @@ also matches partners whose reference merely contains the digits
   tries an exact match on the Reference field, falling back to the
   standard behaviour when no exact match exists.
 """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'website': 'https://www.coa-egy.com',
     'license': 'LGPL-3',
     'depends': ['base'],

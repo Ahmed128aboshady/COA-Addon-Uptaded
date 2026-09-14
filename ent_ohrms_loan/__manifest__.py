@@ -27,13 +27,13 @@
     'summary': 'Manage Loan Requests',
     'description': """Seamlessly manage and track loan requests from your 
     company's staff, ensuring a smooth and transparent approval process.""",
-    'author': "COA (Community of Accountants)",
+    'author': "Community of accountants (COA-Egypt)",
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
     'live_test_url': 'https://youtu.be/LdUvXDMkd4Q',
     'website': "https://www.coa-egy.com",
     'depends': [
-        'base', 'hr_payroll', 'hr', 'account'
+        'base', 'hr', 'hr', 'account'
     ],
     'data': [
         'security/hr_loan_security.xml',

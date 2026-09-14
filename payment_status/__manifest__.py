@@ -1,4 +1,6 @@
 {
+    'website': 'https://www.coa-egy.com',
+    'author': 'Community of accountants (COA-Egypt)',
     'name': 'Payment Status on Delivery',
     'version': '19.0.1.0.0',
     'summary': 'Shows invoice payment status automatically on delivery orders',

@@ -1,4 +1,5 @@
 {
+    'website': 'https://www.coa-egy.com',
     'name': 'Petty Cash Management',
     'version': '19.0.1.0.0',
     'category': 'Accounting',
@@ -13,7 +14,7 @@
         - Custody account configured from Settings
         - Multi-level approval workflow
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'depends': ['base', 'mail', 'hr', 'account'],
     'data': [
         'security/petty_cash_security.xml',

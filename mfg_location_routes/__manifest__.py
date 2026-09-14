@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 {
+    'website': 'https://www.coa-egy.com',
     'name': 'Manufacturing Location Routes (مسارات المخزون بالكاتجوري)',
     'version': '19.0.1.0.0',
     'category': 'Manufacturing',
@@ -13,7 +14,7 @@
         4. دعم BUY + MTO مع لوكيشن مخصص
         5. حقل لوكيشن على component في BOM يورث من الكاتجوري
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'depends': [
         'stock',
         'mrp',

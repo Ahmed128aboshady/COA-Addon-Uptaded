@@ -13,7 +13,7 @@
     "version": "19.0.1.0.0",
     "summary": "Set all relational fields domain by selecting its records unsing `in, not in` operator.",
     "sequence": 10,
-    "author": "COA (Community of Accountants)",
+    "author": "Community of accountants (COA-Egypt)",
     "license": "OPL-1",
     "website": "https://www.coa-egy.com",
     "description": """

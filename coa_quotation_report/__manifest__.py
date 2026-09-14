@@ -16,7 +16,7 @@
         - Arabic + English bilingual support
         - Footer with company info
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'website': 'https://www.coa-egy.com',
     'depends': ['sale', 'account'],
     'data': [

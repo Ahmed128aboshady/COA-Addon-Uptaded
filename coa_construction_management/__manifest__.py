@@ -8,7 +8,7 @@
 Long description of module's purpose
     """,
 
-    'author': "COA (Community of Accountants)",
+    'author': "Community of accountants (COA-Egypt)",
     'website': "https://www.coa-egy.com",
 
     # Categories can be used to filter modules in modules listing
@@ -19,8 +19,8 @@ Long description of module's purpose
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'hr', 'uom', 'account', 'purchase', 'utm', 'project',
-                'arabian_cheque_management', 'arabian_requisition','stock',
-                'arabian_letters_of_guarantee','documents','arabian_expense_payment','arabian_res_partner','hr_timesheet'],
+                'coa_cheque_management', 'coa_requisition','stock',
+                'coa_letters_of_guarantee','base','coa_expense_payment','coa_res_partner','hr_timesheet'],
 
     # always loaded
     'data': [

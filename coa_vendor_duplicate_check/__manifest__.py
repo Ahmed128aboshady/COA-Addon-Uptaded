@@ -24,7 +24,7 @@ This module adds that check on ``res.partner``:
 Note (Odoo 19): the separate ``mobile`` field was removed from contacts and
 merged into ``phone``, so the mobile number is validated through ``phone``.
 """,
-    "author": "COA (Community of Accountants)",
+    "author": "Community of accountants (COA-Egypt)",
     "website": "https://www.coa-egy.com",
     "license": "LGPL-3",
     "depends": ["base_setup"],

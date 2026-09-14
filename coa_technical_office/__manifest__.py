@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 {
+    'website': 'https://www.coa-egy.com',
     'name': 'Alramlaa Technical Office',
     'version': '19.0.1.0.0',
     'category': 'Manufacturing',
@@ -19,12 +20,12 @@
         * Sequence-generated reference (TR/YYYY/MM/0001)
         * Security groups: Technical Office User / Manager
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'depends': [
         'sale_management',
         'mrp',
         'mail',
-        'alramlaa_product_dimensions',
+        'coa_product_dimensions',
     ],
     'data': [
         'security/security.xml',

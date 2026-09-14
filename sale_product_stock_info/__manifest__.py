@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 {
+    'website': 'https://www.coa-egy.com',
     'name': 'Sale: Stock Info in Product Search',
     'version': '19.0.1.0.0',
     'summary': 'يظهر الكمية المتاحة والـ On Hand في سيرش المنتجات داخل المبيعات',
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'category': 'Sales',
     'depends': ['sale_stock'],
     'data': [

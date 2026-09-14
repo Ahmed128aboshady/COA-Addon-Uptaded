@@ -9,7 +9,7 @@ Warehouse Location Restriction
 Restrict inventory users' access to specific warehouses, transfer locations,
 and operation types on an individual basis. Users can only access designated locations.
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'website': 'https://www.coa-egy.com',
     'category': 'Inventory/Warehouse',
     'license': 'AGPL-3',

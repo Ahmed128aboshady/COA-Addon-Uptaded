@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+<data>
 
     <report id="expense_payment_report"
             model="expense.payment"
@@ -11,4 +12,5 @@
             attachment="(object.name or '')+' '+ time.strftime('%d,%b %Y %I:%M %p')"
             print_report_name="(object._get_report_base_filename())"
     />
+</data>
 </odoo>

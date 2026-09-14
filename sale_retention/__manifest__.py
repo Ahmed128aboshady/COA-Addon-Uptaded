@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 {
+    'website': 'https://www.coa-egy.com',
     "name": "Sales Retention Money",
     "summary": "Customer retention/holdback on sales: configurable percentage "
                "and holding period per order, automatic split of the "
@@ -8,7 +9,7 @@
                "fully correct.",
     "version": "19.0.1.0.0",
     "category": "Accounting/Accounting",
-    "author": "COA (Community of Accountants)",
+    "author": "Community of accountants (COA-Egypt)",
     "license": "LGPL-3",
     "depends": ["sale_stock", "account"],
     "data": [

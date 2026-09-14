@@ -2,7 +2,7 @@
 {
     'name': 'invoice_report',
     'version': '19.0.1.0.0',
-     "author": 'COA (Community of Accountants)',
+     "author": 'Community of accountants (COA-Egypt)',
      "company": 'arabian open source',
      "website": "",
      "email": "",

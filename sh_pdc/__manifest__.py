@@ -2,7 +2,7 @@
 # Part of Softhealer Technologies.
 {
     "name": "Post Dated Cheque Management - Community Edition",
-    "author": "COA (Community of Accountants)",
+    "author": "Community of accountants (COA-Egypt)",
     "website": "https://www.coa-egy.com",
     "support": "support@softhealer.com",
     "category": "Accounting",

@@ -25,7 +25,7 @@ the Inventory Overview) instead of the standard Delivery type.
 
 Built for Odoo 18 (Community & Enterprise).
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'website': 'https://www.coa-egy.com',
     'license': 'LGPL-3',
     'depends': ['sale_stock'],

@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 {
+    'website': 'https://www.coa-egy.com',
     'name': 'Beacon Picking Report',
     'version': '19.0.1.0.0',
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'category': 'Inventory',
     'summary': 'Add sale order name under return reference in picking report',
     'depends': ['stock', 'sale_stock'],

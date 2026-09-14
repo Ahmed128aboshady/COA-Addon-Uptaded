@@ -2,7 +2,7 @@
 {
     "name": "Custom Background",
     "version": "19.0.1.0.0",
-    "author": "COA (Community of Accountants)",
+    "author": "Community of accountants (COA-Egypt)",
     "website": "https://www.coa-egy.com",
     "category": "GenericModules",
     "depends": ["base", "web"],

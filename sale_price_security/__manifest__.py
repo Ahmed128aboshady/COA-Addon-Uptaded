@@ -1,4 +1,5 @@
 {
+    'website': 'https://www.coa-egy.com',
     'name': 'Sale Price Edit Permission',
     'version': '19.0.1.0.0',
     'category': 'Sales/Sales',
@@ -14,7 +15,7 @@ By default the group is granted to:
 - Administrators
 - Sales / Administrator (Sales Manager)
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'depends': ['sale_management'],
     'data': [
         'security/groups.xml',

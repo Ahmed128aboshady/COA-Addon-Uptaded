@@ -1,8 +1,9 @@
 {
+    'website': 'https://www.coa-egy.com',
     'name': 'Sale Report - Printed By',
     'version': '19.0.1.0.0',
     'category': 'Sales',
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'depends': ['sale'],
     'data': [
         'views/sale_report_inherit.xml',

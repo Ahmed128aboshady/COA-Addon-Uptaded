@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "arabian_expense_payment",
+    'name': "coa_expense_payment",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -10,7 +10,7 @@
         Long description of module's purpose
     """,
 
-    'author': "COA (Community of Accountants)",
+    'author': "Community of accountants (COA-Egypt)",
     'website': "https://www.coa-egy.com",
 
     # Categories can be used to filter modules in modules listing
@@ -20,7 +20,7 @@
     'version': '19.0.1.0.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'accountant','hr'],
+    'depends': ['base', 'account','hr'],
 
     # always loaded
     'data': [

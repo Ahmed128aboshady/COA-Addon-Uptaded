@@ -1,8 +1,9 @@
 {
+    'website': 'https://www.coa-egy.com',
     'name': 'Sale Line Reserved Location Detail',
     'version': '19.0.1.0.0',
     'summary': 'Show reserved sub-locations per SO line (from stock.move.line) in SO, invoice & print',
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'depends': ['sale_stock', 'account'],
     'data': [
         'security/ir.model.access.csv',

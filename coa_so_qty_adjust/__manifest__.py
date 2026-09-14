@@ -23,7 +23,7 @@ Behaviour:
 * Any part of the line already delivered (done)      -> standard behaviour (return).
 * Quantity increased                                 -> standard behaviour (new procurement).
 """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'website': 'https://www.coa-egy.com',
     'category': 'Sales/Sales',
     'license': 'LGPL-3',

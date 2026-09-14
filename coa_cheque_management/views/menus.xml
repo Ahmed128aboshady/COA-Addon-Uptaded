@@ -3,7 +3,7 @@
 
     <menuitem id="cheque_manage_menu"
               name="Cheque Manage"
-              parent="accountant.menu_accounting"
+              parent="account.menu_finance_entries"
               sequence="5"
     />
     <menuitem id="incoming_cheque_menu"

@@ -28,7 +28,7 @@
     'description': """This module allows users to post multiple journal entries
     in draft state to posted, reset posted entries back to draft state, and
     cancel entries.""",
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
     'website': 'https://www.coa-egy.com',

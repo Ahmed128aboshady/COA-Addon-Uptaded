@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 {
+    'website': 'https://www.coa-egy.com',
     "name": "Block Negative Stock",
     "summary": "Prevent stock levels from going negative anywhere in the system "
                "(manufacturing, deliveries, internal transfers, POS, adjustments via moves).",
     "version": "19.0.1.0.0",
     "category": "Inventory/Inventory",
-    "author": "COA (Community of Accountants)",
+    "author": "Community of accountants (COA-Egypt)",
     "license": "LGPL-3",
     "depends": ["stock"],
     "data": [

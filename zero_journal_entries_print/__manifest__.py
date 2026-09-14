@@ -2,7 +2,7 @@
 {
     'name': 'Print Journal Entries (PDF)',
     'version': '19.0.1.0.0',
-     "author": 'COA (Community of Accountants)',
+     "author": 'Community of accountants (COA-Egypt)',
      "company": 'Zero for Information Systems',
      "website": "https://www.coa-egy.com",
      "email": "sales@erpzero.com",

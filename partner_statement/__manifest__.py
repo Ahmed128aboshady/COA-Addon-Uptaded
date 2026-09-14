@@ -1,4 +1,5 @@
 {
+    'website': 'https://www.coa-egy.com',
     'name': 'Partner Statement Report',
     'version': '19.0.1.0.0',
     'category': 'Accounting',
@@ -10,7 +11,7 @@
         - Running balance per line
         - Totals at the bottom
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'depends': ['account'],
     'data': [
         'security/ir.model.access.csv',

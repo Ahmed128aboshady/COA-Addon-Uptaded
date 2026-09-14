@@ -25,7 +25,7 @@
     'category': 'Extra Tools',
     'summary': 'Hide Menu, Odoo18 Hide Menu, Hide Menu Odoo, Restrict Menu Items, Odoo18 Menu, Odoo18, Odoo Apps',
     'description': 'Hide Any Menu Item User Wise, Hide Menu Items, Hide Menu',
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
     'website': "https://www.coa-egy.com",

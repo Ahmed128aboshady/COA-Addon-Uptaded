@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 {
+    'website': 'https://www.coa-egy.com',
     'name': 'Sales Commission by Customer Tag',
     'version': '19.0.1.0.0',
     'summary': 'Calculate sales commissions based on customer tag and net sales',
@@ -12,7 +13,7 @@
         - Comprehensive report for each salesperson
     """,
     'category': 'Sales/Commission',
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'depends': ['sale_management', 'account', 'crm', 'mail'],
     'data': [
         'security/ir.model.access.csv',

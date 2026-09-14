@@ -35,11 +35,11 @@ Technical:
 * Filters only product lines (excludes sections/notes)
 
 """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'website': 'https://www.coa-egy.com',
     'license': 'LGPL-3',
     'depends': [
-        'account_reports',
+        'account',
     ],
     'data': [
         'security/ir.model.access.csv',

@@ -1,4 +1,5 @@
 {
+    'website': 'https://www.coa-egy.com',
     'name': 'Custom Reports — Product Image & Reference Code',
     'version': '19.0.1.0.0',
     'category': 'Technical',
@@ -12,7 +13,7 @@
 
         The "Reference" column shows the product's Internal Reference (default_code).
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'depends': ['stock', 'sale_management', 'purchase', 'account'],
     'data': [
         'report/report_delivery_custom.xml',

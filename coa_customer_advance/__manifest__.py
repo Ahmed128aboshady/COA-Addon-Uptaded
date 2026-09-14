@@ -22,7 +22,7 @@ COA Customer Advance Payments
 
 الدفعات في حساب التزام مستقل، فهي مستبعدة تلقائياً من إجمالي الإيراد.
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'website': 'https://www.coa-egy.com',
     'depends': ['account', 'sale_management'],
     'data': [

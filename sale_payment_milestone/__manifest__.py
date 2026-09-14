@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 {
+    'website': 'https://www.coa-egy.com',
     'name': 'Sale Payment Milestones',
     'version': '19.0.1.0.0',
     'summary': 'شروط سداد بالمراحل مع ربط مباشر بالمدفوعات المحاسبية',
@@ -8,7 +9,7 @@
         (مثل 10% تعاقد، 25% بداية تصنيع، ...) وربطها بالمدفوعات الفعلية
         المسجلة في المحاسبة دون الحاجة لإصدار فاتورة مسبقة.
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'category': 'Sales/Sales',
     'depends': ['sale_management', 'account'],
     'data': [

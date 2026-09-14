@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "arabian_requisition",
+    'name': "coa_requisition",
 
     'summary': "Short (1 phrase/line) summary of the module's purpose",
 
@@ -8,7 +8,7 @@
 Long description of module's purpose
     """,
 
-    'author': "COA (Community of Accountants)",
+    'author': "Community of accountants (COA-Egypt)",
     'website': "https://www.coa-egy.com",
 
     # Categories can be used to filter modules in modules listing

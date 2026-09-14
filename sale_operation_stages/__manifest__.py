@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 {
+    'website': 'https://www.coa-egy.com',
     'name': 'Sale Operation Stages',
     'version': '19.0.1.0.0',
     'summary': 'مراحل عمليات على المنتج قبل التسليم - مخزن عمليات - داشبورد تتبع',
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'category': 'Sales/Inventory',
     'depends': ['sale_stock', 'stock'],
     'data': [

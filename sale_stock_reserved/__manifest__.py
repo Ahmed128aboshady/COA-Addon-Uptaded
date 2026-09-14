@@ -1,4 +1,6 @@
 {
+    'website': 'https://www.coa-egy.com',
+    'author': 'Community of accountants (COA-Egypt)',
     'name': 'Sale Stock Reserved',
     'version': '19.0.1.0.0',
     'summary': 'Report of reserved stock by customer and product from sales orders, with unreserve button',

@@ -4,7 +4,7 @@
 
     <menuitem id="letters_of_guarantee_menu"
               name="Letters Of Guarantee"
-              parent="accountant.menu_accounting"
+              parent="account.menu_finance_entries"
               sequence="6"
     />
     <menuitem id="lg_bid_bond_menu"

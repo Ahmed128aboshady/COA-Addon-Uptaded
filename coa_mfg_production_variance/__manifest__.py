@@ -24,7 +24,7 @@ Features:
 
 Compatible with Odoo 18 and Odoo 19 (Community & Enterprise).
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'website': 'https://www.coa-egy.com',
     'license': 'LGPL-3',
     'depends': ['mrp', 'sale_stock'],

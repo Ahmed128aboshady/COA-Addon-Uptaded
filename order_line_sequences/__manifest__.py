@@ -26,7 +26,7 @@
     'summary': 'Sequence numbers in order lines of sales,purchase and delivery.',
     'description': """This module will help you to add sequence for order lines
     in sales, purchase and delivery. It will also add line numbers in report lines.""",
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
     'website': "https://www.coa-egy.com",

@@ -9,7 +9,7 @@
     "category": "Inventory, Logistic, Storage",
     "license": "AGPL-3",
     "summary": "Disallow negative stock levels by default",
-    "author": "COA (Community of Accountants)",
+    "author": "Community of accountants (COA-Egypt)",
     "website": "https://www.coa-egy.com",
     "depends": ["stock"],
     "data": ["views/product_product_views.xml", "views/stock_location_views.xml"],

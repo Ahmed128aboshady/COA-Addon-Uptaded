@@ -33,7 +33,7 @@ Credit-note reversals are handled symmetrically.
 Developed by Community of Accountants (COA)
 WhatsApp: +20 101 390 7174
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'website': 'https://www.coa-egy.com',
     'category': 'Accounting',
     'version': '19.0.1.0.0',

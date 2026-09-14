@@ -1,4 +1,5 @@
 {
+    'website': 'https://www.coa-egy.com',
     'name': 'Multi Approval',
     'version': '19.0.1.0.0',
     'category': 'Approvals',
@@ -19,7 +20,7 @@
         - Auto-confirm option after full approval
         - Full audit trail via chatter
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'depends': ['sale_management', 'purchase', 'account', 'stock', 'mail'],
     'data': [
         'security/multi_approval_security.xml',

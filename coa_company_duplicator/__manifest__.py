@@ -8,7 +8,7 @@
         from one company to another in a multi-company environment.
         Fully compatible with Odoo 19 new shared accounts architecture.
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'website': 'https://www.coa-egy.com',
     'images': ['static/description/banner.png'],
     'depends': ['base', 'account', 'stock'],

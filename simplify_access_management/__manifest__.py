@@ -13,7 +13,7 @@
     'name': 'Simplify Access Management',
     'version': '19.0.1.0.0',
     'sequence': 5,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'license': 'OPL-1',
     'category': 'Services',
     'website': 'https://www.coa-egy.com',

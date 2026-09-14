@@ -2,7 +2,7 @@
     'name': 'Sale Confirm Date',
     'version': '19.0.1.0.0',
     'summary': 'Sale Confirm Date',
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'website': 'https://www.coa-egy.com',
     'category': 'Sale',
     'depends': [

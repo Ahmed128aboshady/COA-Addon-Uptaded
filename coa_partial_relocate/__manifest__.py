@@ -18,7 +18,7 @@ keeping lot / package / owner information intact.
     """,
     'version': '19.0.1.0.0',
     'category': 'Inventory/Inventory',
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'website': 'https://www.coa-egy.com',
     'license': 'LGPL-3',
     'depends': ['stock'],

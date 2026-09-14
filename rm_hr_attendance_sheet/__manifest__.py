@@ -7,7 +7,7 @@
     'description': """
         Employees Attendance Sheet Management   
     """,
-    'author': "COA (Community of Accountants)",
+    'author': "Community of accountants (COA-Egypt)",
     'website': "https://www.coa-egy.com",
     'price': 99,
     'currency': 'USD',
@@ -19,9 +19,9 @@
 'depends': [
         'base',
         'hr',
-        'hr_payroll',
+        'hr',
         'hr_holidays',
-        'hr_payroll_holidays',
+        'hr',
         'hr_attendance',
     ],
     'data': [

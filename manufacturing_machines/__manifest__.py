@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 {
+    'website': 'https://www.coa-egy.com',
     'name': 'Manufacturing Machines & Maintenance',
     'version': '19.0.1.0.0',
     'category': 'Manufacturing',
@@ -12,7 +13,7 @@
         - التكاليف الإضافية (Overhead)
         - الربط بالحسابات تلقائياً
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'depends': ['base', 'mail', 'account', 'stock', 'mrp'],
     'data': [
         'security/ir.model.access.csv',

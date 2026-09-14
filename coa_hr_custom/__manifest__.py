@@ -1,4 +1,6 @@
 {
+    'website': 'https://www.coa-egy.com',
+    'author': 'Community of accountants (COA-Egypt)',
     'name': 'Al-Ramlaa HR Customization',
     'version': '19.0.1.0.0',
     'category': 'Human Resources',

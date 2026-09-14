@@ -29,7 +29,7 @@
                    'restricted to particular user group. The user who have no '
                    'access to edit the field got a user error while trying to'
                    'change the field',
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
     'website': 'https://www.coa-egy.com',

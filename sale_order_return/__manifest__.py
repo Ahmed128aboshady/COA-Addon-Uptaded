@@ -1,4 +1,6 @@
 {
+    'website': 'https://www.coa-egy.com',
+    'author': 'Community of accountants (COA-Egypt)',
     'name': 'Sale Order Return',
     'version': '19.0.1.0.0',
     'summary': 'Create return transfers directly from sales orders',

@@ -1,4 +1,6 @@
 {
+    'website': 'https://www.coa-egy.com',
+    'author': 'Community of accountants (COA-Egypt)',
     'name': 'Sale Payment Method',
     'version': '19.0.1.0.0',
     'summary': 'Add payment method tags on sales orders and invoices with reporting',

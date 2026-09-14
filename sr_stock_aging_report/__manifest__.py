@@ -18,7 +18,7 @@
         - FIFO-based age calculation
     """,
     'category': 'Inventory/Inventory',
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'website': '',
     'license': 'LGPL-3',
     'depends': ['stock', 'mail'],

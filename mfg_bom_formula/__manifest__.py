@@ -1,4 +1,5 @@
 {
+    'website': 'https://www.coa-egy.com',
     'name': 'BOM Formula Calculator',
     'version': '19.0.1.0.0',
     'category': 'Manufacturing',
@@ -9,7 +10,7 @@
         - كتابة معادلات Python يدوياً لكل component
         - حساب الكميات تلقائياً وتحديث BOM Lines
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'depends': ['mrp'],
     'data': [
         'security/ir.model.access.csv',

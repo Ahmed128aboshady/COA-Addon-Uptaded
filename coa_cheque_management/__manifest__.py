@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "arabian_cheque_management",
+    'name': "coa_cheque_management",
 
     'summary': "Short (1 phrase/line) summary of the module's purpose",
 
@@ -8,7 +8,7 @@
 Long description of module's purpose
     """,
 
-    'author': "COA (Community of Accountants)",
+    'author': "Community of accountants (COA-Egypt)",
     'website': "https://www.coa-egy.com",
 
     # Categories can be used to filter modules in modules listing
@@ -18,7 +18,7 @@ Long description of module's purpose
     'version': '19.0.1.0.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','accountant','account_accountant','utm'],
+    'depends': ['base','account','account','utm'],
 
     # always loaded
     'data': [

@@ -14,7 +14,7 @@ COA Sales Order Tracking Report
 - التسليم: كمية تم تسليمها + نسبة + المتبقي
 - الفوترة: كمية تم فوترتها + نسبة + المتبقي
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'website': 'https://www.coa-egy.com',
     'depends': ['sale', 'mrp', 'sale_mrp'],
     'data': [

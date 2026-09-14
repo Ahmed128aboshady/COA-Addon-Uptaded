@@ -3,7 +3,7 @@
     'version': '19.0.1.0.0',
     'category': 'Manufacturing',
     'summary': 'Keep MO in Draft state when created from Sales Order via MTO route',
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'website': 'https://www.coa-egy.com',
     'depends': ['mrp', 'sale_mrp'],
     'data': [],

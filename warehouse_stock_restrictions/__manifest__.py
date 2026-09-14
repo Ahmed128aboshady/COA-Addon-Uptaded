@@ -28,7 +28,7 @@
         This Module Restricts the User from Accessing Warehouse and Process Stock Moves other than allowed to Warehouses and Stock Locations.
     """,
 
-    'author': "COA (Community of Accountants)",
+    'author': "Community of accountants (COA-Egypt)",
     # 'website': "https://www.coa-egy.com",
     'license':'OPL-1',	
     'category': 'Warehouse',

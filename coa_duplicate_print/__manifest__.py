@@ -21,7 +21,7 @@ rotated "DUPLICATE - مكرر - Copy #N" watermark from the 2nd print onwards.
 Developed by Community of Accountants (COA) - Odoo Silver Partner
 WhatsApp: +20 101 390 7174
     """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'website': 'https://www.coa-egy.com',
     'license': 'OPL-1',
     'depends': ['base_setup', 'sale', 'stock'],

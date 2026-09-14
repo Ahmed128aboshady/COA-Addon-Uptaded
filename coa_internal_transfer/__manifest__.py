@@ -28,7 +28,7 @@ Features
 
 Developed by Community of Accountants (COA) - Odoo Silver Partner.
 """,
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'website': 'https://www.coa-egy.com',
     'license': 'LGPL-3',
     'depends': ['account'],

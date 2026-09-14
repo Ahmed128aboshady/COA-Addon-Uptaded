@@ -1,6 +1,7 @@
 {
+    'website': 'https://www.coa-egy.com',
     'name': 'Custom Date Order',
-    'author': 'COA (Community of Accountants)',
+    'author': 'Community of accountants (COA-Egypt)',
     'version': '19.0.1.0.0',
 
     'depends': ['sale', 'purchase'],
