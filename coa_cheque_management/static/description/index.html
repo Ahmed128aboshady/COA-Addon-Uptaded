@@ -1,276 +1,313 @@
-<!-- ==============================================================================
-     COA CHEQUE MANAGEMENT FOR ODOO 19 / 18 / 17
-     Official Description Page - Community of Accountants (COA Egypt)
-     100% Odoo Apps Store Sanitizer Compatible (Solid Colors, Zero Linear Gradients)
-============================================================================== -->
-
-<div class="container" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #041F33; background-color: #FFFFFF; line-height: 1.6; padding: 20px 0;">
+<div style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #171618; background-color: #ffffff; max-width: 1200px; margin: 0 auto; padding: 25px 15px; line-height: 1.6;">
 
   <!-- ==========================================
-       1. HERO HEADER SECTION (Clean Light Theme)
+       TOP BRAND & CONTACT BAR (Horizontal 3-Column Grid)
   =========================================== -->
-  <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 24px; padding: 50px 30px; text-align: center; margin-bottom: 40px;">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 35px;">
     
-    <!-- Top Badges Row -->
-    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; margin-bottom: 25px;">
-      <div style="display: inline-flex; align-items: center; gap: 8px; background-color: #FFFFFF; border: 1px solid #CBD5E1; padding: 6px 16px; border-radius: 50px;">
-        <img src="coa_logo.jpg" alt="COA Logo" style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover;" />
-        <span style="font-size: 13px; font-weight: 700; color: #063153; letter-spacing: 0.5px;">Community of Accountants (COA Egypt)</span>
+    <!-- Brand / Company Badge -->
+    <div style="padding: 16px 20px; border: 2px solid #063153; border-radius: 12px; background-color: #063153; color: #ffffff; text-align: center;">
+      <div style="font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 10px;">
+        <img src="coa_logo.jpg" style="width: 26px; height: 26px; border-radius: 50%; background-color: #ffffff;" alt="COA Egypt" />
+        <span>COA Egypt Business Solutions</span>
       </div>
-      
-      <div style="display: inline-flex; align-items: center; gap: 8px; background-color: #FEF2F2; border: 1px solid #E61B21; padding: 6px 16px; border-radius: 50px;">
-        <span style="display: inline-block; width: 8px; height: 8px; background-color: #16A34A; border-radius: 50%;"></span>
-        <span style="font-size: 12px; font-weight: 800; color: #E61B21; text-transform: uppercase;">Odoo 19.0 · 18.0 · 17.0 Ready</span>
-      </div>
-
-      <div style="display: inline-flex; align-items: center; background-color: #E7EEF3; border: 1px solid #6E93B0; padding: 6px 16px; border-radius: 50px;">
-        <span style="font-size: 12px; font-weight: 700; color: #0F5586;">Community &amp; Enterprise</span>
+      <div style="margin-top: 6px; font-size: 12px; color: #E7EEF3;">
+        Official Community of Accountants Addon
       </div>
     </div>
 
-    <!-- Main Hero Headline -->
-    <h1 style="font-size: 42px; font-weight: 900; line-height: 1.2; color: #041F33; margin: 0 auto 18px auto; max-width: 900px;">
-      Complete Cheque Lifecycle &amp; <span style="color: #E61B21;">Financial Accounting</span>
-    </h1>
+    <!-- Live Support / Contact -->
+    <div style="padding: 16px 20px; border: 2px solid #E61B21; border-radius: 12px; background-color: #FEF2F2; text-align: center;">
+      <div style="font-weight: 700; font-size: 15px; color: #8C1D22; display: flex; align-items: center; justify-content: center; gap: 8px;">
+        <span style="font-size: 18px;">✉️</span>
+        <span>Technical Support</span>
+      </div>
+      <div style="margin-top: 6px; font-size: 13px;">
+        <a href="mailto:ahmedaboshady128@gmail.com" style="color: #E61B21; font-weight: 700; text-decoration: none;">
+          ahmedaboshady128@gmail.com
+        </a>
+      </div>
+    </div>
 
-    <p style="font-size: 17px; color: #4B5563; line-height: 1.7; max-width: 780px; margin: 0 auto 35px auto; font-weight: 400;">
-      The premier financial app for managing customer post-dated cheques (PDCs) and vendor payments in Odoo. Complete with automated journal entries, bank clearing queues, and 1-click bounce reversals.
+    <!-- Compatibility Badge -->
+    <div style="padding: 16px 20px; border: 2px solid #16A34A; border-radius: 12px; background-color: #F0FDF4; text-align: center;">
+      <div style="font-weight: 700; font-size: 15px; color: #166534; display: flex; align-items: center; justify-content: center; gap: 8px;">
+        <span style="display: inline-block; width: 8px; height: 8px; background-color: #16A34A; border-radius: 50%;"></span>
+        <span>Odoo 19.0 · 18.0 · 17.0</span>
+      </div>
+      <div style="margin-top: 6px; font-size: 12px; color: #15803D; font-weight: 600;">
+        Community &amp; Enterprise Verified
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ==========================================
+       HERO TITLE & OVERVIEW (Clean Bold Typography)
+  =========================================== -->
+  <div style="text-align: center; margin-bottom: 45px;">
+    <h1 style="font-weight: 900; font-size: 46px; line-height: 1.2; color: #041F33; margin: 0 auto 16px auto; max-width: 920px;">
+      <span style="color: #E61B21;">COA Cheque Management</span> for Odoo
+    </h1>
+    <p style="font-size: 17px; line-height: 1.7; color: #4B5563; max-width: 820px; margin: 0 auto 25px auto;">
+      Take complete control of customer post-dated cheques (PDCs) and vendor payments in Odoo. Automated double-entry journal postings, bank clearing queues, and 1-click bounce handling built for corporate treasury standards.
     </p>
 
-    <!-- 4 Key Stat Metric Cards -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; max-width: 850px; margin: 0 auto 40px auto;">
-      <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 18px 12px; text-align: center;">
-        <div style="font-size: 28px; font-weight: 900; color: #063153;">100%</div>
-        <div style="font-size: 12px; color: #64748B; font-weight: 700; text-transform: uppercase;">Automated Entries</div>
-      </div>
-      <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 18px 12px; text-align: center;">
-        <div style="font-size: 28px; font-weight: 900; color: #E61B21;">2-Way</div>
-        <div style="font-size: 12px; color: #64748B; font-weight: 700; text-transform: uppercase;">Incoming / Outgoing</div>
-      </div>
-      <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 18px 12px; text-align: center;">
-        <div style="font-size: 28px; font-weight: 900; color: #0F5586;">Zero</div>
-        <div style="font-size: 12px; color: #64748B; font-weight: 700; text-transform: uppercase;">Reconciliation Gap</div>
-      </div>
-      <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 18px 12px; text-align: center;">
-        <div style="font-size: 28px; font-weight: 900; color: #16A34A;">LGPL-3</div>
-        <div style="font-size: 12px; color: #64748B; font-weight: 700; text-transform: uppercase;">Open Source</div>
-      </div>
+    <!-- Key Pill Badges -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 30px;">
+      <span style="background-color: #063153; color: #ffffff; font-size: 13px; font-weight: 700; padding: 6px 16px; border-radius: 20px;">✓ 100% Automated Entries</span>
+      <span style="background-color: #0F5586; color: #ffffff; font-size: 13px; font-weight: 700; padding: 6px 16px; border-radius: 20px;">✓ Customer &amp; Vendor PDCs</span>
+      <span style="background-color: #8C1D22; color: #ffffff; font-size: 13px; font-weight: 700; padding: 6px 16px; border-radius: 20px;">✓ Automated Bounce Reversal</span>
+      <span style="background-color: #16A34A; color: #ffffff; font-size: 13px; font-weight: 700; padding: 6px 16px; border-radius: 20px;">✓ LGPL-3 Open Source</span>
     </div>
 
-    <!-- Mac Browser Showcase Window -->
-    <div style="background-color: #1E293B; border-radius: 16px; overflow: hidden; max-width: 980px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);">
-      <!-- Window Chrome Header -->
+    <!-- Hero Showcase Image in Clean Mac Frame -->
+    <div style="background-color: #1E293B; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); max-width: 1050px; margin: 0 auto; border: 1px solid #CBD5E1;">
       <div style="background-color: #0F172A; padding: 12px 18px; display: flex; align-items: center; gap: 8px;">
         <span style="width: 12px; height: 12px; border-radius: 50%; background-color: #EF4444; display: inline-block;"></span>
         <span style="width: 12px; height: 12px; border-radius: 50%; background-color: #F59E0B; display: inline-block;"></span>
         <span style="width: 12px; height: 12px; border-radius: 50%; background-color: #10B981; display: inline-block;"></span>
-        <span style="margin-left: 12px; font-size: 12px; color: #94A3B8; font-family: monospace;">odoo-19 / Accounting / Cheques / Incoming Cheques Portfolio</span>
+        <span style="margin-left: 12px; font-size: 13px; color: #94A3B8; font-family: monospace;">Accounting ➔ Cheques ➔ Incoming Cheques Portfolio</span>
       </div>
-      <img src="01_incoming_cheques_list.png" alt="Odoo Cheque Management Dashboard" style="width: 100%; height: auto; display: block;" />
+      <img src="01_incoming_cheques_list.png" alt="COA Cheque Management Dashboard" style="width: 100%; height: auto; display: block;" />
     </div>
-
   </div>
 
   <!-- ==========================================
-       2. PROBLEM VS SOLUTION
+       HIGHLIGHT BANNER (KS Dashboard Pattern)
+  =========================================== -->
+  <div style="background-color: #E7EEF3; border: 2px solid #6E93B0; border-radius: 16px; padding: 35px 25px; text-align: center; margin-bottom: 50px;">
+    <h2 style="font-weight: 800; font-size: 32px; color: #041F33; margin: 0 0 12px 0;">
+      What Sets <span style="color: #E61B21;">COA Cheque Management</span> Apart?
+    </h2>
+    <p style="font-size: 16px; color: #063153; max-width: 800px; margin: 0 auto 20px auto; line-height: 1.6;">
+      Tired of tracking post-dated cheques in offline spreadsheets or dealing with mismatched bank reconciliations? COA Cheque Management turns paper cheques into a fully synchronized financial workflow in Odoo.
+    </p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; max-width: 850px; margin: 0 auto;">
+      <div style="background-color: #ffffff; border-radius: 10px; padding: 18px 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+        <strong style="color: #063153; font-size: 18px; display: block; margin-bottom: 4px;">Zero Manual Entries</strong>
+        <span style="font-size: 13px; color: #64748B;">Automated Dr/Cr postings at every stage</span>
+      </div>
+      <div style="background-color: #ffffff; border-radius: 10px; padding: 18px 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+        <strong style="color: #E61B21; font-size: 18px; display: block; margin-bottom: 4px;">1-Click NSF Reversals</strong>
+        <span style="font-size: 13px; color: #64748B;">Reverses entries and restores customer balance</span>
+      </div>
+      <div style="background-color: #ffffff; border-radius: 10px; padding: 18px 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+        <strong style="color: #16A34A; font-size: 18px; display: block; margin-bottom: 4px;">Full Audit Chatter</strong>
+        <span style="font-size: 13px; color: #64748B;">Complete traceability for corporate compliance</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       PROBLEM VS SOLUTION (Side-by-Side Grid)
   =========================================== -->
   <div style="margin-bottom: 50px;">
     <div style="text-align: center; margin-bottom: 30px;">
-      <span style="font-size: 13px; font-weight: 800; color: #E61B21; text-transform: uppercase; letter-spacing: 1.5px;">Problem vs. Solution</span>
-      <h2 style="font-size: 32px; font-weight: 800; color: #041F33; margin: 6px 0;">Why Your Treasury Team Needs This App</h2>
-      <p style="font-size: 15px; color: #64748B; margin: 0;">Stop relying on disconnected Excel spreadsheets and manual notes.</p>
+      <span style="font-size: 13px; font-weight: 800; color: #E61B21; text-transform: uppercase; letter-spacing: 1.5px;">Pain vs. Value</span>
+      <h2 style="font-weight: 800; font-size: 32px; color: #041F33; margin: 6px 0;">Why Your Business Needs This App</h2>
     </div>
 
-    <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;">
-      <!-- Without Card -->
-      <div style="flex: 1 1 450px; background-color: #FFF5F5; border: 1px solid #FED7D7; border-radius: 16px; padding: 30px;">
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
-          <span style="width: 32px; height: 32px; border-radius: 50%; background-color: #E61B21; color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; font-weight: 900;">✕</span>
-          <h3 style="font-size: 18px; font-weight: 800; color: #8C1D22; margin: 0;">Without COA Cheque Module</h3>
-        </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 24px;">
+      <!-- Without -->
+      <div style="background-color: #FFF5F5; border: 2px solid #FED7D7; border-radius: 16px; padding: 30px;">
+        <h3 style="font-size: 20px; font-weight: 800; color: #8C1D22; margin: 0 0 16px 0; display: flex; align-items: center; gap: 8px;">
+          <span>❌</span> Without COA Cheque Module
+        </h3>
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; font-size: 14px; color: #4B5563;">
-          <li><strong style="color: #E61B21;">✕ Unmonitored PDCs:</strong> Post-dated cheques get lost in drawers with zero maturity notifications.</li>
-          <li><strong style="color: #E61B21;">✕ Manual Journal Work:</strong> Accountants must hand-craft debit/credit lines across accounts.</li>
-          <li><strong style="color: #E61B21;">✕ Complex Bounced Cheques:</strong> Reversing returned cheques takes hours of manual entries.</li>
-          <li><strong style="color: #E61B21;">✕ No Audit Trail:</strong> No centralized record shows who received, deposited, or cashed the leaf.</li>
+          <li><strong style="color: #E61B21;">✕ Lost Post-Dated Cheques:</strong> PDCs sit in safes with no automated due-date notifications.</li>
+          <li><strong style="color: #E61B21;">✕ Manual Accounting Mistakes:</strong> Finance teams must hand-craft debit/credit lines across accounts.</li>
+          <li><strong style="color: #E61B21;">✕ Painful Bounced Cheques:</strong> Reversing an unpaid cheque requires tedious manual journal cancellations.</li>
+          <li><strong style="color: #E61B21;">✕ Audit Discrepancies:</strong> No unified timeline shows who held, deposited, or cleared the leaf.</li>
         </ul>
       </div>
 
-      <!-- With Card -->
-      <div style="flex: 1 1 450px; background-color: #F0FDF4; border: 2px solid #16A34A; border-radius: 16px; padding: 30px;">
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
-          <span style="width: 32px; height: 32px; border-radius: 50%; background-color: #16A34A; color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; font-weight: 900;">✓</span>
-          <h3 style="font-size: 18px; font-weight: 800; color: #166534; margin: 0;">With COA Cheque Management</h3>
-        </div>
+      <!-- With -->
+      <div style="background-color: #F0FDF4; border: 2px solid #86EFAC; border-radius: 16px; padding: 30px;">
+        <h3 style="font-size: 20px; font-weight: 800; color: #166534; margin: 0 0 16px 0; display: flex; align-items: center; gap: 8px;">
+          <span>✅</span> With COA Cheque Management
+        </h3>
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; font-size: 14px; color: #1F2937;">
-          <li><strong style="color: #16A34A;">✓ Structured Pipeline:</strong> Clear transitions: Draft ➔ Confirmed ➔ Under Collection ➔ Cleared.</li>
-          <li><strong style="color: #16A34A;">✓ 100% Automated Accounting:</strong> Notes Receivable, Notes Payable, and clearing entries posted automatically.</li>
-          <li><strong style="color: #16A34A;">✓ 1-Click Bounce &amp; Reversal:</strong> Reverses entries and restores customer balance instantly.</li>
-          <li><strong style="color: #16A34A;">✓ Full Bank Traceability:</strong> Complete history with cheque leaf number, bank, and chatter timeline.</li>
+          <li><strong style="color: #16A34A;">✓ Clear Pipeline:</strong> Seamless transitions: Draft ➔ Confirmed ➔ Under Collection ➔ Cleared.</li>
+          <li><strong style="color: #16A34A;">✓ 100% Automated Postings:</strong> Notes Receivable/Payable and clearing lines generated automatically.</li>
+          <li><strong style="color: #16A34A;">✓ Instant Reversals:</strong> 1-click bounce handling auto-reverses entries and restores customer balance.</li>
+          <li><strong style="color: #16A34A;">✓ Full Bank Audit Trail:</strong> Complete log with cheque leaf number, bank, and chatter timeline.</li>
         </ul>
       </div>
     </div>
   </div>
 
   <!-- ==========================================
-       3. 6 CORE ENTERPRISE PILLARS
+       6 CORE FEATURE PILLARS (Grid of Cards)
   =========================================== -->
   <div style="margin-bottom: 50px;">
     <div style="text-align: center; margin-bottom: 35px;">
       <span style="font-size: 13px; font-weight: 800; color: #0F5586; text-transform: uppercase; letter-spacing: 1.5px;">Core Capabilities</span>
-      <h2 style="font-size: 32px; font-weight: 800; color: #041F33; margin: 6px 0;">Designed for Professional Accounting Teams</h2>
+      <h2 style="font-weight: 800; font-size: 32px; color: #041F33; margin: 6px 0;">Enterprise Financial Features</h2>
     </div>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
-      <!-- Pillar 1 -->
-      <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-left: 5px solid #063153; border-radius: 12px; padding: 25px;">
-        <h3 style="font-size: 17px; font-weight: 800; color: #041F33; margin: 0 0 8px 0;">📥 Incoming Cheques (Customer PDCs)</h3>
-        <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">Record customer cheques against sales invoices. Track drawer, bank, cheque leaf number, and maturity date with automatic Notes Receivable lines.</p>
+      <!-- Feature 1 -->
+      <div style="background-color: #ffffff; border: 1px solid #E2E8F0; border-left: 5px solid #063153; border-radius: 12px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+        <h3 style="font-size: 18px; font-weight: 800; color: #041F33; margin: 0 0 10px 0;">📥 Incoming Cheques (Customer PDCs)</h3>
+        <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">
+          Accept cheques against sales invoices or customer advances. Record drawer, bank branch, cheque leaf number, and maturity date with automatic Notes Receivable lines.
+        </p>
       </div>
 
-      <!-- Pillar 2 -->
-      <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-left: 5px solid #E61B21; border-radius: 12px; padding: 25px;">
-        <h3 style="font-size: 17px; font-weight: 800; color: #041F33; margin: 0 0 8px 0;">📤 Outgoing Cheques (Vendor Payments)</h3>
-        <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">Issue cheques to suppliers and subcontractors. Manage checkbook leaves, link purchase bills, and debit bank accounts precisely upon clearance.</p>
+      <!-- Feature 2 -->
+      <div style="background-color: #ffffff; border: 1px solid #E2E8F0; border-left: 5px solid #E61B21; border-radius: 12px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+        <h3 style="font-size: 18px; font-weight: 800; color: #041F33; margin: 0 0 10px 0;">📤 Outgoing Cheques (Vendor Payments)</h3>
+        <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">
+          Issue cheques to suppliers, subcontractors, and service providers. Track issued leaves, link purchase bills, and debit your bank account upon maturity.
+        </p>
       </div>
 
-      <!-- Pillar 3 -->
-      <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-left: 5px solid #0F5586; border-radius: 12px; padding: 25px;">
-        <h3 style="font-size: 17px; font-weight: 800; color: #041F33; margin: 0 0 8px 0;">⚡ Automated Double-Entry Journaling</h3>
-        <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">System generates journal entries automatically for Notes Receivable, Notes Payable, Cheques Under Collection, and Bank accounts at each stage.</p>
+      <!-- Feature 3 -->
+      <div style="background-color: #ffffff; border: 1px solid #E2E8F0; border-left: 5px solid #0F5586; border-radius: 12px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+        <h3 style="font-size: 18px; font-weight: 800; color: #041F33; margin: 0 0 10px 0;">⚡ Automated Double-Entry Journaling</h3>
+        <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">
+          Eliminate human accounting error. The system posts proper entries to Cheques Under Collection, Notes Receivable, Notes Payable, and Bank Accounts automatically.
+        </p>
       </div>
 
-      <!-- Pillar 4 -->
-      <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-left: 5px solid #8C1D22; border-radius: 12px; padding: 25px;">
-        <h3 style="font-size: 17px; font-weight: 800; color: #041F33; margin: 0 0 8px 0;">↩️ 1-Click Bounce &amp; Reversal Workflow</h3>
-        <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">Handle returned cheques (NSF) seamlessly. The module automatically reverses posted entries, updates the cheque status, and restores customer balance.</p>
+      <!-- Feature 4 -->
+      <div style="background-color: #ffffff; border: 1px solid #E2E8F0; border-left: 5px solid #8C1D22; border-radius: 12px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+        <h3 style="font-size: 18px; font-weight: 800; color: #041F33; margin: 0 0 10px 0;">↩️ 1-Click Bounce &amp; Reversal Workflow</h3>
+        <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">
+          Handle returned cheques (NSF) seamlessly. The system auto-reverses posted entries, flags the cheque as cancelled/bounced, and restores customer or vendor debt.
+        </p>
       </div>
 
-      <!-- Pillar 5 -->
-      <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-left: 5px solid #063153; border-radius: 12px; padding: 25px;">
-        <h3 style="font-size: 17px; font-weight: 800; color: #041F33; margin: 0 0 8px 0;">🏢 Multi-Company &amp; Analytic Linkage</h3>
-        <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">Multi-branch and multi-company ready. Distribute cheque values across analytic cost centers and contracting projects for granular cash tracking.</p>
+      <!-- Feature 5 -->
+      <div style="background-color: #ffffff; border: 1px solid #E2E8F0; border-left: 5px solid #063153; border-radius: 12px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+        <h3 style="font-size: 18px; font-weight: 800; color: #041F33; margin: 0 0 10px 0;">🏢 Multi-Company &amp; Analytic Linkage</h3>
+        <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">
+          Multi-branch and multi-company friendly. Tag cheques with analytic distribution accounts (Cost Centers / Projects) for complete cash-flow visibility.
+        </p>
       </div>
 
-      <!-- Pillar 6 -->
-      <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-left: 5px solid #041F33; border-radius: 12px; padding: 25px;">
-        <h3 style="font-size: 17px; font-weight: 800; color: #041F33; margin: 0 0 8px 0;">🔒 Security Groups &amp; Audit Trail</h3>
-        <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">Segregation of duties between cashiers, accountants, and financial controllers. Every status change is logged in Odoo chatter with full audit trail.</p>
+      <!-- Feature 6 -->
+      <div style="background-color: #ffffff; border: 1px solid #E2E8F0; border-left: 5px solid #041F33; border-radius: 12px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+        <h3 style="font-size: 18px; font-weight: 800; color: #041F33; margin: 0 0 10px 0;">🔒 Security Groups &amp; Audit Trail</h3>
+        <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">
+          Clear segregation of duties between cashiers, senior accountants, and treasury controllers. Every status transition is logged in Odoo chatter with full audit trail.
+        </p>
       </div>
     </div>
   </div>
 
   <!-- ==========================================
-       4. 4-STEP WORKFLOW PIPELINE (Solid Navy)
+       4-STAGE WORKFLOW PIPELINE (Solid Navy Box)
   =========================================== -->
-  <div style="background-color: #063153; color: #FFFFFF; border-radius: 20px; padding: 45px 30px; margin-bottom: 50px;">
+  <div style="background-color: #063153; border-radius: 20px; padding: 45px 30px; margin-bottom: 50px; color: #ffffff;">
     <div style="text-align: center; margin-bottom: 35px;">
-      <span style="font-size: 12px; font-weight: 800; color: #E61B21; text-transform: uppercase; letter-spacing: 1.5px;">Visual Accounting Pipeline</span>
-      <h2 style="font-size: 30px; font-weight: 800; color: #FFFFFF; margin: 6px 0;">Cheque Journey &amp; Financial Postings</h2>
+      <span style="font-size: 12px; font-weight: 800; color: #E61B21; text-transform: uppercase; letter-spacing: 1.5px;">Visual Lifecycle</span>
+      <h2 style="font-weight: 800; font-size: 30px; color: #ffffff; margin: 6px 0;">Cheque Lifecycle &amp; Accounting Postings</h2>
     </div>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
       <div style="background-color: #041F33; border: 1px solid #0F5586; border-radius: 12px; padding: 20px;">
         <div style="font-size: 11px; font-weight: 800; color: #E61B21; text-transform: uppercase;">Step 01</div>
-        <h4 style="font-size: 16px; font-weight: 800; color: #FFFFFF; margin: 6px 0 8px 0;">Draft Creation</h4>
-        <p style="font-size: 13px; color: #CBD5E1; line-height: 1.5; margin: 0 0 12px 0;">Cashier logs issuer, bank branch, cheque leaf number, and due date.</p>
+        <h4 style="font-size: 16px; font-weight: 800; color: #ffffff; margin: 6px 0 8px 0;">Draft Creation</h4>
+        <p style="font-size: 13px; color: #CBD5E1; line-height: 1.5; margin: 0 0 12px 0;">Log drawer, bank branch, cheque number, amount, and due date.</p>
         <div style="background-color: #063153; padding: 6px 10px; border-radius: 6px; font-size: 11px; color: #94A3B8; font-family: monospace;">Accounting: None (Draft)</div>
       </div>
 
       <div style="background-color: #041F33; border: 1px solid #0F5586; border-radius: 12px; padding: 20px;">
         <div style="font-size: 11px; font-weight: 800; color: #E61B21; text-transform: uppercase;">Step 02</div>
-        <h4 style="font-size: 16px; font-weight: 800; color: #FFFFFF; margin: 6px 0 8px 0;">Confirmation</h4>
-        <p style="font-size: 13px; color: #CBD5E1; line-height: 1.5; margin: 0 0 12px 0;">Approved by accountant; locked into safe custody pending maturity.</p>
+        <h4 style="font-size: 16px; font-weight: 800; color: #ffffff; margin: 6px 0 8px 0;">Confirmation</h4>
+        <p style="font-size: 13px; color: #CBD5E1; line-height: 1.5; margin: 0 0 12px 0;">Approved by accountant; safely held in treasury safe pending maturity.</p>
         <div style="background-color: #063153; padding: 6px 10px; border-radius: 6px; font-size: 11px; color: #4ADE80; font-family: monospace;">Dr: Notes Receivable<br/>Cr: Customer Account</div>
       </div>
 
       <div style="background-color: #041F33; border: 1px solid #0F5586; border-radius: 12px; padding: 20px;">
         <div style="font-size: 11px; font-weight: 800; color: #E61B21; text-transform: uppercase;">Step 03</div>
-        <h4 style="font-size: 16px; font-weight: 800; color: #FFFFFF; margin: 6px 0 8px 0;">Bank Deposit</h4>
-        <p style="font-size: 13px; color: #CBD5E1; line-height: 1.5; margin: 0 0 12px 0;">On maturity date, cheque is dispatched to the clearing bank.</p>
-        <div style="background-color: #063153; padding: 6px 10px; border-radius: 6px; font-size: 11px; color: #4ADE80; font-family: monospace;">Dr: Under Collection<br/>Cr: Notes Receivable</div>
+        <h4 style="font-size: 16px; font-weight: 800; color: #ffffff; margin: 6px 0 8px 0;">Bank Deposit</h4>
+        <p style="font-size: 13px; color: #CBD5E1; line-height: 1.5; margin: 0 0 12px 0;">On maturity date, cheque is sent to clearing bank.</p>
+        <div style="background-color: #063153; padding: 6px 10px; border-radius: 6px; font-size: 11px; color: #4ADE80; font-family: monospace;">Dr: Cheques Under Collection<br/>Cr: Notes Receivable</div>
       </div>
 
       <div style="background-color: #041F33; border: 1px solid #0F5586; border-radius: 12px; padding: 20px;">
         <div style="font-size: 11px; font-weight: 800; color: #E61B21; text-transform: uppercase;">Step 04</div>
-        <h4 style="font-size: 16px; font-weight: 800; color: #FFFFFF; margin: 6px 0 8px 0;">Clearance / Done</h4>
+        <h4 style="font-size: 16px; font-weight: 800; color: #ffffff; margin: 6px 0 8px 0;">Clearance / Done</h4>
         <p style="font-size: 13px; color: #CBD5E1; line-height: 1.5; margin: 0 0 12px 0;">Bank statement confirms clearance; funds credited to bank account.</p>
-        <div style="background-color: #063153; padding: 6px 10px; border-radius: 6px; font-size: 11px; color: #4ADE80; font-family: monospace;">Dr: Main Bank Account<br/>Cr: Under Collection</div>
+        <div style="background-color: #063153; padding: 6px 10px; border-radius: 6px; font-size: 11px; color: #4ADE80; font-family: monospace;">Dr: Main Bank Account<br/>Cr: Cheques Under Collection</div>
       </div>
     </div>
   </div>
 
   <!-- ==========================================
-       5. LIVE SCREENSHOTS SHOWCASE
+       FULL-RES SCREENSHOT WALKTHROUGH
   =========================================== -->
   <div style="margin-bottom: 50px;">
     <div style="text-align: center; margin-bottom: 35px;">
-      <span style="font-size: 13px; font-weight: 800; color: #E61B21; text-transform: uppercase; letter-spacing: 1.5px;">Live Previews</span>
-      <h2 style="font-size: 32px; font-weight: 800; color: #041F33; margin: 6px 0;">Production Interface in Odoo 19</h2>
+      <span style="font-size: 13px; font-weight: 800; color: #E61B21; text-transform: uppercase; letter-spacing: 1.5px;">Live Application Previews</span>
+      <h2 style="font-weight: 800; font-size: 32px; color: #041F33; margin: 6px 0;">Screenshots from Live Odoo 19 Production</h2>
     </div>
 
     <!-- Screen 1 -->
-    <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 16px; padding: 25px; margin-bottom: 30px;">
+    <div style="background-color: #F8FAFC; border: 1px solid #CBD5E1; border-radius: 16px; padding: 25px; margin-bottom: 30px;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
         <div>
-          <span style="background-color: #063153; color: #FFFFFF; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 6px;">SCREEN 01</span>
+          <span style="background-color: #063153; color: #ffffff; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 6px;">SCREEN 01</span>
           <h3 style="font-size: 20px; font-weight: 800; color: #041F33; margin: 6px 0 0 0;">Incoming Cheques Portfolio (List View)</h3>
         </div>
-        <span style="font-size: 13px; color: #64748B;">Maturity tracking, partner filter &amp; status indicators</span>
+        <span style="font-size: 13px; color: #64748B; font-weight: 600;">Due-date tracking, customer filters &amp; maturity alerts</span>
       </div>
-      <div style="border-radius: 10px; overflow: hidden; border: 1px solid #CBD5E1;">
-        <img src="01_incoming_cheques_list.png" alt="Incoming Cheques List" style="width: 100%; height: auto; display: block;" />
+      <div style="border-radius: 10px; overflow: hidden; border: 1px solid #94A3B8;">
+        <img src="01_incoming_cheques_list.png" alt="Incoming Cheques List View" style="width: 100%; height: auto; display: block;" />
       </div>
     </div>
 
     <!-- Screen 2 -->
-    <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 16px; padding: 25px; margin-bottom: 30px;">
+    <div style="background-color: #F8FAFC; border: 1px solid #CBD5E1; border-radius: 16px; padding: 25px; margin-bottom: 30px;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
         <div>
-          <span style="background-color: #0F5586; color: #FFFFFF; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 6px;">SCREEN 02</span>
-          <h3 style="font-size: 20px; font-weight: 800; color: #041F33; margin: 6px 0 0 0;">Incoming Cheque Financial Form</h3>
+          <span style="background-color: #0F5586; color: #ffffff; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 6px;">SCREEN 02</span>
+          <h3 style="font-size: 20px; font-weight: 800; color: #041F33; margin: 6px 0 0 0;">Incoming Cheque Financial Form &amp; Status Pipeline</h3>
         </div>
-        <span style="font-size: 13px; color: #64748B;">Drawer details, linked journal items, and chatter audit trail</span>
+        <span style="font-size: 13px; color: #64748B; font-weight: 600;">Drawer details, linked journal items, and chatter audit trail</span>
       </div>
-      <div style="border-radius: 10px; overflow: hidden; border: 1px solid #CBD5E1;">
-        <img src="02_incoming_cheque_form.png" alt="Incoming Cheque Form" style="width: 100%; height: auto; display: block;" />
+      <div style="border-radius: 10px; overflow: hidden; border: 1px solid #94A3B8;">
+        <img src="02_incoming_cheque_form.png" alt="Incoming Cheque Form View" style="width: 100%; height: auto; display: block;" />
       </div>
     </div>
 
     <!-- Screen 3 -->
-    <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 16px; padding: 25px; margin-bottom: 30px;">
+    <div style="background-color: #F8FAFC; border: 1px solid #CBD5E1; border-radius: 16px; padding: 25px; margin-bottom: 30px;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
         <div>
-          <span style="background-color: #8C1D22; color: #FFFFFF; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 6px;">SCREEN 03</span>
+          <span style="background-color: #8C1D22; color: #ffffff; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 6px;">SCREEN 03</span>
           <h3 style="font-size: 20px; font-weight: 800; color: #041F33; margin: 6px 0 0 0;">Outgoing Cheques (Vendor Payments)</h3>
         </div>
-        <span style="font-size: 13px; color: #64748B;">Checkbook sequences &amp; bank overdraft protection</span>
+        <span style="font-size: 13px; color: #64748B; font-weight: 600;">Checkbook sequences &amp; bank overdraft protection</span>
       </div>
-      <div style="border-radius: 10px; overflow: hidden; border: 1px solid #CBD5E1;">
-        <img src="03_outgoing_cheques_list.png" alt="Outgoing Cheques List" style="width: 100%; height: auto; display: block;" />
+      <div style="border-radius: 10px; overflow: hidden; border: 1px solid #94A3B8;">
+        <img src="03_outgoing_cheques_list.png" alt="Outgoing Cheques List View" style="width: 100%; height: auto; display: block;" />
       </div>
     </div>
 
     <!-- Screen 4 -->
-    <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 16px; padding: 25px;">
+    <div style="background-color: #F8FAFC; border: 1px solid #CBD5E1; border-radius: 16px; padding: 25px;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
         <div>
-          <span style="background-color: #E61B21; color: #FFFFFF; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 6px;">SCREEN 04</span>
-          <h3 style="font-size: 20px; font-weight: 800; color: #041F33; margin: 6px 0 0 0;">Outgoing Cheque Authorization Form</h3>
+          <span style="background-color: #E61B21; color: #ffffff; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 6px;">SCREEN 04</span>
+          <h3 style="font-size: 20px; font-weight: 800; color: #041F33; margin: 6px 0 0 0;">Outgoing Cheque Payment Authorization</h3>
         </div>
-        <span style="font-size: 13px; color: #64748B;">Approval workflow and debit confirmation card</span>
+        <span style="font-size: 13px; color: #64748B; font-weight: 600;">Approval workflow and debit confirmation card</span>
       </div>
-      <div style="border-radius: 10px; overflow: hidden; border: 1px solid #CBD5E1;">
-        <img src="04_outgoing_cheque_form.png" alt="Outgoing Cheque Form" style="width: 100%; height: auto; display: block;" />
+      <div style="border-radius: 10px; overflow: hidden; border: 1px solid #94A3B8;">
+        <img src="04_outgoing_cheque_form.png" alt="Outgoing Cheque Form View" style="width: 100%; height: auto; display: block;" />
       </div>
     </div>
   </div>
 
   <!-- ==========================================
-       6. TECHNICAL SPECIFICATIONS TABLE
+       TECHNICAL SPECIFICATIONS TABLE
   =========================================== -->
-  <div style="background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; overflow: hidden; margin-bottom: 50px;">
-    <div style="background-color: #063153; color: #FFFFFF; padding: 18px 24px;">
+  <div style="background-color: #ffffff; border: 1px solid #E2E8F0; border-radius: 16px; overflow: hidden; margin-bottom: 50px;">
+    <div style="background-color: #063153; color: #ffffff; padding: 18px 24px;">
       <h3 style="font-size: 18px; font-weight: 800; margin: 0;">Technical Specifications</h3>
     </div>
     <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
@@ -308,37 +345,54 @@
   </div>
 
   <!-- ==========================================
-       7. FREQUENTLY ASKED QUESTIONS
+       FREQUENTLY ASKED QUESTIONS
   =========================================== -->
   <div style="margin-bottom: 50px;">
     <div style="text-align: center; margin-bottom: 25px;">
-      <h2 style="font-size: 26px; font-weight: 800; color: #041F33; margin: 0;">Frequently Asked Questions</h2>
+      <h2 style="font-weight: 800; font-size: 28px; color: #041F33; margin: 0;">Frequently Asked Questions</h2>
     </div>
 
     <div style="display: flex; flex-direction: column; gap: 12px; max-width: 900px; margin: 0 auto;">
-      <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 18px 22px;">
-        <h4 style="font-size: 15px; font-weight: 800; color: #041F33; margin: 0 0 6px 0;">Does this module modify standard Odoo accounting tables?</h4>
-        <p style="font-size: 13px; color: #4B5563; line-height: 1.6; margin: 0;">No. It creates dedicated models and uses standard Odoo journal items, guaranteeing 100% database integrity and zero migration conflicts.</p>
+      <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 20px 24px;">
+        <h4 style="font-size: 16px; font-weight: 800; color: #041F33; margin: 0 0 6px 0;">Does this module modify standard Odoo accounting tables?</h4>
+        <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">
+          No. It creates dedicated models for incoming and outgoing cheques and links to standard journal items without overriding core tables, guaranteeing 100% database integrity and easy future version upgrades.
+        </p>
       </div>
 
-      <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 18px 22px;">
-        <h4 style="font-size: 15px; font-weight: 800; color: #041F33; margin: 0 0 6px 0;">Can we configure custom intermediate accounts?</h4>
-        <p style="font-size: 13px; color: #4B5563; line-height: 1.6; margin: 0;">Yes! From Accounting Settings, you can select custom balance sheet accounts for Notes Receivable, Notes Payable, and Cheques Under Collection.</p>
+      <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 20px 24px;">
+        <h4 style="font-size: 16px; font-weight: 800; color: #041F33; margin: 0 0 6px 0;">Can we configure custom intermediate accounts for cheques?</h4>
+        <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">
+          Yes! Under <strong>Accounting ➔ Configuration ➔ Settings</strong>, you can configure the specific balance sheet accounts for Notes Receivable, Notes Payable, and Cheques Under Collection per company.
+        </p>
+      </div>
+
+      <div style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 20px 24px;">
+        <h4 style="font-size: 16px; font-weight: 800; color: #041F33; margin: 0 0 6px 0;">Is this module compatible with Odoo Enterprise?</h4>
+        <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">
+          Yes! It works identically on both Odoo Community and Odoo Enterprise across versions 17.0, 18.0, and 19.0.
+        </p>
       </div>
     </div>
   </div>
 
   <!-- ==========================================
-       8. FOOTER CALL TO ACTION (Solid Navy)
+       FOOTER CALL TO ACTION (Solid Navy)
   =========================================== -->
-  <div style="background-color: #041F33; color: #FFFFFF; border-radius: 20px; padding: 45px 30px; text-align: center;">
-    <img src="coa_logo.jpg" alt="COA Egypt" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;" />
-    <h3 style="font-size: 26px; font-weight: 800; color: #FFFFFF; margin: 0 0 10px 0;">Ready to Modernize Your Cheque Operations?</h3>
-    <p style="font-size: 14px; color: #CBD5E1; max-width: 600px; margin: 0 auto 25px auto;">Developed by the Community of Accountants (COA-Egypt). Tested in corporate treasury environments across Egypt and the Middle East.</p>
+  <div style="background-color: #041F33; color: #ffffff; border-radius: 20px; padding: 45px 30px; text-align: center;">
+    <img src="coa_logo.jpg" alt="COA Egypt" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;" />
+    <h3 style="font-size: 28px; font-weight: 800; color: #ffffff; margin: 0 0 10px 0;">Ready to Modernize Your Cheque Operations?</h3>
+    <p style="font-size: 15px; color: #CBD5E1; max-width: 650px; margin: 0 auto 25px auto; line-height: 1.6;">
+      Developed by the Community of Accountants (COA-Egypt). Tested in corporate treasury environments across Egypt and the Middle East.
+    </p>
 
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 25px;">
-      <a href="mailto:ahmedaboshady128@gmail.com" style="background-color: #E61B21; color: #FFFFFF; padding: 12px 28px; border-radius: 8px; font-size: 14px; font-weight: 800; text-decoration: none; display: inline-block;">Contact Technical Support</a>
-      <a href="https://github.com/Ahmed128aboshady/coa_cheque_management" target="_blank" style="background-color: #063153; color: #FFFFFF; border: 1px solid #0F5586; padding: 12px 28px; border-radius: 8px; font-size: 14px; font-weight: 800; text-decoration: none; display: inline-block;">View on GitHub</a>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-bottom: 25px;">
+      <a href="mailto:ahmedaboshady128@gmail.com" style="background-color: #E61B21; color: #ffffff; padding: 12px 28px; border-radius: 8px; font-size: 14px; font-weight: 800; text-decoration: none; display: inline-block;">
+        Contact Technical Support
+      </a>
+      <a href="https://github.com/Ahmed128aboshady/coa_cheque_management" target="_blank" style="background-color: #063153; color: #ffffff; border: 1px solid #0F5586; padding: 12px 28px; border-radius: 8px; font-size: 14px; font-weight: 800; text-decoration: none; display: inline-block;">
+        View on GitHub
+      </a>
     </div>
 
     <div style="border-top: 1px solid #0F5586; padding-top: 20px; font-size: 12px; color: #94A3B8;">
