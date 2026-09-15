@@ -1,371 +1,683 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COA Purchase Approval Workflow — COA Egypt Enterprise Flagship</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <style>
-        :root {
-            --coa-bg: #0B0F19;
-            --coa-card-bg: #151C2C;
-            --coa-primary: #714B67;
-            --coa-teal: #00A09D;
-            --coa-sky: #38BDF8;
-            --coa-emerald: #10B981;
-            --coa-border: rgba(255, 255, 255, 0.08);
-        }
-        body {
-            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-            background-color: var(--coa-bg);
-            color: #F1F5F9;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        #canvas-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 520px;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.65;
-        }
-        .hero-wrapper {
-            position: relative;
-            z-index: 1;
-            padding: 4rem 2rem 3rem 2rem;
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.4) 0%, rgba(11, 15, 25, 0.9) 100%);
-            border-bottom: 1px solid var(--coa-border);
-            margin-bottom: 3rem;
-        }
-        .brand-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.5rem 1.25rem;
-            border-radius: 50rem;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin-right: 0.5rem;
-            margin-bottom: 1.25rem;
-            backdrop-filter: blur(12px);
-        }
-        .badge-teal { background: rgba(0, 160, 157, 0.2); color: #2DD4BF; border: 1px solid rgba(45, 212, 191, 0.35); }
-        .badge-purple { background: rgba(113, 75, 103, 0.25); color: #E9D5FF; border: 1px solid rgba(233, 213, 255, 0.35); }
-        .badge-green { background: rgba(16, 185, 129, 0.2); color: #34D399; border: 1px solid rgba(52, 211, 153, 0.35); }
+<div style="font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;margin:0;padding:0;color:#1a2b3c;background:#fff;line-height:1.6;">
 
-        .hero-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 3.2rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-            background: linear-gradient(135deg, #FFFFFF 0%, #CBD5E1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1.25rem;
-        }
-        .hero-lead {
-            font-size: 1.2rem;
-            color: #94A3B8;
-            max-width: 850px;
-            font-weight: 400;
-            margin-bottom: 2rem;
-        }
-        .glass-card {
-            background: var(--coa-card-bg);
-            border: 1px solid var(--coa-border);
-            border-radius: 1.25rem;
-            padding: 2rem;
-            height: 100%;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--coa-primary), var(--coa-teal));
-            opacity: 0;
-            transition: opacity 0.35s ease;
-        }
-        .glass-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(56, 189, 248, 0.3);
-            box-shadow: 0 20px 40px -15px rgba(0, 160, 157, 0.2);
-        }
-        .glass-card:hover::before { opacity: 1; }
+<!-- ============================================================
+     GOOGLE FONT IMPORT
+============================================================ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+*{box-sizing:border-box;}
+</style>
 
-        .icon-box {
-            width: 60px;
-            height: 60px;
-            border-radius: 1rem;
-            background: linear-gradient(135deg, rgba(113, 75, 103, 0.3) 0%, rgba(0, 160, 157, 0.3) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            color: var(--coa-sky);
-            margin-bottom: 1.5rem;
-        }
+<!-- ============================================================
+     HERO HEADER
+============================================================ -->
+<section style="background:linear-gradient(135deg,#041F33 0%,#063153 55%,#0F5586 100%);padding:0;overflow:hidden;position:relative;">
 
-        .browser-window {
-            background: #0F172A;
-            border: 1px solid var(--coa-border);
-            border-radius: 1.25rem;
-            overflow: hidden;
-            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6);
-            margin-bottom: 3.5rem;
-        }
-        .browser-topbar {
-            background: #1E293B;
-            padding: 0.85rem 1.5rem;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .window-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-right: 6px; }
-        .btn-action-wa {
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            color: white;
-            font-weight: 700;
-            padding: 0.95rem 2.2rem;
-            border-radius: 50rem;
-            text-decoration: none;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .btn-action-wa:hover { color: white; transform: translateY(-2px); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.5); }
-        .btn-action-web {
-            background: rgba(255, 255, 255, 0.06);
-            color: #F1F5F9;
-            font-weight: 600;
-            padding: 0.95rem 2.2rem;
-            border-radius: 50rem;
-            text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .btn-action-web:hover { background: rgba(255, 255, 255, 0.15); color: white; }
-    </style>
-</head>
-<body>
-    <div id="canvas-container"></div>
+  <!-- decorative circles -->
+  <div style="position:absolute;top:-120px;right:-120px;width:480px;height:480px;border-radius:50%;background:rgba(15,85,134,0.18);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:rgba(110,147,176,0.12);pointer-events:none;"></div>
 
-    <div class="hero-wrapper">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <div class="d-flex align-items-center mb-3">
-                        <img src="icon.png" width="80" height="80" class="rounded-4 me-3 p-1 bg-dark border border-secondary shadow-sm" alt="COA Logo">
-                        <div>
-                            <span class="brand-badge badge-teal"><i class="fa-solid fa-cube me-2"></i>Project</span>
-                            <span class="brand-badge badge-purple"><i class="fa-solid fa-code-branch me-2"></i>Odoo 17.0.19.0.4.0.0</span>
-                            <span class="brand-badge badge-green"><i class="fa-solid fa-tag me-2"></i>€59.00 EUR</span>
-                        </div>
-                    </div>
-                    <h1 class="hero-title">COA Purchase Approval Workflow</h1>
-                    <p class="hero-lead">Configurable multi-level purchase order approval workflow</p>
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="https://wa.me/201013907174" target="_blank" class="btn-action-wa">
-                            <i class="fa-brands fa-whatsapp fs-5"></i> Contact WhatsApp (+20 10 13907174)
-                        </a>
-                        <a href="https://www.coa-egy.com" target="_blank" class="btn-action-web">
-                            <i class="fa-solid fa-globe fs-5"></i> Visit Website (www.coa-egy.com)
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 text-center mt-4 mt-lg-0">
-                    <div class="glass-card text-start">
-                        <h5 class="fw-bold text-white mb-1"><i class="fa-solid fa-shield-halved text-info me-2"></i>COA Enterprise Guarantee</h5>
-                        <p class="small text-slate-400 mb-3">Tested & Validated Solution</p>
-                        <ul class="list-unstyled small text-slate-300 mb-4">
-                            <li class="mb-2"><i class="fa-solid fa-check text-emerald me-2"></i>Community & Enterprise Compatible</li>
-                            <li class="mb-2"><i class="fa-solid fa-check text-emerald me-2"></i>Includes Lifetime Updates</li>
-                            <li class="mb-2"><i class="fa-solid fa-check text-emerald me-2"></i>Direct Senior COA Support</li>
-                            <li><i class="fa-solid fa-check text-emerald me-2"></i>OPL-1 Commercial License</li>
-                        </ul>
-                        <a href="https://wa.me/201013907174" target="_blank" class="btn btn-primary w-100 fw-bold py-2.5 rounded-3" style="background: var(--coa-teal); border: none;">
-                            <i class="fa-solid fa-cart-shopping me-2"></i>Acquire App Module
-                        </a>
-                    </div>
-                </div>
-            </div>
+  <!-- top bar -->
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:22px 48px 18px;border-bottom:1px solid rgba(255,255,255,0.08);">
+    <div style="display:flex;align-items:center;gap:14px;">
+      <img src="coa_logo.jpg" alt="COA Logo" style="height:44px;width:auto;border-radius:6px;"/>
+      <div>
+        <div style="color:#fff;font-weight:700;font-size:15px;letter-spacing:0.3px;">COA Purchase Approval Workflow</div>
+        <div style="color:#6E93B0;font-size:12px;font-weight:400;">purchase_approval_workflow</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <span style="background:rgba(110,147,176,0.18);color:#E7EEF3;font-size:12px;font-weight:600;padding:4px 14px;border-radius:20px;border:1px solid rgba(110,147,176,0.35);">Odoo 17</span>
+      <span style="background:rgba(110,147,176,0.18);color:#E7EEF3;font-size:12px;font-weight:600;padding:4px 14px;border-radius:20px;border:1px solid rgba(110,147,176,0.35);">Enterprise Ready</span>
+      <span style="background:#8C1D22;color:#fff;font-size:12px;font-weight:700;padding:4px 14px;border-radius:20px;">COA Addon</span>
+    </div>
+  </div>
+
+  <!-- hero body -->
+  <div style="max-width:1200px;margin:0 auto;padding:64px 48px 0;display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start;">
+
+    <!-- left column -->
+    <div style="flex:1;min-width:320px;">
+      <div style="display:inline-block;background:rgba(230,27,33,0.15);border:1px solid rgba(230,27,33,0.4);color:#E61B21;font-size:12px;font-weight:700;padding:5px 16px;border-radius:20px;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:22px;">
+        Purchase Governance &amp; Compliance
+      </div>
+      <h1 style="color:#fff;font-size:clamp(28px,3.5vw,46px);font-weight:900;line-height:1.15;margin:0 0 20px;letter-spacing:-0.5px;">
+        Advanced Multi-Tier<br/>
+        <span style="color:#6E93B0;">Purchase Order</span><br/>
+        Approval Matrix<br/>
+        <span style="background:linear-gradient(90deg,#E61B21,#8C1D22);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">&amp; Workflow</span>
+      </h1>
+      <p style="color:#a8c4d8;font-size:16px;font-weight:400;max-width:520px;margin:0 0 36px;line-height:1.75;">
+        Configure multi-level purchase approval chains driven by amount thresholds, vendor, department, or product category. Enforce financial governance with SLA deadlines, auto-escalation, HR manager routing, and a full immutable audit trail.
+      </p>
+
+      <!-- metric cards row -->
+      <div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:44px;">
+
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:18px 22px;min-width:130px;flex:1;">
+          <div style="color:#E61B21;font-size:28px;font-weight:900;line-height:1;">∞</div>
+          <div style="color:#E7EEF3;font-size:13px;font-weight:600;margin-top:6px;">Amount-Based<br/>Tiers</div>
         </div>
+
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:18px 22px;min-width:130px;flex:1;">
+          <div style="color:#E61B21;font-size:28px;font-weight:900;line-height:1;">Auto</div>
+          <div style="color:#E7EEF3;font-size:13px;font-weight:600;margin-top:6px;">Escalation<br/>Engine</div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:18px 22px;min-width:130px;flex:1;">
+          <div style="color:#E61B21;font-size:28px;font-weight:900;line-height:1;">SLA</div>
+          <div style="color:#E7EEF3;font-size:13px;font-weight:600;margin-top:6px;">Deadline<br/>Tracking</div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:18px 22px;min-width:130px;flex:1;">
+          <div style="color:#E61B21;font-size:28px;font-weight:900;line-height:1;">XLS</div>
+          <div style="color:#E7EEF3;font-size:13px;font-weight:600;margin-top:6px;">Audit Trail<br/>Export</div>
+        </div>
+
+      </div>
     </div>
 
-    <div class="container">
-        <div class="browser-window">
-            <div class="browser-topbar">
-                <span class="window-dot" style="background: #FF5F56;"></span>
-                <span class="window-dot" style="background: #FFBD2E;"></span>
-                <span class="window-dot" style="background: #27C93F;"></span>
-                <small class="text-slate-400 ms-3 font-monospace">Odoo 17.0.19.0.4.0.0 — COA Purchase Approval Workflow Interactive Showcase</small>
-            </div>
-            <img src="banner.png" class="w-100 d-block" alt="COA Purchase Approval Workflow Banner" style="object-fit: cover; max-height: 540px;">
+    <!-- right column – mac window -->
+    <div style="flex:1.1;min-width:300px;display:flex;justify-content:flex-end;align-items:flex-end;">
+      <div style="background:#1a2f45;border-radius:14px 14px 0 0;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.55);width:100%;max-width:640px;">
+        <!-- mac title bar -->
+        <div style="background:#0d2035;padding:11px 18px;display:flex;align-items:center;gap:8px;">
+          <span style="width:12px;height:12px;border-radius:50%;background:#E61B21;display:inline-block;"></span>
+          <span style="width:12px;height:12px;border-radius:50%;background:#f5a623;display:inline-block;"></span>
+          <span style="width:12px;height:12px;border-radius:50%;background:#27c93f;display:inline-block;"></span>
+          <span style="color:#5a7a96;font-size:12px;margin-left:12px;font-family:monospace;">Purchase Orders — Approval Matrix</span>
         </div>
-
-        <h2 class="fw-bold mb-4 text-white text-center font-monospace" style="letter-spacing: -0.5px;">Core Business Capabilities & Key Features</h2>
-        <div class="row g-4 mb-5">
-            
-            <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-bolt-lightning"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #1</h4>
-                    <p class="text-slate-400 mb-0">الاسم الفني (Technical Name): purchaseapprovalworkflow</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-chart-pie"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #2</h4>
-                    <p class="text-slate-400 mb-0">التصنيف (Category): Purchase</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #3</h4>
-                    <p class="text-slate-400 mb-0">الإصدار (Version): 19.0.4.0.0</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-sliders"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #4</h4>
-                    <p class="text-slate-400 mb-0">الاعتماديات (Dependencies): purchase, mail, hr</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-boxes-packing"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #5</h4>
-                    <p class="text-slate-400 mb-0">الملف: models\purchaseapprovalhistory.py</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-bolt-lightning"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #6</h4>
-                    <p class="text-slate-400 mb-0">النماذج الجديدة (name): purchase.approval.history</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="glass-card mb-5 p-4 p-md-5">
-            <h3 class="fw-bold text-white mb-4"><i class="fa-solid fa-sliders me-3 text-info"></i>Technical Information & Specification</h3>
-            <div class="table-responsive">
-                <table class="table table-dark table-hover align-middle mb-0" style="background: transparent;">
-                    <tbody>
-                        <tr>
-                            <th class="py-3 text-slate-400" style="width: 35%; border-color: var(--coa-border);"><i class="fa-solid fa-box me-2"></i>Technical Name</th>
-                            <td class="py-3 border-color font-monospace text-sky fw-bold" style="border-color: var(--coa-border);"><code>coa_purchase_approval_workflow</code></td>
-                        </tr>
-                        <tr>
-                            <th class="py-3 text-slate-400" style="border-color: var(--coa-border);"><i class="fa-solid fa-code-branch me-2"></i>Odoo Version</th>
-                            <td class="py-3" style="border-color: var(--coa-border);"><span class="badge bg-primary px-3 py-2">Odoo 17.0.19.0.4.0.0 (Community & Enterprise)</span></td>
-                        </tr>
-                        <tr>
-                            <th class="py-3 text-slate-400" style="border-color: var(--coa-border);"><i class="fa-solid fa-certificate me-2"></i>License Type</th>
-                            <td class="py-3" style="border-color: var(--coa-border);"><span class="badge bg-secondary px-3 py-2">OPL-1</span></td>
-                        </tr>
-                        <tr>
-                            <th class="py-3 text-slate-400" style="border-color: var(--coa-border);"><i class="fa-solid fa-link me-2"></i>Dependencies</th>
-                            <td class="py-3 fw-semibold text-slate-300" style="border-color: var(--coa-border);">purchase, mail, hr</td>
-                        </tr>
-                        <tr>
-                            <th class="py-3 text-slate-400" style="border-color: var(--coa-border);"><i class="fa-solid fa-building me-2"></i>Author / Vendor</th>
-                            <td class="py-3 fw-bold text-white" style="border-color: var(--coa-border);">COA (Chart of Accounts)</td>
-                        </tr>
-                        <tr>
-                            <th class="py-3 text-slate-400" style="border-color: var(--coa-border);"><i class="fa-solid fa-tag me-2"></i>Official Store Price</th>
-                            <td class="py-3 fw-bold text-emerald fs-5" style="border-color: var(--coa-border);">€59.00 EUR</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="glass-card text-center p-5 mb-5" style="background: linear-gradient(135deg, #151C2C 0%, #0F172A 100%);">
-            <h2 class="fw-bold text-white mb-2">Designed & Supported by COA Egypt</h2>
-            <p class="text-slate-400 fs-5 max-w-700 mx-auto mb-4">Chart of Accounts (COA) is an established ERP advisory and software development company delivering high-end Odoo customizations globally.</p>
-            <div class="d-flex flex-wrap justify-content-center gap-3">
-                <a href="https://wa.me/201013907174" target="_blank" class="btn-action-wa">
-                    <i class="fa-brands fa-whatsapp fs-5"></i> Direct WhatsApp (+20 10 13907174)
-                </a>
-                <a href="https://www.coa-egy.com" target="_blank" class="btn-action-web">
-                    <i class="fa-solid fa-globe fs-5"></i> Official Portal (www.coa-egy.com)
-                </a>
-            </div>
-        </div>
+        <img src="01_purchase_approval_matrix_list.png" alt="Purchase Approval Matrix List" style="width:100%;display:block;"/>
+      </div>
     </div>
 
-    <script>
-        const container = document.getElementById('canvas-container');
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 520, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        renderer.setSize(window.innerWidth, 520);
-        container.appendChild(renderer.domElement);
+  </div>
+</section>
 
-        const particlesCount = 180;
-        const geometry = new THREE.BufferGeometry();
-        const positions = new Float32Array(particlesCount * 3);
-        const colors = new Float32Array(particlesCount * 3);
+<!-- ============================================================
+     PROBLEM vs SOLUTION
+============================================================ -->
+<section style="background:#E7EEF3;padding:80px 48px;">
+  <div style="max-width:1200px;margin:0 auto;">
 
-        for (let i = 0; i < particlesCount * 3; i += 3) {
-            positions[i] = (Math.random() - 0.5) * 15;
-            positions[i + 1] = (Math.random() - 0.5) * 10;
-            positions[i + 2] = (Math.random() - 0.5) * 15;
-            colors[i] = 0.44;
-            colors[i + 1] = 0.62;
-            colors[i + 2] = 0.61;
-        }
+    <div style="text-align:center;margin-bottom:56px;">
+      <div style="display:inline-block;background:#8C1D22;color:#fff;font-size:11px;font-weight:700;padding:4px 16px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;">The Business Problem</div>
+      <h2 style="color:#041F33;font-size:clamp(24px,3vw,38px);font-weight:800;margin:0;letter-spacing:-0.3px;">Your Current Approval Process Is Costing You</h2>
+      <p style="color:#4a6480;font-size:16px;max-width:600px;margin:14px auto 0;">One approver. No thresholds. No accountability. No visibility. Procurement chaos compounds at scale.</p>
+    </div>
 
-        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:stretch;">
 
-        const material = new THREE.PointsMaterial({ size: 0.08, vertexColors: true, transparent: true, opacity: 0.8 });
-        const points = new THREE.Points(geometry, material);
-        scene.add(points);
+      <!-- WITHOUT -->
+      <div style="flex:1;min-width:280px;background:#fff;border-radius:16px;padding:36px;border:2px solid #f0c0c2;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#E61B21;border-radius:16px 16px 0 0;"></div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:28px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:#fdecea;display:flex;align-items:center;justify-content:center;font-size:22px;">✗</div>
+          <h3 style="color:#8C1D22;font-size:20px;font-weight:800;margin:0;">Without This Module</h3>
+        </div>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px;">
+          <li style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="color:#E61B21;font-size:18px;margin-top:2px;flex-shrink:0;">●</span>
+            <div><strong style="color:#041F33;font-size:14px;">Single approver bottleneck</strong><br/><span style="color:#6E93B0;font-size:13px;">One person gates every PO regardless of value or risk, creating delays and burnout</span></div>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="color:#E61B21;font-size:18px;margin-top:2px;flex-shrink:0;">●</span>
+            <div><strong style="color:#041F33;font-size:14px;">No monetary thresholds</strong><br/><span style="color:#6E93B0;font-size:13px;">A $200 office supply order requires the same approval path as a $500,000 capital expenditure</span></div>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="color:#E61B21;font-size:18px;margin-top:2px;flex-shrink:0;">●</span>
+            <div><strong style="color:#041F33;font-size:14px;">Uncontrolled overspending</strong><br/><span style="color:#6E93B0;font-size:13px;">No budget guardrails means purchases exceed authority limits with zero detection</span></div>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="color:#E61B21;font-size:18px;margin-top:2px;flex-shrink:0;">●</span>
+            <div><strong style="color:#041F33;font-size:14px;">Invisible approval status</strong><br/><span style="color:#6E93B0;font-size:13px;">Requesters have no idea where their PO stands in the approval chain at any given moment</span></div>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="color:#E61B21;font-size:18px;margin-top:2px;flex-shrink:0;">●</span>
+            <div><strong style="color:#041F33;font-size:14px;">No audit evidence</strong><br/><span style="color:#6E93B0;font-size:13px;">Auditors cannot reconstruct who approved what, when, or why — compliance risk is critical</span></div>
+          </li>
+        </ul>
+      </div>
 
-        camera.position.z = 5;
+      <!-- WITH -->
+      <div style="flex:1;min-width:280px;background:#fff;border-radius:16px;padding:36px;border:2px solid #b8d4e8;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:5px;background:#0F5586;border-radius:16px 16px 0 0;"></div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:28px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:#e8f3fb;display:flex;align-items:center;justify-content:center;font-size:22px;">✓</div>
+          <h3 style="color:#041F33;font-size:20px;font-weight:800;margin:0;">With This Module</h3>
+        </div>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px;">
+          <li style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="color:#0F5586;font-size:18px;margin-top:2px;flex-shrink:0;">●</span>
+            <div><strong style="color:#041F33;font-size:14px;">Unlimited tiered approval matrix</strong><br/><span style="color:#6E93B0;font-size:13px;">Define as many approval tiers as your governance policy requires, each with dedicated approvers</span></div>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="color:#0F5586;font-size:18px;margin-top:2px;flex-shrink:0;">●</span>
+            <div><strong style="color:#041F33;font-size:14px;">Intelligent amount thresholds</strong><br/><span style="color:#6E93B0;font-size:13px;">Orders are automatically routed to the correct approval tier based on total PO amount</span></div>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="color:#0F5586;font-size:18px;margin-top:2px;flex-shrink:0;">●</span>
+            <div><strong style="color:#041F33;font-size:14px;">SLA enforcement &amp; escalation</strong><br/><span style="color:#6E93B0;font-size:13px;">Deadlines are set per tier; overdue approvals auto-escalate with notifications and tracking</span></div>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="color:#0F5586;font-size:18px;margin-top:2px;flex-shrink:0;">●</span>
+            <div><strong style="color:#041F33;font-size:14px;">Real-time approval dashboard</strong><br/><span style="color:#6E93B0;font-size:13px;">Full visibility into current tier, pending approver, and time elapsed for every PO in the system</span></div>
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="color:#0F5586;font-size:18px;margin-top:2px;flex-shrink:0;">●</span>
+            <div><strong style="color:#041F33;font-size:14px;">Immutable audit trail + export</strong><br/><span style="color:#6E93B0;font-size:13px;">Every approval action is timestamped and exportable to Excel/PDF for audit and compliance reporting</span></div>
+          </li>
+        </ul>
+      </div>
 
-        function animate() {
-            requestAnimationFrame(animate);
-            points.rotation.y += 0.0015;
-            points.rotation.x += 0.0008;
-            renderer.render(scene, camera);
-        }
-        animate();
+    </div>
+  </div>
+</section>
 
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / 520;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, 520);
-        });
-    </script>
-</body>
-</html>
+<!-- ============================================================
+     6 FEATURE PILLARS
+============================================================ -->
+<section style="background:#fff;padding:80px 48px;">
+  <div style="max-width:1200px;margin:0 auto;">
+
+    <div style="text-align:center;margin-bottom:60px;">
+      <div style="display:inline-block;background:#E7EEF3;color:#063153;font-size:11px;font-weight:700;padding:4px 16px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;">Core Capabilities</div>
+      <h2 style="color:#041F33;font-size:clamp(24px,3vw,38px);font-weight:800;margin:0 0 12px;letter-spacing:-0.3px;">Six Pillars of Procurement Governance</h2>
+      <p style="color:#6E93B0;font-size:16px;max-width:580px;margin:0 auto;">Each feature is engineered to close a specific gap in your purchase authorization framework.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;">
+
+      <!-- Pillar 1 -->
+      <div style="background:#f7fafd;border-radius:16px;padding:32px;border:1px solid #dde8f0;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;right:0;width:80px;height:80px;background:linear-gradient(135deg,#E7EEF3,transparent);border-radius:0 16px 0 80px;"></div>
+        <div style="width:52px;height:52px;background:linear-gradient(135deg,#041F33,#0F5586);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:24px;">💰</div>
+        <h3 style="color:#041F33;font-size:18px;font-weight:800;margin:0 0 12px;">Amount-Based Approval Tiers</h3>
+        <p style="color:#4a6480;font-size:14px;line-height:1.7;margin:0 0 18px;">Define unlimited approval tiers with minimum and maximum monetary thresholds. When a PO is submitted, the system automatically identifies the applicable tier and routes to the correct approver group. Threshold currency is configurable per company.</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;align-items:center;gap:8px;color:#063153;font-size:13px;font-weight:500;">
+            <span style="width:6px;height:6px;background:#0F5586;border-radius:50%;flex-shrink:0;"></span>Configurable min/max per tier
+          </li>
+          <li style="display:flex;align-items:center;gap:8px;color:#063153;font-size:13px;font-weight:500;">
+            <span style="width:6px;height:6px;background:#0F5586;border-radius:50%;flex-shrink:0;"></span>Multi-company &amp; currency support
+          </li>
+          <li style="display:flex;align-items:center;gap:8px;color:#063153;font-size:13px;font-weight:500;">
+            <span style="width:6px;height:6px;background:#0F5586;border-radius:50%;flex-shrink:0;"></span>Sequential &amp; parallel approval modes
+          </li>
+        </ul>
+      </div>
+
+      <!-- Pillar 2 -->
+      <div style="background:#f7fafd;border-radius:16px;padding:32px;border:1px solid #dde8f0;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;right:0;width:80px;height:80px;background:linear-gradient(135deg,#E7EEF3,transparent);border-radius:0 16px 0 80px;"></div>
+        <div style="width:52px;height:52px;background:linear-gradient(135deg,#041F33,#0F5586);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:24px;">🏷️</div>
+        <h3 style="color:#041F33;font-size:18px;font-weight:800;margin:0 0 12px;">Vendor &amp; Category Filters</h3>
+        <p style="color:#4a6480;font-size:14px;line-height:1.7;margin:0 0 18px;">Layer additional approval conditions on top of amount rules. Specific vendors, vendor tags, product categories, or analytical accounts can trigger dedicated approval paths — ensuring strategic and high-risk supplier relationships receive heightened scrutiny.</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;align-items:center;gap:8px;color:#063153;font-size:13px;font-weight:500;">
+            <span style="width:6px;height:6px;background:#0F5586;border-radius:50%;flex-shrink:0;"></span>Vendor &amp; vendor tag conditions
+          </li>
+          <li style="display:flex;align-items:center;gap:8px;color:#063153;font-size:13px;font-weight:500;">
+            <span style="width:6px;height:6px;background:#0F5586;border-radius:50%;flex-shrink:0;"></span>Product category routing
+          </li>
+          <li style="display:flex;align-items:center;gap:8px;color:#063153;font-size:13px;font-weight:500;">
+            <span style="width:6px;height:6px;background:#0F5586;border-radius:50%;flex-shrink:0;"></span>Analytic account &amp; department filters
+          </li>
+        </ul>
+      </div>
+
+      <!-- Pillar 3 -->
+      <div style="background:#f7fafd;border-radius:16px;padding:32px;border:1px solid #dde8f0;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;right:0;width:80px;height:80px;background:linear-gradient(135deg,#E7EEF3,transparent);border-radius:0 16px 0 80px;"></div>
+        <div style="width:52px;height:52px;background:linear-gradient(135deg,#041F33,#0F5586);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:24px;">👤</div>
+        <h3 style="color:#041F33;font-size:18px;font-weight:800;margin:0 0 12px;">HR Manager Auto-Routing</h3>
+        <p style="color:#4a6480;font-size:14px;line-height:1.7;margin:0 0 18px;">Enable dynamic approver resolution by linking approval tiers to the purchase requester's HR manager hierarchy. When a PO is submitted, the system automatically identifies the correct manager from the employee chart without manual configuration per user.</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;align-items:center;gap:8px;color:#063153;font-size:13px;font-weight:500;">
+            <span style="width:6px;height:6px;background:#0F5586;border-radius:50%;flex-shrink:0;"></span>Dynamic HR hierarchy resolution
+          </li>
+          <li style="display:flex;align-items:center;gap:8px;color:#063153;font-size:13px;font-weight:500;">
+            <span style="width:6px;height:6px;background:#0F5586;border-radius:50%;flex-shrink:0;"></span>Fallback to static approver groups
+          </li>
+          <li style="display:flex;align-items:center;gap:8px;color:#063153;font-size:13px;font-weight:500;">
+            <span style="width:6px;height:6px;background:#0F5586;border-radius:50%;flex-shrink:0;"></span>Works with Odoo HR &amp; Employees app
+          </li>
+        </ul>
+      </div>
+
+      <!-- Pillar 4 -->
+      <div style="background:#f7fafd;border-radius:16px;padding:32px;border:1px solid #dde8f0;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;right:0;width:80px;height:80px;background:linear-gradient(135deg,#E7EEF3,transparent);border-radius:0 16px 0 80px;"></div>
+        <div style="width:52px;height:52px;background:linear-gradient(135deg,#8C1D22,#E61B21);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:24px;">⏱️</div>
+        <h3 style="color:#041F33;font-size:18px;font-weight:800;margin:0 0 12px;">SLA &amp; Deadline Tracking</h3>
+        <p style="color:#4a6480;font-size:14px;line-height:1.7;margin:0 0 18px;">Set response deadlines per approval tier (in hours or business days). The system tracks elapsed time in real-time and triggers configurable escalation notifications before and at deadline. Overdue approvals are highlighted in the dashboard and trigger supervisor alerts.</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;align-items:center;gap:8px;color:#063153;font-size:13px;font-weight:500;">
+            <span style="width:6px;height:6px;background:#E61B21;border-radius:50%;flex-shrink:0;"></span>Per-tier SLA configuration (hours/days)
+          </li>
+          <li style="display:flex;align-items:center;gap:8px;color:#063153;font-size:13px;font-weight:500;">
+            <span style="width:6px;height:6px;background:#E61B21;border-radius:50%;flex-shrink:0;"></span>Business hours calendar integration
+          </li>
+          <li style="display:flex;align-items:center;gap:8px;color:#063153;font-size:13px;font-weight:500;">
+            <span style="width:6px;height:6px;background:#E61B21;border-radius:50%;flex-shrink:0;"></span>Pre-deadline &amp; overdue escalation email
+          </li>
+        </ul>
+      </div>
+
+      <!-- Pillar 5 -->
+      <div style="background:#f7fafd;border-radius:16px;padding:32px;border:1px solid #dde8f0;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;right:0;width:80px;height:80px;background:linear-gradient(135deg,#E7EEF3,transparent);border-radius:0 16px 0 80px;"></div>
+        <div style="width:52px;height:52px;background:linear-gradient(135deg,#041F33,#0F5586);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:24px;">📊</div>
+        <h3 style="color:#041F33;font-size:18px;font-weight:800;margin:0 0 12px;">Approval Analytics Dashboard</h3>
+        <p style="color:#4a6480;font-size:14px;line-height:1.7;margin:0 0 18px;">A dedicated analytics dashboard surfaces approval KPIs across the organization: average approval time per tier, approval rate by department, bottleneck identification, approver workload distribution, and trend analysis over configurable date ranges.</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;align-items:center;gap:8px;color:#063153;font-size:13px;font-weight:500;">
+            <span style="width:6px;height:6px;background:#0F5586;border-radius:50%;flex-shrink:0;"></span>Avg. approval time per tier &amp; approver
+          </li>
+          <li style="display:flex;align-items:center;gap:8px;color:#063153;font-size:13px;font-weight:500;">
+            <span style="width:6px;height:6px;background:#0F5586;border-radius:50%;flex-shrink:0;"></span>Bottleneck identification report
+          </li>
+          <li style="display:flex;align-items:center;gap:8px;color:#063153;font-size:13px;font-weight:500;">
+            <span style="width:6px;height:6px;background:#0F5586;border-radius:50%;flex-shrink:0;"></span>Configurable date-range &amp; grouping
+          </li>
+        </ul>
+      </div>
+
+      <!-- Pillar 6 -->
+      <div style="background:#f7fafd;border-radius:16px;padding:32px;border:1px solid #dde8f0;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;right:0;width:80px;height:80px;background:linear-gradient(135deg,#E7EEF3,transparent);border-radius:0 16px 0 80px;"></div>
+        <div style="width:52px;height:52px;background:linear-gradient(135deg,#8C1D22,#E61B21);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:24px;">📋</div>
+        <h3 style="color:#041F33;font-size:18px;font-weight:800;margin:0 0 12px;">Audit Trail Export</h3>
+        <p style="color:#4a6480;font-size:14px;line-height:1.7;margin:0 0 18px;">Every approval action — approve, reject, delegate, escalate, comment — is recorded with a UTC timestamp, user identity, IP address reference, and attached rationale note. The complete trail is exportable to Excel (XLSX) and PDF directly from the PO form or the analytics dashboard.</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;align-items:center;gap:8px;color:#063153;font-size:13px;font-weight:500;">
+            <span style="width:6px;height:6px;background:#E61B21;border-radius:50%;flex-shrink:0;"></span>Immutable, timestamped event log
+          </li>
+          <li style="display:flex;align-items:center;gap:8px;color:#063153;font-size:13px;font-weight:500;">
+            <span style="width:6px;height:6px;background:#E61B21;border-radius:50%;flex-shrink:0;"></span>Export to XLSX &amp; PDF one-click
+          </li>
+          <li style="display:flex;align-items:center;gap:8px;color:#063153;font-size:13px;font-weight:500;">
+            <span style="width:6px;height:6px;background:#E61B21;border-radius:50%;flex-shrink:0;"></span>Attach rationale notes per action
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     4-STEP PIPELINE (dark navy background)
+============================================================ -->
+<section style="background:linear-gradient(160deg,#041F33 0%,#063153 100%);padding:80px 48px;position:relative;overflow:hidden;">
+
+  <!-- decorative -->
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:900px;border-radius:50%;border:1px solid rgba(110,147,176,0.06);pointer-events:none;"></div>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;border:1px solid rgba(110,147,176,0.08);pointer-events:none;"></div>
+
+  <div style="max-width:1200px;margin:0 auto;position:relative;">
+
+    <div style="text-align:center;margin-bottom:60px;">
+      <div style="display:inline-block;background:rgba(230,27,33,0.2);border:1px solid rgba(230,27,33,0.5);color:#E61B21;font-size:11px;font-weight:700;padding:4px 16px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;">Approval Lifecycle</div>
+      <h2 style="color:#fff;font-size:clamp(24px,3vw,38px);font-weight:800;margin:0 0 12px;letter-spacing:-0.3px;">End-to-End Approval Pipeline</h2>
+      <p style="color:#6E93B0;font-size:16px;max-width:560px;margin:0 auto;">From PO creation to locked order — every step is governed, trackable, and enforceable.</p>
+    </div>
+
+    <!-- steps -->
+    <div style="display:flex;flex-wrap:wrap;gap:0;align-items:stretch;position:relative;">
+
+      <!-- connector line (desktop only) -->
+      <div style="position:absolute;top:52px;left:calc(12.5% + 28px);right:calc(12.5% + 28px);height:2px;background:linear-gradient(90deg,#0F5586,#6E93B0,#0F5586);pointer-events:none;"></div>
+
+      <!-- Step 1 -->
+      <div style="flex:1;min-width:220px;display:flex;flex-direction:column;align-items:center;padding:0 12px;text-align:center;">
+        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#E61B21,#8C1D22);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#fff;margin-bottom:20px;box-shadow:0 0 0 4px rgba(230,27,33,0.2);position:relative;z-index:1;">1</div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(110,147,176,0.2);border-radius:14px;padding:24px 20px;width:100%;">
+          <div style="font-size:28px;margin-bottom:12px;">📝</div>
+          <h4 style="color:#fff;font-size:16px;font-weight:700;margin:0 0 10px;">PO Created &amp; Submitted</h4>
+          <p style="color:#6E93B0;font-size:13px;line-height:1.6;margin:0;">Requester completes the purchase order form and clicks "Submit for Approval." System validates mandatory fields and locks the PO from further editing.</p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div style="flex:1;min-width:220px;display:flex;flex-direction:column;align-items:center;padding:0 12px;text-align:center;">
+        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#0F5586,#063153);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#fff;margin-bottom:20px;box-shadow:0 0 0 4px rgba(15,85,134,0.3);position:relative;z-index:1;">2</div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(110,147,176,0.2);border-radius:14px;padding:24px 20px;width:100%;">
+          <div style="font-size:28px;margin-bottom:12px;">🔔</div>
+          <h4 style="color:#fff;font-size:16px;font-weight:700;margin:0 0 10px;">Tier 1 Approver Notified</h4>
+          <p style="color:#6E93B0;font-size:13px;line-height:1.6;margin:0;">Approval matrix engine evaluates amount, vendor, category, and department conditions. The matching Tier 1 approver receives an in-app notification and email with SLA deadline.</p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div style="flex:1;min-width:220px;display:flex;flex-direction:column;align-items:center;padding:0 12px;text-align:center;">
+        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#0F5586,#063153);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#fff;margin-bottom:20px;box-shadow:0 0 0 4px rgba(15,85,134,0.3);position:relative;z-index:1;">3</div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(110,147,176,0.2);border-radius:14px;padding:24px 20px;width:100%;">
+          <div style="font-size:28px;margin-bottom:12px;">🔁</div>
+          <h4 style="color:#fff;font-size:16px;font-weight:700;margin:0 0 10px;">Sequential Escalation</h4>
+          <p style="color:#6E93B0;font-size:13px;line-height:1.6;margin:0;">Upon Tier 1 approval, the system automatically advances to Tier 2 (and beyond). If a deadline is missed, the workflow escalates to the supervisor and flags the SLA breach on the dashboard.</p>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div style="flex:1;min-width:220px;display:flex;flex-direction:column;align-items:center;padding:0 12px;text-align:center;">
+        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#27c93f,#1a9e2e);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#fff;margin-bottom:20px;box-shadow:0 0 0 4px rgba(39,201,63,0.2);position:relative;z-index:1;">4</div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(110,147,176,0.2);border-radius:14px;padding:24px 20px;width:100%;">
+          <div style="font-size:28px;margin-bottom:12px;">🔒</div>
+          <h4 style="color:#fff;font-size:16px;font-weight:700;margin:0 0 10px;">Final Approval &amp; Lock</h4>
+          <p style="color:#6E93B0;font-size:13px;line-height:1.6;margin:0;">All required tiers approved. The PO status advances to "Approved," the order is confirmed and locked. The complete audit trail is sealed and available for export or attachment to the PO record.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- rejection path note -->
+    <div style="margin-top:36px;background:rgba(230,27,33,0.1);border:1px solid rgba(230,27,33,0.3);border-radius:12px;padding:18px 28px;display:flex;align-items:flex-start;gap:14px;">
+      <span style="color:#E61B21;font-size:20px;flex-shrink:0;margin-top:2px;">⚠</span>
+      <div>
+        <strong style="color:#fff;font-size:14px;">Rejection Path:</strong>
+        <span style="color:#a8c4d8;font-size:14px;"> Any tier approver may reject the PO with a mandatory reason. The requester is immediately notified, the PO is returned to draft for revision or cancellation, and the rejection event is permanently recorded in the audit trail.</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     SCREENSHOTS
+============================================================ -->
+<section style="background:#f0f5fa;padding:80px 48px;">
+  <div style="max-width:1200px;margin:0 auto;">
+
+    <div style="text-align:center;margin-bottom:56px;">
+      <div style="display:inline-block;background:#E7EEF3;color:#063153;font-size:11px;font-weight:700;padding:4px 16px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;">Screenshots</div>
+      <h2 style="color:#041F33;font-size:clamp(24px,3vw,38px);font-weight:800;margin:0 0 12px;">See It In Action</h2>
+      <p style="color:#6E93B0;font-size:16px;max-width:540px;margin:0 auto;">Real Odoo interface screenshots from a live production environment.</p>
+    </div>
+
+    <!-- Screenshot 1 -->
+    <div style="background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 8px 40px rgba(4,31,51,0.10);margin-bottom:36px;border:1px solid #dde8f0;">
+      <div style="background:#041F33;padding:12px 20px;display:flex;align-items:center;gap:10px;">
+        <span style="width:12px;height:12px;border-radius:50%;background:#E61B21;display:inline-block;"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#f5a623;display:inline-block;"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#27c93f;display:inline-block;"></span>
+        <span style="color:#6E93B0;font-size:12px;margin-left:10px;font-family:monospace;">Approval Matrix — List View</span>
+      </div>
+      <img src="01_purchase_approval_matrix_list.png" alt="Purchase Approval Matrix List View" style="width:100%;display:block;"/>
+      <div style="padding:20px 28px;border-top:1px solid #E7EEF3;">
+        <h4 style="color:#041F33;font-size:15px;font-weight:700;margin:0 0 6px;">Approval Matrix Configuration List</h4>
+        <p style="color:#6E93B0;font-size:13px;margin:0;">Central view of all configured approval tiers showing tier name, amount range, assigned approvers, escalation settings, and active status. Fully searchable and filterable.</p>
+      </div>
+    </div>
+
+    <!-- Screenshot 2 -->
+    <div style="background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 8px 40px rgba(4,31,51,0.10);margin-bottom:36px;border:1px solid #dde8f0;">
+      <div style="background:#041F33;padding:12px 20px;display:flex;align-items:center;gap:10px;">
+        <span style="width:12px;height:12px;border-radius:50%;background:#E61B21;display:inline-block;"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#f5a623;display:inline-block;"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#27c93f;display:inline-block;"></span>
+        <span style="color:#6E93B0;font-size:12px;margin-left:10px;font-family:monospace;">Approval Tier — Form View</span>
+      </div>
+      <img src="02_purchase_approval_tier_form.png" alt="Purchase Approval Tier Form View" style="width:100%;display:block;"/>
+      <div style="padding:20px 28px;border-top:1px solid #E7EEF3;">
+        <h4 style="color:#041F33;font-size:15px;font-weight:700;margin:0 0 6px;">Tier Configuration Form</h4>
+        <p style="color:#6E93B0;font-size:13px;margin:0;">Detailed tier setup form: define amount thresholds, assign approver users or groups, enable HR manager routing, set SLA hours, configure escalation targets, and add vendor or category conditions.</p>
+      </div>
+    </div>
+
+    <!-- Screenshot 3 -->
+    <div style="background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 8px 40px rgba(4,31,51,0.10);border:1px solid #dde8f0;">
+      <div style="background:#041F33;padding:12px 20px;display:flex;align-items:center;gap:10px;">
+        <span style="width:12px;height:12px;border-radius:50%;background:#E61B21;display:inline-block;"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#f5a623;display:inline-block;"></span>
+        <span style="width:12px;height:12px;border-radius:50%;background:#27c93f;display:inline-block;"></span>
+        <span style="color:#6E93B0;font-size:12px;margin-left:10px;font-family:monospace;">Approval History — Audit Trail</span>
+      </div>
+      <img src="03_purchase_approval_history.png" alt="Purchase Approval History Audit Trail" style="width:100%;display:block;"/>
+      <div style="padding:20px 28px;border-top:1px solid #E7EEF3;">
+        <h4 style="color:#041F33;font-size:15px;font-weight:700;margin:0 0 6px;">Approval History &amp; Audit Trail</h4>
+        <p style="color:#6E93B0;font-size:13px;margin:0;">Per-PO approval history panel showing each action (approve, reject, delegate, escalate), the acting user, timestamp, tier number, elapsed time, and any attached rationale notes. Exportable to XLSX and PDF.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     TECHNICAL SPECIFICATIONS TABLE
+============================================================ -->
+<section style="background:#fff;padding:80px 48px;">
+  <div style="max-width:1200px;margin:0 auto;">
+
+    <div style="text-align:center;margin-bottom:56px;">
+      <div style="display:inline-block;background:#E7EEF3;color:#063153;font-size:11px;font-weight:700;padding:4px 16px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;">Technical Reference</div>
+      <h2 style="color:#041F33;font-size:clamp(24px,3vw,38px);font-weight:800;margin:0 0 12px;">Technical Specifications</h2>
+      <p style="color:#6E93B0;font-size:16px;max-width:540px;margin:0 auto;">Everything your IT team needs to evaluate integration requirements and deployment readiness.</p>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:28px;">
+
+      <!-- Left: main spec table -->
+      <div style="flex:1.5;min-width:300px;">
+        <table style="width:100%;border-collapse:collapse;border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(4,31,51,0.08);">
+          <thead>
+            <tr style="background:#041F33;">
+              <th style="color:#6E93B0;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;padding:16px 24px;text-align:left;">Parameter</th>
+              <th style="color:#6E93B0;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;padding:16px 24px;text-align:left;">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#fff;border-bottom:1px solid #E7EEF3;">
+              <td style="padding:16px 24px;color:#4a6480;font-size:14px;font-weight:500;">Module Technical Name</td>
+              <td style="padding:16px 24px;color:#041F33;font-size:14px;font-weight:700;font-family:monospace;">purchase_approval_workflow</td>
+            </tr>
+            <tr style="background:#f7fafd;border-bottom:1px solid #E7EEF3;">
+              <td style="padding:16px 24px;color:#4a6480;font-size:14px;font-weight:500;">Odoo Version Compatibility</td>
+              <td style="padding:16px 24px;color:#041F33;font-size:14px;font-weight:600;">17.0</td>
+            </tr>
+            <tr style="background:#fff;border-bottom:1px solid #E7EEF3;">
+              <td style="padding:16px 24px;color:#4a6480;font-size:14px;font-weight:500;">License</td>
+              <td style="padding:16px 24px;color:#041F33;font-size:14px;font-weight:600;">OPL-1 (Odoo Proprietary)</td>
+            </tr>
+            <tr style="background:#f7fafd;border-bottom:1px solid #E7EEF3;">
+              <td style="padding:16px 24px;color:#4a6480;font-size:14px;font-weight:500;">Author</td>
+              <td style="padding:16px 24px;color:#041F33;font-size:14px;font-weight:600;">COA — Chain of Applications</td>
+            </tr>
+            <tr style="background:#fff;border-bottom:1px solid #E7EEF3;">
+              <td style="padding:16px 24px;color:#4a6480;font-size:14px;font-weight:500;">Category</td>
+              <td style="padding:16px 24px;color:#041F33;font-size:14px;font-weight:600;">Purchases / Governance</td>
+            </tr>
+            <tr style="background:#f7fafd;border-bottom:1px solid #E7EEF3;">
+              <td style="padding:16px 24px;color:#4a6480;font-size:14px;font-weight:500;">Required Dependencies</td>
+              <td style="padding:16px 24px;">
+                <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                  <span style="background:#E7EEF3;color:#063153;font-size:12px;font-weight:700;padding:3px 12px;border-radius:12px;font-family:monospace;">base</span>
+                  <span style="background:#E7EEF3;color:#063153;font-size:12px;font-weight:700;padding:3px 12px;border-radius:12px;font-family:monospace;">purchase</span>
+                  <span style="background:#E7EEF3;color:#063153;font-size:12px;font-weight:700;padding:3px 12px;border-radius:12px;font-family:monospace;">hr</span>
+                  <span style="background:#E7EEF3;color:#063153;font-size:12px;font-weight:700;padding:3px 12px;border-radius:12px;font-family:monospace;">mail</span>
+                </div>
+              </td>
+            </tr>
+            <tr style="background:#fff;border-bottom:1px solid #E7EEF3;">
+              <td style="padding:16px 24px;color:#4a6480;font-size:14px;font-weight:500;">Optional Dependencies</td>
+              <td style="padding:16px 24px;">
+                <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                  <span style="background:#f0f5fa;color:#6E93B0;font-size:12px;font-weight:600;padding:3px 12px;border-radius:12px;font-family:monospace;border:1px solid #dde8f0;">account</span>
+                  <span style="background:#f0f5fa;color:#6E93B0;font-size:12px;font-weight:600;padding:3px 12px;border-radius:12px;font-family:monospace;border:1px solid #dde8f0;">analytic</span>
+                </div>
+              </td>
+            </tr>
+            <tr style="background:#f7fafd;border-bottom:1px solid #E7EEF3;">
+              <td style="padding:16px 24px;color:#4a6480;font-size:14px;font-weight:500;">Multi-Company Support</td>
+              <td style="padding:16px 24px;color:#27c93f;font-size:14px;font-weight:700;">✓ Yes</td>
+            </tr>
+            <tr style="background:#fff;border-bottom:1px solid #E7EEF3;">
+              <td style="padding:16px 24px;color:#4a6480;font-size:14px;font-weight:500;">Multi-Currency Support</td>
+              <td style="padding:16px 24px;color:#27c93f;font-size:14px;font-weight:700;">✓ Yes</td>
+            </tr>
+            <tr style="background:#f7fafd;border-bottom:1px solid #E7EEF3;">
+              <td style="padding:16px 24px;color:#4a6480;font-size:14px;font-weight:500;">REST API / External Access</td>
+              <td style="padding:16px 24px;color:#27c93f;font-size:14px;font-weight:700;">✓ Via Odoo JSON-RPC</td>
+            </tr>
+            <tr style="background:#fff;">
+              <td style="padding:16px 24px;color:#4a6480;font-size:14px;font-weight:500;">Auto-Install</td>
+              <td style="padding:16px 24px;color:#E61B21;font-size:14px;font-weight:700;">✗ Manual</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Right: model list + security -->
+      <div style="flex:1;min-width:260px;display:flex;flex-direction:column;gap:20px;">
+
+        <!-- New Models -->
+        <div style="background:#f7fafd;border:1px solid #dde8f0;border-radius:14px;padding:24px;">
+          <h4 style="color:#041F33;font-size:15px;font-weight:700;margin:0 0 16px;display:flex;align-items:center;gap:8px;">
+            <span style="width:8px;height:8px;background:#0F5586;border-radius:50%;display:inline-block;"></span>New Models Introduced
+          </h4>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+            <li style="font-family:monospace;font-size:13px;color:#063153;background:#E7EEF3;padding:8px 14px;border-radius:8px;">purchase.approval.matrix</li>
+            <li style="font-family:monospace;font-size:13px;color:#063153;background:#E7EEF3;padding:8px 14px;border-radius:8px;">purchase.approval.tier</li>
+            <li style="font-family:monospace;font-size:13px;color:#063153;background:#E7EEF3;padding:8px 14px;border-radius:8px;">purchase.approval.log</li>
+            <li style="font-family:monospace;font-size:13px;color:#063153;background:#E7EEF3;padding:8px 14px;border-radius:8px;">purchase.approval.escalation</li>
+          </ul>
+        </div>
+
+        <!-- Extended Models -->
+        <div style="background:#f7fafd;border:1px solid #dde8f0;border-radius:14px;padding:24px;">
+          <h4 style="color:#041F33;font-size:15px;font-weight:700;margin:0 0 16px;display:flex;align-items:center;gap:8px;">
+            <span style="width:8px;height:8px;background:#E61B21;border-radius:50%;display:inline-block;"></span>Extended Odoo Models
+          </h4>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+            <li style="font-family:monospace;font-size:13px;color:#063153;background:#E7EEF3;padding:8px 14px;border-radius:8px;">purchase.order</li>
+            <li style="font-family:monospace;font-size:13px;color:#063153;background:#E7EEF3;padding:8px 14px;border-radius:8px;">res.users</li>
+            <li style="font-family:monospace;font-size:13px;color:#063153;background:#E7EEF3;padding:8px 14px;border-radius:8px;">hr.employee</li>
+          </ul>
+        </div>
+
+        <!-- Security Groups -->
+        <div style="background:#f7fafd;border:1px solid #dde8f0;border-radius:14px;padding:24px;">
+          <h4 style="color:#041F33;font-size:15px;font-weight:700;margin:0 0 16px;display:flex;align-items:center;gap:8px;">
+            <span style="width:8px;height:8px;background:#27c93f;border-radius:50%;display:inline-block;"></span>Security Access Groups
+          </h4>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+            <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#4a6480;"><span style="color:#041F33;font-weight:600;">Approval Admin</span> — Full matrix config</li>
+            <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#4a6480;"><span style="color:#041F33;font-weight:600;">Approver</span> — Approve / reject actions</li>
+            <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#4a6480;"><span style="color:#041F33;font-weight:600;">Requester</span> — Submit &amp; track own POs</li>
+            <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#4a6480;"><span style="color:#041F33;font-weight:600;">Read-Only</span> — Audit log access</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+============================================================ -->
+<section style="background:#E7EEF3;padding:80px 48px;">
+  <div style="max-width:860px;margin:0 auto;">
+
+    <div style="text-align:center;margin-bottom:56px;">
+      <div style="display:inline-block;background:#fff;color:#063153;font-size:11px;font-weight:700;padding:4px 16px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;box-shadow:0 2px 8px rgba(4,31,51,0.08);">FAQ</div>
+      <h2 style="color:#041F33;font-size:clamp(24px,3vw,38px);font-weight:800;margin:0 0 12px;">Frequently Asked Questions</h2>
+      <p style="color:#6E93B0;font-size:16px;max-width:500px;margin:0 auto;">Answers to common technical and functional questions from procurement teams.</p>
+    </div>
+
+    <!-- Q1 -->
+    <div style="background:#fff;border-radius:14px;padding:30px 32px;margin-bottom:18px;box-shadow:0 2px 16px rgba(4,31,51,0.07);border:1px solid #dde8f0;">
+      <div style="display:flex;align-items:flex-start;gap:16px;">
+        <div style="width:36px;height:36px;border-radius:10px;background:#041F33;display:flex;align-items:center;justify-content:center;color:#6E93B0;font-size:15px;font-weight:800;flex-shrink:0;">Q</div>
+        <div>
+          <h4 style="color:#041F33;font-size:16px;font-weight:700;margin:0 0 12px;">Can I configure different approval matrices for different companies in a multi-company Odoo setup?</h4>
+          <p style="color:#4a6480;font-size:14px;line-height:1.75;margin:0;">Yes. Each approval matrix record is scoped to a specific company. In a multi-company environment, when a PO is submitted, the system evaluates only the active matrices belonging to the company of that PO. This means Company A can require three approval tiers for orders above $10,000 while Company B uses a single approver for all purchases — all within the same Odoo instance. Matrix configuration is accessible only to administrators of the respective company.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div style="background:#fff;border-radius:14px;padding:30px 32px;margin-bottom:18px;box-shadow:0 2px 16px rgba(4,31,51,0.07);border:1px solid #dde8f0;">
+      <div style="display:flex;align-items:flex-start;gap:16px;">
+        <div style="width:36px;height:36px;border-radius:10px;background:#041F33;display:flex;align-items:center;justify-content:center;color:#6E93B0;font-size:15px;font-weight:800;flex-shrink:0;">Q</div>
+        <div>
+          <h4 style="color:#041F33;font-size:16px;font-weight:700;margin:0 0 12px;">What happens to in-progress PO approvals if a user who is designated as an approver leaves the company or their account is archived?</h4>
+          <p style="color:#4a6480;font-size:14px;line-height:1.75;margin:0;">The module includes an automatic fallback mechanism. When an approver's account is archived or deactivated, any POs pending their approval are automatically escalated to the configured escalation target for that tier (typically the tier's backup approver group or supervisor). An administrator notification is also triggered so the matrix configuration can be updated with the replacement approver. Existing completed approval records (audit log entries) are never deleted and always retain the original approver's name for historical accuracy.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div style="background:#fff;border-radius:14px;padding:30px 32px;box-shadow:0 2px 16px rgba(4,31,51,0.07);border:1px solid #dde8f0;">
+      <div style="display:flex;align-items:flex-start;gap:16px;">
+        <div style="width:36px;height:36px;border-radius:10px;background:#041F33;display:flex;align-items:center;justify-content:center;color:#6E93B0;font-size:15px;font-weight:800;flex-shrink:0;">Q</div>
+        <div>
+          <h4 style="color:#041F33;font-size:16px;font-weight:700;margin:0 0 12px;">Does the module support parallel (simultaneous) approval at a given tier, or is it strictly sequential?</h4>
+          <p style="color:#4a6480;font-size:14px;line-height:1.75;margin:0;">Both modes are supported and configurable per tier. In <strong style="color:#041F33;">Sequential Mode</strong>, approvers within a tier are notified one at a time in a defined order — the next approver only receives the request after the preceding one has approved. In <strong style="color:#041F33;">Parallel Mode</strong>, all approvers in the tier are notified simultaneously, and the tier advances as soon as the required number (configurable: any one, a majority, or all) approve. You can mix modes across tiers — for example, Tier 1 can be parallel (any one of three managers approves) while Tier 2 is sequential (CFO must approve after Procurement Director).</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER CTA
+============================================================ -->
+<section style="background:linear-gradient(135deg,#041F33 0%,#063153 60%,#0F5586 100%);padding:80px 48px;position:relative;overflow:hidden;">
+
+  <!-- deco -->
+  <div style="position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:rgba(15,85,134,0.15);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-60px;left:-60px;width:240px;height:240px;border-radius:50%;background:rgba(110,147,176,0.1);pointer-events:none;"></div>
+
+  <div style="max-width:860px;margin:0 auto;text-align:center;position:relative;">
+
+    <div style="width:72px;height:72px;border-radius:20px;background:linear-gradient(135deg,#8C1D22,#E61B21);display:inline-flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:28px;box-shadow:0 16px 40px rgba(230,27,33,0.3);">🛡️</div>
+
+    <h2 style="color:#fff;font-size:clamp(26px,3.5vw,44px);font-weight:900;margin:0 0 16px;letter-spacing:-0.5px;">
+      Take Control of Every<br/>Purchase Authorization
+    </h2>
+
+    <p style="color:#a8c4d8;font-size:17px;max-width:580px;margin:0 auto 40px;line-height:1.7;">
+      Deploy the COA Purchase Approval Workflow module today and replace ad-hoc purchase sign-offs with a governed, auditable, and scalable multi-tier approval system built natively for Odoo 17.
+    </p>
+
+    <!-- feature highlights strip -->
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:44px;">
+      <span style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#E7EEF3;font-size:13px;font-weight:600;padding:8px 18px;border-radius:30px;">✓ Unlimited Approval Tiers</span>
+      <span style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#E7EEF3;font-size:13px;font-weight:600;padding:8px 18px;border-radius:30px;">✓ SLA Enforcement</span>
+      <span style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#E7EEF3;font-size:13px;font-weight:600;padding:8px 18px;border-radius:30px;">✓ HR Auto-Routing</span>
+      <span style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#E7EEF3;font-size:13px;font-weight:600;padding:8px 18px;border-radius:30px;">✓ Audit Trail Export</span>
+      <span style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#E7EEF3;font-size:13px;font-weight:600;padding:8px 18px;border-radius:30px;">✓ Multi-Company</span>
+      <span style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#E7EEF3;font-size:13px;font-weight:600;padding:8px 18px;border-radius:30px;">✓ Native Odoo 17</span>
+    </div>
+
+    <!-- CTA buttons -->
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-bottom:48px;">
+      <a href="#" style="display:inline-block;background:linear-gradient(135deg,#E61B21,#8C1D22);color:#fff;font-size:16px;font-weight:700;padding:16px 40px;border-radius:50px;text-decoration:none;box-shadow:0 8px 28px rgba(230,27,33,0.4);letter-spacing:0.3px;">Get This Module →</a>
+      <a href="#" style="display:inline-block;background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.25);color:#fff;font-size:16px;font-weight:600;padding:16px 40px;border-radius:50px;text-decoration:none;letter-spacing:0.3px;">Request a Demo</a>
+    </div>
+
+    <!-- divider -->
+    <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:36px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <img src="coa_logo.jpg" alt="COA Logo" style="height:36px;width:auto;border-radius:6px;opacity:0.9;"/>
+        <div style="text-align:left;">
+          <div style="color:#fff;font-size:14px;font-weight:700;">COA — Chain of Applications</div>
+          <div style="color:#6E93B0;font-size:12px;">Premium Odoo Addons</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:20px;justify-content:center;">
+        <a href="#" style="color:#6E93B0;font-size:13px;text-decoration:none;font-weight:500;">Documentation</a>
+        <a href="#" style="color:#6E93B0;font-size:13px;text-decoration:none;font-weight:500;">Changelog</a>
+        <a href="#" style="color:#6E93B0;font-size:13px;text-decoration:none;font-weight:500;">Support</a>
+        <a href="#" style="color:#6E93B0;font-size:13px;text-decoration:none;font-weight:500;">All Modules</a>
+      </div>
+      <div style="color:#4a6480;font-size:12px;">© 2026 COA. OPL-1 License.</div>
+    </div>
+
+  </div>
+</section>
+
+</div>

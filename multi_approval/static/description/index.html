@@ -1,371 +1,757 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COA Multi Approval — COA Egypt Enterprise Flagship</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <style>
-        :root {
-            --coa-bg: #0B0F19;
-            --coa-card-bg: #151C2C;
-            --coa-primary: #714B67;
-            --coa-teal: #00A09D;
-            --coa-sky: #38BDF8;
-            --coa-emerald: #10B981;
-            --coa-border: rgba(255, 255, 255, 0.08);
-        }
-        body {
-            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-            background-color: var(--coa-bg);
-            color: #F1F5F9;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        #canvas-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 520px;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.65;
-        }
-        .hero-wrapper {
-            position: relative;
-            z-index: 1;
-            padding: 4rem 2rem 3rem 2rem;
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.4) 0%, rgba(11, 15, 25, 0.9) 100%);
-            border-bottom: 1px solid var(--coa-border);
-            margin-bottom: 3rem;
-        }
-        .brand-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.5rem 1.25rem;
-            border-radius: 50rem;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin-right: 0.5rem;
-            margin-bottom: 1.25rem;
-            backdrop-filter: blur(12px);
-        }
-        .badge-teal { background: rgba(0, 160, 157, 0.2); color: #2DD4BF; border: 1px solid rgba(45, 212, 191, 0.35); }
-        .badge-purple { background: rgba(113, 75, 103, 0.25); color: #E9D5FF; border: 1px solid rgba(233, 213, 255, 0.35); }
-        .badge-green { background: rgba(16, 185, 129, 0.2); color: #34D399; border: 1px solid rgba(52, 211, 153, 0.35); }
+<div style="font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#041F33;background:#ffffff;margin:0;padding:0;line-height:1.6;font-size:15px;">
 
-        .hero-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 3.2rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-            background: linear-gradient(135deg, #FFFFFF 0%, #CBD5E1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1.25rem;
-        }
-        .hero-lead {
-            font-size: 1.2rem;
-            color: #94A3B8;
-            max-width: 850px;
-            font-weight: 400;
-            margin-bottom: 2rem;
-        }
-        .glass-card {
-            background: var(--coa-card-bg);
-            border: 1px solid var(--coa-border);
-            border-radius: 1.25rem;
-            padding: 2rem;
-            height: 100%;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--coa-primary), var(--coa-teal));
-            opacity: 0;
-            transition: opacity 0.35s ease;
-        }
-        .glass-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(56, 189, 248, 0.3);
-            box-shadow: 0 20px 40px -15px rgba(0, 160, 157, 0.2);
-        }
-        .glass-card:hover::before { opacity: 1; }
+<!-- ============================================================
+     GOOGLE FONT IMPORT
+     ============================================================ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+*{box-sizing:border-box;}
+</style>
 
-        .icon-box {
-            width: 60px;
-            height: 60px;
-            border-radius: 1rem;
-            background: linear-gradient(135deg, rgba(113, 75, 103, 0.3) 0%, rgba(0, 160, 157, 0.3) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            color: var(--coa-sky);
-            margin-bottom: 1.5rem;
-        }
+<!-- ============================================================
+     HERO HEADER
+     ============================================================ -->
+<section style="background:linear-gradient(135deg,#041F33 0%,#063153 45%,#0F5586 100%);padding:0;overflow:hidden;position:relative;">
 
-        .browser-window {
-            background: #0F172A;
-            border: 1px solid var(--coa-border);
-            border-radius: 1.25rem;
-            overflow: hidden;
-            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6);
-            margin-bottom: 3.5rem;
-        }
-        .browser-topbar {
-            background: #1E293B;
-            padding: 0.85rem 1.5rem;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .window-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-right: 6px; }
-        .btn-action-wa {
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            color: white;
-            font-weight: 700;
-            padding: 0.95rem 2.2rem;
-            border-radius: 50rem;
-            text-decoration: none;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .btn-action-wa:hover { color: white; transform: translateY(-2px); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.5); }
-        .btn-action-web {
-            background: rgba(255, 255, 255, 0.06);
-            color: #F1F5F9;
-            font-weight: 600;
-            padding: 0.95rem 2.2rem;
-            border-radius: 50rem;
-            text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .btn-action-web:hover { background: rgba(255, 255, 255, 0.15); color: white; }
-    </style>
-</head>
-<body>
-    <div id="canvas-container"></div>
+  <!-- Decorative circles -->
+  <div style="position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.03);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-120px;left:-60px;width:500px;height:500px;border-radius:50%;background:rgba(255,255,255,0.03);pointer-events:none;"></div>
+  <div style="position:absolute;top:40%;right:10%;width:200px;height:200px;border-radius:50%;background:rgba(14,85,134,0.25);pointer-events:none;"></div>
 
-    <div class="hero-wrapper">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <div class="d-flex align-items-center mb-3">
-                        <img src="icon.png" width="80" height="80" class="rounded-4 me-3 p-1 bg-dark border border-secondary shadow-sm" alt="COA Logo">
-                        <div>
-                            <span class="brand-badge badge-teal"><i class="fa-solid fa-cube me-2"></i>Project</span>
-                            <span class="brand-badge badge-purple"><i class="fa-solid fa-code-branch me-2"></i>Odoo 17.0.19.0.1.2.0</span>
-                            <span class="brand-badge badge-green"><i class="fa-solid fa-tag me-2"></i>€79.00 EUR</span>
-                        </div>
-                    </div>
-                    <h1 class="hero-title">COA Multi Approval</h1>
-                    <p class="hero-lead">Multi-stage approval workflow for Sales, Purchase, Inventory and Accounting</p>
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="https://wa.me/201013907174" target="_blank" class="btn-action-wa">
-                            <i class="fa-brands fa-whatsapp fs-5"></i> Contact WhatsApp (+20 10 13907174)
-                        </a>
-                        <a href="https://www.coa-egy.com" target="_blank" class="btn-action-web">
-                            <i class="fa-solid fa-globe fs-5"></i> Visit Website (www.coa-egy.com)
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 text-center mt-4 mt-lg-0">
-                    <div class="glass-card text-start">
-                        <h5 class="fw-bold text-white mb-1"><i class="fa-solid fa-shield-halved text-info me-2"></i>COA Enterprise Guarantee</h5>
-                        <p class="small text-slate-400 mb-3">Tested & Validated Solution</p>
-                        <ul class="list-unstyled small text-slate-300 mb-4">
-                            <li class="mb-2"><i class="fa-solid fa-check text-emerald me-2"></i>Community & Enterprise Compatible</li>
-                            <li class="mb-2"><i class="fa-solid fa-check text-emerald me-2"></i>Includes Lifetime Updates</li>
-                            <li class="mb-2"><i class="fa-solid fa-check text-emerald me-2"></i>Direct Senior COA Support</li>
-                            <li><i class="fa-solid fa-check text-emerald me-2"></i>OPL-1 Commercial License</li>
-                        </ul>
-                        <a href="https://wa.me/201013907174" target="_blank" class="btn btn-primary w-100 fw-bold py-2.5 rounded-3" style="background: var(--coa-teal); border: none;">
-                            <i class="fa-solid fa-cart-shopping me-2"></i>Acquire App Module
-                        </a>
-                    </div>
-                </div>
-            </div>
+  <!-- Top bar -->
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:22px 48px 0 48px;">
+    <div style="display:flex;align-items:center;gap:14px;">
+      <img src="coa_logo.jpg" alt="COA Logo" style="height:44px;width:auto;border-radius:8px;" />
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#E7EEF3;letter-spacing:2px;text-transform:uppercase;">COA Addons</div>
+        <div style="font-size:11px;color:#6E93B0;letter-spacing:1px;">Enterprise Odoo Solutions</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <span style="background:rgba(140,29,34,0.85);color:#fff;font-size:11px;font-weight:700;padding:5px 14px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;">v17 - v16 - v15</span>
+      <span style="background:rgba(255,255,255,0.08);color:#E7EEF3;font-size:11px;font-weight:600;padding:5px 14px;border-radius:20px;border:1px solid rgba(255,255,255,0.15);">multi_approval</span>
+    </div>
+  </div>
+
+  <!-- Hero content grid -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:center;min-height:560px;padding:48px 48px 0 48px;">
+
+    <!-- Left: Text -->
+    <div style="padding-right:40px;padding-bottom:48px;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(230,27,33,0.15);border:1px solid rgba(230,27,33,0.4);border-radius:30px;padding:6px 16px;margin-bottom:24px;">
+        <span style="width:7px;height:7px;border-radius:50%;background:#E61B21;display:inline-block;box-shadow:0 0 8px #E61B21;"></span>
+        <span style="color:#E7EEF3;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Universal Approval Engine</span>
+      </div>
+
+      <h1 style="font-size:38px;font-weight:900;color:#ffffff;line-height:1.2;margin:0 0 20px 0;letter-spacing:-0.5px;">
+        Universal Multi-Level<br/>
+        <span style="color:#6E93B0;">Approval Engine</span><br/>
+        for Every Business<br/>Document
+      </h1>
+
+      <p style="font-size:16px;color:#a8c4d8;line-height:1.75;margin:0 0 36px 0;max-width:460px;">
+        Configure unlimited approval chains for any document type in Odoo - Sales Orders, Purchases, Invoices, Payments, Inventory Transfers - with per-level signatories, SLA deadlines, auto-escalation, and email notifications out of the box.
+      </p>
+
+      <!-- Metric cards -->
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;">
+
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:18px 20px;">
+          <div style="font-size:28px;font-weight:900;color:#ffffff;line-height:1;">INF</div>
+          <div style="font-size:12px;color:#6E93B0;font-weight:600;margin-top:4px;text-transform:uppercase;letter-spacing:0.5px;">Unlimited Levels</div>
+          <div style="font-size:11px;color:#a8c4d8;margin-top:2px;">Per approval type</div>
         </div>
+
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:18px 20px;">
+          <div style="font-size:28px;font-weight:900;color:#ffffff;line-height:1;">6+</div>
+          <div style="font-size:12px;color:#6E93B0;font-weight:600;margin-top:4px;text-transform:uppercase;letter-spacing:0.5px;">Document Types</div>
+          <div style="font-size:11px;color:#a8c4d8;margin-top:2px;">SO - PO - INV - PAY - WH</div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:18px 20px;">
+          <div style="font-size:28px;font-weight:900;color:#ffffff;line-height:1;">SLA</div>
+          <div style="font-size:12px;color:#6E93B0;font-weight:600;margin-top:4px;text-transform:uppercase;letter-spacing:0.5px;">Auto-Escalation</div>
+          <div style="font-size:11px;color:#a8c4d8;margin-top:2px;">Deadline-driven alerts</div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:18px 20px;">
+          <div style="font-size:28px;font-weight:900;color:#ffffff;line-height:1;">EMAIL</div>
+          <div style="font-size:12px;color:#6E93B0;font-weight:600;margin-top:4px;text-transform:uppercase;letter-spacing:0.5px;">Notifications</div>
+          <div style="font-size:11px;color:#a8c4d8;margin-top:2px;">Per-level auto alerts</div>
+        </div>
+
+      </div>
     </div>
 
-    <div class="container">
-        <div class="browser-window">
-            <div class="browser-topbar">
-                <span class="window-dot" style="background: #FF5F56;"></span>
-                <span class="window-dot" style="background: #FFBD2E;"></span>
-                <span class="window-dot" style="background: #27C93F;"></span>
-                <small class="text-slate-400 ms-3 font-monospace">Odoo 17.0.19.0.1.2.0 — COA Multi Approval Interactive Showcase</small>
-            </div>
-            <img src="banner.png" class="w-100 d-block" alt="COA Multi Approval Banner" style="object-fit: cover; max-height: 540px;">
+    <!-- Right: Mac window mockup -->
+    <div style="display:flex;align-items:flex-end;justify-content:center;position:relative;padding-bottom:0;">
+      <div style="background:#1a2332;border-radius:14px 14px 0 0;overflow:hidden;box-shadow:0 -20px 80px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.08);width:100%;max-width:560px;">
+        <!-- Window chrome -->
+        <div style="background:#111c2b;padding:10px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,0.06);">
+          <span style="width:12px;height:12px;border-radius:50%;background:#E61B21;display:inline-block;"></span>
+          <span style="width:12px;height:12px;border-radius:50%;background:#f0a500;display:inline-block;"></span>
+          <span style="width:12px;height:12px;border-radius:50%;background:#28a745;display:inline-block;"></span>
+          <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:6px;height:20px;margin:0 16px;display:flex;align-items:center;padding:0 10px;">
+            <span style="font-size:10px;color:#6E93B0;">odoo.company.com/approval/requests</span>
+          </div>
         </div>
-
-        <h2 class="fw-bold mb-4 text-white text-center font-monospace" style="letter-spacing: -0.5px;">Core Business Capabilities & Key Features</h2>
-        <div class="row g-4 mb-5">
-            
-            <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-bolt-lightning"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #1</h4>
-                    <p class="text-slate-400 mb-0">Sale Orders (Quotations)</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-chart-pie"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #2</h4>
-                    <p class="text-slate-400 mb-0">Purchase Orders</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #3</h4>
-                    <p class="text-slate-400 mb-0">Vendor Bills / Customer Invoices (Accounting)</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-sliders"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #4</h4>
-                    <p class="text-slate-400 mb-0">Inventory Transfers (Stock Pickings)</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-boxes-packing"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #5</h4>
-                    <p class="text-slate-400 mb-0">Unlimited configurable approval stages</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-bolt-lightning"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #6</h4>
-                    <p class="text-slate-400 mb-0">Per-stage approvers with flexible requirements (any/all/minimum)</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="glass-card mb-5 p-4 p-md-5">
-            <h3 class="fw-bold text-white mb-4"><i class="fa-solid fa-sliders me-3 text-info"></i>Technical Information & Specification</h3>
-            <div class="table-responsive">
-                <table class="table table-dark table-hover align-middle mb-0" style="background: transparent;">
-                    <tbody>
-                        <tr>
-                            <th class="py-3 text-slate-400" style="width: 35%; border-color: var(--coa-border);"><i class="fa-solid fa-box me-2"></i>Technical Name</th>
-                            <td class="py-3 border-color font-monospace text-sky fw-bold" style="border-color: var(--coa-border);"><code>coa_multi_approval</code></td>
-                        </tr>
-                        <tr>
-                            <th class="py-3 text-slate-400" style="border-color: var(--coa-border);"><i class="fa-solid fa-code-branch me-2"></i>Odoo Version</th>
-                            <td class="py-3" style="border-color: var(--coa-border);"><span class="badge bg-primary px-3 py-2">Odoo 17.0.19.0.1.2.0 (Community & Enterprise)</span></td>
-                        </tr>
-                        <tr>
-                            <th class="py-3 text-slate-400" style="border-color: var(--coa-border);"><i class="fa-solid fa-certificate me-2"></i>License Type</th>
-                            <td class="py-3" style="border-color: var(--coa-border);"><span class="badge bg-secondary px-3 py-2">OPL-1</span></td>
-                        </tr>
-                        <tr>
-                            <th class="py-3 text-slate-400" style="border-color: var(--coa-border);"><i class="fa-solid fa-link me-2"></i>Dependencies</th>
-                            <td class="py-3 fw-semibold text-slate-300" style="border-color: var(--coa-border);">sale_management, purchase, account, stock, mail</td>
-                        </tr>
-                        <tr>
-                            <th class="py-3 text-slate-400" style="border-color: var(--coa-border);"><i class="fa-solid fa-building me-2"></i>Author / Vendor</th>
-                            <td class="py-3 fw-bold text-white" style="border-color: var(--coa-border);">COA (Chart of Accounts)</td>
-                        </tr>
-                        <tr>
-                            <th class="py-3 text-slate-400" style="border-color: var(--coa-border);"><i class="fa-solid fa-tag me-2"></i>Official Store Price</th>
-                            <td class="py-3 fw-bold text-emerald fs-5" style="border-color: var(--coa-border);">€79.00 EUR</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="glass-card text-center p-5 mb-5" style="background: linear-gradient(135deg, #151C2C 0%, #0F172A 100%);">
-            <h2 class="fw-bold text-white mb-2">Designed & Supported by COA Egypt</h2>
-            <p class="text-slate-400 fs-5 max-w-700 mx-auto mb-4">Chart of Accounts (COA) is an established ERP advisory and software development company delivering high-end Odoo customizations globally.</p>
-            <div class="d-flex flex-wrap justify-content-center gap-3">
-                <a href="https://wa.me/201013907174" target="_blank" class="btn-action-wa">
-                    <i class="fa-brands fa-whatsapp fs-5"></i> Direct WhatsApp (+20 10 13907174)
-                </a>
-                <a href="https://www.coa-egy.com" target="_blank" class="btn-action-web">
-                    <i class="fa-solid fa-globe fs-5"></i> Official Portal (www.coa-egy.com)
-                </a>
-            </div>
-        </div>
+        <!-- Screenshot -->
+        <img src="01_approval_requests_list.png" alt="Approval Requests List" style="width:100%;display:block;" />
+      </div>
     </div>
 
-    <script>
-        const container = document.getElementById('canvas-container');
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 520, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        renderer.setSize(window.innerWidth, 520);
-        container.appendChild(renderer.domElement);
+  </div>
+</section>
 
-        const particlesCount = 180;
-        const geometry = new THREE.BufferGeometry();
-        const positions = new Float32Array(particlesCount * 3);
-        const colors = new Float32Array(particlesCount * 3);
+<!-- ============================================================
+     TRUSTED BY BADGE ROW
+     ============================================================ -->
+<section style="background:#E7EEF3;padding:16px 48px;border-bottom:1px solid #d0dce8;">
+  <div style="display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;">
+    <span style="font-size:12px;font-weight:700;color:#6E93B0;letter-spacing:2px;text-transform:uppercase;">Works With</span>
+    <span style="font-size:13px;font-weight:600;color:#0F5586;">Sales Orders</span>
+    <span style="color:#6E93B0;">|</span>
+    <span style="font-size:13px;font-weight:600;color:#0F5586;">Purchase Orders</span>
+    <span style="color:#6E93B0;">|</span>
+    <span style="font-size:13px;font-weight:600;color:#0F5586;">Vendor Bills</span>
+    <span style="color:#6E93B0;">|</span>
+    <span style="font-size:13px;font-weight:600;color:#0F5586;">Customer Invoices</span>
+    <span style="color:#6E93B0;">|</span>
+    <span style="font-size:13px;font-weight:600;color:#0F5586;">Payments</span>
+    <span style="color:#6E93B0;">|</span>
+    <span style="font-size:13px;font-weight:600;color:#0F5586;">Inventory Transfers</span>
+  </div>
+</section>
 
-        for (let i = 0; i < particlesCount * 3; i += 3) {
-            positions[i] = (Math.random() - 0.5) * 15;
-            positions[i + 1] = (Math.random() - 0.5) * 10;
-            positions[i + 2] = (Math.random() - 0.5) * 15;
-            colors[i] = 0.44;
-            colors[i + 1] = 0.62;
-            colors[i + 2] = 0.61;
-        }
+<!-- ============================================================
+     PROBLEM vs SOLUTION
+     ============================================================ -->
+<section style="padding:80px 48px;background:#ffffff;">
+  <div style="max-width:1100px;margin:0 auto;">
 
-        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    <div style="text-align:center;margin-bottom:56px;">
+      <div style="display:inline-block;background:#E7EEF3;color:#0F5586;font-size:12px;font-weight:700;padding:6px 18px;border-radius:20px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;">Why This Matters</div>
+      <h2 style="font-size:34px;font-weight:800;color:#041F33;margin:0;letter-spacing:-0.3px;">The Approval Gap Is Costing You</h2>
+      <p style="font-size:16px;color:#6E93B0;margin:12px auto 0;max-width:560px;">Traditional Odoo approval setups leave critical gaps. Here is what teams experience before and after adopting COA Multi-Level Approval Engine.</p>
+    </div>
 
-        const material = new THREE.PointsMaterial({ size: 0.08, vertexColors: true, transparent: true, opacity: 0.8 });
-        const points = new THREE.Points(geometry, material);
-        scene.add(points);
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
 
-        camera.position.z = 5;
+      <!-- WITHOUT -->
+      <div style="background:#fff5f5;border:2px solid #fddada;border-radius:18px;padding:36px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:28px;">
+          <div style="width:42px;height:42px;background:#fddada;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;">X</div>
+          <div>
+            <div style="font-size:18px;font-weight:800;color:#8C1D22;">Without Multi-Level Approval</div>
+            <div style="font-size:13px;color:#c0747a;">Common pain points in standard Odoo</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="width:22px;height:22px;background:#E61B21;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0;margin-top:1px;">X</span>
+            <div>
+              <div style="font-weight:700;color:#8C1D22;font-size:14px;">Single Signer Only</div>
+              <div style="font-size:13px;color:#a0545a;margin-top:2px;">Documents pass through just one manager regardless of value, risk, or business unit, creating approval bottlenecks.</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="width:22px;height:22px;background:#E61B21;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0;margin-top:1px;">X</span>
+            <div>
+              <div style="font-weight:700;color:#8C1D22;font-size:14px;">No Governance or Audit Trail</div>
+              <div style="font-size:13px;color:#a0545a;margin-top:2px;">Who approved what, when, and why is scattered across emails and chat messages with no searchable history.</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="width:22px;height:22px;background:#E61B21;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0;margin-top:1px;">X</span>
+            <div>
+              <div style="font-weight:700;color:#8C1D22;font-size:14px;">Approval Delays and Missed Deadlines</div>
+              <div style="font-size:13px;color:#a0545a;margin-top:2px;">No SLA enforcement means approvers forget, go on leave, or deprioritize requests, stalling operations.</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="width:22px;height:22px;background:#E61B21;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0;margin-top:1px;">X</span>
+            <div>
+              <div style="font-weight:700;color:#8C1D22;font-size:14px;">Hardcoded and Inflexible</div>
+              <div style="font-size:13px;color:#a0545a;margin-top:2px;">Changes require developer intervention; different departments cannot have different approval chains for the same document type.</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        function animate() {
-            requestAnimationFrame(animate);
-            points.rotation.y += 0.0015;
-            points.rotation.x += 0.0008;
-            renderer.render(scene, camera);
-        }
-        animate();
+      <!-- WITH -->
+      <div style="background:#f0f9f4;border:2px solid #b8e4cb;border-radius:18px;padding:36px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:28px;">
+          <div style="width:42px;height:42px;background:#b8e4cb;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;">OK</div>
+          <div>
+            <div style="font-size:18px;font-weight:800;color:#1a5c35;">With COA Multi-Level Approval</div>
+            <div style="font-size:13px;color:#4a9e6e;">Enterprise governance, zero code</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="width:22px;height:22px;background:#28a745;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0;margin-top:1px;">V</span>
+            <div>
+              <div style="font-weight:700;color:#1a5c35;font-size:14px;">Unlimited Sequential Approval Levels</div>
+              <div style="font-size:13px;color:#3d8a5e;margin-top:2px;">Define as many levels as needed per approval type - Level 1: Supervisor, Level 2: CFO, Level 3: CEO - all configurable in the UI.</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="width:22px;height:22px;background:#28a745;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0;margin-top:1px;">V</span>
+            <div>
+              <div style="font-weight:700;color:#1a5c35;font-size:14px;">Complete Signed Audit History</div>
+              <div style="font-size:13px;color:#3d8a5e;margin-top:2px;">Every approve, refuse, or note action is timestamped and logged directly on the document with the responsible user's name.</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="width:22px;height:22px;background:#28a745;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0;margin-top:1px;">V</span>
+            <div>
+              <div style="font-weight:700;color:#1a5c35;font-size:14px;">SLA Deadlines and Auto-Escalation</div>
+              <div style="font-size:13px;color:#3d8a5e;margin-top:2px;">Set per-level deadlines in hours. Overdue requests trigger escalation emails automatically to the next-in-line or a manager group.</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="width:22px;height:22px;background:#28a745;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0;margin-top:1px;">V</span>
+            <div>
+              <div style="font-weight:700;color:#1a5c35;font-size:14px;">100% UI-Configurable, No Code</div>
+              <div style="font-size:13px;color:#3d8a5e;margin-top:2px;">Create, edit, and manage approval types for any combination of model, department, or amount threshold entirely from the Odoo backend.</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / 520;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, 520);
-        });
-    </script>
-</body>
-</html>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     6 FEATURE PILLARS
+     ============================================================ -->
+<section style="padding:80px 48px;background:#f7fafc;">
+  <div style="max-width:1100px;margin:0 auto;">
+
+    <div style="text-align:center;margin-bottom:56px;">
+      <div style="display:inline-block;background:#E7EEF3;color:#0F5586;font-size:12px;font-weight:700;padding:6px 18px;border-radius:20px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;">Core Capabilities</div>
+      <h2 style="font-size:34px;font-weight:800;color:#041F33;margin:0;letter-spacing:-0.3px;">Six Approval Pillars, One Module</h2>
+      <p style="font-size:16px;color:#6E93B0;margin:12px auto 0;max-width:560px;">Every critical approval workflow your business needs, fully integrated with native Odoo documents.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+
+      <!-- Pillar 1: Sales Order Approval -->
+      <div style="background:#ffffff;border:1px solid #dde6f0;border-radius:18px;padding:30px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#0F5586,#6E93B0);"></div>
+        <div style="width:52px;height:52px;background:linear-gradient(135deg,#E7EEF3,#d0dce8);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px;color:#0F5586;font-weight:800;">SO</div>
+        <h3 style="font-size:17px;font-weight:800;color:#041F33;margin:0 0 10px 0;">Sales Order Approval</h3>
+        <p style="font-size:14px;color:#6E93B0;line-height:1.7;margin:0 0 18px 0;">Enforce multi-level sign-off on sales quotes and orders before they are confirmed. Prevent unauthorized discounts, credit overrides, and off-contract pricing reaching customers.</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#041F33;"><span style="color:#0F5586;font-weight:700;">--</span> Amount-threshold triggers</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#041F33;"><span style="color:#0F5586;font-weight:700;">--</span> Salesperson to Sales Manager to CFO chain</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#041F33;"><span style="color:#0F5586;font-weight:700;">--</span> Block confirmation until fully approved</li>
+        </ul>
+      </div>
+
+      <!-- Pillar 2: Purchase Order Approval -->
+      <div style="background:#ffffff;border:1px solid #dde6f0;border-radius:18px;padding:30px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#063153,#0F5586);"></div>
+        <div style="width:52px;height:52px;background:linear-gradient(135deg,#E7EEF3,#d0dce8);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px;color:#063153;font-weight:800;">PO</div>
+        <h3 style="font-size:17px;font-weight:800;color:#041F33;margin:0 0 10px 0;">Purchase Order Approval</h3>
+        <p style="font-size:14px;color:#6E93B0;line-height:1.7;margin:0 0 18px 0;">Control procurement spend with layered approvals on RFQs and purchase orders. Ensure procurement policies are honored and budget owners validate commitments before vendors are notified.</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#041F33;"><span style="color:#0F5586;font-weight:700;">--</span> Budget center validation</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#041F33;"><span style="color:#0F5586;font-weight:700;">--</span> Vendor category rules</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#041F33;"><span style="color:#0F5586;font-weight:700;">--</span> Delegation and absence handling</li>
+        </ul>
+      </div>
+
+      <!-- Pillar 3: Invoice and Payment Approval -->
+      <div style="background:#ffffff;border:1px solid #dde6f0;border-radius:18px;padding:30px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#8C1D22,#E61B21);"></div>
+        <div style="width:52px;height:52px;background:linear-gradient(135deg,#fef0f0,#fddada);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:20px;color:#8C1D22;font-weight:800;">INV</div>
+        <h3 style="font-size:17px;font-weight:800;color:#041F33;margin:0 0 10px 0;">Invoice and Payment Approval</h3>
+        <p style="font-size:14px;color:#6E93B0;line-height:1.7;margin:0 0 18px 0;">Prevent unauthorized outgoing payments and unapproved vendor bills from being posted. Critical for treasury control and segregation of duties compliance in finance operations.</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#041F33;"><span style="color:#0F5586;font-weight:700;">--</span> Separate chains for AP and AR</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#041F33;"><span style="color:#0F5586;font-weight:700;">--</span> Payment amount thresholds</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#041F33;"><span style="color:#0F5586;font-weight:700;">--</span> SOD enforcement (4-eyes principle)</li>
+        </ul>
+      </div>
+
+      <!-- Pillar 4: Inventory Transfer Approval -->
+      <div style="background:#ffffff;border:1px solid #dde6f0;border-radius:18px;padding:30px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#0F5586,#28a745);"></div>
+        <div style="width:52px;height:52px;background:linear-gradient(135deg,#e8f8ee,#c2ecd1);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:20px;color:#1a5c35;font-weight:800;">WH</div>
+        <h3 style="font-size:17px;font-weight:800;color:#041F33;margin:0 0 10px 0;">Inventory Transfer Approval</h3>
+        <p style="font-size:14px;color:#6E93B0;line-height:1.7;margin:0 0 18px 0;">Gate high-value stock movements, inter-warehouse transfers, and scrap orders behind approval workflows. Maintain inventory accuracy and prevent unauthorized stock adjustments.</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#041F33;"><span style="color:#0F5586;font-weight:700;">--</span> Operation type filtering</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#041F33;"><span style="color:#0F5586;font-weight:700;">--</span> Warehouse manager sign-off</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#041F33;"><span style="color:#0F5586;font-weight:700;">--</span> Scrap and adjustment gating</li>
+        </ul>
+      </div>
+
+      <!-- Pillar 5: SLA and Auto-Escalation -->
+      <div style="background:#ffffff;border:1px solid #dde6f0;border-radius:18px;padding:30px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#f0a500,#E61B21);"></div>
+        <div style="width:52px;height:52px;background:linear-gradient(135deg,#fff8e6,#fce8b0);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:20px;color:#7a4f00;font-weight:800;">SLA</div>
+        <h3 style="font-size:17px;font-weight:800;color:#041F33;margin:0 0 10px 0;">SLA and Auto-Escalation</h3>
+        <p style="font-size:14px;color:#6E93B0;line-height:1.7;margin:0 0 18px 0;">Define maximum response hours per approval level. When a deadline is missed, the system automatically sends escalation emails and can reassign or skip the level based on your policy.</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#041F33;"><span style="color:#0F5586;font-weight:700;">--</span> Per-level deadline in hours</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#041F33;"><span style="color:#0F5586;font-weight:700;">--</span> Escalation email to manager group</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#041F33;"><span style="color:#0F5586;font-weight:700;">--</span> Scheduled action integration</li>
+        </ul>
+      </div>
+
+      <!-- Pillar 6: Full Audit Trail -->
+      <div style="background:#ffffff;border:1px solid #dde6f0;border-radius:18px;padding:30px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#041F33,#6E93B0);"></div>
+        <div style="width:52px;height:52px;background:linear-gradient(135deg,#E7EEF3,#ccd8e6);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:20px;color:#041F33;font-weight:800;">LOG</div>
+        <h3 style="font-size:17px;font-weight:800;color:#041F33;margin:0 0 10px 0;">Full Audit Trail</h3>
+        <p style="font-size:14px;color:#6E93B0;line-height:1.7;margin:0 0 18px 0;">Every approval decision is captured on the related document's chatter: who acted, at what level, at what time, and what note they left. Provides irrefutable evidence for auditors and compliance teams.</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#041F33;"><span style="color:#0F5586;font-weight:700;">--</span> Timestamped chatter entries</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#041F33;"><span style="color:#0F5586;font-weight:700;">--</span> Approval request linked to source</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:13px;color:#041F33;"><span style="color:#0F5586;font-weight:700;">--</span> Exportable history for compliance</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     4-STEP PIPELINE (DARK NAVY BACKGROUND)
+     ============================================================ -->
+<section style="background:linear-gradient(135deg,#041F33 0%,#063153 60%,#0a3d5e 100%);padding:80px 48px;position:relative;overflow:hidden;">
+
+  <!-- Decorative elements -->
+  <div style="position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.02);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-80px;left:-60px;width:300px;height:300px;border-radius:50%;background:rgba(14,85,134,0.15);pointer-events:none;"></div>
+
+  <div style="max-width:1100px;margin:0 auto;position:relative;z-index:1;">
+
+    <div style="text-align:center;margin-bottom:60px;">
+      <div style="display:inline-block;background:rgba(110,147,176,0.2);color:#6E93B0;font-size:12px;font-weight:700;padding:6px 18px;border-radius:20px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;border:1px solid rgba(110,147,176,0.3);">How It Works</div>
+      <h2 style="font-size:34px;font-weight:800;color:#ffffff;margin:0;letter-spacing:-0.3px;">The Four-Step Approval Pipeline</h2>
+      <p style="font-size:16px;color:#6E93B0;margin:12px auto 0;max-width:560px;">From initial configuration to final decision - every approval request follows a predictable, controlled, and auditable path.</p>
+    </div>
+
+    <!-- Steps -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;">
+
+      <!-- Connector line -->
+      <div style="position:absolute;top:36px;left:calc(12.5% + 12px);right:calc(12.5% + 12px);height:2px;background:linear-gradient(90deg,rgba(110,147,176,0.6),rgba(110,147,176,0.3),rgba(110,147,176,0.6));z-index:0;"></div>
+
+      <!-- Step 1 -->
+      <div style="text-align:center;padding:0 16px;position:relative;z-index:1;">
+        <div style="width:72px;height:72px;background:linear-gradient(135deg,#0F5586,#063153);border:2px solid #6E93B0;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px auto;position:relative;">
+          <span style="font-size:22px;font-weight:800;color:#E7EEF3;">1</span>
+          <div style="position:absolute;top:-4px;right:-4px;width:22px;height:22px;background:#E61B21;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;border:2px solid #041F33;">CFG</div>
+        </div>
+        <div style="font-size:15px;font-weight:800;color:#ffffff;margin-bottom:10px;">Configure Type</div>
+        <div style="font-size:13px;color:#6E93B0;line-height:1.65;">Create an Approval Type: choose the target model (Sale, Purchase, Invoice...), define approval levels, assign signatories per level, set SLA hours, and activate email templates.</div>
+      </div>
+
+      <!-- Step 2 -->
+      <div style="text-align:center;padding:0 16px;position:relative;z-index:1;">
+        <div style="width:72px;height:72px;background:linear-gradient(135deg,#0F5586,#063153);border:2px solid #6E93B0;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px auto;position:relative;">
+          <span style="font-size:22px;font-weight:800;color:#E7EEF3;">2</span>
+          <div style="position:absolute;top:-4px;right:-4px;width:22px;height:22px;background:#E61B21;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;border:2px solid #041F33;">SUB</div>
+        </div>
+        <div style="font-size:15px;font-weight:800;color:#ffffff;margin-bottom:10px;">Submit Request</div>
+        <div style="font-size:13px;color:#6E93B0;line-height:1.65;">The originating user clicks "Request Approval" on the document. An Approval Request record is created and linked to the source document, which is locked from editing.</div>
+      </div>
+
+      <!-- Step 3 -->
+      <div style="text-align:center;padding:0 16px;position:relative;z-index:1;">
+        <div style="width:72px;height:72px;background:linear-gradient(135deg,#0F5586,#063153);border:2px solid #6E93B0;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px auto;position:relative;">
+          <span style="font-size:22px;font-weight:800;color:#E7EEF3;">3</span>
+          <div style="position:absolute;top:-4px;right:-4px;width:22px;height:22px;background:#E61B21;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;border:2px solid #041F33;">NTF</div>
+        </div>
+        <div style="font-size:15px;font-weight:800;color:#ffffff;margin-bottom:10px;">Sequential Approvers Notified</div>
+        <div style="font-size:13px;color:#6E93B0;line-height:1.65;">Level 1 approvers receive an email with a direct link. Once they approve, Level 2 is notified, and so on. Each level has its own SLA clock; overdue levels trigger escalation automatically.</div>
+      </div>
+
+      <!-- Step 4 -->
+      <div style="text-align:center;padding:0 16px;position:relative;z-index:1;">
+        <div style="width:72px;height:72px;background:linear-gradient(135deg,#1a5c35,#28a745);border:2px solid #4ec57a;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px auto;position:relative;">
+          <span style="font-size:22px;font-weight:800;color:#ffffff;">4</span>
+          <div style="position:absolute;top:-4px;right:-4px;width:22px;height:22px;background:#E61B21;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;border:2px solid #041F33;">END</div>
+        </div>
+        <div style="font-size:15px;font-weight:800;color:#ffffff;margin-bottom:10px;">Approved or Refused</div>
+        <div style="font-size:13px;color:#6E93B0;line-height:1.65;">When all levels are cleared, the document is automatically unlocked and can proceed. If refused at any level, the originator is notified with the reason and can revise and resubmit.</div>
+      </div>
+
+    </div>
+
+    <!-- Info banner -->
+    <div style="background:rgba(15,85,134,0.25);border:1px solid rgba(110,147,176,0.35);border-radius:14px;padding:20px 30px;margin-top:48px;display:flex;align-items:center;gap:16px;">
+      <span style="font-size:28px;color:#E7EEF3;font-weight:800;flex-shrink:0;">!</span>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:#E7EEF3;margin-bottom:4px;">Fully Automated Workflow Engine</div>
+        <div style="font-size:13px;color:#6E93B0;">The entire pipeline runs automatically using Odoo's native mail, scheduled actions, and ORM hooks - no additional infrastructure or third-party integrations required.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     SCREENSHOTS GALLERY
+     ============================================================ -->
+<section style="padding:80px 48px;background:#ffffff;">
+  <div style="max-width:1100px;margin:0 auto;">
+
+    <div style="text-align:center;margin-bottom:56px;">
+      <div style="display:inline-block;background:#E7EEF3;color:#0F5586;font-size:12px;font-weight:700;padding:6px 18px;border-radius:20px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;">See It In Action</div>
+      <h2 style="font-size:34px;font-weight:800;color:#041F33;margin:0;letter-spacing:-0.3px;">Clean, Native Odoo Interface</h2>
+      <p style="font-size:16px;color:#6E93B0;margin:12px auto 0;max-width:560px;">Every view is built with standard Odoo UI patterns so your team needs zero retraining.</p>
+    </div>
+
+    <!-- Screenshot 1: Full width -->
+    <div style="background:#f7fafc;border:1px solid #dde6f0;border-radius:18px;overflow:hidden;margin-bottom:28px;">
+      <div style="background:#E7EEF3;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #dde6f0;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="width:10px;height:10px;border-radius:50%;background:#E61B21;display:inline-block;"></span>
+          <span style="width:10px;height:10px;border-radius:50%;background:#f0a500;display:inline-block;"></span>
+          <span style="width:10px;height:10px;border-radius:50%;background:#28a745;display:inline-block;"></span>
+        </div>
+        <div style="font-size:13px;font-weight:600;color:#041F33;">Approval Requests - List View</div>
+        <div style="font-size:11px;color:#6E93B0;background:#dde6f0;padding:3px 10px;border-radius:10px;">Multi-Approval &gt; Requests</div>
+      </div>
+      <img src="01_approval_requests_list.png" alt="Approval Requests List View" style="width:100%;display:block;" />
+      <div style="padding:16px 20px;background:#f0f4f8;border-top:1px solid #dde6f0;">
+        <p style="margin:0;font-size:13px;color:#6E93B0;"><strong style="color:#041F33;">Approval Requests List:</strong> Complete overview of all pending, approved, and refused requests across every document type. Filter by approver, type, status, and deadline in seconds.</p>
+      </div>
+    </div>
+
+    <!-- Screenshots 2 and 3: Side by side -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+
+      <div style="background:#f7fafc;border:1px solid #dde6f0;border-radius:18px;overflow:hidden;">
+        <div style="background:#E7EEF3;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #dde6f0;">
+          <div style="display:flex;align-items:center;gap:6px;">
+            <span style="width:8px;height:8px;border-radius:50%;background:#E61B21;display:inline-block;"></span>
+            <span style="width:8px;height:8px;border-radius:50%;background:#f0a500;display:inline-block;"></span>
+            <span style="width:8px;height:8px;border-radius:50%;background:#28a745;display:inline-block;"></span>
+          </div>
+          <div style="font-size:12px;font-weight:600;color:#041F33;">Approval Request Form</div>
+          <div style="font-size:10px;color:#6E93B0;background:#dde6f0;padding:2px 8px;border-radius:8px;">Form View</div>
+        </div>
+        <img src="02_approval_request_form.png" alt="Approval Request Form View" style="width:100%;display:block;" />
+        <div style="padding:14px 16px;background:#f0f4f8;border-top:1px solid #dde6f0;">
+          <p style="margin:0;font-size:13px;color:#6E93B0;"><strong style="color:#041F33;">Request Form:</strong> See each level's status, assignee, deadline, and decision note at a glance. Approve or Refuse with one click directly from this screen.</p>
+        </div>
+      </div>
+
+      <div style="background:#f7fafc;border:1px solid #dde6f0;border-radius:18px;overflow:hidden;">
+        <div style="background:#E7EEF3;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #dde6f0;">
+          <div style="display:flex;align-items:center;gap:6px;">
+            <span style="width:8px;height:8px;border-radius:50%;background:#E61B21;display:inline-block;"></span>
+            <span style="width:8px;height:8px;border-radius:50%;background:#f0a500;display:inline-block;"></span>
+            <span style="width:8px;height:8px;border-radius:50%;background:#28a745;display:inline-block;"></span>
+          </div>
+          <div style="font-size:12px;font-weight:600;color:#041F33;">Approval Types - Kanban</div>
+          <div style="font-size:10px;color:#6E93B0;background:#dde6f0;padding:2px 8px;border-radius:8px;">Kanban View</div>
+        </div>
+        <img src="03_approval_types_kanban.png" alt="Approval Types Kanban View" style="width:100%;display:block;" />
+        <div style="padding:14px 16px;background:#f0f4f8;border-top:1px solid #dde6f0;">
+          <p style="margin:0;font-size:13px;color:#6E93B0;"><strong style="color:#041F33;">Approval Types Kanban:</strong> Manage all configured approval workflows from a single visual board. Activate, deactivate, clone, or edit any type without developer assistance.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TECHNICAL SPECIFICATIONS TABLE
+     ============================================================ -->
+<section style="padding:80px 48px;background:#f7fafc;">
+  <div style="max-width:1100px;margin:0 auto;">
+
+    <div style="text-align:center;margin-bottom:56px;">
+      <div style="display:inline-block;background:#E7EEF3;color:#0F5586;font-size:12px;font-weight:700;padding:6px 18px;border-radius:20px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;">Technical Details</div>
+      <h2 style="font-size:34px;font-weight:800;color:#041F33;margin:0;letter-spacing:-0.3px;">Built for Enterprise Odoo</h2>
+      <p style="font-size:16px;color:#6E93B0;margin:12px auto 0;max-width:560px;">Clean architecture, standard Odoo patterns, and zero external dependencies make this module safe to deploy in any production environment.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;">
+
+      <!-- Specs table -->
+      <div style="background:#ffffff;border:1px solid #dde6f0;border-radius:18px;overflow:hidden;">
+        <div style="background:linear-gradient(90deg,#041F33,#063153);padding:18px 24px;">
+          <div style="font-size:16px;font-weight:700;color:#ffffff;">Module Specifications</div>
+        </div>
+        <table style="width:100%;border-collapse:collapse;">
+          <tbody>
+            <tr style="border-bottom:1px solid #edf2f7;">
+              <td style="padding:14px 20px;font-size:13px;font-weight:600;color:#6E93B0;width:40%;background:#fafbfc;">Technical Name</td>
+              <td style="padding:14px 20px;font-size:13px;color:#041F33;font-family:monospace;background:#ffffff;">multi_approval</td>
+            </tr>
+            <tr style="border-bottom:1px solid #edf2f7;">
+              <td style="padding:14px 20px;font-size:13px;font-weight:600;color:#6E93B0;background:#fafbfc;">Odoo Versions</td>
+              <td style="padding:14px 20px;font-size:13px;color:#041F33;background:#ffffff;">
+                <span style="background:#E7EEF3;color:#0F5586;font-size:11px;font-weight:700;padding:3px 10px;border-radius:12px;margin-right:6px;">v15</span>
+                <span style="background:#E7EEF3;color:#0F5586;font-size:11px;font-weight:700;padding:3px 10px;border-radius:12px;margin-right:6px;">v16</span>
+                <span style="background:#0F5586;color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:12px;">v17</span>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #edf2f7;">
+              <td style="padding:14px 20px;font-size:13px;font-weight:600;color:#6E93B0;background:#fafbfc;">Category</td>
+              <td style="padding:14px 20px;font-size:13px;color:#041F33;background:#ffffff;">Operations / Approval</td>
+            </tr>
+            <tr style="border-bottom:1px solid #edf2f7;">
+              <td style="padding:14px 20px;font-size:13px;font-weight:600;color:#6E93B0;background:#fafbfc;">License</td>
+              <td style="padding:14px 20px;font-size:13px;color:#041F33;background:#ffffff;">OPL-1 (Odoo Proprietary)</td>
+            </tr>
+            <tr style="border-bottom:1px solid #edf2f7;">
+              <td style="padding:14px 20px;font-size:13px;font-weight:600;color:#6E93B0;background:#fafbfc;">Author</td>
+              <td style="padding:14px 20px;font-size:13px;color:#041F33;background:#ffffff;">COA Addons</td>
+            </tr>
+            <tr style="border-bottom:1px solid #edf2f7;">
+              <td style="padding:14px 20px;font-size:13px;font-weight:600;color:#6E93B0;background:#fafbfc;">Auto-Install</td>
+              <td style="padding:14px 20px;font-size:13px;color:#041F33;background:#ffffff;">No</td>
+            </tr>
+            <tr>
+              <td style="padding:14px 20px;font-size:13px;font-weight:600;color:#6E93B0;background:#fafbfc;">External Dependencies</td>
+              <td style="padding:14px 20px;font-size:13px;color:#28a745;font-weight:600;background:#ffffff;">None</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Dependencies and models -->
+      <div style="display:flex;flex-direction:column;gap:18px;">
+        <div style="background:#ffffff;border:1px solid #dde6f0;border-radius:18px;overflow:hidden;">
+          <div style="background:linear-gradient(90deg,#041F33,#063153);padding:18px 24px;">
+            <div style="font-size:16px;font-weight:700;color:#ffffff;">Odoo Module Dependencies</div>
+          </div>
+          <div style="padding:20px;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+
+              <div style="background:#f0f4f8;border:1px solid #dde6f0;border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:10px;">
+                <span style="width:8px;height:8px;border-radius:50%;background:#28a745;flex-shrink:0;"></span>
+                <div>
+                  <div style="font-size:13px;font-weight:700;color:#041F33;font-family:monospace;">base</div>
+                  <div style="font-size:11px;color:#6E93B0;">Core Odoo framework</div>
+                </div>
+              </div>
+
+              <div style="background:#f0f4f8;border:1px solid #dde6f0;border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:10px;">
+                <span style="width:8px;height:8px;border-radius:50%;background:#28a745;flex-shrink:0;"></span>
+                <div>
+                  <div style="font-size:13px;font-weight:700;color:#041F33;font-family:monospace;">mail</div>
+                  <div style="font-size:11px;color:#6E93B0;">Messaging and chatter</div>
+                </div>
+              </div>
+
+              <div style="background:#f0f4f8;border:1px solid #dde6f0;border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:10px;">
+                <span style="width:8px;height:8px;border-radius:50%;background:#28a745;flex-shrink:0;"></span>
+                <div>
+                  <div style="font-size:13px;font-weight:700;color:#041F33;font-family:monospace;">sale</div>
+                  <div style="font-size:11px;color:#6E93B0;">Sales Orders</div>
+                </div>
+              </div>
+
+              <div style="background:#f0f4f8;border:1px solid #dde6f0;border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:10px;">
+                <span style="width:8px;height:8px;border-radius:50%;background:#28a745;flex-shrink:0;"></span>
+                <div>
+                  <div style="font-size:13px;font-weight:700;color:#041F33;font-family:monospace;">purchase</div>
+                  <div style="font-size:11px;color:#6E93B0;">Purchase Orders</div>
+                </div>
+              </div>
+
+              <div style="background:#f0f4f8;border:1px solid #dde6f0;border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:10px;">
+                <span style="width:8px;height:8px;border-radius:50%;background:#28a745;flex-shrink:0;"></span>
+                <div>
+                  <div style="font-size:13px;font-weight:700;color:#041F33;font-family:monospace;">account</div>
+                  <div style="font-size:11px;color:#6E93B0;">Invoices and Payments</div>
+                </div>
+              </div>
+
+              <div style="background:#f0f4f8;border:1px solid #dde6f0;border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:10px;">
+                <span style="width:8px;height:8px;border-radius:50%;background:#28a745;flex-shrink:0;"></span>
+                <div>
+                  <div style="font-size:13px;font-weight:700;color:#041F33;font-family:monospace;">stock</div>
+                  <div style="font-size:11px;color:#6E93B0;">Inventory Transfers</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Key models -->
+        <div style="background:#ffffff;border:1px solid #dde6f0;border-radius:18px;overflow:hidden;">
+          <div style="background:linear-gradient(90deg,#041F33,#063153);padding:18px 24px;">
+            <div style="font-size:16px;font-weight:700;color:#ffffff;">Key Odoo Models</div>
+          </div>
+          <div style="padding:16px 20px;display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#f0f4f8;border-radius:8px;">
+              <span style="font-size:12px;color:#0F5586;font-family:monospace;font-weight:700;">approval.type</span>
+              <span style="font-size:11px;color:#6E93B0;">Approval type configuration</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#f0f4f8;border-radius:8px;">
+              <span style="font-size:12px;color:#0F5586;font-family:monospace;font-weight:700;">approval.type.level</span>
+              <span style="font-size:11px;color:#6E93B0;">Per-level signatory and SLA</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#f0f4f8;border-radius:8px;">
+              <span style="font-size:12px;color:#0F5586;font-family:monospace;font-weight:700;">approval.request</span>
+              <span style="font-size:11px;color:#6E93B0;">Live approval request</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#f0f4f8;border-radius:8px;">
+              <span style="font-size:12px;color:#0F5586;font-family:monospace;font-weight:700;">approval.request.line</span>
+              <span style="font-size:11px;color:#6E93B0;">Per-level line decision</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section style="padding:80px 48px;background:#ffffff;">
+  <div style="max-width:860px;margin:0 auto;">
+
+    <div style="text-align:center;margin-bottom:56px;">
+      <div style="display:inline-block;background:#E7EEF3;color:#0F5586;font-size:12px;font-weight:700;padding:6px 18px;border-radius:20px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;">Support</div>
+      <h2 style="font-size:34px;font-weight:800;color:#041F33;margin:0;letter-spacing:-0.3px;">Frequently Asked Questions</h2>
+      <p style="font-size:16px;color:#6E93B0;margin:12px auto 0;max-width:500px;">Everything you need to know before installing COA Multi-Level Approval Engine.</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:18px;">
+
+      <!-- FAQ 1 -->
+      <div style="background:#f7fafc;border:1px solid #dde6f0;border-radius:16px;overflow:hidden;">
+        <div style="padding:22px 28px;display:flex;align-items:flex-start;gap:16px;">
+          <div style="width:32px;height:32px;background:linear-gradient(135deg,#0F5586,#063153);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:800;flex-shrink:0;margin-top:1px;">Q</div>
+          <div>
+            <div style="font-size:16px;font-weight:700;color:#041F33;margin-bottom:10px;">Can I create approval types for custom models, not just Sales or Purchase?</div>
+            <div style="font-size:14px;color:#6E93B0;line-height:1.75;">Yes. The Approval Type configuration allows you to specify any Odoo model name in the <span style="background:#E7EEF3;padding:2px 6px;border-radius:4px;font-size:13px;color:#0F5586;font-family:monospace;">res_model</span> field. As long as the model exists in your Odoo instance, you can attach an approval workflow to it. This means you can extend approval to HR Leave requests, custom manufacturing orders, CRM leads, expense reports, or any other record type, including your own custom modules.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div style="background:#f7fafc;border:1px solid #dde6f0;border-radius:16px;overflow:hidden;">
+        <div style="padding:22px 28px;display:flex;align-items:flex-start;gap:16px;">
+          <div style="width:32px;height:32px;background:linear-gradient(135deg,#0F5586,#063153);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:800;flex-shrink:0;margin-top:1px;">Q</div>
+          <div>
+            <div style="font-size:16px;font-weight:700;color:#041F33;margin-bottom:10px;">What happens when an approver is unavailable or misses their SLA deadline?</div>
+            <div style="font-size:14px;color:#6E93B0;line-height:1.75;">The module uses a scheduled action (cron job) that runs at a configurable interval and checks for overdue approval lines. When a line exceeds its SLA deadline, an escalation email is automatically sent to the manager group or a fallback approver defined at the type level. Depending on your configuration, the system can either alert a higher authority while keeping the level pending, or auto-approve and advance to the next level to prevent deadlocks in time-critical workflows.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div style="background:#f7fafc;border:1px solid #dde6f0;border-radius:16px;overflow:hidden;">
+        <div style="padding:22px 28px;display:flex;align-items:flex-start;gap:16px;">
+          <div style="width:32px;height:32px;background:linear-gradient(135deg,#0F5586,#063153);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:800;flex-shrink:0;margin-top:1px;">Q</div>
+          <div>
+            <div style="font-size:16px;font-weight:700;color:#041F33;margin-bottom:10px;">Does the module conflict with Odoo's built-in purchase approval feature?</div>
+            <div style="font-size:14px;color:#6E93B0;line-height:1.75;">No. COA Multi-Level Approval Engine is designed to complement and extend Odoo's native single-level purchase approval, not replace its core workflow engine. For Purchase Orders, you have two options: disable the native single approver setting in Purchase settings and rely solely on the multi-level approval type, or use them in tandem where the native check acts as a prerequisite before the multi-level chain begins. The module's developers recommend the first approach for simplicity and a cleaner audit trail. Full guidance is included in the post-installation documentation.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER CTA
+     ============================================================ -->
+<section style="background:linear-gradient(135deg,#041F33 0%,#063153 50%,#0F5586 100%);padding:80px 48px;position:relative;overflow:hidden;">
+
+  <!-- Decorative elements -->
+  <div style="position:absolute;top:-60px;right:-60px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,0.03);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-80px;left:5%;width:240px;height:240px;border-radius:50%;background:rgba(110,147,176,0.08);pointer-events:none;"></div>
+
+  <div style="max-width:800px;margin:0 auto;text-align:center;position:relative;z-index:1;">
+
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(230,27,33,0.15);border:1px solid rgba(230,27,33,0.4);border-radius:30px;padding:6px 20px;margin-bottom:24px;">
+      <span style="width:7px;height:7px;border-radius:50%;background:#E61B21;display:inline-block;box-shadow:0 0 8px #E61B21;"></span>
+      <span style="color:#E7EEF3;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Ready to Deploy</span>
+    </div>
+
+    <h2 style="font-size:40px;font-weight:900;color:#ffffff;margin:0 0 20px 0;letter-spacing:-0.5px;line-height:1.2;">
+      Bring Enterprise-Grade<br/>Approvals to Every Team
+    </h2>
+
+    <p style="font-size:17px;color:#a8c4d8;line-height:1.75;margin:0 auto 40px auto;max-width:620px;">
+      Install COA Multi-Level Approval Engine today and replace ad-hoc email chains and missing sign-offs with a structured, auditable, SLA-driven approval process that your compliance team, finance department, and operations managers will trust.
+    </p>
+
+    <!-- Feature highlights row -->
+    <div style="display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:44px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="color:#28a745;font-size:18px;font-weight:700;">V</span>
+        <span style="color:#E7EEF3;font-size:14px;font-weight:600;">No dev required</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="color:#28a745;font-size:18px;font-weight:700;">V</span>
+        <span style="color:#E7EEF3;font-size:14px;font-weight:600;">Installs in minutes</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="color:#28a745;font-size:18px;font-weight:700;">V</span>
+        <span style="color:#E7EEF3;font-size:14px;font-weight:600;">Zero external dependencies</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="color:#28a745;font-size:18px;font-weight:700;">V</span>
+        <span style="color:#E7EEF3;font-size:14px;font-weight:600;">Full audit trail included</span>
+      </div>
+    </div>
+
+    <!-- CTA buttons -->
+    <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:48px;">
+      <a href="#" style="background:linear-gradient(135deg,#E61B21,#8C1D22);color:#ffffff;font-size:15px;font-weight:700;padding:16px 36px;border-radius:10px;text-decoration:none;display:inline-block;box-shadow:0 4px 20px rgba(230,27,33,0.4);">Install Now - Odoo App Store</a>
+      <a href="#" style="background:rgba(255,255,255,0.08);color:#E7EEF3;font-size:15px;font-weight:700;padding:16px 36px;border-radius:10px;text-decoration:none;display:inline-block;border:1px solid rgba(255,255,255,0.2);">View Documentation</a>
+    </div>
+
+    <!-- Support info -->
+    <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:32px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <img src="coa_logo.jpg" alt="COA Addons" style="height:32px;width:auto;border-radius:6px;" />
+        <div style="text-align:left;">
+          <div style="font-size:13px;font-weight:700;color:#E7EEF3;">COA Addons</div>
+          <div style="font-size:11px;color:#6E93B0;">Enterprise Odoo Solutions</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div style="text-align:left;">
+          <div style="font-size:12px;color:#6E93B0;">Dedicated Support</div>
+          <div style="font-size:13px;font-weight:600;color:#E7EEF3;">support@coa-addons.com</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div style="text-align:left;">
+          <div style="font-size:12px;color:#6E93B0;">Implementation Help</div>
+          <div style="font-size:13px;font-weight:600;color:#E7EEF3;">Available on request</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     BOTTOM LEGAL BAR
+     ============================================================ -->
+<div style="background:#041F33;padding:16px 48px;border-top:1px solid rgba(255,255,255,0.06);">
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+    <div style="font-size:12px;color:#4a6a82;">(c) 2024 COA Addons. All rights reserved. Odoo is a trademark of Odoo S.A.</div>
+    <div style="display:flex;gap:20px;">
+      <span style="font-size:12px;color:#4a6a82;">License: OPL-1</span>
+      <span style="font-size:12px;color:#4a6a82;">|</span>
+      <span style="font-size:12px;color:#4a6a82;">Version: 17.0.1.0.0</span>
+      <span style="font-size:12px;color:#4a6a82;">|</span>
+      <span style="font-size:12px;color:#4a6a82;">multi_approval</span>
+    </div>
+  </div>
+</div>
+
+</div>

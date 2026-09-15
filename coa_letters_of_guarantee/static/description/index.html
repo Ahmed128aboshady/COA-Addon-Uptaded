@@ -1,371 +1,701 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COA arabian_letters_of_guarantee — COA Egypt Enterprise Flagship</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <style>
-        :root {
-            --coa-bg: #0B0F19;
-            --coa-card-bg: #151C2C;
-            --coa-primary: #714B67;
-            --coa-teal: #00A09D;
-            --coa-sky: #38BDF8;
-            --coa-emerald: #10B981;
-            --coa-border: rgba(255, 255, 255, 0.08);
-        }
-        body {
-            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-            background-color: var(--coa-bg);
-            color: #F1F5F9;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        #canvas-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 520px;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.65;
-        }
-        .hero-wrapper {
-            position: relative;
-            z-index: 1;
-            padding: 4rem 2rem 3rem 2rem;
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.4) 0%, rgba(11, 15, 25, 0.9) 100%);
-            border-bottom: 1px solid var(--coa-border);
-            margin-bottom: 3rem;
-        }
-        .brand-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.5rem 1.25rem;
-            border-radius: 50rem;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin-right: 0.5rem;
-            margin-bottom: 1.25rem;
-            backdrop-filter: blur(12px);
-        }
-        .badge-teal { background: rgba(0, 160, 157, 0.2); color: #2DD4BF; border: 1px solid rgba(45, 212, 191, 0.35); }
-        .badge-purple { background: rgba(113, 75, 103, 0.25); color: #E9D5FF; border: 1px solid rgba(233, 213, 255, 0.35); }
-        .badge-green { background: rgba(16, 185, 129, 0.2); color: #34D399; border: 1px solid rgba(52, 211, 153, 0.35); }
+<div style="font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#1a2332;background:#f0f4f8;margin:0;padding:0;box-sizing:border-box;">
 
-        .hero-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 3.2rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-            background: linear-gradient(135deg, #FFFFFF 0%, #CBD5E1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1.25rem;
-        }
-        .hero-lead {
-            font-size: 1.2rem;
-            color: #94A3B8;
-            max-width: 850px;
-            font-weight: 400;
-            margin-bottom: 2rem;
-        }
-        .glass-card {
-            background: var(--coa-card-bg);
-            border: 1px solid var(--coa-border);
-            border-radius: 1.25rem;
-            padding: 2rem;
-            height: 100%;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--coa-primary), var(--coa-teal));
-            opacity: 0;
-            transition: opacity 0.35s ease;
-        }
-        .glass-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(56, 189, 248, 0.3);
-            box-shadow: 0 20px 40px -15px rgba(0, 160, 157, 0.2);
-        }
-        .glass-card:hover::before { opacity: 1; }
+<!-- ============================================================
+     HERO HEADER
+     ============================================================ -->
+<div style="background:linear-gradient(135deg,#041F33 0%,#063153 50%,#0F5586 100%);padding:64px 40px 56px;position:relative;overflow:hidden;">
 
-        .icon-box {
-            width: 60px;
-            height: 60px;
-            border-radius: 1rem;
-            background: linear-gradient(135deg, rgba(113, 75, 103, 0.3) 0%, rgba(0, 160, 157, 0.3) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            color: var(--coa-sky);
-            margin-bottom: 1.5rem;
-        }
+  <!-- Background decorative rings -->
+  <div style="position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;border:1px solid rgba(110,147,176,0.15);pointer-events:none;"></div>
+  <div style="position:absolute;top:-40px;right:-40px;width:280px;height:280px;border-radius:50%;border:1px solid rgba(110,147,176,0.1);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-60px;left:10%;width:200px;height:200px;border-radius:50%;border:1px solid rgba(110,147,176,0.08);pointer-events:none;"></div>
 
-        .browser-window {
-            background: #0F172A;
-            border: 1px solid var(--coa-border);
-            border-radius: 1.25rem;
-            overflow: hidden;
-            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6);
-            margin-bottom: 3.5rem;
-        }
-        .browser-topbar {
-            background: #1E293B;
-            padding: 0.85rem 1.5rem;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .window-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-right: 6px; }
-        .btn-action-wa {
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            color: white;
-            font-weight: 700;
-            padding: 0.95rem 2.2rem;
-            border-radius: 50rem;
-            text-decoration: none;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .btn-action-wa:hover { color: white; transform: translateY(-2px); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.5); }
-        .btn-action-web {
-            background: rgba(255, 255, 255, 0.06);
-            color: #F1F5F9;
-            font-weight: 600;
-            padding: 0.95rem 2.2rem;
-            border-radius: 50rem;
-            text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .btn-action-web:hover { background: rgba(255, 255, 255, 0.15); color: white; }
-    </style>
-</head>
-<body>
-    <div id="canvas-container"></div>
+  <!-- Badge row -->
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:28px;flex-wrap:wrap;">
+    <!-- Logo pill -->
+    <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:40px;padding:8px 18px 8px 8px;backdrop-filter:blur(4px);">
+      <img src="coa_logo.jpg" alt="COA Logo" style="width:32px;height:32px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.3);" />
+      <span style="color:#E7EEF3;font-size:13px;font-weight:600;letter-spacing:0.3px;">COA Business Solutions</span>
+    </div>
+    <!-- Odoo version badge -->
+    <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(15,85,134,0.5);border:1px solid rgba(110,147,176,0.4);border-radius:40px;padding:7px 16px;">
+      <!-- Pulsing green dot -->
+      <span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 3px rgba(34,197,94,0.25),0 0 0 6px rgba(34,197,94,0.1);"></span>
+      <span style="color:#E7EEF3;font-size:12px;font-weight:700;letter-spacing:0.5px;">Odoo 19 &middot; 18 &middot; 17 Ready</span>
+    </div>
+    <!-- LGPL badge -->
+    <div style="display:inline-flex;align-items:center;background:rgba(140,29,34,0.4);border:1px solid rgba(230,27,33,0.35);border-radius:40px;padding:7px 14px;">
+      <span style="color:#fca5a5;font-size:12px;font-weight:600;">&#128274; LGPL-3 Open Source</span>
+    </div>
+  </div>
 
-    <div class="hero-wrapper">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <div class="d-flex align-items-center mb-3">
-                        <img src="icon.png" width="80" height="80" class="rounded-4 me-3 p-1 bg-dark border border-secondary shadow-sm" alt="COA Logo">
-                        <div>
-                            <span class="brand-badge badge-teal"><i class="fa-solid fa-cube me-2"></i>Accounting</span>
-                            <span class="brand-badge badge-purple"><i class="fa-solid fa-code-branch me-2"></i>Odoo 17.0.0.1</span>
-                            <span class="brand-badge badge-green"><i class="fa-solid fa-tag me-2"></i>€79.00 EUR</span>
-                        </div>
-                    </div>
-                    <h1 class="hero-title">COA arabian_letters_of_guarantee</h1>
-                    <p class="hero-lead">Enterprise-grade arabian_letters_of_guarantee solution for Odoo Accounting. Streamlines workflow execution, automates journal validations, and delivers real-time business insights.</p>
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="https://wa.me/201013907174" target="_blank" class="btn-action-wa">
-                            <i class="fa-brands fa-whatsapp fs-5"></i> Contact WhatsApp (+20 10 13907174)
-                        </a>
-                        <a href="https://www.coa-egy.com" target="_blank" class="btn-action-web">
-                            <i class="fa-solid fa-globe fs-5"></i> Visit Website (www.coa-egy.com)
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 text-center mt-4 mt-lg-0">
-                    <div class="glass-card text-start">
-                        <h5 class="fw-bold text-white mb-1"><i class="fa-solid fa-shield-halved text-info me-2"></i>COA Enterprise Guarantee</h5>
-                        <p class="small text-slate-400 mb-3">Tested & Validated Solution</p>
-                        <ul class="list-unstyled small text-slate-300 mb-4">
-                            <li class="mb-2"><i class="fa-solid fa-check text-emerald me-2"></i>Community & Enterprise Compatible</li>
-                            <li class="mb-2"><i class="fa-solid fa-check text-emerald me-2"></i>Includes Lifetime Updates</li>
-                            <li class="mb-2"><i class="fa-solid fa-check text-emerald me-2"></i>Direct Senior COA Support</li>
-                            <li><i class="fa-solid fa-check text-emerald me-2"></i>OPL-1 Commercial License</li>
-                        </ul>
-                        <a href="https://wa.me/201013907174" target="_blank" class="btn btn-primary w-100 fw-bold py-2.5 rounded-3" style="background: var(--coa-teal); border: none;">
-                            <i class="fa-solid fa-cart-shopping me-2"></i>Acquire App Module
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- Main headline -->
+  <h1 style="color:#ffffff;font-size:clamp(28px,4vw,46px);font-weight:800;line-height:1.15;margin:0 0 16px;max-width:780px;letter-spacing:-0.5px;">
+    COA Letters of Guarantee<br/>
+    <span style="color:#6E93B0;">Management</span>
+  </h1>
+  <p style="color:#b8cfe0;font-size:clamp(14px,1.6vw,18px);line-height:1.65;margin:0 0 40px;max-width:640px;">
+    A complete lifecycle management system for all types of bank letters of guarantee &mdash; Bid Bonds, Performance Bonds, Advance Payment Guarantees, and Maintenance Bonds &mdash; with fully automated double-entry accounting and real-time expiry monitoring built directly into Odoo.
+  </p>
+
+  <!-- Stat cards row -->
+  <div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:48px;">
+
+    <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(110,147,176,0.25);border-radius:14px;padding:20px 24px;min-width:130px;flex:1;text-align:center;backdrop-filter:blur(6px);">
+      <div style="color:#ffffff;font-size:30px;font-weight:800;line-height:1;">4</div>
+      <div style="color:#6E93B0;font-size:11px;font-weight:600;margin-top:5px;letter-spacing:0.5px;text-transform:uppercase;">LG Types</div>
     </div>
 
-    <div class="container">
-        <div class="browser-window">
-            <div class="browser-topbar">
-                <span class="window-dot" style="background: #FF5F56;"></span>
-                <span class="window-dot" style="background: #FFBD2E;"></span>
-                <span class="window-dot" style="background: #27C93F;"></span>
-                <small class="text-slate-400 ms-3 font-monospace">Odoo 17.0.0.1 — COA arabian_letters_of_guarantee Interactive Showcase</small>
-            </div>
-            <img src="banner.png" class="w-100 d-block" alt="COA arabian_letters_of_guarantee Banner" style="object-fit: cover; max-height: 540px;">
-        </div>
-
-        <h2 class="fw-bold mb-4 text-white text-center font-monospace" style="letter-spacing: -0.5px;">Core Business Capabilities & Key Features</h2>
-        <div class="row g-4 mb-5">
-            
-            <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-bolt-lightning"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #1</h4>
-                    <p class="text-slate-400 mb-0">الاسم الفني (Technical Name): arabianlettersofguarantee</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-chart-pie"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #2</h4>
-                    <p class="text-slate-400 mb-0">التصنيف (Category): Uncategorized</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #3</h4>
-                    <p class="text-slate-400 mb-0">الإصدار (Version): 0.1</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-sliders"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #4</h4>
-                    <p class="text-slate-400 mb-0">الاعتماديات (Dependencies): base, account, accountasset</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-boxes-packing"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #5</h4>
-                    <p class="text-slate-400 mb-0">الملف: models\accountmove.py</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="glass-card">
-                    <div class="icon-box"><i class="fa-solid fa-bolt-lightning"></i></div>
-                    <h4 class="fw-bold text-white mb-2">Key Capability #6</h4>
-                    <p class="text-slate-400 mb-0">النماذج المعدلة (inherit): account.move, account.move.line</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="glass-card mb-5 p-4 p-md-5">
-            <h3 class="fw-bold text-white mb-4"><i class="fa-solid fa-sliders me-3 text-info"></i>Technical Information & Specification</h3>
-            <div class="table-responsive">
-                <table class="table table-dark table-hover align-middle mb-0" style="background: transparent;">
-                    <tbody>
-                        <tr>
-                            <th class="py-3 text-slate-400" style="width: 35%; border-color: var(--coa-border);"><i class="fa-solid fa-box me-2"></i>Technical Name</th>
-                            <td class="py-3 border-color font-monospace text-sky fw-bold" style="border-color: var(--coa-border);"><code>coa_arabian_letters_of_guarantee</code></td>
-                        </tr>
-                        <tr>
-                            <th class="py-3 text-slate-400" style="border-color: var(--coa-border);"><i class="fa-solid fa-code-branch me-2"></i>Odoo Version</th>
-                            <td class="py-3" style="border-color: var(--coa-border);"><span class="badge bg-primary px-3 py-2">Odoo 17.0.0.1 (Community & Enterprise)</span></td>
-                        </tr>
-                        <tr>
-                            <th class="py-3 text-slate-400" style="border-color: var(--coa-border);"><i class="fa-solid fa-certificate me-2"></i>License Type</th>
-                            <td class="py-3" style="border-color: var(--coa-border);"><span class="badge bg-secondary px-3 py-2">OPL-1</span></td>
-                        </tr>
-                        <tr>
-                            <th class="py-3 text-slate-400" style="border-color: var(--coa-border);"><i class="fa-solid fa-link me-2"></i>Dependencies</th>
-                            <td class="py-3 fw-semibold text-slate-300" style="border-color: var(--coa-border);">base, account, account_asset</td>
-                        </tr>
-                        <tr>
-                            <th class="py-3 text-slate-400" style="border-color: var(--coa-border);"><i class="fa-solid fa-building me-2"></i>Author / Vendor</th>
-                            <td class="py-3 fw-bold text-white" style="border-color: var(--coa-border);">COA (Chart of Accounts)</td>
-                        </tr>
-                        <tr>
-                            <th class="py-3 text-slate-400" style="border-color: var(--coa-border);"><i class="fa-solid fa-tag me-2"></i>Official Store Price</th>
-                            <td class="py-3 fw-bold text-emerald fs-5" style="border-color: var(--coa-border);">€79.00 EUR</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="glass-card text-center p-5 mb-5" style="background: linear-gradient(135deg, #151C2C 0%, #0F172A 100%);">
-            <h2 class="fw-bold text-white mb-2">Designed & Supported by COA Egypt</h2>
-            <p class="text-slate-400 fs-5 max-w-700 mx-auto mb-4">Chart of Accounts (COA) is an established ERP advisory and software development company delivering high-end Odoo customizations globally.</p>
-            <div class="d-flex flex-wrap justify-content-center gap-3">
-                <a href="https://wa.me/201013907174" target="_blank" class="btn-action-wa">
-                    <i class="fa-brands fa-whatsapp fs-5"></i> Direct WhatsApp (+20 10 13907174)
-                </a>
-                <a href="https://www.coa-egy.com" target="_blank" class="btn-action-web">
-                    <i class="fa-solid fa-globe fs-5"></i> Official Portal (www.coa-egy.com)
-                </a>
-            </div>
-        </div>
+    <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(110,147,176,0.25);border-radius:14px;padding:20px 24px;min-width:130px;flex:1;text-align:center;backdrop-filter:blur(6px);">
+      <div style="color:#22c55e;font-size:30px;font-weight:800;line-height:1;">100%</div>
+      <div style="color:#6E93B0;font-size:11px;font-weight:600;margin-top:5px;letter-spacing:0.5px;text-transform:uppercase;">Auto Entries</div>
     </div>
 
-    <script>
-        const container = document.getElementById('canvas-container');
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 520, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        renderer.setSize(window.innerWidth, 520);
-        container.appendChild(renderer.domElement);
+    <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(110,147,176,0.25);border-radius:14px;padding:20px 24px;min-width:130px;flex:1;text-align:center;backdrop-filter:blur(6px);">
+      <div style="color:#ffffff;font-size:30px;font-weight:800;line-height:1;">&#127984;</div>
+      <div style="color:#6E93B0;font-size:11px;font-weight:600;margin-top:5px;letter-spacing:0.5px;text-transform:uppercase;">Multi-Bank</div>
+    </div>
 
-        const particlesCount = 180;
-        const geometry = new THREE.BufferGeometry();
-        const positions = new Float32Array(particlesCount * 3);
-        const colors = new Float32Array(particlesCount * 3);
+    <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(110,147,176,0.25);border-radius:14px;padding:20px 24px;min-width:130px;flex:1;text-align:center;backdrop-filter:blur(6px);">
+      <div style="color:#fbbf24;font-size:30px;font-weight:800;line-height:1;">LGPL</div>
+      <div style="color:#6E93B0;font-size:11px;font-weight:600;margin-top:5px;letter-spacing:0.5px;text-transform:uppercase;">Open License</div>
+    </div>
 
-        for (let i = 0; i < particlesCount * 3; i += 3) {
-            positions[i] = (Math.random() - 0.5) * 15;
-            positions[i + 1] = (Math.random() - 0.5) * 10;
-            positions[i + 2] = (Math.random() - 0.5) * 15;
-            colors[i] = 0.44;
-            colors[i + 1] = 0.62;
-            colors[i + 2] = 0.61;
-        }
+  </div>
 
-        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  <!-- Mac-style browser window -->
+  <div style="background:#1e293b;border-radius:14px;overflow:hidden;border:1px solid rgba(110,147,176,0.2);box-shadow:0 32px 80px rgba(4,31,51,0.6);max-width:900px;">
+    <!-- Browser chrome bar -->
+    <div style="background:#0f172a;padding:12px 18px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,0.06);">
+      <span style="width:12px;height:12px;border-radius:50%;background:#ff5f57;display:inline-block;"></span>
+      <span style="width:12px;height:12px;border-radius:50%;background:#febc2e;display:inline-block;"></span>
+      <span style="width:12px;height:12px;border-radius:50%;background:#28c840;display:inline-block;"></span>
+      <div style="flex:1;margin:0 16px;background:#1e293b;border-radius:6px;padding:5px 14px;text-align:center;">
+        <span style="color:#64748b;font-size:11px;font-family:monospace;">odoo.local/web#action=coa_letters_of_guarantee&amp;view_type=list</span>
+      </div>
+    </div>
+    <!-- Screenshot -->
+    <img src="01_bid_bonds_list.png" alt="Bid Bonds List View - COA Letters of Guarantee" style="width:100%;display:block;max-height:420px;object-fit:cover;object-position:top;" />
+  </div>
 
-        const material = new THREE.PointsMaterial({ size: 0.08, vertexColors: true, transparent: true, opacity: 0.8 });
-        const points = new THREE.Points(geometry, material);
-        scene.add(points);
+  <!-- Feature tag row -->
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;">
+    <span style="background:rgba(15,85,134,0.4);border:1px solid rgba(110,147,176,0.3);color:#b8cfe0;border-radius:20px;padding:5px 14px;font-size:11px;font-weight:600;">&#9679; Bid Bonds</span>
+    <span style="background:rgba(15,85,134,0.4);border:1px solid rgba(110,147,176,0.3);color:#b8cfe0;border-radius:20px;padding:5px 14px;font-size:11px;font-weight:600;">&#9679; Performance Bonds</span>
+    <span style="background:rgba(15,85,134,0.4);border:1px solid rgba(110,147,176,0.3);color:#b8cfe0;border-radius:20px;padding:5px 14px;font-size:11px;font-weight:600;">&#9679; Advance Payment Guarantees</span>
+    <span style="background:rgba(15,85,134,0.4);border:1px solid rgba(110,147,176,0.3);color:#b8cfe0;border-radius:20px;padding:5px 14px;font-size:11px;font-weight:600;">&#9679; Maintenance Bonds</span>
+    <span style="background:rgba(15,85,134,0.4);border:1px solid rgba(110,147,176,0.3);color:#b8cfe0;border-radius:20px;padding:5px 14px;font-size:11px;font-weight:600;">&#9679; Automated Accounting</span>
+    <span style="background:rgba(15,85,134,0.4);border:1px solid rgba(110,147,176,0.3);color:#b8cfe0;border-radius:20px;padding:5px 14px;font-size:11px;font-weight:600;">&#9679; Multi-Bank &amp; Multi-Currency</span>
+    <span style="background:rgba(15,85,134,0.4);border:1px solid rgba(110,147,176,0.3);color:#b8cfe0;border-radius:20px;padding:5px 14px;font-size:11px;font-weight:600;">&#9679; Expiry Alerts</span>
+    <span style="background:rgba(15,85,134,0.4);border:1px solid rgba(110,147,176,0.3);color:#b8cfe0;border-radius:20px;padding:5px 14px;font-size:11px;font-weight:600;">&#9679; Full Audit Trail</span>
+  </div>
 
-        camera.position.z = 5;
+</div><!-- /Hero -->
 
-        function animate() {
-            requestAnimationFrame(animate);
-            points.rotation.y += 0.0015;
-            points.rotation.x += 0.0008;
-            renderer.render(scene, camera);
-        }
-        animate();
 
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / 520;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, 520);
-        });
-    </script>
-</body>
-</html>
+<!-- ============================================================
+     SECTION INTRO
+     ============================================================ -->
+<div style="background:#ffffff;padding:56px 40px 48px;text-align:center;border-bottom:1px solid #e2e8f0;">
+  <div style="display:inline-block;background:#E7EEF3;border-radius:20px;padding:5px 16px;margin-bottom:14px;">
+    <span style="color:#0F5586;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">Why COA Letters of Guarantee?</span>
+  </div>
+  <h2 style="color:#041F33;font-size:clamp(22px,3vw,34px);font-weight:800;margin:0 0 14px;">Stop Managing Guarantees in Spreadsheets</h2>
+  <p style="color:#4b6074;font-size:15px;line-height:1.7;max-width:640px;margin:0 auto;">
+    Letters of guarantee are high-stakes financial instruments. A single missed expiry or incorrect accounting entry can result in legal liability and audit failures.
+    This module eliminates manual processes and enforces structured workflows with complete traceability inside Odoo.
+  </p>
+</div>
+
+
+<!-- ============================================================
+     PROBLEM vs SOLUTION
+     ============================================================ -->
+<div style="background:#f0f4f8;padding:52px 40px;">
+  <div style="max-width:1000px;margin:0 auto;">
+
+    <div style="text-align:center;margin-bottom:36px;">
+      <div style="display:inline-block;background:#E7EEF3;border-radius:20px;padding:5px 16px;margin-bottom:12px;">
+        <span style="color:#0F5586;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">The Business Case</span>
+      </div>
+      <h2 style="color:#041F33;font-size:clamp(20px,2.8vw,32px);font-weight:800;margin:0;">Before &amp; After</h2>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:24px;">
+
+      <!-- WITHOUT card -->
+      <div style="flex:1;min-width:280px;background:#ffffff;border-radius:18px;overflow:hidden;border:2px solid #fecaca;box-shadow:0 4px 24px rgba(140,29,34,0.08);">
+        <div style="background:linear-gradient(90deg,#8C1D22,#E61B21);padding:18px 24px;display:flex;align-items:center;gap:10px;">
+          <span style="font-size:22px;">&#10060;</span>
+          <span style="color:#ffffff;font-size:16px;font-weight:700;">Without This Module</span>
+        </div>
+        <div style="padding:24px;">
+          <div style="display:flex;flex-direction:column;gap:14px;">
+
+            <div style="display:flex;gap:12px;align-items:flex-start;">
+              <div style="width:28px;height:28px;border-radius:50%;background:#fee2e2;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;">&#9888;</div>
+              <div>
+                <div style="color:#8C1D22;font-weight:700;font-size:14px;">Missed Expiry Deadlines</div>
+                <div style="color:#6b7280;font-size:13px;line-height:1.55;margin-top:3px;">Guarantee expiry dates tracked in Excel or paper files — easily missed, leading to automatic forfeit and financial loss.</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:12px;align-items:flex-start;">
+              <div style="width:28px;height:28px;border-radius:50%;background:#fee2e2;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;">&#9888;</div>
+              <div>
+                <div style="color:#8C1D22;font-weight:700;font-size:14px;">No Automated Accounting</div>
+                <div style="color:#6b7280;font-size:13px;line-height:1.55;margin-top:3px;">Manual journal entry creation per guarantee — error-prone, time-consuming, and inconsistent across accounting staff.</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:12px;align-items:flex-start;">
+              <div style="width:28px;height:28px;border-radius:50%;background:#fee2e2;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;">&#9888;</div>
+              <div>
+                <div style="color:#8C1D22;font-weight:700;font-size:14px;">Siloed Data in Spreadsheets</div>
+                <div style="color:#6b7280;font-size:13px;line-height:1.55;margin-top:3px;">Guarantee data isolated from ERP — procurement, finance, and management cannot see a unified real-time status.</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:12px;align-items:flex-start;">
+              <div style="width:28px;height:28px;border-radius:50%;background:#fee2e2;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;">&#9888;</div>
+              <div>
+                <div style="color:#8C1D22;font-weight:700;font-size:14px;">No Audit Trail</div>
+                <div style="color:#6b7280;font-size:13px;line-height:1.55;margin-top:3px;">Status changes, amendments, and actions not logged — audit compliance is impossible to demonstrate.</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- WITH card -->
+      <div style="flex:1;min-width:280px;background:#ffffff;border-radius:18px;overflow:hidden;border:2px solid #bbf7d0;box-shadow:0 4px 24px rgba(34,197,94,0.08);">
+        <div style="background:linear-gradient(90deg,#047857,#10b981);padding:18px 24px;display:flex;align-items:center;gap:10px;">
+          <span style="font-size:22px;">&#9989;</span>
+          <span style="color:#ffffff;font-size:16px;font-weight:700;">With COA LG Management</span>
+        </div>
+        <div style="padding:24px;">
+          <div style="display:flex;flex-direction:column;gap:14px;">
+
+            <div style="display:flex;gap:12px;align-items:flex-start;">
+              <div style="width:28px;height:28px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;">&#10003;</div>
+              <div>
+                <div style="color:#047857;font-weight:700;font-size:14px;">Automated Expiry Alerts</div>
+                <div style="color:#6b7280;font-size:13px;line-height:1.55;margin-top:3px;">Configurable notifications triggered well before expiry dates — never miss a renewal window or risk unintended forfeit.</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:12px;align-items:flex-start;">
+              <div style="width:28px;height:28px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;">&#10003;</div>
+              <div>
+                <div style="color:#047857;font-weight:700;font-size:14px;">100% Automated Double-Entry</div>
+                <div style="color:#6b7280;font-size:13px;line-height:1.55;margin-top:3px;">Every lifecycle stage (issuance, extension, release, forfeit) generates the correct debit/credit journal entries automatically.</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:12px;align-items:flex-start;">
+              <div style="width:28px;height:28px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;">&#10003;</div>
+              <div>
+                <div style="color:#047857;font-weight:700;font-size:14px;">Unified ERP Visibility</div>
+                <div style="color:#6b7280;font-size:13px;line-height:1.55;margin-top:3px;">All four guarantee types managed inside Odoo — instantly visible to procurement, finance, and management in real time.</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:12px;align-items:flex-start;">
+              <div style="width:28px;height:28px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;">&#10003;</div>
+              <div>
+                <div style="color:#047857;font-weight:700;font-size:14px;">Complete Audit Trail</div>
+                <div style="color:#6b7280;font-size:13px;line-height:1.55;margin-top:3px;">Every status transition, user action, and accounting entry is logged with timestamp and user — full compliance readiness.</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div><!-- /Problem-Solution -->
+
+
+<!-- ============================================================
+     6 FEATURE PILLARS
+     ============================================================ -->
+<div style="background:#ffffff;padding:56px 40px;">
+  <div style="max-width:1000px;margin:0 auto;">
+
+    <div style="text-align:center;margin-bottom:42px;">
+      <div style="display:inline-block;background:#E7EEF3;border-radius:20px;padding:5px 16px;margin-bottom:12px;">
+        <span style="color:#0F5586;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">Core Features</span>
+      </div>
+      <h2 style="color:#041F33;font-size:clamp(20px,2.8vw,32px);font-weight:800;margin:0 0 10px;">Six Powerful Guarantee Management Pillars</h2>
+      <p style="color:#4b6074;font-size:14px;max-width:580px;margin:0 auto;line-height:1.65;">Each module pillar is engineered to handle a specific guarantee type or cross-cutting concern, giving your team a comprehensive, enterprise-ready solution.</p>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:20px;">
+
+      <!-- Pillar 1 -->
+      <div style="flex:1;min-width:280px;background:#ffffff;border-radius:16px;padding:28px;border:1px solid #e2e8f0;border-left:5px solid #0F5586;box-shadow:0 2px 16px rgba(6,49,83,0.06);">
+        <div style="width:48px;height:48px;border-radius:12px;background:#E7EEF3;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:24px;">&#127984;</div>
+        <h3 style="color:#041F33;font-size:17px;font-weight:700;margin:0 0 10px;">Bid Bonds</h3>
+        <p style="color:#4b6074;font-size:13px;line-height:1.65;margin:0 0 14px;">Issue and track bid bonds (tender guarantees) issued on behalf of your company to support tender submissions. Full lifecycle from draft to release or forfeiture upon tender award or rejection.</p>
+        <ul style="color:#4b6074;font-size:13px;padding-left:16px;margin:0;line-height:1.8;">
+          <li>Link to tender/project reference</li>
+          <li>Beneficiary (government/client) tracking</li>
+          <li>Automatic release upon tender outcome</li>
+          <li>Commission and bank fee accounting</li>
+        </ul>
+      </div>
+
+      <!-- Pillar 2 -->
+      <div style="flex:1;min-width:280px;background:#ffffff;border-radius:16px;padding:28px;border:1px solid #e2e8f0;border-left:5px solid #063153;box-shadow:0 2px 16px rgba(6,49,83,0.06);">
+        <div style="width:48px;height:48px;border-radius:12px;background:#E7EEF3;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:24px;">&#128218;</div>
+        <h3 style="color:#041F33;font-size:17px;font-weight:700;margin:0 0 10px;">Performance / Final Bonds</h3>
+        <p style="color:#4b6074;font-size:13px;line-height:1.65;margin:0 0 14px;">Manage performance bonds (final bonds) issued to guarantee successful contract execution. Typically 5–10% of contract value, valid for the contract duration. Supports partial forfeiture scenarios.</p>
+        <ul style="color:#4b6074;font-size:13px;padding-left:16px;margin:0;line-height:1.8;">
+          <li>Contract value &amp; percentage tracking</li>
+          <li>Multi-stage release milestones</li>
+          <li>Partial forfeit with residual tracking</li>
+          <li>Linked to Odoo sale/purchase orders</li>
+        </ul>
+      </div>
+
+      <!-- Pillar 3 -->
+      <div style="flex:1;min-width:280px;background:#ffffff;border-radius:16px;padding:28px;border:1px solid #e2e8f0;border-left:5px solid #6E93B0;box-shadow:0 2px 16px rgba(6,49,83,0.06);">
+        <div style="width:48px;height:48px;border-radius:12px;background:#E7EEF3;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:24px;">&#128176;</div>
+        <h3 style="color:#041F33;font-size:17px;font-weight:700;margin:0 0 10px;">Advance Payment Guarantees</h3>
+        <p style="color:#4b6074;font-size:13px;line-height:1.65;margin:0 0 14px;">Issue guarantees covering advance payments received from clients. Automatically reduces the guarantee value as work progresses and deductions are applied against invoices.</p>
+        <ul style="color:#4b6074;font-size:13px;padding-left:16px;margin:0;line-height:1.8;">
+          <li>Advance amount &amp; deduction schedule</li>
+          <li>Progressive value reduction tracking</li>
+          <li>Invoice deduction reconciliation</li>
+          <li>Currency conversion for multi-FX contracts</li>
+        </ul>
+      </div>
+
+      <!-- Pillar 4 -->
+      <div style="flex:1;min-width:280px;background:#ffffff;border-radius:16px;padding:28px;border:1px solid #e2e8f0;border-left:5px solid #041F33;box-shadow:0 2px 16px rgba(6,49,83,0.06);">
+        <div style="width:48px;height:48px;border-radius:12px;background:#E7EEF3;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:24px;">&#128295;</div>
+        <h3 style="color:#041F33;font-size:17px;font-weight:700;margin:0 0 10px;">Maintenance Bonds</h3>
+        <p style="color:#4b6074;font-size:13px;line-height:1.65;margin:0 0 14px;">Track maintenance/warranty bonds issued after project completion to cover the defects liability period. Typically 1–2 years post-handover. Automatic expiry management with renewal prompts.</p>
+        <ul style="color:#4b6074;font-size:13px;padding-left:16px;margin:0;line-height:1.8;">
+          <li>Defects liability period management</li>
+          <li>Handover date tracking</li>
+          <li>Renewal reminder automation</li>
+          <li>Clean release process post-warranty</li>
+        </ul>
+      </div>
+
+      <!-- Pillar 5 -->
+      <div style="flex:1;min-width:280px;background:#ffffff;border-radius:16px;padding:28px;border:1px solid #e2e8f0;border-left:5px solid #0F5586;box-shadow:0 2px 16px rgba(6,49,83,0.06);">
+        <div style="width:48px;height:48px;border-radius:12px;background:#E7EEF3;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:24px;">&#128200;</div>
+        <h3 style="color:#041F33;font-size:17px;font-weight:700;margin:0 0 10px;">Automated Double-Entry Accounting</h3>
+        <p style="color:#4b6074;font-size:13px;line-height:1.65;margin:0 0 14px;">Every guarantee lifecycle event generates the correct debit and credit journal entries per your chart of accounts — eliminating manual posting errors and ensuring financial statement accuracy at all times.</p>
+        <ul style="color:#4b6074;font-size:13px;padding-left:16px;margin:0;line-height:1.8;">
+          <li>Configurable account mapping per LG type</li>
+          <li>Commission &amp; bank fee auto-entries</li>
+          <li>Release and forfeit reversal entries</li>
+          <li>Full reconciliation with bank statements</li>
+        </ul>
+      </div>
+
+      <!-- Pillar 6 -->
+      <div style="flex:1;min-width:280px;background:#ffffff;border-radius:16px;padding:28px;border:1px solid #e2e8f0;border-left:5px solid #063153;box-shadow:0 2px 16px rgba(6,49,83,0.06);">
+        <div style="width:48px;height:48px;border-radius:12px;background:#E7EEF3;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:24px;">&#127758;</div>
+        <h3 style="color:#041F33;font-size:17px;font-weight:700;margin:0 0 10px;">Multi-Bank &amp; Multi-Currency</h3>
+        <p style="color:#4b6074;font-size:13px;line-height:1.65;margin:0 0 14px;">Support operations across multiple banking relationships and currencies. Each guarantee is tied to a specific issuing bank and can be denominated in any currency supported by Odoo with automatic exchange rate application.</p>
+        <ul style="color:#4b6074;font-size:13px;padding-left:16px;margin:0;line-height:1.8;">
+          <li>Multiple bank partner management</li>
+          <li>Per-guarantee currency denomination</li>
+          <li>Automatic currency revaluation</li>
+          <li>Bank-level reporting and analysis</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div><!-- /Feature Pillars -->
+
+
+<!-- ============================================================
+     4-STEP LIFECYCLE PIPELINE
+     ============================================================ -->
+<div style="background:linear-gradient(160deg,#041F33 0%,#063153 60%,#0F5586 100%);padding:64px 40px;">
+  <div style="max-width:1000px;margin:0 auto;">
+
+    <div style="text-align:center;margin-bottom:48px;">
+      <div style="display:inline-block;background:rgba(110,147,176,0.2);border:1px solid rgba(110,147,176,0.3);border-radius:20px;padding:5px 16px;margin-bottom:12px;">
+        <span style="color:#6E93B0;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">Guarantee Lifecycle</span>
+      </div>
+      <h2 style="color:#ffffff;font-size:clamp(20px,2.8vw,32px);font-weight:800;margin:0 0 10px;">4-Stage Structured Pipeline</h2>
+      <p style="color:#6E93B0;font-size:14px;max-width:560px;margin:0 auto;line-height:1.65;">Every letter of guarantee follows a structured, auditable workflow with automatic accounting entries generated at each transition.</p>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:20px;position:relative;">
+
+      <!-- Step connector (decorative) -->
+
+      <!-- Stage 1 -->
+      <div style="flex:1;min-width:200px;background:rgba(255,255,255,0.06);border:1px solid rgba(110,147,176,0.2);border-radius:16px;padding:28px;position:relative;">
+        <div style="position:absolute;top:-14px;left:24px;background:#0F5586;border:2px solid rgba(110,147,176,0.5);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;">
+          <span style="color:#ffffff;font-size:13px;font-weight:800;">1</span>
+        </div>
+        <div style="margin-top:10px;">
+          <div style="color:#ffffff;font-size:15px;font-weight:700;margin-bottom:8px;">Draft Registration</div>
+          <div style="color:#6E93B0;font-size:12px;line-height:1.6;margin-bottom:16px;">Record all guarantee details — beneficiary, issuing bank, amount, currency, validity dates, and linked documents.</div>
+          <div style="background:rgba(4,31,51,0.5);border-radius:10px;padding:14px;border:1px solid rgba(110,147,176,0.15);">
+            <div style="color:#6E93B0;font-size:11px;font-weight:600;margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;">Accounting Entry</div>
+            <div style="color:#a3c4e0;font-size:12px;font-family:monospace;line-height:1.8;">
+              <span style="color:#22c55e;">Dr</span> Off-Balance Memo (LG Value)<br/>
+              <span style="color:#f87171;">Cr</span> Off-Balance Counter (LG Value)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 2 -->
+      <div style="flex:1;min-width:200px;background:rgba(255,255,255,0.06);border:1px solid rgba(110,147,176,0.2);border-radius:16px;padding:28px;position:relative;">
+        <div style="position:absolute;top:-14px;left:24px;background:#0F5586;border:2px solid rgba(110,147,176,0.5);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;">
+          <span style="color:#ffffff;font-size:13px;font-weight:800;">2</span>
+        </div>
+        <div style="margin-top:10px;">
+          <div style="color:#ffffff;font-size:15px;font-weight:700;margin-bottom:8px;">Bank Issuance &amp; Confirmation</div>
+          <div style="color:#6E93B0;font-size:12px;line-height:1.6;margin-bottom:16px;">Bank issues the guarantee letter. Commission paid and contingent liability recognized. Guarantee becomes legally active.</div>
+          <div style="background:rgba(4,31,51,0.5);border-radius:10px;padding:14px;border:1px solid rgba(110,147,176,0.15);">
+            <div style="color:#6E93B0;font-size:11px;font-weight:600;margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;">Accounting Entry</div>
+            <div style="color:#a3c4e0;font-size:12px;font-family:monospace;line-height:1.8;">
+              <span style="color:#22c55e;">Dr</span> Bank Commission Expense<br/>
+              <span style="color:#f87171;">Cr</span> Bank / Cash Account<br/>
+              <span style="color:#22c55e;">Dr</span> LG Contingent Asset<br/>
+              <span style="color:#f87171;">Cr</span> LG Contingent Liability
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 3 -->
+      <div style="flex:1;min-width:200px;background:rgba(255,255,255,0.06);border:1px solid rgba(110,147,176,0.2);border-radius:16px;padding:28px;position:relative;">
+        <div style="position:absolute;top:-14px;left:24px;background:#0F5586;border:2px solid rgba(110,147,176,0.5);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;">
+          <span style="color:#ffffff;font-size:13px;font-weight:800;">3</span>
+        </div>
+        <div style="margin-top:10px;">
+          <div style="color:#ffffff;font-size:15px;font-weight:700;margin-bottom:8px;">Active Monitoring</div>
+          <div style="color:#6E93B0;font-size:12px;line-height:1.6;margin-bottom:16px;">Guarantee is live. System monitors expiry dates, sends renewal alerts, and tracks any amendments (extensions, value changes).</div>
+          <div style="background:rgba(4,31,51,0.5);border-radius:10px;padding:14px;border:1px solid rgba(110,147,176,0.15);">
+            <div style="color:#6E93B0;font-size:11px;font-weight:600;margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;">Accounting Entry (Extension)</div>
+            <div style="color:#a3c4e0;font-size:12px;font-family:monospace;line-height:1.8;">
+              <span style="color:#22c55e;">Dr</span> Commission Expense (Extension Fee)<br/>
+              <span style="color:#f87171;">Cr</span> Bank / Payable Account
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 4 -->
+      <div style="flex:1;min-width:200px;background:rgba(255,255,255,0.06);border:1px solid rgba(230,27,33,0.25);border-radius:16px;padding:28px;position:relative;">
+        <div style="position:absolute;top:-14px;left:24px;background:#8C1D22;border:2px solid rgba(230,27,33,0.5);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;">
+          <span style="color:#ffffff;font-size:13px;font-weight:800;">4</span>
+        </div>
+        <div style="margin-top:10px;">
+          <div style="color:#ffffff;font-size:15px;font-weight:700;margin-bottom:8px;">Release or Forfeit</div>
+          <div style="color:#6E93B0;font-size:12px;line-height:1.6;margin-bottom:16px;">Guarantee is either returned by the beneficiary (release) or claimed against the company (forfeit). Corresponding entries close the liability.</div>
+          <div style="background:rgba(4,31,51,0.5);border-radius:10px;padding:14px;border:1px solid rgba(110,147,176,0.15);">
+            <div style="color:#6E93B0;font-size:11px;font-weight:600;margin-bottom:8px;letter-spacing:0.5px;text-transform:uppercase;">Accounting Entry (Release)</div>
+            <div style="color:#a3c4e0;font-size:12px;font-family:monospace;line-height:1.8;">
+              <span style="color:#22c55e;">Dr</span> LG Contingent Liability<br/>
+              <span style="color:#f87171;">Cr</span> LG Contingent Asset<br/>
+              <span style="color:#f87171;">Cr</span> Off-Balance Memo (Reversal)
+            </div>
+          </div>
+          <div style="margin-top:12px;background:rgba(140,29,34,0.2);border-radius:8px;padding:10px;border:1px solid rgba(230,27,33,0.2);">
+            <div style="color:#fca5a5;font-size:11px;font-weight:600;margin-bottom:4px;">On Forfeit (Claim):</div>
+            <div style="color:#fca5a5;font-size:11px;font-family:monospace;line-height:1.8;">
+              Dr LG Contingent Liability | Cr Bank Account
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div><!-- /Lifecycle -->
+
+
+<!-- ============================================================
+     SCREENSHOTS SHOWCASE
+     ============================================================ -->
+<div style="background:#f0f4f8;padding:56px 40px;">
+  <div style="max-width:1000px;margin:0 auto;">
+
+    <div style="text-align:center;margin-bottom:42px;">
+      <div style="display:inline-block;background:#E7EEF3;border-radius:20px;padding:5px 16px;margin-bottom:12px;">
+        <span style="color:#0F5586;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">Live Interface</span>
+      </div>
+      <h2 style="color:#041F33;font-size:clamp(20px,2.8vw,32px);font-weight:800;margin:0 0 10px;">See It In Action</h2>
+      <p style="color:#4b6074;font-size:14px;max-width:540px;margin:0 auto;line-height:1.65;">Real screenshots from a running Odoo instance showing every major view of the Letters of Guarantee module.</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:32px;">
+
+      <!-- Screenshot 1 -->
+      <div style="background:#ffffff;border-radius:18px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 4px 24px rgba(6,49,83,0.08);">
+        <div style="padding:24px 28px 20px;">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:10px;">
+            <h3 style="color:#041F33;font-size:17px;font-weight:700;margin:0;flex:1;">Bid Bonds — Master List View</h3>
+            <span style="background:#E7EEF3;color:#0F5586;font-size:11px;font-weight:700;border-radius:10px;padding:4px 10px;">List View</span>
+            <span style="background:#dcfce7;color:#047857;font-size:11px;font-weight:700;border-radius:10px;padding:4px 10px;">&#9679; Active</span>
+          </div>
+          <p style="color:#4b6074;font-size:13px;line-height:1.65;margin:0;">The central command center for all bid bond guarantees. View all active, pending, expired, and released bid bonds in a single sortable, filterable list. Color-coded status badges give instant at-a-glance awareness of your guarantee portfolio health. Use grouping by bank, beneficiary, or expiry month to prioritize actions.</p>
+        </div>
+        <div style="background:#f8fafc;border-top:1px solid #e2e8f0;overflow:hidden;">
+          <img src="01_bid_bonds_list.png" alt="Bid Bonds List View" style="width:100%;display:block;max-height:380px;object-fit:cover;object-position:top;" />
+        </div>
+      </div>
+
+      <!-- Screenshot 2 -->
+      <div style="background:#ffffff;border-radius:18px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 4px 24px rgba(6,49,83,0.08);">
+        <div style="padding:24px 28px 20px;">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:10px;">
+            <h3 style="color:#041F33;font-size:17px;font-weight:700;margin:0;flex:1;">Bid Bond — Detailed Form View</h3>
+            <span style="background:#E7EEF3;color:#0F5586;font-size:11px;font-weight:700;border-radius:10px;padding:4px 10px;">Form View</span>
+            <span style="background:#fef9c3;color:#854d0e;font-size:11px;font-weight:700;border-radius:10px;padding:4px 10px;">&#9997; Editable</span>
+          </div>
+          <p style="color:#4b6074;font-size:13px;line-height:1.65;margin:0;">The full-detail form for a single bid bond. Captures all essential fields: guarantee number, issuing bank, beneficiary, amount, currency, issue date, expiry date, linked project or tender reference, and the assigned accounting journal. The smart button bar shows related journal entries, chatter tracks every action, and the status bar guides users through the workflow stages.</p>
+        </div>
+        <div style="background:#f8fafc;border-top:1px solid #e2e8f0;overflow:hidden;">
+          <img src="02_bid_bond_form.png" alt="Bid Bond Form View" style="width:100%;display:block;max-height:380px;object-fit:cover;object-position:top;" />
+        </div>
+      </div>
+
+      <!-- Screenshot 3 -->
+      <div style="background:#ffffff;border-radius:18px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 4px 24px rgba(6,49,83,0.08);">
+        <div style="padding:24px 28px 20px;">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:10px;">
+            <h3 style="color:#041F33;font-size:17px;font-weight:700;margin:0;flex:1;">Performance Bonds — Master List View</h3>
+            <span style="background:#E7EEF3;color:#0F5586;font-size:11px;font-weight:700;border-radius:10px;padding:4px 10px;">List View</span>
+            <span style="background:#dcfce7;color:#047857;font-size:11px;font-weight:700;border-radius:10px;padding:4px 10px;">&#9679; Active</span>
+          </div>
+          <p style="color:#4b6074;font-size:13px;line-height:1.65;margin:0;">Dedicated list view for performance and final bonds. Prominently shows the contract value, guarantee percentage, expiry timeline, and current status. Quickly identify guarantees approaching expiry using date-based conditional coloring. Export to PDF or Excel for client reporting or bank reconciliation purposes.</p>
+        </div>
+        <div style="background:#f8fafc;border-top:1px solid #e2e8f0;overflow:hidden;">
+          <img src="03_performance_bonds_list.png" alt="Performance Bonds List View" style="width:100%;display:block;max-height:380px;object-fit:cover;object-position:top;" />
+        </div>
+      </div>
+
+      <!-- Screenshot 4 -->
+      <div style="background:#ffffff;border-radius:18px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 4px 24px rgba(6,49,83,0.08);">
+        <div style="padding:24px 28px 20px;">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:10px;">
+            <h3 style="color:#041F33;font-size:17px;font-weight:700;margin:0;flex:1;">Performance Bond — Detailed Form View</h3>
+            <span style="background:#E7EEF3;color:#0F5586;font-size:11px;font-weight:700;border-radius:10px;padding:4px 10px;">Form View</span>
+            <span style="background:#f3e8ff;color:#6b21a8;font-size:11px;font-weight:700;border-radius:10px;padding:4px 10px;">&#128200; Accounting</span>
+          </div>
+          <p style="color:#4b6074;font-size:13px;line-height:1.65;margin:0;">The performance bond form view mirrors the bid bond form but adds contract-specific fields: contract amount, guarantee percentage calculator, and multi-stage release tracking. The accounting section shows the automatically generated journal moves linked to this specific guarantee, providing full financial traceability without leaving the record.</p>
+        </div>
+        <div style="background:#f8fafc;border-top:1px solid #e2e8f0;overflow:hidden;">
+          <img src="04_performance_bond_form.png" alt="Performance Bond Form View" style="width:100%;display:block;max-height:380px;object-fit:cover;object-position:top;" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div><!-- /Screenshots -->
+
+
+<!-- ============================================================
+     TECHNICAL SPECIFICATIONS TABLE
+     ============================================================ -->
+<div style="background:#ffffff;padding:56px 40px;">
+  <div style="max-width:800px;margin:0 auto;">
+
+    <div style="text-align:center;margin-bottom:36px;">
+      <div style="display:inline-block;background:#E7EEF3;border-radius:20px;padding:5px 16px;margin-bottom:12px;">
+        <span style="color:#0F5586;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">Technical Details</span>
+      </div>
+      <h2 style="color:#041F33;font-size:clamp(20px,2.8vw,32px);font-weight:800;margin:0;">Module Specifications</h2>
+    </div>
+
+    <div style="border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 2px 16px rgba(6,49,83,0.06);">
+      <table style="width:100%;border-collapse:collapse;">
+        <thead>
+          <tr style="background:linear-gradient(90deg,#041F33,#063153);">
+            <th style="color:#6E93B0;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:14px 20px;text-align:left;width:38%;">Property</th>
+            <th style="color:#6E93B0;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:14px 20px;text-align:left;">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#ffffff;border-bottom:1px solid #f0f4f8;">
+            <td style="padding:16px 20px;color:#4b6074;font-size:13px;font-weight:600;">Module Name</td>
+            <td style="padding:16px 20px;color:#041F33;font-size:13px;font-weight:700;">COA Letters of Guarantee Management</td>
+          </tr>
+          <tr style="background:#f8fafc;border-bottom:1px solid #f0f4f8;">
+            <td style="padding:16px 20px;color:#4b6074;font-size:13px;font-weight:600;">Technical ID</td>
+            <td style="padding:16px 20px;"><code style="background:#E7EEF3;color:#0F5586;border-radius:6px;padding:3px 10px;font-size:12px;font-weight:700;">coa_letters_of_guarantee</code></td>
+          </tr>
+          <tr style="background:#ffffff;border-bottom:1px solid #f0f4f8;">
+            <td style="padding:16px 20px;color:#4b6074;font-size:13px;font-weight:600;">Supported Versions</td>
+            <td style="padding:16px 20px;display:flex;gap:8px;flex-wrap:wrap;">
+              <span style="background:#E7EEF3;color:#041F33;font-size:12px;font-weight:700;border-radius:8px;padding:4px 10px;">Odoo 17.0</span>
+              <span style="background:#E7EEF3;color:#041F33;font-size:12px;font-weight:700;border-radius:8px;padding:4px 10px;">Odoo 18.0</span>
+              <span style="background:linear-gradient(90deg,#041F33,#0F5586);color:#ffffff;font-size:12px;font-weight:700;border-radius:8px;padding:4px 10px;">Odoo 19.0 &#10024;</span>
+            </td>
+          </tr>
+          <tr style="background:#f8fafc;border-bottom:1px solid #f0f4f8;">
+            <td style="padding:16px 20px;color:#4b6074;font-size:13px;font-weight:600;">Editions</td>
+            <td style="padding:16px 20px;color:#041F33;font-size:13px;">Community &amp; Enterprise</td>
+          </tr>
+          <tr style="background:#ffffff;border-bottom:1px solid #f0f4f8;">
+            <td style="padding:16px 20px;color:#4b6074;font-size:13px;font-weight:600;">Dependencies</td>
+            <td style="padding:16px 20px;display:flex;gap:6px;flex-wrap:wrap;">
+              <code style="background:#E7EEF3;color:#0F5586;border-radius:6px;padding:3px 10px;font-size:12px;">base</code>
+              <code style="background:#E7EEF3;color:#0F5586;border-radius:6px;padding:3px 10px;font-size:12px;">account</code>
+            </td>
+          </tr>
+          <tr style="background:#f8fafc;border-bottom:1px solid #f0f4f8;">
+            <td style="padding:16px 20px;color:#4b6074;font-size:13px;font-weight:600;">License</td>
+            <td style="padding:16px 20px;"><span style="background:#fee2e2;color:#8C1D22;border-radius:8px;padding:4px 10px;font-size:12px;font-weight:700;">&#128274; LGPL-3 (GNU Lesser General Public License v3)</span></td>
+          </tr>
+          <tr style="background:#ffffff;border-bottom:1px solid #f0f4f8;">
+            <td style="padding:16px 20px;color:#4b6074;font-size:13px;font-weight:600;">Languages</td>
+            <td style="padding:16px 20px;display:flex;gap:8px;flex-wrap:wrap;">
+              <span style="background:#dcfce7;color:#047857;border-radius:8px;padding:4px 10px;font-size:12px;font-weight:700;">&#127468;&#127463; English</span>
+              <span style="background:#E7EEF3;color:#0F5586;border-radius:8px;padding:4px 10px;font-size:12px;font-weight:700;">&#127462;&#127466; Arabic</span>
+            </td>
+          </tr>
+          <tr style="background:#f8fafc;border-bottom:1px solid #f0f4f8;">
+            <td style="padding:16px 20px;color:#4b6074;font-size:13px;font-weight:600;">Category</td>
+            <td style="padding:16px 20px;color:#041F33;font-size:13px;">Accounting / Finance</td>
+          </tr>
+          <tr style="background:#ffffff;">
+            <td style="padding:16px 20px;color:#4b6074;font-size:13px;font-weight:600;">Author</td>
+            <td style="padding:16px 20px;">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#041F33,#0F5586);display:flex;align-items:center;justify-content:center;color:#ffffff;font-weight:800;font-size:14px;">A</div>
+                <div>
+                  <div style="color:#041F33;font-size:13px;font-weight:700;">Ahmed Aboshady</div>
+                  <div style="color:#6E93B0;font-size:12px;">COA Business Solutions</div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Installation note -->
+    <div style="margin-top:24px;background:#E7EEF3;border-radius:14px;padding:20px 24px;border-left:4px solid #0F5586;">
+      <div style="color:#041F33;font-size:13px;font-weight:700;margin-bottom:6px;">&#128196; Installation</div>
+      <div style="color:#4b6074;font-size:13px;line-height:1.65;">Install like any standard Odoo module. Navigate to <strong>Settings &rarr; Activate Developer Mode &rarr; Apps &rarr; Update Apps List</strong>, then search for <code style="background:#ffffff;border-radius:4px;padding:2px 6px;font-size:12px;">coa_letters_of_guarantee</code> and click Install. No additional configuration required — the module creates all necessary menu items, security groups, and accounting account templates automatically.</div>
+    </div>
+
+  </div>
+</div><!-- /Tech Specs -->
+
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<div style="background:#f0f4f8;padding:56px 40px;">
+  <div style="max-width:800px;margin:0 auto;">
+
+    <div style="text-align:center;margin-bottom:40px;">
+      <div style="display:inline-block;background:#E7EEF3;border-radius:20px;padding:5px 16px;margin-bottom:12px;">
+        <span style="color:#0F5586;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">FAQ</span>
+      </div>
+      <h2 style="color:#041F33;font-size:clamp(20px,2.8vw,32px);font-weight:800;margin:0;">Frequently Asked Questions</h2>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px;">
+
+      <!-- FAQ 1 -->
+      <div style="background:#ffffff;border-radius:16px;padding:28px;border:1px solid #e2e8f0;border-left:4px solid #0F5586;box-shadow:0 2px 12px rgba(6,49,83,0.05);">
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div style="width:32px;height:32px;border-radius:50%;background:#E7EEF3;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#0F5586;font-size:15px;font-weight:800;">Q</div>
+          <div>
+            <div style="color:#041F33;font-size:15px;font-weight:700;margin-bottom:10px;">Does this module support all four types of letters of guarantee, or only specific ones?</div>
+            <div style="color:#4b6074;font-size:13px;line-height:1.7;">Yes — the module supports all four major types used in commercial and government contracting: <strong>Bid Bonds</strong> (tender guarantees), <strong>Performance Bonds</strong> (final bonds), <strong>Advance Payment Guarantees</strong>, and <strong>Maintenance/Warranty Bonds</strong>. Each type has its own dedicated list and form views, tailored fields, and appropriate accounting entries. You can use one, some, or all four types depending on your business needs.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div style="background:#ffffff;border-radius:16px;padding:28px;border:1px solid #e2e8f0;border-left:4px solid #0F5586;box-shadow:0 2px 12px rgba(6,49,83,0.05);">
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div style="width:32px;height:32px;border-radius:50%;background:#E7EEF3;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#0F5586;font-size:15px;font-weight:800;">Q</div>
+          <div>
+            <div style="color:#041F33;font-size:15px;font-weight:700;margin-bottom:10px;">How are the accounting entries generated — do I need to manually create journal entries for each guarantee?</div>
+            <div style="color:#4b6074;font-size:13px;line-height:1.7;">No manual journal entries are required. The module generates all accounting entries automatically at each lifecycle transition. When a guarantee is confirmed (issued), extended, released, or forfeited, the system creates the appropriate debit and credit moves in Odoo Accounting using the account mappings you configure in the module settings. This eliminates human error and ensures consistency across all guarantee transactions. You can review, filter, and reconcile all generated entries directly from the guarantee form using the smart button.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div style="background:#ffffff;border-radius:16px;padding:28px;border:1px solid #e2e8f0;border-left:4px solid #0F5586;box-shadow:0 2px 12px rgba(6,49,83,0.05);">
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div style="width:32px;height:32px;border-radius:50%;background:#E7EEF3;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#0F5586;font-size:15px;font-weight:800;">Q</div>
+          <div>
+            <div style="color:#041F33;font-size:15px;font-weight:700;margin-bottom:10px;">Can this module work with multiple banks and multiple currencies simultaneously?</div>
+            <div style="color:#4b6074;font-size:13px;line-height:1.7;">Absolutely. The module is designed for multi-bank, multi-currency environments from the ground up. Each letter of guarantee can be assigned to a specific issuing bank partner (from Odoo's partner model) and denominated in any currency that is active in your Odoo instance. The module leverages Odoo's built-in multi-currency engine for exchange rate conversions, meaning that FX revaluation at reporting dates is handled by standard Odoo mechanisms without any additional configuration. This makes the module suitable for companies operating across different countries or conducting international contracting.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div><!-- /FAQ -->
+
+
+<!-- ============================================================
+     FOOTER CTA
+     ============================================================ -->
+<div style="background:linear-gradient(135deg,#041F33 0%,#063153 55%,#0F5586 100%);padding:64px 40px;">
+  <div style="max-width:800px;margin:0 auto;text-align:center;">
+
+    <!-- Logo -->
+    <div style="margin-bottom:24px;">
+      <div style="display:inline-flex;align-items:center;gap:12px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:50px;padding:10px 24px;">
+        <img src="coa_logo.jpg" alt="COA Logo" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.2);" />
+        <div style="text-align:left;">
+          <div style="color:#ffffff;font-size:15px;font-weight:800;line-height:1.2;">COA Business Solutions</div>
+          <div style="color:#6E93B0;font-size:11px;font-weight:600;">Odoo Specialists</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 style="color:#ffffff;font-size:clamp(22px,3vw,36px);font-weight:800;margin:0 0 14px;line-height:1.2;">
+      Ready to Streamline Your<br/>Letters of Guarantee?
+    </h2>
+    <p style="color:#b8cfe0;font-size:14px;line-height:1.7;max-width:520px;margin:0 auto 36px;">
+      Install the module today and bring your entire guarantee portfolio under structured, auditable, automated management inside Odoo. Questions? Reach out — we respond within one business day.
+    </p>
+
+    <!-- CTA Buttons -->
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-bottom:40px;">
+
+      <a href="mailto:ahmedaboshady128@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:#0F5586;color:#ffffff;text-decoration:none;border-radius:12px;padding:14px 28px;font-size:14px;font-weight:700;border:1px solid rgba(110,147,176,0.4);">
+        <span style="font-size:16px;">&#128231;</span>
+        ahmedaboshady128@gmail.com
+      </a>
+
+      <a href="https://github.com/Ahmed128aboshady" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);color:#ffffff;text-decoration:none;border-radius:12px;padding:14px 28px;font-size:14px;font-weight:700;border:1px solid rgba(255,255,255,0.2);">
+        <span style="font-size:16px;">&#128279;</span>
+        GitHub: Ahmed128aboshady
+      </a>
+
+    </div>
+
+    <!-- Divider -->
+    <div style="border-top:1px solid rgba(110,147,176,0.2);padding-top:28px;">
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:20px;">
+        <span style="color:#6E93B0;font-size:12px;">&#169; 2024&ndash;2026 COA Business Solutions</span>
+        <span style="color:#2d4a63;font-size:12px;">|</span>
+        <span style="color:#6E93B0;font-size:12px;">Licensed under LGPL-3.0</span>
+        <span style="color:#2d4a63;font-size:12px;">|</span>
+        <span style="color:#6E93B0;font-size:12px;">Compatible with Odoo 17 &middot; 18 &middot; 19</span>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /Footer -->
+
+</div><!-- /root div -->
