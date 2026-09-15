@@ -18,7 +18,9 @@ Comprehensive financial cheque lifecycle and treasury management system:
     'website': "https://www.coa-egy.com",
     'category': 'Accounting/Accounting',
     'version': '19.0.1.0.0',
-    'license': 'LGPL-3',
+    'price': 49.00,
+    'currency': 'USD',
+    'license': 'OPL-1',
     'depends': ['base', 'account', 'utm'],
     'data': [
         'security/ir.model.access.csv',
