@@ -1,1020 +1,547 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COA Cheque Management | نظام إدارة الشيكات والأوراق المالية</title>
-    <!-- Fonts: Cairo (Arabic) & Inter (English) as specified in Brand Guidelines -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Bootstrap 5 & FontAwesome 6 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <style>
-        :root {
-            /* COA Egypt Brand Identity Colors */
-            --coa-navy-900: #041F33;
-            --coa-navy-700: #063153; /* Primary Brand Color (55%) */
-            --coa-navy-500: #0F5586;
-            --coa-navy-300: #6E93B0;
-            --coa-navy-100: #E7EEF3;
-            --coa-crimson: #8C1D22;  /* Secondary Brand Color (15%) */
-            --coa-red: #E61B21;      /* Red Accent / CTA (5%) */
-            --coa-red-100: #FBEAEA;
-            --coa-gray-100: #F4F6F8; /* Background Neutral (25%) */
-            --coa-gray-900: #1F2933;
-            --coa-white: #FFFFFF;
-            
-            --coa-shadow-sm: 0 4px 12px rgba(4, 31, 51, 0.06);
-            --coa-shadow-md: 0 10px 30px rgba(4, 31, 51, 0.12);
-            --coa-shadow-lg: 0 20px 50px rgba(4, 31, 51, 0.18);
-            --coa-glow: 0 0 25px rgba(230, 27, 33, 0.35);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Cairo', 'Inter', -apple-system, sans-serif;
-            background-color: var(--coa-gray-100);
-            color: var(--coa-gray-900);
-            line-height: 1.7;
-            overflow-x: hidden;
-            direction: rtl;
-            text-align: right;
-        }
-
-        /* Animated Canvas Particles */
-        #coa-particles-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0.6;
-        }
-
-        /* Hero Header Section */
-        .coa-hero {
-            position: relative;
-            background: linear-gradient(135deg, var(--coa-navy-900) 0%, var(--coa-navy-700) 60%, #083b63 100%);
-            color: var(--coa-white);
-            padding: 5.5rem 1.5rem 4.5rem 1.5rem;
-            border-bottom: 4px solid var(--coa-red);
-            overflow: hidden;
-        }
-
-        .coa-hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .coa-logo-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            padding: 8px 24px;
-            border-radius: 50px;
-            margin-bottom: 2rem;
-            box-shadow: var(--coa-shadow-sm);
-            animation: fadeInDown 0.8s ease-out;
-        }
-
-        .coa-logo-img {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: var(--coa-white);
-            padding: 3px;
-            box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-        }
-
-        .coa-hero-title {
-            font-size: 3.2rem;
-            font-weight: 900;
-            line-height: 1.25;
-            letter-spacing: -0.5px;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.9s ease-out;
-        }
-
-        .coa-hero-title span {
-            background: linear-gradient(90deg, #FFFFFF 30%, #E7EEF3 70%, var(--coa-red) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .coa-hero-desc {
-            font-size: 1.25rem;
-            color: var(--coa-navy-100);
-            max-width: 820px;
-            margin: 0 auto 2.5rem auto;
-            font-weight: 600;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .coa-tags-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 2.5rem;
-            animation: fadeInUp 1.1s ease-out;
-        }
-
-        .coa-tag {
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.22);
-            color: var(--coa-white);
-            padding: 6px 18px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .coa-tag:hover {
-            background: var(--coa-red);
-            border-color: var(--coa-red);
-            transform: translateY(-3px);
-            box-shadow: var(--coa-glow);
-        }
-
-        /* Action Buttons */
-        .coa-btn-primary {
-            background: linear-gradient(135deg, var(--coa-red) 0%, var(--coa-crimson) 100%);
-            color: var(--coa-white) !important;
-            border: none;
-            padding: 14px 36px;
-            font-size: 1.15rem;
-            font-weight: 800;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(230, 27, 33, 0.4);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .coa-btn-primary:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(230, 27, 33, 0.55);
-        }
-
-        .coa-btn-outline {
-            background: transparent;
-            color: var(--coa-white) !important;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            padding: 12px 30px;
-            font-size: 1.15rem;
-            font-weight: 700;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .coa-btn-outline:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: var(--coa-white);
-            transform: translateY(-3px);
-        }
-
-        /* Section Heading */
-        .coa-section-header {
-            text-align: center;
-            margin-bottom: 3.5rem;
-            position: relative;
-        }
-
-        .coa-section-sub {
-            color: var(--coa-crimson);
-            font-size: 0.95rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .coa-section-title {
-            color: var(--coa-navy-900);
-            font-size: 2.3rem;
-            font-weight: 900;
-            position: relative;
-            display: inline-block;
-        }
-
-        .coa-section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--coa-navy-700), var(--coa-red));
-            border-radius: 2px;
-        }
-
-        /* Workflow Pipeline Cards */
-        .coa-pipeline-step {
-            background: var(--coa-white);
-            border: 1px solid var(--coa-navy-100);
-            border-radius: 16px;
-            padding: 1.8rem 1.4rem;
-            text-align: center;
-            position: relative;
-            transition: all 0.35s ease;
-            box-shadow: var(--coa-shadow-sm);
-            height: 100%;
-        }
-
-        .coa-pipeline-step:hover {
-            transform: translateY(-8px);
-            border-color: var(--coa-navy-500);
-            box-shadow: var(--coa-shadow-md);
-        }
-
-        .coa-step-number {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            background: var(--coa-navy-100);
-            color: var(--coa-navy-700);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            font-weight: 900;
-            margin-bottom: 1.2rem;
-            transition: all 0.3s ease;
-        }
-
-        .coa-pipeline-step:hover .coa-step-number {
-            background: var(--coa-navy-700);
-            color: var(--coa-white);
-            box-shadow: 0 6px 15px rgba(6, 49, 83, 0.3);
-        }
-
-        .coa-step-number.active {
-            background: var(--coa-red);
-            color: var(--coa-white);
-            box-shadow: var(--coa-glow);
-        }
-
-        .coa-step-title {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--coa-navy-900);
-            margin-bottom: 0.6rem;
-        }
-
-        .coa-step-desc {
-            font-size: 0.92rem;
-            color: #64748B;
-            line-height: 1.6;
-        }
-
-        /* Interactive Showcase Tabs */
-        .coa-tabs-nav {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 2.5rem;
-        }
-
-        .coa-tab-btn {
-            background: var(--coa-white);
-            border: 2px solid var(--coa-navy-100);
-            color: var(--coa-navy-700);
-            padding: 12px 28px;
-            border-radius: 12px;
-            font-weight: 800;
-            font-size: 1.05rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .coa-tab-btn.active, .coa-tab-btn:hover {
-            background: var(--coa-navy-700);
-            color: var(--coa-white);
-            border-color: var(--coa-navy-700);
-            box-shadow: var(--coa-shadow-md);
-        }
-
-        .coa-tab-content {
-            display: none;
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        .coa-tab-content.active {
-            display: block;
-        }
-
-        /* Screenshot Presentation Cards */
-        .coa-screenshot-card {
-            background: var(--coa-white);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(6, 49, 83, 0.1);
-            box-shadow: var(--coa-shadow-lg);
-            margin-bottom: 3rem;
-            transition: all 0.4s ease;
-        }
-
-        .coa-screenshot-card:hover {
-            box-shadow: 0 25px 60px rgba(4, 31, 51, 0.22);
-            border-color: var(--coa-navy-300);
-        }
-
-        .coa-screenshot-header {
-            background: linear-gradient(90deg, var(--coa-navy-900) 0%, var(--coa-navy-700) 100%);
-            padding: 1.2rem 1.8rem;
-            color: var(--coa-white);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .coa-mac-dots {
-            display: flex;
-            gap: 8px;
-        }
-
-        .coa-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        .coa-dot.red { background: #FF5F56; }
-        .coa-dot.yellow { background: #FFBD2E; }
-        .coa-dot.green { background: #27C93F; }
-
-        .coa-screenshot-title {
-            font-size: 1.05rem;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .coa-screenshot-body {
-            position: relative;
-            background: #F8FAFC;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .coa-img-responsive {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
-        .coa-screenshot-card:hover .coa-img-responsive {
-            transform: scale(1.015);
-        }
-
-        .coa-screenshot-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(6, 49, 83, 0.88);
-            backdrop-filter: blur(8px);
-            color: var(--coa-white);
-            padding: 8px 18px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 800;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: var(--coa-shadow-sm);
-        }
-
-        /* Features Modern Grid */
-        .coa-feature-box {
-            background: var(--coa-white);
-            border: 1px solid var(--coa-navy-100);
-            border-radius: 18px;
-            padding: 2.2rem 1.8rem;
-            height: 100%;
-            transition: all 0.35s ease;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--coa-shadow-sm);
-        }
-
-        .coa-feature-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 5px;
-            height: 0;
-            background: linear-gradient(180deg, var(--coa-navy-700), var(--coa-red));
-            transition: height 0.35s ease;
-        }
-
-        .coa-feature-box:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--coa-shadow-md);
-            border-color: var(--coa-navy-300);
-        }
-
-        .coa-feature-box:hover::before {
-            height: 100%;
-        }
-
-        .coa-feature-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 16px;
-            background: var(--coa-navy-100);
-            color: var(--coa-navy-700);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .coa-feature-box:hover .coa-feature-icon {
-            background: var(--coa-navy-700);
-            color: var(--coa-white);
-            transform: rotate(-5deg) scale(1.08);
-            box-shadow: 0 8px 20px rgba(6, 49, 83, 0.25);
-        }
-
-        .coa-feature-title {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--coa-navy-900);
-            margin-bottom: 0.8rem;
-        }
-
-        .coa-feature-text {
-            color: #475569;
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* Tech Specs Table */
-        .coa-specs-card {
-            background: var(--coa-white);
-            border-radius: 20px;
-            padding: 2.5rem;
-            border: 1px solid var(--coa-navy-100);
-            box-shadow: var(--coa-shadow-md);
-            margin-top: 2rem;
-        }
-
-        .coa-spec-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1.1rem 0;
-            border-bottom: 1px dashed var(--coa-navy-100);
-        }
-
-        .coa-spec-item:last-child {
-            border-bottom: none;
-        }
-
-        .coa-spec-label {
-            font-weight: 700;
-            color: var(--coa-navy-900);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .coa-spec-value {
-            font-weight: 800;
-            color: var(--coa-navy-700);
-            background: var(--coa-navy-100);
-            padding: 4px 14px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-        }
-
-        /* Brand Identity Ribbon / Banner */
-        .coa-brand-ribbon {
-            background: linear-gradient(135deg, var(--coa-navy-900) 0%, var(--coa-navy-700) 100%);
-            color: var(--coa-white);
-            border-radius: 24px;
-            padding: 3.5rem 2.5rem;
-            margin: 4rem 0;
-            position: relative;
-            overflow: hidden;
-            border-right: 8px solid var(--coa-red);
-            box-shadow: var(--coa-shadow-lg);
-        }
-
-        .coa-brand-ribbon::after {
-            content: 'COA';
-            position: absolute;
-            left: -20px;
-            bottom: -30px;
-            font-size: 10rem;
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.03);
-            pointer-events: none;
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Footer Section */
-        .coa-footer {
-            background: var(--coa-navy-900);
-            color: var(--coa-white);
-            padding: 4.5rem 1.5rem 2.5rem 1.5rem;
-            border-top: 3px solid var(--coa-red);
-            text-align: center;
-        }
-
-        .coa-footer-logo {
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            background: var(--coa-white);
-            padding: 6px;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
-        }
-
-        .coa-slogan {
-            font-family: 'Inter', sans-serif;
-            color: var(--coa-navy-300);
-            letter-spacing: 4px;
-            font-weight: 800;
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .coa-slogan span {
-            color: var(--coa-red);
-        }
-
-        /* Responsive Media Queries */
-        @media (max-width: 991px) {
-            .coa-hero-title { font-size: 2.6rem; }
-            .coa-section-title { font-size: 2rem; }
-            .coa-tabs-nav { flex-direction: column; }
-            .coa-tab-btn { justify-content: center; }
-        }
-
-        @media (max-width: 768px) {
-            .coa-hero { padding: 4rem 1rem 3rem 1rem; }
-            .coa-hero-title { font-size: 2rem; }
-            .coa-hero-desc { font-size: 1.05rem; }
-            .coa-btn-primary, .coa-btn-outline { width: 100%; justify-content: center; }
-            .coa-screenshot-header { flex-direction: column; gap: 10px; text-align: center; }
-            .coa-specs-card { padding: 1.5rem 1.2rem; }
-            .coa-spec-item { flex-direction: column; align-items: flex-start; gap: 8px; }
-            .coa-brand-ribbon { padding: 2rem 1.5rem; }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(25px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-25px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Hero Section -->
-    <header class="coa-hero text-center">
-        <canvas id="coa-particles-canvas"></canvas>
-        <div class="container coa-hero-content">
-            <div class="coa-logo-badge">
-                <img src="coa_logo.png" alt="COA Egypt Logo" class="coa-logo-img">
-                <span style="font-weight: 800; font-size: 0.95rem; color: #FFFFFF;">Community of Accountants (COA-Egypt)</span>
-            </div>
-            <h1 class="coa-hero-title">
-                نظام <span>إدارة الشيكات والأوراق المالية</span> المتكامل
-            </h1>
-            <p class="coa-hero-desc">
-                الحل الشامل والاحترافي لإدارة دورة حياة الشيكات الواردة والصادرة على أودو 19 مع الربط الآلي الكامل مع شجرة الحسابات، قيود اليومية، وإدارة المشاريع والمقاولات.
-            </p>
-            
-            <div class="coa-tags-wrapper">
-                <div class="coa-tag"><i class="fa-solid fa-check-double text-danger"></i> Odoo 19.0 Ready</div>
-                <div class="coa-tag"><i class="fa-solid fa-building-columns text-info"></i> شيكات واردة وصادرة</div>
-                <div class="coa-tag"><i class="fa-solid fa-book-journal-whills text-warning"></i> قيود محاسبية تلقائية</div>
-                <div class="coa-tag"><i class="fa-solid fa-money-bill-transfer text-success"></i> دعم العملات المتعددة</div>
-                <div class="coa-tag"><i class="fa-solid fa-shield-halved text-primary"></i> تحكم بصلاحيات الوصول</div>
-            </div>
-
-            <div class="d-flex flex-wrap justify-content-center gap-3">
-                <a href="#demo-screenshots" class="coa-btn-primary">
-                    <i class="fa-solid fa-images"></i> استعراض الشاشات والمعاملات
-                </a>
-                <a href="#features-section" class="coa-btn-outline">
-                    <i class="fa-solid fa-star"></i> المميزات الأساسية
-                </a>
-            </div>
+<!-- ==============================================================================
+     COA CHEQUE MANAGEMENT FOR ODOO 19 / 18 / 17
+     Official Description Page - Community of Accountants (COA Egypt)
+     Brand Colors: Navy 900 (#041F33), Navy 700 (#063153), Navy 500 (#0F5586), 
+                   Navy 300 (#6E93B0), Navy 100 (#E7EEF3), Crimson (#8C1D22), Red (#E61B21)
+============================================================================== -->
+
+<div style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #041F33; background-color: #FFFFFF; line-height: 1.6; margin: 0; padding: 0;">
+
+  <!-- ==========================================
+       1. HERO HEADER SECTION
+  =========================================== -->
+  <section style="background: linear-gradient(135deg, #041F33 0%, #063153 50%, #0F5586 100%); padding: 80px 20px; color: #FFFFFF; position: relative; overflow: hidden; border-radius: 0 0 32px 32px; box-shadow: 0 20px 40px rgba(4, 31, 51, 0.2);">
+    
+    <!-- Subtle Background Glow -->
+    <div style="position: absolute; top: -100px; right: -100px; width: 450px; height: 450px; background: radial-gradient(circle, rgba(230, 27, 33, 0.25) 0%, rgba(6, 49, 83, 0) 70%); border-radius: 50%; pointer-events: none;"></div>
+    <div style="position: absolute; bottom: -80px; left: -80px; width: 350px; height: 350px; background: radial-gradient(circle, rgba(110, 147, 176, 0.2) 0%, rgba(6, 49, 83, 0) 70%); border-radius: 50%; pointer-events: none;"></div>
+
+    <div style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 2;">
+      
+      <!-- Top Badges Row -->
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 15px; margin-bottom: 35px;">
+        <div style="display: inline-flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.12); padding: 8px 20px; border-radius: 100px; border: 1px solid rgba(255, 255, 255, 0.25); backdrop-filter: blur(8px);">
+          <img src="coa_logo.png" alt="COA Logo" style="width: 24px; height: 24px; border-radius: 50%; object-fit: cover; background: #fff;" />
+          <span style="font-size: 13px; font-weight: 700; color: #FFFFFF; letter-spacing: 0.5px;">COMMUNITY OF ACCOUNTANTS (COA-EGYPT)</span>
         </div>
-    </header>
-
-    <!-- Main Container -->
-    <main class="container my-5">
-
-        <!-- Cheque Lifecycle Flow -->
-        <section class="mb-5">
-            <div class="coa-section-header">
-                <span class="coa-section-sub">Lifecycle & Process Flow</span>
-                <h2 class="coa-section-title">دورة حياة الشيكات المحاسبية</h2>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6">
-                    <div class="coa-pipeline-step">
-                        <div class="coa-step-number">01</div>
-                        <h3 class="coa-step-title">مسودة (Draft)</h3>
-                        <p class="coa-step-desc">تسجيل بيانات الشيك بدقة متناهية: الساحب، المستفيد، البنك، تاريخ الاستحقاق، والقيمة المالية.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="coa-pipeline-step">
-                        <div class="coa-step-number">02</div>
-                        <h3 class="coa-step-title">تأكيد (Confirmed)</h3>
-                        <p class="coa-step-desc">اعتماد الشيك محاسبياً، حجز الأوراق المالية، وتوليد القيود المحاسبية التمهيدية لحسابات أوراق القبض/الدفع.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="coa-pipeline-step">
-                        <div class="coa-step-number active">03</div>
-                        <h3 class="coa-step-title">إيداع / تسوية (Deposit)</h3>
-                        <p class="coa-step-desc">إيداع الشيك في الحساب البنكي أو إجراء التسوية البنكية، مع تحديث قيود التسوية آلياً وإغلاق حسابات الوسيط.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="coa-pipeline-step">
-                        <div class="coa-step-number">04</div>
-                        <h3 class="coa-step-title">إلغاء أو ارتداد (Cancelled)</h3>
-                        <p class="coa-step-desc">معالجة فورية لحالات ارتداد الشيك أو إلغائه مع عكس القيود اليومية وعودة مديونية العميل/المورد تلقائياً.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Screenshots Showcase Section -->
-        <section id="demo-screenshots" class="my-5 pt-4">
-            <div class="coa-section-header">
-                <span class="coa-section-sub">Live System Previews</span>
-                <h2 class="coa-section-title">شاشات النظام والمعاملات الحية</h2>
-            </div>
-
-            <!-- Tab Switching Controls -->
-            <div class="coa-tabs-nav">
-                <button class="coa-tab-btn active" onclick="switchCoaTab('incoming')">
-                    <i class="fa-solid fa-arrow-down-left"></i> الشيكات الواردة (Incoming Cheques)
-                </button>
-                <button class="coa-tab-btn" onclick="switchCoaTab('outgoing')">
-                    <i class="fa-solid fa-arrow-up-right"></i> الشيكات الصادرة (Outgoing Cheques)
-                </button>
-            </div>
-
-            <!-- Tab 1: Incoming Cheques -->
-            <div id="tab-incoming" class="coa-tab-content active">
-                
-                <!-- Incoming List -->
-                <div class="coa-screenshot-card">
-                    <div class="coa-screenshot-header">
-                        <div class="coa-screenshot-title">
-                            <i class="fa-solid fa-list-check text-danger"></i> جدول الشيكات الواردة — مبيعات ومستخلصات العملاء
-                        </div>
-                        <div class="coa-mac-dots">
-                            <span class="coa-dot red"></span>
-                            <span class="coa-dot yellow"></span>
-                            <span class="coa-dot green"></span>
-                        </div>
-                    </div>
-                    <div class="coa-screenshot-body">
-                        <span class="coa-screenshot-badge"><i class="fa-solid fa-circle-check text-success"></i> Odoo 19 UI</span>
-                        <img src="01_incoming_cheques_list.png" alt="قائمة الشيكات الواردة" class="coa-img-responsive">
-                    </div>
-                </div>
-
-                <!-- Incoming Form -->
-                <div class="coa-screenshot-card">
-                    <div class="coa-screenshot-header">
-                        <div class="coa-screenshot-title">
-                            <i class="fa-solid fa-file-invoice-dollar text-warning"></i> نموذج تفاصيل الشيك الوارد — مرحلة الإيداع البنكي
-                        </div>
-                        <div class="coa-mac-dots">
-                            <span class="coa-dot red"></span>
-                            <span class="coa-dot yellow"></span>
-                            <span class="coa-dot green"></span>
-                        </div>
-                    </div>
-                    <div class="coa-screenshot-body">
-                        <span class="coa-screenshot-badge"><i class="fa-solid fa-bolt text-warning"></i> Automated Journal Entry</span>
-                        <img src="02_incoming_cheque_form.png" alt="تفاصيل الشيك الوارد" class="coa-img-responsive">
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Tab 2: Outgoing Cheques -->
-            <div id="tab-outgoing" class="coa-tab-content">
-                
-                <!-- Outgoing List -->
-                <div class="coa-screenshot-card">
-                    <div class="coa-screenshot-header">
-                        <div class="coa-screenshot-title">
-                            <i class="fa-solid fa-table-list text-danger"></i> جدول الشيكات الصادرة — مدفوعات الموردين والمقاولين
-                        </div>
-                        <div class="coa-mac-dots">
-                            <span class="coa-dot red"></span>
-                            <span class="coa-dot yellow"></span>
-                            <span class="coa-dot green"></span>
-                        </div>
-                    </div>
-                    <div class="coa-screenshot-body">
-                        <span class="coa-screenshot-badge"><i class="fa-solid fa-shield-check text-info"></i> Strict Control</span>
-                        <img src="03_outgoing_cheques_list.png" alt="قائمة الشيكات الصادرة" class="coa-img-responsive">
-                    </div>
-                </div>
-
-                <!-- Outgoing Form -->
-                <div class="coa-screenshot-card">
-                    <div class="coa-screenshot-header">
-                        <div class="coa-screenshot-title">
-                            <i class="fa-solid fa-file-pen text-info"></i> نموذج تفاصيل الشيك الصادر — مرحلة التسوية البنكية
-                        </div>
-                        <div class="coa-mac-dots">
-                            <span class="coa-dot red"></span>
-                            <span class="coa-dot yellow"></span>
-                            <span class="coa-dot green"></span>
-                        </div>
-                    </div>
-                    <div class="coa-screenshot-body">
-                        <span class="coa-screenshot-badge"><i class="fa-solid fa-check text-success"></i> Settlement Ready</span>
-                        <img src="04_outgoing_cheque_form.png" alt="تفاصيل الشيك الصادر" class="coa-img-responsive">
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Features Grid Section -->
-        <section id="features-section" class="my-5 pt-4">
-            <div class="coa-section-header">
-                <span class="coa-section-sub">Core Capabilities</span>
-                <h2 class="coa-section-title">أبرز مميزات موديول إدارة الشيكات</h2>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="coa-feature-box">
-                        <div class="coa-feature-icon">
-                            <i class="fa-solid fa-calculator"></i>
-                        </div>
-                        <h3 class="coa-feature-title">تكامل قيود اليومية آلياً</h3>
-                        <p class="coa-feature-text">إنشاء قيود اليومية المحاسبية المزدوجة بضغطة زر عند تأكيد الشيك، إيداعه، أو تسويته مع ربط مباشر برقم القيد.</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="coa-feature-box">
-                        <div class="coa-feature-icon">
-                            <i class="fa-solid fa-diagram-project"></i>
-                        </div>
-                        <h3 class="coa-feature-title">ربط المشاريع وعقود المقاولات</h3>
-                        <p class="coa-feature-text">تخصيص الشيكات للمشاريع الإنشائية ومقاولي الباطن، مما يتيح تتبع تكاليف ومقبوضات كل مشروع بدقة فائقة.</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="coa-feature-box">
-                        <div class="coa-feature-icon">
-                            <i class="fa-solid fa-magnifying-glass-chart"></i>
-                        </div>
-                        <h3 class="coa-feature-title">فلاتر وتقارير بحث ذكية</h3>
-                        <p class="coa-feature-text">بحث فوري برقم الشيك، اسم العميل، البنك، تاريخ الاستحقاق، أو الحالة مع تصدير سريع لبيانات التدفق النقدي.</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="coa-feature-box">
-                        <div class="coa-feature-icon">
-                            <i class="fa-solid fa-coins"></i>
-                        </div>
-                        <h3 class="coa-feature-title">إدارة العملات وأسعار الصرف</h3>
-                        <p class="coa-feature-text">دعم كامل للعملات المحلية والأجنبية مع احتساب فروق العملة ومعدلات التحويل تلقائياً وفق سياسات الشركة.</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="coa-feature-box">
-                        <div class="coa-feature-icon">
-                            <i class="fa-solid fa-user-lock"></i>
-                        </div>
-                        <h3 class="coa-feature-title">أمان وصلاحيات متقدمة</h3>
-                        <p class="coa-feature-text">مجموعات مستخدمين محددة بدقة (مشاهدة فقط، إدخال، واعتماد مالي) لحماية الحركات المالية ومنع التلاعب.</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="coa-feature-box">
-                        <div class="coa-feature-icon">
-                            <i class="fa-solid fa-mobile-screen-button"></i>
-                        </div>
-                        <h3 class="coa-feature-title">تصميم متجاوب 100%</h3>
-                        <p class="coa-feature-text">واجهة مستخدم عصرية متوافقة بالكامل مع شاشات الهواتف المحمولة، الأجهزة اللوحية، وشاشات سطح المكتب.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Brand Ribbon Section -->
-        <section class="coa-brand-ribbon">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <span style="color: var(--coa-red); font-weight: 800; font-size: 1.1rem; letter-spacing: 1px;">COA EGYPT ERP SOLUTIONS</span>
-                    <h3 style="font-size: 2.2rem; font-weight: 900; margin: 0.8rem 0;">هل تحتاج إلى تخصيصات إضافية أو استشارة محاسبية؟</h3>
-                    <p style="color: var(--coa-navy-100); font-size: 1.1rem; margin-bottom: 0;">فريق خبراء المحاسبة وتطوير أودو في مجتمع المحاسبين (COA-Egypt) جاهز لدعم أعمالك على مدار الساعة.</p>
-                </div>
-                <div class="col-lg-4 text-lg-start text-center mt-4 mt-lg-0">
-                    <a href="https://www.coa-egy.com" target="_blank" class="coa-btn-primary">
-                        <i class="fa-solid fa-headset"></i> تواصل مع فريق COA
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Technical Specifications Table -->
-        <section class="my-5">
-            <div class="coa-section-header">
-                <span class="coa-section-sub">Technical Specifications</span>
-                <h2 class="coa-section-title">المواصفات الفنية والتوافق</h2>
-            </div>
-
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="coa-specs-card">
-                        <div class="coa-spec-item">
-                            <div class="coa-spec-label"><i class="fa-solid fa-code-branch text-primary"></i> إصدار أودو المتوافق</div>
-                            <div class="coa-spec-value">Odoo 19.0 (Community & Enterprise)</div>
-                        </div>
-                        <div class="coa-spec-item">
-                            <div class="coa-spec-label"><i class="fa-solid fa-cube text-danger"></i> اسم الموديول التقني</div>
-                            <div class="coa-spec-value">coa_cheque_management</div>
-                        </div>
-                        <div class="coa-spec-item">
-                            <div class="coa-spec-label"><i class="fa-solid fa-puzzle-piece text-info"></i> الموديولات المعتمد عليها (Dependencies)</div>
-                            <div class="coa-spec-value">base, account, utm</div>
-                        </div>
-                        <div class="coa-spec-item">
-                            <div class="coa-spec-label"><i class="fa-solid fa-language text-success"></i> اللغات المدعومة</div>
-                            <div class="coa-spec-value">العربية (Arabic) & English</div>
-                        </div>
-                        <div class="coa-spec-item">
-                            <div class="coa-spec-label"><i class="fa-solid fa-building text-warning"></i> دعم تعدد الشركات (Multi-Company)</div>
-                            <div class="coa-spec-value">نعم، مدعوم بالكامل 100%</div>
-                        </div>
-                        <div class="coa-spec-item">
-                            <div class="coa-spec-label"><i class="fa-solid fa-scale-balanced text-primary"></i> الترخيص (License)</div>
-                            <div class="coa-spec-value">LGPL-3</div>
-                        </div>
-                        <div class="coa-spec-item">
-                            <div class="coa-spec-label"><i class="fa-solid fa-user-shield text-danger"></i> المطور والجهة المالكة</div>
-                            <div class="coa-spec-value">Community of accountants (COA-Egypt)</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="coa-footer">
-        <div class="container">
-            <img src="coa_logo.png" alt="COA Egypt Logo" class="coa-footer-logo">
-            <h4 style="font-weight: 800; margin-bottom: 0.5rem;">مجتمع المحاسبين — COA Egypt</h4>
-            <div class="coa-slogan">LEARN <span>•</span> APPLY <span>•</span> GROW</div>
-            <p style="color: var(--coa-navy-300); font-size: 0.95rem; max-width: 600px; margin: 0 auto 1.5rem auto;">
-                نظام إدارة الشيكات والأوراق المالية مطور ومختبر بعناية فائقة لضمان أعلى معايير الدقة المحاسبية وسلاسة الاستخدام على أودو 19.
-            </p>
-            <div style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.4);">
-                &copy; 2026 Community of accountants (COA-Egypt). All Rights Reserved.
-            </div>
+        
+        <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(230, 27, 33, 0.2); border: 1px solid #E61B21; padding: 7px 18px; border-radius: 100px;">
+          <span style="display: inline-block; width: 8px; height: 8px; background-color: #4ade80; border-radius: 50%; box-shadow: 0 0 10px #4ade80;"></span>
+          <span style="font-size: 12px; font-weight: 700; color: #FFFFFF; text-transform: uppercase; letter-spacing: 1px;">Odoo 19.0 · 18.0 · 17.0 Ready</span>
         </div>
-    </footer>
+      </div>
 
-    <!-- Interactive Scripts: Particle Animation & Tab Switching -->
-    <script>
-        function switchCoaTab(tabName) {
-            document.querySelectorAll('.coa-tab-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.coa-tab-btn').forEach(el => el.classList.remove('active'));
-            
-            const targetContent = document.getElementById('tab-' + tabName);
-            if (targetContent) {
-                targetContent.classList.add('active');
-            }
+      <!-- Hero Main Content Grid -->
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px;">
+        
+        <!-- Left: Text & Action -->
+        <div style="flex: 1 1 540px; min-width: 320px;">
+          <div style="display: inline-block; background: #E61B21; color: #FFFFFF; font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 6px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 18px;">
+            Enterprise Financial App
+          </div>
+          <h1 style="font-size: 46px; font-weight: 900; line-height: 1.15; margin: 0 0 20px 0; color: #FFFFFF; letter-spacing: -0.5px;">
+            Complete Cheque Lifecycle &amp; Accounting Management
+          </h1>
+          <p style="font-size: 18px; color: #E7EEF3; line-height: 1.7; margin: 0 0 35px 0; font-weight: 400; max-width: 540px;">
+            Empower your finance and treasury departments with end-to-end management for incoming customer PDCs and outgoing vendor cheques. Fully automated journal entries, clearing workflows, and bank reconciliation.
+          </p>
 
-            if (event && event.currentTarget) {
-                event.currentTarget.classList.add('active');
-            }
-        }
+          <!-- Metric Highlights Box -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; margin-bottom: 35px;">
+            <div style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; padding: 15px 12px; text-align: center;">
+              <div style="font-size: 26px; font-weight: 800; color: #FFFFFF;">100%</div>
+              <div style="font-size: 12px; color: #6E93B0; font-weight: 600; text-transform: uppercase;">Automated Entries</div>
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; padding: 15px 12px; text-align: center;">
+              <div style="font-size: 26px; font-weight: 800; color: #FFFFFF;">2-Way</div>
+              <div style="font-size: 12px; color: #6E93B0; font-weight: 600; text-transform: uppercase;">Incoming / Outgoing</div>
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; padding: 15px 12px; text-align: center;">
+              <div style="font-size: 26px; font-weight: 800; color: #FFFFFF;">Zero</div>
+              <div style="font-size: 12px; color: #6E93B0; font-weight: 600; text-transform: uppercase;">Reconciliation Gap</div>
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; padding: 15px 12px; text-align: center;">
+              <div style="font-size: 26px; font-weight: 800; color: #FFFFFF;">LGPL-3</div>
+              <div style="font-size: 12px; color: #6E93B0; font-weight: 600; text-transform: uppercase;">Open Source</div>
+            </div>
+          </div>
 
-        // Particle background animation on canvas
-        const canvas = document.getElementById('coa-particles-canvas');
-        if (canvas) {
-            const ctx = canvas.getContext('2d');
-            let width, height, particles;
+          <!-- Feature Tags -->
+          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <span style="background: rgba(255, 255, 255, 0.12); color: #FFFFFF; font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: 8px;">✔ Community &amp; Enterprise</span>
+            <span style="background: rgba(255, 255, 255, 0.12); color: #FFFFFF; font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: 8px;">✔ Multi-Currency &amp; Bank</span>
+            <span style="background: rgba(255, 255, 255, 0.12); color: #FFFFFF; font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: 8px;">✔ Bounce &amp; Reversal Logic</span>
+            <span style="background: rgba(255, 255, 255, 0.12); color: #FFFFFF; font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: 8px;">✔ Bilingual (EN &amp; AR)</span>
+          </div>
+        </div>
 
-            function resize() {
-                width = canvas.width = canvas.parentElement.offsetWidth;
-                height = canvas.height = canvas.parentElement.offsetHeight;
-            }
+        <!-- Right: Mac Window Preview Card with Shadows -->
+        <div style="flex: 1 1 500px; min-width: 320px;">
+          <div style="background: #1F2933; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.15);">
+            <!-- Window Title Bar -->
+            <div style="background: #111827; padding: 12px 18px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+              <span style="width: 12px; height: 12px; border-radius: 50%; background: #FF5F56; display: inline-block;"></span>
+              <span style="width: 12px; height: 12px; border-radius: 50%; background: #FFBD2E; display: inline-block;"></span>
+              <span style="width: 12px; height: 12px; border-radius: 50%; background: #27C93F; display: inline-block;"></span>
+              <span style="margin-left: 12px; font-size: 12px; color: #9CA3AF; font-family: monospace;">odoo-19 / Accounting / Cheques / Incoming</span>
+            </div>
+            <!-- Showcase Image -->
+            <img src="01_incoming_cheques_list.png" alt="Odoo Cheque Management Dashboard" style="width: 100%; height: auto; display: block;" />
+          </div>
+        </div>
 
-            function initParticles() {
-                resize();
-                particles = [];
-                const count = Math.min(Math.floor(width / 30), 45);
-                for (let i = 0; i < count; i++) {
-                    particles.push({
-                        x: Math.random() * width,
-                        y: Math.random() * height,
-                        vx: (Math.random() - 0.5) * 0.8,
-                        vy: (Math.random() - 0.5) * 0.8,
-                        radius: Math.random() * 2.5 + 1,
-                        color: Math.random() > 0.8 ? '#E61B21' : '#6E93B0'
-                    });
-                }
-            }
+      </div>
+    </div>
+  </section>
 
-            function draw() {
-                ctx.clearRect(0, 0, width, height);
-                for (let i = 0; i < particles.length; i++) {
-                    const p = particles[i];
-                    p.x += p.vx;
-                    p.y += p.vy;
+  <!-- ==========================================
+       2. VALUE PROPOSITION: WHY COA CHEQUE?
+  =========================================== -->
+  <section style="padding: 70px 20px; background-color: #F4F6F8;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      
+      <div style="text-align: center; max-width: 720px; margin: 0 auto 50px auto;">
+        <span style="font-size: 13px; font-weight: 800; color: #E61B21; text-transform: uppercase; letter-spacing: 1.5px;">Problem vs. Solution</span>
+        <h2 style="font-size: 34px; font-weight: 800; color: #041F33; margin: 10px 0 15px 0;">Why Your Business Needs This App</h2>
+        <p style="font-size: 16px; color: #6E93B0; line-height: 1.6;">
+          Managing cheques manually on spreadsheets or using generic payment journals leads to reconciliation errors, untracked post-dated cheques, and cash-flow blind spots.
+        </p>
+      </div>
 
-                    if (p.x < 0) p.x = width;
-                    if (p.x > width) p.x = 0;
-                    if (p.y < 0) p.y = height;
-                    if (p.y > height) p.y = 0;
+      <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;">
+        
+        <!-- Without App Card -->
+        <div style="flex: 1 1 500px; max-width: 560px; background: #FFFFFF; border-radius: 16px; padding: 35px 30px; border: 1px solid #E8ECF0; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+            <div style="width: 40px; height: 40px; border-radius: 10px; background: #FBEAEA; color: #E61B21; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900;">✕</div>
+            <h3 style="font-size: 20px; font-weight: 700; color: #8C1D22; margin: 0;">Without COA Cheque Module</h3>
+          </div>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; font-size: 14px; color: #4B5563;">
+            <li style="display: flex; gap: 10px; align-items: flex-start;">
+              <span style="color: #E61B21; font-weight: bold;">✕</span>
+              <span><strong>Unmonitored PDCs:</strong> Post-dated cheques get lost in drawers without maturity notifications.</span>
+            </li>
+            <li style="display: flex; gap: 10px; align-items: flex-start;">
+              <span style="color: #E61B21; font-weight: bold;">✕</span>
+              <span><strong>Manual Journal Entries:</strong> Finance staff must draft complex debits and credits manually at each stage.</span>
+            </li>
+            <li style="display: flex; gap: 10px; align-items: flex-start;">
+              <span style="color: #E61B21; font-weight: bold;">✕</span>
+              <span><strong>Painful Bounced Cheques:</strong> Reversing an unpaid cheque requires tedious manual journal reversals and reopenings.</span>
+            </li>
+            <li style="display: flex; gap: 10px; align-items: flex-start;">
+              <span style="color: #E61B21; font-weight: bold;">✕</span>
+              <span><strong>Lack of Audit Trail:</strong> No unified timeline shows who held, deposited, or cleared the physical cheque.</span>
+            </li>
+          </ul>
+        </div>
 
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = p.color;
-                    ctx.fill();
+        <!-- With App Card -->
+        <div style="flex: 1 1 500px; max-width: 560px; background: #FFFFFF; border-radius: 16px; padding: 35px 30px; border: 2px solid #0F5586; box-shadow: 0 10px 30px rgba(15, 85, 134, 0.1);">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+            <div style="width: 40px; height: 40px; border-radius: 10px; background: #E7EEF3; color: #0F5586; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900;">✓</div>
+            <h3 style="font-size: 20px; font-weight: 700; color: #063153; margin: 0;">With COA Cheque Management</h3>
+          </div>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; font-size: 14px; color: #1F2933;">
+            <li style="display: flex; gap: 10px; align-items: flex-start;">
+              <span style="color: #0F5586; font-weight: bold;">✓</span>
+              <span><strong>Structured Lifecycle Pipeline:</strong> Clear transition from Draft → Confirmed → Under Collection → Cleared.</span>
+            </li>
+            <li style="display: flex; gap: 10px; align-items: flex-start;">
+              <span style="color: #0F5586; font-weight: bold;">✓</span>
+              <span><strong>100% Automated Accounting:</strong> Notes Receivable/Payable and clearing entries posted instantly.</span>
+            </li>
+            <li style="display: flex; gap: 10px; align-items: flex-start;">
+              <span style="color: #0F5586; font-weight: bold;">✓</span>
+              <span><strong>1-Click Bounce &amp; Reversal:</strong> Auto-generates reversal entries and restores customer/vendor balance instantly.</span>
+            </li>
+            <li style="display: flex; gap: 10px; align-items: flex-start;">
+              <span style="color: #0F5586; font-weight: bold;">✓</span>
+              <span><strong>Full Bank &amp; Checkbook Trace:</strong> Full history with bank name, cheque number, due date, and audit chatter.</span>
+            </li>
+          </ul>
+        </div>
 
-                    // Connect lines between nearby particles
-                    for (let j = i + 1; j < particles.length; j++) {
-                        const p2 = particles[j];
-                        const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-                        if (dist < 85) {
-                            ctx.beginPath();
-                            ctx.moveTo(p.x, p.y);
-                            ctx.lineTo(p2.x, p2.y);
-                            ctx.strokeStyle = `rgba(110, 147, 176, ${0.2 * (1 - dist / 85)})`;
-                            ctx.lineWidth = 0.6;
-                            ctx.stroke();
-                        }
-                    }
-                }
-                requestAnimationFrame(draw);
-            }
+      </div>
+    </div>
+  </section>
 
-            window.addEventListener('resize', resize);
-            initParticles();
-            draw();
-        }
-    </script>
-</body>
-</html>
+  <!-- ==========================================
+       3. KEY FEATURES GRID (6 ENTERPRISE PILLARS)
+  =========================================== -->
+  <section style="padding: 80px 20px; background: #FFFFFF;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      
+      <div style="text-align: center; max-width: 760px; margin: 0 auto 55px auto;">
+        <span style="font-size: 13px; font-weight: 800; color: #E61B21; text-transform: uppercase; letter-spacing: 1.5px;">Comprehensive Capabilities</span>
+        <h2 style="font-size: 36px; font-weight: 800; color: #041F33; margin: 10px 0 15px 0;">Designed for Demanding Accounting Teams</h2>
+        <p style="font-size: 16px; color: #6E93B0; line-height: 1.6;">
+          Everything you need to control financial papers, streamline Treasury operations, and maintain audit compliance inside Odoo.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 28px;">
+        
+        <!-- Pillar 1 -->
+        <div style="background: #FFFFFF; border: 1px solid #E8ECF0; border-radius: 16px; padding: 32px 26px; transition: all 0.3s ease; box-shadow: 0 4px 16px rgba(4, 31, 51, 0.04); position: relative; overflow: hidden;">
+          <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #063153;"></div>
+          <div style="width: 48px; height: 48px; border-radius: 12px; background: #E7EEF3; color: #063153; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; margin-bottom: 20px;">
+            📥
+          </div>
+          <h3 style="font-size: 18px; font-weight: 700; color: #041F33; margin: 0 0 10px 0;">Incoming Cheques (Customer PDCs)</h3>
+          <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">
+            Accept cheques from clients against sales invoices or down-payments. Record cheque drawer, bank branch, cheque number, and due date with automated Notes Receivable entries.
+          </p>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div style="background: #FFFFFF; border: 1px solid #E8ECF0; border-radius: 16px; padding: 32px 26px; transition: all 0.3s ease; box-shadow: 0 4px 16px rgba(4, 31, 51, 0.04); position: relative; overflow: hidden;">
+          <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #E61B21;"></div>
+          <div style="width: 48px; height: 48px; border-radius: 12px; background: #FBEAEA; color: #E61B21; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; margin-bottom: 20px;">
+            📤
+          </div>
+          <h3 style="font-size: 18px; font-weight: 700; color: #041F33; margin: 0 0 10px 0;">Outgoing Cheques (Vendor Payments)</h3>
+          <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">
+            Issue cheques to suppliers, contractors, and service providers. Track issued leaves, link with purchase bills, and debit your bank account precisely upon maturity and clearing.
+          </p>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div style="background: #FFFFFF; border: 1px solid #E8ECF0; border-radius: 16px; padding: 32px 26px; transition: all 0.3s ease; box-shadow: 0 4px 16px rgba(4, 31, 51, 0.04); position: relative; overflow: hidden;">
+          <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #0F5586;"></div>
+          <div style="width: 48px; height: 48px; border-radius: 12px; background: #E7EEF3; color: #0F5586; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; margin-bottom: 20px;">
+            ⚡
+          </div>
+          <h3 style="font-size: 18px; font-weight: 700; color: #041F33; margin: 0 0 10px 0;">Automated Double-Entry Accounting</h3>
+          <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">
+            Eliminate human accounting error. The system posts appropriate entries to Cheques Under Collection, Notes Receivable, Notes Payable, and Bank Accounts at each lifecycle phase.
+          </p>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div style="background: #FFFFFF; border: 1px solid #E8ECF0; border-radius: 16px; padding: 32px 26px; transition: all 0.3s ease; box-shadow: 0 4px 16px rgba(4, 31, 51, 0.04); position: relative; overflow: hidden;">
+          <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #8C1D22;"></div>
+          <div style="width: 48px; height: 48px; border-radius: 12px; background: #FBEAEA; color: #8C1D22; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; margin-bottom: 20px;">
+            ↩️
+          </div>
+          <h3 style="font-size: 18px; font-weight: 700; color: #041F33; margin: 0 0 10px 0;">Bounced &amp; Rejection Workflow</h3>
+          <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">
+            Handle NSF (Non-Sufficient Funds) or returned cheques seamlessly. The system reverses previously posted entries, flags the cheque, and restores partner debt in one click.
+          </p>
+        </div>
+
+        <!-- Pillar 5 -->
+        <div style="background: #FFFFFF; border: 1px solid #E8ECF0; border-radius: 16px; padding: 32px 26px; transition: all 0.3s ease; box-shadow: 0 4px 16px rgba(4, 31, 51, 0.04); position: relative; overflow: hidden;">
+          <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #063153;"></div>
+          <div style="width: 48px; height: 48px; border-radius: 12px; background: #E7EEF3; color: #063153; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; margin-bottom: 20px;">
+            🏢
+          </div>
+          <h3 style="font-size: 18px; font-weight: 700; color: #041F33; margin: 0 0 10px 0;">Multi-Company &amp; Analytic Linkage</h3>
+          <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">
+            Multi-branch and multi-company friendly. Tag cheques with Analytic Distribution accounts (Cost Centers / Projects) to monitor project cash outflows and contract collections.
+          </p>
+        </div>
+
+        <!-- Pillar 6 -->
+        <div style="background: #FFFFFF; border: 1px solid #E8ECF0; border-radius: 16px; padding: 32px 26px; transition: all 0.3s ease; box-shadow: 0 4px 16px rgba(4, 31, 51, 0.04); position: relative; overflow: hidden;">
+          <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #041F33;"></div>
+          <div style="width: 48px; height: 48px; border-radius: 12px; background: #E7EEF3; color: #041F33; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; margin-bottom: 20px;">
+            🔒
+          </div>
+          <h3 style="font-size: 18px; font-weight: 700; color: #041F33; margin: 0 0 10px 0;">Role-Based Security &amp; Audit Trail</h3>
+          <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">
+            Segregation of duties between cashiers, senior accountants, and financial controllers. Full audit trail recorded in Odoo chatter with timestamps and responsible users.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       4. LIFECYCLE WORKFLOW (4 STEPS)
+  =========================================== -->
+  <section style="padding: 75px 20px; background: linear-gradient(135deg, #041F33 0%, #063153 100%); color: #FFFFFF;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      
+      <div style="text-align: center; max-width: 700px; margin: 0 auto 55px auto;">
+        <span style="font-size: 13px; font-weight: 800; color: #E61B21; text-transform: uppercase; letter-spacing: 1.5px;">Visual Workflow</span>
+        <h2 style="font-size: 36px; font-weight: 800; color: #FFFFFF; margin: 10px 0 15px 0;">Cheque Journey from Receipt to Bank Clearance</h2>
+        <p style="font-size: 16px; color: #6E93B0; line-height: 1.6;">
+          Every stage automatically generates the corresponding financial journal entry according to professional Egyptian and International Accounting Standards.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+        
+        <!-- Step 1 -->
+        <div style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 16px; padding: 28px 22px; position: relative;">
+          <div style="font-size: 12px; font-weight: 800; color: #E61B21; text-transform: uppercase; margin-bottom: 8px;">Step 01</div>
+          <h4 style="font-size: 18px; font-weight: 700; color: #FFFFFF; margin: 0 0 10px 0;">Draft Registration</h4>
+          <p style="font-size: 13px; color: #E7EEF3; line-height: 1.6; margin: 0 0 16px 0;">
+            Treasurer creates the cheque leaf: payee/issuer, bank, cheque number, amount, maturity date, and linked partner.
+          </p>
+          <div style="background: rgba(0, 0, 0, 0.25); padding: 8px 12px; border-radius: 8px; font-size: 11px; color: #6E93B0; font-family: monospace;">
+            Accounting: None (Draft status)
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 16px; padding: 28px 22px; position: relative;">
+          <div style="font-size: 12px; font-weight: 800; color: #E61B21; text-transform: uppercase; margin-bottom: 8px;">Step 02</div>
+          <h4 style="font-size: 18px; font-weight: 700; color: #FFFFFF; margin: 0 0 10px 0;">Confirmation &amp; Hold</h4>
+          <p style="font-size: 13px; color: #E7EEF3; line-height: 1.6; margin: 0 0 16px 0;">
+            Cheque is approved by accounting. The leaf is safely kept in the company safe pending maturity or bank deposit.
+          </p>
+          <div style="background: rgba(0, 0, 0, 0.25); padding: 8px 12px; border-radius: 8px; font-size: 11px; color: #4ade80; font-family: monospace;">
+            Dr: Notes Receivable<br/>Cr: Customer Account
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 16px; padding: 28px 22px; position: relative;">
+          <div style="font-size: 12px; font-weight: 800; color: #E61B21; text-transform: uppercase; margin-bottom: 8px;">Step 03</div>
+          <h4 style="font-size: 18px; font-weight: 700; color: #FFFFFF; margin: 0 0 10px 0;">Bank Deposit</h4>
+          <p style="font-size: 13px; color: #E7EEF3; line-height: 1.6; margin: 0 0 16px 0;">
+            Upon maturity, the cheque is sent to the clearing bank. Status transitions to "Under Collection".
+          </p>
+          <div style="background: rgba(0, 0, 0, 0.25); padding: 8px 12px; border-radius: 8px; font-size: 11px; color: #4ade80; font-family: monospace;">
+            Dr: Cheques Under Collection<br/>Cr: Notes Receivable
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 16px; padding: 28px 22px; position: relative;">
+          <div style="font-size: 12px; font-weight: 800; color: #E61B21; text-transform: uppercase; margin-bottom: 8px;">Step 04</div>
+          <h4 style="font-size: 18px; font-weight: 700; color: #FFFFFF; margin: 0 0 10px 0;">Clearance / Settlement</h4>
+          <p style="font-size: 13px; color: #E7EEF3; line-height: 1.6; margin: 0 0 16px 0;">
+            Bank statement confirms actual fund clearance. Cheque is marked as Done and reconciled with bank journal.
+          </p>
+          <div style="background: rgba(0, 0, 0, 0.25); padding: 8px 12px; border-radius: 8px; font-size: 11px; color: #4ade80; font-family: monospace;">
+            Dr: Main Bank Account<br/>Cr: Cheques Under Collection
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       5. REAL LIVE SCREENSHOT WALKTHROUGH
+  =========================================== -->
+  <section style="padding: 80px 20px; background: #FFFFFF;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      
+      <div style="text-align: center; max-width: 720px; margin: 0 auto 60px auto;">
+        <span style="font-size: 13px; font-weight: 800; color: #E61B21; text-transform: uppercase; letter-spacing: 1.5px;">Live Application Previews</span>
+        <h2 style="font-size: 36px; font-weight: 800; color: #041F33; margin: 10px 0 15px 0;">Pixel-Perfect Interface in Odoo 19</h2>
+        <p style="font-size: 16px; color: #6E93B0; line-height: 1.6;">
+          Real screenshots captured directly from our test production environment with real accounting data.
+        </p>
+      </div>
+
+      <!-- Screenshot 1: Incoming Cheques List -->
+      <div style="background: #F4F6F8; border-radius: 20px; padding: 35px; border: 1px solid #E8ECF0; margin-bottom: 45px; box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 25px;">
+          <div>
+            <span style="background: #063153; color: #FFFFFF; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 6px; text-transform: uppercase;">View 01</span>
+            <h3 style="font-size: 22px; font-weight: 800; color: #041F33; margin: 8px 0 4px 0;">Incoming Cheques — Unified Portfolio List</h3>
+            <p style="font-size: 14px; color: #6E93B0; margin: 0;">Comprehensive overview of all customer cheques, maturity dates, status indicators, and total sums.</p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <span style="background: #E7EEF3; color: #0F5586; font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 6px;">Filter by Partner</span>
+            <span style="background: #E7EEF3; color: #0F5586; font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 6px;">Due Date Sorting</span>
+          </div>
+        </div>
+        <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); border: 1px solid #D1D5DB;">
+          <img src="01_incoming_cheques_list.png" alt="Incoming Cheques List View" style="width: 100%; height: auto; display: block;" />
+        </div>
+      </div>
+
+      <!-- Screenshot 2: Incoming Cheque Form -->
+      <div style="background: #F4F6F8; border-radius: 20px; padding: 35px; border: 1px solid #E8ECF0; margin-bottom: 45px; box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 25px;">
+          <div>
+            <span style="background: #0F5586; color: #FFFFFF; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 6px; text-transform: uppercase;">View 02</span>
+            <h3 style="font-size: 22px; font-weight: 800; color: #041F33; margin: 8px 0 4px 0;">Incoming Cheque Form — Detailed Financial Card</h3>
+            <p style="font-size: 14px; color: #6E93B0; margin: 0;">Cheque detail with status bar, drawer name, bank branch, attached copy, and linked Journal Entries.</p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <span style="background: #E7EEF3; color: #0F5586; font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 6px;">One-Click Actions</span>
+            <span style="background: #E7EEF3; color: #0F5586; font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 6px;">Audit Trail Chatter</span>
+          </div>
+        </div>
+        <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); border: 1px solid #D1D5DB;">
+          <img src="02_incoming_cheque_form.png" alt="Incoming Cheque Form View" style="width: 100%; height: auto; display: block;" />
+        </div>
+      </div>
+
+      <!-- Screenshot 3: Outgoing Cheques List -->
+      <div style="background: #F4F6F8; border-radius: 20px; padding: 35px; border: 1px solid #E8ECF0; margin-bottom: 45px; box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 25px;">
+          <div>
+            <span style="background: #8C1D22; color: #FFFFFF; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 6px; text-transform: uppercase;">View 03</span>
+            <h3 style="font-size: 22px; font-weight: 800; color: #041F33; margin: 8px 0 4px 0;">Outgoing Cheques — Vendor Payment Ledger</h3>
+            <p style="font-size: 14px; color: #6E93B0; margin: 0;">Control issued cheques to prevent unexpected bank overdrafts. Group by vendor, project, or bank.</p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <span style="background: #FBEAEA; color: #8C1D22; font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 6px;">Vendor Aging</span>
+            <span style="background: #FBEAEA; color: #8C1D22; font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 6px;">Overdraft Protection</span>
+          </div>
+        </div>
+        <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); border: 1px solid #D1D5DB;">
+          <img src="03_outgoing_cheques_list.png" alt="Outgoing Cheques List View" style="width: 100%; height: auto; display: block;" />
+        </div>
+      </div>
+
+      <!-- Screenshot 4: Outgoing Cheque Form -->
+      <div style="background: #F4F6F8; border-radius: 20px; padding: 35px; border: 1px solid #E8ECF0; box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 25px;">
+          <div>
+            <span style="background: #E61B21; color: #FFFFFF; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 6px; text-transform: uppercase;">View 04</span>
+            <h3 style="font-size: 22px; font-weight: 800; color: #041F33; margin: 8px 0 4px 0;">Outgoing Cheque Form — Payment Authorization</h3>
+            <p style="font-size: 14px; color: #6E93B0; margin: 0;">Authorize and clear supplier payments with full journal entry visibility and bank matching.</p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <span style="background: #FBEAEA; color: #E61B21; font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 6px;">Print Voucher</span>
+            <span style="background: #FBEAEA; color: #E61B21; font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 6px;">Checkbook Sequence</span>
+          </div>
+        </div>
+        <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); border: 1px solid #D1D5DB;">
+          <img src="04_outgoing_cheque_form.png" alt="Outgoing Cheque Form View" style="width: 100%; height: auto; display: block;" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       6. TECHNICAL SPECIFICATIONS TABLE
+  =========================================== -->
+  <section style="padding: 70px 20px; background-color: #F4F6F8;">
+    <div style="max-width: 1000px; margin: 0 auto;">
+      
+      <div style="text-align: center; margin-bottom: 40px;">
+        <span style="font-size: 13px; font-weight: 800; color: #0F5586; text-transform: uppercase; letter-spacing: 1.5px;">Module Information</span>
+        <h2 style="font-size: 32px; font-weight: 800; color: #041F33; margin: 8px 0;">Technical Specifications</h2>
+      </div>
+
+      <div style="background: #FFFFFF; border-radius: 16px; overflow: hidden; border: 1px solid #E8ECF0; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);">
+        <table style="width: 100%; border-collapse: collapse; font-size: 14px; text-align: left;">
+          <tbody>
+            <tr style="border-bottom: 1px solid #F0F4F8;">
+              <td style="padding: 18px 24px; font-weight: 700; color: #063153; width: 35%; background: #FAFBFD;">Module Name</td>
+              <td style="padding: 18px 24px; color: #1F2933; font-weight: 600;">COA Cheque Management</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #F0F4F8;">
+              <td style="padding: 18px 24px; font-weight: 700; color: #063153; background: #FAFBFD;">Technical Identifier</td>
+              <td style="padding: 18px 24px; font-family: monospace; color: #0F5586; font-weight: 700;">coa_cheque_management</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #F0F4F8;">
+              <td style="padding: 18px 24px; font-weight: 700; color: #063153; background: #FAFBFD;">Odoo Versions Supported</td>
+              <td style="padding: 18px 24px; color: #1F2933;">
+                <span style="background: #E7EEF3; color: #063153; font-weight: 700; padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-right: 6px;">19.0 (Latest)</span>
+                <span style="background: #E7EEF3; color: #063153; font-weight: 700; padding: 4px 10px; border-radius: 6px; font-size: 12px; margin-right: 6px;">18.0</span>
+                <span style="background: #E7EEF3; color: #063153; font-weight: 700; padding: 4px 10px; border-radius: 6px; font-size: 12px;">17.0</span>
+              </td>
+            </tr>
+            <tr style="border-bottom: 1px solid #F0F4F8;">
+              <td style="padding: 18px 24px; font-weight: 700; color: #063153; background: #FAFBFD;">Editions Supported</td>
+              <td style="padding: 18px 24px; color: #1F2933;">Community &amp; Enterprise (Full Parity)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #F0F4F8;">
+              <td style="padding: 18px 24px; font-weight: 700; color: #063153; background: #FAFBFD;">Dependencies</td>
+              <td style="padding: 18px 24px; font-family: monospace; color: #4B5563;">base, account, utm</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #F0F4F8;">
+              <td style="padding: 18px 24px; font-weight: 700; color: #063153; background: #FAFBFD;">License</td>
+              <td style="padding: 18px 24px; color: #059669; font-weight: 700;">LGPL-3 (Open Source &amp; Free to Customize)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #F0F4F8;">
+              <td style="padding: 18px 24px; font-weight: 700; color: #063153; background: #FAFBFD;">Languages Included</td>
+              <td style="padding: 18px 24px; color: #1F2933;">English (en_US) · Arabic (ar_001)</td>
+            </tr>
+            <tr>
+              <td style="padding: 18px 24px; font-weight: 700; color: #063153; background: #FAFBFD;">Developer &amp; Author</td>
+              <td style="padding: 18px 24px; color: #1F2933; font-weight: 600;">Community of Accountants (COA-Egypt)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       7. FREQUENTLY ASKED QUESTIONS (FAQ)
+  =========================================== -->
+  <section style="padding: 70px 20px; background-color: #FFFFFF;">
+    <div style="max-width: 900px; margin: 0 auto;">
+      
+      <div style="text-align: center; margin-bottom: 45px;">
+        <span style="font-size: 13px; font-weight: 800; color: #E61B21; text-transform: uppercase; letter-spacing: 1.5px;">Need Clarification?</span>
+        <h2 style="font-size: 32px; font-weight: 800; color: #041F33; margin: 8px 0;">Frequently Asked Questions</h2>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        
+        <div style="background: #F4F6F8; border-radius: 12px; padding: 22px 26px; border: 1px solid #E8ECF0;">
+          <h4 style="font-size: 16px; font-weight: 700; color: #041F33; margin: 0 0 8px 0;">Does this module alter core Odoo accounting tables?</h4>
+          <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">
+            No. The module follows Odoo standard architectural best practices. It creates clean dedicated models (`incoming.cheque` and `outgoing.cheque`) and interacts with standard `account.move` and `account.move.line` records without modifying base tables or breaking upgrades.
+          </p>
+        </div>
+
+        <div style="background: #F4F6F8; border-radius: 12px; padding: 22px 26px; border: 1px solid #E8ECF0;">
+          <h4 style="font-size: 16px; font-weight: 700; color: #041F33; margin: 0 0 8px 0;">Can we configure custom intermediate accounts for cheques?</h4>
+          <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">
+            Yes! Through <strong>Accounting → Configuration → Settings</strong>, you can select which specific balance sheet accounts represent Notes Receivable, Notes Payable, and Cheques Under Collection for each company.
+          </p>
+        </div>
+
+        <div style="background: #F4F6F8; border-radius: 12px; padding: 22px 26px; border: 1px solid #E8ECF0;">
+          <h4 style="font-size: 16px; font-weight: 700; color: #041F33; margin: 0 0 8px 0;">Is this module compatible with Odoo Enterprise?</h4>
+          <p style="font-size: 14px; color: #4B5563; line-height: 1.6; margin: 0;">
+            Yes, it works identically on both Odoo Community and Odoo Enterprise Editions across versions 17.0, 18.0, and 19.0.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       8. SUPPORT, GUARANTEE & CALL TO ACTION
+  =========================================== -->
+  <section style="background: linear-gradient(135deg, #041F33 0%, #063153 100%); padding: 75px 20px; color: #FFFFFF; border-radius: 32px 32px 0 0;">
+    <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
+      
+      <div style="width: 64px; height: 64px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
+        <img src="coa_logo.png" alt="COA Egypt" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover;" />
+      </div>
+
+      <h2 style="font-size: 34px; font-weight: 800; color: #FFFFFF; margin: 0 0 15px 0;">
+        Ready to Transform Your Cheque Management?
+      </h2>
+      <p style="font-size: 16px; color: #E7EEF3; line-height: 1.7; max-width: 680px; margin: 0 auto 35px auto;">
+        Developed by the Community of Accountants (COA-Egypt) with field-tested standards for corporate treasuries, contracting companies, and commercial trading firms.
+      </p>
+
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 40px;">
+        <a href="mailto:ahmedaboshady128@gmail.com" style="background: #E61B21; color: #FFFFFF; padding: 14px 34px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; box-shadow: 0 6px 20px rgba(230, 27, 33, 0.4); display: inline-block;">
+          Get Technical Support &amp; Customization
+        </a>
+        <a href="https://github.com/Ahmed128aboshady/coa_cheque_management" target="_blank" style="background: rgba(255, 255, 255, 0.12); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.3); padding: 14px 34px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; display: inline-block;">
+          Browse GitHub Repository
+        </a>
+      </div>
+
+      <div style="border-top: 1px solid rgba(255, 255, 255, 0.12); padding-top: 30px; font-size: 13px; color: #6E93B0;">
+        © 2025 Community of Accountants (COA-Egypt). All rights reserved. Released under LGPL-3.
+      </div>
+
+    </div>
+  </section>
+
+</div>

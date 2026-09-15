@@ -1,96 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- ==============================================================================
+         COA CHEQUE MANAGEMENT PRESENTATION TEMPLATE
+         Community of Accountants (COA Egypt)
+         Odoo 19.0 / 18.0 / 17.0 Enterprise & Community Ready
+    ============================================================================== -->
     <template id="cheque_presentation_template" name="COA Cheque Management Presentation">
-        <div class="coa_cheque_presentation" dir="rtl" style="font-family: 'Cairo', sans-serif; background-color: #F4F6F8; color: #1F2933; padding: 2rem;">
+        <div class="coa_cheque_presentation" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #F4F6F8; color: #041F33; padding: 2rem 1rem;">
             
-            <!-- Hero Header -->
-            <div style="background: linear-gradient(135deg, #041F33 0%, #063153 60%, #0F5586 100%); color: #FFFFFF; border-radius: 20px; padding: 3rem 2rem; text-align: center; border-bottom: 4px solid #E61B21; margin-bottom: 2.5rem; box-shadow: 0 15px 35px rgba(4, 31, 51, 0.15);">
-                <div style="display: inline-flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.1); padding: 8px 20px; border-radius: 50px; margin-bottom: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.2);">
-                    <img src="/coa_cheque_management/static/description/coa_logo.png" alt="COA Logo" style="width: 36px; height: 36px; border-radius: 50%; background: #FFF; padding: 2px;"/>
-                    <span style="font-weight: 700; font-size: 0.95rem; color: #FFF;">Community of Accountants (COA-Egypt)</span>
-                </div>
-                <h1 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 1rem; color: #FFFFFF;">
-                    نظام إدارة الشيكات والأوراق المالية <span style="color: #E61B21;">COA</span>
-                </h1>
-                <p style="font-size: 1.15rem; color: #E7EEF3; max-width: 750px; margin: 0 auto; line-height: 1.7;">
-                    الحل الذكي والمتكامل لإدارة دورة حياة الشيكات الواردة والصادرة على أودو 19 مع الربط المحاسبي الكامل وإدارة المشاريع.
-                </p>
-            </div>
-
-            <!-- Workflow Stages -->
-            <div style="margin-bottom: 3rem;">
-                <h2 style="font-size: 1.8rem; font-weight: 800; color: #063153; text-align: center; margin-bottom: 2rem;">مراحل دورة حياة الشيكات</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
-                    <div style="background: #FFFFFF; border-radius: 14px; padding: 1.5rem; text-align: center; border: 1px solid #E7EEF3; box-shadow: 0 4px 15px rgba(6, 49, 83, 0.05);">
-                        <div style="width: 44px; height: 44px; border-radius: 12px; background: #E7EEF3; color: #063153; display: flex; align-items: center; justify-content: center; font-weight: 900; margin: 0 auto 1rem auto; font-size: 1.2rem;">01</div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #041F33; margin-bottom: 0.5rem;">مسودة (Draft)</h3>
-                        <p style="font-size: 0.9rem; color: #64748B;">تسجيل بيانات الشيك بدقة متناهية من الساحب والمستفيد وتاريخ الاستحقاق.</p>
-                    </div>
-                    <div style="background: #FFFFFF; border-radius: 14px; padding: 1.5rem; text-align: center; border: 1px solid #E7EEF3; box-shadow: 0 4px 15px rgba(6, 49, 83, 0.05);">
-                        <div style="width: 44px; height: 44px; border-radius: 12px; background: #E7EEF3; color: #063153; display: flex; align-items: center; justify-content: center; font-weight: 900; margin: 0 auto 1rem auto; font-size: 1.2rem;">02</div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #041F33; margin-bottom: 0.5rem;">تأكيد (Confirmed)</h3>
-                        <p style="font-size: 0.9rem; color: #64748B;">اعتماد الشيك مالياً وحجز الأوراق المالية وتوليد قيود أوراق القبض والدفع.</p>
-                    </div>
-                    <div style="background: #FFFFFF; border-radius: 14px; padding: 1.5rem; text-align: center; border: 2px solid #E61B21; box-shadow: 0 8px 25px rgba(230, 27, 33, 0.15);">
-                        <div style="width: 44px; height: 44px; border-radius: 12px; background: #E61B21; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 900; margin: 0 auto 1rem auto; font-size: 1.2rem;">03</div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #041F33; margin-bottom: 0.5rem;">إيداع / تسوية (Deposit)</h3>
-                        <p style="font-size: 0.9rem; color: #64748B;">إيداع الشيك بالبنك أو إجراء التسوية البنكية وإقفال الحسابات الوسيطة.</p>
-                    </div>
-                    <div style="background: #FFFFFF; border-radius: 14px; padding: 1.5rem; text-align: center; border: 1px solid #E7EEF3; box-shadow: 0 4px 15px rgba(6, 49, 83, 0.05);">
-                        <div style="width: 44px; height: 44px; border-radius: 12px; background: #E7EEF3; color: #063153; display: flex; align-items: center; justify-content: center; font-weight: 900; margin: 0 auto 1rem auto; font-size: 1.2rem;">04</div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #041F33; margin-bottom: 0.5rem;">إلغاء (Cancelled)</h3>
-                        <p style="font-size: 0.9rem; color: #64748B;">معالجة حالات ارتداد الشيك وعكس القيود اليومية وعودة المديونية تلقائياً.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Live Screenshots Gallery -->
-            <div style="margin-bottom: 3rem;">
-                <h2 style="font-size: 1.8rem; font-weight: 800; color: #063153; text-align: center; margin-bottom: 2rem;">معرض الشاشات والمعاملات الحية</h2>
+            <!-- Hero Header Section -->
+            <div style="background: linear-gradient(135deg, #041F33 0%, #063153 60%, #0F5586 100%); color: #FFFFFF; border-radius: 24px; padding: 3.5rem 2rem; text-align: center; border-bottom: 4px solid #E61B21; margin-bottom: 2.5rem; box-shadow: 0 20px 40px rgba(4, 31, 51, 0.18); position: relative; overflow: hidden;">
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2rem;">
-                    <!-- Screenshot 1 -->
-                    <div style="background: #FFFFFF; border-radius: 16px; overflow: hidden; border: 1px solid #E7EEF3; box-shadow: 0 10px 30px rgba(6, 49, 83, 0.08);">
-                        <div style="background: #063153; color: #FFFFFF; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;">
-                            قائمة الشيكات الواردة — مبيعات ومستخلصات العملاء
-                        </div>
-                        <img src="/coa_cheque_management/static/description/01_incoming_cheques_list.png" alt="شيكات واردة" style="width: 100%; height: auto; display: block;"/>
+                <div style="display: inline-flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.12); padding: 8px 24px; border-radius: 50px; margin-bottom: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.25);">
+                    <img src="/coa_cheque_management/static/description/coa_logo.png" alt="COA Logo" style="width: 28px; height: 28px; border-radius: 50%; background: #FFF; object-fit: cover;"/>
+                    <span style="font-weight: 700; font-size: 0.95rem; color: #FFF; letter-spacing: 0.5px;">Community of Accountants (COA-Egypt)</span>
+                </div>
+
+                <h1 style="font-size: 2.8rem; font-weight: 900; margin-bottom: 1rem; color: #FFFFFF; letter-spacing: -0.5px;">
+                    COA Cheque Management System
+                </h1>
+                
+                <p style="font-size: 1.15rem; color: #E7EEF3; max-width: 800px; margin: 0 auto 2rem auto; line-height: 1.7;">
+                    The premier financial app for managing customer post-dated cheques (PDCs) and vendor payment issuances with automated journal entries, bank clearing pipelines, and real-time reconciliation.
+                </p>
+
+                <!-- Status Badges -->
+                <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 12px;">
+                    <span style="background: #E61B21; color: #FFFFFF; font-weight: 700; font-size: 0.85rem; padding: 6px 16px; border-radius: 20px;">Odoo 19.0 Ready</span>
+                    <span style="background: rgba(255, 255, 255, 0.15); color: #FFFFFF; font-weight: 600; font-size: 0.85rem; padding: 6px 16px; border-radius: 20px;">Community &amp; Enterprise</span>
+                    <span style="background: rgba(255, 255, 255, 0.15); color: #FFFFFF; font-weight: 600; font-size: 0.85rem; padding: 6px 16px; border-radius: 20px;">LGPL-3 Open Source</span>
+                </div>
+            </div>
+
+            <!-- Lifecycle Stages -->
+            <div style="max-width: 1200px; margin: 0 auto 3.5rem auto;">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <span style="font-size: 0.85rem; font-weight: 800; color: #E61B21; text-transform: uppercase; letter-spacing: 1.5px;">Automated Financial Flow</span>
+                    <h2 style="font-size: 2.2rem; font-weight: 800; color: #063153; margin: 6px 0 0 0;">Cheque Lifecycle Pipeline</h2>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+                    <!-- Step 1 -->
+                    <div style="background: #FFFFFF; border-radius: 16px; padding: 1.8rem; border: 1px solid #E8ECF0; box-shadow: 0 4px 15px rgba(6, 49, 83, 0.05); position: relative;">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: #E7EEF3; color: #063153; display: flex; align-items: center; justify-content: center; font-weight: 900; margin-bottom: 1rem; font-size: 1.1rem;">01</div>
+                        <h3 style="font-size: 1.2rem; font-weight: 700; color: #041F33; margin-bottom: 0.5rem;">Draft / Issuance</h3>
+                        <p style="font-size: 0.9rem; color: #64748B; line-height: 1.6; margin: 0;">Register drawer details, bank, cheque leaf number, amount, and maturity date.</p>
                     </div>
 
-                    <!-- Screenshot 2 -->
-                    <div style="background: #FFFFFF; border-radius: 16px; overflow: hidden; border: 1px solid #E7EEF3; box-shadow: 0 10px 30px rgba(6, 49, 83, 0.08);">
-                        <div style="background: #063153; color: #FFFFFF; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;">
-                            نموذج تفاصيل الشيك الوارد — مرحلة الإيداع
-                        </div>
-                        <img src="/coa_cheque_management/static/description/02_incoming_cheque_form.png" alt="تفاصيل شيك وارد" style="width: 100%; height: auto; display: block;"/>
+                    <!-- Step 2 -->
+                    <div style="background: #FFFFFF; border-radius: 16px; padding: 1.8rem; border: 1px solid #E8ECF0; box-shadow: 0 4px 15px rgba(6, 49, 83, 0.05); position: relative;">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: #E7EEF3; color: #063153; display: flex; align-items: center; justify-content: center; font-weight: 900; margin-bottom: 1rem; font-size: 1.1rem;">02</div>
+                        <h3 style="font-size: 1.2rem; font-weight: 700; color: #041F33; margin-bottom: 0.5rem;">Confirmation</h3>
+                        <p style="font-size: 0.9rem; color: #64748B; line-height: 1.6; margin: 0;">Financial approval locks the cheque and posts Notes Receivable / Payable journal entries.</p>
                     </div>
 
-                    <!-- Screenshot 3 -->
-                    <div style="background: #FFFFFF; border-radius: 16px; overflow: hidden; border: 1px solid #E7EEF3; box-shadow: 0 10px 30px rgba(6, 49, 83, 0.08);">
-                        <div style="background: #063153; color: #FFFFFF; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;">
-                            قائمة الشيكات الصادرة — مدفوعات الموردين والمقاولين
-                        </div>
-                        <img src="/coa_cheque_management/static/description/03_outgoing_cheques_list.png" alt="شيكات صادرة" style="width: 100%; height: auto; display: block;"/>
+                    <!-- Step 3 -->
+                    <div style="background: #FFFFFF; border-radius: 16px; padding: 1.8rem; border: 2px solid #0F5586; box-shadow: 0 8px 25px rgba(15, 85, 134, 0.1); position: relative;">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: #0F5586; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 900; margin-bottom: 1rem; font-size: 1.1rem;">03</div>
+                        <h3 style="font-size: 1.2rem; font-weight: 700; color: #041F33; margin-bottom: 0.5rem;">Bank Deposit</h3>
+                        <p style="font-size: 0.9rem; color: #64748B; line-height: 1.6; margin: 0;">Cheque deposited into the bank clearing queue; moves to Under Collection account.</p>
                     </div>
 
-                    <!-- Screenshot 4 -->
-                    <div style="background: #FFFFFF; border-radius: 16px; overflow: hidden; border: 1px solid #E7EEF3; box-shadow: 0 10px 30px rgba(6, 49, 83, 0.08);">
-                        <div style="background: #063153; color: #FFFFFF; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;">
-                            نموذج تفاصيل الشيك الصادر — مرحلة التسوية البنكية
-                        </div>
-                        <img src="/coa_cheque_management/static/description/04_outgoing_cheque_form.png" alt="تفاصيل شيك صادر" style="width: 100%; height: auto; display: block;"/>
+                    <!-- Step 4 -->
+                    <div style="background: #FFFFFF; border-radius: 16px; padding: 1.8rem; border: 1px solid #E8ECF0; box-shadow: 0 4px 15px rgba(6, 49, 83, 0.05); position: relative;">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: #E7EEF3; color: #063153; display: flex; align-items: center; justify-content: center; font-weight: 900; margin-bottom: 1rem; font-size: 1.1rem;">04</div>
+                        <h3 style="font-size: 1.2rem; font-weight: 700; color: #041F33; margin-bottom: 0.5rem;">Clearance / Bounce</h3>
+                        <p style="font-size: 0.9rem; color: #64748B; line-height: 1.6; margin: 0;">Clearance completes bank settlement; bounced cheques trigger immediate automatic reversal.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Brand Ribbon Footer -->
-            <div style="background: #041F33; color: #FFFFFF; border-radius: 16px; padding: 2.5rem; text-align: center; border-top: 3px solid #E61B21;">
-                <img src="/coa_cheque_management/static/description/coa_logo.png" alt="COA Logo" style="width: 60px; height: 60px; border-radius: 50%; background: #FFF; padding: 4px; margin-bottom: 1rem;"/>
-                <h4 style="font-weight: 800; margin-bottom: 0.3rem;">مجتمع المحاسبين — COA Egypt</h4>
-                <div style="color: #6E93B0; letter-spacing: 3px; font-weight: 800; font-size: 0.9rem; margin-bottom: 1rem;">LEARN • APPLY • GROW</div>
-                <p style="color: #E7EEF3; font-size: 0.95rem; max-width: 500px; margin: 0 auto;">
-                    نظام إدارة الشيكات والأوراق المالية متوافق بالكامل مع Odoo 19.0 Community &amp; Enterprise.
+            <!-- Live Screenshots Section -->
+            <div style="max-width: 1200px; margin: 0 auto 3.5rem auto;">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <span style="font-size: 0.85rem; font-weight: 800; color: #E61B21; text-transform: uppercase; letter-spacing: 1.5px;">Live Application Gallery</span>
+                    <h2 style="font-size: 2.2rem; font-weight: 800; color: #063153; margin: 6px 0 0 0;">Interactive UI &amp; Workflows</h2>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); gap: 2rem;">
+                    <!-- Screen 1 -->
+                    <div style="background: #FFFFFF; border-radius: 16px; overflow: hidden; border: 1px solid #E8ECF0; box-shadow: 0 10px 30px rgba(6, 49, 83, 0.08);">
+                        <div style="background: #063153; color: #FFFFFF; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;">
+                            Incoming Cheques Portfolio (Customer PDCs)
+                        </div>
+                        <img src="/coa_cheque_management/static/description/01_incoming_cheques_list.png" alt="Incoming Cheques List" style="width: 100%; height: auto; display: block;"/>
+                    </div>
+
+                    <!-- Screen 2 -->
+                    <div style="background: #FFFFFF; border-radius: 16px; overflow: hidden; border: 1px solid #E8ECF0; box-shadow: 0 10px 30px rgba(6, 49, 83, 0.08);">
+                        <div style="background: #0F5586; color: #FFFFFF; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;">
+                            Detailed Cheque Form &amp; Linked Journal Entries
+                        </div>
+                        <img src="/coa_cheque_management/static/description/02_incoming_cheque_form.png" alt="Incoming Cheque Form" style="width: 100%; height: auto; display: block;"/>
+                    </div>
+
+                    <!-- Screen 3 -->
+                    <div style="background: #FFFFFF; border-radius: 16px; overflow: hidden; border: 1px solid #E8ECF0; box-shadow: 0 10px 30px rgba(6, 49, 83, 0.08);">
+                        <div style="background: #8C1D22; color: #FFFFFF; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;">
+                            Outgoing Cheques (Vendor Payments &amp; Subcontractors)
+                        </div>
+                        <img src="/coa_cheque_management/static/description/03_outgoing_cheques_list.png" alt="Outgoing Cheques List" style="width: 100%; height: auto; display: block;"/>
+                    </div>
+
+                    <!-- Screen 4 -->
+                    <div style="background: #FFFFFF; border-radius: 16px; overflow: hidden; border: 1px solid #E8ECF0; box-shadow: 0 10px 30px rgba(6, 49, 83, 0.08);">
+                        <div style="background: #E61B21; color: #FFFFFF; padding: 1rem 1.5rem; font-weight: 700; font-size: 1rem;">
+                            Outgoing Payment Authorization &amp; Clearing Card
+                        </div>
+                        <img src="/coa_cheque_management/static/description/04_outgoing_cheque_form.png" alt="Outgoing Cheque Form" style="width: 100%; height: auto; display: block;"/>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Support Banner -->
+            <div style="max-width: 1200px; margin: 0 auto; background: linear-gradient(135deg, #041F33 0%, #063153 100%); border-radius: 20px; padding: 2.5rem 2rem; color: #FFFFFF; text-align: center;">
+                <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.8rem;">Professional Accounting Solutions by COA Egypt</h3>
+                <p style="font-size: 1rem; color: #E7EEF3; max-width: 650px; margin: 0 auto 1.5rem auto;">
+                    Built to satisfy Egyptian corporate accounting standards and IFRS compliance. For implementation, customization, or training, reach out to our team.
                 </p>
+                <div style="font-weight: 700; font-size: 0.95rem; color: #6E93B0;">
+                    Community of Accountants (COA-Egypt) · Licensed under LGPL-3
+                </div>
             </div>
 
         </div>

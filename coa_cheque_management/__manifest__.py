@@ -1,16 +1,18 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "COA Cheque Management | إدارة الشيكات والأوراق المالية",
-    'summary': "نظام إدارة دورة حياة الشيكات الواردة والصادرة والربط المحاسبي الكامل على أودو 19 - COA Egypt",
+    'name': "COA Cheque Management | Cheque Lifecycle & Accounting",
+    'summary': "Complete lifecycle management for incoming customer PDCs and outgoing vendor cheques with automated accounting entries",
     'description': """
-COA Cheque Management System for Odoo 19
-========================================
-نظام متكامل لإدارة الشيكات والأوراق التجارية (وارد وصادر):
-- إدارة شيكات المبيعات والعملاء (Incoming Cheques).
-- إدارة شيكات المشتريات ومقاولي الباطن (Outgoing Cheques).
-- الربط التلقائي بقيود اليومية وأوراق القبض والدفع.
-- تتبع ومراقبة الحالات: مسودة، تأكيد، إيداع/تسوية، إلغاء وارتداد.
-- ربط المشاريع ومراكز التكلفة والمقاولات.
+COA Cheque Management System for Odoo 19 / 18 / 17
+==================================================
+Comprehensive financial cheque lifecycle and treasury management system:
+- Incoming Cheques Management (Customer Post-Dated Cheques / PDCs).
+- Outgoing Cheques Management (Vendor Payments, Subcontractors, Expenses).
+- Automated double-entry accounting (Notes Receivable, Notes Payable, Cheques Under Collection, Bank).
+- Full status pipeline: Draft, Confirmed, Under Collection, Cleared, and Bounced.
+- Automated reversal logic for NSF and returned cheques.
+- Analytic distribution and project cost center allocation.
+- Fully auditable chatter trail with time-stamped status transitions.
     """,
     'author': "Community of accountants (COA-Egypt)",
     'website': "https://www.coa-egy.com",
